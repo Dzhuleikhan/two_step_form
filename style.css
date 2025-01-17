@@ -1,0 +1,308 @@
+@font-face {
+  font-family: "Kadwa";
+  src: url("../fonts/Kadwa-Bold.woff2") format("woff2");
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Raleway";
+  src: url("../fonts/Raleway-Bold.woff2") format("woff2");
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Montserrat";
+  src: url("../fonts/Montserrat-Medium.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Montserrat";
+  src: url("../fonts/Montserrat-Bold.woff2") format("woff2");
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Gilroy";
+  src: url("../fonts/Gilroy-Bold.woff2") format("woff2");
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Gilroy";
+  src: url("../fonts/Gilroy-SemiBold.woff2") format("woff2");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Gilroy";
+  src: url("../fonts/Gilroy-Regular.woff2") format("woff2");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Montserrat";
+  src: url("../fonts/Montserrat-Regular.woff2") format("woff2");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    @apply font-montserrat text-white;
+  }
+
+  body {
+    @apply overscroll-none;
+  }
+}
+
+@layer components {
+  .container {
+    @apply max-w-[788px];
+  }
+}
+
+body {
+  background: radial-gradient(85.71% 50% at 50% 100%,
+      rgb(62, 0, 93) 0%,
+      rgb(34, 8, 48) 100%);
+  width: 100%;
+  height: 100vh;
+}
+
+.section-title span {
+  text-transform: uppercase;
+  background: linear-gradient(153deg, #ff85aa 0%, #ff9843 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.section-head-box {
+  border: 1px dashed #ffa86a;
+  border-radius: 4px;
+  backdrop-filter: blur(12px);
+  background: linear-gradient(45deg,
+      rgba(234, 144, 1, 0.15) 0%,
+      rgba(153, 153, 153, 0.15) 50%,
+      rgba(236, 114, 81, 0.15) 100%);
+}
+
+@media (max-width: 767px) {
+  .payments-list li:nth-child(n + 3) {
+    display: none;
+  }
+}
+
+/* | TWO STEP FORM */
+
+.two-step-overlay {
+  display: none;
+}
+
+.two-step-overlay.is-open {
+  display: flex;
+}
+
+.two-step-bonus-checkbox-circle::before,
+.gender-checkbox-circle::before {
+  content: "";
+  width: 20px;
+  height: 20px;
+  border-radius: 100%;
+  background-color: #f0f0f0;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+}
+
+.two-step-bonus-checkbox input:checked+.two-step-bonus-checkbox-div>.two-step-bonus-checkbox-circle::before,
+.gender-checkbox input:checked+.gender-checkbox-div>.gender-checkbox-circle::before {
+  opacity: 1;
+}
+
+.two-step-bonus-checkbox input:checked+.two-step-bonus-checkbox-div,
+.gender-checkbox input:checked+.gender-checkbox-div {
+  background-color: #8726ff;
+  border-color: #57179b;
+}
+
+.two-step-header-back-btn.is-visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+.socials-link-big {
+  box-shadow: inset 0 2px 3px 0 rgba(255, 255, 255, 0.25);
+}
+
+.two-step-general-input:focus+.two-step-general-label,
+.two-step-general-label.active {
+  top: 12px;
+  font-size: 12px;
+}
+
+.two-step-promocode-wrapper.is-valid .two-step-promocode-valid-icon {
+  fill: #4ED937;
+}
+
+.two-step-input-wrapper.is-valid .two-step-general-input {
+  color: #4ED937;
+}
+
+.two-step-promocode-wrapper.is-visible {
+  display: grid;
+}
+
+
+.two-step-form-step {
+  display: none;
+}
+
+.two-step-form-step.is-active {
+  display: block;
+}
+
+.two-step-progress-circle.active {
+  background-color: #8726FF;
+}
+
+.next-step-btn,
+.submit-btn {
+  position: relative;
+  overflow: hidden;
+}
+
+.next-step-btn .disable-overlap,
+.submit-btn .disable-overlap {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(59, 58, 58, 0.6);
+  transition: 0.3s;
+}
+
+.next-step-btn:disabled .disable-overlap.is-visible,
+.submit-btn:disabled .disable-overlap.is-visible {
+  display: block;
+}
+
+.qs-num.qs-current,
+.qs-day {
+  color: #755EEB !important;
+}
+
+.qs-controls {
+  background-color: #755EEB !important;
+}
+
+.qs-month-year {
+  color: #ffffff !important;
+}
+
+.qs-arrow.qs-left:after {
+  border-right-color: #ffffff !important;
+}
+
+.qs-arrow.qs-right:after {
+  border-left-color: #ffffff !important;
+}
+
+.form-currency-dropdown {
+  max-height: 225px;
+  overflow-y: auto;
+}
+
+.two-step-form .iti {
+  width: 100%;
+  height: auto;
+  font-size: 18px !important;
+  font-weight: 700;
+  line-height: 100% !important;
+}
+
+.two-step-form .iti__selected-country-primary:hover {
+  background-color: transparent !important;
+}
+
+.two-step-form .iti .phone-input {
+  width: 100%;
+  height: 100%;
+  outline: none;
+}
+
+.two-step-form .iti__country-list {
+  border: none !important;
+}
+
+.two-step-form .iti__country-list li {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 8px;
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.two-step-form .iti__tel-input {
+  padding-left: 100px !important;
+}
+
+.two-step-form .iti__selected-country-primary {
+  height: auto !important;
+}
+
+.two-step-form .iti__search-input {
+  border: none !important;
+  outline: none;
+  color: #0f0f0f;
+  padding: 10px 12px;
+}
+
+.two-step-form .iti__country-list li span {
+  color: #0f0f0f;
+}
+
+.two-step-form .iti__dropdown-content {
+  top: 120%;
+  border-radius: 8px !important;
+  overflow: hidden !important;
+}
+
+.two-step-form .iti__dial-code {
+  color: #755eeb !important;
+}
+
+.two-step-form .iti__selected-dial-code {
+  color: #755eeb !important;
+}
+
+.two-step-form .iti .phone-input {
+  font-size: 18px !important;
+  line-height: 100% !important;
+  height: 22px !important;
+}
