@@ -559,5 +559,5 @@ twoStepFormMain.addEventListener("submit", (e) => {
     promocode,
     zipCode,
   } = twoStepFormData;
-  console.log(bonus);
+  console.log(twoStepFormData);
 });
