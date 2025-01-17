@@ -445,7 +445,7 @@ if (twoStepFormFourthStep) {
   ];
 
   const validateInputs1 = (validColor, invalidColor) => {
-    let validCount = 0; // Counter for valid inputs
+    let validCount = 0;
     const totalInputs = inputValidations1.length;
 
     let twoStepCode = twoStepiti.getSelectedCountryData().dialCode;
@@ -488,6 +488,7 @@ if (twoStepFormFourthStep) {
   inputValidations1.forEach(({ input }) => {
     input.addEventListener("input", () => {
       validateInputs1("#4ED937", "#8726FF");
+      input.style.color = "#8726FF";
     });
   });
 }
