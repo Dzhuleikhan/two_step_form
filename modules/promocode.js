@@ -5,7 +5,7 @@ async function validatePromocode() {
   try {
     // Send the promocode to your backend
     const response = await fetch(
-      "https://two-step-form.netlify.app//validate-promocode",
+      "https://two-step-form.netlify.app/validate-promocode",
       {
         method: "POST",
         headers: {
