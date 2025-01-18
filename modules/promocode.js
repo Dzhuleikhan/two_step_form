@@ -16,6 +16,7 @@ async function validatePromocode() {
     );
 
     const result = await response.json();
+    console.log(result);
 
     // Display the result
     const resultElement = document.getElementById("result");
