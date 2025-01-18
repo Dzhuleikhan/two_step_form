@@ -84,18 +84,18 @@ const twoStepPromocodeInput = document.querySelector(
   ".two-step-promocode-input",
 );
 
-// if (twoStepPromocodeInput) {
-//   twoStepPromocodeInput.addEventListener("input", () => {
-//     const wrapper = twoStepPromocodeInput.closest(
-//       ".two-step-promocode-wrapper",
-//     );
-//     twoStepFormData.promocode = twoStepPromocodeInput.value;
-//     wrapper.classList.toggle(
-//       "is-valid",
-//       twoStepPromocodeInput.value.length >= 4,
-//     );
-//   });
-// }
+if (twoStepPromocodeInput) {
+  twoStepPromocodeInput.addEventListener("input", () => {
+    const wrapper = twoStepPromocodeInput.closest(
+      ".two-step-promocode-wrapper",
+    );
+    twoStepFormData.promocode = twoStepPromocodeInput.value;
+    wrapper.classList.toggle(
+      "is-valid",
+      twoStepPromocodeInput.value.length >= 4,
+    );
+  });
+}
 
 twoStepPromocodeInput.addEventListener("input", async () => {});
 
