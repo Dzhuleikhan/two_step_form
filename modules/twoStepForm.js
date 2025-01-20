@@ -94,16 +94,13 @@ if (twoStepPromocodeInput) {
     const promoCode = twoStepPromocodeInput.value;
 
     try {
-      const response = await fetch(
-        "https://goldbet.website/two-step-form/check-promo",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ code: promoCode }),
+      const response = await fetch("/check-promo", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
         },
-      );
+        body: JSON.stringify({ code: promoCode }),
+      });
 
       const result = await response.json();
 
