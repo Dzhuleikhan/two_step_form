@@ -13,7 +13,12 @@ const __dirname = dirname(__filename);
 const app = express();
 const port = process.env.PORT || 3000;
 
-app.use(cors());
+app.use(
+  cors({
+    origin: "https://goldbet.website", // Разрешает запросы с вашего домена
+    methods: ["GET", "POST"],
+  }),
+);
 
 // Разрешаем использование json в теле запросов
 app.use(express.json());
