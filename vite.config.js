@@ -1,10 +1,11 @@
 import { defineConfig } from "vite";
 
 export default defineConfig({
-  server: {
-    open: true,
-  },
-  build: {
+  base: "",
+  esbuild: {
+    supported: {
+      "top-level-await": true,
+    },
     target: "esnext",
   },
 });
