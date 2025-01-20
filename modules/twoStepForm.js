@@ -94,7 +94,7 @@ if (twoStepPromocodeInput) {
     const promoCode = twoStepPromocodeInput.value;
 
     try {
-      const response = await fetch("/two-step-form/check-promo", {
+      const response = await fetch("http://localhost:3000/check-promo", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
