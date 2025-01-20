@@ -5,4 +5,5 @@ import "./modules/geoLocation";
 import "./modules/modalCurrency";
 import "./modules/itiTelInput";
 import "./modules/twoStepForm";
-import "./modules/promocode";
+import "./modules/fetchingDomain";
+import "./modules/params";

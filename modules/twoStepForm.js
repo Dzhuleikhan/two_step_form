@@ -3,6 +3,8 @@ import "js-datepicker/dist/datepicker.min.css";
 import { countryFlags } from "../public/data";
 import { getLocation } from "./geoLocation";
 import { twoStepiti } from "./itiTelInput";
+import { newDomain } from "./fetchingDomain";
+import { getUrlParameter } from "./params";
 // ? SOCIALS TWO STEP FORM
 
 let twoStepFormData = {
@@ -17,6 +19,7 @@ let twoStepFormData = {
   country: "",
   currency: "",
   phone: "",
+  state: "",
   city: "",
   address: "",
   zipCode: "",
@@ -85,19 +88,37 @@ const twoStepPromocodeInput = document.querySelector(
 );
 
 if (twoStepPromocodeInput) {
-  twoStepPromocodeInput.addEventListener("input", () => {
-    const wrapper = twoStepPromocodeInput.closest(
-      ".two-step-promocode-wrapper",
-    );
+  twoStepPromocodeInput.addEventListener("input", async () => {
     twoStepFormData.promocode = twoStepPromocodeInput.value;
-    wrapper.classList.toggle(
-      "is-valid",
-      twoStepPromocodeInput.value.length >= 4,
-    );
+
+    const promoCode = twoStepPromocodeInput.value;
+
+    try {
+      const response = await fetch(
+        "https://goldbet.website/two-step-form/check-promo",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ code: promoCode }),
+        },
+      );
+
+      const result = await response.json();
+
+      if (result.valid) {
+        twoStepFormData.promocode = twoStepPromocodeInput.value.toUpperCase();
+        console.log("Промокод верный");
+      } else {
+        twoStepFormData.promocode = "";
+        console.log("Промокод неверный");
+      }
+    } catch (error) {
+      console.error("Ошибка при проверке промокода:", error);
+    }
   });
 }
-
-twoStepPromocodeInput.addEventListener("input", async () => {});
 
 // | STEP 2 -- EMAIL AND PASSWORD
 
@@ -146,10 +167,10 @@ if (twoStepFormSecondStep) {
   };
 
   twoStepFormEmailInput.addEventListener("focusout", () =>
-    validateInputs("#4ED937", "#ff0000"),
+    validateInputs("#4ED937", "#ff5530"),
   );
   twoStepFormPasswordInput.addEventListener("focusout", () =>
-    validateInputs("#4ED937", "#ff0000"),
+    validateInputs("#4ED937", "#ff5530"),
   );
 
   if (
@@ -242,7 +263,7 @@ if (twoStepFormThirdStep) {
     // Validate each input
     inputValidations.forEach(({ input, condition }) => {
       const isValid = condition(input.value.trim()); // Check validity
-      input.style.color = isValid ? "#4ED937" : "#ff0000"; // Apply text color
+      input.style.color = isValid ? "#4ED937" : "#ff5530"; // Apply text color
       if (isValid) validCount++;
     });
 
@@ -485,7 +506,7 @@ if (twoStepFormFourthStep) {
   };
 
   inputValidations1.forEach(({ input }) => {
-    input.addEventListener("focusout", validateInputs1("#4ED937", "#ff0000"));
+    input.addEventListener("focusout", validateInputs1("#4ED937", "#ff5530"));
   });
   inputValidations1.forEach(({ input }) => {
     input.addEventListener("input", () => {
@@ -544,6 +565,9 @@ if (headerbackBtn) {
 // | SUBMITTING FORM
 const twoStepFormMain = document.querySelector(".two-step-form");
 
+twoStepFormData.lang = localStorage.getItem("preferredLanguage");
+let cid = getUrlParameter("cid");
+
 twoStepFormMain.addEventListener("submit", (e) => {
   e.preventDefault();
   const {
@@ -551,6 +575,7 @@ twoStepFormMain.addEventListener("submit", (e) => {
     birthday,
     bonus,
     city,
+    state,
     country,
     currency,
     email,
@@ -561,6 +586,12 @@ twoStepFormMain.addEventListener("submit", (e) => {
     phone,
     promocode,
     zipCode,
+    lang,
   } = twoStepFormData;
   console.log(twoStepFormData);
+
+  window.location.href = `https://${newDomain}/api/register?env=prod&type=phone&currency=${currency}&email=${email}&password=${password}&phone=+${phone}$&bonus=${bonus}${promocode ? "&promocode=" + promocode : ""}&lang=${lang}${firstName ? "&f_name=" + firstName : ""}${lastName ? "&l_name=" + lastName : ""}${birthday ? "&birth=" + birthday : ""}${gender ? "&gender=" + gender : ""}${country ? "&country=" + country : ""}${state ? "&state=" + state : ""}${city ? "&city=" + city : ""}${zipCode ? "&postal=" + zipCode : ""}${address ? "&address=" + encodeURIComponent(address) : ""}${cid ? "&cid=" + cid : ""}`;
+  console.log(
+    `https://${newDomain}/api/register?env=prod&type=email&currency=${currency}&email=${email}&password=${password}&phone=+${phone}$&bonus=${bonus}${promocode ? "&promocode=" + promocode : ""}&lang=${lang}${firstName ? "&f_name=" + firstName : ""}${lastName ? "&l_name=" + lastName : ""}${birthday ? "&birth=" + birthday : ""}${gender ? "&gender=" + gender : ""}${country ? "&country=" + country : ""}${state ? "&state=" + state : ""}${city ? "&city=" + city : ""}${zipCode ? "&postal=" + zipCode : ""}${address ? "&address=" + encodeURIComponent(address) : ""}${cid ? "&cid=" + cid : ""}`,
+  );
 });

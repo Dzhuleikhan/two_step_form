@@ -1,60 +1,56 @@
-// import express from "express";
-// import bodyParser from "body-parser";
-// import crypto from "crypto";
-// import fetch from "node-fetch";
-// import cors from "cors"; // Import CORS
+import express from "express";
+import fs from "fs";
+import path from "path";
+import { fileURLToPath } from "url";
+import { dirname } from "path";
+import cors from "cors";
+import dotenv from "dotenv";
+dotenv.config();
 
-// const app = express();
-// const PORT = 3000;
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
-// // Replace this with your private key
-// const privateKey = ``;
+const app = express();
+const port = process.env.PORT || 3000;
 
-// // Enable CORS for all routes
-// app.use(cors()); // <-- Add this line
+app.use(cors());
 
-// app.use(bodyParser.json());
+// Разрешаем использование json в теле запросов
+app.use(express.json());
 
-// // Endpoint to validate promocode
-// app.post("/validate-promocode", async (req, res) => {
-//   const { code } = req.body;
+// Маршрут для проверки промокода
+app.post("/check-promo", (req, res) => {
+  const promoCode = req.body.code; // Получаем код из запроса
 
-//   if (!code) {
-//     return res.status(400).json({ error: "Promocode is required" });
-//   }
+  // Читаем файл с промокодами
+  fs.readFile(
+    path.join(__dirname, "promo_codes.json"),
+    "utf-8",
+    (err, data) => {
+      if (err) {
+        return res.status(500).json({ error: "Ошибка при чтении файла" }); // res доступен только здесь
+      }
 
-//   // Create the message for signing
-//   const message = JSON.stringify({ code });
+      const promoCodes = JSON.parse(data); // Преобразуем JSON данные в массив объектов
 
-//   // Sign the message using the private key
-//   try {
-//     const sign = crypto.createSign("RSA-SHA256");
-//     sign.update(message); // message is the JSON body
-//     sign.end();
-//     const signature = sign.sign(privateKey, "base64");
+      // Проверяем, есть ли введённый промокод
+      const isValid = promoCodes.some(
+        (promo) => promo.code.toLowerCase() === promoCode.toLowerCase(),
+      );
 
-//     // Forward the signed request to the API
-//     const response = await fetch(
-//       "https://gbetlink.com/api/promocode/check-available",
-//       {
-//         method: "POST",
-//         headers: {
-//           "Content-Type": "application/json",
-//           "X-Sign": signature,
-//         },
-//         body: message,
-//       },
-//     );
+      if (isValid) {
+        res.json({ valid: true });
+      } else {
+        res.json({ valid: false });
+      }
+    },
+  );
+});
 
-//     const result = await response.json();
-//     res.json(result);
-//   } catch (error) {
-//     console.error("Error signing or forwarding the request:", error);
-//     res.status(500).json({ error: "Internal server error" });
-//   }
-// });
+fs.readFile(path.join(__dirname, "promo_codes.json"), "utf-8", (err, data) => {
+  // обработка данных
+});
 
-// // Start the server
-// app.listen(PORT, () => {
-//   console.log(`Server running on http://localhost:${PORT}`);
-// });
+app.listen(port, () => {
+  console.log(`Server running at http://localhost:${port}`);
+});
