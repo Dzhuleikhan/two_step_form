@@ -10,6 +10,12 @@ dotenv.config();
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
+app.use(express.static(path.join(__dirname)));
+
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "dist", "index.html"));
+});
+
 const app = express();
 const port = process.env.PORT || 3000;
 
@@ -44,10 +50,6 @@ app.post("/check-promo", (req, res) => {
       }
     },
   );
-});
-
-fs.readFile(path.join(__dirname, "promo_codes.json"), "utf-8", (err, data) => {
-  // обработка данных
 });
 
 app.listen(port, () => {
