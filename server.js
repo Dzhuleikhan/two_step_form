@@ -19,7 +19,7 @@ app.use(cors());
 app.use(express.json());
 
 // Маршрут для проверки промокода
-app.post("/check-promo", (req, res) => {
+app.get("/check-promo", (req, res) => {
   const promoCode = req.body.code; // Получаем код из запроса
 
   // Читаем файл с промокодами
