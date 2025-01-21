@@ -1,5 +1,6 @@
 import { getLocation } from "./geoLocation";
 import { countryCurrencyData } from "../public/data";
+import { checkTir1CurrencyMatch, twoStepFormData } from "./twoStepForm";
 
 export function getCountryCurrencyABBR(inputCountry) {
   for (const data of countryCurrencyData) {
@@ -149,7 +150,9 @@ formCurrency.forEach((cur) => {
         };
         localStorage.setItem("currencyData", JSON.stringify(currencyData));
 
+        // Two step currency update
         settingBonusOnCurrencyChange(countryCurrencyData, currencyData);
+        twoStepFormData.currency = currencyData.abbr;
       });
     });
 
@@ -160,23 +163,3 @@ formCurrency.forEach((cur) => {
     });
   }
 });
-
-export const checkTir1CurrencyMatch = (currency, bonus) => {
-  const exceptCurrencies = [
-    "RON",
-    "DKK",
-    "HUF",
-    "CZK",
-    "CHF",
-    "PLN",
-    "CAD",
-    "USD",
-    "EUR",
-  ];
-  if (exceptCurrencies.includes(currency) && bonus === "welcome-bonus-1") {
-    bonus = bonus + "-alt";
-  } else {
-    bonus = bonus;
-  }
-  return bonus;
-};

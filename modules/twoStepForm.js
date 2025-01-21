@@ -1,15 +1,14 @@
 import datepicker from "js-datepicker";
 import "js-datepicker/dist/datepicker.min.css";
 import { countryFlags } from "../public/data";
-import { getLocation } from "./geoLocation";
+import { geoData, getLocation } from "./geoLocation";
 import { twoStepiti } from "./itiTelInput";
 import { newDomain } from "./fetchingDomain";
 import { getUrlParameter } from "./params";
+
 // ? SOCIALS TWO STEP FORM
 
-const currentCurrency = JSON.parse(localStorage.getItem("currencyData"));
-
-let twoStepFormData = {
+export let twoStepFormData = {
   bonus: "welcome-bonus-1",
   promocode: "",
   email: "",
@@ -19,29 +18,39 @@ let twoStepFormData = {
   birthday: "",
   gender: "",
   country: "",
-  currency: currentCurrency.abbr,
+  currency: geoData.currency.code,
   phone: "",
   state: "",
   city: "",
   address: "",
   zipCode: "",
+  lang: "",
 };
 
 twoStepFormData.bonus = document.querySelector(
   'input[name="bonus"]:checked',
 ).value;
 
-const exceptCurrencies = [
-  "RON",
-  "DKK",
-  "HUF",
-  "CZK",
-  "CHF",
-  "PLN",
-  "CAD",
-  "USD",
-  "EUR",
-];
+export const checkTir1CurrencyMatch = (currency, bonus) => {
+  const exceptCurrencies = [
+    "RON",
+    "DKK",
+    "HUF",
+    "CZK",
+    "CHF",
+    "PLN",
+    "CAD",
+    "USD",
+    "EUR",
+  ];
+  if (
+    exceptCurrencies.includes(currency) &&
+    twoStepFormData.bonus === "welcome-bonus-1"
+  ) {
+    bonus = bonus + "-alt";
+  }
+  return bonus;
+};
 
 // | CHOOSING BONUSES
 
@@ -244,7 +253,31 @@ if (twoStepFormThirdStep) {
       input.value = value;
     },
     onSelect: (date) => {
-      validateInputs();
+      // 18+ validation
+      const selectedDate = new Date(date.dateSelected);
+      const currentDate = new Date();
+      const birthdayAlert = twoStepFormThirdStep.querySelector(
+        ".two-step-birthday-alert",
+      );
+
+      // Calculate the age
+      const age = currentDate.getFullYear() - selectedDate.getFullYear();
+      const monthDiff = currentDate.getMonth() - selectedDate.getMonth();
+      const dayDiff = currentDate.getDate() - selectedDate.getDate();
+
+      // Adjust the age if the birthday hasn't occurred yet this year
+      const isBirthdayPassed =
+        monthDiff > 0 || (monthDiff === 0 && dayDiff >= 0);
+      const finalAge = isBirthdayPassed ? age : age - 1;
+
+      if (finalAge >= 18) {
+        twoStepFormData.birthday = selectedDate.toISOString().split("T")[0];
+        validateInputs();
+        birthdayAlert.classList.add("hidden");
+      } else {
+        twoStepBirthdayInput.value = "";
+        birthdayAlert.classList.remove("hidden");
+      }
     },
   });
   twoStepBirthdayBtn.addEventListener("click", (e) => {
@@ -289,7 +322,7 @@ if (twoStepFormThirdStep) {
       nextBtn.disabled = false;
       twoStepFormData.firstName = firstName.value;
       twoStepFormData.lastName = lastName.value;
-      twoStepFormData.birthday = twoStepBirthdayInput.value;
+
       twoStepFormData.gender = document.querySelector(
         'input[name="gender"]:checked',
       ).value;
@@ -351,6 +384,8 @@ if (twoStepFormFourthStep) {
     ".two-step-country-search-input",
   );
 
+  const headerlogoFlag = document.querySelector(".header-logo-flag");
+
   // Dropdown visibility toggle
   twoStepCountryButton.addEventListener("click", () => {
     twoStepCountryDropdown.classList.toggle("hidden");
@@ -366,12 +401,15 @@ if (twoStepFormFourthStep) {
   twoStepCountryList.addEventListener("click", (event) => {
     const item = event.target.closest(".two-step-country-list-item"); // Replace with your item class or selector
     if (item) {
+      const countryCode = item.getAttribute("countryCode");
       const name = item.querySelector("span")?.textContent || "No name found";
       const imageUrl = item.querySelector("img")?.src || "No image found";
       twoStepAppliedCountryInput.value = name;
       twoStepAppliedCountryImage.src = imageUrl;
       twoStepAppliedCountryImage.alt = name;
       twoStepCountryDropdown.classList.add("hidden");
+      twoStepFormData.country = countryCode;
+      twoStepFormData.lang = countryCode.toLowerCase();
     }
   });
 
@@ -388,6 +426,10 @@ if (twoStepFormFourthStep) {
       twoStepAppliedCountryInput.value = mathedCountry.name;
       twoStepAppliedCountryImage.src = `./img/flags/${mathedCountry.slug}.svg`;
       twoStepAppliedCountryImage.alt = mathedCountry.name;
+      headerlogoFlag.src = `./img/flags/${mathedCountry.slug}.svg`;
+      headerlogoFlag.alt = mathedCountry.name;
+      headerlogoFlag.classList.remove("hidden");
+      twoStepFormData.country = mathedCountry.slug.toUpperCase();
     }
   };
 
@@ -405,6 +447,7 @@ if (twoStepFormFourthStep) {
     // Render each country in the filtered list
     filteredCountries.forEach((country) => {
       const listItem = document.createElement("li");
+      listItem.setAttribute("countryCode", country.slug.toLocaleUpperCase());
       listItem.className =
         "two-step-country-list-item cursor-pointer flex items-center gap-[5px] border-b border-[#755EEB]/30 py-[10px]";
 
@@ -437,7 +480,7 @@ if (twoStepFormFourthStep) {
 
   // Event listener for the search input
   twoStepCountrySearchInput.addEventListener("input", (e) => {
-    renderCountries(e.target.value); // Pass the search input value to the render function
+    renderCountries(e.target.value);
   });
 
   // Initial render
@@ -458,6 +501,11 @@ if (twoStepFormFourthStep) {
   const twoStepZipcodeInput = twoStepFormFourthStep.querySelector(
     ".two-step-zipcode-input",
   );
+
+  // Phone input only numbers
+  twoStepPhoneInput.addEventListener("input", function (e) {
+    e.target.value = e.target.value.replace(/[^0-9]/g, "");
+  });
 
   submitBtn.disabled = true;
 
@@ -505,7 +553,6 @@ if (twoStepFormFourthStep) {
 
     if (percentage === 100) {
       submitBtn.disabled = false;
-      twoStepFormData.country = twoStepAppliedCountryInput.value;
       twoStepFormData.city = twoStepCityInput.value;
       twoStepFormData.address = twoStepAddressInput.value;
       twoStepFormData.zipCode = twoStepZipcodeInput.value;
@@ -601,15 +648,26 @@ twoStepFormMain.addEventListener("submit", (e) => {
     lang,
   } = twoStepFormData;
 
-  if (exceptCurrencies.includes(currency) && bonus === "welcome-bonus-1") {
-    bonus = bonus + "-alt";
-    console.log("yes");
-  } else {
-    bonus = "welcome-bonus-1";
-  }
+  bonus = checkTir1CurrencyMatch(currency, bonus);
 
-  window.location.href = `https://${newDomain}/api/register?env=prod&type=email&currency=${currency}&email=${encodeURIComponent(email)}&password=${password}&phone=+${phone}$&bonus=${bonus}${promocode ? "&promocode=" + promocode : ""}&lang=${lang}${firstName ? "&f_name=" + firstName : ""}${lastName ? "&l_name=" + lastName : ""}${birthday ? "&birth=" + birthday : ""}${gender ? "&gender=" + gender : ""}${country ? "&country=" + country : ""}${state ? "&state=" + state : ""}${city ? "&city=" + city : ""}${zipCode ? "&postal=" + zipCode : ""}${address ? "&address=" + encodeURIComponent(address) : ""}${cid ? "&cid=" + cid : ""}`;
+  console.log("bonus: " + bonus);
+  console.log("country: " + country);
+  console.log("currency: " + currency);
+  console.log("lang: " + lang);
+  console.log("address: " + address);
+  console.log("birthday: " + birthday);
+  console.log("city: " + city);
+  console.log("state: " + state);
+  console.log("email: " + email);
+  console.log("firstName: " + firstName);
+  console.log("lastName: " + lastName);
+  console.log("gender: " + gender);
+  console.log("phone: " + phone);
+  console.log("promocode: " + promocode);
+  console.log("zipCode: " + zipCode);
+
+  window.location.href = `https://${newDomain}/api/register?env=prod&type=email&currency=${currency}&email=${encodeURIComponent(email)}&password=${password}&phone=${phone}$&bonus=${bonus}${promocode ? "&promocode=" + promocode : ""}&lang=${lang}${firstName ? "&f_name=" + firstName : ""}${lastName ? "&l_name=" + lastName : ""}${birthday ? "&birth=" + birthday : ""}${gender ? "&gender=" + gender : ""}${country ? "&country=" + country : ""}${state ? "&state=" + state : ""}${city ? "&city=" + city : ""}${zipCode ? "&postal=" + zipCode : ""}${address ? "&address=" + encodeURIComponent(address) : ""}${cid ? "&cid=" + cid : ""}`;
   console.log(
-    `https://${newDomain}/api/register?env=prod&type=phone&currency=${currency}&email=${email}&password=${password}&phone=+${phone}$&bonus=${bonus}${promocode ? "&promocode=" + promocode : ""}&lang=${lang}${firstName ? "&f_name=" + firstName : ""}${lastName ? "&l_name=" + lastName : ""}${birthday ? "&birth=" + birthday : ""}${gender ? "&gender=" + gender : ""}${country ? "&country=" + country : ""}${state ? "&state=" + state : ""}${city ? "&city=" + city : ""}${zipCode ? "&postal=" + zipCode : ""}${address ? "&address=" + encodeURIComponent(address) : ""}${cid ? "&cid=" + cid : ""}`,
+    `https://${newDomain}/api/register?env=prod&type=email&currency=${currency}&email=${encodeURIComponent(email)}&password=${password}&phone=+${phone}$&bonus=${bonus}${promocode ? "&promocode=" + promocode : ""}&lang=${lang}${firstName ? "&f_name=" + firstName : ""}${lastName ? "&l_name=" + lastName : ""}${birthday ? "&birth=" + birthday : ""}${gender ? "&gender=" + gender : ""}${country ? "&country=" + country : ""}${state ? "&state=" + state : ""}${city ? "&city=" + city : ""}${zipCode ? "&postal=" + zipCode : ""}${address ? "&address=" + encodeURIComponent(address) : ""}${cid ? "&cid=" + cid : ""}`,
   );
 });
