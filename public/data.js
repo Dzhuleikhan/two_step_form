@@ -174,7 +174,7 @@ export const countryFlags = [
   { name: "Syria", slug: "sy" },
   { name: "Tajikistan", slug: "tj" },
   { name: "Tanzania", slug: "tz" },
-  { name: "Taiwan", slug: "TWN" },
+  { name: "Taiwan", slug: "twn" },
   { name: "Thailand", slug: "th" },
   { name: "Timor-Leste", slug: "tl" },
   { name: "Togo", slug: "tg" },

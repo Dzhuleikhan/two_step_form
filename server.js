@@ -19,7 +19,7 @@ app.use(cors());
 app.use(express.json());
 
 // Маршрут для проверки промокода
-app.get("/check-promo", (req, res) => {
+app.post("/two-step-form/check-promo", (req, res) => {
   const promoCode = req.body.code; // Получаем код из запроса
 
   // Читаем файл с промокодами
@@ -28,12 +28,11 @@ app.get("/check-promo", (req, res) => {
     "utf-8",
     (err, data) => {
       if (err) {
-        return res.status(500).json({ error: "Ошибка при чтении файла" }); // res доступен только здесь
+        return res.status(500).json({ error: "Ошибка при чтении файла" });
       }
 
-      const promoCodes = JSON.parse(data); // Преобразуем JSON данные в массив объектов
+      const promoCodes = JSON.parse(data);
 
-      // Проверяем, есть ли введённый промокод
       const isValid = promoCodes.some(
         (promo) => promo.code.toLowerCase() === promoCode.toLowerCase(),
       );
