@@ -7,8 +7,10 @@ import { newDomain } from "./fetchingDomain";
 import { getUrlParameter } from "./params";
 // ? SOCIALS TWO STEP FORM
 
+const currentCurrency = JSON.parse(localStorage.getItem("currencyData"));
+
 let twoStepFormData = {
-  bonus: "",
+  bonus: "welcome-bonus-1",
   promocode: "",
   email: "",
   password: "",
@@ -17,7 +19,7 @@ let twoStepFormData = {
   birthday: "",
   gender: "",
   country: "",
-  currency: "",
+  currency: currentCurrency.abbr,
   phone: "",
   state: "",
   city: "",
@@ -28,6 +30,18 @@ let twoStepFormData = {
 twoStepFormData.bonus = document.querySelector(
   'input[name="bonus"]:checked',
 ).value;
+
+const exceptCurrencies = [
+  "RON",
+  "DKK",
+  "HUF",
+  "CZK",
+  "CHF",
+  "PLN",
+  "CAD",
+  "USD",
+  "EUR",
+];
 
 // | CHOOSING BONUSES
 
@@ -94,13 +108,16 @@ if (twoStepPromocodeInput) {
     const promoCode = twoStepPromocodeInput.value;
 
     try {
-      const response = await fetch("https://goldbet.website/check-promo", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
+      const response = await fetch(
+        "https://promocodesapi.onrender.com/check-promo",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ code: promoCode }),
         },
-        body: JSON.stringify({ code: promoCode }),
-      });
+      );
 
       const result = await response.json();
 
@@ -333,7 +350,6 @@ if (twoStepFormFourthStep) {
   const twoStepCountrySearchInput = twoStepCountryDropdown.querySelector(
     ".two-step-country-search-input",
   );
-  const currenctCurrency = JSON.parse(localStorage.getItem("currencyData"));
 
   // Dropdown visibility toggle
   twoStepCountryButton.addEventListener("click", () => {
@@ -490,7 +506,6 @@ if (twoStepFormFourthStep) {
     if (percentage === 100) {
       submitBtn.disabled = false;
       twoStepFormData.country = twoStepAppliedCountryInput.value;
-      twoStepFormData.currency = currenctCurrency.abbr;
       twoStepFormData.city = twoStepCityInput.value;
       twoStepFormData.address = twoStepAddressInput.value;
       twoStepFormData.zipCode = twoStepZipcodeInput.value;
@@ -567,7 +582,7 @@ let cid = getUrlParameter("cid");
 
 twoStepFormMain.addEventListener("submit", (e) => {
   e.preventDefault();
-  const {
+  let {
     address,
     birthday,
     bonus,
@@ -585,10 +600,16 @@ twoStepFormMain.addEventListener("submit", (e) => {
     zipCode,
     lang,
   } = twoStepFormData;
-  console.log(twoStepFormData);
 
-  window.location.href = `https://${newDomain}/api/register?env=prod&type=phone&currency=${currency}&email=${email}&password=${password}&phone=+${phone}$&bonus=${bonus}${promocode ? "&promocode=" + promocode : ""}&lang=${lang}${firstName ? "&f_name=" + firstName : ""}${lastName ? "&l_name=" + lastName : ""}${birthday ? "&birth=" + birthday : ""}${gender ? "&gender=" + gender : ""}${country ? "&country=" + country : ""}${state ? "&state=" + state : ""}${city ? "&city=" + city : ""}${zipCode ? "&postal=" + zipCode : ""}${address ? "&address=" + encodeURIComponent(address) : ""}${cid ? "&cid=" + cid : ""}`;
+  if (exceptCurrencies.includes(currency) && bonus === "welcome-bonus-1") {
+    bonus = bonus + "-alt";
+    console.log("yes");
+  } else {
+    bonus = "welcome-bonus-1";
+  }
+
+  window.location.href = `https://${newDomain}/api/register?env=prod&type=email&currency=${currency}&email=${encodeURIComponent(email)}&password=${password}&phone=+${phone}$&bonus=${bonus}${promocode ? "&promocode=" + promocode : ""}&lang=${lang}${firstName ? "&f_name=" + firstName : ""}${lastName ? "&l_name=" + lastName : ""}${birthday ? "&birth=" + birthday : ""}${gender ? "&gender=" + gender : ""}${country ? "&country=" + country : ""}${state ? "&state=" + state : ""}${city ? "&city=" + city : ""}${zipCode ? "&postal=" + zipCode : ""}${address ? "&address=" + encodeURIComponent(address) : ""}${cid ? "&cid=" + cid : ""}`;
   console.log(
-    `https://${newDomain}/api/register?env=prod&type=email&currency=${currency}&email=${email}&password=${password}&phone=+${phone}$&bonus=${bonus}${promocode ? "&promocode=" + promocode : ""}&lang=${lang}${firstName ? "&f_name=" + firstName : ""}${lastName ? "&l_name=" + lastName : ""}${birthday ? "&birth=" + birthday : ""}${gender ? "&gender=" + gender : ""}${country ? "&country=" + country : ""}${state ? "&state=" + state : ""}${city ? "&city=" + city : ""}${zipCode ? "&postal=" + zipCode : ""}${address ? "&address=" + encodeURIComponent(address) : ""}${cid ? "&cid=" + cid : ""}`,
+    `https://${newDomain}/api/register?env=prod&type=phone&currency=${currency}&email=${email}&password=${password}&phone=+${phone}$&bonus=${bonus}${promocode ? "&promocode=" + promocode : ""}&lang=${lang}${firstName ? "&f_name=" + firstName : ""}${lastName ? "&l_name=" + lastName : ""}${birthday ? "&birth=" + birthday : ""}${gender ? "&gender=" + gender : ""}${country ? "&country=" + country : ""}${state ? "&state=" + state : ""}${city ? "&city=" + city : ""}${zipCode ? "&postal=" + zipCode : ""}${address ? "&address=" + encodeURIComponent(address) : ""}${cid ? "&cid=" + cid : ""}`,
   );
 });
