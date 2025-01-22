@@ -306,3 +306,42 @@ body {
   line-height: 100% !important;
   height: 22px !important;
 }
+
+@keyframes animate-svg-draw-1 {
+  0% {
+    stroke-dashoffset: 277;
+    stroke-dasharray: 277;
+  }
+
+  100% {
+    stroke-dashoffset: 227;
+    stroke-dasharray: 554;
+  }
+
+  0% {
+    stroke-dashoffset: 554;
+    stroke-dasharray: 277;
+  }
+}
+
+.svg-elem-1 {
+  animation: animate-svg-draw-1 2s ease 0s infinite;
+  stroke: #ffb600;
+  stroke-width: 6;
+  fill: none;
+
+  stroke-linecap: round;
+  stroke-linejoin: rectangle;
+}
+
+.svg-elem-2 {
+  animation: pulse 3s ease 1s infinite;
+  transform-origin: center;
+  fill: black;
+}
+
+.svg-elem-3 {
+  animation: pulse 3s ease 1s infinite;
+  transform-origin: center;
+  fill: #f0f0f0;
+}

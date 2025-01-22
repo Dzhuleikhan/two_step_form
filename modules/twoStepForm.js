@@ -5,6 +5,7 @@ import { geoData, getLocation } from "./geoLocation";
 import { twoStepiti } from "./itiTelInput";
 import { newDomain } from "./fetchingDomain";
 import { getUrlParameter } from "./params";
+import gsap from "gsap";
 
 // ? SOCIALS TWO STEP FORM
 
@@ -621,7 +622,6 @@ const showStep = (step) => {
     headerbackBtn.classList.remove("is-visible");
   }
 };
-showStep(initialStep);
 
 nextStepBtn.forEach((btn) => {
   if (btn) {
@@ -673,3 +673,5 @@ twoStepFormMain.addEventListener("submit", (e) => {
     `https://${newDomain}/api/register?env=prod&type=email&currency=${currency}&email=${encodeURIComponent(email)}&password=${password}&phone=${phone}&bonus=${bonus}${promocode ? "&promocode=" + promocode : ""}&lang=${lang}${firstName ? "&f_name=" + firstName : ""}${lastName ? "&l_name=" + lastName : ""}${birthday ? "&birth=" + birthday : ""}${gender ? "&gender=" + gender : ""}${country ? "&country=" + country : ""}${state ? "&state=" + state : ""}${city ? "&city=" + city : ""}${zipCode ? "&postal=" + zipCode : ""}${address ? "&address=" + encodeURIComponent(address) : ""}${cid ? "&cid=" + cid : ""}`,
   );
 });
+
+gsap.to(".preloader", { opacity: 0, duration: 0.5, delay: 1 });

@@ -22,7 +22,7 @@
     "crypto": "^1.0.1",
     "dotenv": "^16.4.7",
     "express": "^4.21.2",
-    "gsap": "^3.12.5",
+    "gsap": "^3.12.7",
     "intl-tel-input": "^25.2.1",
     "js-datepicker": "^5.18.3",
     "node-fetch": "^3.3.2"
