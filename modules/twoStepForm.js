@@ -521,9 +521,9 @@ if (twoStepFormFourthStep) {
   );
 
   // Phone input only numbers
-  // twoStepPhoneInput.addEventListener("input", function (e) {
-  //   e.target.value = e.target.value.replace(/[^0-9]/g, "");
-  // });
+  twoStepPhoneInput.addEventListener("input", function (e) {
+    e.target.value = e.target.value.replace(/[^0-9]/g, "");
+  });
 
   submitBtn.disabled = true;
 
