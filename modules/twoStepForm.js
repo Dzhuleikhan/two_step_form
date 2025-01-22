@@ -18,7 +18,7 @@ export let twoStepFormData = {
   birthday: "",
   gender: "",
   country: "",
-  currency: geoData.currency.code,
+  currency: geoData.currency.code === "RUB" ? "USD" : geoData.currency.code,
   phone: "",
   state: "",
   city: "",
@@ -31,26 +31,39 @@ twoStepFormData.bonus = document.querySelector(
   'input[name="bonus"]:checked',
 ).value;
 
+export const exceptCurrencies = [
+  "RON",
+  "DKK",
+  "HUF",
+  "CZK",
+  "CHF",
+  "PLN",
+  "CAD",
+  "USD",
+  "EUR",
+];
+
 export const checkTir1CurrencyMatch = (currency, bonus) => {
-  const exceptCurrencies = [
-    "RON",
-    "DKK",
-    "HUF",
-    "CZK",
-    "CHF",
-    "PLN",
-    "CAD",
-    "USD",
-    "EUR",
-  ];
+  const initialBonus = "welcome-bonus-1";
+  const updatedBonus = "welcome-bonus-1-alt";
   if (
-    exceptCurrencies.includes(currency) &&
-    twoStepFormData.bonus === "welcome-bonus-1"
+    twoStepFormData.bonus !== "crypto" &&
+    twoStepFormData.bonus !== "highroller"
   ) {
-    bonus = bonus + "-alt";
+    if (exceptCurrencies.includes(currency)) {
+      return updatedBonus;
+    }
+    return initialBonus;
   }
+
+  // Return the original bonus if no change
   return bonus;
 };
+
+twoStepFormData.bonus = checkTir1CurrencyMatch(
+  twoStepFormData.currency,
+  twoStepFormData.bonus,
+);
 
 // | CHOOSING BONUSES
 
@@ -68,6 +81,11 @@ twoStepBonusCheckbox.forEach((checkbox) => {
     const bonusText = input.getAttribute("data-text");
 
     twoStepFormData.bonus = bonusValue;
+
+    twoStepFormData.bonus = checkTir1CurrencyMatch(
+      twoStepFormData.currency,
+      twoStepFormData.bonus,
+    );
 
     appliedBonusWrapper.forEach((appliedBonus) => {
       const img = appliedBonus.querySelector(".applied-bonus-img");
@@ -503,9 +521,9 @@ if (twoStepFormFourthStep) {
   );
 
   // Phone input only numbers
-  twoStepPhoneInput.addEventListener("input", function (e) {
-    e.target.value = e.target.value.replace(/[^0-9]/g, "");
-  });
+  // twoStepPhoneInput.addEventListener("input", function (e) {
+  //   e.target.value = e.target.value.replace(/[^0-9]/g, "");
+  // });
 
   submitBtn.disabled = true;
 
@@ -648,26 +666,10 @@ twoStepFormMain.addEventListener("submit", (e) => {
     lang,
   } = twoStepFormData;
 
-  bonus = checkTir1CurrencyMatch(currency, bonus);
+  console.log(twoStepFormData);
 
-  console.log("bonus: " + bonus);
-  console.log("country: " + country);
-  console.log("currency: " + currency);
-  console.log("lang: " + lang);
-  console.log("address: " + address);
-  console.log("birthday: " + birthday);
-  console.log("city: " + city);
-  console.log("state: " + state);
-  console.log("email: " + email);
-  console.log("firstName: " + firstName);
-  console.log("lastName: " + lastName);
-  console.log("gender: " + gender);
-  console.log("phone: " + phone);
-  console.log("promocode: " + promocode);
-  console.log("zipCode: " + zipCode);
-
-  window.location.href = `https://${newDomain}/api/register?env=prod&type=email&currency=${currency}&email=${encodeURIComponent(email)}&password=${password}&phone=${phone}$&bonus=${bonus}${promocode ? "&promocode=" + promocode : ""}&lang=${lang}${firstName ? "&f_name=" + firstName : ""}${lastName ? "&l_name=" + lastName : ""}${birthday ? "&birth=" + birthday : ""}${gender ? "&gender=" + gender : ""}${country ? "&country=" + country : ""}${state ? "&state=" + state : ""}${city ? "&city=" + city : ""}${zipCode ? "&postal=" + zipCode : ""}${address ? "&address=" + encodeURIComponent(address) : ""}${cid ? "&cid=" + cid : ""}`;
+  // window.location.href = `https://${newDomain}/api/register?env=prod&type=phone&currency=${currency}&email=${encodeURIComponent(email)}&password=${password}&phone=${phone}&bonus=${bonus}${promocode ? "&promocode=" + promocode : ""}&lang=${lang}${firstName ? "&f_name=" + firstName : ""}${lastName ? "&l_name=" + lastName : ""}${birthday ? "&birth=" + birthday : ""}${gender ? "&gender=" + gender : ""}${country ? "&country=" + country : ""}${state ? "&state=" + state : ""}${city ? "&city=" + city : ""}${zipCode ? "&postal=" + zipCode : ""}${address ? "&address=" + encodeURIComponent(address) : ""}${cid ? "&cid=" + cid : ""}`;
   console.log(
-    `https://${newDomain}/api/register?env=prod&type=email&currency=${currency}&email=${encodeURIComponent(email)}&password=${password}&phone=+${phone}$&bonus=${bonus}${promocode ? "&promocode=" + promocode : ""}&lang=${lang}${firstName ? "&f_name=" + firstName : ""}${lastName ? "&l_name=" + lastName : ""}${birthday ? "&birth=" + birthday : ""}${gender ? "&gender=" + gender : ""}${country ? "&country=" + country : ""}${state ? "&state=" + state : ""}${city ? "&city=" + city : ""}${zipCode ? "&postal=" + zipCode : ""}${address ? "&address=" + encodeURIComponent(address) : ""}${cid ? "&cid=" + cid : ""}`,
+    `https://${newDomain}/api/register?env=prod&type=email&currency=${currency}&email=${encodeURIComponent(email)}&password=${password}&phone=${phone}&bonus=${bonus}${promocode ? "&promocode=" + promocode : ""}&lang=${lang}${firstName ? "&f_name=" + firstName : ""}${lastName ? "&l_name=" + lastName : ""}${birthday ? "&birth=" + birthday : ""}${gender ? "&gender=" + gender : ""}${country ? "&country=" + country : ""}${state ? "&state=" + state : ""}${city ? "&city=" + city : ""}${zipCode ? "&postal=" + zipCode : ""}${address ? "&address=" + encodeURIComponent(address) : ""}${cid ? "&cid=" + cid : ""}`,
   );
 });

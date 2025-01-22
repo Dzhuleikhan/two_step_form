@@ -1,6 +1,10 @@
 import { getLocation } from "./geoLocation";
 import { countryCurrencyData } from "../public/data";
-import { checkTir1CurrencyMatch, twoStepFormData } from "./twoStepForm";
+import {
+  checkTir1CurrencyMatch,
+  exceptCurrencies,
+  twoStepFormData,
+} from "./twoStepForm";
 
 export function getCountryCurrencyABBR(inputCountry) {
   for (const data of countryCurrencyData) {
@@ -75,6 +79,9 @@ async function settingModalCurrency() {
     localStorage.setItem("currencyData", JSON.stringify(currencyData));
 
     setCurrency(currencyAbbr, currencyFullName, currencyIcon);
+
+    twoStepFormData.currency = currencyData.abbr;
+    twoStepFormData.bonus = checkTir1CurrencyMatch(twoStepFormData.currency);
   } catch (error) {
     console.error("Error fetching location data:", error);
   }
@@ -153,6 +160,11 @@ formCurrency.forEach((cur) => {
         // Two step currency update
         settingBonusOnCurrencyChange(countryCurrencyData, currencyData);
         twoStepFormData.currency = currencyData.abbr;
+
+        twoStepFormData.bonus = checkTir1CurrencyMatch(
+          twoStepFormData.currency,
+          twoStepFormData.bonus,
+        );
       });
     });
 
