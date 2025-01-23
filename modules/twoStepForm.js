@@ -106,18 +106,24 @@ const settingInitialBonusValue = () => {
     document.querySelector(".two-step-bonus-spins").innerHTML = "200FS";
     document
       .querySelector(".welcome-bonus-input")
-      .setAttribute("data-text", "100% on your first deposit");
+      .setAttribute("data-text", "100% + 200FS on your first deposit");
     document.querySelectorAll(".applied-bonus-percent").forEach((el) => {
       el.innerHTML = "100%";
+    });
+    document.querySelectorAll(".applied-bonus-spins").forEach((el) => {
+      el.innerHTML = "200FS";
     });
   } else {
     document.querySelector(".two-step-bonus-percent").innerHTML = "200%";
     document.querySelector(".two-step-bonus-spins").innerHTML = "25FS";
     document
       .querySelector(".welcome-bonus-input")
-      .setAttribute("data-text", "200% on your first deposit");
+      .setAttribute("data-text", "200% + 25FS on your first deposit");
     document.querySelectorAll(".applied-bonus-percent").forEach((el) => {
       el.innerHTML = "200%";
+    });
+    document.querySelectorAll(".applied-bonus-spins").forEach((el) => {
+      el.innerHTML = "25FS";
     });
   }
 };
