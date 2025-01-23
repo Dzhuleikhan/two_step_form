@@ -296,30 +296,38 @@
                     </svg>
                     <input
                       id="promocode"
-                      class="two-step-promocode-input two-step-general-input relative -bottom-1 bg-transparent text-base font-bold tracking-[-0.02em] text-[#755eeb] outline-none"
+                      class="two-step-promocode-input two-step-general-input relative -bottom-1 bg-transparent text-base font-bold uppercase tracking-[-0.02em] text-[#755eeb] outline-none"
                       type="text"
                     />
                     <label
                       class="two-step-promocode-label two-step-general-label pointer-events-none absolute left-[45px] top-1/2 -translate-y-1/2 text-base font-bold tracking-[-0.02em] text-[#585858] transition-all"
                       >Promo Code</label
                     >
-                    <svg
-                      class="two-step-promocode-valid-icon shrink-0 fill-[#4ED937] xs:h-7 xs:w-7"
-                      width="36"
-                      height="36"
-                      viewBox="0 0 36 36"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <rect width="36" height="36" rx="18" />
-                      <path
-                        d="M12 18.3333L16.6377 23L24 13"
-                        stroke="white"
-                        stroke-width="3"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                      />
-                    </svg>
+                    <div>
+                      <button
+                        type="button"
+                        class="two-step-promocode-apply-btn rounded-md bg-[#755eeb] px-3 py-1 font-semibold text-white"
+                      >
+                        Apply
+                      </button>
+                      <svg
+                        class="two-step-promocode-valid-icon hidden shrink-0 fill-[#4ED937] xs:h-7 xs:w-7"
+                        width="36"
+                        height="36"
+                        viewBox="0 0 36 36"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <rect width="36" height="36" rx="18" />
+                        <path
+                          d="M12 18.3333L16.6377 23L24 13"
+                          stroke="white"
+                          stroke-width="3"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        />
+                      </svg>
+                    </div>
                   </div>
                 </div>
                 <button

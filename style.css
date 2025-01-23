@@ -345,3 +345,27 @@ body {
   transform-origin: center;
   fill: #f0f0f0;
 }
+
+.two-step-promocode-wrapper.is-valid .two-step-promocode-apply-btn {
+  display: none;
+}
+
+.two-step-promocode-wrapper.is-not-valid .two-step-promocode-apply-btn {
+  display: block;
+}
+
+.two-step-promocode-wrapper.is-valid .two-step-promocode-valid-icon {
+  display: block;
+}
+
+.two-step-promocode-wrapper.is-not-valid .two-step-promocode-valid-icon {
+  display: none;
+}
+
+.two-step-promocode-wrapper.is-valid input {
+  color: #4ED937;
+}
+
+.two-step-promocode-wrapper.is-not-valid input {
+  color: #FF5530;
+}

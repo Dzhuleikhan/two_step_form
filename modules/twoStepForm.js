@@ -125,16 +125,61 @@ if (twoStepPromocodeBtn) {
     twoStepPromocodeWrapper.classList.add("is-visible");
   });
 }
-const twoStepPromocodeInput = document.querySelector(
-  ".two-step-promocode-input",
-);
 
-if (twoStepPromocodeInput) {
-  twoStepPromocodeInput.addEventListener("input", async () => {
-    twoStepFormData.promocode = twoStepPromocodeInput.value;
+const promocodeWrapperTl = gsap.timeline({ paused: true });
 
-    const promoCode = twoStepPromocodeInput.value;
+promocodeWrapperTl
+  .to(twoStepPromocodeWrapper, { x: -14, duration: 0.03 })
+  .to(twoStepPromocodeWrapper, { x: 14, duration: 0.03 })
+  .to(twoStepPromocodeWrapper, { x: 0, duration: 0.03 });
 
+const checkingPromocode = async (input) => {
+  const promoCode = input.value;
+  try {
+    const response = await fetch(
+      "https://promocodesapi.onrender.com/check-promo",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ code: promoCode }),
+      },
+    );
+
+    const result = await response.json();
+
+    if (result.valid) {
+      twoStepFormData.promocode = input.value.toUpperCase();
+      console.log("Промокод верный");
+      twoStepPromocodeWrapper.classList.add("is-valid");
+      twoStepPromocodeWrapper.classList.remove("is-not-valid");
+    } else {
+      twoStepFormData.promocode = "";
+      console.log("Промокод неверный");
+      twoStepPromocodeWrapper.classList.remove("is-valid");
+      twoStepPromocodeWrapper.classList.add("is-not-valid");
+      promocodeWrapperTl.restart();
+    }
+  } catch (error) {
+    console.error("Ошибка при проверке промокода:", error);
+  }
+};
+
+if (twoStepPromocodeWrapper) {
+  const input = twoStepPromocodeWrapper.querySelector(
+    ".two-step-promocode-input",
+  );
+  const promocodeApplyBtn = twoStepPromocodeWrapper.querySelector(
+    ".two-step-promocode-apply-btn",
+  );
+
+  promocodeApplyBtn.addEventListener("click", async () => {
+    checkingPromocode(input);
+  });
+
+  input.addEventListener("input", async () => {
+    const promoCode = input.value;
     try {
       const response = await fetch(
         "https://promocodesapi.onrender.com/check-promo",
@@ -149,12 +194,11 @@ if (twoStepPromocodeInput) {
 
       const result = await response.json();
 
-      if (result.valid) {
-        twoStepFormData.promocode = twoStepPromocodeInput.value.toUpperCase();
-        console.log("Промокод верный");
-      } else {
+      if (twoStepPromocodeWrapper.classList.contains("is-valid")) {
         twoStepFormData.promocode = "";
         console.log("Промокод неверный");
+        twoStepPromocodeWrapper.classList.remove("is-valid");
+        twoStepPromocodeWrapper.classList.add("is-not-valid");
       }
     } catch (error) {
       console.error("Ошибка при проверке промокода:", error);
@@ -357,6 +401,7 @@ if (twoStepFormThirdStep) {
   inputValidations.forEach(({ input }) => {
     input.addEventListener("input", () => {
       input.style.color = "#755EEB";
+      validateInputs();
     });
   });
 
