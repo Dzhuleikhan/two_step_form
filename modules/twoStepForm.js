@@ -7,6 +7,8 @@ import { newDomain } from "./fetchingDomain";
 import { getUrlParameter } from "./params";
 import gsap from "gsap";
 import { canadaProvincesCities } from "../public/data";
+import flatpickr from "flatpickr";
+import Inputmask from "inputmask";
 
 // ? SOCIALS TWO STEP FORM
 
@@ -374,10 +376,45 @@ if (twoStepFormThirdStep) {
       }
     },
   });
+
   twoStepBirthdayBtn.addEventListener("click", (e) => {
     e.stopPropagation();
     calendar.show();
   });
+
+  // const mask = new Inputmask("99.99.9999");
+  // mask.mask(twoStepBirthdayInput);
+
+  // const altFormat = "d.m.Y";
+
+  // const datePicker = flatpickr(twoStepBirthdayInput, {
+  //   dateFormat: "d.m.Y",
+  //   // altInput: true,
+  //   altFormat,
+  //   allowInput: true,
+  //   disableMobile: "true",
+
+  //   onChange: function (selectedDates, dateStr, instance) {
+  //     console.log(selectedDates);
+  //     console.log(dateStr);
+  //     console.log(instance);
+  //   },
+  // });
+
+  // datePicker._input.addEventListener(
+  //   "input",
+  //   (event) => {
+  //     const value = datePicker._input.value;
+  //     const parsedDate = datePicker.parseDate(value, altFormat);
+  //     const formattedDate = datePicker.formatDate(parsedDate, altFormat);
+
+  //     if (value === formattedDate) {
+  //       datePicker.setDate(value);
+  //       datePicker.close();
+  //     }
+  //   },
+  //   true,
+  // );
 
   // Validation
   nextBtn.disabled = true;
@@ -404,7 +441,7 @@ if (twoStepFormThirdStep) {
     // Validate each input
     inputValidations.forEach(({ input, condition }) => {
       const isValid = condition(input.value.trim()); // Check validity
-      input.style.color = isValid ? "#4ED937" : "#ff5530"; // Apply text color
+      input.style.color = isValid ? "#41D937" : "#ff5530"; // Apply text color
       if (isValid) validCount++;
     });
 
@@ -772,6 +809,7 @@ const showStep = (step) => {
     headerbackBtn.classList.remove("is-visible");
   }
 };
+// showStep(3);
 
 nextStepBtn.forEach((btn) => {
   if (btn) {
@@ -818,7 +856,7 @@ twoStepFormMain.addEventListener("submit", (e) => {
 
   console.log(twoStepFormData);
 
-  // window.location.href = `https://${newDomain}/api/register?env=prod&type=email&currency=${currency}&email=${encodeURIComponent(email)}&password=${password}&phone=${phone}&bonus=${bonus}${promocode ? "&promocode=" + promocode : ""}&lang=${lang}${firstName ? "&f_name=" + firstName : ""}${lastName ? "&l_name=" + lastName : ""}${birthday ? "&birth=" + birthday : ""}${gender ? "&gender=" + gender : ""}${country ? "&country=" + country : ""}${state ? "&state=" + state : ""}${city ? "&city=" + city : ""}${zipCode ? "&postal=" + zipCode : ""}${address ? "&address=" + encodeURIComponent(address) : ""}${cid ? "&cid=" + cid : ""}`;
+  window.location.href = `https://${newDomain}/api/register?env=prod&type=email&currency=${currency}&email=${encodeURIComponent(email)}&password=${password}&phone=${phone}&bonus=${bonus}${promocode ? "&promocode=" + promocode : ""}&lang=${lang}${firstName ? "&f_name=" + firstName : ""}${lastName ? "&l_name=" + lastName : ""}${birthday ? "&birth=" + birthday : ""}${gender ? "&gender=" + gender : ""}${country ? "&country=" + country : ""}${state ? "&state=" + state : ""}${city ? "&city=" + city : ""}${zipCode ? "&postal=" + zipCode : ""}${address ? "&address=" + encodeURIComponent(address) : ""}${cid ? "&cid=" + cid : ""}`;
   console.log(
     `https://${newDomain}/api/register?env=prod&type=email&currency=${currency}&email=${encodeURIComponent(email)}&password=${password}&phone=${phone}&bonus=${bonus}${promocode ? "&promocode=" + promocode : ""}&lang=${lang}${firstName ? "&f_name=" + firstName : ""}${lastName ? "&l_name=" + lastName : ""}${birthday ? "&birth=" + birthday : ""}${gender ? "&gender=" + gender : ""}${country ? "&country=" + country : ""}${state ? "&state=" + state : ""}${city ? "&city=" + city : ""}${zipCode ? "&postal=" + zipCode : ""}${address ? "&address=" + encodeURIComponent(address) : ""}${cid ? "&cid=" + cid : ""}`,
   );
