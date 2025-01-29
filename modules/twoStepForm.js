@@ -367,13 +367,25 @@ if (twoStepFormThirdStep) {
       const month = parseInt(dateParts[1], 10);
       const year = parseInt(dateParts[2], 10);
 
+      const isoDate = convertToISODate(year, month, day);
+
+      twoStepFormData.birthday = isoDate;
+
+      function convertToISODate(year, month, day) {
+        // Create a Date object (Note: months are 0-indexed in JavaScript)
+        const date = new Date(year, month - 1, day);
+
+        // Convert to ISO 8601 format (YYYY-MM-DD)
+        return date.toISOString().split("T")[0];
+      }
+
       isValidDate = validateDate(day, month, year);
       isValidAge = validateAge(year, month, day);
 
-      console.log(isValidDate ? "Дата корректна" : "Некорректная дата");
-      isValidAge
-        ? twoStepBirthdayAlert.classList.add("hidden")
-        : twoStepBirthdayAlert.classList.remove("hidden");
+      isValidDate ? console.log(isoDate) : "Некорректная дата",
+        isValidAge
+          ? twoStepBirthdayAlert.classList.add("hidden")
+          : twoStepBirthdayAlert.classList.remove("hidden");
     }
   });
 
@@ -792,7 +804,6 @@ const showStep = (step) => {
     headerbackBtn.classList.remove("is-visible");
   }
 };
-showStep(3);
 
 nextStepBtn.forEach((btn) => {
   if (btn) {
