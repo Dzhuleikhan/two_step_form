@@ -487,3 +487,49 @@ export const countryCurrencyData = [
     spins: "200FS",
   },
 ];
+
+const canadaProvincesCities = {
+  Alberta: ["Calgary", "Edmonton", "Red Deer", "Lethbridge", "St. Albert"],
+  "British Columbia": [
+    "Vancouver",
+    "Victoria",
+    "Surrey",
+    "Burnaby",
+    "Richmond",
+  ],
+  Manitoba: [
+    "Winnipeg",
+    "Brandon",
+    "Steinbach",
+    "Thompson",
+    "Portage la Prairie",
+  ],
+  "New Brunswick": [
+    "Fredericton",
+    "Moncton",
+    "Saint John",
+    "Bathurst",
+    "Miramichi",
+  ],
+  "Newfoundland and Labrador": [
+    "St. John's",
+    "Mount Pearl",
+    "Corner Brook",
+    "Gander",
+    "Grand Falls-Windsor",
+  ],
+  "Nova Scotia": ["Halifax", "Sydney", "Dartmouth", "Truro", "New Glasgow"],
+  Ontario: ["Toronto", "Ottawa", "Mississauga", "Brampton", "Hamilton"],
+  "Prince Edward Island": ["Charlottetown", "Summerside"],
+  Quebec: ["Montreal", "Quebec City", "Laval", "Gatineau", "Longueuil"],
+  Saskatchewan: [
+    "Saskatoon",
+    "Regina",
+    "Prince Albert",
+    "Moose Jaw",
+    "Yorkton",
+  ],
+  "Northwest Territories": ["Yellowknife"],
+  Nunavut: ["Iqaluit"],
+  Yukon: ["Whitehorse"],
+};

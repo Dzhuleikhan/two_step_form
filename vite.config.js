@@ -8,4 +8,8 @@ export default defineConfig({
     },
     target: "esnext",
   },
+  server: {
+    host: true,
+    open: true,
+  },
 });

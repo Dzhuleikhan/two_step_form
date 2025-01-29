@@ -22,14 +22,14 @@
     </script>
   </head>
   <body
-    class="bg-[url(../img/page-bg-desk.webp)] bg-cover bg-center bg-no-repeat"
+    class="overscroll-none bg-[url(../img/page-bg-desk.webp)] bg-cover bg-center bg-no-repeat"
   >
     <div
       class="wrapper flex h-full w-full min-w-[320px] flex-col justify-between gap-5 overflow-hidden overflow-y-auto pt-[30px] large:gap-0 large:pt-5"
     >
       <!-- Two step overlay -->
       <div
-        class="two-step-overlay is-open fixed left-0 top-0 z-[300] h-screen w-full flex-col justify-between overflow-y-auto px-9 pb-[50px] pt-[30px] large:py-5 small:justify-start small:gap-[15px] small:px-[15px] small:pt-[24px]"
+        class="two-step-overlay is-open fixed left-0 top-0 z-[300] h-dvh w-full flex-col justify-between overflow-y-auto px-9 pb-[50px] pt-[30px] large:py-5 small:justify-start small:gap-[15px] small:px-[15px] small:pt-[24px]"
       >
         <!-- Header -->
         <div
@@ -1324,19 +1324,6 @@
                     name="phone"
                   />
                 </div>
-                <!-- City -->
-                <div
-                  class="two-step-input-wrapper two-step-city-wrapper relative rounded-2xl bg-white p-4"
-                >
-                  <input
-                    class="two-step-general-input two-step-city-input relative -bottom-1 w-full bg-transparent text-base font-bold text-[#755EEB] outline-none"
-                    type="text"
-                  />
-                  <label
-                    class="two-step-general-label two-step-city-label pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 font-bold text-[#585858] transition-all"
-                    >Enter City</label
-                  >
-                </div>
                 <!-- Address -->
                 <div
                   class="two-step-input-wrapper two-step-address-wrapper relative rounded-2xl bg-white p-4"
@@ -1348,6 +1335,19 @@
                   <label
                     class="two-step-general-label two-step-address-label pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 font-bold text-[#585858] transition-all"
                     >Enter Address</label
+                  >
+                </div>
+                <!-- City -->
+                <div
+                  class="two-step-input-wrapper two-step-city-wrapper relative rounded-2xl bg-white p-4"
+                >
+                  <input
+                    class="two-step-general-input two-step-city-input relative -bottom-1 w-full bg-transparent text-base font-bold text-[#755EEB] outline-none"
+                    type="text"
+                  />
+                  <label
+                    class="two-step-general-label two-step-city-label pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 font-bold text-[#585858] transition-all"
+                    >Enter City</label
                   >
                 </div>
                 <!-- ZIP Code -->
