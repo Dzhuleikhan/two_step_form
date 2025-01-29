@@ -618,7 +618,7 @@ if (twoStepFormFourthStep) {
     },
     {
       input: twoStepZipcodeInput,
-      condition: (value) => value !== "", // Valid date (YYYY-MM-DD)
+      condition: (value) => value.length >= 2, // Valid date (YYYY-MM-DD)
     },
   ];
 
