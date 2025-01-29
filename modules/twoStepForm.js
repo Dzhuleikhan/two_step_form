@@ -697,7 +697,6 @@ const showStep = (step) => {
     headerbackBtn.classList.remove("is-visible");
   }
 };
-showStep(4);
 
 nextStepBtn.forEach((btn) => {
   if (btn) {
