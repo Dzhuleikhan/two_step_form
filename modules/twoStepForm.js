@@ -6,6 +6,7 @@ import { twoStepiti } from "./itiTelInput";
 import { newDomain } from "./fetchingDomain";
 import { getUrlParameter } from "./params";
 import gsap from "gsap";
+import { canadaProvincesCities } from "../public/data";
 
 // ? SOCIALS TWO STEP FORM
 
@@ -503,7 +504,15 @@ if (twoStepFormFourthStep) {
       twoStepAppliedCountryImage.alt = name;
       twoStepCountryDropdown.classList.add("hidden");
       twoStepFormData.country = countryCode;
-      twoStepFormData.lang = countryCode.toLowerCase();
+      if (countryCode === "CA") {
+        document
+          .querySelector(".two-step-state-wrapper")
+          .classList.remove("hidden");
+      } else {
+        document
+          .querySelector(".two-step-state-wrapper")
+          .classList.add("hidden");
+      }
     }
   });
 
@@ -595,6 +604,72 @@ if (twoStepFormFourthStep) {
   const twoStepZipcodeInput = twoStepFormFourthStep.querySelector(
     ".two-step-zipcode-input",
   );
+
+  const twoStepStateBtn = twoStepFormFourthStep.querySelector(
+    ".two-step-state-wrapper",
+  );
+  const twoStepStateInput = twoStepStateBtn.querySelector(
+    ".two-step-state-input",
+  );
+  const twoStepStateInputLabel = twoStepStateBtn.querySelector(
+    ".two-step-state-label",
+  );
+  const twoStepStateList = twoStepFormFourthStep.querySelector(
+    ".two-step-state-list",
+  );
+  const twoStepStateListItem = twoStepStateList.querySelectorAll(
+    ".two-step-state-list-item",
+  );
+
+  if (geoData.countryCode === "CA") {
+    twoStepStateBtn.classList.remove("hidden");
+  }
+
+  twoStepCityInput.addEventListener("input", () => {
+    const cityInput = twoStepCityInput.value.trim().toLowerCase();
+    let foundProvince = "";
+
+    if (cityInput.length > 0) {
+      // Only search if there's input
+      for (const [province, cities] of Object.entries(canadaProvincesCities)) {
+        if (cities.some((city) => city.toLowerCase().includes(cityInput))) {
+          // Check partial match
+          foundProvince = province;
+          break;
+        }
+      }
+    }
+
+    if (foundProvince) {
+      twoStepStateInput.value = foundProvince;
+      twoStepStateInputLabel.classList.add("hidden");
+      twoStepFormData.state = encodeURIComponent(twoStepStateInput.value);
+    } else {
+      twoStepStateInput.value = "";
+      twoStepStateInputLabel.classList.remove("hidden");
+      twoStepFormData.state = "";
+    }
+  });
+
+  twoStepStateInput.addEventListener("change", () => {
+    if (twoStepStateInput.value !== "") {
+      twoStepStateInputLabel.classList.add("hidden");
+    }
+  });
+
+  twoStepStateBtn.addEventListener("click", () => {
+    twoStepStateList.classList.toggle("hidden");
+  });
+
+  twoStepStateListItem.forEach((item) => {
+    if (item) {
+      item.addEventListener("click", () => {
+        twoStepStateInput.value = item.textContent.trim();
+        twoStepStateInputLabel.classList.add("hidden");
+        twoStepFormData.state = encodeURIComponent(twoStepStateInput.value);
+      });
+    }
+  });
 
   // Phone input only numbers
   twoStepPhoneInput.addEventListener("input", function (e) {
@@ -743,7 +818,7 @@ twoStepFormMain.addEventListener("submit", (e) => {
 
   console.log(twoStepFormData);
 
-  window.location.href = `https://${newDomain}/api/register?env=prod&type=email&currency=${currency}&email=${encodeURIComponent(email)}&password=${password}&phone=${phone}&bonus=${bonus}${promocode ? "&promocode=" + promocode : ""}&lang=${lang}${firstName ? "&f_name=" + firstName : ""}${lastName ? "&l_name=" + lastName : ""}${birthday ? "&birth=" + birthday : ""}${gender ? "&gender=" + gender : ""}${country ? "&country=" + country : ""}${state ? "&state=" + state : ""}${city ? "&city=" + city : ""}${zipCode ? "&postal=" + zipCode : ""}${address ? "&address=" + encodeURIComponent(address) : ""}${cid ? "&cid=" + cid : ""}`;
+  // window.location.href = `https://${newDomain}/api/register?env=prod&type=email&currency=${currency}&email=${encodeURIComponent(email)}&password=${password}&phone=${phone}&bonus=${bonus}${promocode ? "&promocode=" + promocode : ""}&lang=${lang}${firstName ? "&f_name=" + firstName : ""}${lastName ? "&l_name=" + lastName : ""}${birthday ? "&birth=" + birthday : ""}${gender ? "&gender=" + gender : ""}${country ? "&country=" + country : ""}${state ? "&state=" + state : ""}${city ? "&city=" + city : ""}${zipCode ? "&postal=" + zipCode : ""}${address ? "&address=" + encodeURIComponent(address) : ""}${cid ? "&cid=" + cid : ""}`;
   console.log(
     `https://${newDomain}/api/register?env=prod&type=email&currency=${currency}&email=${encodeURIComponent(email)}&password=${password}&phone=${phone}&bonus=${bonus}${promocode ? "&promocode=" + promocode : ""}&lang=${lang}${firstName ? "&f_name=" + firstName : ""}${lastName ? "&l_name=" + lastName : ""}${birthday ? "&birth=" + birthday : ""}${gender ? "&gender=" + gender : ""}${country ? "&country=" + country : ""}${state ? "&state=" + state : ""}${city ? "&city=" + city : ""}${zipCode ? "&postal=" + zipCode : ""}${address ? "&address=" + encodeURIComponent(address) : ""}${cid ? "&cid=" + cid : ""}`,
   );
