@@ -336,85 +336,69 @@ if (twoStepFormThirdStep) {
   const twoStepBirthdayInput = twoStepFormThirdStep.querySelector(
     ".two-step-birthday-input",
   );
-  const twoStepBirthdayBtn = twoStepFormThirdStep.querySelector(
-    "#two-step-birthday-btn",
+
+  const twoStepBirthdayAlert = document.querySelector(
+    ".two-step-birthday-alert",
   );
+
   const nextBtn = twoStepFormThirdStep.querySelector(".next-step-btn");
   const btnOverlap = twoStepFormThirdStep.querySelector(".disable-overlap");
 
-  // Calendar
-  const calendar = datepicker(twoStepBirthdayInput, {
-    formatter: (input, date) => {
-      const value = date.toLocaleDateString();
-      input.value = value;
-    },
-    onSelect: (date) => {
-      // 18+ validation
-      const selectedDate = new Date(date.dateSelected);
-      const currentDate = new Date();
-      const birthdayAlert = twoStepFormThirdStep.querySelector(
-        ".two-step-birthday-alert",
-      );
+  let isValidDate;
+  let isValidAge;
 
-      // Calculate the age
-      const age = currentDate.getFullYear() - selectedDate.getFullYear();
-      const monthDiff = currentDate.getMonth() - selectedDate.getMonth();
-      const dayDiff = currentDate.getDate() - selectedDate.getDate();
+  twoStepBirthdayInput.addEventListener("input", function (e) {
+    let value = twoStepBirthdayInput.value.replace(/\D/g, ""); // Удаляем все нецифровые символы
 
-      // Adjust the age if the birthday hasn't occurred yet this year
-      const isBirthdayPassed =
-        monthDiff > 0 || (monthDiff === 0 && dayDiff >= 0);
-      const finalAge = isBirthdayPassed ? age : age - 1;
+    if (value.length > 8) value = value.slice(0, 8); // Ограничиваем ввод до 8 цифр
 
-      if (finalAge >= 18) {
-        twoStepFormData.birthday = selectedDate.toISOString().split("T")[0];
-        validateInputs();
-        birthdayAlert.classList.add("hidden");
-      } else {
-        twoStepBirthdayInput.value = "";
-        birthdayAlert.classList.remove("hidden");
-      }
-    },
+    let formattedValue = "";
+
+    if (value.length > 0) formattedValue += value.slice(0, 2);
+    if (value.length > 2) formattedValue += "." + value.slice(2, 4);
+    if (value.length > 4) formattedValue += "." + value.slice(4, 8);
+
+    twoStepBirthdayInput.value = formattedValue;
+
+    // Проверяем на валидность, если длина ввода 10 символов
+    if (formattedValue.length === 10) {
+      const dateParts = formattedValue.split(".");
+      const day = parseInt(dateParts[0], 10);
+      const month = parseInt(dateParts[1], 10);
+      const year = parseInt(dateParts[2], 10);
+
+      isValidDate = validateDate(day, month, year);
+      isValidAge = validateAge(year, month, day);
+
+      console.log(isValidDate ? "Дата корректна" : "Некорректная дата");
+      isValidAge
+        ? twoStepBirthdayAlert.classList.add("hidden")
+        : twoStepBirthdayAlert.classList.remove("hidden");
+    }
   });
 
-  twoStepBirthdayBtn.addEventListener("click", (e) => {
-    e.stopPropagation();
-    calendar.show();
-  });
+  function validateDate(day, month, year) {
+    const date = new Date(year, month - 1, day);
+    return (
+      date.getFullYear() === year &&
+      date.getMonth() === month - 1 &&
+      date.getDate() === day
+    );
+  }
 
-  // const mask = new Inputmask("99.99.9999");
-  // mask.mask(twoStepBirthdayInput);
+  function validateAge(year, month, day) {
+    const currentDate = new Date();
+    const birthDate = new Date(year, month - 1, day);
 
-  // const altFormat = "d.m.Y";
+    let age = currentDate.getFullYear() - birthDate.getFullYear();
+    const m = currentDate.getMonth() - birthDate.getMonth();
 
-  // const datePicker = flatpickr(twoStepBirthdayInput, {
-  //   dateFormat: "d.m.Y",
-  //   // altInput: true,
-  //   altFormat,
-  //   allowInput: true,
-  //   disableMobile: "true",
+    if (m < 0 || (m === 0 && currentDate.getDate() < birthDate.getDate())) {
+      age--; // Если еще не был день рождения в текущем году
+    }
 
-  //   onChange: function (selectedDates, dateStr, instance) {
-  //     console.log(selectedDates);
-  //     console.log(dateStr);
-  //     console.log(instance);
-  //   },
-  // });
-
-  // datePicker._input.addEventListener(
-  //   "input",
-  //   (event) => {
-  //     const value = datePicker._input.value;
-  //     const parsedDate = datePicker.parseDate(value, altFormat);
-  //     const formattedDate = datePicker.formatDate(parsedDate, altFormat);
-
-  //     if (value === formattedDate) {
-  //       datePicker.setDate(value);
-  //       datePicker.close();
-  //     }
-  //   },
-  //   true,
-  // );
+    return age >= 18; // Проверяем, что возраст 18 или больше
+  }
 
   // Validation
   nextBtn.disabled = true;
@@ -430,7 +414,7 @@ if (twoStepFormThirdStep) {
     },
     {
       input: twoStepBirthdayInput,
-      condition: (value) => value !== "", // Valid date (YYYY-MM-DD)
+      condition: (value) => value.length === 10 && isValidDate && isValidAge, // Valid date (YYYY-MM-DD)
     },
   ];
 
@@ -441,7 +425,7 @@ if (twoStepFormThirdStep) {
     // Validate each input
     inputValidations.forEach(({ input, condition }) => {
       const isValid = condition(input.value.trim()); // Check validity
-      input.style.color = isValid ? "#41D937" : "#ff5530"; // Apply text color
+      input.style.color = isValid ? "#41D937" : "#ff0000"; // Apply text color
       if (isValid) validCount++;
     });
 
@@ -468,7 +452,6 @@ if (twoStepFormThirdStep) {
   });
   inputValidations.forEach(({ input }) => {
     input.addEventListener("input", () => {
-      input.style.color = "#755EEB";
       validateInputs();
     });
   });
@@ -809,7 +792,7 @@ const showStep = (step) => {
     headerbackBtn.classList.remove("is-visible");
   }
 };
-// showStep(3);
+showStep(3);
 
 nextStepBtn.forEach((btn) => {
   if (btn) {
