@@ -320,6 +320,9 @@ if (twoStepFormThirdStep) {
   const twoStepBirthdayAlert = document.querySelector(
     ".two-step-birthday-alert",
   );
+  const twoStepBirthdayAlertInvalid = document.querySelector(
+    ".two-step-birthday-alert-invalid",
+  );
 
   const nextBtn = twoStepFormThirdStep.querySelector(".next-step-btn");
   const btnOverlap = twoStepFormThirdStep.querySelector(".disable-overlap");
@@ -362,7 +365,9 @@ if (twoStepFormThirdStep) {
       isValidDate = validateDate(day, month, year);
       isValidAge = validateAge(year, month, day);
 
-      isValidDate ? console.log(isoDate) : "Некорректная дата",
+      isValidDate
+        ? twoStepBirthdayAlertInvalid.classList.add("hidden")
+        : twoStepBirthdayAlertInvalid.classList.remove("hidden"),
         isValidAge
           ? twoStepBirthdayAlert.classList.add("hidden")
           : twoStepBirthdayAlert.classList.remove("hidden");
@@ -798,6 +803,7 @@ const showStep = (step) => {
     headerbackBtn.classList.remove("is-visible");
   }
 };
+showStep(3);
 
 nextStepBtn.forEach((btn) => {
   if (btn) {
