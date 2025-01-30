@@ -211,7 +211,7 @@ if (twoStepPromocodeWrapper) {
     checkingPromocode(input);
   });
 
-  input.addEventListener("input", async () => {
+  input.addEventListener("focus", async () => {
     const promoCode = input.value;
     try {
       const response = await fetch(
