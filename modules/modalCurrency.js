@@ -4,6 +4,7 @@ import {
   checkTir1CurrencyMatch,
   exceptCurrencies,
   twoStepFormData,
+  settingInitialBonusValue,
 } from "./twoStepForm";
 
 export function getCountryCurrencyABBR(inputCountry) {
@@ -160,6 +161,7 @@ formCurrency.forEach((cur) => {
         // Two step currency update
         settingBonusOnCurrencyChange(countryCurrencyData, currencyData);
         twoStepFormData.currency = currencyData.abbr;
+        settingInitialBonusValue(twoStepFormData.currency);
 
         twoStepFormData.bonus = checkTir1CurrencyMatch(
           twoStepFormData.currency,

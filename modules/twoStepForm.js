@@ -100,8 +100,8 @@ twoStepBonusCheckbox.forEach((checkbox) => {
   });
 });
 
-const settingInitialBonusValue = () => {
-  if (exceptCurrencies.includes(twoStepFormData.currency)) {
+export const settingInitialBonusValue = (currency) => {
+  if (exceptCurrencies.includes(currency)) {
     document.querySelector(".two-step-bonus-percent").innerHTML = "100%";
     document.querySelector(".two-step-bonus-spins").innerHTML = "200FS";
     document
@@ -128,7 +128,7 @@ const settingInitialBonusValue = () => {
   }
 };
 
-settingInitialBonusValue();
+settingInitialBonusValue(twoStepFormData.currency);
 
 // | INPUTS
 const twoStepGeneralInput = document.querySelectorAll(
