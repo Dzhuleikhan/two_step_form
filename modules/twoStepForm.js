@@ -803,7 +803,6 @@ const showStep = (step) => {
     headerbackBtn.classList.remove("is-visible");
   }
 };
-showStep(3);
 
 nextStepBtn.forEach((btn) => {
   if (btn) {
