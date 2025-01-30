@@ -1,5 +1,3 @@
-import datepicker from "js-datepicker";
-import "js-datepicker/dist/datepicker.min.css";
 import { countryFlags } from "../public/data";
 import { geoData, getLocation } from "./geoLocation";
 import { twoStepiti } from "./itiTelInput";
@@ -662,7 +660,7 @@ if (twoStepFormFourthStep) {
     const cityInput = twoStepCityInput.value.trim().toLowerCase();
     let foundProvince = "";
 
-    if (cityInput.length > 0 && isCanada) {
+    if (cityInput.length > 0) {
       // Only search if there's input
       for (const [province, cities] of Object.entries(canadaProvincesCities)) {
         if (cities.some((city) => city.toLowerCase().includes(cityInput))) {
