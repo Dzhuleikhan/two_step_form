@@ -7,8 +7,6 @@ import { newDomain } from "./fetchingDomain";
 import { getUrlParameter } from "./params";
 import gsap from "gsap";
 import { canadaProvincesCities } from "../public/data";
-import flatpickr from "flatpickr";
-import Inputmask from "inputmask";
 
 // ? SOCIALS TWO STEP FORM
 
@@ -865,7 +863,7 @@ twoStepFormMain.addEventListener("submit", (e) => {
 
   console.log(twoStepFormData);
 
-  // window.location.href = `https://${newDomain}/api/register?env=prod&type=email&currency=${currency}&email=${encodeURIComponent(email)}&password=${password}&phone=${phone}&bonus=${bonus}${promocode ? "&promocode=" + promocode : ""}&lang=${lang}${firstName ? "&f_name=" + firstName : ""}${lastName ? "&l_name=" + lastName : ""}${birthday ? "&birth=" + birthday : ""}${gender ? "&gender=" + gender : ""}${country ? "&country=" + country : ""}${state ? "&state=" + state : ""}${city ? "&city=" + city : ""}${zipCode ? "&postal=" + zipCode : ""}${address ? "&address=" + encodeURIComponent(address) : ""}${cid ? "&cid=" + cid : ""}`;
+  window.location.href = `https://${newDomain}/api/register?env=prod&type=email&currency=${currency}&email=${encodeURIComponent(email)}&password=${password}&phone=${phone}&bonus=${bonus}${promocode ? "&promocode=" + promocode : ""}&lang=${lang}${firstName ? "&f_name=" + firstName : ""}${lastName ? "&l_name=" + lastName : ""}${birthday ? "&birth=" + birthday : ""}${gender ? "&gender=" + gender : ""}${country ? "&country=" + country : ""}${state ? "&state=" + state : ""}${city ? "&city=" + city : ""}${zipCode ? "&postal=" + zipCode : ""}${address ? "&address=" + encodeURIComponent(address) : ""}${cid ? "&cid=" + cid : ""}`;
   console.log(
     `https://${newDomain}/api/register?env=prod&type=email&currency=${currency}&email=${encodeURIComponent(email)}&password=${password}&phone=${phone}&bonus=${bonus}${promocode ? "&promocode=" + promocode : ""}&lang=${lang}${firstName ? "&f_name=" + firstName : ""}${lastName ? "&l_name=" + lastName : ""}${birthday ? "&birth=" + birthday : ""}${gender ? "&gender=" + gender : ""}${country ? "&country=" + country : ""}${state ? "&state=" + state : ""}${city ? "&city=" + city : ""}${zipCode ? "&postal=" + zipCode : ""}${address ? "&address=" + encodeURIComponent(address) : ""}${cid ? "&cid=" + cid : ""}`,
   );
