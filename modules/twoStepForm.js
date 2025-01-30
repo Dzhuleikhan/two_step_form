@@ -524,6 +524,14 @@ if (twoStepFormFourthStep) {
     }
   });
 
+  if (geoData.countryCode === "CA") {
+    document
+      .querySelector(".two-step-state-wrapper")
+      .classList.remove("hidden");
+  } else {
+    document.querySelector(".two-step-state-wrapper").classList.add("hidden");
+  }
+
   // Choosing country from dropdown
   twoStepCountryList.addEventListener("click", (event) => {
     const item = event.target.closest(".two-step-country-list-item"); // Replace with your item class or selector
@@ -536,6 +544,7 @@ if (twoStepFormFourthStep) {
       twoStepAppliedCountryImage.alt = name;
       twoStepCountryDropdown.classList.add("hidden");
       twoStepFormData.country = countryCode;
+
       if (countryCode === "CA") {
         document
           .querySelector(".two-step-state-wrapper")
@@ -804,7 +813,6 @@ const showStep = (step) => {
     headerbackBtn.classList.remove("is-visible");
   }
 };
-showStep(3);
 
 nextStepBtn.forEach((btn) => {
   if (btn) {
@@ -830,6 +838,18 @@ let cid = getUrlParameter("cid");
 
 twoStepFormMain.addEventListener("submit", (e) => {
   e.preventDefault();
+
+  const twoStepSubmitBtn = twoStepFormMain.querySelector(".submit-btn");
+  const btnLoader = twoStepSubmitBtn.querySelector(
+    ".two-step-submit-btn-loader",
+  );
+  const btnIcon = twoStepSubmitBtn.querySelector(".two-step-submit-btn-icon");
+  const btnText = twoStepSubmitBtn.querySelector(".two-step-submit-btn-text");
+  btnIcon.classList.add("hidden");
+  btnText.classList.add("hidden");
+  btnLoader.classList.remove("hidden");
+  twoStepSubmitBtn.disabled = true;
+
   let {
     address,
     birthday,
@@ -851,7 +871,7 @@ twoStepFormMain.addEventListener("submit", (e) => {
 
   console.log(twoStepFormData);
 
-  // window.location.href = `https://${newDomain}/api/register?env=prod&type=email&currency=${currency}&email=${encodeURIComponent(email)}&password=${password}&phone=${phone}&bonus=${bonus}${promocode ? "&promocode=" + promocode : ""}&lang=${lang}${firstName ? "&f_name=" + firstName : ""}${lastName ? "&l_name=" + lastName : ""}${birthday ? "&birth=" + birthday : ""}${gender ? "&gender=" + gender : ""}${country ? "&country=" + country : ""}${state ? "&state=" + state : ""}${city ? "&city=" + city : ""}${zipCode ? "&postal=" + zipCode : ""}${address ? "&address=" + encodeURIComponent(address) : ""}${cid ? "&cid=" + cid : ""}`;
+  window.location.href = `https://${newDomain}/api/register?env=prod&type=email&currency=${currency}&email=${encodeURIComponent(email)}&password=${password}&phone=${phone}&bonus=${bonus}${promocode ? "&promocode=" + promocode : ""}&lang=${lang}${firstName ? "&f_name=" + firstName : ""}${lastName ? "&l_name=" + lastName : ""}${birthday ? "&birth=" + birthday : ""}${gender ? "&gender=" + gender : ""}${country ? "&country=" + country : ""}${state ? "&state=" + state : ""}${city ? "&city=" + city : ""}${zipCode ? "&postal=" + zipCode : ""}${address ? "&address=" + encodeURIComponent(address) : ""}${cid ? "&cid=" + cid : ""}`;
   console.log(
     `https://${newDomain}/api/register?env=prod&type=email&currency=${currency}&email=${encodeURIComponent(email)}&password=${password}&phone=${phone}&bonus=${bonus}${promocode ? "&promocode=" + promocode : ""}&lang=${lang}${firstName ? "&f_name=" + firstName : ""}${lastName ? "&l_name=" + lastName : ""}${birthday ? "&birth=" + birthday : ""}${gender ? "&gender=" + gender : ""}${country ? "&country=" + country : ""}${state ? "&state=" + state : ""}${city ? "&city=" + city : ""}${zipCode ? "&postal=" + zipCode : ""}${address ? "&address=" + encodeURIComponent(address) : ""}${cid ? "&cid=" + cid : ""}`,
   );
