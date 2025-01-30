@@ -31,10 +31,6 @@ export let twoStepFormData = {
   lang: "",
 };
 
-twoStepFormData.bonus = document.querySelector(
-  'input[name="bonus"]:checked',
-).value;
-
 export const exceptCurrencies = [
   "RON",
   "DKK",
@@ -50,6 +46,11 @@ export const exceptCurrencies = [
 export const checkTir1CurrencyMatch = (currency, bonus) => {
   const initialBonus = "welcome-bonus-1";
   const updatedBonus = "welcome-bonus-1-alt";
+
+  if (bonus !== initialBonus) {
+    return bonus;
+  }
+
   if (
     twoStepFormData.bonus !== "crypto" &&
     twoStepFormData.bonus !== "highroller"
@@ -60,14 +61,8 @@ export const checkTir1CurrencyMatch = (currency, bonus) => {
     return initialBonus;
   }
 
-  // Return the original bonus if no change
   return bonus;
 };
-
-twoStepFormData.bonus = checkTir1CurrencyMatch(
-  twoStepFormData.currency,
-  twoStepFormData.bonus,
-);
 
 // | CHOOSING BONUSES
 
@@ -83,6 +78,8 @@ twoStepBonusCheckbox.forEach((checkbox) => {
     const bonusImg = input.getAttribute("data-img");
     const bonusName = input.getAttribute("data-name");
     const bonusText = input.getAttribute("data-text");
+
+    console.log(bonusValue);
 
     twoStepFormData.bonus = bonusValue;
 
@@ -102,6 +99,15 @@ twoStepBonusCheckbox.forEach((checkbox) => {
     });
   });
 });
+
+twoStepFormData.bonus = document.querySelector(
+  'input[name="bonus"]:checked',
+).value;
+
+twoStepFormData.bonus = checkTir1CurrencyMatch(
+  twoStepFormData.currency,
+  twoStepFormData.bonus,
+);
 
 const settingInitialBonusValue = () => {
   if (exceptCurrencies.includes(twoStepFormData.currency)) {
@@ -854,7 +860,7 @@ twoStepFormMain.addEventListener("submit", (e) => {
 
   console.log(twoStepFormData);
 
-  window.location.href = `https://${newDomain}/api/register?env=prod&type=email&currency=${currency}&email=${encodeURIComponent(email)}&password=${password}&phone=${phone}&bonus=${bonus}${promocode ? "&promocode=" + promocode : ""}&lang=${lang}${firstName ? "&f_name=" + firstName : ""}${lastName ? "&l_name=" + lastName : ""}${birthday ? "&birth=" + birthday : ""}${gender ? "&gender=" + gender : ""}${country ? "&country=" + country : ""}${state ? "&state=" + state : ""}${city ? "&city=" + city : ""}${zipCode ? "&postal=" + zipCode : ""}${address ? "&address=" + encodeURIComponent(address) : ""}${cid ? "&cid=" + cid : ""}`;
+  // window.location.href = `https://${newDomain}/api/register?env=prod&type=email&currency=${currency}&email=${encodeURIComponent(email)}&password=${password}&phone=${phone}&bonus=${bonus}${promocode ? "&promocode=" + promocode : ""}&lang=${lang}${firstName ? "&f_name=" + firstName : ""}${lastName ? "&l_name=" + lastName : ""}${birthday ? "&birth=" + birthday : ""}${gender ? "&gender=" + gender : ""}${country ? "&country=" + country : ""}${state ? "&state=" + state : ""}${city ? "&city=" + city : ""}${zipCode ? "&postal=" + zipCode : ""}${address ? "&address=" + encodeURIComponent(address) : ""}${cid ? "&cid=" + cid : ""}`;
   console.log(
     `https://${newDomain}/api/register?env=prod&type=email&currency=${currency}&email=${encodeURIComponent(email)}&password=${password}&phone=${phone}&bonus=${bonus}${promocode ? "&promocode=" + promocode : ""}&lang=${lang}${firstName ? "&f_name=" + firstName : ""}${lastName ? "&l_name=" + lastName : ""}${birthday ? "&birth=" + birthday : ""}${gender ? "&gender=" + gender : ""}${country ? "&country=" + country : ""}${state ? "&state=" + state : ""}${city ? "&city=" + city : ""}${zipCode ? "&postal=" + zipCode : ""}${address ? "&address=" + encodeURIComponent(address) : ""}${cid ? "&cid=" + cid : ""}`,
   );
