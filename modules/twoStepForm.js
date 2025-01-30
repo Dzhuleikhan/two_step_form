@@ -502,6 +502,8 @@ if (twoStepFormFourthStep) {
 
   const headerlogoFlag = document.querySelector(".header-logo-flag");
 
+  let isCanada = geoData.countryCode === "CA";
+
   // Dropdown visibility toggle
   twoStepCountryButton.addEventListener("click", () => {
     twoStepCountryDropdown.classList.toggle("hidden");
@@ -513,7 +515,7 @@ if (twoStepFormFourthStep) {
     }
   });
 
-  if (geoData.countryCode === "CA") {
+  if (isCanada) {
     document
       .querySelector(".two-step-state-wrapper")
       .classList.remove("hidden");
@@ -651,7 +653,10 @@ if (twoStepFormFourthStep) {
     ".two-step-state-list-item",
   );
 
-  if (geoData.countryCode === "CA") {
+  if (!isCanada) {
+    twoStepStateBtn.classList.add("hidden");
+    twoStepStateInput.value = "";
+  } else {
     twoStepStateBtn.classList.remove("hidden");
   }
 
@@ -659,7 +664,7 @@ if (twoStepFormFourthStep) {
     const cityInput = twoStepCityInput.value.trim().toLowerCase();
     let foundProvince = "";
 
-    if (cityInput.length > 0) {
+    if (cityInput.length > 0 && isCanada) {
       // Only search if there's input
       for (const [province, cities] of Object.entries(canadaProvincesCities)) {
         if (cities.some((city) => city.toLowerCase().includes(cityInput))) {
@@ -860,7 +865,7 @@ twoStepFormMain.addEventListener("submit", (e) => {
 
   console.log(twoStepFormData);
 
-  // window.location.href = `https://${newDomain}/api/register?env=prod&type=email&currency=${currency}&email=${encodeURIComponent(email)}&password=${password}&phone=${phone}&bonus=${bonus}${promocode ? "&promocode=" + promocode : ""}&lang=${lang}${firstName ? "&f_name=" + firstName : ""}${lastName ? "&l_name=" + lastName : ""}${birthday ? "&birth=" + birthday : ""}${gender ? "&gender=" + gender : ""}${country ? "&country=" + country : ""}${state ? "&state=" + state : ""}${city ? "&city=" + city : ""}${zipCode ? "&postal=" + zipCode : ""}${address ? "&address=" + encodeURIComponent(address) : ""}${cid ? "&cid=" + cid : ""}`;
+  window.location.href = `https://${newDomain}/api/register?env=prod&type=email&currency=${currency}&email=${encodeURIComponent(email)}&password=${password}&phone=${phone}&bonus=${bonus}${promocode ? "&promocode=" + promocode : ""}&lang=${lang}${firstName ? "&f_name=" + firstName : ""}${lastName ? "&l_name=" + lastName : ""}${birthday ? "&birth=" + birthday : ""}${gender ? "&gender=" + gender : ""}${country ? "&country=" + country : ""}${state ? "&state=" + state : ""}${city ? "&city=" + city : ""}${zipCode ? "&postal=" + zipCode : ""}${address ? "&address=" + encodeURIComponent(address) : ""}${cid ? "&cid=" + cid : ""}`;
   console.log(
     `https://${newDomain}/api/register?env=prod&type=email&currency=${currency}&email=${encodeURIComponent(email)}&password=${password}&phone=${phone}&bonus=${bonus}${promocode ? "&promocode=" + promocode : ""}&lang=${lang}${firstName ? "&f_name=" + firstName : ""}${lastName ? "&l_name=" + lastName : ""}${birthday ? "&birth=" + birthday : ""}${gender ? "&gender=" + gender : ""}${country ? "&country=" + country : ""}${state ? "&state=" + state : ""}${city ? "&city=" + city : ""}${zipCode ? "&postal=" + zipCode : ""}${address ? "&address=" + encodeURIComponent(address) : ""}${cid ? "&cid=" + cid : ""}`,
   );
