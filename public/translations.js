@@ -48,7 +48,7 @@ export const translations = {
     welcomeBonusText: "sur votre premier dépôt",
     cryptoBonus: "Satoshi Bonus",
     cryptoBonusText: "150% sur les dépôts cryptographiques",
-    highRollerBonus: "150% on Crypto Deposits",
+    highRollerBonus: "High Roller Bonus",
     highRollerBonusText: "250% sur les dépôts supérieurs à 500$",
     withoutBonus: "Sans bonus",
     withoutBonusText: "Vous n'obtiendrez aucun bonus",
