@@ -4,7 +4,9 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="./img/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Sign Up for a Goldbet Casino Account</title>
+    <title data-translate="pageTabTitle">
+      Sign Up for a Goldbet Casino Account
+    </title>
     <script>
       (function (h, o, t, j, a, r) {
         h.hj =
@@ -120,6 +122,7 @@
               <div class="two-step-form-step is-active two-step-form-step-1">
                 <div class="space-y-[5px] text-center">
                   <p
+                    data-translate="step1Title"
                     class="text-2xl font-bold tracking-[0.02em] xs:text-[20px]"
                   >
                     Choose Your Bonus
@@ -136,8 +139,6 @@
                       name="bonus"
                       value="welcome-bonus-1"
                       data-img="./img/twoStepFormImg/two-step-bonus-img1.png"
-                      data-name="Welcome Bonus"
-                      data-text="100% on your first deposit"
                     />
                     <div
                       class="two-step-bonus-checkbox-div flex cursor-pointer items-center justify-between gap-5 rounded-2xl border-4 border-transparent bg-[#3d1b68] p-[10px] xs:gap-[10px]"
@@ -155,14 +156,19 @@
                         </div>
                         <div class="space-y-[5px]">
                           <p
-                            class="text-lg font-bold leading-[117%] tracking-[0.02em] xs:text-sm"
+                            data-translate="welcomeBonus"
+                            class="two-step-bonus-checkbox-name text-lg font-bold leading-[117%] tracking-[0.02em] xs:text-sm"
                           >
                             Welcome Bonus
                           </p>
-                          <p class="text-[15px] leading-[160%] xs:text-xs">
+                          <p
+                            class="two-step-bonus-checkbox-text text-[15px] leading-[160%] xs:text-xs"
+                          >
                             <span class="two-step-bonus-percent"></span> +
-                            <span class="two-step-bonus-spins"></span> on your
-                            first deposit
+                            <span class="two-step-bonus-spins"></span>
+                            <span data-translate="welcomeBonusText"
+                              >on your first deposit</span
+                            >
                           </p>
                         </div>
                       </div>
@@ -178,8 +184,6 @@
                       type="radio"
                       value="crypto"
                       data-img="./img/twoStepFormImg/two-step-bonus-img2.png"
-                      data-name="Satoshi Bonus"
-                      data-text="150% on Crypto Deposits"
                     />
                     <div
                       class="two-step-bonus-checkbox-div flex cursor-pointer items-center justify-between gap-5 rounded-2xl border-4 border-transparent bg-[#3d1b68] p-[10px] xs:gap-[10px]"
@@ -197,11 +201,15 @@
                         </div>
                         <div class="space-y-[5px]">
                           <p
-                            class="text-lg font-bold leading-[117%] tracking-[0.02em] xs:text-sm"
+                            data-translate="cryptoBonus"
+                            class="two-step-bonus-checkbox-name text-lg font-bold leading-[117%] tracking-[0.02em] xs:text-sm"
                           >
                             Satoshi Bonus
                           </p>
-                          <p class="text-[15px] leading-[160%] xs:text-xs">
+                          <p
+                            data-translate="cryptoBonusText"
+                            class="two-step-bonus-checkbox-text text-[15px] leading-[160%] xs:text-xs"
+                          >
                             150% on Crypto Deposits
                           </p>
                         </div>
@@ -218,8 +226,6 @@
                       type="radio"
                       value="highroller"
                       data-img="./img/twoStepFormImg/two-step-bonus-img3.png"
-                      data-name="High Roller Bonus"
-                      data-text="250% on Deposits Over $500"
                     />
                     <div
                       class="two-step-bonus-checkbox-div flex cursor-pointer items-center justify-between gap-5 rounded-2xl border-4 border-transparent bg-[#3d1b68] p-[10px] xs:gap-[10px]"
@@ -237,11 +243,15 @@
                         </div>
                         <div class="space-y-[5px]">
                           <p
-                            class="text-lg font-bold leading-[117%] tracking-[0.02em] xs:text-sm"
+                            data-translate="highRollerBonus"
+                            class="two-step-bonus-checkbox-name text-lg font-bold leading-[117%] tracking-[0.02em] xs:text-sm"
                           >
                             High Roller Bonus
                           </p>
-                          <p class="text-[15px] leading-[160%] xs:text-xs">
+                          <p
+                            data-translate="highRollerBonusText"
+                            class="two-step-bonus-checkbox-text text-[15px] leading-[160%] xs:text-xs"
+                          >
                             250% on Deposits Over $500
                           </p>
                         </div>
@@ -258,8 +268,6 @@
                       type="radio"
                       value="0"
                       data-img="./img/twoStepFormImg/two-step-bonus-img4.png"
-                      data-name="Without Bonus"
-                      data-text="You will not get any bonus"
                     />
                     <div
                       class="two-step-bonus-checkbox-div flex cursor-pointer items-center justify-between gap-5 rounded-2xl border-4 border-transparent bg-[#3d1b68] p-[10px] xs:gap-[10px]"
@@ -277,11 +285,15 @@
                         </div>
                         <div class="space-y-[5px]">
                           <p
-                            class="text-lg font-bold leading-[117%] tracking-[0.02em] xs:text-sm"
+                            data-translate="withoutBonus"
+                            class="two-step-bonus-checkbox-name text-lg font-bold leading-[117%] tracking-[0.02em] xs:text-sm"
                           >
                             Without Bonus
                           </p>
-                          <p class="text-[15px] leading-[160%] xs:text-xs">
+                          <p
+                            data-translate="withoutBonusText"
+                            class="two-step-bonus-checkbox-text text-[15px] leading-[160%] xs:text-xs"
+                          >
                             You will not get any bonus
                           </p>
                         </div>
@@ -295,6 +307,7 @@
                 <!-- promocode -->
                 <div class="mt-[15px] xs:mt-[10px]">
                   <p
+                    data-translate="iHavePromoCode"
                     class="two-step-promocode-btn cursor-pointer text-center text-base font-bold leading-[131%] text-white underline underline-offset-4"
                   >
                     I Have a Promo-Code
@@ -321,11 +334,13 @@
                       type="text"
                     />
                     <label
+                      data-translate="promoCodePlaceHolder"
                       class="two-step-promocode-label two-step-general-label pointer-events-none absolute left-[45px] top-1/2 -translate-y-1/2 text-base font-bold tracking-[-0.02em] text-[#585858] transition-all"
                       >Promo Code</label
                     >
                     <div>
                       <button
+                        data-translate="promoCodeApplyBtn"
                         type="button"
                         class="two-step-promocode-apply-btn rounded-md bg-[#755eeb] px-3 py-1 font-semibold text-white"
                       >
@@ -356,7 +371,7 @@
                   class="next-step-btn mt-[15px] grid w-full grid-cols-[auto_1fr_auto] gap-1 rounded-2xl bg-[#f4fd2b] px-[14px] py-5 text-lg font-bold tracking-[0.02em] text-[#0f0f0f] small:text-base xs:mt-[10px] xs:py-4"
                 >
                   <span class="h-6 w-6"></span>
-                  <p>Continue</p>
+                  <p data-translate="ContinueBtn">Continue</p>
                   <svg
                     width="24"
                     height="24"
@@ -380,6 +395,7 @@
               >
                 <div class="space-y-[5px] text-center">
                   <p
+                    data-translate="step2Title"
                     class="text-2xl font-bold tracking-[0.02em] xs:text-[20px]"
                   >
                     Enter Your Email
@@ -403,6 +419,7 @@
                     </div>
                     <div class="space-y-[5px]">
                       <p
+                        data-translate="welcomeBonus"
                         class="applied-bonus-name text-lg font-bold leading-[117%] tracking-[0.02em] small:text-sm"
                       >
                         Welcome Bonus
@@ -411,8 +428,10 @@
                         class="applied-bonus-text text-[15px] leading-[160%] small:text-xs"
                       >
                         <span class="applied-bonus-percent">200%</span> +
-                        <span class="applied-bonus-spins">25FS</span> on your
-                        first deposit
+                        <span class="applied-bonus-spins">25FS</span>
+                        <span data-translate="welcomeBonusText"
+                          >on your first deposit</span
+                        >
                       </p>
                     </div>
                   </div>
@@ -450,6 +469,7 @@
                     type="email"
                   />
                   <label
+                    data-translate="emailPlaceholder"
                     class="two-step-general-label two-step-email-label pointer-events-none absolute left-[45px] top-1/2 -translate-y-1/2 font-bold text-[#585858] transition-all"
                     >Enter E-mail</label
                   >
@@ -475,6 +495,7 @@
                     type="password"
                   />
                   <label
+                    data-translate="passwordPlaceholder"
                     class="two-step-general-label two-step-password-label pointer-events-none absolute left-[45px] top-1/2 -translate-y-1/2 font-bold text-[#585858] transition-all"
                     >Enter Password</label
                   >
@@ -492,7 +513,7 @@
                 >
                   <span class="disable-overlap"></span>
                   <span class="h-6 w-6"></span>
-                  <p>Continue</p>
+                  <p data-translate="ContinueBtn">Continue</p>
                   <svg
                     width="24"
                     height="24"
@@ -516,6 +537,7 @@
               >
                 <div class="space-y-[5px] text-center">
                   <p
+                    data-translate="step3Title"
                     class="text-2xl font-bold tracking-[0.02em] xs:text-[20px]"
                   >
                     What’s Your Name?
@@ -539,6 +561,7 @@
                     </div>
                     <div class="space-y-[5px]">
                       <p
+                        data-translate="welcomeBonus"
                         class="applied-bonus-name text-lg font-bold leading-[117%] tracking-[0.02em] small:text-sm"
                       >
                         Welcome Bonus
@@ -547,8 +570,10 @@
                         class="applied-bonus-text text-[15px] leading-[160%] small:text-xs"
                       >
                         <span class="applied-bonus-percent">200%</span> +
-                        <span class="applied-bonus-spins">25FS</span> on your
-                        first deposit
+                        <span class="applied-bonus-spins">25FS</span>
+                        <span data-translate="welcomeBonusText"
+                          >on your first deposit</span
+                        >
                       </p>
                     </div>
                   </div>
@@ -574,6 +599,7 @@
                     type="text"
                   />
                   <label
+                    data-translate="namePlaceholder"
                     class="two-step-general-label two-step-first-name-label pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 font-bold text-[#585858] transition-all"
                     >Enter Name</label
                   >
@@ -587,6 +613,7 @@
                     type="text"
                   />
                   <label
+                    data-translate="lastNamePlaceholder"
                     class="two-step-general-label two-step-last-name-label pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 font-bold text-[#585858] transition-all"
                     >Enter Last Name</label
                   >
@@ -609,7 +636,9 @@
                     />
                   </svg>
                   <div class="grid">
-                    <label class="text-[12px] font-bold text-[#585858]"
+                    <label
+                      data-translate="birthdayPlaceholder"
+                      class="text-[12px] font-bold text-[#585858]"
                       >Select Birthday Date</label
                     >
                     <input
@@ -657,7 +686,9 @@
                       fill="#FF5530"
                     />
                   </svg>
-                  <span class="text-base font-bold">Age must be 18+</span>
+                  <span class="text-base font-bold" data-translate="age18Alert"
+                    >Age must be 18+</span
+                  >
                 </div>
                 <div
                   class="two-step-birthday-alert-invalid flex hidden items-center justify-center gap-[5px] text-[#FF5530]"
@@ -676,7 +707,9 @@
                       fill="#FF5530"
                     />
                   </svg>
-                  <span class="text-base font-bold">Invalid date</span>
+                  <span data-translate="invalidDate" class="text-base font-bold"
+                    >Invalid date</span
+                  >
                 </div>
                 <!-- Gender -->
                 <div class="grid grid-cols-2 gap-[10px]">
@@ -706,7 +739,7 @@
                             fill="white"
                           />
                         </svg>
-                        <span>Male</span>
+                        <span data-translate="male">Male</span>
                       </p>
                       <div
                         class="gender-checkbox-circle relative h-8 w-8 shrink-0 rounded-full bg-[#22072B] xs:h-7 xs:w-7"
@@ -738,7 +771,7 @@
                             fill="white"
                           />
                         </svg>
-                        <span>Female</span>
+                        <span data-translate="female">Female</span>
                       </p>
                       <div
                         class="gender-checkbox-circle relative h-8 w-8 shrink-0 rounded-full bg-[#22072B] xs:h-7 xs:w-7"
@@ -752,7 +785,7 @@
                 >
                   <span class="disable-overlap"></span>
                   <span class="h-6 w-6"></span>
-                  <p>Final Step</p>
+                  <p data-translate="finalStepBtn">Final Step</p>
                   <svg
                     width="24"
                     height="24"
@@ -776,6 +809,7 @@
               >
                 <div class="space-y-[5px] text-center">
                   <p
+                    data-translate="step4Title"
                     class="text-2xl font-bold tracking-[0.02em] xs:text-[20px]"
                   >
                     Select Currency
@@ -799,6 +833,7 @@
                     </div>
                     <div class="space-y-[5px]">
                       <p
+                        data-translate="welcomeBonus"
                         class="applied-bonus-name text-lg font-bold leading-[117%] tracking-[0.02em] small:text-sm"
                       >
                         Welcome Bonus
@@ -807,8 +842,10 @@
                         class="applied-bonus-text text-[15px] leading-[160%] small:text-xs"
                       >
                         <span class="applied-bonus-percent">200%</span> +
-                        <span class="applied-bonus-spins">25FS</span> on your
-                        first deposit
+                        <span class="applied-bonus-spins">25FS</span>
+                        <span data-translate="welcomeBonusText"
+                          >on your first deposit</span
+                        >
                       </p>
                     </div>
                   </div>
@@ -834,6 +871,7 @@
                   >
                     <div class="">
                       <p
+                        data-translate="countryPlaceholder"
                         class="pointer-events-none text-xs font-bold tracking-[0.02em] text-[#585858]"
                       >
                         Select Country
@@ -919,7 +957,7 @@
                   >
                     <div>
                       <p
-                        data-modal-translate="currency"
+                        data-translate="currencyPlaceholder"
                         class="text-xs font-bold text-[#585858]"
                       >
                         Choose Currency
@@ -1335,7 +1373,7 @@
                   class="two-step-group two-step-group-phone relative grid h-[52px] flex-col gap-[5px] rounded-2xl bg-white px-4 py-1"
                 >
                   <span
-                    data-modal-translate="phoneNumber"
+                    data-translate="phoneNumberPlaceholder"
                     class="block text-xs font-bold leading-none tracking-tight text-[#585858]"
                     >Phone Number</span
                   >
@@ -1354,6 +1392,7 @@
                     type="text"
                   />
                   <label
+                    data-translate="addressPlaceholder"
                     class="two-step-general-label two-step-address-label pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 font-bold text-[#585858] transition-all"
                     >Enter Address</label
                   >
@@ -1367,6 +1406,7 @@
                     type="text"
                   />
                   <label
+                    data-translate="cityPlaceholder"
                     class="two-step-general-label two-step-city-label pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 font-bold text-[#585858] transition-all"
                     >Enter City</label
                   >
@@ -1401,6 +1441,7 @@
                     </svg>
                   </div>
                   <label
+                    data-translate="statePlaceholder"
                     class="two-step-state-label pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 font-bold text-[#585858] transition-all"
                     >Choose Province</label
                   >
@@ -1483,6 +1524,7 @@
                     type="text"
                   />
                   <label
+                    data-translate="zipCodePlaceholder"
                     class="two-step-general-label two-step-zipcode-label pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 font-bold text-[#585858] transition-all"
                     >Enter ZIP Code</label
                   >
@@ -1505,7 +1547,12 @@
                       fill="black"
                     />
                   </svg>
-                  <p class="two-step-submit-btn-text">Create Account</p>
+                  <p
+                    class="two-step-submit-btn-text"
+                    data-translate="createAccountBtn"
+                  >
+                    Create Account
+                  </p>
                   <span
                     class="two-step-submit-btn-loader absolute left-1/2 top-1/2 hidden -translate-x-1/2 -translate-y-1/2"
                   >

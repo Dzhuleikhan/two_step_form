@@ -7,3 +7,4 @@ import "./modules/itiTelInput";
 import "./modules/twoStepForm";
 import "./modules/fetchingDomain";
 import "./modules/params";
+import "./modules/language";

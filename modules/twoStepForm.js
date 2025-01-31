@@ -78,8 +78,12 @@ twoStepBonusCheckbox.forEach((checkbox) => {
   input.addEventListener("change", () => {
     const bonusValue = input.value;
     const bonusImg = input.getAttribute("data-img");
-    const bonusName = input.getAttribute("data-name");
-    const bonusText = input.getAttribute("data-text");
+    const bonusName = checkbox.querySelector(
+      ".two-step-bonus-checkbox-name",
+    ).innerHTML;
+    const bonusText = checkbox.querySelector(
+      ".two-step-bonus-checkbox-text",
+    ).innerHTML;
 
     twoStepFormData.bonus = bonusValue;
 
@@ -94,8 +98,8 @@ twoStepBonusCheckbox.forEach((checkbox) => {
       const text = appliedBonus.querySelector(".applied-bonus-text");
 
       img.setAttribute("src", bonusImg);
-      name.textContent = bonusName;
-      text.textContent = bonusText;
+      name.innerHTML = bonusName;
+      text.innerHTML = bonusText;
     });
   });
 });
