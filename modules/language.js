@@ -14,4 +14,4 @@ function applyTranslations(lang) {
   });
 }
 
-applyTranslations("pt");
+applyTranslations(detectedLanguage);
