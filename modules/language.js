@@ -1,4 +1,3 @@
-import { geoData } from "./geoLocation";
 import { translations } from "../public/translations";
 
 const detectedLanguage = localStorage.getItem("preferredLanguage");
@@ -15,4 +14,4 @@ function applyTranslations(lang) {
   });
 }
 
-applyTranslations(detectedLanguage);
+applyTranslations("pt");

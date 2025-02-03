@@ -1,6 +1,7 @@
 export const translations = {
   en: {
     pageTabTitle: "Sign Up for a Goldbet Casino Account",
+    backBtn: "Back",
     // | Step 1
     step1Title: "Choose Your Bonus",
     welcomeBonus: "Welcome Bonus",
@@ -42,6 +43,7 @@ export const translations = {
   },
   fr: {
     pageTabTitle: "Inscrivez-vous pour un compte de casino Goldbet",
+    backBtn: "Retour",
     // | Step 1
     step1Title: "Choisissez votre bonus",
     welcomeBonus: "Bonus de bienvenue",
@@ -83,6 +85,8 @@ export const translations = {
   },
   pl: {
     pageTabTitle: "Zarejestruj konto w Goldbet Casino",
+    backBtn: "Wstecz",
+    // | Step 1
     step1Title: "Wybierz swój bonus",
     welcomeBonus: "Bonus powitalny",
     welcomeBonusText: "od pierwszej wpłaty",
@@ -96,9 +100,11 @@ export const translations = {
     promoCodePlaceHolder: "Kod promocyjny",
     promoCodeApplyBtn: "Zastosuj",
     continueBtn: "Kontynuuj",
+    // | Step 2
     step2Title: "Podaj swój e-mail",
     emailPlaceholder: "Wpisz e-mail",
     passwordPlaceholder: "Wpisz hasło",
+    // | Step 3
     step3Title: "Jak masz na imię?",
     namePlaceholder: "Wpisz imię",
     lastNamePlaceholder: "Wpisz nazwisko",
@@ -108,6 +114,7 @@ export const translations = {
     male: "Mężczyzna",
     female: "Kobieta",
     finalStepBtn: "Ostatni krok",
+    // | Step 4
     step4Title: "Wybierz walutę",
     countryPlaceholder: "Wybierz kraj",
     currencyPlaceholder: "Wybierz walutę",
@@ -120,6 +127,8 @@ export const translations = {
   },
   hu: {
     pageTabTitle: "Regisztrálj Goldbet Casino fiókot",
+    backBtn: "Vissza",
+    // | Step 1
     step1Title: "Válaszd ki a bónuszod",
     welcomeBonus: "Üdvözlő bónusz",
     welcomeBonusText: "az első befizetésre",
@@ -133,9 +142,11 @@ export const translations = {
     promoCodePlaceHolder: "Promóciós kód",
     promoCodeApplyBtn: "Alkalmaz",
     continueBtn: "Folytatás",
+    // | Step 2
     step2Title: "Add meg az e-mail címed",
     emailPlaceholder: "Írd be az e-mail címed",
     passwordPlaceholder: "Írd be a jelszavad",
+    // | Step 3
     step3Title: "Mi a neved?",
     namePlaceholder: "Írd be a neved",
     lastNamePlaceholder: "Írd be a vezetékneved",
@@ -145,6 +156,7 @@ export const translations = {
     male: "Férfi",
     female: "Nő",
     finalStepBtn: "Utolsó lépés",
+    // | Step 4
     step4Title: "Válassz pénznemet",
     countryPlaceholder: "Válassz országot",
     currencyPlaceholder: "Válassz pénznemet",
@@ -157,6 +169,8 @@ export const translations = {
   },
   ro: {
     pageTabTitle: "Înregistrează un cont Goldbet Casino",
+    backBtn: "Înapoi",
+    // | Step 1
     step1Title: "Alegeți bonusul",
     welcomeBonus: "Bonus de bun venit",
     welcomeBonusText: "la prima depunere",
@@ -170,9 +184,11 @@ export const translations = {
     promoCodePlaceHolder: "Cod promoțional",
     promoCodeApplyBtn: "Aplică",
     continueBtn: "Continuă",
+    // | Step 2
     step2Title: "Introduceți adresa de e-mail",
     emailPlaceholder: "Introduceți e-mailul",
     passwordPlaceholder: "Introduceți parola",
+    // | Step 3
     step3Title: "Care este numele dvs.?",
     namePlaceholder: "Introduceți prenumele",
     lastNamePlaceholder: "Introduceți numele de familie",
@@ -182,6 +198,7 @@ export const translations = {
     male: "Masculin",
     female: "Feminin",
     finalStepBtn: "Ultimul pas",
+    // | Step 4
     step4Title: "Selectați moneda",
     countryPlaceholder: "Selectați țara",
     currencyPlaceholder: "Alegeți moneda",
@@ -194,6 +211,8 @@ export const translations = {
   },
   sl: {
     pageTabTitle: "Registrirajte račun Goldbet Casino",
+    backBtn: "Nazaj",
+    // | Step 1
     step1Title: "Izberite svoj bonus",
     welcomeBonus: "Bonus dobrodošlice",
     welcomeBonusText: "na vaš prvi depozit",
@@ -207,9 +226,11 @@ export const translations = {
     promoCodePlaceHolder: "Promocijska koda",
     promoCodeApplyBtn: "Uporabi",
     continueBtn: "Nadaljuj",
+    // | Step 2
     step2Title: "Vnesite svoj e-poštni naslov",
     emailPlaceholder: "Vnesite e-pošto",
     passwordPlaceholder: "Vnesite geslo",
+    // | Step 3
     step3Title: "Kako vam je ime?",
     namePlaceholder: "Vnesite ime",
     lastNamePlaceholder: "Vnesite priimek",
@@ -219,6 +240,7 @@ export const translations = {
     male: "Moški",
     female: "Ženska",
     finalStepBtn: "Zadnji korak",
+    // | Step 4
     step4Title: "Izberite valuto",
     countryPlaceholder: "Izberite državo",
     currencyPlaceholder: "Izberite valuto",
@@ -231,6 +253,8 @@ export const translations = {
   },
   cs: {
     pageTabTitle: "Zaregistrujte si účet v Goldbet Casinu",
+    backBtn: "Zpět",
+    // | Step 1
     step1Title: "Vyberte si svůj bonus",
     welcomeBonus: "Uvítací bonus",
     welcomeBonusText: "na váš první vklad",
@@ -244,6 +268,7 @@ export const translations = {
     promoCodePlaceHolder: "Promo kód",
     promoCodeApplyBtn: "Použít",
     continueBtn: "Pokračovat",
+    // | Step 2
     step2Title: "Zadejte svůj e-mail",
     emailPlaceholder: "Zadejte e-mail",
     passwordPlaceholder: "Zadejte heslo",
@@ -268,6 +293,7 @@ export const translations = {
   },
   ru: {
     pageTabTitle: "Зарегистрируйтесь в казино Goldbet",
+    backBtn: "Назад",
     // | Шаг 1
     step1Title: "Выберите бонус",
     welcomeBonus: "Приветственный бонус",
@@ -309,6 +335,7 @@ export const translations = {
   },
   pt: {
     pageTabTitle: "Cadastre-se na Goldbet Casino",
+    backBtn: "Voltar",
     // | Etapa 1
     step1Title: "Escolha seu bônus",
     welcomeBonus: "Bônus de Boas-Vindas",
@@ -350,6 +377,7 @@ export const translations = {
   },
   de: {
     pageTabTitle: "Registrieren Sie sich bei Goldbet Casino",
+    backBtn: "Zurück",
     // | Schritt 1
     step1Title: "Wählen Sie Ihren Bonus",
     welcomeBonus: "Willkommensbonus",
