@@ -51,7 +51,7 @@ export const translations = {
     cryptoBonus: "Satoshi Bonus",
     cryptoBonusText: "150% sur les dépôts cryptographiques",
     highRollerBonus: "High Roller Bonus",
-    highRollerBonusText: "250% sur les dépôts supérieurs à 500$",
+    highRollerBonusText: "250% sur les dépôts de plus de 500$",
     withoutBonus: "Sans bonus",
     withoutBonusText: "Vous n'obtiendrez aucun bonus",
     iHavePromoCode: "J'ai un code promo",
@@ -60,51 +60,51 @@ export const translations = {
     continueBtn: "Continuer",
     // | Step 2
     step2Title: "Entrez votre e-mail",
-    emailPlaceholder: "Entrez E-mail",
-    passwordPlaceholder: "Entrez de passe",
+    emailPlaceholder: "Entrez un e-mail",
+    passwordPlaceholder: "Entrez votre mot de passe",
     // | Step 3
-    step3Title: "Quel est ton nom?",
-    namePlaceholder: "Entrez le nom",
-    lastNamePlaceholder: "Entrez le nom de famille",
-    birthdayPlaceholder: "Sélectionnez la date d'anniversaire",
-    age18Alert: "L'âge doit être de 18+",
+    step3Title: "Quel est votre nom?",
+    namePlaceholder: "Entrez votre prénom",
+    lastNamePlaceholder: "Entrez votre nom de famille",
+    birthdayPlaceholder: "Sélectionnez votre date de naissance",
+    age18Alert: "L'âge doit être de 18 ans ou plus",
     invalidDate: "Date invalide",
-    male: "Mâle",
-    female: "Femelle",
+    male: "Homme",
+    female: "Femme",
     finalStepBtn: "Dernière étape",
     // | Step 4
     step4Title: "Sélectionnez la devise",
     countryPlaceholder: "Sélectionnez un pays",
     currencyPlaceholder: "Choisissez la devise",
     phoneNumberPlaceholder: "Numéro de téléphone",
-    addressPlaceholder: "Entrez l'adresse",
-    cityPlaceholder: "Entrez la ville",
-    statePlaceholder: "Choisir une province",
+    addressPlaceholder: "Entrez votre adresse",
+    cityPlaceholder: "Entrez votre ville",
+    statePlaceholder: "Sélectionnez une région",
     zipCodePlaceholder: "Entrez le code postal",
     createAccountBtn: "Créer un compte",
   },
   pl: {
     pageTabTitle: "Zarejestruj konto w Goldbet Casino",
     backBtn: "Wstecz",
-    // | Step 1
+    // | Krok 1
     step1Title: "Wybierz swój bonus",
     welcomeBonus: "Bonus powitalny",
-    welcomeBonusText: "od pierwszej wpłaty",
+    welcomeBonusText: "przy pierwszym depozycie",
     cryptoBonus: "Bonus Satoshi",
     cryptoBonusText: "150% na depozyty kryptowalutowe",
     highRollerBonus: "Bonus High Roller",
     highRollerBonusText: "250% na depozyty powyżej 500$",
     withoutBonus: "Bez bonusa",
-    withoutBonusText: "Nie otrzymasz żadnego bonusa",
+    withoutBonusText: "Nie otrzymasz bonusa",
     iHavePromoCode: "Mam kod promocyjny",
     promoCodePlaceHolder: "Kod promocyjny",
     promoCodeApplyBtn: "Zastosuj",
     continueBtn: "Kontynuuj",
-    // | Step 2
+    // | Krok 2
     step2Title: "Podaj swój e-mail",
     emailPlaceholder: "Wpisz e-mail",
     passwordPlaceholder: "Wpisz hasło",
-    // | Step 3
+    // | Krok 3
     step3Title: "Jak masz na imię?",
     namePlaceholder: "Wpisz imię",
     lastNamePlaceholder: "Wpisz nazwisko",
@@ -114,7 +114,7 @@ export const translations = {
     male: "Mężczyzna",
     female: "Kobieta",
     finalStepBtn: "Ostatni krok",
-    // | Step 4
+    // | Krok 4
     step4Title: "Wybierz walutę",
     countryPlaceholder: "Wybierz kraj",
     currencyPlaceholder: "Wybierz walutę",
@@ -128,7 +128,7 @@ export const translations = {
   hu: {
     pageTabTitle: "Regisztrálj Goldbet Casino fiókot",
     backBtn: "Vissza",
-    // | Step 1
+    // | 1. lépés
     step1Title: "Válaszd ki a bónuszod",
     welcomeBonus: "Üdvözlő bónusz",
     welcomeBonusText: "az első befizetésre",
@@ -142,26 +142,26 @@ export const translations = {
     promoCodePlaceHolder: "Promóciós kód",
     promoCodeApplyBtn: "Alkalmaz",
     continueBtn: "Folytatás",
-    // | Step 2
-    step2Title: "Add meg az e-mail címed",
+    // | 2. Lépés
+    step2Title: "Adja meg az e-mail címed",
     emailPlaceholder: "Írd be az e-mail címed",
     passwordPlaceholder: "Írd be a jelszavad",
-    // | Step 3
+    // | 3. Lépés
     step3Title: "Mi a neved?",
     namePlaceholder: "Írd be a neved",
     lastNamePlaceholder: "Írd be a vezetékneved",
-    birthdayPlaceholder: "Válaszd ki a születési dátumod",
+    birthdayPlaceholder: "Válassza ki a születési dátumod",
     age18Alert: "Az életkornak legalább 18-nak kell lennie",
-    invalidDate: "Érvénytelen dátum",
+    invalidDate: "Helytelen dátum",
     male: "Férfi",
     female: "Nő",
     finalStepBtn: "Utolsó lépés",
-    // | Step 4
+    // | 4. Lépés
     step4Title: "Válassz pénznemet",
     countryPlaceholder: "Válassz országot",
     currencyPlaceholder: "Válassz pénznemet",
     phoneNumberPlaceholder: "Telefonszám",
-    addressPlaceholder: "Írd be a címed",
+    addressPlaceholder: "Írd be a címet",
     cityPlaceholder: "Írd be a várost",
     statePlaceholder: "Válassz megyét",
     zipCodePlaceholder: "Írd be az irányítószámot",
@@ -212,25 +212,25 @@ export const translations = {
   sl: {
     pageTabTitle: "Registrirajte račun Goldbet Casino",
     backBtn: "Nazaj",
-    // | Step 1
+    // | Korak 1
     step1Title: "Izberite svoj bonus",
     welcomeBonus: "Bonus dobrodošlice",
-    welcomeBonusText: "na vaš prvi depozit",
+    welcomeBonusText: "na Vaš prvi depozit",
     cryptoBonus: "Satoshi bonus",
     cryptoBonusText: "150% za kripto depozite",
-    highRollerBonus: "High Roller bonus",
+    highRollerBonus: " Bonus za High Rollerov",
     highRollerBonusText: "250% za depozite nad 500$",
     withoutBonus: "Brez bonusa",
     withoutBonusText: "Ne boste prejeli nobenega bonusa",
     iHavePromoCode: "Imam promocijsko kodo",
     promoCodePlaceHolder: "Promocijska koda",
-    promoCodeApplyBtn: "Uporabi",
+    promoCodeApplyBtn: "Uporabiti",
     continueBtn: "Nadaljuj",
-    // | Step 2
+    // | Korak 2
     step2Title: "Vnesite svoj e-poštni naslov",
     emailPlaceholder: "Vnesite e-pošto",
     passwordPlaceholder: "Vnesite geslo",
-    // | Step 3
+    // | Korak 3
     step3Title: "Kako vam je ime?",
     namePlaceholder: "Vnesite ime",
     lastNamePlaceholder: "Vnesite priimek",
@@ -240,7 +240,7 @@ export const translations = {
     male: "Moški",
     female: "Ženska",
     finalStepBtn: "Zadnji korak",
-    // | Step 4
+    // | Korak 4
     step4Title: "Izberite valuto",
     countryPlaceholder: "Izberite državo",
     currencyPlaceholder: "Izberite valuto",
@@ -249,7 +249,7 @@ export const translations = {
     cityPlaceholder: "Vnesite mesto",
     statePlaceholder: "Izberite pokrajino",
     zipCodePlaceholder: "Vnesite poštno številko",
-    createAccountBtn: "Ustvari račun",
+    createAccountBtn: "Ustvariti račun",
   },
   cs: {
     pageTabTitle: "Zaregistrujte si účet v Goldbet Casinu",
@@ -272,6 +272,7 @@ export const translations = {
     step2Title: "Zadejte svůj e-mail",
     emailPlaceholder: "Zadejte e-mail",
     passwordPlaceholder: "Zadejte heslo",
+    // | Step 3
     step3Title: "Jak se jmenujete?",
     namePlaceholder: "Zadejte jméno",
     lastNamePlaceholder: "Zadejte příjmení",
@@ -281,6 +282,7 @@ export const translations = {
     male: "Muž",
     female: "Žena",
     finalStepBtn: "Poslední krok",
+    // | Step 4
     step4Title: "Vyberte měnu",
     countryPlaceholder: "Vyberte zemi",
     currencyPlaceholder: "Vyberte měnu",
@@ -334,12 +336,12 @@ export const translations = {
     createAccountBtn: "Создать аккаунт",
   },
   pt: {
-    pageTabTitle: "Cadastre-se na Goldbet Casino",
+    pageTabTitle: "Registar no Goldbet Casino",
     backBtn: "Voltar",
     // | Etapa 1
     step1Title: "Escolha seu bônus",
     welcomeBonus: "Bônus de Boas-Vindas",
-    welcomeBonusText: "no seu primeiro depósito",
+    welcomeBonusText: "no primeiro depósito",
     cryptoBonus: "Bônus Satoshi",
     cryptoBonusText: "150% em depósitos em criptomoeda",
     highRollerBonus: "Bônus High Roller",
@@ -353,7 +355,7 @@ export const translations = {
     // | Etapa 2
     step2Title: "Digite seu e-mail",
     emailPlaceholder: "Digite seu e-mail",
-    passwordPlaceholder: "Digite sua senha",
+    passwordPlaceholder: "Digite sua palavra-passe",
     // | Etapa 3
     step3Title: "Qual é o seu nome?",
     namePlaceholder: "Digite seu nome",
@@ -367,11 +369,11 @@ export const translations = {
     // | Etapa 4
     step4Title: "Selecione a moeda",
     countryPlaceholder: "Selecione o país",
-    currencyPlaceholder: "Escolha a moeda",
+    currencyPlaceholder: "Selecione a moeda",
     phoneNumberPlaceholder: "Número de telefone",
     addressPlaceholder: "Digite o endereço",
     cityPlaceholder: "Digite a cidade",
-    statePlaceholder: "Escolha o estado",
+    statePlaceholder: "Selecione estado",
     zipCodePlaceholder: "Digite o CEP",
     createAccountBtn: "Criar Conta",
   },
@@ -388,7 +390,7 @@ export const translations = {
     highRollerBonusText: "250% auf Einzahlungen über 500 $",
     withoutBonus: "Ohne Bonus",
     withoutBonusText: "Sie erhalten keinen Bonus",
-    iHavePromoCode: "Ich habe einen Promo-Code",
+    iHavePromoCode: "Ich habe einen Promocode",
     promoCodePlaceHolder: "Promo-Code",
     promoCodeApplyBtn: "Anwenden",
     continueBtn: "Weiter",
@@ -398,7 +400,7 @@ export const translations = {
     passwordPlaceholder: "Passwort eingeben",
     // | Schritt 3
     step3Title: "Wie heißen Sie?",
-    namePlaceholder: "Name eingeben",
+    namePlaceholder: "Vornamen eingeben",
     lastNamePlaceholder: "Nachnamen eingeben",
     birthdayPlaceholder: "Geburtsdatum auswählen",
     age18Alert: "Das Alter muss 18+ sein",
