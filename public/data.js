@@ -308,6 +308,7 @@ export const countryCurrencyData = [
       "BA",
       "MD",
       "MK",
+      "SE",
     ],
     countryCurrency: "EUR",
     countryCurrencySymbol: "€",

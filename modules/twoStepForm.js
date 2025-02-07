@@ -132,8 +132,6 @@ export const settingInitialBonusValue = (currency) => {
   }
 };
 
-settingInitialBonusValue(twoStepFormData.currency);
-
 // | INPUTS
 const twoStepGeneralInput = document.querySelectorAll(
   ".two-step-general-input",

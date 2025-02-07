@@ -83,6 +83,7 @@ async function settingModalCurrency() {
 
     twoStepFormData.currency = currencyData.abbr;
     twoStepFormData.bonus = checkTir1CurrencyMatch(twoStepFormData.currency);
+    settingInitialBonusValue(twoStepFormData.currency);
   } catch (error) {
     console.error("Error fetching location data:", error);
   }
