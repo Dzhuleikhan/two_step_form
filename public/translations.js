@@ -374,7 +374,7 @@ export const translations = {
     addressPlaceholder: "Digite o endereço",
     cityPlaceholder: "Digite a cidade",
     statePlaceholder: "Selecione estado",
-    zipCodePlaceholder: "Digite o CEP",
+    zipCodePlaceholder: "Código Postal",
     createAccountBtn: "Criar Conta",
   },
   de: {
