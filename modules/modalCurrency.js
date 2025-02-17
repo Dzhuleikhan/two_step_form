@@ -34,6 +34,15 @@ function getCountryCurrencyIcon(inputCountry) {
   return "./img/currencies/usd.svg"; // or some default value if country is not found
 }
 
+function getCountryCurrencySymbol(inputCountry) {
+  for (const data of countryCurrencyData) {
+    if (data.countries.includes(inputCountry)) {
+      return data.countryCurrencySymbol;
+    }
+  }
+  return "$"; // or some default value if country is not found
+}
+
 function setCurrency(abbr, name, icon) {
   const formCurrency = document.querySelectorAll(".form-currency");
   formCurrency.forEach((cur) => {
@@ -69,11 +78,13 @@ async function settingModalCurrency() {
     const currencyAbbr = getCountryCurrencyABBR(countryInput);
     const currencyFullName = getCountryCurrencyFullName(countryInput);
     const currencyIcon = getCountryCurrencyIcon(countryInput);
+    const currencySymbol = getCountryCurrencySymbol(countryInput);
 
     const currencyData = {
       abbr: currencyAbbr,
       name: currencyFullName,
       icon: currencyIcon,
+      symbol: currencySymbol,
     };
 
     // Save to local storage
@@ -84,6 +95,11 @@ async function settingModalCurrency() {
     twoStepFormData.currency = currencyData.abbr;
     twoStepFormData.bonus = checkTir1CurrencyMatch(twoStepFormData.currency);
     settingInitialBonusValue(twoStepFormData.currency);
+    setTimeout(() => {
+      document.querySelectorAll(".bonus-currency-symbol").forEach((el) => {
+        el.innerHTML = currencyData.symbol;
+      });
+    }, 300);
   } catch (error) {
     console.error("Error fetching location data:", error);
   }
