@@ -373,3 +373,12 @@ body {
 .air-datepicker-global-container {
   z-index: 500;
 }
+
+.two-step-general-label::before {
+  content: '*';
+  color: #ff0000;
+  font-size: 12px;
+  position: absolute;
+  right: -10px;
+  top: -3px;
+}
