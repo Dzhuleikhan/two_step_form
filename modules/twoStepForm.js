@@ -166,64 +166,6 @@ promocodeWrapperTl
   .to(twoStepPromocodeWrapper, { x: 14, duration: 0.03 })
   .to(twoStepPromocodeWrapper, { x: 0, duration: 0.03 });
 
-// if (twoStepPromocodeWrapper) {
-//   const input = twoStepPromocodeWrapper.querySelector(
-//     ".two-step-promocode-input",
-//   );
-//   const promocodeApplyBtn = twoStepPromocodeWrapper.querySelector(
-//     ".two-step-promocode-apply-btn",
-//   );
-
-//   let promoIsValid;
-
-//   input.addEventListener("input", async () => {
-//     const promoCode = input.value;
-
-//     try {
-//       const response = await fetch(
-//         "https://promocodesapi.onrender.com/check-promo",
-//         {
-//           method: "POST",
-//           headers: {
-//             "Content-Type": "application/json",
-//           },
-//           body: JSON.stringify({ code: promoCode }),
-//         },
-//       );
-
-//       const result = await response.json();
-
-//       promoIsValid = result.valid;
-
-//       if (twoStepPromocodeWrapper.classList.contains("is-valid")) {
-//         twoStepFormData.promocode = "";
-//         console.log("Промокод неверный");
-//         twoStepPromocodeWrapper.classList.remove("is-valid");
-//         twoStepPromocodeWrapper.classList.add("is-not-valid");
-//       }
-//     } catch (error) {
-//       console.error("Ошибка при проверке промокода:", error);
-//     }
-//   });
-
-//   promocodeApplyBtn.addEventListener("click", () => {
-//     console.log(promoIsValid);
-
-//     if (promoIsValid) {
-//       twoStepFormData.promocode = input.value.toUpperCase();
-//       console.log("Промокод верный");
-//       twoStepPromocodeWrapper.classList.add("is-valid");
-//       twoStepPromocodeWrapper.classList.remove("is-not-valid");
-//     } else {
-//       twoStepFormData.promocode = "";
-//       console.log("Промокод неверный");
-//       twoStepPromocodeWrapper.classList.remove("is-valid");
-//       twoStepPromocodeWrapper.classList.add("is-not-valid");
-//       promocodeWrapperTl.restart();
-//     }
-//   });
-// }
-
 if (twoStepPromocodeWrapper) {
   const input = twoStepPromocodeWrapper.querySelector(
     ".two-step-promocode-input",
