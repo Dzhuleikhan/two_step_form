@@ -220,19 +220,20 @@ if (twoStepPromocodeWrapper) {
 
   promocodeApplyBtn.addEventListener("click", () => {
     console.log("Промокод состояние:", promoIsValid);
-
-    if (promoIsValid) {
-      twoStepFormData.promocode = input.value.toUpperCase();
-      console.log("Промокод верный");
-      twoStepPromocodeWrapper.classList.add("is-valid");
-      twoStepPromocodeWrapper.classList.remove("is-not-valid");
-    } else {
-      twoStepFormData.promocode = "";
-      console.log("Промокод неверный");
-      twoStepPromocodeWrapper.classList.remove("is-valid");
-      twoStepPromocodeWrapper.classList.add("is-not-valid");
-      promocodeWrapperTl.restart();
-    }
+    setTimeout(() => {
+      if (promoIsValid) {
+        twoStepFormData.promocode = input.value.toUpperCase();
+        console.log("Промокод верный");
+        twoStepPromocodeWrapper.classList.add("is-valid");
+        twoStepPromocodeWrapper.classList.remove("is-not-valid");
+      } else {
+        twoStepFormData.promocode = "";
+        console.log("Промокод неверный");
+        twoStepPromocodeWrapper.classList.remove("is-valid");
+        twoStepPromocodeWrapper.classList.add("is-not-valid");
+        promocodeWrapperTl.restart();
+      }
+    }, 400);
   });
 }
 
