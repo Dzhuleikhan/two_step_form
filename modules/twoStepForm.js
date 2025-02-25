@@ -7,31 +7,6 @@ import gsap from "gsap";
 import { canadaProvincesCities } from "../public/data";
 import flatpickr from "flatpickr";
 
-// document.getElementById("calendar").addEventListener("input", function (e) {
-//   let value = e.target.value.replace(/\D/g, "");
-//   let formattedValue = "";
-
-//   if (value.length > 2) {
-//     formattedValue += value.substring(0, 2) + ".";
-//   } else {
-//     formattedValue += value;
-//   }
-//   if (value.length > 4) {
-//     formattedValue += value.substring(2, 4) + ".";
-//   } else if (value.length > 2) {
-//     formattedValue += value.substring(2);
-//   }
-//   if (value.length > 4) {
-//     formattedValue += value.substring(4, 8);
-//   }
-//   if (value.length === 8) {
-//     calendar.setDate(formattedValue);
-//     calendar.close();
-//   }
-
-//   e.target.value = formattedValue;
-// });
-
 // ? SOCIALS TWO STEP FORM
 
 export let twoStepFormData = {
@@ -203,6 +178,7 @@ if (twoStepPromocodeWrapper) {
 
   input.addEventListener("input", async () => {
     const promoCode = input.value;
+
     try {
       const response = await fetch(
         "https://promocodesapi.onrender.com/check-promo",
@@ -232,18 +208,20 @@ if (twoStepPromocodeWrapper) {
 
   promocodeApplyBtn.addEventListener("click", () => {
     console.log(promoIsValid);
-    if (promoIsValid) {
-      twoStepFormData.promocode = input.value.toUpperCase();
-      console.log("Промокод верный");
-      twoStepPromocodeWrapper.classList.add("is-valid");
-      twoStepPromocodeWrapper.classList.remove("is-not-valid");
-    } else {
-      twoStepFormData.promocode = "";
-      console.log("Промокод неверный");
-      twoStepPromocodeWrapper.classList.remove("is-valid");
-      twoStepPromocodeWrapper.classList.add("is-not-valid");
-      promocodeWrapperTl.restart();
-    }
+    setTimeout(() => {
+      if (promoIsValid) {
+        twoStepFormData.promocode = input.value.toUpperCase();
+        console.log("Промокод верный");
+        twoStepPromocodeWrapper.classList.add("is-valid");
+        twoStepPromocodeWrapper.classList.remove("is-not-valid");
+      } else {
+        twoStepFormData.promocode = "";
+        console.log("Промокод неверный");
+        twoStepPromocodeWrapper.classList.remove("is-valid");
+        twoStepPromocodeWrapper.classList.add("is-not-valid");
+        promocodeWrapperTl.restart();
+      }
+    }, 500);
   });
 }
 
