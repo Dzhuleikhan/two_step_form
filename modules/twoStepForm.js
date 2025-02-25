@@ -211,6 +211,12 @@ if (twoStepPromocodeWrapper) {
       if (fetchId !== lastFetchId) return; // Ignore outdated responses
 
       promoIsValid = result.valid;
+
+      if (!promoIsValid) {
+        console.log("not valid");
+        twoStepPromocodeWrapper.classList.remove("is-valid");
+        twoStepPromocodeWrapper.classList.add("is-not-valid");
+      }
     } catch (error) {
       console.error("Ошибка при проверке промокода:", error);
     }
