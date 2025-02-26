@@ -220,21 +220,28 @@ if (twoStepPromocodeWrapper) {
       const result = await response.json();
 
       let promoIsValid = result.valid;
+      let promoType = result.type;
 
-      console.log(promoIsValid);
+      setTimeout(() => {
+        if (promoType === "freespins") {
+          console.log("promocode for freespins");
+        } else if (promoType === "nodep") {
+          console.log("promocode for nodep");
+        }
 
-      if (promoIsValid) {
-        twoStepFormData.promocode = input.value.toUpperCase();
-        console.log("Промокод верный");
-        twoStepPromocodeWrapper.classList.add("is-valid");
-        twoStepPromocodeWrapper.classList.remove("is-not-valid");
-      } else {
-        twoStepFormData.promocode = "";
-        console.log("Промокод неверный");
-        twoStepPromocodeWrapper.classList.remove("is-valid");
-        twoStepPromocodeWrapper.classList.add("is-not-valid");
-        promocodeWrapperTl.restart();
-      }
+        if (promoIsValid) {
+          twoStepFormData.promocode = input.value.toUpperCase();
+          console.log("Промокод верный");
+          twoStepPromocodeWrapper.classList.add("is-valid");
+          twoStepPromocodeWrapper.classList.remove("is-not-valid");
+        } else {
+          twoStepFormData.promocode = "";
+          console.log("Промокод неверный");
+          twoStepPromocodeWrapper.classList.remove("is-valid");
+          twoStepPromocodeWrapper.classList.add("is-not-valid");
+          promocodeWrapperTl.restart();
+        }
+      }, 400);
     } catch (error) {
       console.error("Ошибка при проверке промокода:", error);
     }
