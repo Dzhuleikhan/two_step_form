@@ -99,6 +99,20 @@ async function settingModalCurrency() {
       document.querySelectorAll(".bonus-currency-symbol").forEach((el) => {
         el.innerHTML = currencyData.symbol;
       });
+
+      const currencyEntry = countryCurrencyData.find(
+        (entry) => entry.countryCurrency === currencyData.abbr,
+      );
+
+      if (currencyEntry) {
+        document.querySelectorAll(".bonus-currency-amount").forEach((el) => {
+          el.innerHTML = currencyEntry.amount;
+        });
+      } else {
+        document.querySelectorAll(".bonus-currency-amount").forEach((el) => {
+          el.innerHTML = "500";
+        });
+      }
     }, 300);
   } catch (error) {
     console.error("Error fetching location data:", error);
