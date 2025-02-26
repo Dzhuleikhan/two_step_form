@@ -174,10 +174,8 @@ if (twoStepPromocodeWrapper) {
     ".two-step-promocode-apply-btn",
   );
 
-  let promoIsValid;
-
   input.addEventListener("input", async () => {
-    const promoCode = input.value;
+    let promoCode = input.value;
     try {
       const response = await fetch(
         "https://promocodesapi.onrender.com/check-promo",
@@ -192,7 +190,7 @@ if (twoStepPromocodeWrapper) {
 
       const result = await response.json();
 
-      promoIsValid = result.valid;
+      let promoIsValid = result.valid;
 
       if (twoStepPromocodeWrapper.classList.contains("is-valid")) {
         twoStepFormData.promocode = "";
@@ -205,19 +203,40 @@ if (twoStepPromocodeWrapper) {
     }
   });
 
-  promocodeApplyBtn.addEventListener("click", () => {
-    console.log(promoIsValid);
-    if (promoIsValid) {
-      twoStepFormData.promocode = input.value.toUpperCase();
-      console.log("Промокод верный");
-      twoStepPromocodeWrapper.classList.add("is-valid");
-      twoStepPromocodeWrapper.classList.remove("is-not-valid");
-    } else {
-      twoStepFormData.promocode = "";
-      console.log("Промокод неверный");
-      twoStepPromocodeWrapper.classList.remove("is-valid");
-      twoStepPromocodeWrapper.classList.add("is-not-valid");
-      promocodeWrapperTl.restart();
+  promocodeApplyBtn.addEventListener("click", async () => {
+    let promoCode = input.value;
+    try {
+      const response = await fetch(
+        "https://promocodesapi.onrender.com/check-promo",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ code: promoCode }),
+        },
+      );
+
+      const result = await response.json();
+
+      let promoIsValid = result.valid;
+
+      console.log(promoIsValid);
+
+      if (promoIsValid) {
+        twoStepFormData.promocode = input.value.toUpperCase();
+        console.log("Промокод верный");
+        twoStepPromocodeWrapper.classList.add("is-valid");
+        twoStepPromocodeWrapper.classList.remove("is-not-valid");
+      } else {
+        twoStepFormData.promocode = "";
+        console.log("Промокод неверный");
+        twoStepPromocodeWrapper.classList.remove("is-valid");
+        twoStepPromocodeWrapper.classList.add("is-not-valid");
+        promocodeWrapperTl.restart();
+      }
+    } catch (error) {
+      console.error("Ошибка при проверке промокода:", error);
     }
   });
 }
