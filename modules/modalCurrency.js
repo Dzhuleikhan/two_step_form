@@ -105,12 +105,12 @@ async function settingModalCurrency() {
       );
 
       if (currencyEntry) {
-        document.querySelectorAll(".bonus-currency-amount").forEach((el) => {
-          el.innerHTML = currencyEntry.amount;
+        document.querySelectorAll(".bonus-highroller-amount").forEach((el) => {
+          el.innerHTML = currencyEntry.highrollerAmount;
         });
       } else {
-        document.querySelectorAll(".bonus-currency-amount").forEach((el) => {
-          el.innerHTML = "500";
+        document.querySelectorAll(".bonus-highroller-amount").forEach((el) => {
+          el.innerHTML = "200";
         });
       }
     }, 300);
