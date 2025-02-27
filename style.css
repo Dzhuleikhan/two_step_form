@@ -382,3 +382,33 @@ body {
   right: -10px;
   top: -3px;
 }
+
+/* Promocode badge */
+
+.promocode-applied-badge {
+  display: none;
+}
+
+.promocode-applied-wrapper.is-applied .promocode-applied-badge {
+  display: block;
+}
+
+.promocode-applied-wrapper.is-applied .applied-bonus-wrapper {
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  border-color: #4ED937;
+}
+
+.promocode-applied-wrapper.is-applied .two-step-promocode-wrapper {
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  border: 2px solid #4ED937;
+}
+
+.promocode-applied-badge-text {
+  display: none;
+}
+
+.promocode-applied-badge-text.is-active {
+  display: block;
+}

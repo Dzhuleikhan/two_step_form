@@ -218,6 +218,15 @@ if (twoStepPromocodeWrapper) {
 
       let promoIsValid = result.valid;
 
+      if (!promoIsValid) {
+        // Badge
+        document
+          .querySelectorAll(".promocode-applied-wrapper")
+          .forEach((wrapper) => {
+            wrapper.classList.remove("is-applied");
+          });
+      }
+
       if (twoStepPromocodeWrapper.classList.contains("is-valid")) {
         twoStepFormData.promocode = "";
         console.log("Промокод неверный");
@@ -260,12 +269,32 @@ if (twoStepPromocodeWrapper) {
           console.log("Промокод верный");
           twoStepPromocodeWrapper.classList.add("is-valid");
           twoStepPromocodeWrapper.classList.remove("is-not-valid");
+          // Badge
+          document
+            .querySelectorAll(".promocode-applied-wrapper")
+            .forEach((wrapper) => {
+              wrapper.classList.add("is-applied");
+              wrapper
+                .querySelectorAll(".promocode-applied-badge-text")
+                .forEach((text) => {
+                  text.classList.remove("is-active");
+                });
+              wrapper
+                .querySelector(`.promocode-applied-badge-${promoType}`)
+                .classList.add("is-active");
+            });
         } else {
           twoStepFormData.promocode = "";
           console.log("Промокод неверный");
           twoStepPromocodeWrapper.classList.remove("is-valid");
           twoStepPromocodeWrapper.classList.add("is-not-valid");
           promocodeWrapperTl.restart();
+          // Badge
+          document
+            .querySelectorAll(".promocode-applied-wrapper")
+            .forEach((wrapper) => {
+              wrapper.classList.remove("is-applied");
+            });
         }
       }, 400);
     } catch (error) {
@@ -891,7 +920,7 @@ const showStep = (step) => {
     headerbackBtn.classList.remove("is-visible");
   }
 };
-// showStep(3);
+// showStep(2);
 
 nextStepBtn.forEach((btn) => {
   if (btn) {

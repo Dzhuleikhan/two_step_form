@@ -15,6 +15,8 @@ export const translations = {
     iHavePromoCode: "I Have a Promo-Code",
     promoCodePlaceHolder: "Promo Code",
     promoCodeApplyBtn: "Apply",
+    youWillGetFreeSpins: "You will get freespins",
+    youWillGetNodepBonus: "You will get without deposit bonus",
     continueBtn: "Continue",
     // | Step 2
     step2Title: "Enter Your Email",
@@ -57,6 +59,8 @@ export const translations = {
     iHavePromoCode: "J'ai un code promo",
     promoCodePlaceHolder: "Code Promo",
     promoCodeApplyBtn: "Appliquer",
+    youWillGetFreeSpins: "Vous recevrez des tours gratuits",
+    youWillGetNodepBonus: "Vous recevrez un bonus sans dépôt",
     continueBtn: "Continuer",
     // | Step 2
     step2Title: "Entrez votre e-mail",
@@ -99,6 +103,8 @@ export const translations = {
     iHavePromoCode: "Mam kod promocyjny",
     promoCodePlaceHolder: "Kod promocyjny",
     promoCodeApplyBtn: "Zastosuj",
+    youWillGetFreeSpins: "Otrzymasz darmowe spiny",
+    youWillGetNodepBonus: "Otrzymasz bonus bez depozytu",
     continueBtn: "Kontynuuj",
     // | Krok 2
     step2Title: "Podaj swój e-mail",
@@ -141,6 +147,8 @@ export const translations = {
     iHavePromoCode: "Van promóciós kódom",
     promoCodePlaceHolder: "Promóciós kód",
     promoCodeApplyBtn: "Alkalmaz",
+    youWillGetFreeSpins: "Ingyenes pörgetéseket kapsz",
+    youWillGetNodepBonus: "Bónuszt kapsz befizetés nélkül",
     continueBtn: "Folytatás",
     // | 2. Lépés
     step2Title: "Adja meg az e-mail címed",
@@ -183,6 +191,8 @@ export const translations = {
     iHavePromoCode: "Am un cod promoțional",
     promoCodePlaceHolder: "Cod promoțional",
     promoCodeApplyBtn: "Aplică",
+    youWillGetFreeSpins: "Vei primi rotiri gratuite",
+    youWillGetNodepBonus: "Vei primi un bonus fără depunere",
     continueBtn: "Continuă",
     // | Step 2
     step2Title: "Introduceți adresa de e-mail",
@@ -225,6 +235,8 @@ export const translations = {
     iHavePromoCode: "Imam promocijsko kodo",
     promoCodePlaceHolder: "Promocijska koda",
     promoCodeApplyBtn: "Uporabiti",
+    youWillGetFreeSpins: "Prejeli boste brezplačne vrtljaje",
+    youWillGetNodepBonus: "Prejeli boste bonus brez pologa",
     continueBtn: "Nadaljuj",
     // | Korak 2
     step2Title: "Vnesite svoj e-poštni naslov",
@@ -267,6 +279,8 @@ export const translations = {
     iHavePromoCode: "Mám promo kód",
     promoCodePlaceHolder: "Promo kód",
     promoCodeApplyBtn: "Použít",
+    youWillGetFreeSpins: "Získáte otočení zdarma",
+    youWillGetNodepBonus: "Získáte bonus bez vkladu",
     continueBtn: "Pokračovat",
     // | Step 2
     step2Title: "Zadejte svůj e-mail",
@@ -309,6 +323,8 @@ export const translations = {
     iHavePromoCode: "У меня есть промокод",
     promoCodePlaceHolder: "Промокод",
     promoCodeApplyBtn: "Применить",
+    youWillGetFreeSpins: "Вы получите фриспины",
+    youWillGetNodepBonus: "Вы получите бонус без депозита",
     continueBtn: "Продолжить",
     // | Шаг 2
     step2Title: "Введите ваш e-mail",
@@ -351,6 +367,8 @@ export const translations = {
     iHavePromoCode: "Tenho um código promocional",
     promoCodePlaceHolder: "Código Promocional",
     promoCodeApplyBtn: "Aplicar",
+    youWillGetFreeSpins: "Você receberá rodadas grátis",
+    youWillGetNodepBonus: "Você receberá um bônus sem depósito",
     continueBtn: "Continuar",
     // | Etapa 2
     step2Title: "Digite seu e-mail",
@@ -393,6 +411,8 @@ export const translations = {
     iHavePromoCode: "Ich habe einen Promocode",
     promoCodePlaceHolder: "Promo-Code",
     promoCodeApplyBtn: "Anwenden",
+    youWillGetFreeSpins: "Sie erhalten Freispiele",
+    youWillGetNodepBonus: "Sie erhalten einen Bonus ohne Einzahlung",
     continueBtn: "Weiter",
     // | Schritt 2
     step2Title: "Geben Sie Ihre E-Mail ein",
