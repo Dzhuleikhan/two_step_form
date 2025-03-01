@@ -412,3 +412,34 @@ body {
 .promocode-applied-badge-text.is-active {
   display: block;
 }
+
+/* | URL PROMOCODE CHECK */
+
+.promocode-applied-wrapper.is-applied-from-url {
+  pointer-events: none;
+}
+
+.promocode-applied-wrapper.is-applied-from-url .two-step-promocode-btn {
+  display: none;
+}
+
+.promocode-applied-wrapper.is-applied-from-url .two-step-promocode-input {
+  color: #4ED937;
+}
+
+.promocode-applied-wrapper.is-applied-from-url .two-step-promocode-label {
+  font-size: 12px;
+  top: 12px;
+}
+
+.promocode-applied-wrapper.is-applied-from-url .two-step-promocode-apply-btn {
+  display: none;
+}
+
+.promocode-applied-wrapper.is-applied-from-url .two-step-promocode-valid-icon {
+  display: block;
+}
+
+.promocode-applied-wrapper.is-applied-from-url .two-step-promocode-wrapper {
+  display: flex;
+}
