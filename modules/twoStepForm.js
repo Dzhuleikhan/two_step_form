@@ -106,32 +106,6 @@ twoStepBonusCheckbox.forEach((checkbox) => {
 });
 
 export const settingInitialBonusValue = (currency) => {
-  // if (exceptCurrencies.includes(currency)) {
-  //   document.querySelector(".two-step-bonus-percent").innerHTML = "100%";
-  //   document.querySelector(".two-step-bonus-spins").innerHTML = "200FS";
-  //   document
-  //     .querySelector(".welcome-bonus-input")
-  //     .setAttribute("data-text", "100% + 200FS on your first deposit");
-  //   document.querySelectorAll(".applied-bonus-percent").forEach((el) => {
-  //     el.innerHTML = "100%";
-  //   });
-  //   document.querySelectorAll(".applied-bonus-spins").forEach((el) => {
-  //     el.innerHTML = "200FS";
-  //   });
-  // } else {
-  //   document.querySelector(".two-step-bonus-percent").innerHTML = "200%";
-  //   document.querySelector(".two-step-bonus-spins").innerHTML = "25FS";
-  //   document
-  //     .querySelector(".welcome-bonus-input")
-  //     .setAttribute("data-text", "200% + 25FS on your first deposit");
-  //   document.querySelectorAll(".applied-bonus-percent").forEach((el) => {
-  //     el.innerHTML = "200%";
-  //   });
-  //   document.querySelectorAll(".applied-bonus-spins").forEach((el) => {
-  //     el.innerHTML = "25FS";
-  //   });
-  // }
-
   const currencyEntry = countryCurrencyData.find(
     (entry) => entry.countryCurrency === currency,
   );
@@ -296,7 +270,7 @@ if (twoStepPromocodeWrapper) {
               wrapper.classList.remove("is-applied");
             });
         }
-      }, 400);
+      }, 150);
     } catch (error) {
       console.error("Ошибка при проверке промокода:", error);
     }
@@ -979,7 +953,7 @@ twoStepFormMain.addEventListener("submit", (e) => {
 
   console.log(twoStepFormData);
 
-  // window.location.href = `https://${newDomain}/api/register?env=prod&type=email&currency=${currency}&email=${encodeURIComponent(email)}&password=${password}&phone=${phone}&bonus=${bonus}${promocode ? "&promocode=" + promocode : ""}&lang=${lang}${firstName ? "&f_name=" + firstName : ""}${lastName ? "&l_name=" + lastName : ""}${birthday ? "&birth=" + birthday : ""}${gender ? "&gender=" + gender : ""}${country ? "&country=" + country : ""}${state ? "&state=" + state : ""}${city ? "&city=" + city : ""}${zipCode ? "&postal=" + zipCode : ""}${address ? "&address=" + encodeURIComponent(address) : ""}${cid ? "&cid=" + cid : ""}`;
+  window.location.href = `https://${newDomain}/api/register?env=prod&type=email&currency=${currency}&email=${encodeURIComponent(email)}&password=${password}&phone=${phone}&bonus=${bonus}${promocode ? "&promocode=" + promocode : ""}&lang=${lang}${firstName ? "&f_name=" + firstName : ""}${lastName ? "&l_name=" + lastName : ""}${birthday ? "&birth=" + birthday : ""}${gender ? "&gender=" + gender : ""}${country ? "&country=" + country : ""}${state ? "&state=" + state : ""}${city ? "&city=" + city : ""}${zipCode ? "&postal=" + zipCode : ""}${address ? "&address=" + encodeURIComponent(address) : ""}${cid ? "&cid=" + cid : ""}`;
   console.log(
     `https://${newDomain}/api/register?env=prod&type=email&currency=${currency}&email=${encodeURIComponent(email)}&password=${password}&phone=${phone}&bonus=${bonus}${promocode ? "&promocode=" + promocode : ""}&lang=${lang}${firstName ? "&f_name=" + firstName : ""}${lastName ? "&l_name=" + lastName : ""}${birthday ? "&birth=" + birthday : ""}${gender ? "&gender=" + gender : ""}${country ? "&country=" + country : ""}${state ? "&state=" + state : ""}${city ? "&city=" + city : ""}${zipCode ? "&postal=" + zipCode : ""}${address ? "&address=" + encodeURIComponent(address) : ""}${cid ? "&cid=" + cid : ""}`,
   );
