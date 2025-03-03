@@ -174,6 +174,8 @@ if (twoStepPromocodeWrapper) {
     ".two-step-promocode-apply-btn",
   );
 
+  /*
+
   input.addEventListener("input", async () => {
     let promoCode = input.value;
     try {
@@ -273,6 +275,33 @@ if (twoStepPromocodeWrapper) {
       }, 150);
     } catch (error) {
       console.error("Ошибка при проверке промокода:", error);
+    }
+  });
+
+  */
+
+  promocodeApplyBtn.addEventListener("click", async () => {
+    let promoCode = input.value;
+
+    const fetchPromocodes = async () => {
+      const res = await fetch(
+        `https://${newDomain}/api/v2/promocode/check-available?code=${promoCode.toUpperCase()}`,
+      );
+      const data = await res.json();
+      return data.available;
+    };
+    const promoIsValid = await fetchPromocodes();
+    if (promoIsValid) {
+      twoStepFormData.promocode = input.value.toUpperCase();
+      console.log("Промокод верный");
+      twoStepPromocodeWrapper.classList.add("is-valid");
+      twoStepPromocodeWrapper.classList.remove("is-not-valid");
+    } else {
+      twoStepFormData.promocode = "";
+      console.log("Промокод неверный");
+      twoStepPromocodeWrapper.classList.remove("is-valid");
+      twoStepPromocodeWrapper.classList.add("is-not-valid");
+      promocodeWrapperTl.restart();
     }
   });
 }
