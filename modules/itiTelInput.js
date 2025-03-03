@@ -7,7 +7,9 @@ const geoIpLookup = (success, failure) => {
   if (cachedData) {
     success(JSON.parse(cachedData).countryCode);
   } else {
-    fetch(`https://apiip.net/api/check?accessKey=${__SECRET_KEY__}`)
+    fetch(
+      `https://apiip.net/api/check?accessKey=0439ba6e-6092-46c2-9aeb-8662065bc43c`,
+    )
       .then((res) => res.json())
       .then((data) => {
         localStorage.setItem("geoIpData", JSON.stringify(data));
