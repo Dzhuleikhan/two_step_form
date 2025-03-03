@@ -10,8 +10,6 @@ export const fetchDomain = async (countryCode) => {
 
 export const newDomain = await fetchDomain(geoData.countryCode);
 
-console.log("Secret key:", __SECRET_KEY__);
-
 function updatingBonusValueNumbers() {
   const dropd = document.querySelectorAll(".form-bonus-dropdown");
   dropd.forEach((drop) => {
