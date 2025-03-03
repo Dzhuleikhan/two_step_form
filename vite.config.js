@@ -16,6 +16,6 @@ export default defineConfig({
     open: true,
   },
   define: {
-    __SECRET_KEY__: JSON.stringify(process.env.VITE_SECRET_KEY),
+    __SECRET_KEY__: JSON.stringify(process.env.VITE_SECRET_KEY_GEO),
   },
 });
