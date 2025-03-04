@@ -7,6 +7,10 @@ import gsap from "gsap";
 import { canadaProvincesCities } from "../public/data";
 import flatpickr from "flatpickr";
 
+document.querySelectorAll("input").forEach((input) => {
+  input.setAttribute("autocomplete", "off");
+});
+
 // ? SOCIALS TWO STEP FORM
 
 export let twoStepFormData = {
