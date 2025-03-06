@@ -178,111 +178,14 @@ if (twoStepPromocodeWrapper) {
     ".two-step-promocode-apply-btn",
   );
 
-  /*
-
   input.addEventListener("input", async () => {
-    let promoCode = input.value;
-    try {
-      const response = await fetch(
-        "https://promocodesapi.onrender.com/check-promo",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ code: promoCode }),
-        },
-      );
-
-      const result = await response.json();
-
-      let promoIsValid = result.valid;
-
-      if (!promoIsValid) {
-        // Badge
-        document
-          .querySelectorAll(".promocode-applied-wrapper")
-          .forEach((wrapper) => {
-            wrapper.classList.remove("is-applied");
-          });
-      }
-
-      if (twoStepPromocodeWrapper.classList.contains("is-valid")) {
-        twoStepFormData.promocode = "";
-        console.log("Промокод неверный");
-        twoStepPromocodeWrapper.classList.remove("is-valid");
-        twoStepPromocodeWrapper.classList.add("is-not-valid");
-      }
-    } catch (error) {
-      console.error("Ошибка при проверке промокода:", error);
+    if (twoStepPromocodeWrapper.classList.contains("is-valid")) {
+      twoStepFormData.promocode = "";
+      console.log("Промокод неверный");
+      twoStepPromocodeWrapper.classList.remove("is-valid");
+      twoStepPromocodeWrapper.classList.add("is-not-valid");
     }
   });
-
-  promocodeApplyBtn.addEventListener("click", async () => {
-    let promoCode = input.value;
-    try {
-      const response = await fetch(
-        "https://promocodesapi.onrender.com/check-promo",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ code: promoCode }),
-        },
-      );
-
-      const result = await response.json();
-
-      let promoIsValid = result.valid;
-      let promoType = result.type;
-
-      setTimeout(() => {
-        if (promoType === "freespins") {
-          console.log("promocode for freespins");
-        } else if (promoType === "nodep") {
-          console.log("promocode for nodep");
-        }
-
-        if (promoIsValid) {
-          twoStepFormData.promocode = input.value.toUpperCase();
-          console.log("Промокод верный");
-          twoStepPromocodeWrapper.classList.add("is-valid");
-          twoStepPromocodeWrapper.classList.remove("is-not-valid");
-          // Badge
-          document
-            .querySelectorAll(".promocode-applied-wrapper")
-            .forEach((wrapper) => {
-              wrapper.classList.add("is-applied");
-              wrapper
-                .querySelectorAll(".promocode-applied-badge-text")
-                .forEach((text) => {
-                  text.classList.remove("is-active");
-                });
-              wrapper
-                .querySelector(`.promocode-applied-badge-${promoType}`)
-                .classList.add("is-active");
-            });
-        } else {
-          twoStepFormData.promocode = "";
-          console.log("Промокод неверный");
-          twoStepPromocodeWrapper.classList.remove("is-valid");
-          twoStepPromocodeWrapper.classList.add("is-not-valid");
-          promocodeWrapperTl.restart();
-          // Badge
-          document
-            .querySelectorAll(".promocode-applied-wrapper")
-            .forEach((wrapper) => {
-              wrapper.classList.remove("is-applied");
-            });
-        }
-      }, 150);
-    } catch (error) {
-      console.error("Ошибка при проверке промокода:", error);
-    }
-  });
-
-  */
 
   promocodeApplyBtn.addEventListener("click", async () => {
     let promoCode = input.value;
