@@ -794,11 +794,17 @@ if (twoStepFormFourthStep) {
   inputValidations1.forEach(({ input }) => {
     input.addEventListener("focusout", validateInputs1("#4ED937", "#ff5530"));
   });
+
   inputValidations1.forEach(({ input }) => {
     input.addEventListener("input", () => {
       validateInputs1("#4ED937", "#8726FF");
       input.style.color = "#8726FF";
     });
+  });
+
+  twoStepPhoneInput.addEventListener("countrychange", () => {
+    twoStepPhoneInput.value = "";
+    validateInputs1("#4ED937", "#8726FF");
   });
 }
 
@@ -830,7 +836,7 @@ const showStep = (step) => {
     headerbackBtn.classList.remove("is-visible");
   }
 };
-// showStep(2);
+// showStep(4);
 
 nextStepBtn.forEach((btn) => {
   if (btn) {
