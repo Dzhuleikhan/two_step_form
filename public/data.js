@@ -214,7 +214,7 @@ export const countryCurrencyData = [
   {
     countries: ["AR"],
     countryCurrency: "ARS",
-    countryCurrencySymbol: "$",
+    countryCurrencySymbol: "ARS",
     countryCurrencyFullName: "Argentine Peso",
     countryCurrencyIcon: "./img/currencies/ars.svg",
     amount: "9 MLN",

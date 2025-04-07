@@ -2,7 +2,6 @@ import { getLocation } from "./geoLocation";
 import { countryCurrencyData } from "../public/data";
 import {
   checkTir1CurrencyMatch,
-  exceptCurrencies,
   twoStepFormData,
   settingInitialBonusValue,
 } from "./twoStepForm";
