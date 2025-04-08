@@ -42,7 +42,6 @@ export const translations = {
     statePlaceholder: "Choose Province",
     zipCodePlaceholder: "Enter ZIP Code",
     createAccountBtn: "Create Account",
-    chooseCountry: "Choose Country",
   },
   fr: {
     pageTabTitle: "Inscrivez-vous pour un compte de casino Goldbet",
@@ -87,7 +86,6 @@ export const translations = {
     statePlaceholder: "Sélectionnez une région",
     zipCodePlaceholder: "Entrez le code postal",
     createAccountBtn: "Créer un compte",
-    chooseCountry: "Choisissez un pays",
   },
   pl: {
     pageTabTitle: "Zarejestruj konto w Goldbet Casino",
@@ -132,7 +130,6 @@ export const translations = {
     statePlaceholder: "Wybierz województwo",
     zipCodePlaceholder: "Wpisz kod pocztowy",
     createAccountBtn: "Utwórz konto",
-    chooseCountry: "Wybierz kraj",
   },
   hu: {
     pageTabTitle: "Regisztrálj Goldbet Casino fiókot",
@@ -177,7 +174,6 @@ export const translations = {
     statePlaceholder: "Válassz megyét",
     zipCodePlaceholder: "Írd be az irányítószámot",
     createAccountBtn: "Fiók létrehozása",
-    chooseCountry: "Válassz országot",
   },
   ro: {
     pageTabTitle: "Înregistrează un cont Goldbet Casino",
@@ -222,7 +218,6 @@ export const translations = {
     statePlaceholder: "Alegeți provincia",
     zipCodePlaceholder: "Introduceți codul poștal",
     createAccountBtn: "Creează cont",
-    chooseCountry: "Alege o țară",
   },
   sl: {
     pageTabTitle: "Registrirajte račun Goldbet Casino",
@@ -267,7 +262,6 @@ export const translations = {
     statePlaceholder: "Izberite pokrajino",
     zipCodePlaceholder: "Vnesite poštno številko",
     createAccountBtn: "Ustvariti račun",
-    chooseCountry: "Izberite državo",
   },
   cs: {
     pageTabTitle: "Zaregistrujte si účet v Goldbet Casinu",
@@ -312,7 +306,6 @@ export const translations = {
     statePlaceholder: "Vyberte region",
     zipCodePlaceholder: "Zadejte PSČ",
     createAccountBtn: "Vytvořit účet",
-    chooseCountry: "Vyberte zemi",
   },
   ru: {
     pageTabTitle: "Зарегистрируйтесь в казино Goldbet",
@@ -357,7 +350,6 @@ export const translations = {
     statePlaceholder: "Выберите регион",
     zipCodePlaceholder: "Введите почтовый индекс",
     createAccountBtn: "Создать аккаунт",
-    chooseCountry: "Выберите страну",
   },
   pt: {
     pageTabTitle: "Registar no Goldbet Casino",
@@ -402,7 +394,6 @@ export const translations = {
     statePlaceholder: "Selecione estado",
     zipCodePlaceholder: "Código Postal",
     createAccountBtn: "Criar Conta",
-    chooseCountry: "Escolha um país",
   },
   de: {
     pageTabTitle: "Registrieren Sie sich bei Goldbet Casino",
@@ -447,6 +438,49 @@ export const translations = {
     statePlaceholder: "Bundesland auswählen",
     zipCodePlaceholder: "Postleitzahl eingeben",
     createAccountBtn: "Konto erstellen",
-    chooseCountry: "Wähle ein Land",
+  },
+  el: {
+    pageTabTitle: "Εγγραφή Λογαριασμού στο Καζίνο Goldbet",
+    backBtn: "Πίσω",
+    // | Step 1
+    step1Title: "Επιλέξτε το Μπόνους σας",
+    welcomeBonus: "Μπόνους Καλωσορίσματος",
+    welcomeBonusText: "στην πρώτη σας κατάθεση",
+    cryptoBonus: "Μπόνους Satoshi",
+    cryptoBonusText: "150% σε Καταθέσεις με Κρυπτονομίσματα",
+    highRollerBonus: "Μπόνους High Roller",
+    highRollerBonusText: `250% σε Καταθέσεις Άνω των <span class="bonus-highroller-amount">500</span><span class="bonus-currency-symbol"></span>`,
+    withoutBonus: "Χωρίς Μπόνους",
+    withoutBonusText: "Δεν θα λάβετε κανένα μπόνους",
+    iHavePromoCode: "Έχω Promo-Code",
+    promoCodePlaceHolder: "Promo Code",
+    promoCodeApplyBtn: "Εφαρμογή",
+    youWillGetFreeSpins: "Θα λάβετε δωρεάν περιστροφές",
+    youWillGetNodepBonus: "Θα λάβετε μπόνους χωρίς κατάθεση",
+    continueBtn: "Συνέχεια",
+    // | Step 2
+    step2Title: "Εισάγετε το Email σας",
+    emailPlaceholder: "Εισάγετε E-mail",
+    passwordPlaceholder: "Εισάγετε Κωδικό",
+    // | Step 3
+    step3Title: "Ποιο είναι το Όνομά σας;",
+    namePlaceholder: "Εισάγετε Όνομα",
+    lastNamePlaceholder: "Εισάγετε Επώνυμο",
+    birthdayPlaceholder: "Επιλέξτε Ημερομηνία Γέννησης",
+    age18Alert: "Η ηλικία πρέπει να είναι 18+",
+    invalidDate: "Μη έγκυρη ημερομηνία",
+    male: "Άνδρας",
+    female: "Γυναίκα",
+    finalStepBtn: "Τελικό Βήμα",
+    // | Step 4
+    step4Title: "Επιλέξτε Νόμισμα",
+    countryPlaceholder: "Επιλέξτε Χώρα",
+    currencyPlaceholder: "Επιλέξτε Νόμισμα",
+    phoneNumberPlaceholder: "Αριθμός Τηλεφώνου",
+    addressPlaceholder: "Εισάγετε Διεύθυνση",
+    cityPlaceholder: "Εισάγετε Πόλη",
+    statePlaceholder: "Επιλέξτε Περιφέρεια",
+    zipCodePlaceholder: "Εισάγετε Τ.Κ.",
+    createAccountBtn: "Δημιουργία Λογαριασμού",
   },
 };
