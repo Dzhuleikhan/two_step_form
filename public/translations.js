@@ -42,6 +42,7 @@ export const translations = {
     statePlaceholder: "Choose Province",
     zipCodePlaceholder: "Enter ZIP Code",
     createAccountBtn: "Create Account",
+    chooseCountry: "Choose Country",
   },
   fr: {
     pageTabTitle: "Inscrivez-vous pour un compte de casino Goldbet",
@@ -86,6 +87,7 @@ export const translations = {
     statePlaceholder: "Sélectionnez une région",
     zipCodePlaceholder: "Entrez le code postal",
     createAccountBtn: "Créer un compte",
+    chooseCountry: "Choisissez un pays",
   },
   pl: {
     pageTabTitle: "Zarejestruj konto w Goldbet Casino",
@@ -130,6 +132,7 @@ export const translations = {
     statePlaceholder: "Wybierz województwo",
     zipCodePlaceholder: "Wpisz kod pocztowy",
     createAccountBtn: "Utwórz konto",
+    chooseCountry: "Wybierz kraj",
   },
   hu: {
     pageTabTitle: "Regisztrálj Goldbet Casino fiókot",
@@ -174,6 +177,7 @@ export const translations = {
     statePlaceholder: "Válassz megyét",
     zipCodePlaceholder: "Írd be az irányítószámot",
     createAccountBtn: "Fiók létrehozása",
+    chooseCountry: "Válassz országot",
   },
   ro: {
     pageTabTitle: "Înregistrează un cont Goldbet Casino",
@@ -218,6 +222,7 @@ export const translations = {
     statePlaceholder: "Alegeți provincia",
     zipCodePlaceholder: "Introduceți codul poștal",
     createAccountBtn: "Creează cont",
+    chooseCountry: "Alege o țară",
   },
   sl: {
     pageTabTitle: "Registrirajte račun Goldbet Casino",
@@ -262,6 +267,7 @@ export const translations = {
     statePlaceholder: "Izberite pokrajino",
     zipCodePlaceholder: "Vnesite poštno številko",
     createAccountBtn: "Ustvariti račun",
+    chooseCountry: "Izberite državo",
   },
   cs: {
     pageTabTitle: "Zaregistrujte si účet v Goldbet Casinu",
@@ -306,6 +312,7 @@ export const translations = {
     statePlaceholder: "Vyberte region",
     zipCodePlaceholder: "Zadejte PSČ",
     createAccountBtn: "Vytvořit účet",
+    chooseCountry: "Vyberte zemi",
   },
   ru: {
     pageTabTitle: "Зарегистрируйтесь в казино Goldbet",
@@ -350,6 +357,7 @@ export const translations = {
     statePlaceholder: "Выберите регион",
     zipCodePlaceholder: "Введите почтовый индекс",
     createAccountBtn: "Создать аккаунт",
+    chooseCountry: "Выберите страну",
   },
   pt: {
     pageTabTitle: "Registar no Goldbet Casino",
@@ -394,6 +402,7 @@ export const translations = {
     statePlaceholder: "Selecione estado",
     zipCodePlaceholder: "Código Postal",
     createAccountBtn: "Criar Conta",
+    chooseCountry: "Escolha um país",
   },
   de: {
     pageTabTitle: "Registrieren Sie sich bei Goldbet Casino",
@@ -438,5 +447,6 @@ export const translations = {
     statePlaceholder: "Bundesland auswählen",
     zipCodePlaceholder: "Postleitzahl eingeben",
     createAccountBtn: "Konto erstellen",
+    chooseCountry: "Wähle ein Land",
   },
 };
