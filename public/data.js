@@ -308,7 +308,6 @@ export const countryCurrencyData = [
       "ME",
       "SM",
       "VA",
-      "NO",
       "BG",
       "HR",
       "IS",
