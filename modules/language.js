@@ -81,6 +81,7 @@ function updateButtonText(lang) {
 
 async function determineLanguage() {
   const location = await getLocation();
+  console.log(location.countryCode);
 
   const countryLangMap = {
     EN: "en",
@@ -100,6 +101,8 @@ async function determineLanguage() {
     DE: "de",
     UA: "ua",
     TR: "tr",
+    AT: "de",
+    CA: "en",
     // Add more country codes and their corresponding languages as needed
   };
   lang = countryLangMap[location.countryCode] || "en";
