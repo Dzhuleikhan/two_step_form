@@ -99,26 +99,7 @@ async function settingModalCurrency() {
     twoStepFormData.bonus = checkTir1CurrencyMatch(twoStepFormData.currency);
     setTimeout(() => {
       settingInitialBonusValue(twoStepFormData.currency);
-      const currencyEntry = countryCurrencyData.find(
-        (entry) => entry.countryCurrency === currencyData.abbr,
-      );
-
-      if (currencyEntry) {
-        document.querySelectorAll(".bonus-highroller-amount").forEach((el) => {
-          el.innerHTML = currencyEntry.highrollerAmount;
-        });
-        document.querySelectorAll(".bonus-currency-symbol").forEach((el) => {
-          el.innerHTML = currencyEntry.countryCurrency;
-        });
-      } else {
-        document.querySelectorAll(".bonus-highroller-amount").forEach((el) => {
-          el.innerHTML = "200";
-        });
-        document.querySelectorAll(".bonus-currency-symbol").forEach((el) => {
-          el.innerHTML = "EUR";
-        });
-      }
-    }, 100);
+    }, 300);
   } catch (error) {
     console.error("Error fetching location data:", error);
   }

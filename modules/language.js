@@ -111,6 +111,10 @@ async function mainFunction() {
   try {
     lang = await determineLanguage();
     changeLanguage(lang);
+    setTimeout(() => {
+      const currencyData = JSON.parse(localStorage.getItem("currencyData"));
+      settingInitialBonusValue(currencyData.abbr);
+    }, 200);
     localStorage.setItem(
       "preferredLanguage",
       getSupportedLanguage(lang.toUpperCase()),
@@ -127,27 +131,7 @@ document.querySelectorAll(".language-link").forEach((langBtn) => {
     const targetLang = e.target.getAttribute("data-lang");
     changeLanguage(targetLang);
     const currencyData = JSON.parse(localStorage.getItem("currencyData"));
-    setTimeout(() => {
-      const currencyEntry = countryCurrencyData.find(
-        (entry) => entry.countryCurrency === currencyData.abbr,
-      );
-
-      if (currencyEntry) {
-        document.querySelectorAll(".bonus-highroller-amount").forEach((el) => {
-          el.innerHTML = currencyEntry.highrollerAmount;
-        });
-        document.querySelectorAll(".bonus-currency-symbol").forEach((el) => {
-          el.innerHTML = currencyEntry.countryCurrencySymbol;
-        });
-      } else {
-        document.querySelectorAll(".bonus-highroller-amount").forEach((el) => {
-          el.innerHTML = "200";
-        });
-        document.querySelectorAll(".bonus-currency-symbol").forEach((el) => {
-          el.innerHTML = "€";
-        });
-      }
-    }, 200);
+    settingInitialBonusValue(currencyData.abbr);
     localStorage.setItem(
       "preferredLanguage",
       getSupportedLanguage(targetLang.toUpperCase()),

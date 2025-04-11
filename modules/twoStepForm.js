@@ -124,6 +124,12 @@ export const settingInitialBonusValue = (currency) => {
     document.querySelectorAll(".two-step-bonus-spins").forEach((el) => {
       el.innerHTML = currencyEntry.spins;
     });
+    document.querySelectorAll(".bonus-highroller-amount").forEach((el) => {
+      el.innerHTML = currencyEntry.highrollerAmount;
+    });
+    document.querySelectorAll(".bonus-currency-symbol").forEach((el) => {
+      el.innerHTML = currencyEntry.countryCurrency;
+    });
   } else {
     document.querySelectorAll(".two-step-welcome-amount").forEach((el) => {
       el.innerHTML = "4500";
@@ -133,6 +139,12 @@ export const settingInitialBonusValue = (currency) => {
     });
     document.querySelectorAll(".two-step-bonus-spins").forEach((el) => {
       el.innerHTML = "200FS";
+    });
+    document.querySelectorAll(".bonus-highroller-amount").forEach((el) => {
+      el.innerHTML = "180";
+    });
+    document.querySelectorAll(".bonus-currency-symbol").forEach((el) => {
+      el.innerHTML = "EUR";
     });
   }
 };
