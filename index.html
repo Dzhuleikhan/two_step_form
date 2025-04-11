@@ -35,11 +35,11 @@
     >
       <!-- Two step overlay -->
       <div
-        class="two-step-overlay is-open fixed left-0 top-0 z-[300] h-dvh w-full flex-col justify-between overflow-y-auto px-9 pb-[50px] pt-[30px] large:py-5 small:justify-start small:gap-[15px] small:px-[15px] small:pt-[24px]"
+        class="two-step-overlay is-open fixed left-0 top-0 z-[300] h-dvh w-full flex-col justify-between overflow-y-auto px-9 pb-[50px] pt-[30px] large:py-5 small:justify-start small:gap-[15px] small:px-[15px] small:pt-20"
       >
         <!-- Header -->
         <div
-          class="flex items-center justify-between small:absolute small:left-0 small:top-[15px] small:px-[15px]"
+          class="flex items-center justify-between small:absolute small:left-0 small:top-[15px] small:w-full small:justify-between small:px-[15px]"
         >
           <div
             class="two-step-header-back-btn invisible flex items-center gap-3 opacity-0"
@@ -73,7 +73,10 @@
           <div
             class="mx-auto flex w-full max-w-[800px] items-center justify-between gap-3"
           >
-            <a href="/" class="inline-flex items-center gap-1 small:hidden">
+            <a
+              href="/"
+              class="inline-flex items-center gap-1 tbl:hidden small:hidden"
+            >
               <img
                 class="tbl:max-w-[100px]"
                 width="134"
@@ -89,7 +92,7 @@
                 alt="Belgium"
               />
             </a>
-            <div class="header-lang-box relative">
+            <div class="header-lang-box relative z-30 tbl:ml-auto">
               <button
                 class="header-lang-btn flex cursor-pointer items-center justify-center gap-2 rounded-lg bg-[#ffffff] px-3 py-[9px] font-bold text-black transition-all"
               >
@@ -378,7 +381,7 @@
               </ul>
             </div>
           </div>
-          <div class="invisible flex items-center gap-3 opacity-0">
+          <div class="invisible flex items-center gap-3 opacity-0 tbl:hidden">
             <span
               class="text-lg font-bold leading-[117%] tracking-[0.02em] text-white"
               >Close</span
