@@ -99,10 +99,6 @@ async function settingModalCurrency() {
     twoStepFormData.bonus = checkTir1CurrencyMatch(twoStepFormData.currency);
     settingInitialBonusValue(twoStepFormData.currency);
     setTimeout(() => {
-      document.querySelectorAll(".bonus-currency-symbol").forEach((el) => {
-        el.innerHTML = currencyData.symbol;
-      });
-
       const currencyEntry = countryCurrencyData.find(
         (entry) => entry.countryCurrency === currencyData.abbr,
       );
@@ -111,12 +107,18 @@ async function settingModalCurrency() {
         document.querySelectorAll(".bonus-highroller-amount").forEach((el) => {
           el.innerHTML = currencyEntry.highrollerAmount;
         });
+        document.querySelectorAll(".bonus-currency-symbol").forEach((el) => {
+          el.innerHTML = currencyEntry.countryCurrencySymbol;
+        });
       } else {
         document.querySelectorAll(".bonus-highroller-amount").forEach((el) => {
           el.innerHTML = "200";
         });
+        document.querySelectorAll(".bonus-currency-symbol").forEach((el) => {
+          el.innerHTML = "€";
+        });
       }
-    }, 300);
+    }, 100);
   } catch (error) {
     console.error("Error fetching location data:", error);
   }
@@ -191,6 +193,30 @@ formCurrency.forEach((cur) => {
           icon: curIcon,
         };
         localStorage.setItem("currencyData", JSON.stringify(currencyData));
+
+        const currencyEntry = countryCurrencyData.find(
+          (entry) => entry.countryCurrency === currencyData.abbr,
+        );
+
+        if (currencyEntry) {
+          document
+            .querySelectorAll(".bonus-highroller-amount")
+            .forEach((el) => {
+              el.innerHTML = currencyEntry.highrollerAmount;
+            });
+          document.querySelectorAll(".bonus-currency-symbol").forEach((el) => {
+            el.innerHTML = currencyEntry.countryCurrencySymbol;
+          });
+        } else {
+          document
+            .querySelectorAll(".bonus-highroller-amount")
+            .forEach((el) => {
+              el.innerHTML = "200";
+            });
+          document.querySelectorAll(".bonus-currency-symbol").forEach((el) => {
+            el.innerHTML = "€";
+          });
+        }
 
         // Two step currency update
         settingBonusOnCurrencyChange(countryCurrencyData, currencyData);
