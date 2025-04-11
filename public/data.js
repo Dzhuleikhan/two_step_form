@@ -218,7 +218,7 @@ export const countryCurrencyData = [
     countryCurrencyFullName: "Argentine Peso",
     countryCurrencyIcon: "./img/currencies/ars.svg",
     amount: "9 MLN",
-    spins: "200 FS",
+    spins: "25 FS",
     highrollerAmount: "192.400",
   },
   {
@@ -228,7 +228,7 @@ export const countryCurrencyData = [
     countryCurrencyFullName: "Australian Dollar",
     countryCurrencyIcon: "./img/currencies/aud.svg",
     amount: "7.000",
-    spins: "25 FS",
+    spins: "200 FS",
     highrollerAmount: "296",
   },
   {
