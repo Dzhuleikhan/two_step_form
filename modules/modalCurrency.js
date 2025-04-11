@@ -97,8 +97,8 @@ async function settingModalCurrency() {
 
     twoStepFormData.currency = currencyData.abbr;
     twoStepFormData.bonus = checkTir1CurrencyMatch(twoStepFormData.currency);
-    settingInitialBonusValue(twoStepFormData.currency);
     setTimeout(() => {
+      settingInitialBonusValue(twoStepFormData.currency);
       const currencyEntry = countryCurrencyData.find(
         (entry) => entry.countryCurrency === currencyData.abbr,
       );
@@ -108,14 +108,14 @@ async function settingModalCurrency() {
           el.innerHTML = currencyEntry.highrollerAmount;
         });
         document.querySelectorAll(".bonus-currency-symbol").forEach((el) => {
-          el.innerHTML = currencyEntry.countryCurrencySymbol;
+          el.innerHTML = currencyEntry.countryCurrency;
         });
       } else {
         document.querySelectorAll(".bonus-highroller-amount").forEach((el) => {
           el.innerHTML = "200";
         });
         document.querySelectorAll(".bonus-currency-symbol").forEach((el) => {
-          el.innerHTML = "€";
+          el.innerHTML = "EUR";
         });
       }
     }, 100);

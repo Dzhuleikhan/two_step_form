@@ -147,7 +147,7 @@ document.querySelectorAll(".language-link").forEach((langBtn) => {
           el.innerHTML = "€";
         });
       }
-    }, 100);
+    }, 200);
     localStorage.setItem(
       "preferredLanguage",
       getSupportedLanguage(targetLang.toUpperCase()),
