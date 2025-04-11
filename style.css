@@ -443,3 +443,18 @@ body {
 .promocode-applied-wrapper.is-applied-from-url .two-step-promocode-wrapper {
   display: flex;
 }
+
+/* | Language dropdown */
+
+.header-lang-list {
+  opacity: 0;
+  transform: scaleY(0);
+  transform-origin: top left;
+  transition: all 0.3s;
+}
+
+.header-lang-list.is-open {
+  opacity: 1;
+  transform: scaleY(1);
+  transition: all 0.3s;
+}

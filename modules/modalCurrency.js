@@ -74,6 +74,10 @@ async function settingModalCurrency() {
       countryInput = "US";
     }
 
+    if (countryInput === "GB") {
+      countryInput = "FR";
+    }
+
     const currencyAbbr = getCountryCurrencyABBR(countryInput);
     const currencyFullName = getCountryCurrencyFullName(countryInput);
     const currencyIcon = getCountryCurrencyIcon(countryInput);
