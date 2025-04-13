@@ -9,3 +9,5 @@ import "./modules/fetchingDomain";
 import "./modules/params";
 import "./modules/language";
 import "./modules/promocodeCheck";
+import "./modules/modalOpen";
+import "./modules/animations";

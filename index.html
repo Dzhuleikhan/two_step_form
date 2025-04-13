@@ -7,35 +7,490 @@
     <title data-translate="pageTabTitle">
       Sign Up for a Goldbet Casino Account
     </title>
-    <script>
-      (function (h, o, t, j, a, r) {
-        h.hj =
-          h.hj ||
-          function () {
-            (h.hj.q = h.hj.q || []).push(arguments);
-          };
-        h._hjSettings = { hjid: 5281757, hjsv: 6 };
-        a = o.getElementsByTagName("head")[0];
-        r = o.createElement("script");
-        r.async = 1;
-        r.src = t + h._hjSettings.hjid + j + h._hjSettings.hjsv;
-        a.appendChild(r);
-      })(window, document, "https://static.hotjar.com/c/hotjar-", ".js?sv=");
-    </script>
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css"
     />
   </head>
-  <body
-    class="relative overflow-hidden overscroll-none bg-[#22082f] bg-[url(../img/page-bg-desk.webp)] bg-cover bg-center bg-no-repeat"
-  >
+  <body class="relative overscroll-none bg-[#25273F]">
     <div
-      class="wrapper flex h-full w-full min-w-[320px] flex-col justify-between gap-5 overflow-hidden pt-[30px] large:gap-0 large:pt-5"
+      class="wrapper relative flex h-full w-full min-w-[320px] overflow-hidden"
     >
+      <img
+        width="6068"
+        height="1130"
+        class="bg-pattern fixed left-0 top-0 z-0 h-full w-full min-w-[6068px] object-cover will-change-transform"
+        src="./img/bg-pattern.webp"
+        alt="Pattern"
+      />
+      <!-- lights -->
+      <img
+        width="981"
+        height="1034"
+        class="absolute -right-[400px] -top-[400px] z-[1] large:max-w-[700px] small:-right-[250px] small:-top-[250px] small:max-w-[450px]"
+        src="./img/light.webp"
+        alt="Light"
+      />
+      <img
+        width="981"
+        height="1034"
+        class="absolute -left-[400px] -top-[400px] z-[1] -rotate-90 large:max-w-[700px] small:-left-[250px] small:-top-[250px] small:max-w-[450px]"
+        src="./img/light.webp"
+        alt="Light"
+      />
+      <img
+        width="981"
+        height="1034"
+        class="absolute -bottom-[400px] -left-[400px] z-[1] -rotate-180 large:max-w-[700px] small:hidden"
+        src="./img/light.webp"
+        alt="Light"
+      />
+      <img
+        width="981"
+        height="1034"
+        class="absolute -bottom-[400px] -right-[400px] z-[1] rotate-90 large:max-w-[700px] small:hidden"
+        src="./img/light.webp"
+        alt="Light"
+      />
+      <!-- Page inner -->
+      <div
+        class="relative z-[30] mx-auto flex h-dvh w-full max-w-[1920px] flex-col items-center py-9 large:py-5 tbl:py-[11px]"
+      >
+        <img
+          class="chicken-left xl:-bottom-[100px] pointer-events-none absolute -left-[200px] bottom-[70px] z-[2] -rotate-3 will-change-transform large:-left-[120px] large:max-w-[400px] tbl:-left-[300px] small:-bottom-[70px] small:-left-[200px] small:max-w-[327px]"
+          width="610"
+          height="915"
+          src="./img/left-chickens.webp"
+          alt="Chickens"
+        />
+        <img
+          class="chicken-right xl:-bottom-[100px] xl:-right-[350px] pointer-events-none absolute -bottom-[50px] -right-[250px] z-[2] rotate-3 will-change-transform large:-right-[150px] large:max-w-[450px] small:-bottom-[150px] small:-right-[230px] small:max-w-[387px]"
+          width="710"
+          height="1064"
+          src="./img/right-chickens.webp"
+          alt="Chickens"
+        />
+        <header
+          class="relative z-[45] mx-auto flex w-full max-w-[1115px] items-center justify-between px-5 small:grid small:grid-cols-[auto_1fr_auto] small:justify-center small:gap-3 small:px-3"
+        >
+          <div
+            class="invisible h-[50px] w-[109px] bg-[#525A89] opacity-0 small:h-9 small:w-[76px]"
+          ></div>
+          <a href="/" class="inline-flex items-center justify-center gap-1">
+            <img
+              class="tbl:max-w-[100px] small:max-w-[79px]"
+              width="134"
+              height="46"
+              src="./img/logo.svg"
+              alt="Goldbet"
+            />
+            <img
+              class="header-logo-flag hidden h-[27px] w-[27px] shrink-0 overflow-hidden rounded-full tbl:h-5 tbl:w-5 small:h-4 small:w-4"
+              width="27"
+              height="27"
+              src="./img/gb.svg"
+              alt="GB"
+            />
+          </a>
+          <div class="header-lang-box relative z-30 tbl:ml-auto">
+            <button
+              class="header-lang-btn flex min-w-[110px] cursor-pointer items-center justify-center gap-2 rounded-lg bg-[#525A89] px-3 py-[9px] font-bold text-white transition-all small:min-w-max small:gap-[5px] small:rounded-2xl small:px-3 small:py-2"
+            >
+              <img
+                class="overflow-hidden rounded-full"
+                width="20"
+                height="20"
+                src="./img/flags/en.svg"
+                alt="English flag"
+              />
+              <span class="max-[350px]:hidden inline-block small:hidden"
+                >EN</span
+              >
+              <svg
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M6 9L12 15L18 9"
+                  stroke="#ffffff"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </button>
+            <ul
+              class="header-lang-list max-[350px]:min-w-max absolute right-0 top-[110%] max-h-[180px] w-full overflow-hidden overflow-y-auto rounded-lg font-bold text-white duration-300"
+            >
+              <li>
+                <a
+                  data-lang="en"
+                  class="language-link flex items-center gap-2 bg-[#525A89] px-3 py-[9px] transition-all"
+                  href="#"
+                  ><img
+                    class="pointer-events-none shrink-0 overflow-hidden rounded-full"
+                    width="20"
+                    height="20"
+                    src="./img/flags/en.svg"
+                    alt="eng flag"
+                  />
+                  <span class="pointer-events-none">EN</span>
+                </a>
+              </li>
+              <li>
+                <a
+                  data-lang="fr"
+                  class="language-link flex items-center gap-2 bg-[#525A89] px-3 py-[9px] transition-all"
+                  href="#"
+                  ><img
+                    class="pointer-events-none shrink-0 overflow-hidden rounded-full"
+                    width="20"
+                    height="20"
+                    src="./img/flags/fr.svg"
+                    alt="Fr flag"
+                  />
+                  <span class="pointer-events-none">FR</span>
+                </a>
+              </li>
+              <li>
+                <a
+                  data-lang="de"
+                  class="language-link flex items-center gap-2 bg-[#525A89] px-3 py-[9px] transition-all"
+                  href="#"
+                  ><img
+                    class="pointer-events-none shrink-0 overflow-hidden rounded-full"
+                    width="20"
+                    height="20"
+                    src="./img/flags/de.svg"
+                    alt="DE flag"
+                  />
+                  <span class="pointer-events-none">DE</span>
+                </a>
+              </li>
+              <li>
+                <a
+                  data-lang="ru"
+                  class="language-link flex items-center gap-2 bg-[#525A89] px-3 py-[9px] transition-all"
+                  href="#"
+                  ><img
+                    class="pointer-events-none shrink-0 overflow-hidden rounded-full"
+                    width="20"
+                    height="20"
+                    src="./img/flags/ru.svg"
+                    alt="RU flag"
+                  />
+                  <span class="pointer-events-none">RU</span>
+                </a>
+              </li>
+              <li>
+                <a
+                  data-lang="es"
+                  class="language-link flex items-center gap-2 bg-[#525A89] px-3 py-[9px] transition-all"
+                  href="#"
+                  ><img
+                    class="pointer-events-none shrink-0 overflow-hidden rounded-full"
+                    width="20"
+                    height="20"
+                    src="./img/flags/es.svg"
+                    alt="ES flag"
+                  />
+                  <span class="pointer-events-none">ES</span>
+                </a>
+              </li>
+              <li>
+                <a
+                  data-lang="pt"
+                  class="language-link flex items-center gap-2 bg-[#525A89] px-3 py-[9px] transition-all"
+                  href="#"
+                  ><img
+                    class="pointer-events-none shrink-0 overflow-hidden rounded-full"
+                    width="20"
+                    height="20"
+                    src="./img/flags/pt.svg"
+                    alt="PT flag"
+                  />
+                  <span class="pointer-events-none">PT</span>
+                </a>
+              </li>
+              <li>
+                <a
+                  data-lang="ro"
+                  class="language-link flex items-center gap-2 bg-[#525A89] px-3 py-[9px] transition-all"
+                  href="#"
+                  ><img
+                    class="pointer-events-none shrink-0 overflow-hidden rounded-full"
+                    width="20"
+                    height="20"
+                    src="./img/flags/ro.svg"
+                    alt="RO flag"
+                  />
+                  <span class="pointer-events-none">RO</span>
+                </a>
+              </li>
+              <li>
+                <a
+                  data-lang="hu"
+                  class="language-link flex items-center gap-2 bg-[#525A89] px-3 py-[9px] transition-all"
+                  href="#"
+                  ><img
+                    class="pointer-events-none shrink-0 overflow-hidden rounded-full"
+                    width="20"
+                    height="20"
+                    src="./img/flags/hu.svg"
+                    alt="HU flag"
+                  />
+                  <span class="pointer-events-none">HU</span>
+                </a>
+              </li>
+              <li>
+                <a
+                  data-lang="pl"
+                  class="language-link flex items-center gap-2 bg-[#525A89] px-3 py-[9px] transition-all"
+                  href="#"
+                  ><img
+                    class="pointer-events-none shrink-0 overflow-hidden rounded-full"
+                    width="20"
+                    height="20"
+                    src="./img/flags/pl.svg"
+                    alt="PL flag"
+                  />
+                  <span class="pointer-events-none">PL</span>
+                </a>
+              </li>
+              <li>
+                <a
+                  data-lang="cz"
+                  class="language-link flex items-center gap-2 bg-[#525A89] px-3 py-[9px] transition-all"
+                  href="#"
+                  ><img
+                    class="pointer-events-none shrink-0 overflow-hidden rounded-full"
+                    width="20"
+                    height="20"
+                    src="./img/flags/cz.svg"
+                    alt="CZ flag"
+                  />
+                  <span class="pointer-events-none">CZ</span>
+                </a>
+              </li>
+              <li>
+                <a
+                  data-lang="si"
+                  class="language-link flex items-center gap-2 bg-[#525A89] px-3 py-[9px] transition-all"
+                  href="#"
+                  ><img
+                    class="pointer-events-none shrink-0 overflow-hidden rounded-full"
+                    width="20"
+                    height="20"
+                    src="./img/flags/si.svg"
+                    alt="SL flag"
+                  />
+                  <span class="pointer-events-none">SI</span>
+                </a>
+              </li>
+              <li>
+                <a
+                  data-lang="no"
+                  class="language-link flex items-center gap-2 bg-[#525A89] px-3 py-[9px] transition-all"
+                  href="#"
+                  ><img
+                    class="pointer-events-none shrink-0 overflow-hidden rounded-full"
+                    width="20"
+                    height="20"
+                    src="./img/flags/no.svg"
+                    alt="NO flag"
+                  />
+                  <span class="pointer-events-none">NO</span>
+                </a>
+              </li>
+              <li>
+                <a
+                  data-lang="se"
+                  class="language-link flex items-center gap-2 bg-[#525A89] px-3 py-[9px] transition-all"
+                  href="#"
+                  ><img
+                    class="pointer-events-none shrink-0 overflow-hidden rounded-full"
+                    width="20"
+                    height="20"
+                    src="./img/flags/se.svg"
+                    alt="SE flag"
+                  />
+                  <span class="pointer-events-none">SE</span>
+                </a>
+              </li>
+              <li>
+                <a
+                  data-lang="sk"
+                  class="language-link flex items-center gap-2 bg-[#525A89] px-3 py-[9px] transition-all"
+                  href="#"
+                  ><img
+                    class="pointer-events-none shrink-0 overflow-hidden rounded-full"
+                    width="20"
+                    height="20"
+                    src="./img/flags/sk.svg"
+                    alt="SK flag"
+                  />
+                  <span class="pointer-events-none">SK</span>
+                </a>
+              </li>
+              <li>
+                <a
+                  data-lang="gr"
+                  class="language-link flex items-center gap-2 bg-[#525A89] px-3 py-[9px] transition-all"
+                  href="#"
+                  ><img
+                    class="pointer-events-none shrink-0 overflow-hidden rounded-full"
+                    width="20"
+                    height="20"
+                    src="./img/flags/gr.svg"
+                    alt="GR flag"
+                  />
+                  <span class="pointer-events-none">EL</span>
+                </a>
+              </li>
+              <li>
+                <a
+                  data-lang="ua"
+                  class="language-link flex items-center gap-2 bg-[#525A89] px-3 py-[9px] transition-all"
+                  href="#"
+                  ><img
+                    class="pointer-events-none shrink-0 overflow-hidden rounded-full"
+                    width="20"
+                    height="20"
+                    src="./img/flags/ua.svg"
+                    alt="UA flag"
+                  />
+                  <span class="pointer-events-none">UK</span>
+                </a>
+              </li>
+              <li>
+                <a
+                  data-lang="tr"
+                  class="language-link flex items-center gap-2 bg-[#525A89] px-3 py-[9px] transition-all"
+                  href="#"
+                  ><img
+                    class="pointer-events-none shrink-0 overflow-hidden rounded-full"
+                    width="20"
+                    height="20"
+                    src="./img/flags/tr.svg"
+                    alt="TR flag"
+                  />
+                  <span class="pointer-events-none">TR</span>
+                </a>
+              </li>
+              <li>
+                <a
+                  data-lang="kz"
+                  class="language-link flex items-center gap-2 bg-[#525A89] px-3 py-[9px] transition-all"
+                  href="#"
+                  ><img
+                    class="pointer-events-none shrink-0 overflow-hidden rounded-full"
+                    width="20"
+                    height="20"
+                    src="./img/flags/kz.svg"
+                    alt="KZ flag"
+                  />
+                  <span class="pointer-events-none">KK</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </header>
+        <main class="relative z-[40] flex h-full w-full flex-col items-center">
+          <div class="mt-6 tbl:mt-3 tbl:px-[10px]">
+            <p
+              data-translate="checkenRoadSubtitle"
+              class="text-center font-gilroy text-[28px] font-bold leading-[143%] text-white large:text-[20px] tbl:text-[15px]"
+            >
+              Sign up and claim your bonus
+            </p>
+            <h1
+              data-translate="chickenRoadMainTitle"
+              class="main-title mt-5 text-center font-gilroy text-[48px] font-black leading-[112%] large:mt-3 large:text-[40px] tbl:mt-2 tbl:text-[25px]"
+            >
+              <span class="two-step-welcome-amount blurred text-[#FFF67D]"
+                >4.500</span
+              >
+              <span class="two-step-welcome-symbol blurred text-[#FFF67D]"
+                >€</span
+              >
+              +
+              <span class="two-step-bonus-spins blurred text-[#30FF7E]"
+                >200 FS</span
+              >
+              <br />
+              bonus for new players
+            </h1>
+          </div>
+          <!-- Frame -->
+          <div
+            class="relative mx-auto mt-[60px] h-full w-full max-w-[1125px] px-[25px] large:mt-[30px] large:max-w-[900px] tbl:mt-5"
+          >
+            <div
+              class="animated-background-gradient h-full rounded-[36px] p-5 tbl:rounded-xl tbl:p-[7px]"
+            >
+              <img
+                class="frame-big-logo pointer-events-none absolute -top-12 left-1/2 -translate-x-1/2 large:-top-6 large:max-w-[220px] tbl:-top-4 tbl:max-w-[150px]"
+                width="305"
+                height="136"
+                src="./img/checken-logo.webp"
+                alt="Chicken Road Logo"
+              />
+              <div
+                class="h-full w-full overflow-hidden rounded-3xl tbl:rounded-[7px]"
+              >
+                <iframe
+                  class="game-frame h-full w-full"
+                  src="https://api.inout.games/api/launch?gameMode=chicken-road&authToken=133c9a25-82dc-158b-907e-da9f94f0c786&operatorId=ee2013ed-e1f0-4d6e-97d2-f36619e2eb52&currency=EUR&lang=en"
+                  frameborder="0"
+                ></iframe>
+              </div>
+            </div>
+          </div>
+          <div
+            class="mt-10 flex items-center justify-center gap-8 small:mt-[10px] small:w-full small:gap-0 small:px-5"
+          >
+            <div
+              class="xl:hidden flex items-center gap-5 rounded-2xl border border-[#00C84C] py-[11px] pl-7 pr-6"
+            >
+              <div class="pulsating-circle"></div>
+              <div
+                class="font-gilroy text-[28px] font-bold leading-[143%] text-white"
+              >
+                <span class="players-count">80</span>
+                <span data-translate="chickenRoadPlaying">Playing</span>
+              </div>
+            </div>
+            <button
+              data-translate="chickenRoadGetBonus"
+              class="form-modal-open-btn pulse-button animated-button w-max min-w-[298px] rounded-[36px] border-t-[6px] border-white px-4 py-3 font-raleway text-[24px] font-black uppercase text-white small:w-full"
+            >
+              GET BONUS
+            </button>
+            <div
+              class="xl:hidden flex items-center gap-3 rounded-2xl border border-[#00C84C] px-3 py-2 pr-6"
+            >
+              <img
+                class="header-logo-flag hidden h-[46px] w-[46px] shrink-0 overflow-hidden rounded-full"
+                width="46"
+                height="46"
+                src="./img/gb.svg"
+                alt="GB"
+              />
+              <span
+                data-translate="chickenRoadAccepted"
+                class="text-[28px] font-bold leading-[143%] text-[#00c84c]"
+                >Accepted</span
+              >
+            </div>
+          </div>
+        </main>
+      </div>
       <!-- Two step overlay -->
       <div
-        class="two-step-overlay is-open fixed left-0 top-0 z-[300] h-dvh w-full flex-col justify-between overflow-y-auto px-9 pb-[50px] pt-[30px] large:py-5 small:justify-start small:gap-[15px] small:px-[15px] small:pt-20"
+        class="two-step-overlay fixed left-0 top-0 z-[300] h-dvh w-full flex-col justify-between overflow-y-auto bg-black/10 px-9 pb-[50px] pt-[30px] backdrop-blur-[10px] large:py-5 small:justify-start small:gap-[15px] small:px-[15px] small:pt-20"
       >
         <!-- Header -->
         <div
@@ -71,12 +526,9 @@
             >
           </div>
           <div
-            class="mx-auto flex w-full max-w-[800px] items-center justify-between gap-3"
+            class="mx-auto flex w-full max-w-[800px] items-center justify-center gap-3"
           >
-            <a
-              href="/"
-              class="inline-flex items-center gap-1 tbl:hidden small:hidden"
-            >
+            <a href="/" class="inline-flex items-center gap-1">
               <img
                 class="tbl:max-w-[100px]"
                 width="134"
@@ -92,313 +544,10 @@
                 alt="Belgium"
               />
             </a>
-            <div class="header-lang-box relative z-30 tbl:ml-auto">
-              <button
-                class="header-lang-btn flex cursor-pointer items-center justify-center gap-2 rounded-lg bg-[#ffffff] px-3 py-[9px] font-bold text-black transition-all"
-              >
-                <img
-                  class="overflow-hidden rounded-full"
-                  width="20"
-                  height="20"
-                  src="./img/flags/en.svg"
-                  alt="English flag"
-                />
-                <span class="max-[350px]:hidden inline-block">English</span>
-                <svg
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M6 9L12 15L18 9"
-                    stroke="#000"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  />
-                </svg>
-              </button>
-              <ul
-                class="header-lang-list max-[350px]:min-w-max absolute right-0 top-[110%] max-h-[180px] w-full overflow-hidden overflow-y-auto rounded-lg font-bold text-black duration-300"
-              >
-                <li>
-                  <a
-                    data-lang="en"
-                    class="language-link flex items-center gap-2 bg-[#ffffff] px-3 py-[9px] transition-all"
-                    href="#"
-                    ><img
-                      class="pointer-events-none shrink-0 overflow-hidden rounded-full"
-                      width="20"
-                      height="20"
-                      src="./img/flags/en.svg"
-                      alt="eng flag"
-                    />
-                    <span class="pointer-events-none">English</span>
-                  </a>
-                </li>
-                <li>
-                  <a
-                    data-lang="fr"
-                    class="language-link flex items-center gap-2 bg-[#ffffff] px-3 py-[9px] transition-all"
-                    href="#"
-                    ><img
-                      class="pointer-events-none shrink-0 overflow-hidden rounded-full"
-                      width="20"
-                      height="20"
-                      src="./img/flags/fr.svg"
-                      alt="Fr flag"
-                    />
-                    <span class="pointer-events-none">French</span>
-                  </a>
-                </li>
-                <li>
-                  <a
-                    data-lang="de"
-                    class="language-link flex items-center gap-2 bg-[#ffffff] px-3 py-[9px] transition-all"
-                    href="#"
-                    ><img
-                      class="pointer-events-none shrink-0 overflow-hidden rounded-full"
-                      width="20"
-                      height="20"
-                      src="./img/flags/de.svg"
-                      alt="DE flag"
-                    />
-                    <span class="pointer-events-none">German</span>
-                  </a>
-                </li>
-                <li>
-                  <a
-                    data-lang="ru"
-                    class="language-link flex items-center gap-2 bg-[#ffffff] px-3 py-[9px] transition-all"
-                    href="#"
-                    ><img
-                      class="pointer-events-none shrink-0 overflow-hidden rounded-full"
-                      width="20"
-                      height="20"
-                      src="./img/flags/ru.svg"
-                      alt="RU flag"
-                    />
-                    <span class="pointer-events-none">Russian</span>
-                  </a>
-                </li>
-                <li>
-                  <a
-                    data-lang="es"
-                    class="language-link flex items-center gap-2 bg-[#ffffff] px-3 py-[9px] transition-all"
-                    href="#"
-                    ><img
-                      class="pointer-events-none shrink-0 overflow-hidden rounded-full"
-                      width="20"
-                      height="20"
-                      src="./img/flags/es.svg"
-                      alt="ES flag"
-                    />
-                    <span class="pointer-events-none">Spanish</span>
-                  </a>
-                </li>
-                <li>
-                  <a
-                    data-lang="pt"
-                    class="language-link flex items-center gap-2 bg-[#ffffff] px-3 py-[9px] transition-all"
-                    href="#"
-                    ><img
-                      class="pointer-events-none shrink-0 overflow-hidden rounded-full"
-                      width="20"
-                      height="20"
-                      src="./img/flags/pt.svg"
-                      alt="PT flag"
-                    />
-                    <span class="pointer-events-none">Portuguese</span>
-                  </a>
-                </li>
-                <li>
-                  <a
-                    data-lang="ro"
-                    class="language-link flex items-center gap-2 bg-[#ffffff] px-3 py-[9px] transition-all"
-                    href="#"
-                    ><img
-                      class="pointer-events-none shrink-0 overflow-hidden rounded-full"
-                      width="20"
-                      height="20"
-                      src="./img/flags/ro.svg"
-                      alt="RO flag"
-                    />
-                    <span class="pointer-events-none">Romainan</span>
-                  </a>
-                </li>
-                <li>
-                  <a
-                    data-lang="hu"
-                    class="language-link flex items-center gap-2 bg-[#ffffff] px-3 py-[9px] transition-all"
-                    href="#"
-                    ><img
-                      class="pointer-events-none shrink-0 overflow-hidden rounded-full"
-                      width="20"
-                      height="20"
-                      src="./img/flags/hu.svg"
-                      alt="HU flag"
-                    />
-                    <span class="pointer-events-none">Hungarian</span>
-                  </a>
-                </li>
-                <li>
-                  <a
-                    data-lang="pl"
-                    class="language-link flex items-center gap-2 bg-[#ffffff] px-3 py-[9px] transition-all"
-                    href="#"
-                    ><img
-                      class="pointer-events-none shrink-0 overflow-hidden rounded-full"
-                      width="20"
-                      height="20"
-                      src="./img/flags/pl.svg"
-                      alt="PL flag"
-                    />
-                    <span class="pointer-events-none">Polish</span>
-                  </a>
-                </li>
-                <li>
-                  <a
-                    data-lang="cz"
-                    class="language-link flex items-center gap-2 bg-[#ffffff] px-3 py-[9px] transition-all"
-                    href="#"
-                    ><img
-                      class="pointer-events-none shrink-0 overflow-hidden rounded-full"
-                      width="20"
-                      height="20"
-                      src="./img/flags/cz.svg"
-                      alt="CZ flag"
-                    />
-                    <span class="pointer-events-none">Czech</span>
-                  </a>
-                </li>
-                <li>
-                  <a
-                    data-lang="si"
-                    class="language-link flex items-center gap-2 bg-[#ffffff] px-3 py-[9px] transition-all"
-                    href="#"
-                    ><img
-                      class="pointer-events-none shrink-0 overflow-hidden rounded-full"
-                      width="20"
-                      height="20"
-                      src="./img/flags/si.svg"
-                      alt="SL flag"
-                    />
-                    <span class="pointer-events-none">Slovenian</span>
-                  </a>
-                </li>
-                <li>
-                  <a
-                    data-lang="no"
-                    class="language-link flex items-center gap-2 bg-[#ffffff] px-3 py-[9px] transition-all"
-                    href="#"
-                    ><img
-                      class="pointer-events-none shrink-0 overflow-hidden rounded-full"
-                      width="20"
-                      height="20"
-                      src="./img/flags/no.svg"
-                      alt="NO flag"
-                    />
-                    <span class="pointer-events-none">Norwegian</span>
-                  </a>
-                </li>
-                <li>
-                  <a
-                    data-lang="se"
-                    class="language-link flex items-center gap-2 bg-[#ffffff] px-3 py-[9px] transition-all"
-                    href="#"
-                    ><img
-                      class="pointer-events-none shrink-0 overflow-hidden rounded-full"
-                      width="20"
-                      height="20"
-                      src="./img/flags/se.svg"
-                      alt="SE flag"
-                    />
-                    <span class="pointer-events-none">Swedish</span>
-                  </a>
-                </li>
-                <li>
-                  <a
-                    data-lang="sk"
-                    class="language-link flex items-center gap-2 bg-[#ffffff] px-3 py-[9px] transition-all"
-                    href="#"
-                    ><img
-                      class="pointer-events-none shrink-0 overflow-hidden rounded-full"
-                      width="20"
-                      height="20"
-                      src="./img/flags/sk.svg"
-                      alt="SK flag"
-                    />
-                    <span class="pointer-events-none">Slovak</span>
-                  </a>
-                </li>
-                <li>
-                  <a
-                    data-lang="gr"
-                    class="language-link flex items-center gap-2 bg-[#ffffff] px-3 py-[9px] transition-all"
-                    href="#"
-                    ><img
-                      class="pointer-events-none shrink-0 overflow-hidden rounded-full"
-                      width="20"
-                      height="20"
-                      src="./img/flags/gr.svg"
-                      alt="GR flag"
-                    />
-                    <span class="pointer-events-none">Greek</span>
-                  </a>
-                </li>
-                <li>
-                  <a
-                    data-lang="ua"
-                    class="language-link flex items-center gap-2 bg-[#ffffff] px-3 py-[9px] transition-all"
-                    href="#"
-                    ><img
-                      class="pointer-events-none shrink-0 overflow-hidden rounded-full"
-                      width="20"
-                      height="20"
-                      src="./img/flags/ua.svg"
-                      alt="UA flag"
-                    />
-                    <span class="pointer-events-none">Ukrainian</span>
-                  </a>
-                </li>
-                <li>
-                  <a
-                    data-lang="tr"
-                    class="language-link flex items-center gap-2 bg-[#ffffff] px-3 py-[9px] transition-all"
-                    href="#"
-                    ><img
-                      class="pointer-events-none shrink-0 overflow-hidden rounded-full"
-                      width="20"
-                      height="20"
-                      src="./img/flags/tr.svg"
-                      alt="TR flag"
-                    />
-                    <span class="pointer-events-none">Turkish</span>
-                  </a>
-                </li>
-                <li>
-                  <a
-                    data-lang="kz"
-                    class="language-link flex items-center gap-2 bg-[#ffffff] px-3 py-[9px] transition-all"
-                    href="#"
-                    ><img
-                      class="pointer-events-none shrink-0 overflow-hidden rounded-full"
-                      width="20"
-                      height="20"
-                      src="./img/flags/kz.svg"
-                      alt="KZ flag"
-                    />
-                    <span class="pointer-events-none">Kazakh</span>
-                  </a>
-                </li>
-              </ul>
-            </div>
           </div>
-          <div class="invisible flex items-center gap-3 opacity-0 tbl:hidden">
+          <div class="invisible flex items-center gap-3 opacity-0">
             <span
-              class="text-lg font-bold leading-[117%] tracking-[0.02em] text-white"
+              class="text-lg font-bold leading-[117%] tracking-[0.02em] text-white small:hidden"
               >Close</span
             >
             <button
@@ -2069,7 +2218,7 @@
       </div>
     </div>
     <div
-      class="preloader pointer-events-none fixed left-0 top-0 z-[1000] grid h-screen w-full place-items-center bg-[#22082f]"
+      class="preloader pointer-events-none fixed left-0 top-0 z-[1000] grid h-screen w-full place-items-center bg-[#25273F]"
     >
       <svg
         width="106"

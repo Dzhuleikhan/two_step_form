@@ -117,12 +117,15 @@ export const settingInitialBonusValue = (currency) => {
   if (currencyEntry) {
     document.querySelectorAll(".two-step-welcome-amount").forEach((el) => {
       el.innerHTML = currencyEntry.amount;
+      el.classList.remove("blurred");
     });
     document.querySelectorAll(".two-step-welcome-symbol").forEach((el) => {
       el.innerHTML = currencyEntry.countryCurrencySymbol;
+      el.classList.remove("blurred");
     });
     document.querySelectorAll(".two-step-bonus-spins").forEach((el) => {
       el.innerHTML = currencyEntry.spins;
+      el.classList.remove("blurred");
     });
     document.querySelectorAll(".bonus-highroller-amount").forEach((el) => {
       el.innerHTML = currencyEntry.highrollerAmount;
@@ -534,7 +537,7 @@ if (twoStepFormFourthStep) {
     ".two-step-country-search-input",
   );
 
-  const headerlogoFlag = document.querySelector(".header-logo-flag");
+  const headerlogoFlag = document.querySelectorAll(".header-logo-flag");
 
   let isCanada = geoData.countryCode === "CA";
 
@@ -596,9 +599,12 @@ if (twoStepFormFourthStep) {
       twoStepAppliedCountryInput.value = mathedCountry.name;
       twoStepAppliedCountryImage.src = `./img/flags/${mathedCountry.slug}.svg`;
       twoStepAppliedCountryImage.alt = mathedCountry.name;
-      headerlogoFlag.src = `./img/flags/${mathedCountry.slug}.svg`;
-      headerlogoFlag.alt = mathedCountry.name;
-      headerlogoFlag.classList.remove("hidden");
+
+      headerlogoFlag.forEach((flag) => {
+        flag.src = `./img/flags/${mathedCountry.slug}.svg`;
+        flag.alt = mathedCountry.name;
+        flag.classList.remove("hidden");
+      });
       twoStepFormData.country = mathedCountry.slug.toUpperCase();
     }
   };
@@ -912,5 +918,3 @@ twoStepFormMain.addEventListener("submit", (e) => {
     `https://${newDomain}/api/register?env=prod&type=email&currency=${currency}&email=${encodeURIComponent(email)}&password=${password}&phone=${phone}&bonus=${bonus}${promocode ? "&promocode=" + promocode : ""}&lang=${lang}${firstName ? "&f_name=" + firstName : ""}${lastName ? "&l_name=" + lastName : ""}${birthday ? "&birth=" + birthday : ""}${gender ? "&gender=" + gender : ""}${country ? "&country=" + country : ""}${state ? "&state=" + state : ""}${city ? "&city=" + city : ""}${zipCode ? "&postal=" + zipCode : ""}${address ? "&address=" + encodeURIComponent(address) : ""}${cid ? "&cid=" + cid : ""}`,
   );
 });
-
-gsap.to(".preloader", { opacity: 0, duration: 0.25, delay: 0.5 });

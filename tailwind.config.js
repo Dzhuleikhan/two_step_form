@@ -4,6 +4,7 @@ module.exports = {
   theme: {
     screens: {
       large: { max: "1650px" },
+      xl: { max: "1200px" },
       tbl: { max: "767px" },
       medium: { max: "650px" },
       small: { max: "480px" },

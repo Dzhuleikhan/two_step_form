@@ -42,6 +42,12 @@ export const translations = {
     statePlaceholder: "Choose Province",
     zipCodePlaceholder: "Enter ZIP Code",
     createAccountBtn: "Create Account",
+    // | Checken road
+    chickenRoadGetBonus: "Get Bonus",
+    chickenRoadAccepted: "Accepted",
+    chickenRoadPlaying: "Playing",
+    checkenRoadSubtitle: "Sign up and claim your bonus",
+    chickenRoadMainTitle: `<span class='two-step-welcome-amount blurred text-[#FFF67D]'>4.500</span> <span class='two-step-welcome-symbol blurred text-[#FFF67D]'>€</span> + <span class='two-step-bonus-spins blurred text-[#30FF7E]'>200 FS</span> <br/> bonus for new players`,
   },
   fr: {
     pageTabTitle: "Inscrivez-vous pour un compte de casino Goldbet",
@@ -86,6 +92,12 @@ export const translations = {
     statePlaceholder: "Sélectionnez une région",
     zipCodePlaceholder: "Entrez le code postal",
     createAccountBtn: "Créer un compte",
+    // | Checken road
+    chickenRoadGetBonus: "Obtiens le bonus",
+    chickenRoadAccepted: "Accepté",
+    chickenRoadPlaying: "Jouer",
+    checkenRoadSubtitle: "Inscris-toi et récupère ton bonus",
+    chickenRoadMainTitle: `Bonus de <span class='two-step-welcome-amount blurred text-[#FFF67D]'>4.500</span> <span class='two-step-welcome-symbol blurred text-[#FFF67D]'>€</span> + <span class='two-step-bonus-spins blurred text-[#30FF7E]'>200 FS</span> <br/> pour les nouveaux joueurs`,
   },
   pl: {
     pageTabTitle: "Zarejestruj konto w Goldbet Casino",
@@ -130,6 +142,12 @@ export const translations = {
     statePlaceholder: "Wybierz województwo",
     zipCodePlaceholder: "Wpisz kod pocztowy",
     createAccountBtn: "Utwórz konto",
+    // | Checken road
+    chickenRoadGetBonus: "Odbierz bonus",
+    chickenRoadAccepted: "Zaakceptowane",
+    chickenRoadPlaying: "Granie",
+    checkenRoadSubtitle: "Zarejestruj się i odbierz bonus",
+    chickenRoadMainTitle: `<span class='two-step-welcome-amount blurred text-[#FFF67D]'>4.500</span> <span class='two-step-welcome-symbol blurred text-[#FFF67D]'>€</span> + <span class='two-step-bonus-spins blurred text-[#30FF7E]'>200 FS</span> <br/> bonus dla nowych graczy`,
   },
   hu: {
     pageTabTitle: "Regisztrálj Goldbet Casino fiókot",
@@ -174,6 +192,12 @@ export const translations = {
     statePlaceholder: "Válassz megyét",
     zipCodePlaceholder: "Írd be az irányítószámot",
     createAccountBtn: "Fiók létrehozása",
+    // | Checken road
+    chickenRoadGetBonus: "Szerezd meg a bónuszt",
+    chickenRoadAccepted: "Elfogadva",
+    chickenRoadPlaying: "Játék",
+    checkenRoadSubtitle: "Regisztrálj és vedd át a bónuszt",
+    chickenRoadMainTitle: `<span class='two-step-welcome-amount blurred text-[#FFF67D]'>4.500</span> <span class='two-step-welcome-symbol blurred text-[#FFF67D]'>€</span> + <span class='two-step-bonus-spins blurred text-[#30FF7E]'>200 FS</span> <br/> bónusz új játékosoknak`,
   },
   ro: {
     pageTabTitle: "Înregistrează un cont Goldbet Casino",
@@ -218,6 +242,12 @@ export const translations = {
     statePlaceholder: "Alegeți provincia",
     zipCodePlaceholder: "Introduceți codul poștal",
     createAccountBtn: "Creează cont",
+    // | Checken road
+    chickenRoadGetBonus: "Ia bonusul",
+    chickenRoadAccepted: "Acceptat",
+    chickenRoadPlaying: "Jucând",
+    checkenRoadSubtitle: "Înregistrează-te și revendică bonusul",
+    chickenRoadMainTitle: `Bonus de <span class='two-step-welcome-amount blurred text-[#FFF67D]'>4.500</span> <span class='two-step-welcome-symbol blurred text-[#FFF67D]'>€</span> + <span class='two-step-bonus-spins blurred text-[#30FF7E]'>200 FS</span> <br/> pentru jucători noi`,
   },
   si: {
     pageTabTitle: "Registrirajte račun Goldbet Casino",
@@ -262,6 +292,12 @@ export const translations = {
     statePlaceholder: "Izberite pokrajino",
     zipCodePlaceholder: "Vnesite poštno številko",
     createAccountBtn: "Ustvariti račun",
+    // | Checken road
+    chickenRoadGetBonus: "Prevzemi bonus",
+    chickenRoadAccepted: "Sprejeto",
+    chickenRoadPlaying: "Igranje",
+    checkenRoadSubtitle: "Registriraj se in prevzemi bonus",
+    chickenRoadMainTitle: `<span class='two-step-welcome-amount blurred text-[#FFF67D]'>4.500</span> <span class='two-step-welcome-symbol blurred text-[#FFF67D]'>€</span> + <span class='two-step-bonus-spins blurred text-[#30FF7E]'>200 FS</span> <br/> bonus za nove igralce`,
   },
   cz: {
     pageTabTitle: "Zaregistrujte si účet v Goldbet Casinu",
@@ -306,6 +342,12 @@ export const translations = {
     statePlaceholder: "Vyberte region",
     zipCodePlaceholder: "Zadejte PSČ",
     createAccountBtn: "Vytvořit účet",
+    // | Checken road
+    chickenRoadGetBonus: "Získej bonus",
+    chickenRoadAccepted: "Přijato",
+    chickenRoadPlaying: "Hraní",
+    checkenRoadSubtitle: "Zaregistruj se a získej bonus",
+    chickenRoadMainTitle: `<span class='two-step-welcome-amount blurred text-[#FFF67D]'>4.500</span> <span class='two-step-welcome-symbol blurred text-[#FFF67D]'>€</span> + <span class='two-step-bonus-spins blurred text-[#30FF7E]'>200 FS</span> <br/> bonus pro nové hráče`,
   },
   ru: {
     pageTabTitle: "Зарегистрируйтесь в казино Goldbet",
@@ -350,6 +392,12 @@ export const translations = {
     statePlaceholder: "Выберите регион",
     zipCodePlaceholder: "Введите почтовый индекс",
     createAccountBtn: "Создать аккаунт",
+    // | Checken road
+    chickenRoadGetBonus: "Забрать бонус",
+    chickenRoadAccepted: "Принято",
+    chickenRoadPlaying: "Играют",
+    checkenRoadSubtitle: "Зарегистрируйся и забери бонус",
+    chickenRoadMainTitle: `<span class='two-step-welcome-amount blurred text-[#FFF67D]'>4.500</span> <span class='two-step-welcome-symbol blurred text-[#FFF67D]'>€</span> + <span class='two-step-bonus-spins blurred text-[#30FF7E]'>200 FS</span> <br/> бонус для новых игроков`,
   },
   pt: {
     pageTabTitle: "Registar no Goldbet Casino",
@@ -394,6 +442,12 @@ export const translations = {
     statePlaceholder: "Selecione estado",
     zipCodePlaceholder: "Código Postal",
     createAccountBtn: "Criar Conta",
+    // | Checken road
+    chickenRoadGetBonus: "Recebe o bónus",
+    chickenRoadAccepted: "Aceito",
+    chickenRoadPlaying: "Jogando",
+    checkenRoadSubtitle: "Regista-te e recebe o teu bónus",
+    chickenRoadMainTitle: `<span class='two-step-welcome-amount blurred text-[#FFF67D]'>4.500</span> <span class='two-step-welcome-symbol blurred text-[#FFF67D]'>€</span> + <span class='two-step-bonus-spins blurred text-[#30FF7E]'>200 FS</span> <br/> bónus para novos jogadores`,
   },
   de: {
     pageTabTitle: "Registrieren Sie sich bei Goldbet Casino",
@@ -438,6 +492,12 @@ export const translations = {
     statePlaceholder: "Bundesland auswählen",
     zipCodePlaceholder: "Postleitzahl eingeben",
     createAccountBtn: "Konto erstellen",
+    // | Checken road
+    chickenRoadGetBonus: "Bonus holen",
+    chickenRoadAccepted: "Akzeptiert",
+    chickenRoadPlaying: "Spielen",
+    checkenRoadSubtitle: "Registriere dich und sichere dir deinen Bonus",
+    chickenRoadMainTitle: `<span class='two-step-welcome-amount blurred text-[#FFF67D]'>4.500</span> <span class='two-step-welcome-symbol blurred text-[#FFF67D]'>€</span> + <span class='two-step-bonus-spins blurred text-[#30FF7E]'>200 FS</span> <br/> Bonus für neue Spieler`,
   },
   gr: {
     pageTabTitle: "Εγγραφή Λογαριασμού στο Καζίνο Goldbet",
@@ -482,6 +542,12 @@ export const translations = {
     statePlaceholder: "Επιλέξτε Περιφέρεια",
     zipCodePlaceholder: "Εισάγετε Τ.Κ.",
     createAccountBtn: "Δημιουργία Λογαριασμού",
+    // | Checken road
+    chickenRoadGetBonus: "Πάρε το μπόνους",
+    chickenRoadAccepted: "Εγκεκριμένο",
+    chickenRoadPlaying: "Παίζοντας",
+    checkenRoadSubtitle: "Εγγράψου και πάρε το μπόνους",
+    chickenRoadMainTitle: `<span class='two-step-welcome-amount blurred text-[#FFF67D]'>4.500</span> <span class='two-step-welcome-symbol blurred text-[#FFF67D]'>€</span> + <span class='two-step-bonus-spins blurred text-[#30FF7E]'>200 FS</span> <br/> μπόνους για νέους παίκτες`,
   },
   tr: {
     pageTabTitle: "Goldbet Casino Hesabı Oluştur",
@@ -526,6 +592,12 @@ export const translations = {
     statePlaceholder: "İl Seçin",
     zipCodePlaceholder: "Posta Kodu Girin",
     createAccountBtn: "Hesap Oluştur",
+    // | Checken road
+    chickenRoadGetBonus: "Bonusu al",
+    chickenRoadAccepted: "Kabul Edildi",
+    chickenRoadPlaying: "Oynuyor",
+    checkenRoadSubtitle: "Kaydol ve bonusunu al",
+    chickenRoadMainTitle: `Yeni oyuncular için <br/> <span class='two-step-welcome-amount blurred text-[#FFF67D]'>4.500</span> <span class='two-step-welcome-symbol blurred text-[#FFF67D]'>€</span> + <span class='two-step-bonus-spins blurred text-[#30FF7E]'>200 FS</span> bonus`,
   },
   ua: {
     pageTabTitle: "Зареєструвати акаунт у Goldbet Casino",
@@ -570,6 +642,12 @@ export const translations = {
     statePlaceholder: "Оберіть область",
     zipCodePlaceholder: "Введіть поштовий індекс",
     createAccountBtn: "Створити акаунт",
+    // | Checken road
+    chickenRoadGetBonus: "Забрати бонус",
+    chickenRoadAccepted: "Прийнято",
+    chickenRoadPlaying: "Грає",
+    checkenRoadSubtitle: "Зареєструйся та забери бонус",
+    chickenRoadMainTitle: `<span class='two-step-welcome-amount blurred text-[#FFF67D]'>4.500</span> <span class='two-step-welcome-symbol blurred text-[#FFF67D]'>€</span> + <span class='two-step-bonus-spins blurred text-[#30FF7E]'>200 FS</span> <br/> бонус для нових гравців`,
   },
   es: {
     pageTabTitle: "Regístrate en Goldbet Casino",
@@ -614,6 +692,12 @@ export const translations = {
     statePlaceholder: "Elige la Provincia",
     zipCodePlaceholder: "Introduce el Código Postal",
     createAccountBtn: "Crear Cuenta",
+    // | Checken road
+    chickenRoadGetBonus: "Consigue el bono",
+    chickenRoadAccepted: "Aceptado",
+    chickenRoadPlaying: "Jugando",
+    checkenRoadSubtitle: "Regístrate y reclama tu bono",
+    chickenRoadMainTitle: `<span class='two-step-welcome-amount blurred text-[#FFF67D]'>4.500</span> <span class='two-step-welcome-symbol blurred text-[#FFF67D]'>€</span> + <span class='two-step-bonus-spins blurred text-[#30FF7E]'>200 FS</span> <br/> bono para nuevos jugadores`,
   },
   no: {
     pageTabTitle: "Registrer deg for en Goldbet Casino-konto",
@@ -658,6 +742,12 @@ export const translations = {
     statePlaceholder: "Velg provins",
     zipCodePlaceholder: "Skriv inn postnummer",
     createAccountBtn: "Opprett Konto",
+    // | Checken road
+    chickenRoadGetBonus: "Hent bonus",
+    chickenRoadAccepted: "Godkjent",
+    chickenRoadPlaying: "Spiller",
+    checkenRoadSubtitle: "Registrer deg og hent bonusen",
+    chickenRoadMainTitle: `<span class='two-step-welcome-amount blurred text-[#FFF67D]'>4.500</span> <span class='two-step-welcome-symbol blurred text-[#FFF67D]'>€</span> + <span class='two-step-bonus-spins blurred text-[#30FF7E]'>200 FS</span> <br/> bonus for nye spillere`,
   },
   se: {
     pageTabTitle: "Registrera ett Goldbet Casino-konto",
@@ -702,6 +792,12 @@ export const translations = {
     statePlaceholder: "Välj provins",
     zipCodePlaceholder: "Ange postnummer",
     createAccountBtn: "Skapa Konto",
+    // | Checken road
+    chickenRoadGetBonus: "Hämta bonus",
+    chickenRoadAccepted: "Accepterat",
+    chickenRoadPlaying: "Spelar",
+    checkenRoadSubtitle: "Registrera dig och hämta din bonus",
+    chickenRoadMainTitle: `<span class='two-step-welcome-amount blurred text-[#FFF67D]'>4.500</span> <span class='two-step-welcome-symbol blurred text-[#FFF67D]'>€</span> + <span class='two-step-bonus-spins blurred text-[#30FF7E]'>200 FS</span> <br/> bonus för nya spelare`,
   },
   sk: {
     pageTabTitle: "Zaregistrujte si účet v kasíne Goldbet",
@@ -746,6 +842,12 @@ export const translations = {
     statePlaceholder: "Vyberte kraj",
     zipCodePlaceholder: "Zadajte PSČ",
     createAccountBtn: "Vytvoriť účet",
+    // | Checken road
+    chickenRoadGetBonus: "Získaj bonus",
+    chickenRoadAccepted: "Prijaté",
+    chickenRoadPlaying: "Hranie",
+    checkenRoadSubtitle: "Zaregistruj sa a získaj bonus",
+    chickenRoadMainTitle: `<span class='two-step-welcome-amount blurred text-[#FFF67D]'>4.500</span> <span class='two-step-welcome-symbol blurred text-[#FFF67D]'>€</span> + <span class='two-step-bonus-spins blurred text-[#30FF7E]'>200 FS</span> <br/> bonus pre nových hráčov`,
   },
   kz: {
     pageTabTitle: "Goldbet Казино Аккаунтын Тіркеу",
@@ -790,5 +892,11 @@ export const translations = {
     statePlaceholder: "Аймақ Таңдаңыз",
     zipCodePlaceholder: "Пошталық Индекс Жазыңыз",
     createAccountBtn: "Аккаунт Құру",
+    // | Checken road
+    chickenRoadGetBonus: "Бонус алу",
+    chickenRoadAccepted: "Қабылданды",
+    chickenRoadPlaying: "Ойнап жатыр",
+    checkenRoadSubtitle: "Тіркеліп, бонусыңды ал",
+    chickenRoadMainTitle: `Жаңа ойыншыларға <span class='two-step-welcome-amount blurred text-[#FFF67D]'>4.500</span> <span class='two-step-welcome-symbol blurred text-[#FFF67D]'>€</span> + <span class='two-step-bonus-spins blurred text-[#30FF7E]'>200 FS</span> <br/> бонус`,
   },
 };
