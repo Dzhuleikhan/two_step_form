@@ -70,6 +70,7 @@ function updateButtonText(lang) {
     de: "German",
     ua: "Ukrainian",
     tr: "Turkish",
+    kz: "Kazakh",
   };
   headerLangBtn.setAttribute(
     "src",
