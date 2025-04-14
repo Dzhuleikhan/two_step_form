@@ -1,5 +1,4 @@
 import gsap from "gsap";
-import { Bounce, Elastic } from "gsap";
 
 gsap.to(".bg-pattern", {
   xPercent: -100,

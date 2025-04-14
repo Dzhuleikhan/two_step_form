@@ -17,7 +17,7 @@ window.addEventListener("blur", () => {
       window.focus();
     }, 0);
     clickCount++;
-    if (clickCount === 3) {
+    if (clickCount === 7) {
       formOverlay.classList.add("is-open");
       document.body.classList.add("scroll-lock");
       clickCount = 0;
