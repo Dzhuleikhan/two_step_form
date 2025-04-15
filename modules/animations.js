@@ -54,4 +54,22 @@ preloaderTl
     { yPercent: 80 },
     { yPercent: 0, duration: 3.5, ease: "elastic.out(1,0.3)" },
     "<+0.1",
-  );
+  )
+  .add(() => {
+    // Floating animation starts after initial entrance
+    gsap.to(".chicken-left", {
+      y: "+=60", // float up a bit
+      duration: 2,
+      repeat: -1,
+      yoyo: true,
+      ease: "sine.inOut",
+    });
+
+    gsap.to(".chicken-right", {
+      y: "-=60",
+      duration: 2,
+      repeat: -1,
+      yoyo: true,
+      ease: "sine.inOut",
+    });
+  });
