@@ -71,6 +71,7 @@ function updateButtonText(lang) {
     ua: "Ukrainian",
     tr: "Turkish",
     kz: "Kazakh",
+    uz: "Uzbek",
   };
   headerLangBtn.setAttribute(
     "src",
@@ -136,7 +137,7 @@ async function determineLanguage() {
     MO: "pt",
     EH: "pt",
     AZ: "az",
-    UZ: "ru",
+    UZ: "uz",
     TR: "tr",
     BD: "en",
     ID: "en",
