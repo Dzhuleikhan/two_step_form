@@ -24,7 +24,16 @@ jobs:
       - name: Build project
         run: npm run build # Adjust if your build command differs
 
-      # promogb.top
+      # promogb.com
+
+      - name: Deploy to VPS 194.164.235.224 - Hostkey
+        uses: SamKirkland/FTP-Deploy-Action@4.3.0
+        with:
+          server: ${{ secrets.FTP_HOST_HOSTKEY }}
+          username: ${{ secrets.FTP_USER_HOSTKEY }}
+          password: ${{ secrets.FTP_PASSWORD_HOSTKEY }}
+          local-dir: ./dist/ # The folder containing your built project
+          server-dir: /www/promogb.com/two-step-form/ # The directory on the server where you want to upload the dist folder
 
       - name: Deploy to 185.206.180.88 - PRIMA
         uses: SamKirkland/FTP-Deploy-Action@4.3.0
@@ -33,7 +42,18 @@ jobs:
           username: ${{ secrets.FTP_USER_PRIMA }}
           password: ${{ secrets.FTP_PASSWORD_PRIMA }}
           local-dir: ./dist/ # The folder containing your built project
-          server-dir: /www/promogb.top/two-step-form/ # The directory on the server where you want to upload the dist folder
+          server-dir: /www/promogb.com/two-step-form/ # The directory on the server where you want to upload the dist folder
+
+      - name: Deploy to VPS 148.113.44.74 - OVH
+        uses: SamKirkland/FTP-Deploy-Action@4.3.0
+        with:
+          server: ${{ secrets.FTP_HOST_OVH }}
+          username: ${{ secrets.FTP_USER_OVH }}
+          password: ${{ secrets.FTP_PASSWORD_OVH }}
+          local-dir: ./dist/ # The folder containing your built project
+          server-dir: /www/promogb.com/two-step-form/ # The directory on the server where you want to upload the dist folder
+
+      # promogb.top
 
       - name: Deploy to VPS 194.164.235.224 - Hostkey
         uses: SamKirkland/FTP-Deploy-Action@4.3.0
@@ -41,6 +61,15 @@ jobs:
           server: ${{ secrets.FTP_HOST_HOSTKEY }}
           username: ${{ secrets.FTP_USER_HOSTKEY }}
           password: ${{ secrets.FTP_PASSWORD_HOSTKEY }}
+          local-dir: ./dist/ # The folder containing your built project
+          server-dir: /www/promogb.top/two-step-form/ # The directory on the server where you want to upload the dist folder
+
+      - name: Deploy to 185.206.180.88 - PRIMA
+        uses: SamKirkland/FTP-Deploy-Action@4.3.0
+        with:
+          server: ${{ secrets.FTP_HOST_PRIMA }}
+          username: ${{ secrets.FTP_USER_PRIMA }}
+          password: ${{ secrets.FTP_PASSWORD_PRIMA }}
           local-dir: ./dist/ # The folder containing your built project
           server-dir: /www/promogb.top/two-step-form/ # The directory on the server where you want to upload the dist folder
 
