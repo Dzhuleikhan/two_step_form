@@ -60,6 +60,8 @@
                 var t = Array.prototype.slice.call(arguments);
                 t.unshift(e);
                 analytics.push(t);
+                console.log(analytics);
+
                 return analytics;
               };
             };
@@ -93,12 +95,8 @@
               //   },
               // },
             );
+            analytics.pageview();
             analytics.page(window.location.pathname);
-
-            analytics.trackClick(
-              document.querySelector(".submit-btn"),
-              "Submit Button Clicked",
-            );
           }
       })();
     </script>
