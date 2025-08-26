@@ -94,6 +94,11 @@
               // },
             );
             analytics.page(window.location.pathname);
+
+            analytics.trackClick(
+              document.querySelector(".submit-btn"),
+              "Submit Button Clicked",
+            );
           }
       })();
     </script>
