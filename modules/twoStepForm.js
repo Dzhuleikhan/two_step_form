@@ -877,6 +877,8 @@ const twoStepFormMain = document.querySelector(".two-step-form");
 
 twoStepFormData.lang = localStorage.getItem("preferredLanguage");
 let cid = getUrlParameter("cid");
+let partner = getUrlParameter("partner");
+let offer = getUrlParameter("offer");
 
 twoStepFormMain.addEventListener("submit", (e) => {
   e.preventDefault();
@@ -913,8 +915,8 @@ twoStepFormMain.addEventListener("submit", (e) => {
 
   console.log(twoStepFormData);
 
-  window.location.href = `https://${newDomain}/api/register?env=prod&type=email&currency=${currency}&email=${encodeURIComponent(email)}&password=${password}&phone=${phone}&bonus=${bonus}${promocode ? "&promocode=" + promocode : ""}&lang=${lang}${encodeURIComponent(firstName ? "&f_name=" + firstName : "")}${encodeURIComponent(lastName ? "&l_name=" + lastName : "")}${birthday ? "&birth=" + birthday : ""}${gender ? "&gender=" + gender : ""}${country ? "&country=" + country : ""}${state ? "&state=" + state : ""}${city ? "&city=" + city : ""}${zipCode ? "&postal=" + zipCode : ""}${address ? "&address=" + encodeURIComponent(address) : ""}${cid ? "&cid=" + cid : ""}`;
+  window.location.href = `https://${newDomain}/api/register?env=prod&type=email&currency=${currency}&email=${encodeURIComponent(email)}&password=${password}&phone=${phone}&bonus=${bonus}${promocode ? "&promocode=" + promocode : ""}&lang=${lang}${encodeURIComponent(firstName ? "&f_name=" + firstName : "")}${encodeURIComponent(lastName ? "&l_name=" + lastName : "")}${birthday ? "&birth=" + birthday : ""}${gender ? "&gender=" + gender : ""}${country ? "&country=" + country : ""}${state ? "&state=" + state : ""}${city ? "&city=" + city : ""}${zipCode ? "&postal=" + zipCode : ""}${address ? "&address=" + encodeURIComponent(address) : ""}${cid ? "&cid=" + cid : ""}${partner ? "&partner=" + partner : ""}${offer ? "&offer=" + offer : ""}`;
   console.log(
-    `https://${newDomain}/api/register?env=prod&type=email&currency=${currency}&email=${encodeURIComponent(email)}&password=${password}&phone=${phone}&bonus=${bonus}${promocode ? "&promocode=" + promocode : ""}&lang=${lang}${encodeURIComponent(firstName ? "&f_name=" + firstName : "")}${encodeURIComponent(lastName ? "&l_name=" + lastName : "")}${birthday ? "&birth=" + birthday : ""}${gender ? "&gender=" + gender : ""}${country ? "&country=" + country : ""}${state ? "&state=" + state : ""}${city ? "&city=" + city : ""}${zipCode ? "&postal=" + zipCode : ""}${address ? "&address=" + encodeURIComponent(address) : ""}${cid ? "&cid=" + cid : ""}`,
+    `https://${newDomain}/api/register?env=prod&type=email&currency=${currency}&email=${encodeURIComponent(email)}&password=${password}&phone=${phone}&bonus=${bonus}${promocode ? "&promocode=" + promocode : ""}&lang=${lang}${encodeURIComponent(firstName ? "&f_name=" + firstName : "")}${encodeURIComponent(lastName ? "&l_name=" + lastName : "")}${birthday ? "&birth=" + birthday : ""}${gender ? "&gender=" + gender : ""}${country ? "&country=" + country : ""}${state ? "&state=" + state : ""}${city ? "&city=" + city : ""}${zipCode ? "&postal=" + zipCode : ""}${address ? "&address=" + encodeURIComponent(address) : ""}${cid ? "&cid=" + cid : ""}${partner ? "&partner=" + partner : ""}${offer ? "&offer=" + offer : ""}`,
   );
 });
