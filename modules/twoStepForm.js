@@ -911,7 +911,7 @@ twoStepFormMain.addEventListener("submit", (e) => {
   if (window.cioanalytics) {
     window.cioanalytics.ready(function () {
       window.cioanalytics.identify(email, {
-        name: firstName,
+        email,
         url: window.location.href,
       });
     });
