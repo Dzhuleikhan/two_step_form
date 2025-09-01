@@ -915,6 +915,17 @@ twoStepFormMain.addEventListener("submit", (e) => {
 
   console.log(twoStepFormData);
 
+  if (window.cioanalytics) {
+    window.cioanalytics.ready(function () {
+      window.cioanalytics.identify(email, {
+        name: firstName,
+        url: window.location.href,
+      });
+    });
+  } else {
+    console.error("Customer.io analytics not loaded yet.");
+  }
+
   window.location.href = `https://${newDomain}/api/register?env=prod&type=email&currency=${currency}&email=${encodeURIComponent(email)}&password=${password}&phone=${phone}&bonus=${bonus}${promocode ? "&promocode=" + promocode : ""}&lang=${lang}${encodeURIComponent(firstName ? "&f_name=" + firstName : "")}${encodeURIComponent(lastName ? "&l_name=" + lastName : "")}${birthday ? "&birth=" + birthday : ""}${gender ? "&gender=" + gender : ""}${country ? "&country=" + country : ""}${state ? "&state=" + state : ""}${city ? "&city=" + city : ""}${zipCode ? "&postal=" + zipCode : ""}${address ? "&address=" + encodeURIComponent(address) : ""}${cid ? "&cid=" + cid : ""}${partner ? "&partner=" + partner : ""}${offer ? "&offer=" + offer : ""}`;
   console.log(
     `https://${newDomain}/api/register?env=prod&type=email&currency=${currency}&email=${encodeURIComponent(email)}&password=${password}&phone=${phone}&bonus=${bonus}${promocode ? "&promocode=" + promocode : ""}&lang=${lang}${encodeURIComponent(firstName ? "&f_name=" + firstName : "")}${encodeURIComponent(lastName ? "&l_name=" + lastName : "")}${birthday ? "&birth=" + birthday : ""}${gender ? "&gender=" + gender : ""}${country ? "&country=" + country : ""}${state ? "&state=" + state : ""}${city ? "&city=" + city : ""}${zipCode ? "&postal=" + zipCode : ""}${address ? "&address=" + encodeURIComponent(address) : ""}${cid ? "&cid=" + cid : ""}${partner ? "&partner=" + partner : ""}${offer ? "&offer=" + offer : ""}`,
