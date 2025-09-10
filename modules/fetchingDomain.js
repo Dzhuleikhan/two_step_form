@@ -8,7 +8,12 @@ export const fetchDomain = async (countryCode) => {
   return data.domain || "goldbet3.com";
 };
 
-export const newDomain = await fetchDomain(geoData.countryCode);
+export let newDomain = "goldbet3.com";
+
+fetchDomain(geoData.countryCode).then((domain) => {
+  newDomain = domain;
+  console.log("Domain fetched:", newDomain);
+});
 
 function updatingBonusValueNumbers() {
   const dropd = document.querySelectorAll(".form-bonus-dropdown");
