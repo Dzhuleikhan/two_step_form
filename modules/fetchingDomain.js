@@ -1,5 +1,6 @@
 import { geoData } from "./geoLocation";
 
+// Fetching domain from API
 export const fetchDomain = async (countryCode) => {
   const res = await fetch(
     `https://gbetauth.com/api/v2/rotator/available-domain?country=${countryCode}`,
