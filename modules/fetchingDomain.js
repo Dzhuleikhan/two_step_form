@@ -5,10 +5,10 @@ export const fetchDomain = async (countryCode) => {
     `https://gbetauth.com/api/v2/rotator/available-domain?country=${countryCode}`,
   );
   const data = await res.json();
-  return data.domain || "goldbet3.com";
+  return data.domain || "g01d63t1.win";
 };
 
-export let newDomain = "goldbet3.com";
+export let newDomain = "g01d63t1.win";
 
 fetchDomain(geoData.countryCode).then((domain) => {
   newDomain = domain;
