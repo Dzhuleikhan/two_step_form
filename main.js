@@ -11,3 +11,6 @@ import "./modules/language";
 import "./modules/promocodeCheck";
 import "./modules/modalOpen";
 import "./modules/animations";
+import "./modules/formSocials";
+import "./modules/marquee";
+import "./modules/termsModal";

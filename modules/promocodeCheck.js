@@ -7,6 +7,13 @@ export const receivedPromocode = (
   getUrlParameter("promocode") || ""
 ).toLocaleUpperCase();
 
+document
+  .querySelector(".form-modal-open-btn")
+  .setAttribute(
+    "data-promocode",
+    receivedPromocode ? receivedPromocode : defaulPromocode,
+  );
+
 if (receivedPromocode) {
   twoStepFormData.promocode = receivedPromocode;
   document

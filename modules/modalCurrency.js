@@ -1,9 +1,9 @@
 import { getLocation } from "./geoLocation";
-import { countryCurrencyData } from "../public/data";
+import { countryCurrencyData, nodepBonuses } from "../public/data";
 import {
-  checkTir1CurrencyMatch,
   twoStepFormData,
   settingInitialBonusValue,
+  checkTir1CurrencyMatch,
 } from "./twoStepForm";
 
 export function getCountryCurrencyABBR(inputCountry) {
@@ -68,43 +68,38 @@ function setCurrency(abbr, name, icon) {
 async function settingModalCurrency() {
   try {
     let locationData = await getLocation();
-    let countryInput = locationData.countryCode;
 
-    if (countryInput === "RU" || countryInput === "MX") {
-      countryInput = "US";
+    if (locationData.currency.code === "CHE") {
+      locationData.currency.code = "CHF";
     }
 
-    if (countryInput === "GB") {
-      countryInput = "FR";
-    }
-
-    const currencyAbbr = getCountryCurrencyABBR(countryInput);
-    const currencyFullName = getCountryCurrencyFullName(countryInput);
-    const currencyIcon = getCountryCurrencyIcon(countryInput);
-    const currencySymbol = getCountryCurrencySymbol(countryInput);
+    const currencyCode =
+      nodepBonuses.find(
+        (item) => item.currency === locationData.currency.code,
+      ) || nodepBonuses.find((item) => item.currency === "EUR");
 
     const currencyData = {
-      abbr: currencyAbbr,
-      name: currencyFullName,
-      icon: currencyIcon,
-      symbol: currencySymbol,
+      abbr: currencyCode.currency,
+      name: currencyCode.currencyName,
+      icon: currencyCode.countryCurrencyIcon,
+      symbol: currencyCode.symbol,
     };
 
     // Save to local storage
     localStorage.setItem("currencyData", JSON.stringify(currencyData));
 
-    setCurrency(currencyAbbr, currencyFullName, currencyIcon);
+    setCurrency(currencyData.abbr, currencyData.name, currencyData.icon);
 
     twoStepFormData.currency = currencyData.abbr;
+    settingInitialBonusValue(twoStepFormData.currency);
     twoStepFormData.bonus = checkTir1CurrencyMatch(twoStepFormData.currency);
     setTimeout(() => {
-      settingInitialBonusValue(twoStepFormData.currency);
+      settingInitialBonusValue(currencyData.abbr);
     }, 300);
   } catch (error) {
     console.error("Error fetching location data:", error);
   }
 }
-
 settingModalCurrency();
 
 /**

@@ -68,9 +68,6 @@ function updateButtonText(lang) {
     es: "ES",
     pt: "PT",
     de: "DE",
-    ua: "UK",
-    tr: "TR",
-    kz: "KK",
   };
   headerLangBtn.setAttribute(
     "src",
@@ -192,18 +189,18 @@ document.querySelectorAll(".language-link").forEach((langBtn) => {
   });
 });
 
-// const detectedLanguage = localStorage.getItem("preferredLanguage");
+const detectedLanguage = localStorage.getItem("preferredLanguage");
 
-// function applyTranslations(lang) {
-//   const language = translations[lang] ? lang : "en"; // Use 'en' if language not in translations
-//   const elements = document.querySelectorAll("[data-translate]");
+function applyTranslations(lang) {
+  const language = translations[lang] ? lang : "en"; // Use 'en' if language not in translations
+  const elements = document.querySelectorAll("[data-translate]");
 
-//   elements.forEach((element) => {
-//     const key = element.getAttribute("data-translate");
-//     if (translations[language] && translations[language][key]) {
-//       element.innerHTML = translations[language][key];
-//     }
-//   });
-// }
+  elements.forEach((element) => {
+    const key = element.getAttribute("data-translate");
+    if (translations[language] && translations[language][key]) {
+      element.innerHTML = translations[language][key];
+    }
+  });
+}
 
-// applyTranslations(detectedLanguage);
+applyTranslations(detectedLanguage);
