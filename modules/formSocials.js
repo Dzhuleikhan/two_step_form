@@ -150,6 +150,8 @@ formModals.forEach((modal) => {
             formTab = tab;
 
             if (tab === "email") {
+              phoneInput.value = "";
+              formGroupPhone.classList.remove("not-valid");
               if (emalInput.value != "" && emalInput.value.match(emailRegEx)) {
                 formStepBtnNext.disabled = false;
               } else {
@@ -157,6 +159,8 @@ formModals.forEach((modal) => {
               }
             }
             if (tab === "phone") {
+              emalInput.value = "";
+              formGroupEmail.classList.remove("not-valid");
               if (phoneInput.value != "" && socialsIti.isValidNumber()) {
                 formStepBtnNext.disabled = false;
               } else {
