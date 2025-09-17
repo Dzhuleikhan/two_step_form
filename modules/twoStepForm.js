@@ -873,8 +873,6 @@ if (headerbackBtn) {
   });
 }
 
-twoStepFormData.firstName;
-
 // | SUBMITTING FORM
 const twoStepFormMain = document.querySelector(".two-step-form");
 
