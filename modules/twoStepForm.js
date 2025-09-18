@@ -583,7 +583,7 @@ if (twoStepFormFourthStep) {
       li.addEventListener("click", () => {
         twoStepStateInput.value = li.textContent.trim();
         twoStepStateInputLabel.classList.add("hidden");
-        twoStepFormData.state = encodeURIComponent(twoStepStateInput.value);
+        twoStepFormData.state = twoStepStateInput.value;
       });
 
       li.classList.add("two-step-state-list-item");
