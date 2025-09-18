@@ -797,15 +797,15 @@ if (twoStepFormFourthStep) {
     },
     {
       input: twoStepCityInput,
-      condition: (value) => value !== "", // Last name must not be empty
+      condition: (value) => value !== "",
     },
     {
       input: twoStepAddressInput,
-      condition: (value) => value !== "", // Valid date (YYYY-MM-DD)
+      condition: (value) => value !== "",
     },
     {
       input: twoStepZipcodeInput,
-      condition: (value) => value.length >= 2, // Valid date (YYYY-MM-DD)
+      condition: (value) => value.length >= 2,
     },
   ];
 
