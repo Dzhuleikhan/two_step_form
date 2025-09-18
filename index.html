@@ -1685,7 +1685,7 @@
                         class="pointer-events-none mt-[5px] flex items-center gap-[5px]"
                       >
                         <img
-                          class="two-step-country-image"
+                          class="two-step-country-image overflow-hidden rounded-full"
                           src="./img/twoStepFormImg/country-flag-placeholder.svg"
                           alt="Flag"
                         />
@@ -2034,78 +2034,12 @@
                   </div>
                   <label
                     data-translate="statePlaceholder"
-                    class="two-step-state-label two-step-required-label pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 font-bold text-[#585858] transition-all"
+                    class="two-step-state-label pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 font-bold text-[#585858] transition-all"
                     >Choose Province</label
                   >
                   <ul
                     class="two-step-state-list absolute left-0 top-[110%] z-20 hidden h-[140px] w-full overflow-hidden overflow-y-auto rounded-2xl bg-white font-bold text-[#1c1c1c]"
-                  >
-                    <li
-                      class="two-step-state-list-item border-b border-[#755EEB]/30 px-4 py-3"
-                    >
-                      Alberta
-                    </li>
-                    <li
-                      class="two-step-state-list-item border-b border-[#755EEB]/30 px-4 py-3"
-                    >
-                      British Columbia
-                    </li>
-                    <li
-                      class="two-step-state-list-item border-b border-[#755EEB]/30 px-4 py-3"
-                    >
-                      Manitoba
-                    </li>
-                    <li
-                      class="two-step-state-list-item border-b border-[#755EEB]/30 px-4 py-3"
-                    >
-                      New Brunswick
-                    </li>
-                    <li
-                      class="two-step-state-list-item border-b border-[#755EEB]/30 px-4 py-3"
-                    >
-                      Newfoundland and Labrador
-                    </li>
-                    <li
-                      class="two-step-state-list-item border-b border-[#755EEB]/30 px-4 py-3"
-                    >
-                      Nova Scotia
-                    </li>
-                    <li
-                      class="two-step-state-list-item border-b border-[#755EEB]/30 px-4 py-3"
-                    >
-                      Ontario
-                    </li>
-                    <li
-                      class="two-step-state-list-item border-b border-[#755EEB]/30 px-4 py-3"
-                    >
-                      Prince Edward Island
-                    </li>
-                    <li
-                      class="two-step-state-list-item border-b border-[#755EEB]/30 px-4 py-3"
-                    >
-                      Quebec
-                    </li>
-                    <li
-                      class="two-step-state-list-item border-b border-[#755EEB]/30 px-4 py-3"
-                    >
-                      Saskatchewan
-                    </li>
-                    <li
-                      class="two-step-state-list-item border-b border-[#755EEB]/30 px-4 py-3"
-                    >
-                      Northwest Territories
-                    </li>
-                    <li
-                      class="two-step-state-list-item border-b border-[#755EEB]/30 px-4 py-3"
-                    >
-                      Nunavut
-                    </li>
-                    <li
-                      class="two-step-state-list-item border-b border-[#755EEB]/30 px-4 py-3"
-                    >
-                      Yukon
-                    </li>
-                  </ul>
+                  ></ul>
                 </div>
                 <!-- ZIP Code -->
                 <div
@@ -2256,15 +2190,15 @@
       <!-- Socials overlay -->
       <div
         data-modal="socials"
-        class="two-step-overlay modal-overlay lg:grid-cols-1 fixed left-0 top-0 z-[600] hidden h-dvh w-full flex-col justify-between overflow-y-auto bg-[#34014D]/40 px-9 pb-[50px] pt-[30px] backdrop-blur-[10px] xl:py-5 medium:justify-start medium:gap-[15px] medium:p-0"
+        class="two-step-overlay modal-overlay fixed left-0 top-0 z-[600] hidden h-dvh w-full flex-col justify-between overflow-y-auto bg-[#34014D]/40 px-9 pb-[50px] pt-[30px] backdrop-blur-[10px] xl:py-5 lg:grid-cols-1 medium:justify-start medium:gap-[15px] medium:p-0"
       >
         <!-- Socials form -->
         <div
-          class="modal-content form-modal-socials modal-content-socials lg:grid-cols-1 lg:max-w-[500px] grid w-full max-w-[1000px] grid-cols-2 overflow-hidden rounded-[24px] border border-white/25 medium:min-h-svh medium:max-w-full medium:rounded-none medium:border-none [&.active]:grid"
+          class="modal-content form-modal-socials modal-content-socials grid w-full max-w-[1000px] grid-cols-2 overflow-hidden rounded-[24px] border border-white/25 lg:max-w-[500px] lg:grid-cols-1 medium:min-h-svh medium:max-w-full medium:rounded-none medium:border-none [&.active]:grid"
         >
           <!-- left -->
           <div
-            class="lg:hidden relative h-full w-full overflow-hidden bg-[url(../img/socialsFormImg/form-left-bg.webp)] bg-cover bg-center bg-no-repeat"
+            class="relative h-full w-full overflow-hidden bg-[url(../img/socialsFormImg/form-left-bg.webp)] bg-cover bg-center bg-no-repeat lg:hidden"
           >
             <img
               class="lion-image relative z-10 h-full w-full object-cover will-change-transform"
