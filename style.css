@@ -528,3 +528,10 @@
   transform: scaleY(1);
   transition: all 0.3s;
 }
+
+/* States dropdown */
+
+.two-step-state-list-item {
+  border-bottom: 1px solid #755EEB30;
+  padding: 16px 12px;
+}
