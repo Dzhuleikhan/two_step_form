@@ -589,6 +589,41 @@ export const canadaProvincesCities = {
   Yukon: ["Whitehorse"],
 };
 
+export const australiaStatesCities = {
+  "New South Wales": [
+    "Sydney",
+    "Newcastle",
+    "Wollongong",
+    "Albury",
+    "Maitland",
+  ],
+  Victoria: ["Melbourne", "Geelong", "Ballarat", "Bendigo", "Shepparton"],
+  Queensland: ["Brisbane", "Gold Coast", "Cairns", "Townsville", "Toowoomba"],
+  "Western Australia": [
+    "Perth",
+    "Mandurah",
+    "Bunbury",
+    "Kalgoorlie",
+    "Geraldton",
+  ],
+  "South Australia": [
+    "Adelaide",
+    "Mount Gambier",
+    "Whyalla",
+    "Gawler",
+    "Port Pirie",
+  ],
+  Tasmania: ["Hobart", "Launceston", "Devonport", "Burnie", "Ulverstone"],
+  "Australian Capital Territory": ["Canberra"],
+  "Northern Territory": [
+    "Darwin",
+    "Alice Springs",
+    "Palmerston",
+    "Katherine",
+    "Nhulunbuy",
+  ],
+};
+
 export const countryLanguagesMap = {
   GB: ["en"],
   US: ["en"],
