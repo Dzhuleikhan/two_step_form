@@ -72,6 +72,12 @@ function updateButtonText(lang) {
     tr: "Turkish",
     kz: "Kazakh",
     uz: "Uzbek",
+    az: "Azerbaijani",
+    it: "Italian",
+    ee: "Estonian",
+    lv: "Latvian",
+    lt: "Lithuanian",
+    hr: "Croatian",
   };
   headerLangBtn.setAttribute(
     "src",
@@ -153,6 +159,11 @@ async function determineLanguage() {
     GR: "gr",
     SE: "se",
     SK: "sk",
+    IT: "it",
+    EE: "ee",
+    LV: "lv",
+    LT: "lt",
+    HR: "hr",
     // Add more country codes and their corresponding languages as needed
   };
   lang = countryLangMap[location.countryCode] || "en";
