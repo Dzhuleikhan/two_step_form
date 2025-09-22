@@ -33,7 +33,7 @@ jobs:
           username: ${{ secrets.FTP_USER_HOSTKEY }}
           password: ${{ secrets.FTP_PASSWORD_HOSTKEY }}
           local-dir: ./dist/ # The folder containing your built project
-          server-dir: /www/promogb.top/two-step-form/ # The directory on the server where you want to upload the dist folder
+          server-dir: /www/promogb.top/two-step-form/ # The directory on the server where you want to upload the dist folder /
 
       - name: Deploy to 185.206.180.88 - PRIMA
         uses: SamKirkland/FTP-Deploy-Action@4.3.0
