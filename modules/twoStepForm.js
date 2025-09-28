@@ -1,5 +1,5 @@
 import { countryCurrencyData, countryFlags } from "../public/data";
-import { geoData, getLocation } from "./geoLocation";
+import { geoData, getLocation, settingZipCodePlaceholder } from "./geoLocation";
 import { twoStepiti } from "./itiTelInput";
 import { newDomain } from "./fetchingDomain";
 import { getUrlParameter } from "./params";
@@ -603,6 +603,7 @@ if (twoStepFormFourthStep) {
       twoStepAppliedCountryImage.alt = name;
       twoStepCountryDropdown.classList.add("hidden");
       twoStepFormData.country = countryCode;
+      settingZipCodePlaceholder(countryCode);
 
       if (countryCode === "CA") {
         renderStates(canadaProvincesCities);
@@ -626,6 +627,7 @@ if (twoStepFormFourthStep) {
   // Apply detected country
   const applyDetectedCountry = async () => {
     const locationData = await getLocation();
+    settingZipCodePlaceholder(locationData.countryCode);
 
     const mathedCountry = countryFlags.find((country) => {
       return (
