@@ -65,12 +65,30 @@ function setCurrency(abbr, name, icon) {
   });
 }
 
+const hideBonusesForAfrica = (currency) => {
+  if (currency === "ZAR") {
+    document.querySelector(".two-step-bonus-checkbox-crypto").style.display =
+      "none";
+    document.querySelector(
+      ".two-step-bonus-checkbox-highroller",
+    ).style.display = "none";
+  } else {
+    document.querySelector(".two-step-bonus-checkbox-crypto").style.display =
+      "block";
+    document.querySelector(
+      ".two-step-bonus-checkbox-highroller",
+    ).style.display = "block";
+  }
+};
+
 async function settingModalCurrency() {
   try {
     let locationData = await getLocation();
     let countryInput = locationData.countryCode;
 
-    if (countryInput === "RU" || countryInput === "MX") {
+    const excludedCountries = ["RU", "MX", "CL", "CO", "TH", "ID"];
+
+    if (excludedCountries.includes(countryInput)) {
       countryInput = "US";
     }
 
@@ -100,6 +118,7 @@ async function settingModalCurrency() {
     setTimeout(() => {
       settingInitialBonusValue(twoStepFormData.currency);
     }, 300);
+    hideBonusesForAfrica(currencyAbbr);
   } catch (error) {
     console.error("Error fetching location data:", error);
   }
@@ -130,6 +149,7 @@ export const settingBonusOnCurrencyChange = (
   document.querySelectorAll(".bonus-spins").forEach((el) => {
     el.innerHTML = spins;
   });
+  hideBonusesForAfrica(targetCurrency.abbr);
 };
 
 const formCurrency = document.querySelectorAll(".form-currency");
