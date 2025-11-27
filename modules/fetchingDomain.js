@@ -11,10 +11,14 @@ export const fetchDomain = async (countryCode) => {
 
 export let newDomain = "g01d63t1.win";
 
-fetchDomain(geoData.countryCode).then((domain) => {
-  newDomain = domain;
-  console.log("Domain fetched:", newDomain);
-});
+await fetchDomain(geoData.countryCode)
+  .then((domain) => {
+    newDomain = domain;
+    console.log("Domain fetched:", newDomain);
+  })
+  .catch(() => {
+    console.log("Applied fallback domain: g01d63t1.win");
+  });
 
 function updatingBonusValueNumbers() {
   const dropd = document.querySelectorAll(".form-bonus-dropdown");
