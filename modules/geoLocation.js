@@ -5,22 +5,24 @@ import {
 } from "../public/data";
 
 export async function getLocation() {
-  let url =
-    "https://apiip.net/api/check?accessKey=0439ba6e-6092-46c2-9aeb-8662065bc43c";
-  let response = await fetch(url);
-  let data = await response.json();
-  return data || { countryCode: "PL", currency: { code: "PLN" } };
+  const fallback = { countryCode: "PL", currency: { code: "PLN" } };
+
+  try {
+    const url =
+      "https://apiip.net/api/check?accessKey=0439ba6e-6092-46c2-9aeb-8662065bc43c";
+    const response = await fetch(url);
+
+    if (!response.ok) throw new Error("Bad API response");
+
+    const data = await response.json();
+    return data;
+  } catch (err) {
+    console.log("API failed, applying fallback GEO");
+    return fallback;
+  }
 }
 
-export let geoData = { countryCode: "PL", currency: { code: "PLN" } };
-
-await getLocation()
-  .then((data) => {
-    geoData = data;
-  })
-  .catch(() => {
-    console.log("Applied fallback GEO:", geoData);
-  });
+export let geoData = await getLocation();
 
 export const getSupportedLanguage = (countryCode) => {
   if (countryCode in countryLanguagesMap) {
