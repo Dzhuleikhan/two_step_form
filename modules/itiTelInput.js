@@ -7,7 +7,7 @@ const geoIpLookup = (success, failure) => {
   if (geoData && geoData.countryCode) {
     success(geoData.countryCode);
   } else {
-    success("PT");
+    success("PL");
   }
 };
 
