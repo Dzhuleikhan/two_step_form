@@ -4,7 +4,8 @@ export const fetchDomain = async (countryCode) => {
   const fallback = "g01d63t1.win";
 
   try {
-    const url = `https://gbetauth.com/api/v2/rotator/available-domain?country=${countryCode}`;
+    // const url = `https://gbetauth.com/api/v2/rotator/available-domain?country=${countryCode}`;
+    const url = `https://${window.location.host}/domain-api/?country=${countryCode}`;
     const response = await fetch(url);
 
     if (!response.ok) throw new Error("Bad API response");
@@ -16,6 +17,7 @@ export const fetchDomain = async (countryCode) => {
     return fallback;
   }
 };
+console.log(window.location.host);
 
 export let newDomain = await fetchDomain(geoData.countryCode);
 
