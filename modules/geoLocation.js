@@ -8,8 +8,9 @@ export async function getLocation() {
   const fallback = { countryCode: "PL", currency: { code: "PLN" } };
 
   try {
-    const url =
-      "https://apiip.net/api/check?accessKey=0439ba6e-6092-46c2-9aeb-8662065bc43c";
+    // const url =
+    //   "https://apiip.net/api/check?accessKey=0439ba6e-6092-46c2-9aeb-8662065bc43c";
+    const url = "/geo-api/";
     const response = await fetch(url);
 
     if (!response.ok) throw new Error("Bad API response");
