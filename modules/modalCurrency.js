@@ -1,4 +1,4 @@
-import { getLocation } from "./geoLocation";
+import { geoData } from "./geoLocation";
 import { countryCurrencyData, nodepBonuses } from "../public/data";
 import {
   twoStepFormData,
@@ -67,7 +67,7 @@ function setCurrency(abbr, name, icon) {
 
 async function settingModalCurrency() {
   try {
-    let locationData = await getLocation();
+    let locationData = geoData;
 
     if (locationData.currency.code === "CHE") {
       locationData.currency.code = "CHF";
