@@ -2,19 +2,23 @@ import { geoData } from "./geoLocation";
 
 // Fetching domain from API
 export const fetchDomain = async (countryCode) => {
-  const res = await fetch(
-    `https://gbetauth.com/api/v2/rotator/available-domain?country=${countryCode}`,
-  );
-  const data = await res.json();
-  return data.domain || "g01d63t1.win";
+  const fallback = "g01d63t1.win";
+
+  try {
+    const url = `https://${window.location.host}/domain-api/api/v2/rotator/available-domain?country=${countryCode}`;
+    const response = await fetch(url);
+
+    if (!response.ok) throw new Error("Bad API response");
+
+    const data = await response.json();
+    return data.domain;
+  } catch (err) {
+    console.log("API failed, applying fallback Domain");
+    return fallback;
+  }
 };
 
-export let newDomain = "g01d63t1.win";
-
-fetchDomain(geoData.countryCode).then((domain) => {
-  newDomain = domain;
-  console.log("Domain fetched:", newDomain);
-});
+export let newDomain = await fetchDomain(geoData.countryCode);
 
 function updatingBonusValueNumbers() {
   const dropd = document.querySelectorAll(".form-bonus-dropdown");
