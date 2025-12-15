@@ -7,6 +7,8 @@ import gsap from "gsap";
 import { canadaProvincesCities, australiaStatesCities } from "../public/data";
 import flatpickr from "flatpickr";
 
+const CDN = "https://3344112-img.b-cdn.net";
+
 document.querySelectorAll("input").forEach((input) => {
   input.setAttribute("autocomplete", "off");
 });
@@ -307,10 +309,16 @@ if (twoStepFormSecondStep) {
     let img = passwordShowBtn.querySelector("img");
     if (twoStepFormPasswordInput.type === "password") {
       twoStepFormPasswordInput.type = "text";
-      img.setAttribute("src", "./img/twoStepFormImg/password-hide-icon.svg");
+      img.setAttribute(
+        "src",
+        CDN + "/graphic/landings/twoStepFormImages/password-hide-icon.svg",
+      );
     } else {
       twoStepFormPasswordInput.type = "password";
-      img.setAttribute("src", "./img/twoStepFormImg/password-show-icon.svg");
+      img.setAttribute(
+        "src",
+        CDN + "/graphic/landings/twoStepFormImages/password-show-icon.svg",
+      );
     }
   });
 }
@@ -638,11 +646,13 @@ if (twoStepFormFourthStep) {
     });
     if (mathedCountry) {
       twoStepAppliedCountryInput.value = mathedCountry.name;
-      twoStepAppliedCountryImage.src = `./img/flags/${mathedCountry.slug}.svg`;
+      twoStepAppliedCountryImage.src =
+        CDN + `/graphic/flags/flag-${mathedCountry.slug}.svg`;
       twoStepAppliedCountryImage.alt = mathedCountry.name;
 
       headerlogoFlag.forEach((flag) => {
-        flag.src = `./img/flags/${mathedCountry.slug}.svg`;
+        headerlogoFlag.src =
+          CDN + `/graphic/flags/flag-${mathedCountry.slug}.svg`;
         flag.alt = mathedCountry.name;
         flag.classList.remove("hidden");
       });
@@ -673,7 +683,8 @@ if (twoStepFormFourthStep) {
         "pointer-events-none h-6 w-6 rounded-full overflow-hidden object-contain";
       img.width = 24;
       img.height = 24;
-      img.src = `./img/flags/${country.slug}.svg`;
+      img.src = CDN + `/graphic/flags/flag-${country.slug}.svg`;
+
       img.alt = country.name;
 
       const span = document.createElement("span");

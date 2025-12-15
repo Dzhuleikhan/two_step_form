@@ -4,6 +4,8 @@ import { getSupportedLanguage } from "./geoLocation";
 import { settingInitialBonusValue, twoStepFormData } from "./twoStepForm";
 import { countryCurrencyData } from "../public/data";
 
+const CDN = "https://3344112-img.b-cdn.net";
+
 const headerLangBtn = document.querySelector(".header-lang-btn");
 const headerLangList = document.querySelector(".header-lang-list");
 const languageLinks = document.querySelectorAll(".language-link");
@@ -80,7 +82,8 @@ function updateButtonText(lang) {
   };
   headerLangBtn.setAttribute(
     "src",
-    `./img/flags/${lang}.svg` || `./img/flags/en.svg`,
+    CDN + `/graphic/flags/flag-${lang}.svg` ||
+      CDN + `/graphic/flags/flag-en.svg`,
   );
   headerLangName.innerHTML = languageNames[lang];
   document.querySelector("html").setAttribute("lang", lang);
