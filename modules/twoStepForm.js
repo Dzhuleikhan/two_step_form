@@ -645,8 +645,6 @@ if (twoStepFormFourthStep) {
       );
     });
     if (mathedCountry) {
-      console.log(mathedCountry.slug);
-
       twoStepAppliedCountryInput.value = mathedCountry.name;
       twoStepAppliedCountryImage.src =
         CDN + `/graphic/flags/flag-${mathedCountry.slug}.svg`;
