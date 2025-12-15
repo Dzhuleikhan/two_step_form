@@ -645,14 +645,15 @@ if (twoStepFormFourthStep) {
       );
     });
     if (mathedCountry) {
+      console.log(mathedCountry.slug);
+
       twoStepAppliedCountryInput.value = mathedCountry.name;
       twoStepAppliedCountryImage.src =
         CDN + `/graphic/flags/flag-${mathedCountry.slug}.svg`;
       twoStepAppliedCountryImage.alt = mathedCountry.name;
 
       headerlogoFlag.forEach((flag) => {
-        headerlogoFlag.src =
-          CDN + `/graphic/flags/flag-${mathedCountry.slug}.svg`;
+        flag.src = CDN + `/graphic/flags/flag-${mathedCountry.slug}.svg`;
         flag.alt = mathedCountry.name;
         flag.classList.remove("hidden");
       });
