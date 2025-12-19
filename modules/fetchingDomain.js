@@ -16,7 +16,6 @@ export const fetchDomain = async (countryCode) => {
     return fallback;
   }
 };
-console.log(window.location.host);
 
 export let newDomain = await fetchDomain(geoData.countryCode);
 
