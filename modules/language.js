@@ -151,7 +151,7 @@ async function determineLanguage() {
     BD: "en",
     ID: "en",
     CN: "en",
-    DK: "da",
+    DK: "dk",
     NO: "no",
     RO: "ro",
     MD: "ro",
