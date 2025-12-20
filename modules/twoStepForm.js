@@ -6,7 +6,6 @@ import { getUrlParameter } from "./params";
 import gsap from "gsap";
 import { canadaProvincesCities, australiaStatesCities } from "../public/data";
 import flatpickr from "flatpickr";
-// import { cioanalytics } from "./cio-analytics";
 
 document.querySelectorAll("input").forEach((input) => {
   input.setAttribute("autocomplete", "off");
@@ -950,17 +949,6 @@ twoStepFormMain.addEventListener("submit", (e) => {
     zipCode,
     lang,
   } = twoStepFormData;
-
-  if (window.cioanalytics) {
-    window.cioanalytics.ready(function () {
-      window.cioanalytics.identify(email, {
-        email,
-        url: window.location.href,
-      });
-    });
-  } else {
-    console.error("Customer.io analytics not loaded yet.");
-  }
 
   setTimeout(() => {
     window.location.href = `https://${newDomain}/api/register?env=prod&type=email&currency=${currency}&email=${encodeURIComponent(email)}&password=${encodeURIComponent(password)}&phone=${phone}&bonus=${bonus}${promocode ? "&promocode=" + encodeURIComponent(promocode) : ""}&lang=${lang}${firstName ? "&f_name=" + encodeURIComponent(firstName) : ""}${lastName ? "&l_name=" + encodeURIComponent(lastName) : ""}${birthday ? "&birth=" + birthday : ""}${gender ? "&gender=" + gender : ""}${country ? "&country=" + country : ""}${state ? "&state=" + encodeURIComponent(state) : ""}${city ? "&city=" + encodeURIComponent(city) : ""}${zipCode ? "&postal=" + encodeURIComponent(zipCode) : ""}${address ? "&address=" + encodeURIComponent(address) : ""}${cid ? "&cid=" + cid : ""}${partner ? "&partner=" + partner : ""}${offer ? "&offer=" + offer : ""}`;
