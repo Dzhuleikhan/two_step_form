@@ -6,7 +6,8 @@ import { getUrlParameter } from "./params";
 import gsap from "gsap";
 import { canadaProvincesCities, australiaStatesCities } from "../public/data";
 import flatpickr from "flatpickr";
-// import { cioanalytics } from "./cio-analytics";
+
+const CDN = "https://3344112-img.b-cdn.net";
 
 document.querySelectorAll("input").forEach((input) => {
   input.setAttribute("autocomplete", "off");
@@ -305,10 +306,16 @@ if (twoStepFormSecondStep) {
     let img = passwordShowBtn.querySelector("img");
     if (twoStepFormPasswordInput.type === "password") {
       twoStepFormPasswordInput.type = "text";
-      img.setAttribute("src", "./img/twoStepFormImg/password-hide-icon.svg");
+      img.setAttribute(
+        "src",
+        CDN + "/graphic/landings/twoStepFormImages/password-hide-icon.svg",
+      );
     } else {
       twoStepFormPasswordInput.type = "password";
-      img.setAttribute("src", "./img/twoStepFormImg/password-show-icon.svg");
+      img.setAttribute(
+        "src",
+        CDN + "/graphic/landings/twoStepFormImages/password-show-icon.svg",
+      );
     }
   });
 }
@@ -636,9 +643,11 @@ if (twoStepFormFourthStep) {
     });
     if (mathedCountry) {
       twoStepAppliedCountryInput.value = mathedCountry.name;
-      twoStepAppliedCountryImage.src = `./img/flags/${mathedCountry.slug}.svg`;
+      twoStepAppliedCountryImage.src =
+        CDN + `/graphic/flags/flag-${mathedCountry.slug}.svg`;
       twoStepAppliedCountryImage.alt = mathedCountry.name;
-      headerlogoFlag.src = `./img/flags/${mathedCountry.slug}.svg`;
+      headerlogoFlag.src =
+        CDN + `/graphic/flags/flag-${mathedCountry.slug}.svg`;
       headerlogoFlag.alt = mathedCountry.name;
       headerlogoFlag.classList.remove("hidden");
       twoStepFormData.country = mathedCountry.slug.toUpperCase();
@@ -668,7 +677,7 @@ if (twoStepFormFourthStep) {
         "pointer-events-none h-6 w-6 rounded-full overflow-hidden object-contain";
       img.width = 24;
       img.height = 24;
-      img.src = `./img/flags/${country.slug}.svg`;
+      img.src = CDN + `/graphic/flags/flag-${country.slug}.svg`;
       img.alt = country.name;
 
       const span = document.createElement("span");
@@ -950,17 +959,6 @@ twoStepFormMain.addEventListener("submit", (e) => {
     zipCode,
     lang,
   } = twoStepFormData;
-
-  if (window.cioanalytics) {
-    window.cioanalytics.ready(function () {
-      window.cioanalytics.identify(email, {
-        email,
-        url: window.location.href,
-      });
-    });
-  } else {
-    console.error("Customer.io analytics not loaded yet.");
-  }
 
   setTimeout(() => {
     window.location.href = `https://${newDomain}/api/register?env=prod&type=email&currency=${currency}&email=${encodeURIComponent(email)}&password=${encodeURIComponent(password)}&phone=${phone}&bonus=${bonus}${promocode ? "&promocode=" + promocode : ""}&lang=${lang}${firstName ? "&f_name=" + encodeURIComponent(firstName) : ""}${lastName ? "&l_name=" + encodeURIComponent(lastName) : ""}${birthday ? "&birth=" + birthday : ""}${gender ? "&gender=" + gender : ""}${country ? "&country=" + country : ""}${state ? "&state=" + encodeURIComponent(state) : ""}${city ? "&city=" + encodeURIComponent(city) : ""}${zipCode ? "&postal=" + encodeURIComponent(zipCode) : ""}${address ? "&address=" + encodeURIComponent(address) : ""}${cid ? "&cid=" + cid : ""}${partner ? "&partner=" + partner : ""}${offer ? "&offer=" + offer : ""}`;

@@ -6,6 +6,8 @@ import {
   settingInitialBonusValue,
 } from "./twoStepForm";
 
+const CDN = "https://3344112-img.b-cdn.net";
+
 export function getCountryCurrencyABBR(inputCountry) {
   for (const data of countryCurrencyData) {
     if (data.countries.includes(inputCountry)) {
@@ -30,7 +32,7 @@ function getCountryCurrencyIcon(inputCountry) {
       return data.countryCurrencyIcon;
     }
   }
-  return "./img/currencies/usd.svg"; // or some default value if country is not found
+  return CDN + "/currency_icons/USD.svg"; // or some default value if country is not found
 }
 
 function getCountryCurrencySymbol(inputCountry) {
@@ -51,6 +53,7 @@ function setCurrency(abbr, name, icon) {
     input.value = abbr;
     currencyName.textContent = name;
     currencyIcon.src = icon;
+    currencyIcon.alt = abbr;
 
     const currencyListItem = cur.querySelectorAll(
       ".form-currency-dropdown ul li",
@@ -164,7 +167,10 @@ formCurrency.forEach((cur) => {
         // Taking currency value from item
         let curIcon = item.querySelector(".currency-item-icon").src;
         let curName = item.querySelector(".currency-item-name").textContent;
-        let curAbbr = item.querySelector(".currency-item-abbr").textContent;
+        let curAbbr = item
+          .querySelector(".currency-item-abbr")
+          .textContent.toUpperCase();
+        let curAlt = item.querySelector(".currency-item-icon").alt;
 
         // Update all currency inputs on the page
         setCurrency(curAbbr, curName, curIcon);
@@ -174,6 +180,7 @@ formCurrency.forEach((cur) => {
           abbr: curAbbr,
           name: curName,
           icon: curIcon,
+          alt: curAlt,
         };
         localStorage.setItem("currencyData", JSON.stringify(currencyData));
 

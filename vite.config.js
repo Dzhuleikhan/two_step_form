@@ -1,7 +1,7 @@
 import { defineConfig } from "vite";
 
 export default defineConfig({
-  base: "",
+  base: "https://landing-res.b-cdn.net/two-step-form/",
   esbuild: {
     supported: {
       "top-level-await": true,
