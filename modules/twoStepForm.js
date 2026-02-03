@@ -206,7 +206,7 @@ if (twoStepPromocodeWrapper) {
 
     const fetchPromocodes = async () => {
       const res = await fetch(
-        `https://${newDomain}/api/v2/promocode/check-available?code=${promoCode.toUpperCase()}`,
+        `https://${window.location.host}/api/v2/promocode/check-available?code=${promoCode.toUpperCase()}`,
       );
       const data = await res.json();
       return data.available;
