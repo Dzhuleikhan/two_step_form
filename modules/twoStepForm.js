@@ -206,12 +206,7 @@ if (twoStepPromocodeWrapper) {
 
     const fetchPromocodes = async () => {
       const res = await fetch(
-        `https://api.goldbet.gg/api/v2/promocode/check-available?code=${promoCode.toUpperCase()}`,
-        {
-          headers: {
-            "Access-Control-Allow-Origin": "*",
-          },
-        },
+        `https://${newDomain}/api/v2/promocode/check-available?code=${promoCode.toUpperCase()}`,
       );
       const data = await res.json();
       return data.available;
