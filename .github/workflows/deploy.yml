@@ -603,12 +603,9 @@ jobs:
           password: ${{ secrets.FTP_PASSWORD_HOSTKEY }}
           local-dir: ./dist/
           server-dir: /www/${{ matrix.site }}/two-step-form/
-          timeout: 180000 # 3 minutes — increase to 300000 if still failing
-          # log-level: verbose             # uncomment for detailed logs (useful when debugging)
-          # dry-run: true                  # uncomment to test without actual upload
 
       - name: Cooldown for FTP server
-        run: sleep 45 # increased from 10s to give server breathing room
+        run: sleep 60
 
   deploy-prima:
     runs-on: ubuntu-latest
@@ -652,10 +649,9 @@ jobs:
           password: ${{ secrets.FTP_PASSWORD_PRIMA }}
           local-dir: ./dist/
           server-dir: /www/${{ matrix.site }}/two-step-form/
-          timeout: 180000
 
       - name: Cooldown for FTP server
-        run: sleep 45
+        run: sleep 60
 
   deploy-orange:
     runs-on: ubuntu-latest
@@ -699,10 +695,9 @@ jobs:
           password: ${{ secrets.FTP_PASSWORD_ORANGE }}
           local-dir: ./dist/
           server-dir: /www/${{ matrix.site }}/two-step-form/
-          timeout: 180000
 
       - name: Cooldown for FTP server
-        run: sleep 45
+        run: sleep 60
 
   deploy-njal:
     runs-on: ubuntu-latest
@@ -746,7 +741,6 @@ jobs:
           password: ${{ secrets.FTP_PASSWORD_NJAL }}
           local-dir: ./dist/
           server-dir: /www/${{ matrix.site }}/two-step-form/
-          timeout: 180000
 
       - name: Cooldown for FTP server
-        run: sleep 45
+        run: sleep 60
