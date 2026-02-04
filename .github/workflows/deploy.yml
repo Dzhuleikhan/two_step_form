@@ -1,4 +1,4 @@
-name: Deploy to VPS Servers (Sequential by site)
+name: Deploy to VPS Servers
 
 on:
   push:
@@ -9,8 +9,7 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     strategy:
-      max-parallel: 1 # ← Only one deploy runs at a time → strict sequence
-      fail-fast: false # Continue even if one fails (useful for debugging)
+      max-parallel: 1
       matrix:
         site:
           - goldbet.wiki
@@ -50,6 +49,3 @@ jobs:
           password: ${{ secrets[format('FTP_PASSWORD_{0}', matrix.vps)] }}
           local-dir: ./dist/
           server-dir: /www/${{ matrix.site }}/two-step-form/
-
-      - name: Cooldown after deploy
-        run: sleep 20
