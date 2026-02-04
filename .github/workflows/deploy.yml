@@ -1,402 +1,550 @@
+# name: Deploy to VPS Servers
+
+# on:
+#   push:
+#     branches:
+#       - main # or the branch you want to trigger the action on
+
+# jobs:
+#   build-and-deploy:
+#     runs-on: ubuntu-latest
+
+#     steps:
+#       - name: Checkout code
+#         uses: actions/checkout@v2
+
+#       - name: Set up Node.js
+#         uses: actions/setup-node@v3
+#         with:
+#           node-version: "22" # Adjust to your project’s Node version
+
+#       - name: Install dependencies
+#         run: npm install
+
+#       - name: Build project
+#         run: npm run build # Adjust if your build command differs
+
+#       # goldbet.wiki
+
+#       - name: Deploy to VPS 194.164.235.224 - Hostkey
+#         uses: SamKirkland/FTP-Deploy-Action@4.3.0
+#         with:
+#           server: ${{ secrets.FTP_HOST_HOSTKEY }}
+#           username: ${{ secrets.FTP_USER_HOSTKEY }}
+#           password: ${{ secrets.FTP_PASSWORD_HOSTKEY }}
+#           local-dir: ./dist/ # The folder containing your built project
+#           server-dir: /www/goldbet.wiki/two-step-form/ # The directory on the server where you want to upload the dist folder
+
+#       - name: Deploy to 185.206.180.88 - PRIMA
+#         uses: SamKirkland/FTP-Deploy-Action@4.3.0
+#         with:
+#           server: ${{ secrets.FTP_HOST_PRIMA }}
+#           username: ${{ secrets.FTP_USER_PRIMA }}
+#           password: ${{ secrets.FTP_PASSWORD_PRIMA }}
+#           local-dir: ./dist/ # The folder containing your built project
+#           server-dir: /www/goldbet.wiki/two-step-form/ # The directory on the server where you want to upload the dist folder
+
+#       - name: Deploy to VPS 82.221.141.113 - ORANGE
+#         uses: SamKirkland/FTP-Deploy-Action@4.3.0
+#         with:
+#           server: ${{ secrets.FTP_HOST_ORANGE }}
+#           username: ${{ secrets.FTP_USER_ORANGE }}
+#           password: ${{ secrets.FTP_PASSWORD_ORANGE }}
+#           local-dir: ./dist/ # The folder containing your built project
+#           server-dir: /www/goldbet.wiki/two-step-form/ # The directory on the server where you want to upload the dist folder
+
+#       - name: Deploy to VPS 80.78.18.201 - NJAL
+#         uses: SamKirkland/FTP-Deploy-Action@4.3.0
+#         with:
+#           server: ${{ secrets.FTP_HOST_NJAL }}
+#           username: ${{ secrets.FTP_USER_NJAL }}
+#           password: ${{ secrets.FTP_PASSWORD_NJAL }}
+#           local-dir: ./dist/ # The folder containing your built project
+#           server-dir: /www/goldbet.wiki/two-step-form/ # The directory on the server where you want to upload the dist folder
+
+#       # promogb.com
+
+#       - name: Deploy to VPS 194.164.235.224 - Hostkey
+#         uses: SamKirkland/FTP-Deploy-Action@4.3.0
+#         with:
+#           server: ${{ secrets.FTP_HOST_HOSTKEY }}
+#           username: ${{ secrets.FTP_USER_HOSTKEY }}
+#           password: ${{ secrets.FTP_PASSWORD_HOSTKEY }}
+#           local-dir: ./dist/ # The folder containing your built project
+#           server-dir: /www/promogb.com/two-step-form/ # The directory on the server where you want to upload the dist folder
+
+#       - name: Deploy to 185.206.180.88 - PRIMA
+#         uses: SamKirkland/FTP-Deploy-Action@4.3.0
+#         with:
+#           server: ${{ secrets.FTP_HOST_PRIMA }}
+#           username: ${{ secrets.FTP_USER_PRIMA }}
+#           password: ${{ secrets.FTP_PASSWORD_PRIMA }}
+#           local-dir: ./dist/ # The folder containing your built project
+#           server-dir: /www/promogb.com/two-step-form/ # The directory on the server where you want to upload the dist folder
+
+#       - name: Deploy to VPS 82.221.141.113 - ORANGE
+#         uses: SamKirkland/FTP-Deploy-Action@4.3.0
+#         with:
+#           server: ${{ secrets.FTP_HOST_ORANGE }}
+#           username: ${{ secrets.FTP_USER_ORANGE }}
+#           password: ${{ secrets.FTP_PASSWORD_ORANGE }}
+#           local-dir: ./dist/ # The folder containing your built project
+#           server-dir: /www/promogb.com/two-step-form/ # The directory on the server where you want to upload the dist folder
+
+#       - name: Deploy to VPS 80.78.18.201 - NJAL
+#         uses: SamKirkland/FTP-Deploy-Action@4.3.0
+#         with:
+#           server: ${{ secrets.FTP_HOST_NJAL }}
+#           username: ${{ secrets.FTP_USER_NJAL }}
+#           password: ${{ secrets.FTP_PASSWORD_NJAL }}
+#           local-dir: ./dist/ # The folder containing your built project
+#           server-dir: /www/promogb.com/two-step-form/ # The directory on the server where you want to upload the dist folder
+
+#       # goldbet.website
+
+#       - name: Deploy to VPS 194.164.235.224 - Hostkey
+#         uses: SamKirkland/FTP-Deploy-Action@4.3.0
+#         with:
+#           server: ${{ secrets.FTP_HOST_HOSTKEY }}
+#           username: ${{ secrets.FTP_USER_HOSTKEY }}
+#           password: ${{ secrets.FTP_PASSWORD_HOSTKEY }}
+#           local-dir: ./dist/ # The folder containing your built project
+#           server-dir: /www/goldbet.website/two-step-form/ # The directory on the server where you want to upload the dist folder
+
+#       - name: Deploy to 185.206.180.88 - PRIMA
+#         uses: SamKirkland/FTP-Deploy-Action@4.3.0
+#         with:
+#           server: ${{ secrets.FTP_HOST_PRIMA }}
+#           username: ${{ secrets.FTP_USER_PRIMA }}
+#           password: ${{ secrets.FTP_PASSWORD_PRIMA }}
+#           local-dir: ./dist/ # The folder containing your built project
+#           server-dir: /www/goldbet.website/two-step-form/ # The directory on the server where you want to upload the dist folder
+
+#       - name: Deploy to VPS 82.221.141.113 - ORANGE
+#         uses: SamKirkland/FTP-Deploy-Action@4.3.0
+#         with:
+#           server: ${{ secrets.FTP_HOST_ORANGE }}
+#           username: ${{ secrets.FTP_USER_ORANGE }}
+#           password: ${{ secrets.FTP_PASSWORD_ORANGE }}
+#           local-dir: ./dist/ # The folder containing your built project
+#           server-dir: /www/goldbet.website/two-step-form/ # The directory on the server where you want to upload the dist folder
+
+#       - name: Deploy to VPS 80.78.18.201 - NJAL
+#         uses: SamKirkland/FTP-Deploy-Action@4.3.0
+#         with:
+#           server: ${{ secrets.FTP_HOST_NJAL }}
+#           username: ${{ secrets.FTP_USER_NJAL }}
+#           password: ${{ secrets.FTP_PASSWORD_NJAL }}
+#           local-dir: ./dist/ # The folder containing your built project
+#           server-dir: /www/goldbet.website/two-step-form/ # The directory on the server where you want to upload the dist folder
+
+#       # goldbet.click
+
+#       - name: Deploy to VPS 194.164.235.224 - Hostkey
+#         uses: SamKirkland/FTP-Deploy-Action@4.3.0
+#         with:
+#           server: ${{ secrets.FTP_HOST_HOSTKEY }}
+#           username: ${{ secrets.FTP_USER_HOSTKEY }}
+#           password: ${{ secrets.FTP_PASSWORD_HOSTKEY }}
+#           local-dir: ./dist/ # The folder containing your built project
+#           server-dir: /www/goldbet.click/two-step-form/ # The directory on the server where you want to upload the dist folder
+
+#       - name: Deploy to 185.206.180.88 - PRIMA
+#         uses: SamKirkland/FTP-Deploy-Action@4.3.0
+#         with:
+#           server: ${{ secrets.FTP_HOST_PRIMA }}
+#           username: ${{ secrets.FTP_USER_PRIMA }}
+#           password: ${{ secrets.FTP_PASSWORD_PRIMA }}
+#           local-dir: ./dist/ # The folder containing your built project
+#           server-dir: /www/goldbet.click/two-step-form/ # The directory on the server where you want to upload the dist folder
+
+#       - name: Deploy to VPS 82.221.141.113 - ORANGE
+#         uses: SamKirkland/FTP-Deploy-Action@4.3.0
+#         with:
+#           server: ${{ secrets.FTP_HOST_ORANGE }}
+#           username: ${{ secrets.FTP_USER_ORANGE }}
+#           password: ${{ secrets.FTP_PASSWORD_ORANGE }}
+#           local-dir: ./dist/ # The folder containing your built project
+#           server-dir: /www/goldbet.click/two-step-form/ # The directory on the server where you want to upload the dist folder
+
+#       - name: Deploy to VPS 80.78.18.201 - NJAL
+#         uses: SamKirkland/FTP-Deploy-Action@4.3.0
+#         with:
+#           server: ${{ secrets.FTP_HOST_NJAL }}
+#           username: ${{ secrets.FTP_USER_NJAL }}
+#           password: ${{ secrets.FTP_PASSWORD_NJAL }}
+#           local-dir: ./dist/ # The folder containing your built project
+#           server-dir: /www/goldbet.click/two-step-form/ # The directory on the server where you want to upload the dist folder
+
+#       # goldbetio.com
+
+#       - name: Deploy to VPS 194.164.235.224 - Hostkey
+#         uses: SamKirkland/FTP-Deploy-Action@4.3.0
+#         with:
+#           server: ${{ secrets.FTP_HOST_HOSTKEY }}
+#           username: ${{ secrets.FTP_USER_HOSTKEY }}
+#           password: ${{ secrets.FTP_PASSWORD_HOSTKEY }}
+#           local-dir: ./dist/ # The folder containing your built project
+#           server-dir: /www/goldbetio.com/two-step-form/ # The directory on the server where you want to upload the dist folder
+
+#       - name: Deploy to 185.206.180.88 - PRIMA
+#         uses: SamKirkland/FTP-Deploy-Action@4.3.0
+#         with:
+#           server: ${{ secrets.FTP_HOST_PRIMA }}
+#           username: ${{ secrets.FTP_USER_PRIMA }}
+#           password: ${{ secrets.FTP_PASSWORD_PRIMA }}
+#           local-dir: ./dist/ # The folder containing your built project
+#           server-dir: /www/goldbetio.com/two-step-form/ # The directory on the server where you want to upload the dist folder
+
+#       - name: Deploy to VPS 82.221.141.113 - ORANGE
+#         uses: SamKirkland/FTP-Deploy-Action@4.3.0
+#         with:
+#           server: ${{ secrets.FTP_HOST_ORANGE }}
+#           username: ${{ secrets.FTP_USER_ORANGE }}
+#           password: ${{ secrets.FTP_PASSWORD_ORANGE }}
+#           local-dir: ./dist/ # The folder containing your built project
+#           server-dir: /www/goldbetio.com/two-step-form/ # The directory on the server where you want to upload the dist folder
+
+#       - name: Deploy to VPS 80.78.18.201 - NJAL
+#         uses: SamKirkland/FTP-Deploy-Action@4.3.0
+#         with:
+#           server: ${{ secrets.FTP_HOST_NJAL }}
+#           username: ${{ secrets.FTP_USER_NJAL }}
+#           password: ${{ secrets.FTP_PASSWORD_NJAL }}
+#           local-dir: ./dist/ # The folder containing your built project
+#           server-dir: /www/goldbetio.com/two-step-form/ # The directory on the server where you want to upload the dist folder
+
+#       # goldbet.sbs
+
+#       - name: Deploy to VPS 194.164.235.224 - Hostkey
+#         uses: SamKirkland/FTP-Deploy-Action@4.3.0
+#         with:
+#           server: ${{ secrets.FTP_HOST_HOSTKEY }}
+#           username: ${{ secrets.FTP_USER_HOSTKEY }}
+#           password: ${{ secrets.FTP_PASSWORD_HOSTKEY }}
+#           local-dir: ./dist/ # The folder containing your built project
+#           server-dir: /www/goldbet.sbs/two-step-form/ # The directory on the server where you want to upload the dist folder
+
+#       - name: Deploy to 185.206.180.88 - PRIMA
+#         uses: SamKirkland/FTP-Deploy-Action@4.3.0
+#         with:
+#           server: ${{ secrets.FTP_HOST_PRIMA }}
+#           username: ${{ secrets.FTP_USER_PRIMA }}
+#           password: ${{ secrets.FTP_PASSWORD_PRIMA }}
+#           local-dir: ./dist/ # The folder containing your built project
+#           server-dir: /www/goldbet.sbs/two-step-form/ # The directory on the server where you want to upload the dist folder
+
+#       - name: Deploy to VPS 82.221.141.113 - ORANGE
+#         uses: SamKirkland/FTP-Deploy-Action@4.3.0
+#         with:
+#           server: ${{ secrets.FTP_HOST_ORANGE }}
+#           username: ${{ secrets.FTP_USER_ORANGE }}
+#           password: ${{ secrets.FTP_PASSWORD_ORANGE }}
+#           local-dir: ./dist/ # The folder containing your built project
+#           server-dir: /www/goldbet.sbs/two-step-form/ # The directory on the server where you want to upload the dist folder
+
+#       - name: Deploy to VPS 80.78.18.201 - NJAL
+#         uses: SamKirkland/FTP-Deploy-Action@4.3.0
+#         with:
+#           server: ${{ secrets.FTP_HOST_NJAL }}
+#           username: ${{ secrets.FTP_USER_NJAL }}
+#           password: ${{ secrets.FTP_PASSWORD_NJAL }}
+#           local-dir: ./dist/ # The folder containing your built project
+#           server-dir: /www/goldbet.sbs/two-step-form/ # The directory on the server where you want to upload the dist folder
+
+#       # goldbet.monster
+
+#       - name: Deploy to VPS 194.164.235.224 - Hostkey
+#         uses: SamKirkland/FTP-Deploy-Action@4.3.0
+#         with:
+#           server: ${{ secrets.FTP_HOST_HOSTKEY }}
+#           username: ${{ secrets.FTP_USER_HOSTKEY }}
+#           password: ${{ secrets.FTP_PASSWORD_HOSTKEY }}
+#           local-dir: ./dist/ # The folder containing your built project
+#           server-dir: /www/goldbet.monster/two-step-form/ # The directory on the server where you want to upload the dist folder
+
+#       - name: Deploy to 185.206.180.88 - PRIMA
+#         uses: SamKirkland/FTP-Deploy-Action@4.3.0
+#         with:
+#           server: ${{ secrets.FTP_HOST_PRIMA }}
+#           username: ${{ secrets.FTP_USER_PRIMA }}
+#           password: ${{ secrets.FTP_PASSWORD_PRIMA }}
+#           local-dir: ./dist/ # The folder containing your built project
+#           server-dir: /www/goldbet.monster/two-step-form/ # The directory on the server where you want to upload the dist folder
+
+#       - name: Deploy to VPS 82.221.141.113 - ORANGE
+#         uses: SamKirkland/FTP-Deploy-Action@4.3.0
+#         with:
+#           server: ${{ secrets.FTP_HOST_ORANGE }}
+#           username: ${{ secrets.FTP_USER_ORANGE }}
+#           password: ${{ secrets.FTP_PASSWORD_ORANGE }}
+#           local-dir: ./dist/ # The folder containing your built project
+#           server-dir: /www/goldbet.monster/two-step-form/ # The directory on the server where you want to upload the dist folder
+
+#       - name: Deploy to VPS 80.78.18.201 - NJAL
+#         uses: SamKirkland/FTP-Deploy-Action@4.3.0
+#         with:
+#           server: ${{ secrets.FTP_HOST_NJAL }}
+#           username: ${{ secrets.FTP_USER_NJAL }}
+#           password: ${{ secrets.FTP_PASSWORD_NJAL }}
+#           local-dir: ./dist/ # The folder containing your built project
+#           server-dir: /www/goldbet.monster/two-step-form/ # The directory on the server where you want to upload the dist folder
+
+#       # goldbet.lol
+
+#       - name: Deploy to VPS 194.164.235.224 - Hostkey
+#         uses: SamKirkland/FTP-Deploy-Action@4.3.0
+#         with:
+#           server: ${{ secrets.FTP_HOST_HOSTKEY }}
+#           username: ${{ secrets.FTP_USER_HOSTKEY }}
+#           password: ${{ secrets.FTP_PASSWORD_HOSTKEY }}
+#           local-dir: ./dist/ # The folder containing your built project
+#           server-dir: /www/goldbet.lol/two-step-form/ # The directory on the server where you want to upload the dist folder
+
+#       - name: Deploy to 185.206.180.88 - PRIMA
+#         uses: SamKirkland/FTP-Deploy-Action@4.3.0
+#         with:
+#           server: ${{ secrets.FTP_HOST_PRIMA }}
+#           username: ${{ secrets.FTP_USER_PRIMA }}
+#           password: ${{ secrets.FTP_PASSWORD_PRIMA }}
+#           local-dir: ./dist/ # The folder containing your built project
+#           server-dir: /www/goldbet.lol/two-step-form/ # The directory on the server where you want to upload the dist folder
+
+#       - name: Deploy to VPS 82.221.141.113 - ORANGE
+#         uses: SamKirkland/FTP-Deploy-Action@4.3.0
+#         with:
+#           server: ${{ secrets.FTP_HOST_ORANGE }}
+#           username: ${{ secrets.FTP_USER_ORANGE }}
+#           password: ${{ secrets.FTP_PASSWORD_ORANGE }}
+#           local-dir: ./dist/ # The folder containing your built project
+#           server-dir: /www/goldbet.lol/two-step-form/ # The directory on the server where you want to upload the dist folder
+
+#       - name: Deploy to VPS 80.78.18.201 - NJAL
+#         uses: SamKirkland/FTP-Deploy-Action@4.3.0
+#         with:
+#           server: ${{ secrets.FTP_HOST_NJAL }}
+#           username: ${{ secrets.FTP_USER_NJAL }}
+#           password: ${{ secrets.FTP_PASSWORD_NJAL }}
+#           local-dir: ./dist/ # The folder containing your built project
+#           server-dir: /www/goldbet.lol/two-step-form/ # The directory on the server where you want to upload the dist folder
+
+#       # goldbet.cam
+
+#       - name: Deploy to VPS 194.164.235.224 - Hostkey
+#         uses: SamKirkland/FTP-Deploy-Action@4.3.0
+#         with:
+#           server: ${{ secrets.FTP_HOST_HOSTKEY }}
+#           username: ${{ secrets.FTP_USER_HOSTKEY }}
+#           password: ${{ secrets.FTP_PASSWORD_HOSTKEY }}
+#           local-dir: ./dist/ # The folder containing your built project
+#           server-dir: /www/goldbet.cam/two-step-form/ # The directory on the server where you want to upload the dist folder
+
+#       - name: Deploy to 185.206.180.88 - PRIMA
+#         uses: SamKirkland/FTP-Deploy-Action@4.3.0
+#         with:
+#           server: ${{ secrets.FTP_HOST_PRIMA }}
+#           username: ${{ secrets.FTP_USER_PRIMA }}
+#           password: ${{ secrets.FTP_PASSWORD_PRIMA }}
+#           local-dir: ./dist/ # The folder containing your built project
+#           server-dir: /www/goldbet.cam/two-step-form/ # The directory on the server where you want to upload the dist folder
+
+#       - name: Deploy to VPS 82.221.141.113 - ORANGE
+#         uses: SamKirkland/FTP-Deploy-Action@4.3.0
+#         with:
+#           server: ${{ secrets.FTP_HOST_ORANGE }}
+#           username: ${{ secrets.FTP_USER_ORANGE }}
+#           password: ${{ secrets.FTP_PASSWORD_ORANGE }}
+#           local-dir: ./dist/ # The folder containing your built project
+#           server-dir: /www/goldbet.cam/two-step-form/ # The directory on the server where you want to upload the dist folder
+
+#       - name: Deploy to VPS 80.78.18.201 - NJAL
+#         uses: SamKirkland/FTP-Deploy-Action@4.3.0
+#         with:
+#           server: ${{ secrets.FTP_HOST_NJAL }}
+#           username: ${{ secrets.FTP_USER_NJAL }}
+#           password: ${{ secrets.FTP_PASSWORD_NJAL }}
+#           local-dir: ./dist/ # The folder containing your built project
+#           server-dir: /www/goldbet.cam/two-step-form/ # The directory on the server where you want to upload the dist folder
+
+#       # goldbet.cfd
+
+#       - name: Deploy to VPS 194.164.235.224 - Hostkey
+#         uses: SamKirkland/FTP-Deploy-Action@4.3.0
+#         with:
+#           server: ${{ secrets.FTP_HOST_HOSTKEY }}
+#           username: ${{ secrets.FTP_USER_HOSTKEY }}
+#           password: ${{ secrets.FTP_PASSWORD_HOSTKEY }}
+#           local-dir: ./dist/ # The folder containing your built project
+#           server-dir: /www/goldbet.cfd/two-step-form/ # The directory on the server where you want to upload the dist folder
+
+#       - name: Deploy to 185.206.180.88 - PRIMA
+#         uses: SamKirkland/FTP-Deploy-Action@4.3.0
+#         with:
+#           server: ${{ secrets.FTP_HOST_PRIMA }}
+#           username: ${{ secrets.FTP_USER_PRIMA }}
+#           password: ${{ secrets.FTP_PASSWORD_PRIMA }}
+#           local-dir: ./dist/ # The folder containing your built project
+#           server-dir: /www/goldbet.cfd/two-step-form/ # The directory on the server where you want to upload the dist folder
+
+#       - name: Deploy to VPS 82.221.141.113 - ORANGE
+#         uses: SamKirkland/FTP-Deploy-Action@4.3.0
+#         with:
+#           server: ${{ secrets.FTP_HOST_ORANGE }}
+#           username: ${{ secrets.FTP_USER_ORANGE }}
+#           password: ${{ secrets.FTP_PASSWORD_ORANGE }}
+#           local-dir: ./dist/ # The folder containing your built project
+#           server-dir: /www/goldbet.cfd/two-step-form/ # The directory on the server where you want to upload the dist folder
+
+#       - name: Deploy to VPS 80.78.18.201 - NJAL
+#         uses: SamKirkland/FTP-Deploy-Action@4.3.0
+#         with:
+#           server: ${{ secrets.FTP_HOST_NJAL }}
+#           username: ${{ secrets.FTP_USER_NJAL }}
+#           password: ${{ secrets.FTP_PASSWORD_NJAL }}
+#           local-dir: ./dist/ # The folder containing your built project
+#           server-dir: /www/goldbet.cfd/two-step-form/ # The directory on the server where you want to upload the dist folder
+
+#       # goldbet.cyou
+
+#       - name: Deploy to VPS 194.164.235.224 - Hostkey
+#         uses: SamKirkland/FTP-Deploy-Action@4.3.0
+#         with:
+#           server: ${{ secrets.FTP_HOST_HOSTKEY }}
+#           username: ${{ secrets.FTP_USER_HOSTKEY }}
+#           password: ${{ secrets.FTP_PASSWORD_HOSTKEY }}
+#           local-dir: ./dist/ # The folder containing your built project
+#           server-dir: /www/goldbet.cyou/two-step-form/ # The directory on the server where you want to upload the dist folder
+
+#       - name: Deploy to 185.206.180.88 - PRIMA
+#         uses: SamKirkland/FTP-Deploy-Action@4.3.0
+#         with:
+#           server: ${{ secrets.FTP_HOST_PRIMA }}
+#           username: ${{ secrets.FTP_USER_PRIMA }}
+#           password: ${{ secrets.FTP_PASSWORD_PRIMA }}
+#           local-dir: ./dist/ # The folder containing your built project
+#           server-dir: /www/goldbet.cyou/two-step-form/ # The directory on the server where you want to upload the dist folder
+
+#       - name: Deploy to VPS 82.221.141.113 - ORANGE
+#         uses: SamKirkland/FTP-Deploy-Action@4.3.0
+#         with:
+#           server: ${{ secrets.FTP_HOST_ORANGE }}
+#           username: ${{ secrets.FTP_USER_ORANGE }}
+#           password: ${{ secrets.FTP_PASSWORD_ORANGE }}
+#           local-dir: ./dist/ # The folder containing your built project
+#           server-dir: /www/goldbet.cyou/two-step-form/ # The directory on the server where you want to upload the dist folder
+
+#       - name: Deploy to VPS 80.78.18.201 - NJAL
+#         uses: SamKirkland/FTP-Deploy-Action@4.3.0
+#         with:
+#           server: ${{ secrets.FTP_HOST_NJAL }}
+#           username: ${{ secrets.FTP_USER_NJAL }}
+#           password: ${{ secrets.FTP_PASSWORD_NJAL }}
+#           local-dir: ./dist/ # The folder containing your built project
+#           server-dir: /www/goldbet.cyou/two-step-form/ # The directory on the server where you want to upload the dist folder
+
+#       # goldbet.fun
+
+#       - name: Deploy to VPS 194.164.235.224 - Hostkey
+#         uses: SamKirkland/FTP-Deploy-Action@4.3.0
+#         with:
+#           server: ${{ secrets.FTP_HOST_HOSTKEY }}
+#           username: ${{ secrets.FTP_USER_HOSTKEY }}
+#           password: ${{ secrets.FTP_PASSWORD_HOSTKEY }}
+#           local-dir: ./dist/ # The folder containing your built project
+#           server-dir: /www/goldbet.fun/two-step-form/ # The directory on the server where you want to upload the dist folder
+
+#       - name: Deploy to 185.206.180.88 - PRIMA
+#         uses: SamKirkland/FTP-Deploy-Action@4.3.0
+#         with:
+#           server: ${{ secrets.FTP_HOST_PRIMA }}
+#           username: ${{ secrets.FTP_USER_PRIMA }}
+#           password: ${{ secrets.FTP_PASSWORD_PRIMA }}
+#           local-dir: ./dist/ # The folder containing your built project
+#           server-dir: /www/goldbet.fun/two-step-form/ # The directory on the server where you want to upload the dist folder
+
+#       - name: Deploy to VPS 82.221.141.113 - ORANGE
+#         uses: SamKirkland/FTP-Deploy-Action@4.3.0
+#         with:
+#           server: ${{ secrets.FTP_HOST_ORANGE }}
+#           username: ${{ secrets.FTP_USER_ORANGE }}
+#           password: ${{ secrets.FTP_PASSWORD_ORANGE }}
+#           local-dir: ./dist/ # The folder containing your built project
+#           server-dir: /www/goldbet.fun/two-step-form/ # The directory on the server where you want to upload the dist folder
+
+#       - name: Deploy to VPS 80.78.18.201 - NJAL
+#         uses: SamKirkland/FTP-Deploy-Action@4.3.0
+#         with:
+#           server: ${{ secrets.FTP_HOST_NJAL }}
+#           username: ${{ secrets.FTP_USER_NJAL }}
+#           password: ${{ secrets.FTP_PASSWORD_NJAL }}
+#           local-dir: ./dist/ # The folder containing your built project
+#           server-dir: /www/goldbet.fun/two-step-form/ # The directory on the server where you want to upload the dist folder
+
 name: Deploy to VPS Servers
 
 on:
   push:
     branches:
-      - main # or the branch you want to trigger the action on
+      - main # ← МЕНЯЕШЬ ТОЛЬКО ЭТО
 
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
 
+    strategy:
+      matrix:
+        vps:
+          - name: HOSTKEY
+            host: FTP_HOST_HOSTKEY
+            user: FTP_USER_HOSTKEY
+            pass: FTP_PASSWORD_HOSTKEY
+          - name: PRIMA
+            host: FTP_HOST_PRIMA
+            user: FTP_USER_PRIMA
+            pass: FTP_PASSWORD_PRIMA
+          - name: ORANGE
+            host: FTP_HOST_ORANGE
+            user: FTP_USER_ORANGE
+            pass: FTP_PASSWORD_ORANGE
+          - name: NJAL
+            host: FTP_HOST_NJAL
+            user: FTP_USER_NJAL
+            pass: FTP_PASSWORD_NJAL
+
+        site:
+          - goldbet.wiki
+          - promogb.com
+          - goldbet.website
+          - goldbet.click
+          - goldbetio.com
+          - goldbet.sbs
+          - goldbet.monster
+          - goldbet.lol
+          - goldbet.cam
+          - goldbet.cfd
+          - goldbet.cyou
+          - goldbet.fun
+
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
 
       - name: Set up Node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
-          node-version: "22" # Adjust to your project’s Node version
+          node-version: "22"
 
       - name: Install dependencies
-        run: npm install
+        run: npm ci
 
       - name: Build project
-        run: npm run build # Adjust if your build command differs
+        run: npm run build
 
-      # goldbet.wiki
-
-      # - name: Deploy to VPS 194.164.235.224 - Hostkey
-      #   uses: SamKirkland/FTP-Deploy-Action@4.3.0
-      #   with:
-      #     server: ${{ secrets.FTP_HOST_HOSTKEY }}
-      #     username: ${{ secrets.FTP_USER_HOSTKEY }}
-      #     password: ${{ secrets.FTP_PASSWORD_HOSTKEY }}
-      #     local-dir: ./dist/ # The folder containing your built project
-      #     server-dir: /www/goldbet.wiki/two-step-form/ # The directory on the server where you want to upload the dist folder
-
-      - name: Deploy to 185.206.180.88 - PRIMA
+      - name: Deploy to ${{ matrix.vps.name }} → ${{ matrix.site }}
         uses: SamKirkland/FTP-Deploy-Action@4.3.0
         with:
-          server: ${{ secrets.FTP_HOST_PRIMA }}
-          username: ${{ secrets.FTP_USER_PRIMA }}
-          password: ${{ secrets.FTP_PASSWORD_PRIMA }}
-          local-dir: ./dist/ # The folder containing your built project
-          server-dir: /www/goldbet.wiki/two-step-form/ # The directory on the server where you want to upload the dist folder
-
-      - name: Deploy to VPS 148.113.44.74 - OVH
-        uses: SamKirkland/FTP-Deploy-Action@4.3.0
-        with:
-          server: ${{ secrets.FTP_HOST_OVH }}
-          username: ${{ secrets.FTP_USER_OVH }}
-          password: ${{ secrets.FTP_PASSWORD_OVH }}
-          local-dir: ./dist/ # The folder containing your built project
-          server-dir: /www/goldbet.wiki/two-step-form/ # The directory on the server where you want to upload the dist folder
-
-      # # promogb.top
-
-      # - name: Deploy to VPS 194.164.235.224 - Hostkey
-      #   uses: SamKirkland/FTP-Deploy-Action@4.3.0
-      #   with:
-      #     server: ${{ secrets.FTP_HOST_HOSTKEY }}
-      #     username: ${{ secrets.FTP_USER_HOSTKEY }}
-      #     password: ${{ secrets.FTP_PASSWORD_HOSTKEY }}
-      #     local-dir: ./dist/ # The folder containing your built project
-      #     server-dir: /www/promogb.top/two-step-form/ # The directory on the server where you want to upload the dist folder
-
-      # - name: Deploy to 185.206.180.88 - PRIMA
-      #   uses: SamKirkland/FTP-Deploy-Action@4.3.0
-      #   with:
-      #     server: ${{ secrets.FTP_HOST_PRIMA }}
-      #     username: ${{ secrets.FTP_USER_PRIMA }}
-      #     password: ${{ secrets.FTP_PASSWORD_PRIMA }}
-      #     local-dir: ./dist/ # The folder containing your built project
-      #     server-dir: /www/promogb.top/two-step-form/ # The directory on the server where you want to upload the dist folder
-
-      # - name: Deploy to VPS 148.113.44.74 - OVH
-      #   uses: SamKirkland/FTP-Deploy-Action@4.3.0
-      #   with:
-      #     server: ${{ secrets.FTP_HOST_OVH }}
-      #     username: ${{ secrets.FTP_USER_OVH }}
-      #     password: ${{ secrets.FTP_PASSWORD_OVH }}
-      #     local-dir: ./dist/ # The folder containing your built project
-      #     server-dir: /www/promogb.top/two-step-form/ # The directory on the server where you want to upload the dist folder
-
-      # promogb.com
-
-      # - name: Deploy to VPS 194.164.235.224 - Hostkey
-      #   uses: SamKirkland/FTP-Deploy-Action@4.3.0
-      #   with:
-      #     server: ${{ secrets.FTP_HOST_HOSTKEY }}
-      #     username: ${{ secrets.FTP_USER_HOSTKEY }}
-      #     password: ${{ secrets.FTP_PASSWORD_HOSTKEY }}
-      #     local-dir: ./dist/ # The folder containing your built project
-      #     server-dir: /www/promogb.com/two-step-form/ # The directory on the server where you want to upload the dist folder
-
-      - name: Deploy to 185.206.180.88 - PRIMA
-        uses: SamKirkland/FTP-Deploy-Action@4.3.0
-        with:
-          server: ${{ secrets.FTP_HOST_PRIMA }}
-          username: ${{ secrets.FTP_USER_PRIMA }}
-          password: ${{ secrets.FTP_PASSWORD_PRIMA }}
-          local-dir: ./dist/ # The folder containing your built project
-          server-dir: /www/promogb.com/two-step-form/ # The directory on the server where you want to upload the dist folder
-
-      - name: Deploy to VPS 148.113.44.74 - OVH
-        uses: SamKirkland/FTP-Deploy-Action@4.3.0
-        with:
-          server: ${{ secrets.FTP_HOST_OVH }}
-          username: ${{ secrets.FTP_USER_OVH }}
-          password: ${{ secrets.FTP_PASSWORD_OVH }}
-          local-dir: ./dist/ # The folder containing your built project
-          server-dir: /www/promogb.com/two-step-form/ # The directory on the server where you want to upload the dist folder
-
-      # goldbet.website
-
-      - name: Deploy to 185.206.180.88 - PRIMA
-        uses: SamKirkland/FTP-Deploy-Action@4.3.0
-        with:
-          server: ${{ secrets.FTP_HOST_PRIMA }}
-          username: ${{ secrets.FTP_USER_PRIMA }}
-          password: ${{ secrets.FTP_PASSWORD_PRIMA }}
-          local-dir: ./dist/ # The folder containing your built project
-          server-dir: /www/goldbet.website/two-step-form/ # The directory on the server where you want to upload the dist folder
-
-      # - name: Deploy to VPS 194.164.235.224 - Hostkey
-      #   uses: SamKirkland/FTP-Deploy-Action@4.3.0
-      #   with:
-      #     server: ${{ secrets.FTP_HOST_HOSTKEY }}
-      #     username: ${{ secrets.FTP_USER_HOSTKEY }}
-      #     password: ${{ secrets.FTP_PASSWORD_HOSTKEY }}
-      #     local-dir: ./dist/ # The folder containing your built project
-      #     server-dir: /www/goldbet.website/two-step-form/ # The directory on the server where you want to upload the dist folder
-
-      - name: Deploy to VPS 148.113.44.74 - OVH
-        uses: SamKirkland/FTP-Deploy-Action@4.3.0
-        with:
-          server: ${{ secrets.FTP_HOST_OVH }}
-          username: ${{ secrets.FTP_USER_OVH }}
-          password: ${{ secrets.FTP_PASSWORD_OVH }}
-          local-dir: ./dist/ # The folder containing your built project
-          server-dir: /www/goldbet.website/two-step-form/ # The directory on the server where you want to upload the dist folder
-
-      # goldbet.click
-
-      - name: Deploy to 185.206.180.88 - PRIMA
-        uses: SamKirkland/FTP-Deploy-Action@4.3.0
-        with:
-          server: ${{ secrets.FTP_HOST_PRIMA }}
-          username: ${{ secrets.FTP_USER_PRIMA }}
-          password: ${{ secrets.FTP_PASSWORD_PRIMA }}
-          local-dir: ./dist/ # The folder containing your built project
-          server-dir: /www/goldbet.click/two-step-form/ # The directory on the server where you want to upload the dist folder
-
-      # - name: Deploy to VPS 194.164.235.224 - Hostkey
-      #   uses: SamKirkland/FTP-Deploy-Action@4.3.0
-      #   with:
-      #     server: ${{ secrets.FTP_HOST_HOSTKEY }}
-      #     username: ${{ secrets.FTP_USER_HOSTKEY }}
-      #     password: ${{ secrets.FTP_PASSWORD_HOSTKEY }}
-      #     local-dir: ./dist/ # The folder containing your built project
-      #     server-dir: /www/goldbet.click/two-step-form/ # The directory on the server where you want to upload the dist folder
-
-      - name: Deploy to VPS 148.113.44.74 - OVH
-        uses: SamKirkland/FTP-Deploy-Action@4.3.0
-        with:
-          server: ${{ secrets.FTP_HOST_OVH }}
-          username: ${{ secrets.FTP_USER_OVH }}
-          password: ${{ secrets.FTP_PASSWORD_OVH }}
-          local-dir: ./dist/ # The folder containing your built project
-          server-dir: /www/goldbet.click/two-step-form/ # The directory on the server where you want to upload the dist folder
-
-      # goldbetio.com
-
-      - name: Deploy to 185.206.180.88 - PRIMA
-        uses: SamKirkland/FTP-Deploy-Action@4.3.0
-        with:
-          server: ${{ secrets.FTP_HOST_PRIMA }}
-          username: ${{ secrets.FTP_USER_PRIMA }}
-          password: ${{ secrets.FTP_PASSWORD_PRIMA }}
-          local-dir: ./dist/ # The folder containing your built project
-          server-dir: /www/goldbetio.com/two-step-form/ # The directory on the server where you want to upload the dist folder
-
-      # - name: Deploy to VPS 194.164.235.224 - Hostkey
-      #   uses: SamKirkland/FTP-Deploy-Action@4.3.0
-      #   with:
-      #     server: ${{ secrets.FTP_HOST_HOSTKEY }}
-      #     username: ${{ secrets.FTP_USER_HOSTKEY }}
-      #     password: ${{ secrets.FTP_PASSWORD_HOSTKEY }}
-      #     local-dir: ./dist/ # The folder containing your built project
-      #     server-dir: /www/goldbetio.com/two-step-form/ # The directory on the server where you want to upload the dist folder
-
-      - name: Deploy to VPS 148.113.44.74 - OVH
-        uses: SamKirkland/FTP-Deploy-Action@4.3.0
-        with:
-          server: ${{ secrets.FTP_HOST_OVH }}
-          username: ${{ secrets.FTP_USER_OVH }}
-          password: ${{ secrets.FTP_PASSWORD_OVH }}
-          local-dir: ./dist/ # The folder containing your built project
-          server-dir: /www/goldbetio.com/two-step-form/ # The directory on the server where you want to upload the dist folder
-
-      # goldbet.sbs
-
-      # - name: Deploy to VPS 194.164.235.224 - Hostkey
-      #   uses: SamKirkland/FTP-Deploy-Action@4.3.0
-      #   with:
-      #     server: ${{ secrets.FTP_HOST_HOSTKEY }}
-      #     username: ${{ secrets.FTP_USER_HOSTKEY }}
-      #     password: ${{ secrets.FTP_PASSWORD_HOSTKEY }}
-      #     local-dir: ./dist/ # The folder containing your built project
-      #     server-dir: /www/goldbet.sbs/two-step-form/ # The directory on the server where you want to upload the dist folder
-
-      - name: Deploy to 185.206.180.88 - PRIMA
-        uses: SamKirkland/FTP-Deploy-Action@4.3.0
-        with:
-          server: ${{ secrets.FTP_HOST_PRIMA }}
-          username: ${{ secrets.FTP_USER_PRIMA }}
-          password: ${{ secrets.FTP_PASSWORD_PRIMA }}
-          local-dir: ./dist/ # The folder containing your built project
-          server-dir: /www/goldbet.sbs/two-step-form/ # The directory on the server where you want to upload the dist folder
-
-      - name: Deploy to VPS 148.113.44.74 - OVH
-        uses: SamKirkland/FTP-Deploy-Action@4.3.0
-        with:
-          server: ${{ secrets.FTP_HOST_OVH }}
-          username: ${{ secrets.FTP_USER_OVH }}
-          password: ${{ secrets.FTP_PASSWORD_OVH }}
-          local-dir: ./dist/ # The folder containing your built project
-          server-dir: /www/goldbet.sbs/two-step-form/ # The directory on the server where you want to upload the dist folder
-
-      # goldbet.monster
-
-      - name: Deploy to 185.206.180.88 - PRIMA
-        uses: SamKirkland/FTP-Deploy-Action@4.3.0
-        with:
-          server: ${{ secrets.FTP_HOST_PRIMA }}
-          username: ${{ secrets.FTP_USER_PRIMA }}
-          password: ${{ secrets.FTP_PASSWORD_PRIMA }}
-          local-dir: ./dist/ # The folder containing your built project
-          server-dir: /www/goldbet.monster/two-step-form/ # The directory on the server where you want to upload the dist folder
-
-      # - name: Deploy to VPS 194.164.235.224 - Hostkey
-      #   uses: SamKirkland/FTP-Deploy-Action@4.3.0
-      #   with:
-      #     server: ${{ secrets.FTP_HOST_HOSTKEY }}
-      #     username: ${{ secrets.FTP_USER_HOSTKEY }}
-      #     password: ${{ secrets.FTP_PASSWORD_HOSTKEY }}
-      #     local-dir: ./dist/ # The folder containing your built project
-      #     server-dir: /www/goldbet.monster/two-step-form/ # The directory on the server where you want to upload the dist folder
-
-      - name: Deploy to VPS 148.113.44.74 - OVH
-        uses: SamKirkland/FTP-Deploy-Action@4.3.0
-        with:
-          server: ${{ secrets.FTP_HOST_OVH }}
-          username: ${{ secrets.FTP_USER_OVH }}
-          password: ${{ secrets.FTP_PASSWORD_OVH }}
-          local-dir: ./dist/ # The folder containing your built project
-          server-dir: /www/goldbet.monster/two-step-form/ # The directory on the server where you want to upload the dist folder
-
-      # goldbet.lol
-
-      - name: Deploy to 185.206.180.88 - PRIMA
-        uses: SamKirkland/FTP-Deploy-Action@4.3.0
-        with:
-          server: ${{ secrets.FTP_HOST_PRIMA }}
-          username: ${{ secrets.FTP_USER_PRIMA }}
-          password: ${{ secrets.FTP_PASSWORD_PRIMA }}
-          local-dir: ./dist/ # The folder containing your built project
-          server-dir: /www/goldbet.lol/two-step-form/ # The directory on the server where you want to upload the dist folder
-
-      # - name: Deploy to VPS 194.164.235.224 - Hostkey
-      #   uses: SamKirkland/FTP-Deploy-Action@4.3.0
-      #   with:
-      #     server: ${{ secrets.FTP_HOST_HOSTKEY }}
-      #     username: ${{ secrets.FTP_USER_HOSTKEY }}
-      #     password: ${{ secrets.FTP_PASSWORD_HOSTKEY }}
-      #     local-dir: ./dist/ # The folder containing your built project
-      #     server-dir: /www/goldbet.lol/two-step-form/ # The directory on the server where you want to upload the dist folder
-
-      - name: Deploy to VPS 148.113.44.74 - OVH
-        uses: SamKirkland/FTP-Deploy-Action@4.3.0
-        with:
-          server: ${{ secrets.FTP_HOST_OVH }}
-          username: ${{ secrets.FTP_USER_OVH }}
-          password: ${{ secrets.FTP_PASSWORD_OVH }}
-          local-dir: ./dist/ # The folder containing your built project
-          server-dir: /www/goldbet.lol/two-step-form/ # The directory on the server where you want to upload the dist folder
-
-      # goldbet.cam
-
-      - name: Deploy to 185.206.180.88 - PRIMA
-        uses: SamKirkland/FTP-Deploy-Action@4.3.0
-        with:
-          server: ${{ secrets.FTP_HOST_PRIMA }}
-          username: ${{ secrets.FTP_USER_PRIMA }}
-          password: ${{ secrets.FTP_PASSWORD_PRIMA }}
-          local-dir: ./dist/ # The folder containing your built project
-          server-dir: /www/goldbet.cam/two-step-form/ # The directory on the server where you want to upload the dist folder
-
-      # - name: Deploy to VPS 194.164.235.224 - Hostkey
-      #   uses: SamKirkland/FTP-Deploy-Action@4.3.0
-      #   with:
-      #     server: ${{ secrets.FTP_HOST_HOSTKEY }}
-      #     username: ${{ secrets.FTP_USER_HOSTKEY }}
-      #     password: ${{ secrets.FTP_PASSWORD_HOSTKEY }}
-      #     local-dir: ./dist/ # The folder containing your built project
-      #     server-dir: /www/goldbet.cam/two-step-form/ # The directory on the server where you want to upload the dist folder
-
-      - name: Deploy to VPS 148.113.44.74 - OVH
-        uses: SamKirkland/FTP-Deploy-Action@4.3.0
-        with:
-          server: ${{ secrets.FTP_HOST_OVH }}
-          username: ${{ secrets.FTP_USER_OVH }}
-          password: ${{ secrets.FTP_PASSWORD_OVH }}
-          local-dir: ./dist/ # The folder containing your built project
-          server-dir: /www/goldbet.cam/two-step-form/ # The directory on the server where you want to upload the dist folder
-
-      # goldbet.cfd
-
-      - name: Deploy to 185.206.180.88 - PRIMA
-        uses: SamKirkland/FTP-Deploy-Action@4.3.0
-        with:
-          server: ${{ secrets.FTP_HOST_PRIMA }}
-          username: ${{ secrets.FTP_USER_PRIMA }}
-          password: ${{ secrets.FTP_PASSWORD_PRIMA }}
-          local-dir: ./dist/ # The folder containing your built project
-          server-dir: /www/goldbet.cfd/two-step-form/ # The directory on the server where you want to upload the dist folder
-
-      # - name: Deploy to VPS 194.164.235.224 - Hostkey
-      #   uses: SamKirkland/FTP-Deploy-Action@4.3.0
-      #   with:
-      #     server: ${{ secrets.FTP_HOST_HOSTKEY }}
-      #     username: ${{ secrets.FTP_USER_HOSTKEY }}
-      #     password: ${{ secrets.FTP_PASSWORD_HOSTKEY }}
-      #     local-dir: ./dist/ # The folder containing your built project
-      #     server-dir: /www/goldbet.cfd/two-step-form/ # The directory on the server where you want to upload the dist folder
-
-      - name: Deploy to VPS 148.113.44.74 - OVH
-        uses: SamKirkland/FTP-Deploy-Action@4.3.0
-        with:
-          server: ${{ secrets.FTP_HOST_OVH }}
-          username: ${{ secrets.FTP_USER_OVH }}
-          password: ${{ secrets.FTP_PASSWORD_OVH }}
-          local-dir: ./dist/ # The folder containing your built project
-          server-dir: /www/goldbet.cfd/two-step-form/ # The directory on the server where you want to upload the dist folder
-
-      # goldbet.cyou
-
-      - name: Deploy to 185.206.180.88 - PRIMA
-        uses: SamKirkland/FTP-Deploy-Action@4.3.0
-        with:
-          server: ${{ secrets.FTP_HOST_PRIMA }}
-          username: ${{ secrets.FTP_USER_PRIMA }}
-          password: ${{ secrets.FTP_PASSWORD_PRIMA }}
-          local-dir: ./dist/ # The folder containing your built project
-          server-dir: /www/goldbet.cyou/two-step-form/ # The directory on the server where you want to upload the dist folder
-
-      # - name: Deploy to VPS 194.164.235.224 - Hostkey
-      #   uses: SamKirkland/FTP-Deploy-Action@4.3.0
-      #   with:
-      #     server: ${{ secrets.FTP_HOST_HOSTKEY }}
-      #     username: ${{ secrets.FTP_USER_HOSTKEY }}
-      #     password: ${{ secrets.FTP_PASSWORD_HOSTKEY }}
-      #     local-dir: ./dist/ # The folder containing your built project
-      #     server-dir: /www/goldbet.cyou/two-step-form/ # The directory on the server where you want to upload the dist folder
-
-      - name: Deploy to VPS 148.113.44.74 - OVH
-        uses: SamKirkland/FTP-Deploy-Action@4.3.0
-        with:
-          server: ${{ secrets.FTP_HOST_OVH }}
-          username: ${{ secrets.FTP_USER_OVH }}
-          password: ${{ secrets.FTP_PASSWORD_OVH }}
-          local-dir: ./dist/ # The folder containing your built project
-          server-dir: /www/goldbet.cyou/two-step-form/ # The directory on the server where you want to upload the dist folder
-
-      # goldbet.fun
-
-      - name: Deploy to 185.206.180.88 - PRIMA
-        uses: SamKirkland/FTP-Deploy-Action@4.3.0
-        with:
-          server: ${{ secrets.FTP_HOST_PRIMA }}
-          username: ${{ secrets.FTP_USER_PRIMA }}
-          password: ${{ secrets.FTP_PASSWORD_PRIMA }}
-          local-dir: ./dist/ # The folder containing your built project
-          server-dir: /www/goldbet.fun/two-step-form/ # The directory on the server where you want to upload the dist folder
-
-      # - name: Deploy to VPS 194.164.235.224 - Hostkey
-      #   uses: SamKirkland/FTP-Deploy-Action@4.3.0
-      #   with:
-      #     server: ${{ secrets.FTP_HOST_HOSTKEY }}
-      #     username: ${{ secrets.FTP_USER_HOSTKEY }}
-      #     password: ${{ secrets.FTP_PASSWORD_HOSTKEY }}
-      #     local-dir: ./dist/ # The folder containing your built project
-      #     server-dir: /www/goldbet.fun/two-step-form/ # The directory on the server where you want to upload the dist folder
-
-      - name: Deploy to VPS 148.113.44.74 - OVH
-        uses: SamKirkland/FTP-Deploy-Action@4.3.0
-        with:
-          server: ${{ secrets.FTP_HOST_OVH }}
-          username: ${{ secrets.FTP_USER_OVH }}
-          password: ${{ secrets.FTP_PASSWORD_OVH }}
-          local-dir: ./dist/ # The folder containing your built project
-          server-dir: /www/goldbet.fun/two-step-form/ # The directory on the server where you want to upload the dist folder
+          server: ${{ secrets[matrix.vps.host] }}
+          username: ${{ secrets[matrix.vps.user] }}
+          password: ${{ secrets[matrix.vps.pass] }}
+          local-dir: ./dist/
+          server-dir: /www/${{ matrix.site }}/two-step-form/ # ← МЕНЯЕШЬ ТОЛЬКО ЭТО
