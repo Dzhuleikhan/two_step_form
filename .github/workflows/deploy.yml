@@ -480,12 +480,82 @@
 #           local-dir: ./dist/ # The folder containing your built project
 #           server-dir: /www/goldbet.fun/two-step-form/ # The directory on the server where you want to upload the dist folder
 
+# name: Deploy to VPS Servers
+
+# on:
+#   push:
+#     branches:
+#       - main # ← МЕНЯЕШЬ ТОЛЬКО ЭТО
+
+# jobs:
+#   build-and-deploy:
+#     runs-on: ubuntu-latest
+
+#     strategy:
+#       max-parallel: 1
+#       matrix:
+#         vps:
+#           - name: HOSTKEY
+#             host: FTP_HOST_HOSTKEY
+#             user: FTP_USER_HOSTKEY
+#             pass: FTP_PASSWORD_HOSTKEY
+#           - name: PRIMA
+#             host: FTP_HOST_PRIMA
+#             user: FTP_USER_PRIMA
+#             pass: FTP_PASSWORD_PRIMA
+#           - name: ORANGE
+#             host: FTP_HOST_ORANGE
+#             user: FTP_USER_ORANGE
+#             pass: FTP_PASSWORD_ORANGE
+#           - name: NJAL
+#             host: FTP_HOST_NJAL
+#             user: FTP_USER_NJAL
+#             pass: FTP_PASSWORD_NJAL
+
+#         site:
+#           - goldbet.wiki
+#           - promogb.com
+#           - goldbet.website
+#           - goldbet.click
+#           - goldbetio.com
+#           - goldbet.sbs
+#           - goldbet.monster
+#           - goldbet.lol
+#           - goldbet.cam
+#           - goldbet.cfd
+#           - goldbet.cyou
+#           - goldbet.fun
+
+#     steps:
+#       - name: Checkout code
+#         uses: actions/checkout@v4
+
+#       - name: Set up Node.js
+#         uses: actions/setup-node@v4
+#         with:
+#           node-version: "22"
+
+#       - name: Install dependencies
+#         run: npm install
+
+#       - name: Build project
+#         run: npm run build
+
+#       - name: Deploy to ${{ matrix.vps.name }} → ${{ matrix.site }}
+#         uses: SamKirkland/FTP-Deploy-Action@4.3.0
+#         with:
+#           server: ${{ secrets[matrix.vps.host] }}
+#           username: ${{ secrets[matrix.vps.user] }}
+#           password: ${{ secrets[matrix.vps.pass] }}
+#           local-dir: ./dist/
+#           server-dir: /www/${{ matrix.site }}/two-step-form/ # ← МЕНЯЕШЬ ТОЛЬКО ЭТО
+
 name: Deploy to VPS Servers
 
 on:
   push:
     branches:
-      - main # ← МЕНЯЕШЬ ТОЛЬКО ЭТО
+      - main
 
 jobs:
   build-and-deploy:
@@ -499,32 +569,21 @@ jobs:
             host: FTP_HOST_HOSTKEY
             user: FTP_USER_HOSTKEY
             pass: FTP_PASSWORD_HOSTKEY
+
           - name: PRIMA
             host: FTP_HOST_PRIMA
             user: FTP_USER_PRIMA
             pass: FTP_PASSWORD_PRIMA
+
           - name: ORANGE
             host: FTP_HOST_ORANGE
             user: FTP_USER_ORANGE
             pass: FTP_PASSWORD_ORANGE
+
           - name: NJAL
             host: FTP_HOST_NJAL
             user: FTP_USER_NJAL
             pass: FTP_PASSWORD_NJAL
-
-        site:
-          - goldbet.wiki
-          - promogb.com
-          - goldbet.website
-          - goldbet.click
-          - goldbetio.com
-          - goldbet.sbs
-          - goldbet.monster
-          - goldbet.lol
-          - goldbet.cam
-          - goldbet.cfd
-          - goldbet.cyou
-          - goldbet.fun
 
     steps:
       - name: Checkout code
@@ -541,11 +600,32 @@ jobs:
       - name: Build project
         run: npm run build
 
-      - name: Deploy to ${{ matrix.vps.name }} → ${{ matrix.site }}
-        uses: SamKirkland/FTP-Deploy-Action@4.3.0
-        with:
-          server: ${{ secrets[matrix.vps.host] }}
-          username: ${{ secrets[matrix.vps.user] }}
-          password: ${{ secrets[matrix.vps.pass] }}
-          local-dir: ./dist/
-          server-dir: /www/${{ matrix.site }}/two-step-form/ # ← МЕНЯЕШЬ ТОЛЬКО ЭТО
+      - name: Deploy all sites to ${{ matrix.vps.name }}
+        run: |
+          # Список всех сайтов
+          sites=(
+            goldbet.wiki
+            promogb.com
+            goldbet.website
+            goldbet.click
+            goldbetio.com
+            goldbet.sbs
+            goldbet.monster
+            goldbet.lol
+            goldbet.cam
+            goldbet.cfd
+            goldbet.cyou
+            goldbet.fun
+          )
+
+          # Деплой сайтов циклом
+          for site in "${sites[@]}"; do
+            echo "Deploying $site to ${{ matrix.vps.name }}"
+            npx ftp-deploy \
+              --server "${{ secrets[matrix.vps.host] }}" \
+              --username "${{ secrets[matrix.vps.user] }}" \
+              --password "${{ secrets[matrix.vps.pass] }}" \
+              --local-dir ./dist \
+              --server-dir "/www/$site/two-step-form/"
+            sleep 20
+          done
