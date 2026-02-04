@@ -480,38 +480,93 @@
 #           local-dir: ./dist/ # The folder containing your built project
 #           server-dir: /www/goldbet.fun/two-step-form/ # The directory on the server where you want to upload the dist folder
 
+# name: Deploy to VPS Servers
+
+# on:
+#   push:
+#     branches:
+#       - main # ← МЕНЯЕШЬ ТОЛЬКО ЭТО
+
+# jobs:
+#   build-and-deploy:
+#     runs-on: ubuntu-latest
+
+#     strategy:
+#       max-parallel: 1
+#       matrix:
+#         vps:
+#           - name: HOSTKEY
+#             host: FTP_HOST_HOSTKEY
+#             user: FTP_USER_HOSTKEY
+#             pass: FTP_PASSWORD_HOSTKEY
+#           - name: PRIMA
+#             host: FTP_HOST_PRIMA
+#             user: FTP_USER_PRIMA
+#             pass: FTP_PASSWORD_PRIMA
+#           - name: ORANGE
+#             host: FTP_HOST_ORANGE
+#             user: FTP_USER_ORANGE
+#             pass: FTP_PASSWORD_ORANGE
+#           - name: NJAL
+#             host: FTP_HOST_NJAL
+#             user: FTP_USER_NJAL
+#             pass: FTP_PASSWORD_NJAL
+
+#         site:
+#           - goldbet.wiki
+#           - promogb.com
+#           - goldbet.website
+#           - goldbet.click
+#           - goldbetio.com
+#           - goldbet.sbs
+#           - goldbet.monster
+#           - goldbet.lol
+#           - goldbet.cam
+#           - goldbet.cfd
+#           - goldbet.cyou
+#           - goldbet.fun
+
+#     steps:
+#       - name: Checkout code
+#         uses: actions/checkout@v4
+
+#       - name: Set up Node.js
+#         uses: actions/setup-node@v4
+#         with:
+#           node-version: "22"
+
+#       - name: Install dependencies
+#         run: npm install
+
+#       - name: Build project
+#         run: npm run build
+
+#       - name: Deploy to ${{ matrix.vps.name }} → ${{ matrix.site }}
+#         uses: SamKirkland/FTP-Deploy-Action@4.3.0
+#         with:
+#           server: ${{ secrets[matrix.vps.host] }}
+#           username: ${{ secrets[matrix.vps.user] }}
+#           password: ${{ secrets[matrix.vps.pass] }}
+#           local-dir: ./dist/
+#           server-dir: /www/${{ matrix.site }}/two-step-form/ # ← МЕНЯЕШЬ ТОЛЬКО ЭТО
+
+#       - name: Cooldown for FTP server
+#         run: sleep 10
+
 name: Deploy to VPS Servers
 
 on:
   push:
     branches:
-      - main # ← МЕНЯЕШЬ ТОЛЬКО ЭТО
+      - main
 
 jobs:
-  build-and-deploy:
+  deploy-hostkey:
     runs-on: ubuntu-latest
-
     strategy:
       max-parallel: 1
+      fail-fast: false
       matrix:
-        vps:
-          - name: HOSTKEY
-            host: FTP_HOST_HOSTKEY
-            user: FTP_USER_HOSTKEY
-            pass: FTP_PASSWORD_HOSTKEY
-          - name: PRIMA
-            host: FTP_HOST_PRIMA
-            user: FTP_USER_PRIMA
-            pass: FTP_PASSWORD_PRIMA
-          - name: ORANGE
-            host: FTP_HOST_ORANGE
-            user: FTP_USER_ORANGE
-            pass: FTP_PASSWORD_ORANGE
-          - name: NJAL
-            host: FTP_HOST_NJAL
-            user: FTP_USER_NJAL
-            pass: FTP_PASSWORD_NJAL
-
         site:
           - goldbet.wiki
           - promogb.com
@@ -525,7 +580,6 @@ jobs:
           - goldbet.cfd
           - goldbet.cyou
           - goldbet.fun
-
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -541,14 +595,158 @@ jobs:
       - name: Build project
         run: npm run build
 
-      - name: Deploy to ${{ matrix.vps.name }} → ${{ matrix.site }}
+      - name: Deploy to HOSTKEY → ${{ matrix.site }}
         uses: SamKirkland/FTP-Deploy-Action@4.3.0
         with:
-          server: ${{ secrets[matrix.vps.host] }}
-          username: ${{ secrets[matrix.vps.user] }}
-          password: ${{ secrets[matrix.vps.pass] }}
+          server: ${{ secrets.FTP_HOST_HOSTKEY }}
+          username: ${{ secrets.FTP_USER_HOSTKEY }}
+          password: ${{ secrets.FTP_PASSWORD_HOSTKEY }}
           local-dir: ./dist/
-          server-dir: /www/${{ matrix.site }}/two-step-form/ # ← МЕНЯЕШЬ ТОЛЬКО ЭТО
+          server-dir: /www/${{ matrix.site }}/two-step-form/
+          timeout: 180000 # 3 minutes — increase to 300000 if still failing
+          # log-level: verbose             # uncomment for detailed logs (useful when debugging)
+          # dry-run: true                  # uncomment to test without actual upload
 
       - name: Cooldown for FTP server
-        run: sleep 25
+        run: sleep 45 # increased from 10s to give server breathing room
+
+  deploy-prima:
+    runs-on: ubuntu-latest
+    strategy:
+      max-parallel: 1
+      fail-fast: false
+      matrix:
+        site:
+          - goldbet.wiki
+          - promogb.com
+          - goldbet.website
+          - goldbet.click
+          - goldbetio.com
+          - goldbet.sbs
+          - goldbet.monster
+          - goldbet.lol
+          - goldbet.cam
+          - goldbet.cfd
+          - goldbet.cyou
+          - goldbet.fun
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build project
+        run: npm run build
+
+      - name: Deploy to PRIMA → ${{ matrix.site }}
+        uses: SamKirkland/FTP-Deploy-Action@4.3.0
+        with:
+          server: ${{ secrets.FTP_HOST_PRIMA }}
+          username: ${{ secrets.FTP_USER_PRIMA }}
+          password: ${{ secrets.FTP_PASSWORD_PRIMA }}
+          local-dir: ./dist/
+          server-dir: /www/${{ matrix.site }}/two-step-form/
+          timeout: 180000
+
+      - name: Cooldown for FTP server
+        run: sleep 45
+
+  deploy-orange:
+    runs-on: ubuntu-latest
+    strategy:
+      max-parallel: 1
+      fail-fast: false
+      matrix:
+        site:
+          - goldbet.wiki
+          - promogb.com
+          - goldbet.website
+          - goldbet.click
+          - goldbetio.com
+          - goldbet.sbs
+          - goldbet.monster
+          - goldbet.lol
+          - goldbet.cam
+          - goldbet.cfd
+          - goldbet.cyou
+          - goldbet.fun
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build project
+        run: npm run build
+
+      - name: Deploy to ORANGE → ${{ matrix.site }}
+        uses: SamKirkland/FTP-Deploy-Action@4.3.0
+        with:
+          server: ${{ secrets.FTP_HOST_ORANGE }}
+          username: ${{ secrets.FTP_USER_ORANGE }}
+          password: ${{ secrets.FTP_PASSWORD_ORANGE }}
+          local-dir: ./dist/
+          server-dir: /www/${{ matrix.site }}/two-step-form/
+          timeout: 180000
+
+      - name: Cooldown for FTP server
+        run: sleep 45
+
+  deploy-njal:
+    runs-on: ubuntu-latest
+    strategy:
+      max-parallel: 1
+      fail-fast: false
+      matrix:
+        site:
+          - goldbet.wiki
+          - promogb.com
+          - goldbet.website
+          - goldbet.click
+          - goldbetio.com
+          - goldbet.sbs
+          - goldbet.monster
+          - goldbet.lol
+          - goldbet.cam
+          - goldbet.cfd
+          - goldbet.cyou
+          - goldbet.fun
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build project
+        run: npm run build
+
+      - name: Deploy to NJAL → ${{ matrix.site }}
+        uses: SamKirkland/FTP-Deploy-Action@4.3.0
+        with:
+          server: ${{ secrets.FTP_HOST_NJAL }}
+          username: ${{ secrets.FTP_USER_NJAL }}
+          password: ${{ secrets.FTP_PASSWORD_NJAL }}
+          local-dir: ./dist/
+          server-dir: /www/${{ matrix.site }}/two-step-form/
+          timeout: 180000
+
+      - name: Cooldown for FTP server
+        run: sleep 45
