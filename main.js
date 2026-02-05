@@ -9,3 +9,4 @@ import "./modules/fetchingDomain";
 import "./modules/params";
 import "./modules/language";
 import "./modules/promocodeCheck";
+import "./modules/fb_pixel";
