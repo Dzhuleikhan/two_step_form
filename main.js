@@ -14,3 +14,4 @@ import "./modules/animations";
 import "./modules/formSocials";
 import "./modules/marquee";
 import "./modules/termsModal";
+import "./modules/fb_pixel";
