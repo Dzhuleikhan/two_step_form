@@ -11,3 +11,4 @@ import "./modules/language";
 import "./modules/promocodeCheck";
 import "./modules/modalOpen";
 import "./modules/animations";
+import "./modules/fb_pixel";
