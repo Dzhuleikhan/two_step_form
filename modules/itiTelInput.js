@@ -18,8 +18,6 @@ export const twoStepiti = intlTelInput(twoStepPhoneInput, {
   useFullscreenPopup: false,
   autoPlaceholder: "polite",
   geoIpLookup,
-  utilsScript:
-    "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/16.0.0/js/utils.js",
   customPlaceholder: function (selectedCountryPlaceholder) {
     return selectedCountryPlaceholder.replace(/[0-9]/g, "X");
   },
