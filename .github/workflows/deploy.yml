@@ -9,7 +9,8 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     strategy:
-      max-parallel: 4
+      max-parallel: 9
+      fail-fast: false
       matrix:
         site:
           - goldbet.wiki
@@ -24,7 +25,18 @@ jobs:
           - goldbet.cfd
           - goldbet.cyou
           - goldbet.fun
-        vps: [HOSTKEY, PRIMA, ORANGE, NJAL]
+        vps:
+          [
+            PRIMA,
+            ORANGE,
+            NJAL,
+            FLOKINET_FI_ONE,
+            FLOKINET_NL,
+            FLOKINET_FI_TWO,
+            ISHOSTING_NL,
+            ISHOSTING_CH,
+            ISHOSTING_SR,
+          ]
 
     steps:
       - name: Checkout code
