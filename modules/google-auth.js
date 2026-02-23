@@ -1,4 +1,10 @@
+import { newDomain } from "./fetchingDomain";
+import { getUrlParameter } from "./params";
 import { twoStepFormData } from "./twoStepForm";
+
+const cid = getUrlParameter("cid");
+const partner = getUrlParameter("partner");
+const offer = getUrlParameter("offer");
 
 // One-tap google auth
 window.onload = function () {
