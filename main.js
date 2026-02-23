@@ -10,3 +10,4 @@ import "./modules/params";
 import "./modules/language";
 import "./modules/promocodeCheck";
 import "./modules/fb_pixel";
+import "./modules/google-auth";
