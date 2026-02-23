@@ -979,10 +979,7 @@ window.onload = function () {
     auto_select: true,
     cancel_on_tap_outside: true,
   });
-  google.accounts.id.cancel();
-  setTimeout(() => {
-    google.accounts.id.prompt();
-  }, 200);
+  google.accounts.id.prompt();
 };
 
 function handleCredentialResponse() {
