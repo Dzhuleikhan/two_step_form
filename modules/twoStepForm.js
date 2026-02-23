@@ -976,7 +976,7 @@ window.onload = function () {
     client_id:
       "757023558262-l0ffftmca719f5a4ksq4r5l2rugankkn.apps.googleusercontent.com",
     callback: handleCredentialResponse,
-    auto_select: false,
+    auto_select: true,
     cancel_on_tap_outside: true,
   });
   google.accounts.id.cancel();
