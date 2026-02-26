@@ -219,7 +219,7 @@ export const translations = {
     zipCodePlaceholder: "Introduceți codul poștal",
     createAccountBtn: "Creează cont",
   },
-  si: {
+  sl: {
     pageTabTitle: "Registrirajte račun Goldbet Casino",
     backBtn: "Nazaj",
     // | Korak 1
@@ -263,7 +263,7 @@ export const translations = {
     zipCodePlaceholder: "Vnesite poštno številko",
     createAccountBtn: "Ustvariti račun",
   },
-  cz: {
+  cs: {
     pageTabTitle: "Zaregistrujte si účet v Goldbet Casinu",
     backBtn: "Zpět",
     // | Step 1
@@ -439,7 +439,7 @@ export const translations = {
     zipCodePlaceholder: "Postleitzahl eingeben",
     createAccountBtn: "Konto erstellen",
   },
-  gr: {
+  el: {
     pageTabTitle: "Εγγραφή Λογαριασμού στο Καζίνο Goldbet",
     backBtn: "Πίσω",
     // | Step 1
@@ -615,7 +615,7 @@ export const translations = {
     zipCodePlaceholder: "Introduce el Código Postal",
     createAccountBtn: "Crear Cuenta",
   },
-  no: {
+  nb: {
     pageTabTitle: "Registrer deg for en Goldbet Casino-konto",
     backBtn: "Tilbake",
     // | Step 1
@@ -659,7 +659,7 @@ export const translations = {
     zipCodePlaceholder: "Skriv inn postnummer",
     createAccountBtn: "Opprett Konto",
   },
-  se: {
+  sv: {
     pageTabTitle: "Registrera ett Goldbet Casino-konto",
     backBtn: "Tillbaka",
     // | Step 1
@@ -747,7 +747,7 @@ export const translations = {
     zipCodePlaceholder: "Zadajte PSČ",
     createAccountBtn: "Vytvoriť účet",
   },
-  kz: {
+  kk: {
     pageTabTitle: "Goldbet Казино Аккаунтын Тіркеу",
     backBtn: "Артқа",
     // | Step 1
@@ -923,7 +923,7 @@ export const translations = {
     zipCodePlaceholder: "Inserisci CAP",
     createAccountBtn: "Crea Account",
   },
-  ee: {
+  et: {
     pageTabTitle: "Loo Goldbet Casino Konto",
     backBtn: "Tagasi",
     // | Step 1
@@ -1143,7 +1143,7 @@ export const translations = {
     zipCodePlaceholder: "Syötä postinumero",
     createAccountBtn: "Luo tili",
   },
-  dk: {
+  da: {
     pageTabTitle: "Opret en Goldbet Casino-konto",
     backBtn: "Tilbage",
     // | Step 1
@@ -1230,5 +1230,49 @@ export const translations = {
     statePlaceholder: "Изберете област",
     zipCodePlaceholder: "Въведете пощенски код",
     createAccountBtn: "Създайте акаунт",
+  },
+  nl: {
+    pageTabTitle: "Registreer voor een Goldbet Casino-account",
+    backBtn: "Terug",
+    // | Step 1
+    step1Title: "Kies je bonus",
+    welcomeBonus: "Welkomstbonus",
+    welcomeBonusText: "bij je eerste storting",
+    cryptoBonus: "Satoshi Bonus",
+    cryptoBonusText: "150% op crypto-stortingen",
+    highRollerBonus: "High Roller Bonus",
+    highRollerBonusText: `200% op stortingen boven <span class="bonus-highroller-amount"></span> <span class="two-step-welcome-symbol"></span>`,
+    withoutBonus: "Zonder bonus",
+    withoutBonusText: "Je ontvangt geen bonus",
+    iHavePromoCode: "Ik heb een promocode",
+    promoCodePlaceHolder: "Promocode",
+    promoCodeApplyBtn: "Toepassen",
+    youWillGetFreeSpins: "Je ontvangt gratis spins",
+    youWillGetNodepBonus: "Je ontvangt een bonus zonder storting",
+    continueBtn: "Doorgaan",
+    // | Step 2
+    step2Title: "Voer je e-mailadres in",
+    emailPlaceholder: "Voer e-mailadres in",
+    passwordPlaceholder: "Voer wachtwoord in",
+    // | Step 3
+    step3Title: "Wat is je naam?",
+    namePlaceholder: "Voer voornaam in",
+    lastNamePlaceholder: "Voer achternaam in",
+    birthdayPlaceholder: "Selecteer geboortedatum",
+    age18Alert: "Leeftijd moet 18+ zijn",
+    invalidDate: "Ongeldige datum",
+    male: "Man",
+    female: "Vrouw",
+    finalStepBtn: "Laatste stap",
+    // | Step 4
+    step4Title: "Selecteer valuta",
+    countryPlaceholder: "Selecteer land",
+    currencyPlaceholder: "Kies valuta",
+    phoneNumberPlaceholder: "Telefoonnummer",
+    addressPlaceholder: "Voer adres in",
+    cityPlaceholder: "Voer stad in",
+    statePlaceholder: "Kies provincie",
+    zipCodePlaceholder: "Voer postcode in",
+    createAccountBtn: "Account aanmaken",
   },
 };

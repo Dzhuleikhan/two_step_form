@@ -39,6 +39,7 @@ localStorage.setItem(
   "preferredLanguage",
   getSupportedLanguage(geoData.countryCode),
 );
+export const language = localStorage.getItem("preferredLanguage");
 
 export const settingZipCodePlaceholder = (countryCode) => {
   const zipCodeLabel = document.querySelector(".two-step-zipcode-label");
