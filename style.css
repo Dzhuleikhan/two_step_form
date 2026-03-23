@@ -533,6 +533,10 @@
   font-style: normal;
 }
 
+.bonus-input-dynamic span {
+  color: #FFF67D;
+}
+
 /* States dropdown */
 
 .two-step-state-list-item {
