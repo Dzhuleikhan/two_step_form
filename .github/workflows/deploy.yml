@@ -3,7 +3,7 @@ name: Deploy to VPS Servers
 on:
   push:
     branches:
-      - chicken_road
+      - chicken_road_fs
 
 jobs:
   deploy:

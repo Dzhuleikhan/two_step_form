@@ -13,10 +13,59 @@ document.querySelectorAll("input").forEach((input) => {
   input.setAttribute("autocomplete", "off");
 });
 
+const bonusSumAndWager = [
+  { currency: "EUR", amount: 20 },
+  { currency: "USD", amount: 20 },
+  { currency: "CAD", amount: 30 },
+  { currency: "NZD", amount: 35 },
+  { currency: "AUD", amount: 30 },
+  { currency: "ARS", amount: 30000 },
+  { currency: "COP", amount: 75000 },
+  { currency: "CLP", amount: 25000 },
+  { currency: "MXN", amount: 365 },
+  { currency: "BRL", amount: 100 },
+  { currency: "TRY", amount: 850 },
+  { currency: "INR", amount: 1800 },
+  { currency: "AZN", amount: 35 },
+  { currency: "UZS", amount: 200000 },
+  { currency: "IDR", amount: 300000 },
+  { currency: "UAH", amount: 850 },
+  { currency: "BDT", amount: 2500 },
+  { currency: "KGS", amount: 1750 },
+  { currency: "KZT", amount: 10000 },
+  { currency: "HUF", amount: 6500 },
+  { currency: "DKK", amount: 130 },
+  { currency: "CHF", amount: 15 },
+  { currency: "NOK", amount: 200 },
+  { currency: "PLN", amount: 70 },
+  { currency: "RON", amount: 85 },
+  { currency: "CZK", amount: 400 },
+  { currency: "ZAR", amount: 350 },
+];
+
+function getBonusConfig(currencyCode) {
+  const item = bonusSumAndWager.find((p) => p.currency === currencyCode);
+  return item || { currency: "USD", amount: 20 };
+}
+
+export function initBonus(currencyCode) {
+  const bonusConfig = getBonusConfig(currencyCode);
+  const currency = getUrlParameter("currency") || bonusConfig.currency;
+  const sumAmount = getUrlParameter("sumAmount") || bonusConfig.amount;
+
+  document.querySelectorAll(".bonus-sum-amount").forEach((element) => {
+    element.innerHTML = sumAmount;
+  });
+
+  document.querySelectorAll(".bonus-sum-currency").forEach((element) => {
+    element.innerHTML = currency;
+  });
+}
+
 // ? SOCIALS TWO STEP FORM
 
 export let twoStepFormData = {
-  bonus: "welcome-bonus-1",
+  bonus: "",
   promocode: "",
   email: "",
   password: "",
@@ -80,17 +129,50 @@ const twoStepBonusCheckbox = document.querySelectorAll(
 );
 const appliedBonusWrapper = document.querySelectorAll(".applied-bonus-wrapper");
 
+function getSelectedBonusCheckbox() {
+  const checkedInput = document.querySelector('input[name="bonus"]:checked');
+  return checkedInput ? checkedInput.closest(".two-step-bonus-checkbox") : null;
+}
+
+export function syncAppliedBonus() {
+  const selectedBonusCheckbox = getSelectedBonusCheckbox();
+
+  if (!selectedBonusCheckbox) {
+    return;
+  }
+
+  const input = selectedBonusCheckbox.querySelector('input[name="bonus"]');
+  const bonusImg = input?.getAttribute("data-img") || "";
+  const bonusName =
+    selectedBonusCheckbox.querySelector(".two-step-bonus-checkbox-name")
+      ?.innerHTML || "";
+  const bonusText =
+    selectedBonusCheckbox.querySelector(".two-step-bonus-checkbox-text")
+      ?.innerHTML || "";
+
+  appliedBonusWrapper.forEach((appliedBonus) => {
+    const img = appliedBonus.querySelector(".applied-bonus-img");
+    const name = appliedBonus.querySelector(".applied-bonus-name");
+    const text = appliedBonus.querySelector(".applied-bonus-text");
+
+    if (img) {
+      img.setAttribute("src", bonusImg);
+    }
+
+    if (name) {
+      name.innerHTML = bonusName;
+    }
+
+    if (text) {
+      text.innerHTML = bonusText;
+    }
+  });
+}
+
 twoStepBonusCheckbox.forEach((checkbox) => {
   const input = checkbox.querySelector("input");
   input.addEventListener("change", () => {
     const bonusValue = input.value;
-    const bonusImg = input.getAttribute("data-img");
-    const bonusName = checkbox.querySelector(
-      ".two-step-bonus-checkbox-name",
-    ).innerHTML;
-    const bonusText = checkbox.querySelector(
-      ".two-step-bonus-checkbox-text",
-    ).innerHTML;
 
     twoStepFormData.bonus = bonusValue;
 
@@ -99,17 +181,11 @@ twoStepBonusCheckbox.forEach((checkbox) => {
       twoStepFormData.bonus,
     );
 
-    appliedBonusWrapper.forEach((appliedBonus) => {
-      const img = appliedBonus.querySelector(".applied-bonus-img");
-      const name = appliedBonus.querySelector(".applied-bonus-name");
-      const text = appliedBonus.querySelector(".applied-bonus-text");
-
-      img.setAttribute("src", bonusImg);
-      name.innerHTML = bonusName;
-      text.innerHTML = bonusText;
-    });
+    syncAppliedBonus();
   });
 });
+
+syncAppliedBonus();
 
 export const settingInitialBonusValue = (currency) => {
   const currencyEntry = countryCurrencyData.find(

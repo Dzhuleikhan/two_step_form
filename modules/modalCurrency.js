@@ -4,6 +4,7 @@ import {
   checkTir1CurrencyMatch,
   twoStepFormData,
   settingInitialBonusValue,
+  syncAppliedBonus,
 } from "./twoStepForm";
 
 const CDN = "https://3344112-img.b-cdn.net";
@@ -119,6 +120,7 @@ async function settingModalCurrency() {
     twoStepFormData.bonus = checkTir1CurrencyMatch(twoStepFormData.currency);
     setTimeout(() => {
       settingInitialBonusValue(twoStepFormData.currency);
+      syncAppliedBonus();
     }, 300);
     hideBonusesForAfrica(currencyAbbr);
   } catch (error) {
@@ -230,6 +232,7 @@ formCurrency.forEach((cur) => {
           twoStepFormData.currency,
           twoStepFormData.bonus,
         );
+        syncAppliedBonus();
       });
     });
 

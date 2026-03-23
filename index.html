@@ -542,23 +542,10 @@
             >
               Sign up and claim your bonus
             </p>
-            <h1
-              data-translate="chickenRoadMainTitle"
-              class="main-title mt-5 text-center font-gilroy text-[48px] font-black uppercase leading-[112%] large:mt-3 large:text-[40px] tbl:mt-2 tbl:text-[25px]"
-            >
-              <span class="two-step-welcome-amount blurred text-[#FFF67D]"
-                >4.500</span
-              >
-              <span class="two-step-welcome-symbol blurred text-[#FFF67D]"
-                >€</span
-              >
-              +
-              <span class="two-step-bonus-spins blurred text-[#30FF7E]"
-                >200 FS</span
-              >
-              <br />
-              bonus for new players
-            </h1>
+            <div
+              data-modal-translate="depositBonusDynamic"
+              class="bonus-input bonus-input-dynamic pointer-events-none w-full bg-transparent text-center text-[48px] font-bold uppercase tracking-tight text-[#f0f0f0] outline-none"
+            ></div>
           </div>
           <!-- Frame -->
           <div
@@ -579,7 +566,7 @@
               >
                 <iframe
                   class="game-frame h-full w-full"
-                  src="https://api.inout.games/api/aggregator/launch?aggregatorId=ffff3421-9269-4874-8ea7-20d4ee655d5f&subId=goldbet&isDemoPlay=true&gameMode=chicken-road&authToken=5fb2176664f86f52cc34506afa1174da&currency=USD&lang=az&adaptive=true&strategy=iframe&token=a541f6d223f11107f807325dc29a391485f9f2258f2250bc77e31993f019f2ba"
+                  src="https://api.inout.games/api/aggregator/launch?aggregatorId=ffff3421-9269-4874-8ea7-20d4ee655d5f&subId=goldbet&isDemoPlay=true&gameMode=chicken-road&authToken=5fb2176664f86f52cc34506afa1174da&currency=USD&adaptive=true&strategy=iframe&token=a541f6d223f11107f807325dc29a391485f9f2258f2250bc77e31993f019f2ba"
                   frameborder="0"
                 ></iframe>
               </div>
@@ -727,6 +714,7 @@
                 <div
                   class="mt-[15px] space-y-[15px] xs:mt-[10px] xs:space-y-[10px]"
                 >
+                  <!-- 
                   <label
                     class="two-step-bonus-checkbox two-step-bonus-checkbox-welcome relative block"
                   >
@@ -768,6 +756,46 @@
                             <span data-translate="welcomeBonusText"
                               >on your first deposit</span
                             >
+                          </p>
+                        </div>
+                      </div>
+                      <div
+                        class="two-step-bonus-checkbox-circle relative h-9 w-9 shrink-0 rounded-full bg-[#22072B] xs:h-7 xs:w-7"
+                      ></div>
+                    </div>
+                  </label>
+                   -->
+                  <label class="two-step-bonus-checkbox relative block">
+                    <input
+                      class="welcome-bonus-input absolute appearance-none"
+                      checked
+                      type="radio"
+                      name="bonus"
+                      value=""
+                      data-img="https://3344112-img.b-cdn.net/graphic/landings/twoStepFormImages/crypto-bonus-icon.webp"
+                    />
+                    <div
+                      class="two-step-bonus-checkbox-div flex cursor-pointer items-center justify-between gap-5 rounded-2xl border-4 border-transparent bg-[#3d1b68] p-[10px] xs:gap-[10px]"
+                    >
+                      <div class="flex items-center gap-[10px]">
+                        <div
+                          class="h-[52px] w-[52px] shrink-0 overflow-hidden rounded-xl xs:h-10 xs:w-10"
+                        >
+                          <img
+                            width="52"
+                            height="52"
+                            src="https://3344112-img.b-cdn.net/graphic/landings/twoStepFormImages/crypto-bonus-icon.webp"
+                            alt="Image"
+                          />
+                        </div>
+                        <div class="space-y-[5px]">
+                          <p
+                            data-modal-translate="depositBonusDynamic"
+                            class="two-step-bonus-checkbox-name text-lg font-bold leading-[117%] tracking-[0.02em] xs:text-sm"
+                          >
+                            No deposit bonus
+                            <span class="bonus-sum-amount"></span>
+                            <span class="bonus-sum-currency"></span>
                           </p>
                         </div>
                       </div>

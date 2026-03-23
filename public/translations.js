@@ -1,8 +1,11 @@
 export const translations = {
   en: {
+    depositBonusDynamic: `No deposit bonus <span class="bonus-sum-amount text-[#FFF67D]"></span> <span class="bonus-sum-currency text-[#FFF67D]"></span>`,
     pageTabTitle: "Sign Up for a Goldbet Casino Account",
     backBtn: "Back",
     // | Step 1
+    depToBalance: `<span><i class="actual-spin-amount">100</i> FREE SPINS</span>`,
+    withoutDeposit: "Without deposit",
     step1Title: "Choose Your Bonus",
     welcomeBonus: "Welcome Bonus",
     welcomeBonusText: "on your first deposit",
@@ -46,13 +49,16 @@ export const translations = {
     chickenRoadGetBonus: "Get Bonus",
     chickenRoadAccepted: "Accepted",
     chickenRoadPlaying: "Playing",
+    heroTitle: `odebrój swój bonus <br/> <span class="text-[#30FF7E]"><i class="actual-spin-amount">100</i> darmowych spinów</span> <br/> w <span>big bass splash</span>`,
     checkenRoadSubtitle: "Sign up and claim your bonus",
-    chickenRoadMainTitle: `<span class='two-step-welcome-amount blurred text-[#FFF67D]'>4.500</span> <span class='two-step-welcome-symbol blurred text-[#FFF67D]'>€</span> + <span class='two-step-bonus-spins blurred text-[#30FF7E]'>200 FS</span> <br/> bonus for new players`,
   },
   fr: {
+    depositBonusDynamic: `Bonus sans depot <span class="bonus-sum-amount text-[#FFF67D]"></span> <span class="bonus-sum-currency text-[#FFF67D]"></span>`,
     pageTabTitle: "Inscrivez-vous pour un compte de casino Goldbet",
     backBtn: "Retour",
     // | Step 1
+    depToBalance: `<span>de <i class="actual-spin-amount">100</i> tours gratuits</span>`,
+    withoutDeposit: "Sans dépôt",
     step1Title: "Choisissez votre bonus",
     welcomeBonus: "Bonus de bienvenue",
     welcomeBonusText: "sur votre premier dépôt",
@@ -100,9 +106,12 @@ export const translations = {
     chickenRoadMainTitle: `Bonus de <span class='two-step-welcome-amount blurred text-[#FFF67D]'>4.500</span> <span class='two-step-welcome-symbol blurred text-[#FFF67D]'>€</span> + <span class='two-step-bonus-spins blurred text-[#30FF7E]'>200 FS</span> <br/> pour les nouveaux joueurs`,
   },
   pl: {
+    depositBonusDynamic: `Bonus bez depozytu <span class="bonus-sum-amount text-[#FFF67D]"></span> <span class="bonus-sum-currency text-[#FFF67D]"></span>`,
     pageTabTitle: "Zarejestruj konto w Goldbet Casino",
     backBtn: "Wstecz",
     // | Krok 1
+    depToBalance: `<span><i class="actual-spin-amount">100</i> DARMOWYCH SPINÓW</span>`,
+    withoutDeposit: "Bez depozytu",
     step1Title: "Wybierz swój bonus",
     welcomeBonus: "Bonus powitalny",
     welcomeBonusText: "przy pierwszym depozycie",
@@ -147,12 +156,15 @@ export const translations = {
     chickenRoadAccepted: "Zaakceptowane",
     chickenRoadPlaying: "Granie",
     checkenRoadSubtitle: "Zarejestruj się i odbierz bonus",
-    chickenRoadMainTitle: `<span class='two-step-welcome-amount blurred text-[#FFF67D]'>4.500</span> <span class='two-step-welcome-symbol blurred text-[#FFF67D]'>€</span> + <span class='two-step-bonus-spins blurred text-[#30FF7E]'>200 FS</span> <br/> bonus dla nowych graczy`,
+    heroTitle: `odebrój swój bonus <br/> <span class="text-[#30FF7E]"><i class="actual-spin-amount">100</i> darmowych spinów</span> <br/> w <span>big bass splash</span>`,
   },
   hu: {
+    depositBonusDynamic: `Befizetes nelkuli bonusz <span class="bonus-sum-amount text-[#FFF67D]"></span> <span class="bonus-sum-currency text-[#FFF67D]"></span>`,
     pageTabTitle: "Regisztrálj Goldbet Casino fiókot",
     backBtn: "Vissza",
     // | 1. lépés
+    depToBalance: `<span><i class="actual-spin-amount">100</i> INGYENES PÖRGETÉS</span>`,
+    withoutDeposit: "Befizetés nélkül",
     step1Title: "Válaszd ki a bónuszod",
     welcomeBonus: "Üdvözlő bónusz",
     welcomeBonusText: "az első befizetésre",
@@ -200,9 +212,12 @@ export const translations = {
     chickenRoadMainTitle: `<span class='two-step-welcome-amount blurred text-[#FFF67D]'>4.500</span> <span class='two-step-welcome-symbol blurred text-[#FFF67D]'>€</span> + <span class='two-step-bonus-spins blurred text-[#30FF7E]'>200 FS</span> <br/> bónusz új játékosoknak`,
   },
   ro: {
+    depositBonusDynamic: `Bonus fara depunere <span class="bonus-sum-amount text-[#FFF67D]"></span> <span class="bonus-sum-currency text-[#FFF67D]"></span>`,
     pageTabTitle: "Înregistrează un cont Goldbet Casino",
     backBtn: "Înapoi",
     // | Step 1
+    depToBalance: `<span><i class="actual-spin-amount">100</i> ROTIRI GRATUITE</span>`,
+    withoutDeposit: "Fără depunere",
     step1Title: "Alegeți bonusul",
     welcomeBonus: "Bonus de bun venit",
     welcomeBonusText: "la prima depunere",
@@ -250,9 +265,12 @@ export const translations = {
     chickenRoadMainTitle: `Bonus de <span class='two-step-welcome-amount blurred text-[#FFF67D]'>4.500</span> <span class='two-step-welcome-symbol blurred text-[#FFF67D]'>€</span> + <span class='two-step-bonus-spins blurred text-[#30FF7E]'>200 FS</span> <br/> pentru jucători noi`,
   },
   si: {
+    depositBonusDynamic: `Bonus brez pologa <span class="bonus-sum-amount text-[#FFF67D]"></span> <span class="bonus-sum-currency text-[#FFF67D]"></span>`,
     pageTabTitle: "Registrirajte račun Goldbet Casino",
     backBtn: "Nazaj",
     // | Korak 1
+    depToBalance: `<span><i class="actual-spin-amount">100</i> BREZPLAČNIH VRTLJEV</span>`,
+    withoutDeposit: "Brez pologa",
     step1Title: "Izberite svoj bonus",
     welcomeBonus: "Bonus dobrodošlice",
     welcomeBonusText: "na Vaš prvi depozit",
@@ -300,9 +318,12 @@ export const translations = {
     chickenRoadMainTitle: `<span class='two-step-welcome-amount blurred text-[#FFF67D]'>4.500</span> <span class='two-step-welcome-symbol blurred text-[#FFF67D]'>€</span> + <span class='two-step-bonus-spins blurred text-[#30FF7E]'>200 FS</span> <br/> bonus za nove igralce`,
   },
   cz: {
+    depositBonusDynamic: `Bonus bez vkladu <span class="bonus-sum-amount text-[#FFF67D]"></span> <span class="bonus-sum-currency text-[#FFF67D]"></span>`,
     pageTabTitle: "Zaregistrujte si účet v Goldbet Casinu",
     backBtn: "Zpět",
     // | Step 1
+    depToBalance: `<span><i class="actual-spin-amount">100</i> VOLNÝCH TOČENÍ</span>`,
+    withoutDeposit: "Bez vkladu",
     step1Title: "Vyberte si svůj bonus",
     welcomeBonus: "Uvítací bonus",
     welcomeBonusText: "na váš první vklad",
@@ -350,9 +371,12 @@ export const translations = {
     chickenRoadMainTitle: `<span class='two-step-welcome-amount blurred text-[#FFF67D]'>4.500</span> <span class='two-step-welcome-symbol blurred text-[#FFF67D]'>€</span> + <span class='two-step-bonus-spins blurred text-[#30FF7E]'>200 FS</span> <br/> bonus pro nové hráče`,
   },
   ru: {
+    depositBonusDynamic: `Бонус без депозита <span class="bonus-sum-amount text-[#FFF67D]"></span> <span class="bonus-sum-currency text-[#FFF67D]"></span>`,
     pageTabTitle: "Зарегистрируйтесь в казино Goldbet",
     backBtn: "Назад",
     // | Шаг 1
+    depToBalance: `<span><i class="actual-spin-amount">100</i> ФРИСПИНОВ</span>`,
+    withoutDeposit: "Без депозита",
     step1Title: "Выберите бонус",
     welcomeBonus: "Приветственный бонус",
     welcomeBonusText: "на первый депозит",
@@ -400,9 +424,12 @@ export const translations = {
     chickenRoadMainTitle: `<span class='two-step-welcome-amount blurred text-[#FFF67D]'>4.500</span> <span class='two-step-welcome-symbol blurred text-[#FFF67D]'>€</span> + <span class='two-step-bonus-spins blurred text-[#30FF7E]'>200 FS</span> <br/> бонус для новых игроков`,
   },
   pt: {
+    depositBonusDynamic: `Bonus sem deposito <span class="bonus-sum-amount text-[#FFF67D]"></span> <span class="bonus-sum-currency text-[#FFF67D]"></span>`,
     pageTabTitle: "Registar no Goldbet Casino",
     backBtn: "Voltar",
     // | Etapa 1
+    depToBalance: `<span><i class="actual-spin-amount">100</i> RODADAS GRÁTIS</span>`,
+    withoutDeposit: "Sem depósito",
     step1Title: "Escolha seu bônus",
     welcomeBonus: "Bônus de Boas-Vindas",
     welcomeBonusText: "no primeiro depósito",
@@ -450,9 +477,12 @@ export const translations = {
     chickenRoadMainTitle: `<span class='two-step-welcome-amount blurred text-[#FFF67D]'>4.500</span> <span class='two-step-welcome-symbol blurred text-[#FFF67D]'>€</span> + <span class='two-step-bonus-spins blurred text-[#30FF7E]'>200 FS</span> <br/> bónus para novos jogadores`,
   },
   de: {
+    depositBonusDynamic: `Bonus ohne Einzahlung <span class="bonus-sum-amount text-[#FFF67D]"></span> <span class="bonus-sum-currency text-[#FFF67D]"></span>`,
     pageTabTitle: "Registrieren Sie sich bei Goldbet Casino",
     backBtn: "Zurück",
     // | Schritt 1
+    depToBalance: `<span><i class="actual-spin-amount">100</i> FREISPIELE</span>`,
+    withoutDeposit: "Ohne Einzahlung",
     step1Title: "Wählen Sie Ihren Bonus",
     welcomeBonus: "Willkommensbonus",
     welcomeBonusText: "auf Ihre erste Einzahlung",
@@ -500,9 +530,12 @@ export const translations = {
     chickenRoadMainTitle: `<span class='two-step-welcome-amount blurred text-[#FFF67D]'>4.500</span> <span class='two-step-welcome-symbol blurred text-[#FFF67D]'>€</span> + <span class='two-step-bonus-spins blurred text-[#30FF7E]'>200 FS</span> <br/> Bonus für neue Spieler`,
   },
   gr: {
+    depositBonusDynamic: `Μπόνους χωρίς κατάθεση <span class="bonus-sum-amount text-[#FFF67D]"></span> <span class="bonus-sum-currency text-[#FFF67D]"></span>`,
     pageTabTitle: "Εγγραφή Λογαριασμού στο Καζίνο Goldbet",
     backBtn: "Πίσω",
     // | Step 1
+    depToBalance: `<span><i class="actual-spin-amount">100</i> ΔΩΡΕΑΝ ΠΕΡΙΣΤΡΟΦΕΣ</span>`,
+    withoutDeposit: "Χωρίς κατάθεση",
     step1Title: "Επιλέξτε το Μπόνους σας",
     welcomeBonus: "Μπόνους Καλωσορίσματος",
     welcomeBonusText: "στην πρώτη σας κατάθεση",
@@ -550,9 +583,12 @@ export const translations = {
     chickenRoadMainTitle: `<span class='two-step-welcome-amount blurred text-[#FFF67D]'>4.500</span> <span class='two-step-welcome-symbol blurred text-[#FFF67D]'>€</span> + <span class='two-step-bonus-spins blurred text-[#30FF7E]'>200 FS</span> <br/> μπόνους για νέους παίκτες`,
   },
   tr: {
+    depositBonusDynamic: `Yatırımsız bonus <span class="bonus-sum-amount text-[#FFF67D]"></span> <span class="bonus-sum-currency text-[#FFF67D]"></span>`,
     pageTabTitle: "Goldbet Casino Hesabı Oluştur",
     backBtn: "Geri",
     // | Step 1
+    depToBalance: `<span><i class="actual-spin-amount">100</i> ÜCRETSİZ DÖNÜŞ</span>`,
+    withoutDeposit: "Yatırımsız",
     step1Title: "Bonusunu Seç",
     welcomeBonus: "Hoş Geldin Bonusu",
     welcomeBonusText: "ilk yatırımında geçerli",
@@ -600,9 +636,12 @@ export const translations = {
     chickenRoadMainTitle: `Yeni oyuncular için <br/> <span class='two-step-welcome-amount blurred text-[#FFF67D]'>4.500</span> <span class='two-step-welcome-symbol blurred text-[#FFF67D]'>€</span> + <span class='two-step-bonus-spins blurred text-[#30FF7E]'>200 FS</span> bonus`,
   },
   ua: {
+    depositBonusDynamic: `Бонус без депозиту <span class="bonus-sum-amount text-[#FFF67D]"></span> <span class="bonus-sum-currency text-[#FFF67D]"></span>`,
     pageTabTitle: "Зареєструвати акаунт у Goldbet Casino",
     backBtn: "Назад",
     // | Step 1
+    depToBalance: `<span><i class="actual-spin-amount">100</i> БЕЗКОШТОВНИХ ОБЕРТАНЬ</span>`,
+    withoutDeposit: "Без депозиту",
     step1Title: "Виберіть свій бонус",
     welcomeBonus: "Вітальний бонус",
     welcomeBonusText: "на перший депозит",
@@ -650,9 +689,12 @@ export const translations = {
     chickenRoadMainTitle: `<span class='two-step-welcome-amount blurred text-[#FFF67D]'>4.500</span> <span class='two-step-welcome-symbol blurred text-[#FFF67D]'>€</span> + <span class='two-step-bonus-spins blurred text-[#30FF7E]'>200 FS</span> <br/> бонус для нових гравців`,
   },
   es: {
+    depositBonusDynamic: `Bono sin deposito <span class="bonus-sum-amount text-[#FFF67D]"></span> <span class="bonus-sum-currency text-[#FFF67D]"></span>`,
     pageTabTitle: "Regístrate en Goldbet Casino",
     backBtn: "Atrás",
     // | Step 1
+    depToBalance: `<span><i class="actual-spin-amount">100</i> GIROS GRATIS</span>`,
+    withoutDeposit: "Sin depósito",
     step1Title: "Elige Tu Bono",
     welcomeBonus: "Bono de Bienvenida",
     welcomeBonusText: "en tu primer depósito",
@@ -700,9 +742,12 @@ export const translations = {
     chickenRoadMainTitle: `<span class='two-step-welcome-amount blurred text-[#FFF67D]'>4.500</span> <span class='two-step-welcome-symbol blurred text-[#FFF67D]'>€</span> + <span class='two-step-bonus-spins blurred text-[#30FF7E]'>200 FS</span> <br/> bono para nuevos jugadores`,
   },
   no: {
+    depositBonusDynamic: `Bonus uten innskudd <span class="bonus-sum-amount text-[#FFF67D]"></span> <span class="bonus-sum-currency text-[#FFF67D]"></span>`,
     pageTabTitle: "Registrer deg for en Goldbet Casino-konto",
     backBtn: "Tilbake",
     // | Step 1
+    depToBalance: `<span><i class="actual-spin-amount">100</i> GRATISSPIINN</span>`,
+    withoutDeposit: "Uten innskudd",
     step1Title: "Velg Din Bonus",
     welcomeBonus: "Velkomstbonus",
     welcomeBonusText: "på ditt første innskudd",
@@ -750,9 +795,12 @@ export const translations = {
     chickenRoadMainTitle: `<span class='two-step-welcome-amount blurred text-[#FFF67D]'>4.500</span> <span class='two-step-welcome-symbol blurred text-[#FFF67D]'>€</span> + <span class='two-step-bonus-spins blurred text-[#30FF7E]'>200 FS</span> <br/> bonus for nye spillere`,
   },
   se: {
+    depositBonusDynamic: `Bonus utan insättning <span class="bonus-sum-amount text-[#FFF67D]"></span> <span class="bonus-sum-currency text-[#FFF67D]"></span>`,
     pageTabTitle: "Registrera ett Goldbet Casino-konto",
     backBtn: "Tillbaka",
     // | Step 1
+    depToBalance: `<span><i class="actual-spin-amount">100</i> GRATISSNURR</span>`,
+    withoutDeposit: "Utan insättning",
     step1Title: "Välj Din Bonus",
     welcomeBonus: "Välkomstbonus",
     welcomeBonusText: "på din första insättning",
@@ -800,9 +848,12 @@ export const translations = {
     chickenRoadMainTitle: `<span class='two-step-welcome-amount blurred text-[#FFF67D]'>4.500</span> <span class='two-step-welcome-symbol blurred text-[#FFF67D]'>€</span> + <span class='two-step-bonus-spins blurred text-[#30FF7E]'>200 FS</span> <br/> bonus för nya spelare`,
   },
   sk: {
+    depositBonusDynamic: `Bonus bez vkladu <span class="bonus-sum-amount text-[#FFF67D]"></span> <span class="bonus-sum-currency text-[#FFF67D]"></span>`,
     pageTabTitle: "Zaregistrujte si účet v kasíne Goldbet",
     backBtn: "Späť",
     // | Step 1
+    depToBalance: `<span><i class="actual-spin-amount">100</i> VOĽNÝCH SPINOV</span>`,
+    withoutDeposit: "Bez vkladu",
     step1Title: "Vyberte si svoj bonus",
     welcomeBonus: "Vstupný bonus",
     welcomeBonusText: "na váš prvý vklad",
@@ -850,9 +901,12 @@ export const translations = {
     chickenRoadMainTitle: `<span class='two-step-welcome-amount blurred text-[#FFF67D]'>4.500</span> <span class='two-step-welcome-symbol blurred text-[#FFF67D]'>€</span> + <span class='two-step-bonus-spins blurred text-[#30FF7E]'>200 FS</span> <br/> bonus pre nových hráčov`,
   },
   kz: {
+    depositBonusDynamic: `Депозитсіз бонус <span class="bonus-sum-amount text-[#FFF67D]"></span> <span class="bonus-sum-currency text-[#FFF67D]"></span>`,
     pageTabTitle: "Goldbet Казино Аккаунтын Тіркеу",
     backBtn: "Артқа",
     // | Step 1
+    depToBalance: `<span><i class="actual-spin-amount">100</i> ТЕГІН АЙНАЛЫМ</span>`,
+    withoutDeposit: "Депозитсіз",
     step1Title: "Бонус Таңдаңыз",
     welcomeBonus: "Қош Келдіңіз Бонусы",
     welcomeBonusText: "бірінші депозитке",
@@ -900,9 +954,12 @@ export const translations = {
     chickenRoadMainTitle: `Жаңа ойыншыларға <span class='two-step-welcome-amount blurred text-[#FFF67D]'>4.500</span> <span class='two-step-welcome-symbol blurred text-[#FFF67D]'>€</span> + <span class='two-step-bonus-spins blurred text-[#30FF7E]'>200 FS</span> <br/> бонус`,
   },
   az: {
+    depositBonusDynamic: `Depozitsiz bonus <span class="bonus-sum-amount text-[#FFF67D]"></span> <span class="bonus-sum-currency text-[#FFF67D]"></span>`,
     pageTabTitle: "Goldbet Casino Hesabı üçün Qeydiyyatdan Keçin",
     backBtn: "Geri",
     // | Step 1
+    depToBalance: `<span><i class="actual-spin-amount">100</i> PULSUZ FİRLANMA</span>`,
+    withoutDeposit: "Depozitsiz",
     step1Title: "Bonusunuzu Seçin",
     welcomeBonus: "Xoş Gəlmisiniz Bonusu",
     welcomeBonusText: "ilk depozitinizdə",
@@ -1006,9 +1063,12 @@ export const translations = {
                       - Kriptovalyuta ilə bağlı öhdəliklər də sizin üzərinizdədir.`,
   },
   it: {
+    depositBonusDynamic: `Bonus senza deposito <span class="bonus-sum-amount text-[#FFF67D]"></span> <span class="bonus-sum-currency text-[#FFF67D]"></span>`,
     pageTabTitle: "Goldbet Casino Hesabı üçün Qeydiyyat",
     backBtn: "Geri",
     // | Step 1
+    depToBalance: `<span><i class="actual-spin-amount">100</i> GIRI GRATUITI</span>`,
+    withoutDeposit: "Senza deposito",
     step1Title: "Bonusunuzu Seçin",
     welcomeBonus: "Xoş Gəldin Bonusu",
     welcomeBonusText: "ilk depozitdə",
@@ -1112,9 +1172,12 @@ export const translations = {
                       - Kriptovalyuta üzrə öhdəliklər sizə aiddir.`,
   },
   ee: {
+    depositBonusDynamic: `Sissemakseta boonus <span class="bonus-sum-amount text-[#FFF67D]"></span> <span class="bonus-sum-currency text-[#FFF67D]"></span>`,
     pageTabTitle: "Registreeru Goldbet Casino kontole",
     backBtn: "Tagasi",
     // | Step 1
+    depToBalance: `<span><i class="actual-spin-amount">100</i> TASUTA KEERUTUST</span>`,
+    withoutDeposit: "Ilma sissemakseta",
     step1Title: "Vali oma boonus",
     welcomeBonus: "Tere tulemast boonus",
     welcomeBonusText: "esimesel sissemaksel",
@@ -1218,9 +1281,12 @@ export const translations = {
                       - Vastutad ka krüptovaluuta maksude eest.`,
   },
   lv: {
+    depositBonusDynamic: `Beziemaksas bonuss <span class="bonus-sum-amount text-[#FFF67D]"></span> <span class="bonus-sum-currency text-[#FFF67D]"></span>`,
     pageTabTitle: "Reģistrējies Goldbet Casino kontam",
     backBtn: "Atpakaļ",
     // | Step 1
+    depToBalance: `<span><i class="actual-spin-amount">100</i> BEZMAKSAS GRIEZIENI</span>`,
+    withoutDeposit: "Bez iemaksas",
     step1Title: "Izvēlies savu bonusu",
     welcomeBonus: "Laipni lūdzam bonuss",
     welcomeBonusText: "pirmajā iemaksā",
@@ -1324,9 +1390,12 @@ export const translations = {
                       - Esat atbildīgs par kriptovalūtu nodokļiem.`,
   },
   lt: {
+    depositBonusDynamic: `Premija be įnašo <span class="bonus-sum-amount text-[#FFF67D]"></span> <span class="bonus-sum-currency text-[#FFF67D]"></span>`,
     pageTabTitle: "Užsiregistruokite Goldbet Casino paskyroje",
     backBtn: "Atgal",
     // | Step 1
+    depToBalance: `<span><i class="actual-spin-amount">100</i> NEMOKAMI SUKIMAI</span>`,
+    withoutDeposit: "Be įnašo",
     step1Title: "Pasirinkite savo premiją",
     welcomeBonus: "Sveikinimo premija",
     welcomeBonusText: "pirmam įnašui",
@@ -1430,9 +1499,12 @@ export const translations = {
                       - Atsakote už kriptovaliutos mokesčius.`,
   },
   hr: {
+    depositBonusDynamic: `Bonus bez depozita <span class="bonus-sum-amount text-[#FFF67D]"></span> <span class="bonus-sum-currency text-[#FFF67D]"></span>`,
     pageTabTitle: "Prijavite se za Goldbet Casino račun",
     backBtn: "Natrag",
     // | Step 1
+    depToBalance: `<span><i class="actual-spin-amount">100</i> BESPLATNI OKRETI</span>`,
+    withoutDeposit: "Bez depozita",
     step1Title: "Odaberite svoj bonus",
     welcomeBonus: "Bonus dobrodošlice",
     welcomeBonusText: "na vaš prvi depozit",
@@ -1536,9 +1608,12 @@ export const translations = {
                       - Odgovorni ste za poreze na kriptovalute.`,
   },
   dk: {
+    depositBonusDynamic: `Bonus uden indbetaling <span class="bonus-sum-amount text-[#FFF67D]"></span> <span class="bonus-sum-currency text-[#FFF67D]"></span>`,
     pageTabTitle: "Tilmeld dig en Goldbet Casino-konto",
     backBtn: "Tilbage",
     // | Step 1
+    depToBalance: `<span><i class="actual-spin-amount">100</i> GRATIS SPINS</span>`,
+    withoutDeposit: "Uden indbetaling",
     step1Title: "Vælg Din Bonus",
     welcomeBonus: "Velkomstbonus",
     welcomeBonusText: "på din første indbetaling",
@@ -1586,9 +1661,12 @@ export const translations = {
     chickenRoadMainTitle: `<span class='two-step-welcome-amount blurred text-[#FFF67D]'>4.500</span> <span class='two-step-welcome-symbol blurred text-[#FFF67D]'>€</span> + <span class='two-step-bonus-spins blurred text-[#30FF7E]'>200 FS</span> <br/> bonus til nye spillere`,
   },
   fi: {
+    depositBonusDynamic: `Talletukseton bonus <span class="bonus-sum-amount text-[#FFF67D]"></span> <span class="bonus-sum-currency text-[#FFF67D]"></span>`,
     pageTabTitle: "Rekisteröidy Goldbet Casinon käyttäjäksi",
     backBtn: "Takaisin",
     // | Step 1
+    depToBalance: `<span><i class="actual-spin-amount">100</i> ILMAISKIERROSTA</span>`,
+    withoutDeposit: "Ilman talletusta",
     step1Title: "Valitse Bonuksesi",
     welcomeBonus: "Tervetuliaisbonus",
     welcomeBonusText: "ensimmäisestä talletuksestasi",
@@ -1636,9 +1714,12 @@ export const translations = {
     chickenRoadMainTitle: `<span class='two-step-welcome-amount blurred text-[#FFF67D]'>4.500</span> <span class='two-step-welcome-symbol blurred text-[#FFF67D]'>€</span> + <span class='two-step-bonus-spins blurred text-[#30FF7E]'>200 FS</span> <br/> bonus uusille pelaajille`,
   },
   bg: {
+    depositBonusDynamic: `Бонус без депозит <span class="bonus-sum-amount text-[#FFF67D]"></span> <span class="bonus-sum-currency text-[#FFF67D]"></span>`,
     pageTabTitle: "Регистрирайте акаунт в Goldbet Casino",
     backBtn: "Назад",
     // | Step 1
+    depToBalance: `<span><i class="actual-spin-amount">100</i> БЕЗПЛАТНИ ЗАВЪРТАНИЯ</span>`,
+    withoutDeposit: "Без депозит",
     step1Title: "Изберете Вашия Бонус",
     welcomeBonus: "Бонус за Добре Дошли",
     welcomeBonusText: "при първия ви депозит",

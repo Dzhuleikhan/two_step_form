@@ -1,8 +1,14 @@
 import { translations } from "/public/translations";
 import { geoData } from "./geoLocation";
 import { getSupportedLanguage } from "./geoLocation";
-import { settingInitialBonusValue, twoStepFormData } from "./twoStepForm";
+import {
+  initBonus,
+  settingInitialBonusValue,
+  syncAppliedBonus,
+  twoStepFormData,
+} from "./twoStepForm";
 import { countryCurrencyData } from "../public/data";
+import { setSpinAmount } from "./promocodeCheck";
 
 const CDN = "https://3344112-img.b-cdn.net";
 
@@ -27,10 +33,18 @@ languageLinks.forEach((link) => {
 });
 
 function updateContent(lang) {
-  const elements = document.querySelectorAll("[data-translate]");
+  const elements = document.querySelectorAll(
+    "[data-translate], [data-modal-translate]",
+  );
+
   elements.forEach((element) => {
-    const key = element.getAttribute("data-translate");
-    element.innerHTML = translations[lang][key];
+    const key =
+      element.getAttribute("data-translate") ||
+      element.getAttribute("data-modal-translate");
+    const translatedValue =
+      translations[lang]?.[key] ?? translations.en?.[key] ?? "";
+
+    element.innerHTML = translatedValue;
   });
 }
 
@@ -185,6 +199,9 @@ async function mainFunction() {
     setTimeout(() => {
       const currencyData = JSON.parse(localStorage.getItem("currencyData"));
       settingInitialBonusValue(currencyData.abbr);
+      setSpinAmount();
+      initBonus(currencyData.abbr);
+      syncAppliedBonus();
     }, 200);
     localStorage.setItem(
       "preferredLanguage",
@@ -203,11 +220,14 @@ document.querySelectorAll(".language-link").forEach((langBtn) => {
     changeLanguage(targetLang);
     const currencyData = JSON.parse(localStorage.getItem("currencyData"));
     settingInitialBonusValue(currencyData.abbr);
+    initBonus(currencyData.abbr);
+    syncAppliedBonus();
     localStorage.setItem(
       "preferredLanguage",
       getSupportedLanguage(targetLang.toUpperCase()),
     );
     twoStepFormData.lang = localStorage.getItem("preferredLanguage");
+    setSpinAmount();
   });
 });
 

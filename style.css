@@ -529,6 +529,10 @@
   transition: all 0.3s;
 }
 
+.actual-spin-amount {
+  font-style: normal;
+}
+
 /* States dropdown */
 
 .two-step-state-list-item {
