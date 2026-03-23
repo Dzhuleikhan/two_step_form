@@ -925,7 +925,7 @@ if (headerbackBtn) {
   });
 }
 
-// | SUBMITTING FORM
+// | SUBMITTING FORM //
 const twoStepFormMain = document.querySelector(".two-step-form");
 
 twoStepFormData.lang = localStorage.getItem("preferredLanguage");
