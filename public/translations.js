@@ -249,7 +249,7 @@ export const translations = {
     checkenRoadSubtitle: "Înregistrează-te și revendică bonusul",
     chickenRoadMainTitle: `Bonus de <span class='two-step-welcome-amount blurred text-[#FFF67D]'>4.500</span> <span class='two-step-welcome-symbol blurred text-[#FFF67D]'>€</span> + <span class='two-step-bonus-spins blurred text-[#30FF7E]'>200 FS</span> <br/> pentru jucători noi`,
   },
-  si: {
+  sl: {
     pageTabTitle: "Registrirajte račun Goldbet Casino",
     backBtn: "Nazaj",
     // | Korak 1
@@ -299,7 +299,7 @@ export const translations = {
     checkenRoadSubtitle: "Registriraj se in prevzemi bonus",
     chickenRoadMainTitle: `<span class='two-step-welcome-amount blurred text-[#FFF67D]'>4.500</span> <span class='two-step-welcome-symbol blurred text-[#FFF67D]'>€</span> + <span class='two-step-bonus-spins blurred text-[#30FF7E]'>200 FS</span> <br/> bonus za nove igralce`,
   },
-  cz: {
+  cs: {
     pageTabTitle: "Zaregistrujte si účet v Goldbet Casinu",
     backBtn: "Zpět",
     // | Step 1
@@ -499,7 +499,7 @@ export const translations = {
     checkenRoadSubtitle: "Registriere dich und sichere dir deinen Bonus",
     chickenRoadMainTitle: `<span class='two-step-welcome-amount blurred text-[#FFF67D]'>4.500</span> <span class='two-step-welcome-symbol blurred text-[#FFF67D]'>€</span> + <span class='two-step-bonus-spins blurred text-[#30FF7E]'>200 FS</span> <br/> Bonus für neue Spieler`,
   },
-  gr: {
+  el: {
     pageTabTitle: "Εγγραφή Λογαριασμού στο Καζίνο Goldbet",
     backBtn: "Πίσω",
     // | Step 1
@@ -599,7 +599,7 @@ export const translations = {
     checkenRoadSubtitle: "Kaydol ve bonusunu al",
     chickenRoadMainTitle: `Yeni oyuncular için <br/> <span class='two-step-welcome-amount blurred text-[#FFF67D]'>4.500</span> <span class='two-step-welcome-symbol blurred text-[#FFF67D]'>€</span> + <span class='two-step-bonus-spins blurred text-[#30FF7E]'>200 FS</span> bonus`,
   },
-  ua: {
+  uk: {
     pageTabTitle: "Зареєструвати акаунт у Goldbet Casino",
     backBtn: "Назад",
     // | Step 1
@@ -699,7 +699,7 @@ export const translations = {
     checkenRoadSubtitle: "Regístrate y reclama tu bono",
     chickenRoadMainTitle: `<span class='two-step-welcome-amount blurred text-[#FFF67D]'>4.500</span> <span class='two-step-welcome-symbol blurred text-[#FFF67D]'>€</span> + <span class='two-step-bonus-spins blurred text-[#30FF7E]'>200 FS</span> <br/> bono para nuevos jugadores`,
   },
-  no: {
+  nb: {
     pageTabTitle: "Registrer deg for en Goldbet Casino-konto",
     backBtn: "Tilbake",
     // | Step 1
@@ -749,7 +749,7 @@ export const translations = {
     checkenRoadSubtitle: "Registrer deg og hent bonusen",
     chickenRoadMainTitle: `<span class='two-step-welcome-amount blurred text-[#FFF67D]'>4.500</span> <span class='two-step-welcome-symbol blurred text-[#FFF67D]'>€</span> + <span class='two-step-bonus-spins blurred text-[#30FF7E]'>200 FS</span> <br/> bonus for nye spillere`,
   },
-  se: {
+  sv: {
     pageTabTitle: "Registrera ett Goldbet Casino-konto",
     backBtn: "Tillbaka",
     // | Step 1
@@ -848,162 +848,6 @@ export const translations = {
     chickenRoadPlaying: "Hranie",
     checkenRoadSubtitle: "Zaregistruj sa a získaj bonus",
     chickenRoadMainTitle: `<span class='two-step-welcome-amount blurred text-[#FFF67D]'>4.500</span> <span class='two-step-welcome-symbol blurred text-[#FFF67D]'>€</span> + <span class='two-step-bonus-spins blurred text-[#30FF7E]'>200 FS</span> <br/> bonus pre nových hráčov`,
-  },
-  kz: {
-    pageTabTitle: "Goldbet Казино Аккаунтын Тіркеу",
-    backBtn: "Артқа",
-    // | Step 1
-    step1Title: "Бонус Таңдаңыз",
-    welcomeBonus: "Қош Келдіңіз Бонусы",
-    welcomeBonusText: "бірінші депозитке",
-    cryptoBonus: "Сатоши Бонусы",
-    cryptoBonusText: "Крипто Депозиттерге 150%",
-    highRollerBonus: "Хай Роллер Бонусы",
-    highRollerBonusText: `Депозиттерге 200% <span class="bonus-highroller-amount"></span> <span class="two-step-welcome-symbol"></span> астам сомаға`,
-    withoutBonus: "Бонуссыз",
-    withoutBonusText: "Сіз ешқандай бонус алмайсыз",
-    iHavePromoCode: "Менде Промо-Код Бар",
-    promoCodePlaceHolder: "Промо-Код",
-    promoCodeApplyBtn: "Қолдану",
-    youWillGetFreeSpins: "Сіз фриспиндер аласыз",
-    youWillGetNodepBonus: "Сіз депозитсіз бонус аласыз",
-    continueBtn: "Жалғастыру",
-    // | Step 2
-    step2Title: "Email Жазыңыз",
-    emailPlaceholder: "Email Жазыңыз",
-    passwordPlaceholder: "Құпиясөз Жазыңыз",
-    // | Step 3
-    step3Title: "Атыңыз Қандай?",
-    namePlaceholder: "Атыңызды Жазыңыз",
-    lastNamePlaceholder: "Тегіңізді Жазыңыз",
-    birthdayPlaceholder: "Туған Күніңізді Таңдаңыз",
-    age18Alert: "Жасыңыз 18-ден жоғары болуы керек",
-    invalidDate: "Жарамсыз дата",
-    male: "Ер",
-    female: "Әйел",
-    finalStepBtn: "Соңғы Қадам",
-    // | Step 4
-    step4Title: "Валюта Таңдаңыз",
-    countryPlaceholder: "Ел Таңдаңыз",
-    currencyPlaceholder: "Валюта Таңдаңыз",
-    phoneNumberPlaceholder: "Телефон Нөмірі",
-    addressPlaceholder: "Мекенжай Жазыңыз",
-    cityPlaceholder: "Қала Жазыңыз",
-    statePlaceholder: "Аймақ Таңдаңыз",
-    zipCodePlaceholder: "Пошталық Индекс Жазыңыз",
-    createAccountBtn: "Аккаунт Құру",
-    // | Checken road
-    chickenRoadGetBonus: "Бонус алу",
-    chickenRoadAccepted: "Қабылданды",
-    chickenRoadPlaying: "Ойнап жатыр",
-    checkenRoadSubtitle: "Тіркеліп, бонусыңды ал",
-    chickenRoadMainTitle: `Жаңа ойыншыларға <span class='two-step-welcome-amount blurred text-[#FFF67D]'>4.500</span> <span class='two-step-welcome-symbol blurred text-[#FFF67D]'>€</span> + <span class='two-step-bonus-spins blurred text-[#30FF7E]'>200 FS</span> <br/> бонус`,
-  },
-  az: {
-    pageTabTitle: "Goldbet Casino Hesabı üçün Qeydiyyatdan Keçin",
-    backBtn: "Geri",
-    // | Step 1
-    step1Title: "Bonusunuzu Seçin",
-    welcomeBonus: "Xoş Gəlmisiniz Bonusu",
-    welcomeBonusText: "ilk depozitinizdə",
-    cryptoBonus: "Satoshi Bonusu",
-    cryptoBonusText: "Kripto Depozitlərində 150%",
-    highRollerBonus: "High Roller Bonusu",
-    highRollerBonusText: `Depozitlərdə 200% <span class="bonus-highroller-amount"></span> <span class="two-step-welcome-symbol"></span> üzərində`,
-    withoutBonus: "Bonussuz",
-    withoutBonusText: "Siz heç bir bonus almayacaqsınız",
-    iHavePromoCode: "Promo-Kodum Var",
-    promoCodePlaceHolder: "Promo Kod",
-    promoCodeApplyBtn: "Tətbiq Et",
-    youWillGetFreeSpins: "Siz pulsuz fırlanmalar əldə edəcəksiniz",
-    youWillGetNodepBonus: "Siz depozitsiz bonus əldə edəcəksiniz",
-    continueBtn: "Davam Et",
-    // | Step 2
-    step2Title: "Email Ünvanınızı Daxil Edin",
-    emailPlaceholder: "E-mail daxil edin",
-    passwordPlaceholder: "Şifrə daxil edin",
-    // | Step 3
-    step3Title: "Adınız Nədir?",
-    namePlaceholder: "Adınızı daxil edin",
-    lastNamePlaceholder: "Soyadınızı daxil edin",
-    birthdayPlaceholder: "Doğum Tarixi Seçin",
-    age18Alert: "Yaş 18+ olmalıdır",
-    invalidDate: "Yanlış tarix",
-    male: "Kişi",
-    female: "Qadın",
-    finalStepBtn: "Son Addım",
-    // | Step 4
-    step4Title: "Valyuta Seçin",
-    countryPlaceholder: "Ölkə Seçin",
-    currencyPlaceholder: "Valyuta Seçin",
-    phoneNumberPlaceholder: "Telefon Nömrəsi",
-    addressPlaceholder: "Ünvanı daxil edin",
-    cityPlaceholder: "Şəhəri daxil edin",
-    statePlaceholder: "Vilayət seçin",
-    zipCodePlaceholder: "Poçt Kodunu daxil edin",
-    createAccountBtn: "Hesab Yarat",
-    // | Checken road
-    chickenRoadGetBonus: "Bonusu Al",
-    chickenRoadAccepted: "Qəbul Edildi",
-    chickenRoadPlaying: "Oynanılır",
-    checkenRoadSubtitle: "Qeydiyyatdan keç və bonusunu al",
-    chickenRoadMainTitle: `<span class='two-step-welcome-amount blurred text-[#FFF67D]'>4.500</span> <span class='two-step-welcome-symbol blurred text-[#FFF67D]'>€</span> + <span class='two-step-bonus-spins blurred text-[#30FF7E]'>200 FS</span> <br/> yeni oyunçular üçün bonus`,
-    // ? SOCIALS
-    signUpEasySteps: "Sadəcə 3 addımda qeydiyyatdan keç",
-    completeToClaimGift: "Tamamla və hədiyyəni al.",
-    signUpWithGoogle: "Google ilə qeydiyyat",
-    signUpWithFacebook: "Facebook ilə qeydiyyat",
-    phone: "Telefon",
-    wrongEmail: "Yanlış email",
-    wrongNumber: "Yanlış nömrə",
-    signUpBtn: "Qeydiyyat",
-    promoApplied: "Bonus tətbiq olundu",
-    bonusName: "Depozitsiz kazino bonusa",
-    depositBonus: `Upto <span class="two-step-welcome-amount"></span> <span class="two-step-welcome-symbol"></span> + <span class="two-step-bonus-spins"></span>`,
-    depositBonus2: "6000-ə qədər depozitdə 400%",
-    phoneNumber: "Telefon nömrəsi",
-    password: "Şifrə",
-    minSymbols: "Minimum 6 simvol",
-    atLeast6Chars: "Ən azı 6 simvol",
-    currency: "Valyuta",
-    terms: `<a href="https://dev1.goldbet.io/terms-and-conditions" class="text-white underline underline-offset-4" >Şərtlərlə razıyam</a></span>`,
-    startPlaying: "Oynamağa Başla",
-    areYouSure: `Əminsinizmi? <br /> İrəliləyişiniz itiriləcək`,
-    keepRegistering: "Qeydiyyata davam et",
-    returnToWebsite: "Sayta qayıt",
-    step2Title: `Bonusu almaq üçün son addım`,
-    step2Subtitle: `Şifrə yaradın və hesab valyutanızı seçin.`,
-    passwordPlaceholder: "Şifrə",
-    // | Terms
-    termsTitle1: `Şərtlər və Qaydalar`,
-    termsParagraph1: `Bu şərtlər və qaydalar və aşağıda göstərilən sənədlər ("Şərtlər") cari vebsaytdan ("Vebsayt") və onun əlaqəli xidmətlərindən ("Xidmət") istifadəyə aiddir. Bu Şərtləri diqqətlə oxumalısınız, çünki onlar vebsaytdan istifadənizlə bağlı hüquq və öhdəliklərinizi əhatə edir və sizin (Müştəri) ilə bizim (Vebsayt) aramızda bağlayıcı hüquqi müqavilə təşkil edir. Vebsaytdan istifadə etməklə və/və ya Xidmətə daxil olmaqla siz, qonaq və ya hesabı olan qeydiyyatdan keçmiş istifadəçi olaraq, bu Şərtlərə və vaxtaşırı dərc oluna biləcək dəyişikliklərə razı olursunuz. Əgər bu Şərtləri qəbul etmirsinizsə, Xidmətə daxil olmaqdan və Vebsaytdan istifadə etməkdən çəkinməlisiniz.`,
-    termsTitle2: `1. Ümumi Şərtlər`,
-    termsParagraph2: `Biz Şərtləri (o cümlədən aşağıda göstərilən sənədləri) istənilən vaxt dəyişmək və yeniləmək hüququnu saxlayırıq. Siz bu səhifəni mütəmadi olaraq yoxlamalı və dəyişikliklərlə tanış olmalısınız. Dəyişikliklər Vebsaytda dərc olunduğu andan etibarən qüvvəyə minir. Əgər bu dəyişikliklərlə razı deyilsinizsə, Xidmətdən dərhal istifadəni dayandırmalısınız. Vebsaytdan istifadəyə davam etməyiniz dəyişiklikləri qəbul etdiyiniz deməkdir. Dəyişikliklər qüvvəyə minməzdən əvvəl edilmiş mərclər əvvəlki Şərtlərə tabe olacaq. Əgər Goldbet-in Şərtləri və Qaydaları yenilənərsə, platforma sizi xəbərdar edəcək və razılığınızı təsdiqləməyinizi xahiş edəcək.`,
-    termsTitle3: `2. Öhdəlikləriniz`,
-    termsParagraph3: `Siz Vebsayta daxil olduğunuz və Xidmətdən istifadə etdiyiniz bütün hallarda təsdiq edirsiniz: <br />
-                      3.1. 18 yaşdan yuxarısınız və ya qanunla icazə verilən minimal yaş həddinə çatmısınız. Biz istənilən vaxt sizdən yaşınızı təsdiqləyən sənəd tələb edə bilərik. <br />
-                      3.2. Hüquqi qabiliyyətlisiniz və bizimlə bağlayıcı müqavilə bağlaya bilərsiniz. Əks halda Vebsaytdan istifadə etməməlisiniz. <br />
-                      3.3. Bəzi ölkələrdə Vebsayta və məhsullara giriş qanunsuz ola bilər. Biz hər bir yurisdiksiyada bunun qanuniliyini təsdiqləyə bilmirik, ona görə də bu məsuliyyət sizə aiddir. Siz təsdiqləyirsiniz ki, yaşadığınız yerdə qumar qanunsuz deyil. Müxtəlif hüquqi və kommersiya səbəblərinə görə biz müəyyən ölkələrin rezidentlərinin hesab açmasına və istifadə etməsinə icazə vermirik (bunlara daxildir: Əfqanıstan, Əlcəzair, ... , Zimbabve və s.). Vebsaytdan istifadə etməklə təsdiq edirsiniz ki, siz qadağan olunmuş ölkələrin rezidenti deyilsiniz. <br />
-                      3.4. Hesab açmağa cəhd etdiyiniz zaman qumarın qanuni olub-olmadığını yoxlamaq oyunçunun məsuliyyətidir. <br />
-                      3.5. Ödəniş metodunun qanuni istifadəçisisiniz və hesabınızdakı vəsaitlər qanunidir. <br />
-                      3.6. Bizə bütün ödənişləri vicdanla etməlisiniz və ödənişləri geri qaytarmağa cəhd etməməlisiniz. <br />
-                      3.7. Mərc edərkən pul itirə bilərsiniz və bu risk tamamilə sizə aiddir. <br />
-                      3.8. Mərc edərkən qanunu pozaraq əldə edilmiş məlumatlardan istifadə etməməlisiniz. <br />
-                      3.9. Siz yalnız şəxsi məqsədlər üçün, öz adınızdan iştirak edirsiniz. <br />
-                      3.10. Xidməti və bazarı manipulyasiya etməyə cəhd etməməlisiniz. <br />
-                      3.11. Həmişə vicdanla davranmalısınız. <br />
-                      3.12. Siz və yaxınlarınız Goldbet-in Affiliate proqramında qeydiyyatdan keçməmisiniz. <br />
-                      3.13. Goldbet-dən istifadə zamanı yalnız düzgün və real məlumat təqdim edəcəyinizə razılıq verirsiniz. <br />
-                      3.14. Kripto bazarının dəyişkənliyini qəbul edirsiniz və valyutanızın dəyəri ödəniş zamanı dəyişə bilər. <br />
-                      3.15. Siz sağlam düşüncəlisiniz və qumar asılılığınız yoxdur. Əgər belə problemli şəxs daxil olarsa, məsuliyyət ona aiddir. <br />
-                      3.16. Goldbet-də üçüncü tərəf proqram təminatından istifadə etməməyə və texniki boşluqlardan sui-istifadə etməməyə razılıq verirsiniz. <br />
-                      3.17. Qeydiyyat zamanı təqdim etdiyiniz məlumatların düzgün və tam olduğunu təsdiqləyirsiniz. <br />
-                      3.17.1. Qeydiyyat zamanı daxil edilmiş məlumatları özbaşına dəyişə bilməzsiniz. Bunun üçün dəstək xidməti ilə əlaqə saxlamalısınız. Goldbet sənəd tələb etmək hüququna malikdir. <br />
-                      3.18. Qadağan olunmuş yurisdiksiyalarda xidmətlərimizdən istifadə etməyəcəyinizə zəmanət verirsiniz. <br />
-                      3.19. Siz həmçinin təsdiqləyirsiniz ki: <br />
-                      - Xidmətdən yalnız öz adınızdan istifadə edirsiniz; <br />
-                      - Qazandığınız uduşlara görə vergi öhdəliklərini özünüz daşıyırsınız; <br />
-                      - Kriptovalyuta ilə bağlı öhdəliklər də sizin üzərinizdədir.`,
   },
   it: {
     pageTabTitle: "Goldbet Casino Hesabı üçün Qeydiyyat",
@@ -1111,7 +955,7 @@ export const translations = {
                       - Qazancdan doğan vergilər sizə aiddir; <br />
                       - Kriptovalyuta üzrə öhdəliklər sizə aiddir.`,
   },
-  ee: {
+  et: {
     pageTabTitle: "Registreeru Goldbet Casino kontole",
     backBtn: "Tagasi",
     // | Step 1
@@ -1684,5 +1528,155 @@ export const translations = {
     chickenRoadPlaying: "Играе",
     checkenRoadSubtitle: "Регистрирайте се и вземете вашия бонус",
     chickenRoadMainTitle: `<span class='two-step-welcome-amount blurred text-[#FFF67D]'>4.500</span> <span class='two-step-welcome-symbol blurred text-[#FFF67D]'>€</span> + <span class='two-step-bonus-spins blurred text-[#30FF7E]'>200 FS</span> <br/> бонус за нови играчи`,
+  },
+  sw: {
+    pageTabTitle: "Registrera ett Goldbet Casino-konto",
+    backBtn: "Tillbaka",
+    // | Step 1
+    step1Title: "Välj din bonus",
+    welcomeBonus: "Välkomstbonus",
+    welcomeBonusText: "på din första insättning",
+    cryptoBonus: "Satoshi Bonus",
+    cryptoBonusText: "150% på kryptoinbetalningar",
+    highRollerBonus: "High Roller Bonus",
+    highRollerBonusText: `200% på insättningar över <span class="bonus-highroller-amount"></span> <span class="two-step-welcome-symbol"></span>`,
+    withoutBonus: "Utan bonus",
+    withoutBonusText: "Du får ingen bonus",
+    iHavePromoCode: "Jag har en kampanjkod",
+    promoCodePlaceHolder: "Kampanjkod",
+    promoCodeApplyBtn: "Använd",
+    youWillGetFreeSpins: "Du får gratissnurr",
+    youWillGetNodepBonus: "Du får en bonus utan insättning",
+    continueBtn: "Fortsätt",
+    // | Step 2
+    step2Title: "Ange din e-post",
+    emailPlaceholder: "Ange e-post",
+    passwordPlaceholder: "Ange lösenord",
+    // | Step 3
+    step3Title: "Vad heter du?",
+    namePlaceholder: "Ange namn",
+    lastNamePlaceholder: "Ange efternamn",
+    birthdayPlaceholder: "Välj födelsedatum",
+    age18Alert: "Ålder måste vara 18+",
+    invalidDate: "Ogiltigt datum",
+    male: "Man",
+    female: "Kvinna",
+    finalStepBtn: "Sista steget",
+    // | Step 4
+    step4Title: "Välj valuta",
+    countryPlaceholder: "Välj land",
+    currencyPlaceholder: "Välj valuta",
+    phoneNumberPlaceholder: "Telefonnummer",
+    addressPlaceholder: "Ange adress",
+    cityPlaceholder: "Ange stad",
+    statePlaceholder: "Välj region",
+    zipCodePlaceholder: "Ange postnummer",
+    createAccountBtn: "Skapa konto",
+    // | Checken road
+    chickenRoadGetBonus: "Hämta bonus",
+    chickenRoadAccepted: "Accepterad",
+    chickenRoadPlaying: "Spelar",
+    checkenRoadSubtitle: "Registrera dig och få din bonus",
+    chickenRoadMainTitle: `<span class='two-step-welcome-amount blurred text-[#FFF67D]'>4.500</span> <span class='two-step-welcome-symbol blurred text-[#FFF67D]'>€</span> + <span class='two-step-bonus-spins blurred text-[#30FF7E]'>200 FS</span> <br/> bonus för nya spelare`,
+  },
+  rw: {
+    pageTabTitle: "Iyandikishe kuri Konti ya Goldbet Casino",
+    backBtn: "Subira inyuma",
+    // | Step 1
+    step1Title: "Hitamo Bonus Yawe",
+    welcomeBonus: "Bonus Yo Kwakira",
+    welcomeBonusText: "ku ishoramari ryawe rya mbere",
+    cryptoBonus: "Satoshi Bonus",
+    cryptoBonusText: "150% ku Mishoramari ya Crypto",
+    highRollerBonus: "High Roller Bonus",
+    highRollerBonusText: `200% ku Mishoramari irenze <span class="bonus-highroller-amount"></span> <span class="two-step-welcome-symbol"></span>`,
+    withoutBonus: "Nta Bonus",
+    withoutBonusText: "Ntuzahabwa bonus",
+    iHavePromoCode: "Mfite Promo-Kode",
+    promoCodePlaceHolder: "Promo-Kode",
+    promoCodeApplyBtn: "Shyira mu bikorwa",
+    youWillGetFreeSpins: "Uzahabwa spins zitagira amafaranga",
+    youWillGetNodepBonus: "Uzahabwa bonus itagira ishoramari",
+    continueBtn: "Komeza",
+    // | Step 2
+    step2Title: "Shyiramo Email Yawe",
+    emailPlaceholder: "Shyiramo E-mail",
+    passwordPlaceholder: "Shyiramo Ijambo ry'Ibanga",
+    // | Step 3
+    step3Title: "Witwa nde?",
+    namePlaceholder: "Shyiramo Izina",
+    lastNamePlaceholder: "Shyiramo Izina ry'Umuryango",
+    birthdayPlaceholder: "Hitamo Itariki y'Amavuko",
+    age18Alert: "Imyaka igomba kuba 18+",
+    invalidDate: "Itariki itariyo",
+    male: "Gabo",
+    female: "Gore",
+    finalStepBtn: "Intambwe ya Nyuma",
+    // | Step 4
+    step4Title: "Hitamo Ifaranga",
+    countryPlaceholder: "Hitamo Igihugu",
+    currencyPlaceholder: "Hitamo Ifaranga",
+    phoneNumberPlaceholder: "Numero ya Telefone",
+    addressPlaceholder: "Shyiramo Aderesi",
+    cityPlaceholder: "Shyiramo Umujyi",
+    statePlaceholder: "Hitamo Intara",
+    zipCodePlaceholder: "Shyiramo ZIP Code",
+    createAccountBtn: "Kora Konti",
+    // | Checken road
+    chickenRoadGetBonus: "Fata Bonus",
+    chickenRoadAccepted: "Byemejwe",
+    chickenRoadPlaying: "Kuri Gukina",
+    checkenRoadSubtitle: "Iyandikishe kandi uhabwe bonus yawe",
+    chickenRoadMainTitle: `<span class='two-step-welcome-amount blurred text-[#FFF67D]'>4.500</span> <span class='two-step-welcome-symbol blurred text-[#FFF67D]'>€</span> + <span class='two-step-bonus-spins blurred text-[#30FF7E]'>200 FS</span> <br/> bonus ku bakinnyi bashya`,
+  },
+  ar: {
+    pageTabTitle: "سجّل حسابك في كازينو جولدبت",
+    backBtn: "عودة",
+    // | Step 1
+    step1Title: "اختر المكافأة الخاصة بك",
+    welcomeBonus: "مكافأة الترحيب",
+    welcomeBonusText: "على إيداعك الأول",
+    cryptoBonus: "مكافأة ساتوشي",
+    cryptoBonusText: "150٪ على الإيداعات بالعملات الرقمية",
+    highRollerBonus: "مكافأة اللاعبين الكبار",
+    highRollerBonusText: `200٪ على الإيداعات التي تزيد عن <span class="bonus-highroller-amount"></span> <span class="two-step-welcome-symbol"></span>`,
+    withoutBonus: "بدون مكافأة",
+    withoutBonusText: "لن تحصل على أي مكافأة",
+    iHavePromoCode: "لدي رمز ترويجي",
+    promoCodePlaceHolder: "الرمز الترويجي",
+    promoCodeApplyBtn: "تطبيق",
+    youWillGetFreeSpins: "ستحصل على دورات مجانية",
+    youWillGetNodepBonus: "ستحصل على مكافأة بدون إيداع",
+    continueBtn: "متابعة",
+    // | Step 2
+    step2Title: "أدخل بريدك الإلكتروني",
+    emailPlaceholder: "أدخل البريد الإلكتروني",
+    passwordPlaceholder: "أدخل كلمة المرور",
+    // | Step 3
+    step3Title: "ما اسمك؟",
+    namePlaceholder: "أدخل الاسم",
+    lastNamePlaceholder: "أدخل اسم العائلة",
+    birthdayPlaceholder: "اختر تاريخ الميلاد",
+    age18Alert: "يجب أن يكون العمر 18+",
+    invalidDate: "تاريخ غير صالح",
+    male: "ذكر",
+    female: "أنثى",
+    finalStepBtn: "الخطوة النهائية",
+    // | Step 4
+    step4Title: "اختر العملة",
+    countryPlaceholder: "اختر الدولة",
+    currencyPlaceholder: "اختر العملة",
+    phoneNumberPlaceholder: "رقم الهاتف",
+    addressPlaceholder: "أدخل العنوان",
+    cityPlaceholder: "أدخل المدينة",
+    statePlaceholder: "اختر المحافظة",
+    zipCodePlaceholder: "أدخل الرمز البريدي",
+    createAccountBtn: "إنشاء حساب",
+    // | Checken road
+    chickenRoadGetBonus: "احصل على المكافأة",
+    chickenRoadAccepted: "تم القبول",
+    chickenRoadPlaying: "جار اللعب",
+    checkenRoadSubtitle: "سجّل واحصل على مكافأتك",
+    chickenRoadMainTitle: `<span class='two-step-welcome-amount blurred text-[#FFF67D]'>4.500</span> <span class='two-step-welcome-symbol blurred text-[#FFF67D]'>€</span> + <span class='two-step-bonus-spins blurred text-[#30FF7E]'>200 دورة مجانية</span> <br/> مكافأة للاعبين الجدد`,
   },
 };
