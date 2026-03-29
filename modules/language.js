@@ -12,25 +12,64 @@ import { setSpinAmount } from "./promocodeCheck";
 
 const CDN = "https://3344112-img.b-cdn.net";
 
+export const languageOptions = {
+  en: { name: "EN", flag: "gb" },
+  fr: { name: "FR", flag: "fr" },
+  ro: { name: "RO", flag: "ro" },
+  hu: { name: "HU", flag: "hu" },
+  pl: { name: "PL", flag: "pl" },
+  cs: { name: "CS", flag: "cz" },
+  sl: { name: "SL", flag: "si" },
+  el: { name: "EL", flag: "gr" },
+  nb: { name: "NB", flag: "no" },
+  sv: { name: "SV", flag: "se" },
+  sk: { name: "SK", flag: "sk" },
+  ru: { name: "RU", flag: "ru" },
+  es: { name: "ES", flag: "es" },
+  pt: { name: "PT", flag: "pt" },
+  de: { name: "DE", flag: "de" },
+  it: { name: "IT", flag: "it" },
+  et: { name: "ET", flag: "ee" },
+  lv: { name: "LV", flag: "lv" },
+  lt: { name: "LT", flag: "lt" },
+  hr: { name: "HR", flag: "hr" },
+  fi: { name: "FI", flag: "fi" },
+  dk: { name: "DK", flag: "dk" },
+  bg: { name: "BG", flag: "bg" },
+  nl: { name: "NL", flag: "nl" },
+  uk: { name: "UK", flag: "ua" },
+  sw: { name: "SW", flag: "ke" },
+  rw: { name: "RW", flag: "rw" },
+  ar: { name: "AR", flag: "sa" },
+};
+
 const headerLangBtn = document.querySelector(".header-lang-btn");
 const headerLangList = document.querySelector(".header-lang-list");
-const languageLinks = document.querySelectorAll(".language-link");
 
 let lang;
+
+function renderLanguageList() {
+  if (!headerLangList) return;
+  headerLangList.innerHTML = Object.entries(languageOptions)
+    .map(
+      ([code, { name, flag }]) => `
+      <li>
+        <a data-lang="${code}" class="language-link flex items-center gap-2 bg-[#525A89] px-3 py-[9px] transition-all" href="#">
+          <img class="pointer-events-none shrink-0 overflow-hidden rounded-full" width="20" height="20" src="${CDN}/graphic/flags/flag-${flag}.svg" alt="${name} flag" />
+          <span class="pointer-events-none">${name}</span>
+        </a>
+      </li>`,
+    )
+    .join("");
+}
+
+renderLanguageList();
 
 if (headerLangBtn) {
   headerLangBtn.addEventListener("click", () => {
     headerLangList.classList.toggle("is-open");
   });
 }
-
-languageLinks.forEach((link) => {
-  if (link) {
-    link.addEventListener("click", () => {
-      headerLangList.classList.remove("is-open");
-    });
-  }
-});
 
 function updateContent(lang) {
   const elements = document.querySelectorAll(
@@ -41,10 +80,7 @@ function updateContent(lang) {
     const key =
       element.getAttribute("data-translate") ||
       element.getAttribute("data-modal-translate");
-    const translatedValue =
-      translations[lang]?.[key] ?? translations.en?.[key] ?? "";
-
-    element.innerHTML = translatedValue;
+    element.innerHTML = translations[lang]?.[key] ?? translations.en?.[key] ?? "";
   });
 }
 
@@ -65,44 +101,18 @@ function setActiveLanguageBtn(currentLang) {
 }
 
 function updateButtonText(lang) {
-  const headerLangBtn = document.querySelector(".header-lang-btn img");
+  const headerLangBtnImg = document.querySelector(".header-lang-btn img");
   const headerLangName = document.querySelector(".header-lang-btn span");
 
-  const languageNames = {
-    en: "EN",
-    fr: "FR",
-    ro: "RO",
-    hu: "HU",
-    pl: "PL",
-    cz: "CZ",
-    si: "SI",
-    gr: "EL",
-    no: "NO",
-    se: "SE",
-    sk: "SK",
-    ru: "RU",
-    es: "ES",
-    pt: "PT",
-    de: "DE",
-    ua: "UK",
-    tr: "TR",
-    kz: "KK",
-    az: "AZ",
-    it: "IT",
-    ee: "EE",
-    lv: "LV",
-    lt: "LT",
-    hr: "HR",
-    dk: "DK",
-    fi: "FI",
-    bg: "BG",
-  };
-  headerLangBtn.setAttribute(
+  const option = languageOptions[lang];
+  const flag = option ? option.flag : "gb";
+  const name = option ? option.name : "EN";
+
+  headerLangBtnImg.setAttribute(
     "src",
-    CDN + `/graphic/flags/flag-${lang}.svg` ||
-      CDN + `/graphic/flags/flag-en.svg`,
+    CDN + `/graphic/flags/flag-${flag}.svg`,
   );
-  headerLangName.innerHTML = languageNames[lang];
+  headerLangName.innerHTML = name;
   document.querySelector("html").setAttribute("lang", lang);
 }
 
@@ -118,7 +128,7 @@ async function determineLanguage() {
     IE: "en",
     ZA: "en",
     IN: "en",
-    UA: "ua",
+    UA: "uk",
     FR: "fr",
     BE: "fr",
     CH: "fr",
@@ -146,7 +156,7 @@ async function determineLanguage() {
     PA: "es",
     UY: "es",
     RU: "ru",
-    KZ: "kz",
+    KZ: "ru",
     BY: "ru",
     KG: "ru",
     TJ: "ru",
@@ -161,31 +171,48 @@ async function determineLanguage() {
     TL: "pt",
     MO: "pt",
     EH: "pt",
-    AZ: "az",
+    AZ: "ru",
     UZ: "ru",
-    TR: "tr",
+    TR: "ru",
     BD: "en",
     ID: "en",
     CN: "en",
     DK: "dk",
-    NO: "no",
+    NO: "nb",
     RO: "ro",
     MD: "ro",
     HU: "hu",
     PL: "pl",
-    CZ: "cz",
-    SI: "si",
-    GR: "gr",
-    SE: "se",
+    CZ: "cs",
+    SI: "sl",
+    GR: "el",
+    SE: "sv",
     SK: "sk",
     IT: "it",
-    EE: "ee",
+    EE: "et",
     LV: "lv",
     LT: "lt",
     HR: "hr",
     FI: "fi",
     BG: "bg",
-    // Add more country codes and their corresponding languages as needed
+    KE: "sw",
+    TZ: "sw",
+    UG: "sw",
+    RW: "rw",
+    SA: "ar",
+    EG: "ar",
+    AE: "ar",
+    IQ: "ar",
+    MA: "ar",
+    DZ: "ar",
+    JO: "ar",
+    LB: "ar",
+    KW: "ar",
+    QA: "ar",
+    BH: "ar",
+    OM: "ar",
+    LY: "ar",
+    TN: "ar",
   };
   lang = countryLangMap[location.countryCode] || "en";
 
@@ -213,10 +240,13 @@ async function mainFunction() {
 }
 mainFunction();
 
-document.querySelectorAll(".language-link").forEach((langBtn) => {
-  langBtn.addEventListener("click", (e) => {
+if (headerLangList) {
+  headerLangList.addEventListener("click", (e) => {
+    const link = e.target.closest(".language-link");
+    if (!link) return;
     e.preventDefault();
-    const targetLang = e.target.getAttribute("data-lang");
+    headerLangList.classList.remove("is-open");
+    const targetLang = link.getAttribute("data-lang");
     changeLanguage(targetLang);
     const currencyData = JSON.parse(localStorage.getItem("currencyData"));
     settingInitialBonusValue(currencyData.abbr);
@@ -229,7 +259,7 @@ document.querySelectorAll(".language-link").forEach((langBtn) => {
     twoStepFormData.lang = localStorage.getItem("preferredLanguage");
     setSpinAmount();
   });
-});
+}
 
 // const detectedLanguage = localStorage.getItem("preferredLanguage");
 
