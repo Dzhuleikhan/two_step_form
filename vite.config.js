@@ -1,7 +1,7 @@
 import { defineConfig } from "vite";
 
 export default defineConfig({
-  base: "https://landing-res.b-cdn.net/chicken-road/nodep/",
+  base: "https://landing-res.b-cdn.net/chicken-road/nodep/10/",
   esbuild: {
     supported: {
       "top-level-await": true,
