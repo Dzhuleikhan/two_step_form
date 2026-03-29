@@ -3,7 +3,7 @@ name: Deploy to VPS Servers
 on:
   push:
     branches:
-      - chicken_road_fs
+      - chicken_road_fs_10
 
 jobs:
   deploy:
@@ -65,4 +65,4 @@ jobs:
           username: ${{ secrets[format('FTP_USER_{0}', matrix.vps)] }}
           password: ${{ secrets[format('FTP_PASSWORD_{0}', matrix.vps)] }}
           local-dir: ./dist/
-          server-dir: /www/${{ matrix.site }}/chicken-road/nodep/
+          server-dir: /www/${{ matrix.site }}/chicken-road/nodep/10/
