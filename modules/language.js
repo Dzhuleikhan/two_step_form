@@ -3,6 +3,7 @@ import { geoData, language } from "./geoLocation";
 import { getSupportedLanguage } from "./geoLocation";
 import { settingInitialBonusValue } from "./twoStepForm";
 import { languageOptions, SupportedLanguages } from "../public/data";
+import { updateTelInputLanguage } from "./itiTelInput";
 
 const CDN = "https://3344112-img.b-cdn.net";
 
@@ -91,7 +92,7 @@ function getInitialLanguage(country, fallbackLang) {
     return supportedLang ?? "el";
   }
   if (country === "LU") {
-    return supportedLang ?? "fr";
+    return supportedLang ?? "lb";
   }
   if (country === "EE") {
     return supportedLang ?? "et";
@@ -100,10 +101,22 @@ function getInitialLanguage(country, fallbackLang) {
   return fallbackLang;
 }
 
+const RTL_LANGUAGES = ["ar"];
+
 function changeLanguage(lang) {
   updateContent(lang);
   updateButtonText(lang);
   setActiveLanguageBtn(lang);
+
+  if (RTL_LANGUAGES.includes(lang)) {
+    html.setAttribute("dir", "rtl");
+    document.body.classList.add("is-rtl");
+  } else {
+    html.setAttribute("dir", "ltr");
+    document.body.classList.remove("is-rtl");
+  }
+
+  updateTelInputLanguage();
 }
 
 function setActiveLanguageBtn(currentLang) {
