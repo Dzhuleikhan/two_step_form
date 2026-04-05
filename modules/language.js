@@ -3,6 +3,7 @@ import { geoData } from "./geoLocation";
 import { getSupportedLanguage } from "./geoLocation";
 import { settingInitialBonusValue, twoStepFormData } from "./twoStepForm";
 import { countryCurrencyData } from "../public/data";
+import { updateTelInputLanguage } from "./itiTelInput";
 
 const CDN = "https://3344112-img.b-cdn.net";
 
@@ -28,9 +29,12 @@ export const languageOptions = {
   lt: { name: "LT", flag: "lt" },
   hr: { name: "HR", flag: "hr" },
   fi: { name: "FI", flag: "fi" },
-  dk: { name: "DK", flag: "dk" },
+  da: { name: "DA", flag: "dk" },
   bg: { name: "BG", flag: "bg" },
   nl: { name: "NL", flag: "nl" },
+  ga: { name: "GA", flag: "ie" },
+  lb: { name: "LB", flag: "lu" },
+  mt: { name: "MT", flag: "mt" },
   uk: { name: "UK", flag: "ua" },
   sw: { name: "SW", flag: "ke" },
   rw: { name: "RW", flag: "rw" },
@@ -67,17 +71,30 @@ if (headerLangBtn) {
 
 
 function updateContent(lang) {
+  const t = translations[lang] || translations["en"];
   const elements = document.querySelectorAll("[data-translate]");
   elements.forEach((element) => {
     const key = element.getAttribute("data-translate");
-    element.innerHTML = translations[lang][key];
+    element.innerHTML = t[key];
   });
 }
+
+const RTL_LANGUAGES = ["ar"];
 
 function changeLanguage(lang) {
   updateContent(lang);
   updateButtonText(lang);
   setActiveLanguageBtn(lang);
+
+  if (RTL_LANGUAGES.includes(lang)) {
+    document.documentElement.setAttribute("dir", "rtl");
+    document.body.classList.add("is-rtl");
+  } else {
+    document.documentElement.setAttribute("dir", "ltr");
+    document.body.classList.remove("is-rtl");
+  }
+
+  updateTelInputLanguage();
 }
 
 function setActiveLanguageBtn(currentLang) {
@@ -167,7 +184,9 @@ async function determineLanguage() {
     BD: "en",
     ID: "en",
     CN: "en",
-    DK: "dk",
+    DK: "da",
+    NL: "nl",
+    MT: "mt",
     NO: "nb",
     RO: "ro",
     MD: "ro",
