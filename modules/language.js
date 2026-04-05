@@ -9,6 +9,7 @@ import {
 } from "./twoStepForm";
 import { countryCurrencyData } from "../public/data";
 import { setSpinAmount } from "./promocodeCheck";
+import { updateTelInputLanguage } from "./itiTelInput";
 
 const CDN = "https://3344112-img.b-cdn.net";
 
@@ -41,6 +42,10 @@ export const languageOptions = {
   sw: { name: "SW", flag: "ke" },
   rw: { name: "RW", flag: "rw" },
   ar: { name: "AR", flag: "sa" },
+  ga: { name: "GA", flag: "ie" },
+  lb: { name: "LB", flag: "lu" },
+  mt: { name: "MT", flag: "mt" },
+  zh: { name: "ZH", flag: "cn" },
 };
 
 const headerLangBtn = document.querySelector(".header-lang-btn");
@@ -84,10 +89,22 @@ function updateContent(lang) {
   });
 }
 
+const RTL_LANGUAGES = ["ar"];
+
 function changeLanguage(lang) {
   updateContent(lang);
   updateButtonText(lang);
   setActiveLanguageBtn(lang);
+
+  if (RTL_LANGUAGES.includes(lang)) {
+    document.documentElement.setAttribute("dir", "rtl");
+    document.body.classList.add("is-rtl");
+  } else {
+    document.documentElement.setAttribute("dir", "ltr");
+    document.body.classList.remove("is-rtl");
+  }
+
+  updateTelInputLanguage();
 }
 
 function setActiveLanguageBtn(currentLang) {
@@ -125,14 +142,14 @@ async function determineLanguage() {
     CA: "en",
     AU: "en",
     NZ: "en",
-    IE: "en",
+    IE: "ga",
     ZA: "en",
     IN: "en",
     UA: "uk",
     FR: "fr",
     BE: "fr",
     CH: "fr",
-    LU: "fr",
+    LU: "lb",
     DE: "de",
     AT: "de",
     LI: "de",
@@ -176,7 +193,7 @@ async function determineLanguage() {
     TR: "ru",
     BD: "en",
     ID: "en",
-    CN: "en",
+    CN: "zh",
     DK: "dk",
     NO: "nb",
     RO: "ro",
@@ -199,6 +216,7 @@ async function determineLanguage() {
     TZ: "sw",
     UG: "sw",
     RW: "rw",
+    MT: "mt",
     SA: "ar",
     EG: "ar",
     AE: "ar",
