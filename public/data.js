@@ -614,15 +614,15 @@ export const countryCurrencyData = [
     amount: "1.9 MLN",
     spins: "25 FS",
   },
-  {
-    countries: ["SL"],
-    countryCurrency: "SLL",
-    countryCurrencySymbol: "Le",
-    countryCurrencyFullName: "Sierra Leonean Leone",
-    countryCurrencyIcon: "https://3344112-img.b-cdn.net/currency_icons/SLL.svg",
-    amount: "45 K",
-    spins: "25 FS",
-  },
+  // {
+  //   countries: ["SL"],
+  //   countryCurrency: "SLL",
+  //   countryCurrencySymbol: "Le",
+  //   countryCurrencyFullName: "Sierra Leonean Leone",
+  //   countryCurrencyIcon: "https://3344112-img.b-cdn.net/currency_icons/SLL.svg",
+  //   amount: "45 K",
+  //   spins: "25 FS",
+  // },
 ];
 
 export const canadaProvincesCities = {
