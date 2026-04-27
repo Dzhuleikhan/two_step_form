@@ -20,6 +20,7 @@
     "flatpickr": "^4.6.13",
     "gsap": "^3.12.7",
     "inputmask": "^5.0.9",
-    "intl-tel-input": "^25.2.1"
+    "intl-tel-input": "^25.2.1",
+    "libphonenumber-js": "^1.12.42"
   }
 }
