@@ -3,7 +3,7 @@ name: Deploy to VPS Servers
 on:
   push:
     branches:
-      - main
+      - two_step_form_disposable_emails
 
 jobs:
   deploy:
@@ -68,4 +68,4 @@ jobs:
           username: ${{ secrets[format('FTP_USER_{0}', matrix.vps)] }}
           password: ${{ secrets[format('FTP_PASSWORD_{0}', matrix.vps)] }}
           local-dir: ./dist/
-          server-dir: /www/${{ matrix.site }}/two-step-form/
+          server-dir: /www/${{ matrix.site }}/two-step-form/disposable-emails/

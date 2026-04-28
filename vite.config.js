@@ -1,7 +1,7 @@
 import { defineConfig } from "vite";
 
 export default defineConfig({
-  base: "https://landing-res.b-cdn.net/two-step-form/",
+  base: "https://landing-res.b-cdn.net/two-step-form/disposable-emails/",
   esbuild: {
     supported: {
       "top-level-await": true,
