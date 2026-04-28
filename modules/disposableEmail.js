@@ -1,6 +1,6 @@
-// Source: https://github.com/disposable-email-domains/disposable-email-domains
+// Source: https://github.com/disposable/disposable-email-domains
 const DISPOSABLE_LIST_URL =
-  "https://cdn.jsdelivr.net/gh/disposable-email-domains/disposable-email-domains@main/disposable_email_blocklist.conf";
+  "https://cdn.jsdelivr.net/gh/disposable/disposable-email-domains@master/domains.txt";
 
 let disposableSet = null;
 
