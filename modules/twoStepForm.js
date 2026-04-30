@@ -14,6 +14,19 @@ document.querySelectorAll("input").forEach((input) => {
   input.setAttribute("autocomplete", "off");
 });
 
+const PHONE_ONLY_COUNTRIES = ["DE", "AT"];
+const isPhoneOnlyMode = PHONE_ONLY_COUNTRIES.includes(geoData.countryCode);
+
+if (isPhoneOnlyMode) {
+  document.querySelector(".two-step-email-wrapper")?.classList.add("hidden");
+  document
+    .querySelector(".two-step-step2-title-default")
+    ?.classList.add("hidden");
+  document
+    .querySelector(".two-step-step2-title-phone")
+    ?.classList.remove("hidden");
+}
+
 // ? SOCIALS TWO STEP FORM
 
 export let twoStepFormData = {
@@ -243,60 +256,80 @@ if (twoStepFormSecondStep) {
   const twoStepFormPasswordInput = twoStepFormSecondStep.querySelector(
     ".two-step-password-input",
   );
+  const twoStepFormPhoneInput = twoStepFormSecondStep.querySelector(
+    ".two-step-phone-input",
+  );
   const btnOverlap = twoStepFormSecondStepBtn.querySelector(".disable-overlap");
 
   const regex =
     /^(?!.*\.\.)[a-zA-Z0-9][a-zA-Z0-9!#$%&'*+/=?^_`{|}~.-]{0,62}[a-zA-Z0-9]@(?:\[(?:\d{1,3}\.){3}\d{1,3}\]|[a-zA-Z0-9](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?(?:\.[a-zA-Z]{2,})+)$/;
 
-  const validateInputs = (validColor, invalidColor) => {
+  const isEmailFieldValid = () => {
     const emailValue = twoStepFormEmailInput.value.trim();
-    const passwordValue = twoStepFormPasswordInput.value.trim();
+    return regex.test(emailValue) && !isDisposableEmail(emailValue);
+  };
+  const isPasswordFieldValid = () =>
+    twoStepFormPasswordInput.value.trim().length >= 6;
+  const isPhoneFieldValid = () => twoStepiti.isValidNumber();
 
-    const isEmailValid =
-      regex.test(emailValue) && !isDisposableEmail(emailValue);
-    const isPasswordValid = passwordValue.length >= 6;
+  const validateInputs = (validColor, invalidColor) => {
+    const fields = isPhoneOnlyMode
+      ? [
+          { input: twoStepFormPhoneInput, isValid: isPhoneFieldValid() },
+          { input: twoStepFormPasswordInput, isValid: isPasswordFieldValid() },
+        ]
+      : [
+          { input: twoStepFormPhoneInput, isValid: isPhoneFieldValid() },
+          { input: twoStepFormEmailInput, isValid: isEmailFieldValid() },
+          { input: twoStepFormPasswordInput, isValid: isPasswordFieldValid() },
+        ];
 
-    twoStepFormEmailInput.style.color = isEmailValid
-      ? validColor
-      : invalidColor;
-    twoStepFormPasswordInput.style.color = isPasswordValid
-      ? validColor
-      : invalidColor;
+    let validCount = 0;
+    fields.forEach(({ input, isValid }) => {
+      input.style.color = isValid ? validColor : invalidColor;
+      if (isValid) validCount++;
+    });
 
-    if (isEmailValid && isPasswordValid) {
-      btnOverlap.style.left = "100%";
-      twoStepFormData.email = twoStepFormEmailInput.value;
+    const percentage = (validCount / fields.length) * 100;
+    btnOverlap.style.left = `${percentage}%`;
+
+    if (percentage === 100) {
+      const dialCode = twoStepiti.getSelectedCountryData().dialCode;
+      const sanitizedPhone = twoStepFormPhoneInput.value.replace(/\D/g, "");
+      twoStepFormData.phone = `${dialCode}${sanitizedPhone}`;
       twoStepFormData.password = twoStepFormPasswordInput.value;
+
+      if (!isPhoneOnlyMode) {
+        twoStepFormData.email = twoStepFormEmailInput.value;
+      } else {
+        twoStepFormData.email = "";
+      }
+
       twoStepFormSecondStepBtn.disabled = false;
-    } else if (isEmailValid || isPasswordValid) {
-      btnOverlap.style.left = "50%";
-      twoStepFormSecondStepBtn.disabled = true;
     } else {
-      btnOverlap.style.left = "";
       twoStepFormSecondStepBtn.disabled = true;
     }
   };
 
-  twoStepFormEmailInput.addEventListener("focusout", () =>
-    validateInputs("#4ED937", "#ff5530"),
-  );
-  twoStepFormPasswordInput.addEventListener("focusout", () =>
-    validateInputs("#4ED937", "#ff5530"),
-  );
+  twoStepFormSecondStepBtn.disabled = true;
 
-  if (
-    twoStepFormEmailInput.value === "" ||
-    twoStepFormPasswordInput.value === ""
-  ) {
-    twoStepFormSecondStepBtn.disabled = true;
+  const attachListeners = (input, color) => {
+    input.addEventListener("focusout", () =>
+      validateInputs("#4ED937", "#ff5530"),
+    );
+    input.addEventListener("input", () => {
+      input.style.color = "#8726FF";
+      validateInputs("#4ED937", "#8726FF");
+    });
+  };
+
+  attachListeners(twoStepFormPhoneInput);
+  attachListeners(twoStepFormPasswordInput);
+  if (!isPhoneOnlyMode) {
+    attachListeners(twoStepFormEmailInput);
   }
 
-  twoStepFormEmailInput.addEventListener("input", () => {
-    twoStepFormEmailInput.style.color = "#8726FF";
-    validateInputs("#4ED937", "#8726FF");
-  });
-  twoStepFormPasswordInput.addEventListener("input", () => {
-    twoStepFormPasswordInput.style.color = "#8726FF";
+  twoStepFormPhoneInput.addEventListener("countrychange", () => {
     validateInputs("#4ED937", "#8726FF");
   });
 
@@ -719,9 +752,6 @@ if (twoStepFormFourthStep) {
   // ? VALIDATION
   const submitBtn = twoStepFormFourthStep.querySelector(".submit-btn");
   const btnOverlap = twoStepFormFourthStep.querySelector(".disable-overlap");
-  const twoStepPhoneInput = twoStepFormFourthStep.querySelector(
-    ".two-step-phone-input",
-  );
   const twoStepCityInput = twoStepFormFourthStep.querySelector(
     ".two-step-city-input",
   );
@@ -803,18 +833,9 @@ if (twoStepFormFourthStep) {
     twoStepStateList.classList.toggle("hidden");
   });
 
-  // Phone input only numbers
-  twoStepPhoneInput.addEventListener("input", function (e) {
-    e.target.value = e.target.value.replace(/[^0-9]/g, "");
-  });
-
   submitBtn.disabled = true;
 
   const inputValidations1 = [
-    {
-      input: twoStepPhoneInput,
-      condition: () => twoStepiti.isValidNumber(),
-    },
     {
       input: twoStepCityInput,
       condition: (value) => value !== "",
@@ -833,40 +854,29 @@ if (twoStepFormFourthStep) {
     let validCount = 0;
     const totalInputs = inputValidations1.length;
 
-    let twoStepCode = twoStepiti.getSelectedCountryData().dialCode;
-    let twoStepPhoneNumber = twoStepPhoneInput.value.trim();
-
-    let sanitizedPhoneNumber = twoStepPhoneNumber.replace(/\D/g, "");
-    let fullPhoneNumber = `${twoStepCode}${sanitizedPhoneNumber}`;
-
-    // Validate each input
     inputValidations1.forEach(({ input, condition }) => {
-      const isValid = condition(input.value.trim()); // Check validity
-      input.style.color = isValid ? validColor : invalidColor; // Apply text color
+      const isValid = condition(input.value.trim());
+      input.style.color = isValid ? validColor : invalidColor;
       if (isValid) validCount++;
     });
 
-    // Calculate and update button overlap position
     const percentage = (validCount / totalInputs) * 100;
     btnOverlap.style.left = `${percentage}%`;
-
-    // If phone number is valid, log the full phone number
 
     if (percentage === 100) {
       submitBtn.disabled = false;
       twoStepFormData.city = validateStringInput(twoStepCityInput.value);
       twoStepFormData.address = validateStringInput(twoStepAddressInput.value);
       twoStepFormData.zipCode = validateStringInput(twoStepZipcodeInput.value);
-      if (twoStepPhoneInput.value.trim() !== "" && twoStepiti.isValidNumber()) {
-        twoStepFormData.phone = fullPhoneNumber;
-      }
     } else {
       submitBtn.disabled = true;
     }
   };
 
   inputValidations1.forEach(({ input }) => {
-    input.addEventListener("focusout", validateInputs1("#4ED937", "#ff5530"));
+    input.addEventListener("focusout", () =>
+      validateInputs1("#4ED937", "#ff5530"),
+    );
   });
 
   inputValidations1.forEach(({ input }) => {
@@ -874,11 +884,6 @@ if (twoStepFormFourthStep) {
       validateInputs1("#4ED937", "#8726FF");
       input.style.color = "#8726FF";
     });
-  });
-
-  twoStepPhoneInput.addEventListener("countrychange", () => {
-    twoStepPhoneInput.value = "";
-    validateInputs1("#4ED937", "#8726FF");
   });
 }
 
@@ -969,10 +974,15 @@ twoStepFormMain.addEventListener("submit", (e) => {
     lang,
   } = twoStepFormData;
 
+  const type = isPhoneOnlyMode ? "phone" : "email";
+  const emailParam = isPhoneOnlyMode
+    ? ""
+    : `&email=${encodeURIComponent(email)}`;
+
   setTimeout(() => {
-    window.location.href = `https://${newDomain}/api/register?env=prod&type=email&currency=${currency}&email=${encodeURIComponent(email)}&password=${encodeURIComponent(password)}&phone=${phone}&bonus=${bonus}${promocode ? "&promocode=" + promocode : ""}&lang=${lang}${firstName ? "&f_name=" + encodeURIComponent(firstName) : ""}${lastName ? "&l_name=" + encodeURIComponent(lastName) : ""}${birthday ? "&birth=" + birthday : ""}${gender ? "&gender=" + gender : ""}${country ? "&country=" + country : ""}${state ? "&state=" + encodeURIComponent(state) : ""}${city ? "&city=" + encodeURIComponent(city) : ""}${zipCode ? "&postal=" + encodeURIComponent(zipCode) : ""}${address ? "&address=" + encodeURIComponent(address) : ""}${cid ? "&cid=" + cid : ""}${partner ? "&partner=" + partner : ""}${offer ? "&offer=" + offer : ""}`;
+    window.location.href = `https://${newDomain}/api/register?env=prod&type=${type}&currency=${currency}${emailParam}&password=${encodeURIComponent(password)}&phone=${phone}&bonus=${bonus}${promocode ? "&promocode=" + promocode : ""}&lang=${lang}${firstName ? "&f_name=" + encodeURIComponent(firstName) : ""}${lastName ? "&l_name=" + encodeURIComponent(lastName) : ""}${birthday ? "&birth=" + birthday : ""}${gender ? "&gender=" + gender : ""}${country ? "&country=" + country : ""}${state ? "&state=" + encodeURIComponent(state) : ""}${city ? "&city=" + encodeURIComponent(city) : ""}${zipCode ? "&postal=" + encodeURIComponent(zipCode) : ""}${address ? "&address=" + encodeURIComponent(address) : ""}${cid ? "&cid=" + cid : ""}${partner ? "&partner=" + partner : ""}${offer ? "&offer=" + offer : ""}`;
     console.log(
-      `https://${newDomain}/api/register?env=prod&type=email&currency=${currency}&email=${encodeURIComponent(email)}&password=${encodeURIComponent(password)}&phone=${phone}&bonus=${bonus}${promocode ? "&promocode=" + promocode : ""}&lang=${lang}${firstName ? "&f_name=" + encodeURIComponent(firstName) : ""}${lastName ? "&l_name=" + encodeURIComponent(lastName) : ""}${birthday ? "&birth=" + birthday : ""}${gender ? "&gender=" + gender : ""}${country ? "&country=" + country : ""}${state ? "&state=" + encodeURIComponent(state) : ""}${city ? "&city=" + encodeURIComponent(city) : ""}${zipCode ? "&postal=" + encodeURIComponent(zipCode) : ""}${address ? "&address=" + encodeURIComponent(address) : ""}${cid ? "&cid=" + cid : ""}${partner ? "&partner=" + partner : ""}${offer ? "&offer=" + offer : ""}`,
+      `https://${newDomain}/api/register?env=prod&type=${type}&currency=${currency}${emailParam}&password=${encodeURIComponent(password)}&phone=${phone}&bonus=${bonus}${promocode ? "&promocode=" + promocode : ""}&lang=${lang}${firstName ? "&f_name=" + encodeURIComponent(firstName) : ""}${lastName ? "&l_name=" + encodeURIComponent(lastName) : ""}${birthday ? "&birth=" + birthday : ""}${gender ? "&gender=" + gender : ""}${country ? "&country=" + country : ""}${state ? "&state=" + encodeURIComponent(state) : ""}${city ? "&city=" + encodeURIComponent(city) : ""}${zipCode ? "&postal=" + encodeURIComponent(zipCode) : ""}${address ? "&address=" + encodeURIComponent(address) : ""}${cid ? "&cid=" + cid : ""}${partner ? "&partner=" + partner : ""}${offer ? "&offer=" + offer : ""}`,
     );
   }, 300);
 });
