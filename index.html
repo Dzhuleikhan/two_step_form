@@ -459,9 +459,15 @@
                 <div class="space-y-[5px] text-center">
                   <p
                     data-translate="step2Title"
-                    class="text-2xl font-bold tracking-[0.02em] xs:text-[20px]"
+                    class="two-step-step2-title-default text-2xl font-bold tracking-[0.02em] xs:text-[20px]"
                   >
                     Enter Your Email
+                  </p>
+                  <p
+                    data-translate="step2TitlePhone"
+                    class="two-step-step2-title-phone hidden text-2xl font-bold tracking-[0.02em] xs:text-[20px]"
+                  >
+                    Enter Your Phone
                   </p>
                 </div>
                 <!-- Bonus applied -->
@@ -529,6 +535,23 @@
                       You will get without deposit bonus
                     </p>
                   </div>
+                </div>
+                <!-- Phone -->
+                <div
+                  dir="ltr"
+                  class="two-step-group two-step-group-phone relative grid h-[52px] flex-col gap-[5px] rounded-2xl bg-white px-4 py-1"
+                >
+                  <span
+                    data-translate="phoneNumberPlaceholder"
+                    class="block text-xs font-bold leading-none tracking-tight text-[#585858] rtl:text-right"
+                    >Phone Number</span
+                  >
+                  <input
+                    dir="ltr"
+                    class="two-step-phone-input w-full bg-transparent text-lg font-bold tracking-tight text-[#755EEB] outline-none"
+                    type="tel"
+                    name="phone"
+                  />
                 </div>
                 <!-- email input -->
                 <div
@@ -1690,23 +1713,6 @@
                       </li>
                     </ul>
                   </div>
-                </div>
-                <!-- Phone -->
-                <div
-                  dir="ltr"
-                  class="two-step-group two-step-group-phone relative grid h-[52px] flex-col gap-[5px] rounded-2xl bg-white px-4 py-1"
-                >
-                  <span
-                    data-translate="phoneNumberPlaceholder"
-                    class="block text-xs font-bold leading-none tracking-tight text-[#585858] rtl:text-right"
-                    >Phone Number</span
-                  >
-                  <input
-                    dir="ltr"
-                    class="two-step-phone-input w-full bg-transparent text-lg font-bold tracking-tight text-[#755EEB] outline-none"
-                    type="tel"
-                    name="phone"
-                  />
                 </div>
                 <!-- Address -->
                 <div
