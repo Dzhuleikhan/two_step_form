@@ -44,6 +44,8 @@ export const languageOptions = {
   zh: { name: "ZH", flag: "cn" },
   uk: { name: "UK", flag: "ua" },
   sw: { name: "SW", flag: "ke" },
+  am: { name: "AM", flag: "et" },
+  lm: { name: "LM", flag: "ug" },
   rw: { name: "RW", flag: "rw" },
   ar: { name: "AR", flag: "sa" },
 };
@@ -214,7 +216,8 @@ async function determineLanguage() {
     BG: "bg",
     KE: "sw",
     TZ: "sw",
-    UG: "sw",
+    ET: "am",
+    UG: "lm",
     RW: "rw",
     SA: "ar",
     EG: "ar",
