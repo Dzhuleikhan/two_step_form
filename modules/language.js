@@ -39,6 +39,8 @@ export const languageOptions = {
   sw: { name: "SW", flag: "ke" },
   rw: { name: "RW", flag: "rw" },
   ar: { name: "AR", flag: "sa" },
+  am: { name: "AM", flag: "et" },
+  lm: { name: "LM", flag: "ug" },
 };
 
 const headerLangBtn = document.querySelector(".header-lang-btn");
@@ -206,8 +208,9 @@ async function determineLanguage() {
     BG: "bg",
     KE: "sw",
     TZ: "sw",
-    UG: "sw",
+    UG: "lm",
     RW: "rw",
+    ET: "am",
     SA: "ar",
     EG: "ar",
     AE: "ar",

@@ -786,8 +786,9 @@ export const countryLanguagesMap = {
   BG: ["bg"],
   KE: ["sw"],
   TZ: ["sw"],
-  UG: ["sw"],
+  UG: ["lm"],
   RW: ["rw"],
+  ET: ["am"],
   SA: ["ar"],
   EG: ["ar"],
   AE: ["ar"],
@@ -839,6 +840,8 @@ export const SupportedLanguages = [
   "sw",
   "rw",
   "ar",
+  "am",
+  "lm",
 ];
 
 export const countryZipCodeTranslates = {
