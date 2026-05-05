@@ -786,6 +786,8 @@ export const countryLanguagesMap = {
   TZ: ["sw"],
   KE: ["sw"],
   RW: ["rw"],
+  ET: ["am"],
+  UG: ["lm"],
 };
 
 export const languageOptions = {
@@ -821,6 +823,8 @@ export const languageOptions = {
   zh: { name: "ZH", flag: "cn" },
   sw: { name: "SW", flag: "tz" },
   rw: { name: "RW", flag: "rw" },
+  am: { name: "AM", flag: "et" },
+  lm: { name: "LM", flag: "ug" },
 };
 
 export const SupportedLanguages = [
@@ -858,6 +862,8 @@ export const SupportedLanguages = [
   "ar",
   "sw",
   "rw",
+  "am",
+  "lm",
 ];
 
 export const countryZipCodeTranslates = {
