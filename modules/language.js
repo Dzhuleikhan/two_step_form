@@ -41,6 +41,10 @@ export const languageOptions = {
   ar: { name: "AR", flag: "sa" },
   am: { name: "AM", flag: "et" },
   lm: { name: "LM", flag: "ug" },
+  ha: { name: "HA", flag: "ng" },
+  yo: { name: "YO", flag: "ng" },
+  ig: { name: "IG", flag: "ng" },
+  tw: { name: "TW", flag: "gh" },
 };
 
 const headerLangBtn = document.querySelector(".header-lang-btn");
@@ -225,9 +229,17 @@ async function determineLanguage() {
     OM: "ar",
     LY: "ar",
     TN: "ar",
+    GH: "tw",
     // Add more country codes and their corresponding languages as needed
   };
-  lang = countryLangMap[location.countryCode] || "en";
+
+  if (location.countryCode === "NG") {
+    const nigeriaLangs = ["ha", "yo", "ig"];
+    const browserLang = (navigator.language || "").split("-")[0].toLowerCase();
+    lang = nigeriaLangs.includes(browserLang) ? browserLang : "ha";
+  } else {
+    lang = countryLangMap[location.countryCode] || "en";
+  }
 
   return lang;
 }
