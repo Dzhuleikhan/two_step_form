@@ -48,6 +48,10 @@ export const languageOptions = {
   lm: { name: "LM", flag: "ug" },
   rw: { name: "RW", flag: "rw" },
   ar: { name: "AR", flag: "sa" },
+  ha: { name: "HA", flag: "ng" },
+  yo: { name: "YO", flag: "ng" },
+  ig: { name: "IG", flag: "ng" },
+  tw: { name: "TW", flag: "gh" },
 };
 
 const headerLangBtn = document.querySelector(".header-lang-btn");
@@ -233,8 +237,16 @@ async function determineLanguage() {
     OM: "ar",
     LY: "ar",
     TN: "ar",
+    GH: "tw",
   };
-  lang = countryLangMap[location.countryCode] || "en";
+
+  if (location.countryCode === "NG") {
+    const browserLang = navigator.language?.split("-")[0]?.toLowerCase();
+    const ngLangs = ["ha", "yo", "ig"];
+    lang = ngLangs.includes(browserLang) ? browserLang : "ha";
+  } else {
+    lang = countryLangMap[location.countryCode] || "en";
+  }
 
   return lang;
 }
