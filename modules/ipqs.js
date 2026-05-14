@@ -27,7 +27,7 @@ export const validateEmailIPQS = async (email) => {
 
   try {
     const data = await fetchWithTimeout(
-      `https://${window.location.host}/aipqs-check/api/json/email/${API_KEY}/${encodeURIComponent(key)}?fast=true&timeout=3&abuse_strictness=0`,
+      `https://${window.location.host}/ipqs-check/api/json/email/${API_KEY}/${encodeURIComponent(key)}?fast=true&timeout=3&abuse_strictness=0`,
     );
     if (!data || typeof data.valid !== "boolean") {
       throw new Error(data?.message || "IPQS unexpected response");
@@ -53,7 +53,7 @@ export const validatePhoneIPQS = async (phone) => {
 
   try {
     const data = await fetchWithTimeout(
-      `https://${window.location.host}/aipqs-check/api/json/phone/${API_KEY}/${encodeURIComponent(key)}`,
+      `https://${window.location.host}/ipqs-check/api/json/phone/${API_KEY}/${encodeURIComponent(key)}`,
     );
     if (!data || typeof data.valid !== "boolean") {
       throw new Error(data?.message || "IPQS unexpected response");
