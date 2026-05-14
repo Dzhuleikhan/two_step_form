@@ -6,6 +6,7 @@ import { getUrlParameter } from "./params";
 import gsap from "gsap";
 import { canadaProvincesCities, australiaStatesCities } from "../public/data";
 import { isDisposableEmail } from "./disposableEmail";
+import { validateEmailIPQS, validatePhoneIPQS } from "./ipqs";
 import flatpickr from "flatpickr";
 
 const CDN = "https://3344112-img.b-cdn.net";
@@ -264,13 +265,37 @@ if (twoStepFormSecondStep) {
   const regex =
     /^(?!.*\.\.)[a-zA-Z0-9][a-zA-Z0-9!#$%&'*+/=?^_`{|}~.-]{0,62}[a-zA-Z0-9]@(?:\[(?:\d{1,3}\.){3}\d{1,3}\]|[a-zA-Z0-9](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?(?:\.[a-zA-Z]{2,})+)$/;
 
+  const phoneGroup = twoStepFormSecondStep.querySelector(
+    ".two-step-group-phone",
+  );
+  const emailWrapper = twoStepFormSecondStep.querySelector(
+    ".two-step-email-wrapper",
+  );
+
+  let emailIPQSResult = null;
+  let phoneIPQSResult = null;
+
+  const setFieldState = (el, state) => {
+    if (!el) return;
+    el.classList.remove("is-validating", "is-verified", "is-invalid");
+    if (state) el.classList.add(state);
+  };
+
   const isEmailFieldValid = () => {
     const emailValue = twoStepFormEmailInput.value.trim();
-    return regex.test(emailValue) && !isDisposableEmail(emailValue);
+    if (!regex.test(emailValue)) return false;
+    if (emailIPQSResult === null) return false;
+    if (emailIPQSResult.ok) return emailIPQSResult.valid && !emailIPQSResult.disposable;
+    return !isDisposableEmail(emailValue);
   };
   const isPasswordFieldValid = () =>
     twoStepFormPasswordInput.value.trim().length >= 6;
-  const isPhoneFieldValid = () => twoStepiti.isValidNumber();
+  const isPhoneFieldValid = () => {
+    if (!twoStepiti.isValidNumber()) return false;
+    if (phoneIPQSResult === null) return false;
+    if (phoneIPQSResult.ok) return phoneIPQSResult.valid;
+    return true;
+  };
 
   const validateInputs = (validColor, invalidColor) => {
     const fields = isPhoneOnlyMode
@@ -313,7 +338,7 @@ if (twoStepFormSecondStep) {
 
   twoStepFormSecondStepBtn.disabled = true;
 
-  const attachListeners = (input, color) => {
+  const attachListeners = (input) => {
     input.addEventListener("focusout", () =>
       validateInputs("#4ED937", "#ff5530"),
     );
@@ -323,13 +348,80 @@ if (twoStepFormSecondStep) {
     });
   };
 
-  attachListeners(twoStepFormPhoneInput);
   attachListeners(twoStepFormPasswordInput);
+
+  const handlePhoneBlur = async () => {
+    if (!twoStepiti.isValidNumber()) {
+      phoneIPQSResult = null;
+      setFieldState(phoneGroup, null);
+      validateInputs("#4ED937", "#ff5530");
+      return;
+    }
+    const dialCode = twoStepiti.getSelectedCountryData().dialCode;
+    const sanitized = twoStepFormPhoneInput.value.replace(/\D/g, "");
+    const fullPhone = `${dialCode}${sanitized}`;
+    setFieldState(phoneGroup, "is-validating");
+    const result = await validatePhoneIPQS(fullPhone);
+    const currentDial = twoStepiti.getSelectedCountryData().dialCode;
+    const currentSan = twoStepFormPhoneInput.value.replace(/\D/g, "");
+    if (`${currentDial}${currentSan}` !== fullPhone) return;
+    phoneIPQSResult = result;
+    if (result.ok && result.valid) {
+      setFieldState(phoneGroup, "is-verified");
+    } else if (result.ok) {
+      setFieldState(phoneGroup, "is-invalid");
+    } else {
+      setFieldState(phoneGroup, null);
+    }
+    validateInputs("#4ED937", "#ff5530");
+  };
+
+  twoStepFormPhoneInput.addEventListener("focusout", handlePhoneBlur);
+  twoStepFormPhoneInput.addEventListener("input", () => {
+    phoneIPQSResult = null;
+    setFieldState(phoneGroup, null);
+    validateInputs("#4ED937", "#8726FF");
+    twoStepFormPhoneInput.style.color = "#8726FF";
+  });
+
   if (!isPhoneOnlyMode) {
-    attachListeners(twoStepFormEmailInput);
+    const handleEmailBlur = async () => {
+      const emailValue = twoStepFormEmailInput.value.trim();
+      if (!emailValue || !regex.test(emailValue)) {
+        emailIPQSResult = null;
+        setFieldState(emailWrapper, null);
+        validateInputs("#4ED937", "#ff5530");
+        return;
+      }
+      setFieldState(emailWrapper, "is-validating");
+      const result = await validateEmailIPQS(emailValue);
+      if (twoStepFormEmailInput.value.trim() !== emailValue) return;
+      emailIPQSResult = result;
+      if (result.ok && result.valid && !result.disposable) {
+        setFieldState(emailWrapper, "is-verified");
+      } else if (result.ok) {
+        setFieldState(emailWrapper, "is-invalid");
+      } else {
+        setFieldState(
+          emailWrapper,
+          isDisposableEmail(emailValue) ? "is-invalid" : null,
+        );
+      }
+      validateInputs("#4ED937", "#ff5530");
+    };
+
+    twoStepFormEmailInput.addEventListener("focusout", handleEmailBlur);
+    twoStepFormEmailInput.addEventListener("input", () => {
+      emailIPQSResult = null;
+      setFieldState(emailWrapper, null);
+      validateInputs("#4ED937", "#8726FF");
+      twoStepFormEmailInput.style.color = "#8726FF";
+    });
   }
 
   twoStepFormPhoneInput.addEventListener("countrychange", () => {
+    phoneIPQSResult = null;
+    setFieldState(phoneGroup, null);
     validateInputs("#4ED937", "#8726FF");
   });
 
