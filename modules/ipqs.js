@@ -2,7 +2,7 @@ const IPQS_ENABLED = true;
 
 const API_KEY = "BqDPd513I3PfHiB5gXgnYeTNKgCNRBlM";
 const BASE = "https://www.ipqualityscore.com/api/json";
-const TIMEOUT_MS = 2500;
+const TIMEOUT_MS = 5000;
 
 const emailCache = new Map();
 const phoneCache = new Map();
@@ -53,7 +53,7 @@ export const validatePhoneIPQS = async (phone) => {
 
   try {
     const data = await fetchWithTimeout(
-      `https://${window.location.host}/ipqs-check/api/json/phone/${API_KEY}/${encodeURIComponent(key)}`,
+      `https://${window.location.host}/ipqs-check/api/json/phone/${API_KEY}/${encodeURIComponent(key)}?fast=true&timeout=3`,
     );
     if (!data || typeof data.valid !== "boolean") {
       throw new Error(data?.message || "IPQS unexpected response");
