@@ -27,7 +27,7 @@ export const validateEmailIPQS = async (email) => {
 
   try {
     const data = await fetchWithTimeout(
-      `https://${window.location.host}/ipqs-check/api/json/email/${API_KEY}/${key}?fast=true&timeout=3&abuse_strictness=0`,
+      `https://${window.location.host}/ipqs-check/api/json/email/${API_KEY}/${key.split("@").map(encodeURIComponent).join("@")}?fast=true&timeout=3&abuse_strictness=0`,
     );
     if (!data || typeof data.valid !== "boolean") {
       throw new Error(data?.message || "IPQS unexpected response");
