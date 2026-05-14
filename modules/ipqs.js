@@ -1,4 +1,4 @@
-const IPQS_ENABLED = false;
+const IPQS_ENABLED = true;
 
 const API_KEY = "BqDPd513I3PfHiB5gXgnYeTNKgCNRBlM";
 const BASE = "https://www.ipqualityscore.com/api/json";
