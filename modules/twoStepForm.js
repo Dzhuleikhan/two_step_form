@@ -988,3 +988,5 @@ twoStepFormMain.addEventListener("submit", (e) => {
 });
 
 gsap.to(".preloader", { opacity: 0, duration: 0.25, delay: 0.5 });
+
+// update
