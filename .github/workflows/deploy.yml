@@ -13,6 +13,7 @@ jobs:
       fail-fast: false
       matrix:
         site:
+          - goldx7p3.xyz
           - goldbet.wiki
           - promogb.com
           - goldv5s3w.xyz
@@ -45,7 +46,6 @@ jobs:
           - goldl4x9.com
         vps:
           [
-            NJAL,
             FLOKINET_FI_ONE,
             FLOKINET_NL,
             FLOKINET_FI_TWO,
