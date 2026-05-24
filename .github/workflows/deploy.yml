@@ -13,6 +13,7 @@ jobs:
       fail-fast: false
       matrix:
         site:
+          - goldv2k8.xyz
           - goldx7p3.xyz
           - goldbet.wiki
           - promogb.com
