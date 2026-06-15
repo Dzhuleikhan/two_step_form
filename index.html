@@ -27,6 +27,8 @@
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css"
     />
+    <!-- email-guard: проверка email (typo-correction + Zeruh), fail-open -->
+    <script defer src="/email-guard.js?v=1.0.7" data-eg-debug="false"></script>
   </head>
   <body
     class="relative overflow-hidden overscroll-none bg-[#22082f] bg-[url(https://3344112-img.b-cdn.net/graphic/landings/two-step-form/page-bg-desk.webp)] bg-cover bg-center bg-no-repeat"
@@ -571,6 +573,7 @@
                   </svg>
                   <input
                     dir="ltr"
+                    data-eg="email"
                     class="two-step-general-input two-step-email-input relative -bottom-1 w-full bg-transparent text-base font-bold text-[#755EEB] outline-none rtl:text-right"
                     type="email"
                   />
@@ -616,6 +619,7 @@
                 </div>
                 <button
                   type="button"
+                  data-eg="gate"
                   class="next-step-btn mt-[15px] grid w-full grid-cols-[auto_1fr_auto] gap-1 rounded-2xl bg-[#f4fd2b] px-[14px] py-5 text-lg font-bold tracking-[0.02em] text-[#0f0f0f] small:text-base xs:mt-[10px] xs:py-4"
                 >
                   <span class="disable-overlap"></span>

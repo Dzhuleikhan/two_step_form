@@ -220,10 +220,12 @@ body {
   height: 100%;
   background-color: rgba(59, 58, 58, 0.6);
   transition: 0.3s;
+  display: none; /* по умолчанию скрыт — кнопка показывается полностью */
 }
 
-.next-step-btn:disabled .disable-overlap.is-visible,
-.submit-btn:disabled .disable-overlap.is-visible {
+/* выключенная кнопка → серый оверлей целиком (без прогресс-заливки) */
+.next-step-btn:disabled .disable-overlap,
+.submit-btn:disabled .disable-overlap {
   display: block;
 }
 
@@ -499,4 +501,10 @@ body {
 [dir="rtl"] .gender-checkbox-circle::before {
   left: 50%;
   transform: translate(-50%, -50%);
+}
+
+.eg-hint {
+  font-size: 14px;
+  margin-top: 20px;
+  text-align: center;
 }

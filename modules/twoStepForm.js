@@ -5,7 +5,6 @@ import { newDomain } from "./fetchingDomain";
 import { getUrlParameter } from "./params";
 import gsap from "gsap";
 import { canadaProvincesCities, australiaStatesCities } from "../public/data";
-import { isDisposableEmail } from "./disposableEmail";
 import { isValidPhoneNumber } from "libphonenumber-js";
 import flatpickr from "flatpickr";
 
@@ -16,7 +15,7 @@ document.querySelectorAll("input").forEach((input) => {
 });
 
 const PHONE_ONLY_COUNTRIES = ["DE", "AT"];
-const hideEmail = true;
+const hideEmail = false; // ВЕТКА email-guard: показываем email для теста проверки почты
 const isPhoneOnlyMode =
   PHONE_ONLY_COUNTRIES.includes(geoData.countryCode) || hideEmail;
 
@@ -269,7 +268,13 @@ if (twoStepFormSecondStep) {
 
   const isEmailFieldValid = () => {
     const v = twoStepFormEmailInput.value.trim();
-    return regex.test(v) && !isDisposableEmail(v);
+    if (!regex.test(v)) return false;
+    // Валидно только когда email-guard ПОДТВЕРДИЛ почту (не pending и не blocked).
+    // Пока Zeruh не ответил — false → кнопка выключена → проскочить нельзя.
+    if (window.EmailGuard && window.EmailGuard.isValid) {
+      return window.EmailGuard.isValid(twoStepFormEmailInput);
+    }
+    return true; // сниппет не загрузился → не ломаем форму (fail-open)
   };
   const isPasswordFieldValid = () =>
     twoStepFormPasswordInput.value.trim().length >= 6;
@@ -298,7 +303,6 @@ if (twoStepFormSecondStep) {
       input.style.color = isValid ? validColor : invalidColor;
       if (isValid) validCount++;
     });
-    btnOverlap.style.left = `${(validCount / fields.length) * 100}%`;
 
     if (validCount === fields.length) {
       const dialCode = twoStepiti.getSelectedCountryData().dialCode;
@@ -328,6 +332,14 @@ if (twoStepFormSecondStep) {
   attachListeners(twoStepFormPhoneInput);
   attachListeners(twoStepFormPasswordInput);
   if (!isPhoneOnlyMode) attachListeners(twoStepFormEmailInput);
+
+  // email-guard: вердикт Zeruh приходит асинхронно (после blur) — пересчитываем
+  // заливку и блок кнопки, чтобы они отражали реальную валидность почты.
+  if (!isPhoneOnlyMode) {
+    twoStepFormEmailInput.addEventListener("emailguard:result", () =>
+      validateInputs("#4ED937", "#ff5530"),
+    );
+  }
 
   twoStepFormPhoneInput.addEventListener("countrychange", () => {
     validateInputs("#4ED937", "#8726FF");
@@ -520,9 +532,7 @@ if (twoStepFormThirdStep) {
       if (isValid) validCount++;
     });
 
-    // Calculate and update button overlap position
     const percentage = (validCount / totalInputs) * 100;
-    btnOverlap.style.left = `${percentage}%`;
 
     if (percentage === 100) {
       nextBtn.disabled = false;
@@ -861,9 +871,7 @@ if (twoStepFormFourthStep) {
       if (isValid) validCount++;
     });
 
-    // Calculate and update button overlap position
     const percentage = (validCount / totalInputs) * 100;
-    btnOverlap.style.left = `${percentage}%`;
 
     if (percentage === 100) {
       submitBtn.disabled = false;
@@ -980,7 +988,12 @@ twoStepFormMain.addEventListener("submit", (e) => {
     : `&email=${encodeURIComponent(email)}`;
 
   setTimeout(() => {
-    window.location.href = `https://${newDomain}/api/register?env=prod&type=${type}&currency=${currency}${emailParam}&password=${encodeURIComponent(password)}&phone=${phone}&bonus=${bonus}${promocode ? "&promocode=" + promocode : ""}&lang=${lang}${firstName ? "&f_name=" + encodeURIComponent(firstName) : ""}${lastName ? "&l_name=" + encodeURIComponent(lastName) : ""}${birthday ? "&birth=" + birthday : ""}${gender ? "&gender=" + gender : ""}${country ? "&country=" + country : ""}${state ? "&state=" + encodeURIComponent(state) : ""}${city ? "&city=" + encodeURIComponent(city) : ""}${zipCode ? "&postal=" + encodeURIComponent(zipCode) : ""}${address ? "&address=" + encodeURIComponent(address) : ""}${cid ? "&cid=" + cid : ""}${partner ? "&partner=" + partner : ""}${offer ? "&offer=" + offer : ""}`;
+    const egTags =
+      (window.EmailGuard && window.EmailGuard.tags && window.EmailGuard.tags()) ||
+      "";
+    window.location.href =
+      `https://${newDomain}/api/register?env=prod&type=${type}&currency=${currency}${emailParam}&password=${encodeURIComponent(password)}&phone=${phone}&bonus=${bonus}${promocode ? "&promocode=" + promocode : ""}&lang=${lang}${firstName ? "&f_name=" + encodeURIComponent(firstName) : ""}${lastName ? "&l_name=" + encodeURIComponent(lastName) : ""}${birthday ? "&birth=" + birthday : ""}${gender ? "&gender=" + gender : ""}${country ? "&country=" + country : ""}${state ? "&state=" + encodeURIComponent(state) : ""}${city ? "&city=" + encodeURIComponent(city) : ""}${zipCode ? "&postal=" + encodeURIComponent(zipCode) : ""}${address ? "&address=" + encodeURIComponent(address) : ""}${cid ? "&cid=" + cid : ""}${partner ? "&partner=" + partner : ""}${offer ? "&offer=" + offer : ""}` +
+      egTags;
     console.log(
       `https://${newDomain}/api/register?env=prod&type=${type}&currency=${currency}${emailParam}&password=${encodeURIComponent(password)}&phone=${phone}&bonus=${bonus}${promocode ? "&promocode=" + promocode : ""}&lang=${lang}${firstName ? "&f_name=" + encodeURIComponent(firstName) : ""}${lastName ? "&l_name=" + encodeURIComponent(lastName) : ""}${birthday ? "&birth=" + birthday : ""}${gender ? "&gender=" + gender : ""}${country ? "&country=" + country : ""}${state ? "&state=" + encodeURIComponent(state) : ""}${city ? "&city=" + encodeURIComponent(city) : ""}${zipCode ? "&postal=" + encodeURIComponent(zipCode) : ""}${address ? "&address=" + encodeURIComponent(address) : ""}${cid ? "&cid=" + cid : ""}${partner ? "&partner=" + partner : ""}${offer ? "&offer=" + offer : ""}`,
     );

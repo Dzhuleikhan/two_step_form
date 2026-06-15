@@ -4,7 +4,6 @@ import "intl-tel-input/build/css/intlTelInput.css";
 import "./modules/geoLocation";
 import "./modules/modalCurrency";
 import "./modules/itiTelInput";
-import "./modules/disposableEmail";
 import "./modules/twoStepForm";
 import "./modules/fetchingDomain";
 import "./modules/params";
