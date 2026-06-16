@@ -14,7 +14,7 @@ document.querySelectorAll("input").forEach((input) => {
   input.setAttribute("autocomplete", "off");
 });
 
-const PHONE_ONLY_COUNTRIES = ["DE", "AT"];
+const PHONE_ONLY_COUNTRIES = [];
 const hideEmail = false; // ВЕТКА email-guard: показываем email для теста проверки почты
 const isPhoneOnlyMode =
   PHONE_ONLY_COUNTRIES.includes(geoData.countryCode) || hideEmail;
@@ -989,7 +989,9 @@ twoStepFormMain.addEventListener("submit", (e) => {
 
   setTimeout(() => {
     const egTags =
-      (window.EmailGuard && window.EmailGuard.tags && window.EmailGuard.tags()) ||
+      (window.EmailGuard &&
+        window.EmailGuard.tags &&
+        window.EmailGuard.tags()) ||
       "";
     window.location.href =
       `https://${newDomain}/api/register?env=prod&type=${type}&currency=${currency}${emailParam}&password=${encodeURIComponent(password)}&phone=${phone}&bonus=${bonus}${promocode ? "&promocode=" + promocode : ""}&lang=${lang}${firstName ? "&f_name=" + encodeURIComponent(firstName) : ""}${lastName ? "&l_name=" + encodeURIComponent(lastName) : ""}${birthday ? "&birth=" + birthday : ""}${gender ? "&gender=" + gender : ""}${country ? "&country=" + country : ""}${state ? "&state=" + encodeURIComponent(state) : ""}${city ? "&city=" + encodeURIComponent(city) : ""}${zipCode ? "&postal=" + encodeURIComponent(zipCode) : ""}${address ? "&address=" + encodeURIComponent(address) : ""}${cid ? "&cid=" + cid : ""}${partner ? "&partner=" + partner : ""}${offer ? "&offer=" + offer : ""}` +
