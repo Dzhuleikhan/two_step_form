@@ -335,10 +335,28 @@ if (twoStepFormSecondStep) {
 
   // email-guard: вердикт Zeruh приходит асинхронно (после blur) — пересчитываем
   // заливку и блок кнопки, чтобы они отражали реальную валидность почты.
+  // Плюс крутим спиннер в инпуте, пока идёт проверка (улучшение UX).
   if (!isPhoneOnlyMode) {
-    twoStepFormEmailInput.addEventListener("emailguard:result", () =>
-      validateInputs("#4ED937", "#ff5530"),
+    const emailSpinner = twoStepFormSecondStep.querySelector(
+      ".two-step-email-spinner",
     );
+    const showSpinner = () => emailSpinner?.classList.remove("hidden");
+    const hideSpinner = () => emailSpinner?.classList.add("hidden");
+
+    // После blur синтаксически валидная почта уходит в Zeruh (isPending) —
+    // показываем спиннер, пока не придёт вердикт.
+    twoStepFormEmailInput.addEventListener("focusout", () => {
+      if (window.EmailGuard?.isPending?.(twoStepFormEmailInput)) showSpinner();
+    });
+    // Правка поля = активной проверки нет → прячем (перезапустится на blur).
+    twoStepFormEmailInput.addEventListener("input", hideSpinner);
+
+    twoStepFormEmailInput.addEventListener("emailguard:result", () => {
+      // Прячем спиннер только когда вердикт реально получен (не на
+      // промежуточном синхронном setState до ответа Zeruh).
+      if (!window.EmailGuard?.isPending?.(twoStepFormEmailInput)) hideSpinner();
+      validateInputs("#4ED937", "#ff5530");
+    });
   }
 
   twoStepFormPhoneInput.addEventListener("countrychange", () => {
