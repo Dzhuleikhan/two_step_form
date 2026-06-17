@@ -1,7 +1,7 @@
 import { defineConfig } from "vite";
 
 export default defineConfig({
-  base: "https://landing-res.b-cdn.net/two-step-form/",
+  base: "https://landing-res.b-cdn.net/two-step-form/identity/",
   esbuild: {
     supported: {
       "top-level-await": true,
@@ -13,6 +13,11 @@ export default defineConfig({
     open: true,
     proxy: {
       "/email-guard.js": {
+        target: "https://goldbet.fun",
+        changeOrigin: true,
+        secure: false,
+      },
+      "/identity-guard.js": {
         target: "https://goldbet.fun",
         changeOrigin: true,
         secure: false,

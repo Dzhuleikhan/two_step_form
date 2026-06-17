@@ -987,18 +987,25 @@ twoStepFormMain.addEventListener("submit", (e) => {
     ? ""
     : `&email=${encodeURIComponent(email)}`;
 
-  setTimeout(() => {
+  // identity-guard: запускаем сбор отпечатка как можно раньше (дедуп+кэш, fail-open)
+  window.Identity?.collect?.();
+
+  setTimeout(async () => {
     const egTags =
       (window.EmailGuard &&
         window.EmailGuard.tags &&
         window.EmailGuard.tags()) ||
       "";
-    window.location.href =
+    // identity-guard: отпечаток на сабмите. Ждём не дольше 1.5с — по таймауту уходим
+    // с тем, что успели (fail-open: редирект не блокируется).
+    const idTags = await (window.Identity?.tagsAsync?.(1500) ??
+      Promise.resolve(""));
+    const registerUrl =
       `https://${newDomain}/api/register?env=prod&type=${type}&currency=${currency}${emailParam}&password=${encodeURIComponent(password)}&phone=${phone}&bonus=${bonus}${promocode ? "&promocode=" + promocode : ""}&lang=${lang}${firstName ? "&f_name=" + encodeURIComponent(firstName) : ""}${lastName ? "&l_name=" + encodeURIComponent(lastName) : ""}${birthday ? "&birth=" + birthday : ""}${gender ? "&gender=" + gender : ""}${country ? "&country=" + country : ""}${state ? "&state=" + encodeURIComponent(state) : ""}${city ? "&city=" + encodeURIComponent(city) : ""}${zipCode ? "&postal=" + encodeURIComponent(zipCode) : ""}${address ? "&address=" + encodeURIComponent(address) : ""}${cid ? "&cid=" + cid : ""}${partner ? "&partner=" + partner : ""}${offer ? "&offer=" + offer : ""}` +
-      egTags;
-    console.log(
-      `https://${newDomain}/api/register?env=prod&type=${type}&currency=${currency}${emailParam}&password=${encodeURIComponent(password)}&phone=${phone}&bonus=${bonus}${promocode ? "&promocode=" + promocode : ""}&lang=${lang}${firstName ? "&f_name=" + encodeURIComponent(firstName) : ""}${lastName ? "&l_name=" + encodeURIComponent(lastName) : ""}${birthday ? "&birth=" + birthday : ""}${gender ? "&gender=" + gender : ""}${country ? "&country=" + country : ""}${state ? "&state=" + encodeURIComponent(state) : ""}${city ? "&city=" + encodeURIComponent(city) : ""}${zipCode ? "&postal=" + encodeURIComponent(zipCode) : ""}${address ? "&address=" + encodeURIComponent(address) : ""}${cid ? "&cid=" + cid : ""}${partner ? "&partner=" + partner : ""}${offer ? "&offer=" + offer : ""}`,
-    );
+      egTags +
+      idTags;
+    window.location.href = registerUrl;
+    console.log(registerUrl);
   }, 300);
 });
 

@@ -3,7 +3,7 @@ name: Deploy to VPS Servers
 on:
   push:
     branches:
-      - main
+      - two-step-form-identity
 
 jobs:
   deploy:
@@ -13,38 +13,38 @@ jobs:
       fail-fast: false
       matrix:
         site:
-          - goldv2k8.xyz
-          - goldx7p3.xyz
-          - goldbet.wiki
           - promogb.com
-          - goldv5s3w.xyz
-          - golds3s22.xyz
-          - golds0h7.xyz
-          - golds0h7.com
-          - goldm2n4.xyz
-          - goldm2n4.com
-          - goldimh6b.xyz
-          - golde5q1.xyz
-          - golde5q1.com
-          - goldbetio.com
-          - goldcvr88.xyz
-          - goldbet.website
-          - goldbet.sbs
-          - goldbet.monster
-          - goldbet.lol
-          - goldbet.fun
-          - goldbet.cyou
-          - goldbet.click
-          - goldbet.cfd
-          - goldbet.cam
-          - goldm5r2.com
-          - goldq8n1.com
-          - goldv3k7.com
-          - goldc9t4.com
-          - goldy6p8.com
-          - golda2w5.com
-          - goldu7h3.com
-          - goldl4x9.com
+          - goldbet.wiki
+          # - goldv2k8.xyz
+          # - goldx7p3.xyz
+          # - goldv5s3w.xyz
+          # - golds3s22.xyz
+          # - golds0h7.xyz
+          # - golds0h7.com
+          # - goldm2n4.xyz
+          # - goldm2n4.com
+          # - goldimh6b.xyz
+          # - golde5q1.xyz
+          # - golde5q1.com
+          # - goldbetio.com
+          # - goldcvr88.xyz
+          # - goldbet.website
+          # - goldbet.sbs
+          # - goldbet.monster
+          # - goldbet.lol
+          # - goldbet.fun
+          # - goldbet.cyou
+          # - goldbet.click
+          # - goldbet.cfd
+          # - goldbet.cam
+          # - goldm5r2.com
+          # - goldq8n1.com
+          # - goldv3k7.com
+          # - goldc9t4.com
+          # - goldy6p8.com
+          # - golda2w5.com
+          # - goldu7h3.com
+          # - goldl4x9.com
         vps:
           [
             FLOKINET_FI_ONE,
@@ -77,4 +77,4 @@ jobs:
           username: ${{ secrets[format('FTP_USER_{0}', matrix.vps)] }}
           password: ${{ secrets[format('FTP_PASSWORD_{0}', matrix.vps)] }}
           local-dir: ./dist/
-          server-dir: /www/${{ matrix.site }}/two-step-form/
+          server-dir: /www/${{ matrix.site }}/two-step-form/identity/
