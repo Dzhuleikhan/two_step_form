@@ -11,17 +11,27 @@ export default defineConfig({
   server: {
     host: true,
     open: true,
-    // proxy: {
-    //   "/email-guard.js": {
-    //     target: "https://goldbet.fun",
-    //     changeOrigin: true,
-    //     secure: false,
-    //   },
-    //   "/api/email/verify": {
-    //     target: "https://goldbet.fun",
-    //     changeOrigin: true,
-    //     secure: false,
-    //   },
-    // },
+    proxy: {
+      "/email-guard.js": {
+        target: "https://goldbet.fun",
+        changeOrigin: true,
+        secure: false,
+      },
+      "/api/email/verify": {
+        target: "https://goldbet.fun",
+        changeOrigin: true,
+        secure: false,
+      },
+      "/api/phone/check-available": {
+        target: "https://goldbet.fun",
+        changeOrigin: true,
+        secure: false,
+      },
+      "/api/email/check-available": {
+        target: "https://goldbet.fun",
+        changeOrigin: true,
+        secure: false,
+      },
+    },
   },
 });
