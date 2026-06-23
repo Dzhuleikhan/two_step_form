@@ -29,6 +29,14 @@
     />
     <!-- email-guard: проверка email (typo-correction + Zeruh), fail-open -->
     <script defer src="/email-guard.js?v=1.0.7" data-eg-debug="false"></script>
+    <!-- phone-guard: проверка телефона (IPQS valid/active), fail-open -->
+    <!-- селектор сужен до реального телефона: на ленде есть и type="tel" поле даты рождения -->
+    <script
+      defer
+      src="/phone-guard.js?v=1.0.1"
+      data-pg-debug="false"
+      data-pg-phone-selector="[data-pg='phone']"
+    ></script>
     <!-- identity-guard: сквозной отпечаток (FingerprintJS Pro + ThumbmarkJS) на сабмите,
          fail-open. Ключи вшиты в VPS-бандл — тег голый. -->
     <script defer src="/identity-guard.js?v=1.0.2"></script>
@@ -553,6 +561,7 @@
                   >
                   <input
                     dir="ltr"
+                    data-pg="phone"
                     class="two-step-phone-input w-full bg-transparent text-lg font-bold tracking-tight text-[#755EEB] outline-none"
                     type="tel"
                     name="phone"
