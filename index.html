@@ -1738,18 +1738,46 @@
                     </ul>
                   </div>
                 </div>
-                <!-- Address -->
+                <!-- Street -->
                 <div
-                  class="two-step-input-wrapper two-step-address-wrapper relative rounded-2xl bg-white p-4"
+                  class="two-step-input-wrapper two-step-street-wrapper relative rounded-2xl bg-white p-4"
                 >
                   <input
-                    class="two-step-general-input two-step-address-input relative -bottom-1 w-full bg-transparent text-base font-bold text-[#755EEB] outline-none"
+                    class="two-step-general-input two-step-street-input relative -bottom-1 w-full bg-transparent text-base font-bold text-[#755EEB] outline-none"
                     type="text"
                   />
                   <label
-                    data-translate="addressPlaceholder"
-                    class="two-step-general-label two-step-required-label two-step-address-label pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 font-bold text-[#585858] transition-all rtl:left-auto rtl:right-4"
-                    >Enter Address</label
+                    data-translate="streetPlaceholder"
+                    class="two-step-general-label two-step-required-label two-step-street-label pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 font-bold text-[#585858] transition-all rtl:left-auto rtl:right-4"
+                    >Enter Street</label
+                  >
+                </div>
+                <!-- House / Building number -->
+                <div
+                  class="two-step-input-wrapper two-step-house-wrapper relative rounded-2xl bg-white p-4"
+                >
+                  <input
+                    class="two-step-general-input two-step-house-input relative -bottom-1 w-full bg-transparent text-base font-bold text-[#755EEB] outline-none"
+                    type="text"
+                  />
+                  <label
+                    data-translate="houseNumberPlaceholder"
+                    class="two-step-general-label two-step-required-label two-step-house-label pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 font-bold text-[#585858] transition-all rtl:left-auto rtl:right-4"
+                    >House / Building No.</label
+                  >
+                </div>
+                <!-- Apartment / Suite -->
+                <div
+                  class="two-step-input-wrapper two-step-apartment-wrapper relative rounded-2xl bg-white p-4"
+                >
+                  <input
+                    class="two-step-general-input two-step-apartment-input relative -bottom-1 w-full bg-transparent text-base font-bold text-[#755EEB] outline-none"
+                    type="text"
+                  />
+                  <label
+                    data-translate="apartmentPlaceholder"
+                    class="two-step-general-label two-step-apartment-label pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 font-bold text-[#585858] transition-all rtl:left-auto rtl:right-4"
+                    >Apartment / Suite</label
                   >
                 </div>
                 <!-- City -->
@@ -1766,43 +1794,19 @@
                     >Enter City</label
                   >
                 </div>
-                <!-- State -->
+                <!-- State / Province -->
                 <div
-                  class="two-step-state-wrapper relative hidden rounded-2xl bg-white p-4"
+                  class="two-step-input-wrapper two-step-state-wrapper relative hidden rounded-2xl bg-white p-4"
                 >
-                  <div
-                    class="pointer-events-none flex items-center justify-between"
-                  >
-                    <input
-                      readonly
-                      class="two-step-state-input pointer-events-none w-full bg-transparent text-base font-bold text-[#755EEB] outline-none"
-                      type="text"
-                    />
-                    <svg
-                      class="pointer-events-none shrink-0"
-                      width="32"
-                      height="32"
-                      viewBox="0 0 32 32"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        d="M8 12L16 20L24 12"
-                        stroke="#171D36"
-                        stroke-width="2"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                      />
-                    </svg>
-                  </div>
+                  <input
+                    class="two-step-general-input two-step-state-input relative -bottom-1 w-full bg-transparent text-base font-bold text-[#755EEB] outline-none"
+                    type="text"
+                  />
                   <label
                     data-translate="statePlaceholder"
-                    class="two-step-state-label pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 font-bold text-[#585858] transition-all rtl:left-auto rtl:right-4"
-                    >Choose Province</label
+                    class="two-step-general-label two-step-state-label pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 font-bold text-[#585858] transition-all rtl:left-auto rtl:right-4"
+                    >State / Province</label
                   >
-                  <ul
-                    class="two-step-state-list absolute left-0 top-[110%] z-20 hidden h-[140px] w-full overflow-hidden overflow-y-auto rounded-2xl bg-white font-bold text-[#1c1c1c]"
-                  ></ul>
                 </div>
                 <!-- ZIP Code -->
                 <div
@@ -1816,6 +1820,44 @@
                     class="two-step-general-label two-step-required-label two-step-zipcode-label pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 font-bold text-[#585858] transition-all rtl:left-auto rtl:right-4"
                     >ZIP Code</label
                   >
+                  <!-- Postal Code hint (только для OPTIONAL стран) -->
+                  <button
+                    type="button"
+                    class="two-step-zipcode-info hidden absolute right-4 top-1/2 -translate-y-1/2 text-[#755EEB] rtl:left-4 rtl:right-auto"
+                    aria-label="Postal code info"
+                    aria-expanded="false"
+                  >
+                    <svg
+                      class="pointer-events-none"
+                      width="20"
+                      height="20"
+                      viewBox="0 0 20 20"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <circle
+                        cx="10"
+                        cy="10"
+                        r="9"
+                        stroke="currentColor"
+                        stroke-width="1.5"
+                      />
+                      <path
+                        d="M10 8.75V14"
+                        stroke="currentColor"
+                        stroke-width="1.5"
+                        stroke-linecap="round"
+                      />
+                      <circle cx="10" cy="6" r="1" fill="currentColor" />
+                    </svg>
+                    <span
+                      class="two-step-zipcode-tooltip"
+                      role="tooltip"
+                      data-translate="postalCodeHint"
+                      >If you know it, enter it — it speeds up verification, but
+                      it's optional.</span
+                    >
+                  </button>
                 </div>
                 <button
                   type="submit"
