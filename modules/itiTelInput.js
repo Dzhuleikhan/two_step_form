@@ -1,6 +1,7 @@
 import intlTelInput from "intl-tel-input";
 import { Metadata } from "libphonenumber-js/core";
 import minMetadata from "libphonenumber-js/metadata.min.json";
+import { isValidPhoneNumber } from "libphonenumber-js";
 import { geoData } from "./geoLocation";
 
 const getPossibleLengths = (countryCode) => {
@@ -24,9 +25,12 @@ const stripDuplicatedDialCode = (digits, countryCode, dialCode) => {
   const lengths = getPossibleLengths(countryCode);
   if (!rest || !lengths) return digits;
   const maxLen = Math.max(...lengths);
-  if (lengths.includes(digits.length)) return digits;
   if (digits.length > maxLen && rest.length <= maxLen) return rest;
-  if (lengths.includes(rest.length)) return rest;
+  if (isValidPhoneNumber("+" + dialCode + digits)) return digits;
+  if (isValidPhoneNumber("+" + digits)) return rest;
+  if (lengths.includes(rest.length) && !lengths.includes(digits.length)) {
+    return rest;
+  }
   return digits;
 };
 
