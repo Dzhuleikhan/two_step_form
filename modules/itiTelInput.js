@@ -3,14 +3,31 @@ import { Metadata } from "libphonenumber-js/core";
 import minMetadata from "libphonenumber-js/metadata.min.json";
 import { geoData } from "./geoLocation";
 
-const getMaxDigitsForCountry = (countryCode) => {
+const getPossibleLengths = (countryCode) => {
   try {
     const meta = new Metadata(minMetadata);
     meta.selectNumberingPlan(countryCode);
-    return Math.max(...meta.numberingPlan.possibleLengths());
+    return meta.numberingPlan.possibleLengths();
   } catch {
-    return 15;
+    return null;
   }
+};
+
+const getMaxDigitsForCountry = (countryCode) => {
+  const lengths = getPossibleLengths(countryCode);
+  return lengths ? Math.max(...lengths) : 15;
+};
+
+const stripDuplicatedDialCode = (digits, countryCode, dialCode) => {
+  if (!dialCode || !digits.startsWith(dialCode)) return digits;
+  const rest = digits.slice(dialCode.length);
+  const lengths = getPossibleLengths(countryCode);
+  if (!rest || !lengths) return digits;
+  const maxLen = Math.max(...lengths);
+  if (lengths.includes(digits.length)) return digits;
+  if (digits.length > maxLen && rest.length <= maxLen) return rest;
+  if (lengths.includes(rest.length)) return rest;
+  return digits;
 };
 
 const twoStepPhoneInput = document.querySelector(".two-step-phone-input");
@@ -57,9 +74,16 @@ const updatePhoneFormat = () => {
 };
 
 const formatPhoneValue = () => {
-  const countryCode = twoStepiti.getSelectedCountryData().iso2?.toUpperCase();
+  const countryData = twoStepiti.getSelectedCountryData();
+  const countryCode = countryData.iso2?.toUpperCase();
+  const dialCode = countryData.dialCode;
   const maxDigits = getMaxDigitsForCountry(countryCode);
-  const digits = twoStepPhoneInput.value.replace(/\D/g, "").slice(0, maxDigits);
+  const raw = stripDuplicatedDialCode(
+    twoStepPhoneInput.value.replace(/\D/g, ""),
+    countryCode,
+    dialCode,
+  );
+  const digits = raw.slice(0, maxDigits);
 
   if (digits.length === 0) {
     twoStepPhoneInput.value = "";
