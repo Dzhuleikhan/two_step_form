@@ -5,6 +5,7 @@ import {
   hasStateField,
   formatPostalCode,
   validatePostalCodeFormat,
+  getCashBonusAmount,
 } from "../public/data";
 import { geoData, settingZipCodePlaceholder } from "./geoLocation";
 import { twoStepiti } from "./itiTelInput";
@@ -174,36 +175,57 @@ const twoStepBonusCheckbox = document.querySelectorAll(
 );
 const appliedBonusWrapper = document.querySelectorAll(".applied-bonus-wrapper");
 
+// Переносим содержимое строки бонуса вместе с ключом перевода, иначе при смене
+// языка блок «выбранный бонус» вернётся к тексту, зашитому в разметке
+const copyBonusLine = (source, target) => {
+  if (!target) return;
+
+  target.innerHTML = source?.innerHTML ?? "";
+
+  const translateKey = source?.getAttribute("data-translate");
+  if (translateKey) {
+    target.setAttribute("data-translate", translateKey);
+  } else {
+    target.removeAttribute("data-translate");
+  }
+};
+
+// Показываем выбранный бонус в шапке 2-го и следующих шагов
+const syncAppliedBonus = (input) => {
+  const checkbox = input.closest(".two-step-bonus-checkbox");
+  const bonusImg = input.getAttribute("data-img");
+  const bonusName = checkbox.querySelector(".two-step-bonus-checkbox-name");
+  // у FS/Cash карточек второй строки нет — подпись может отсутствовать
+  const bonusText = checkbox.querySelector(".two-step-bonus-checkbox-text");
+
+  appliedBonusWrapper.forEach((appliedBonus) => {
+    const img = appliedBonus.querySelector(".applied-bonus-img");
+
+    img.setAttribute("src", bonusImg);
+    copyBonusLine(bonusName, appliedBonus.querySelector(".applied-bonus-name"));
+    copyBonusLine(bonusText, appliedBonus.querySelector(".applied-bonus-text"));
+  });
+};
+
 twoStepBonusCheckbox.forEach((checkbox) => {
   const input = checkbox.querySelector("input");
   input.addEventListener("change", () => {
-    const bonusValue = input.value;
-    const bonusImg = input.getAttribute("data-img");
-    const bonusName = checkbox.querySelector(
-      ".two-step-bonus-checkbox-name",
-    ).innerHTML;
-    const bonusText = checkbox.querySelector(
-      ".two-step-bonus-checkbox-text",
-    ).innerHTML;
-
-    twoStepFormData.bonus = bonusValue;
+    twoStepFormData.bonus = input.value;
 
     twoStepFormData.bonus = checkTir1CurrencyMatch(
       twoStepFormData.currency,
       twoStepFormData.bonus,
     );
 
-    appliedBonusWrapper.forEach((appliedBonus) => {
-      const img = appliedBonus.querySelector(".applied-bonus-img");
-      const name = appliedBonus.querySelector(".applied-bonus-name");
-      const text = appliedBonus.querySelector(".applied-bonus-text");
-
-      img.setAttribute("src", bonusImg);
-      name.innerHTML = bonusName;
-      text.innerHTML = bonusText;
-    });
+    syncAppliedBonus(input);
   });
 });
+
+// Стартовая синхронизация — бонус выбран по умолчанию, change не сработает
+const initiallyCheckedBonus = document.querySelector(
+  'input[name="bonus"]:checked',
+);
+if (initiallyCheckedBonus) syncAppliedBonus(initiallyCheckedBonus);
 
 export const settingInitialBonusValue = (currency) => {
   const currencyEntry = countryCurrencyData.find(
@@ -243,6 +265,12 @@ export const settingInitialBonusValue = (currency) => {
       el.innerHTML = "EUR";
     });
   }
+
+  // Cash bonus: сумма из cashBonusAmount (свой список валют, фолбэк на EUR)
+  const cashBonusEntry = getCashBonusAmount(currency);
+  document.querySelectorAll(".cash-bonus-amount").forEach((el) => {
+    el.innerHTML = cashBonusEntry.amount;
+  });
 };
 
 // | INPUTS

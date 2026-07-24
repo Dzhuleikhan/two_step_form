@@ -185,7 +185,7 @@
                 <div
                   class="mt-[15px] space-y-[15px] xs:mt-[10px] xs:space-y-[10px]"
                 >
-                  <label class="two-step-bonus-checkbox relative block">
+                  <!-- <label class="two-step-bonus-checkbox relative block">
                     <input
                       class="welcome-bonus-input absolute appearance-none"
                       checked
@@ -231,14 +231,16 @@
                         class="two-step-bonus-checkbox-circle relative h-9 w-9 shrink-0 rounded-full bg-[#22072B] xs:h-7 xs:w-7"
                       ></div>
                     </div>
-                  </label>
+                  </label> -->
                   <label class="two-step-bonus-checkbox relative block">
                     <input
                       class="absolute appearance-none"
+                      checked
                       name="bonus"
                       type="radio"
-                      value="crypto"
-                      data-img="https://3344112-img.b-cdn.net/graphic/landings/twoStepFormImages/crypto-bonus-icon.webp"
+                      value=""
+                      data-promocode-type="fs"
+                      data-img="https://3344112-img.b-cdn.net/graphic/landings/twoStepFormImages/welcome-bonus-icon.webp"
                     />
                     <div
                       class="two-step-bonus-checkbox-div flex cursor-pointer items-center justify-between gap-5 rounded-2xl border-4 border-transparent bg-[#3d1b68] p-[10px] xs:gap-[10px]"
@@ -250,22 +252,16 @@
                           <img
                             width="52"
                             height="52"
-                            src="https://3344112-img.b-cdn.net/graphic/landings/twoStepFormImages/crypto-bonus-icon.webp"
+                            src="https://3344112-img.b-cdn.net/graphic/landings/twoStepFormImages/welcome-bonus-icon.webp"
                             alt="Image"
                           />
                         </div>
                         <div class="space-y-[5px]">
                           <p
-                            data-translate="cryptoBonus"
+                            data-translate="freeSpinsBonus"
                             class="two-step-bonus-checkbox-name text-lg font-bold leading-[117%] tracking-[0.02em] xs:text-sm"
                           >
-                            Satoshi Bonus
-                          </p>
-                          <p
-                            data-translate="cryptoBonusText"
-                            class="two-step-bonus-checkbox-text text-[15px] leading-[160%] xs:text-xs"
-                          >
-                            150% on Crypto Deposits
+                            100 Free Spins
                           </p>
                         </div>
                       </div>
@@ -279,7 +275,8 @@
                       class="absolute appearance-none"
                       name="bonus"
                       type="radio"
-                      value="highroller"
+                      value=""
+                      data-promocode-type="cash"
                       data-img="https://3344112-img.b-cdn.net/graphic/landings/twoStepFormImages/highroller-bonus-icon.webp"
                     />
                     <div
@@ -298,17 +295,12 @@
                         </div>
                         <div class="space-y-[5px]">
                           <p
-                            data-translate="highRollerBonus"
+                            data-translate="cashBonus"
                             class="two-step-bonus-checkbox-name text-lg font-bold leading-[117%] tracking-[0.02em] xs:text-sm"
                           >
-                            High Roller Bonus
-                          </p>
-                          <p
-                            data-translate="highRollerBonusText"
-                            class="two-step-bonus-checkbox-text text-[15px] leading-[160%] xs:text-xs"
-                          >
-                            200% on Deposits Over
-                            <span class="bonus-currency-symbol"></span>
+                            Cash Bonus
+                            <span class="cash-bonus-amount"></span>
+                            <span class="two-step-welcome-symbol"></span>
                           </p>
                         </div>
                       </div>
@@ -361,7 +353,7 @@
                   </label>
                 </div>
                 <!-- promocode -->
-                <div class="promocode-applied-wrapper">
+                <!-- <div class="promocode-applied-wrapper">
                   <div class="mt-[15px] xs:mt-[10px]">
                     <p
                       data-translate="iHavePromoCode"
@@ -440,7 +432,7 @@
                       You will get without deposit bonus
                     </p>
                   </div>
-                </div>
+                </div> -->
                 <button
                   type="button"
                   class="next-step-btn mt-[15px] grid w-full grid-cols-[auto_1fr_auto] gap-1 rounded-2xl bg-[#f4fd2b] px-[14px] py-5 text-lg font-bold tracking-[0.02em] text-[#0f0f0f] small:text-base xs:mt-[10px] xs:py-4"
@@ -502,21 +494,14 @@
                       </div>
                       <div class="space-y-[5px]">
                         <p
-                          data-translate="welcomeBonus"
+                          data-translate="freeSpinsBonus"
                           class="applied-bonus-name text-lg font-bold leading-[117%] tracking-[0.02em] small:text-sm"
                         >
-                          Welcome Bonus
+                          100 Free Spins
                         </p>
                         <p
                           class="applied-bonus-text text-[15px] leading-[160%] small:text-xs"
-                        >
-                          <span class="two-step-welcome-amount"></span>
-                          <span class="two-step-welcome-symbol"></span> +
-                          <span class="two-step-bonus-spins"></span>
-                          <span data-translate="welcomeBonusText"
-                            >on your first deposit</span
-                          >
-                        </p>
+                        ></p>
                       </div>
                     </div>
                     <svg
@@ -606,7 +591,10 @@
                     >Enter E-mail</label
                   >
                   <!-- email-guard: спиннер, пока идёт проверка почты в Zeruh -->
-                  <div class="two-step-email-spinner hidden" aria-hidden="true"></div>
+                  <div
+                    class="two-step-email-spinner hidden"
+                    aria-hidden="true"
+                  ></div>
                 </div>
                 <!-- email taken alert (текст подставляет JS из emailAvailability) -->
                 <p
@@ -703,21 +691,14 @@
                       </div>
                       <div class="space-y-[5px]">
                         <p
-                          data-translate="welcomeBonus"
+                          data-translate="freeSpinsBonus"
                           class="applied-bonus-name text-lg font-bold leading-[117%] tracking-[0.02em] small:text-sm"
                         >
-                          Welcome Bonus
+                          100 Free Spins
                         </p>
                         <p
                           class="applied-bonus-text text-[15px] leading-[160%] small:text-xs"
-                        >
-                          <span class="two-step-welcome-amount"></span>
-                          <span class="two-step-welcome-symbol"></span> +
-                          <span class="two-step-bonus-spins"></span>
-                          <span data-translate="welcomeBonusText"
-                            >on your first deposit</span
-                          >
-                        </p>
+                        ></p>
                       </div>
                     </div>
                     <svg
@@ -996,21 +977,14 @@
                       </div>
                       <div class="space-y-[5px]">
                         <p
-                          data-translate="welcomeBonus"
+                          data-translate="freeSpinsBonus"
                           class="applied-bonus-name text-lg font-bold leading-[117%] tracking-[0.02em] small:text-sm"
                         >
-                          Welcome Bonus
+                          100 Free Spins
                         </p>
                         <p
                           class="applied-bonus-text text-[15px] leading-[160%] small:text-xs"
-                        >
-                          <span class="two-step-welcome-amount"></span>
-                          <span class="two-step-welcome-symbol"></span> +
-                          <span class="two-step-bonus-spins"></span>
-                          <span data-translate="welcomeBonusText"
-                            >on your first deposit</span
-                          >
-                        </p>
+                        ></p>
                       </div>
                     </div>
                     <svg
@@ -1832,7 +1806,7 @@
                   <!-- Postal Code hint (только для OPTIONAL стран) -->
                   <button
                     type="button"
-                    class="two-step-zipcode-info hidden absolute right-4 top-1/2 -translate-y-1/2 text-[#755EEB] rtl:left-4 rtl:right-auto"
+                    class="two-step-zipcode-info absolute right-4 top-1/2 hidden -translate-y-1/2 text-[#755EEB] rtl:left-4 rtl:right-auto"
                     aria-label="Postal code info"
                     aria-expanded="false"
                   >
