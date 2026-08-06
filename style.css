@@ -590,16 +590,6 @@ body {
   text-align: center;
 }
 
-/* phone-guard: хинт ошибки IPQS (valid:false/active:false) — чисто под телефоном, по центру */
-.pg-hint {
-  margin-top: 6px;
-  font-size: 12px;
-  font-weight: 700;
-  line-height: 1.2;
-  text-align: center;
-  color: #ff5530;
-}
-
 /* email-guard: спиннер проверки почты (Zeruh) внутри инпута справа */
 .two-step-email-spinner {
   width: 20px;

@@ -1,9 +1,12 @@
-// Проверка занятости телефона через same-origin прокси на nginx ленда.
-// Эндпоинт: POST /api/phone/check-available  →  { available: true|false }.
-// Бэк (прод) отдаёт 201, поэтому ориентируемся на ТЕЛО ответа, а не на статус.
+// Проверка телефона через same-origin прокси на nginx ленда.
+// Эндпоинт: POST /api/phone/check-available. Бэк делает ДВЕ проверки сразу:
+//   1. качество номера (IPQS) + формат  → 400 { code: "invalid_phone" }
+//   2. занятость в базе                 → 201 { available: true|false }
+// Прод отдаёт 201, поэтому на успехе ориентируемся на ТЕЛО ответа, а не на статус.
 //
-// Принцип fail-open: блокируем форму ТОЛЬКО при однозначном available:false (занят).
-// Любая ошибка (сеть, таймаут, 4xx/5xx, кривое тело) → не блокируем — лид не теряем.
+// Принцип fail-open: блокируем форму ТОЛЬКО при однозначном вердикте —
+// available:false (занят) либо invalid_phone (номер не годится).
+// Любая другая ошибка (сеть, таймаут, 5xx, кривое тело) → не блокируем: лид не теряем.
 
 const ENDPOINT = "/api/phone/check-available";
 // Таймаут на проверку: медленный API не должен держать кнопку/спиннер —
@@ -13,7 +16,8 @@ const TIMEOUT_MS = 1500;
 // Превышение → перестаём слать запросы (fail-open). Реальная граница — nginx phone_rl.
 const MAX_CHECKS = 20;
 
-// e164 -> { pending: bool, errored: bool, available: bool|null }
+// e164 -> { pending: bool, errored: bool, invalid: bool, available: bool|null }
+// invalid — бэк забраковал сам номер (формат/IPQS), это финальный вердикт «не годится».
 const cache = new Map();
 let checksUsed = 0;
 
@@ -35,13 +39,23 @@ export function checkPhoneAvailability(e164) {
 
   // Кап на перебор: исчерпали лимит разных номеров → fail-open без запроса.
   if (checksUsed >= MAX_CHECKS) {
-    const capped = { pending: false, errored: true, available: null };
+    const capped = {
+      pending: false,
+      errored: true,
+      invalid: false,
+      available: null,
+    };
     cache.set(e164, capped);
     return Promise.resolve(capped);
   }
   checksUsed++;
 
-  const entry = { pending: true, errored: false, available: null };
+  const entry = {
+    pending: true,
+    errored: false,
+    invalid: false,
+    available: null,
+  };
   const controller = new AbortController();
   const timer = setTimeout(() => controller.abort(), TIMEOUT_MS);
 
@@ -51,15 +65,29 @@ export function checkPhoneAvailability(e164) {
     body: JSON.stringify({ phone: e164 }),
     signal: controller.signal,
   })
-    .then((res) => (res.ok ? res.json() : Promise.reject(res.status)))
-    .then((data) => {
+    // 400 несёт осмысленный вердикт по номеру — тело надо прочитать.
+    // Остальные не-2xx (5xx, 503 от nginx-лимита) — это «не знаем».
+    .then((res) =>
+      res.ok || res.status === 400
+        ? res.json().then((data) => ({ ok: res.ok, data }))
+        : Promise.reject(res.status),
+    )
+    .then(({ ok, data }) => {
+      if (!ok) {
+        // invalid_phone — бэк забраковал номер (формат или IPQS) → блокируем.
+        // Прочие 400 (invalid_request_body) — наш баг, а не вина юзера → fail-open.
+        if (data && data.code === "invalid_phone") entry.invalid = true;
+        else entry.errored = true;
+        return;
+      }
       entry.available =
         data && typeof data.available === "boolean" ? data.available : null;
       if (entry.available === null) entry.errored = true; // неожиданное тело → fail-open
     })
     .catch(() => {
-      // сеть / таймаут / 4xx / 5xx → fail-open
+      // сеть / таймаут / 5xx / нечитаемое тело → fail-open
       entry.errored = true;
+      entry.invalid = false;
       entry.available = null;
     })
     .finally(() => {
@@ -72,7 +100,8 @@ export function checkPhoneAvailability(e164) {
   return entry.promise.then(() => entry);
 }
 
-// Локализованный текст для занятого номера. Текст вшит сюда (как у email-guard),
+// Локализованный текст отказа по номеру — покрывает оба вердикта (занят / не годится),
+// формулировка нейтральная и подходит для обоих. Текст вшит сюда (как у email-guard),
 // чтобы не размазывать по translations.js. Языки без своего перевода → en-фолбэк.
 // NB: переводы am/ha/yo/ig/tw/rw/sw/mt/ga/lb/lm — best-effort, нужна вычитка носителями.
 const TAKEN_MESSAGES = {
