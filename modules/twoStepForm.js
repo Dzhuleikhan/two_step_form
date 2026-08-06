@@ -422,16 +422,46 @@ if (twoStepFormSecondStep) {
     return isValidPhoneNumber(`+${dialCode}${digits}`, countryCode);
   };
 
-  // Проверка на бэке ещё идёт (формат ок, но вердикта нет).
+  // phone-guard (IPQS) сам e164 собрать не может (separateDialCode прячет код страны),
+  // поэтому кормим его готовым номером через data-атрибуты. Кладём ТОЛЬКО когда формат
+  // валиден — чтобы сниппет не бил IPQS по неполному вводу. Снимаем, если формат битый.
+  const syncPhoneGuardData = () => {
+    if (isPhoneFormatValid()) {
+      const { dialCode, iso2 } = twoStepiti.getSelectedCountryData();
+      const digits = twoStepFormPhoneInput.value.trim().replace(/\D/g, "");
+      twoStepFormPhoneInput.dataset.pgE164 = `${dialCode}${digits}`;
+      twoStepFormPhoneInput.dataset.pgCountry = (iso2 || "").toUpperCase();
+    } else {
+      delete twoStepFormPhoneInput.dataset.pgE164;
+      delete twoStepFormPhoneInput.dataset.pgCountry;
+    }
+  };
+
+  // IPQS: номер проверен и не плохой. fail-open — если сниппет не загрузился, пропускаем.
+  const isPhoneGuardValid = () =>
+    !window.PhoneGuard || window.PhoneGuard.isValid(twoStepFormPhoneInput);
+
+  // IPQS-проверка ещё идёт (номер готов, вердикта нет).
+  const isPhoneGuardPending = () =>
+    !!window.PhoneGuard && window.PhoneGuard.isPending(twoStepFormPhoneInput);
+
+  // Проверка занятости ещё идёт (формат ок, но вердикта нет).
   const isPhonePending = () => {
     if (!isPhoneFormatValid()) return false;
     const st = getPhoneStatus(currentPhoneE164());
     return !st || st.pending;
   };
 
-  // Реально летит запрос — для спиннера.
+  // Флаг «IPQS-проверка реально идёт»: ставим на blur (когда запускаем),
+  // снимаем на вердикт. Нельзя опираться на isPhoneGuardPending() — он true уже
+  // во время ввода (номер валиден по формату, но ещё не проверялся) → спиннер бы
+  // крутился постоянно. Здесь — только в момент фактической проверки.
+  let isIpqsChecking = false;
+
+  // Реально летит запрос (IPQS или занятость) — для спиннера.
   const isPhoneChecking = () => {
     if (!isPhoneFormatValid()) return false;
+    if (isIpqsChecking) return true;
     const st = getPhoneStatus(currentPhoneE164());
     return !!st && st.pending;
   };
@@ -442,32 +472,32 @@ if (twoStepFormSecondStep) {
     phoneSpinnerEl.classList.toggle("hidden", !isPhoneChecking());
   };
 
-  // Полная валидность для гейтинга кнопки: формат ок И бэк номер принял
-  // (не забраковал по IPQS/формату и он не занят).
+  // Полная валидность для гейтинга кнопки: формат ок И номер НЕ занят.
   // Пока проверка идёт / нет данных → false (кнопка выключена, проскочить нельзя).
-  // Ошибка связи (сеть/таймаут/5xx) → fail-open (не блокируем лид).
+  // Ошибка проверки (сеть/таймаут/4xx/5xx) → fail-open (не блокируем лид).
   const isPhoneFieldValid = () => {
     if (!isPhoneFormatValid()) return false;
+    // IPQS: ждём вердикт; valid:false/active:false → невалиден (кнопка выключена).
+    if (isPhoneGuardPending()) return false;
+    if (!isPhoneGuardValid()) return false;
     const st = getPhoneStatus(currentPhoneE164());
     if (!st || st.pending) return false;
-    if (st.invalid) return false;
     if (st.errored) return true;
     return st.available === true;
   };
 
-  // Сообщение об отказе — показываем при однозначном вердикте бэка:
-  // номер занят (available:false) либо забракован (invalid_phone).
+  // Сообщение «номер нельзя использовать» — показываем только при однозначном «занят».
   const phoneAlertEl = document.querySelector(".two-step-phone-alert");
   const updatePhoneAlert = () => {
     if (!phoneAlertEl) return;
     const st = getPhoneStatus(currentPhoneE164());
-    const rejected =
+    const taken =
       isPhoneFormatValid() &&
       st &&
       !st.pending &&
       !st.errored &&
-      (st.invalid || st.available === false);
-    if (rejected) {
+      st.available === false;
+    if (taken) {
       const lang =
         document.documentElement.getAttribute("lang") ||
         localStorage.getItem("preferredLanguage") ||
@@ -534,19 +564,28 @@ if (twoStepFormSecondStep) {
       validateInputs("#4ED937", "#8726FF");
     });
   };
-  // Телефон: на blur запускаем проверку, на вердикт — пересчёт кнопки.
+  // Телефон: на blur запускаем проверку занятости, на вердикт — пересчёт кнопки.
   const triggerPhoneCheck = () => {
+    syncPhoneGuardData(); // обновить data-pg-e164 до того, как phone-guard прочтёт на blur
     if (isPhoneFormatValid()) {
       checkPhoneAvailability(currentPhoneE164()).then(() =>
         validateInputs("#4ED937", "#ff5530"),
       );
+      // IPQS: номер ещё не проверен → сниппет проверит на blur, включаем спиннер.
+      if (isPhoneGuardPending()) isIpqsChecking = true;
     }
     validateInputs("#4ED937", "#ff5530"); // мгновенно отразить pending/формат
   };
   twoStepFormPhoneInput.addEventListener("focusout", triggerPhoneCheck);
   twoStepFormPhoneInput.addEventListener("input", () => {
     twoStepFormPhoneInput.style.color = "#8726FF";
+    syncPhoneGuardData(); // держим e164 для phone-guard свежим на каждый ввод
     validateInputs("#4ED937", "#8726FF");
+  });
+  // phone-guard (IPQS): вердикт пришёл — гасим спиннер, пересчитываем кнопку.
+  twoStepFormPhoneInput.addEventListener("phoneguard:result", () => {
+    isIpqsChecking = false;
+    validateInputs("#4ED937", "#ff5530");
   });
   attachListeners(twoStepFormPasswordInput);
   if (!isPhoneOnlyMode) attachListeners(twoStepFormEmailInput);
@@ -592,28 +631,33 @@ if (twoStepFormSecondStep) {
   }
 
   twoStepFormPhoneInput.addEventListener("countrychange", () => {
+    syncPhoneGuardData();
     validateInputs("#4ED937", "#8726FF");
   });
 
-  // Перевести уже показанные сообщения об отказе (телефон/почта) при смене языка
+  // Перевести уже показанные сообщения «занято» (телефон/почта) при смене языка
   // сайта (язык меняется через атрибут <html lang>, у алертов нет data-translate).
+  // Хинт IPQS рисует сам сниппет своим языком — на смену языка прогоняем verify
+  // заново (вердикт берётся из кэша → showError перерисует текст на новом языке).
   new MutationObserver(() => {
     updatePhoneAlert();
     updateEmailAlert();
+    if (
+      window.PhoneGuard &&
+      twoStepFormPhoneInput.getAttribute("data-pg-state") === "blocked"
+    ) {
+      window.PhoneGuard.verify(twoStepFormPhoneInput);
+    }
   }).observe(document.documentElement, {
     attributes: true,
     attributeFilter: ["lang"],
   });
 
   // Фейловер: если на blur API не ответил за таймаут (fail-open включил кнопку),
-  // добиваем проверку (телефон и/или почта) на клике «Далее».
+  // добиваем проверку занятости (телефон и/или почта) на клике «Далее».
   // Регистрируется раньше глобального advance-хендлера → при блоке его перебивает.
-  // invalid есть только у телефона (у почты undefined) — на email-ветку не влияет.
   const isDefinitive = (st) =>
-    !!st &&
-    !st.pending &&
-    !st.errored &&
-    (st.invalid === true || typeof st.available === "boolean");
+    !!st && !st.pending && !st.errored && typeof st.available === "boolean";
 
   twoStepFormSecondStepBtn.addEventListener("click", async (e) => {
     const needPhone =
@@ -636,16 +680,15 @@ if (twoStepFormSecondStep) {
     await Promise.all(tasks);
     validateInputs("#4ED937", "#ff5530"); // обновить алерты/кнопку по вердиктам
 
-    const phoneSt = getPhoneStatus(currentPhoneE164());
-    const phoneRejected = phoneSt?.invalid === true || phoneSt?.available === false;
+    const phoneTaken = getPhoneStatus(currentPhoneE164())?.available === false;
     const emailTaken =
       !isPhoneOnlyMode && getEmailStatus(currentEmail())?.available === false;
-    if (!phoneRejected && !emailTaken) {
-      // отказа нет (всё ок или снова не дозвонились → fail-open) → переходим
+    if (!phoneTaken && !emailTaken) {
+      // ничего не занято (свободно или снова не дозвонились → fail-open) → переходим
       initialStep++;
       showStep(initialStep);
     }
-    // отказ → остаёмся на шаге: алерт показан, кнопка станет disabled
+    // занято → остаёмся на шаге: алерт показан, кнопка станет disabled
   });
 
   // Show password
