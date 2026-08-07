@@ -25,6 +25,7 @@ export let newDomain = "g01d63t1.win"; // fallback сразу
 fetchDomain(geoData.countryCode).then((domain) => {
   newDomain = domain;
 });
+console.log(newDomain);
 
 function updatingBonusValueNumbers() {
   const dropd = document.querySelectorAll(".form-bonus-dropdown");
