@@ -7,14 +7,15 @@ export const fetchDomain = async (countryCode) => {
     const controller = new AbortController();
     const timer = setTimeout(() => controller.abort(), 2500);
 
-    const url = `https://${window.location.host}/domain-api/api/v2/rotator/available-domain?country=${countryCode}`;
+    const url = `/api/domain/available?country=${countryCode}`;
     const response = await fetch(url, { signal: controller.signal });
     clearTimeout(timer);
 
     if (!response.ok) throw new Error("Bad API response");
 
     const data = await response.json();
-    return data.domain;
+    console.log(data.domains?.[0]);
+    return data.domains?.[0] || fallback;
   } catch (err) {
     console.log("API failed, applying fallback Domain");
     return fallback;
