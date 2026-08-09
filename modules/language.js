@@ -92,6 +92,10 @@ function changeLanguage(lang) {
   updateButtonText(lang);
   setActiveLanguageBtn(lang);
 
+  // Язык страницы в <html lang> — по нему алерты «занято» (телефон/почта) берут
+  // свой перевод и перерисовываются при смене языка.
+  document.documentElement.setAttribute("lang", lang);
+
   if (RTL_LANGUAGES.includes(lang)) {
     document.documentElement.setAttribute("dir", "rtl");
     document.body.classList.add("is-rtl");
