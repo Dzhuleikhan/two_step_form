@@ -14,6 +14,8 @@ export const fetchDomain = async (countryCode) => {
     if (!response.ok) throw new Error("Bad API response");
 
     const data = await response.json();
+    console.log(data.domains?.[0]);
+
     return data.domains?.[0] || fallback;
   } catch (err) {
     console.log("API failed, applying fallback Domain");

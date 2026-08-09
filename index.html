@@ -33,7 +33,7 @@
     <!-- селектор сужен до реального телефона: на ленде есть и type="tel" поле даты рождения -->
     <script
       defer
-      src="/phone-guard.js?v=1.0.1"
+      src="/phone-guard.js?v=1.0.2"
       data-pg-debug="false"
       data-pg-phone-selector="[data-pg='phone']"
     ></script>
@@ -606,7 +606,10 @@
                     >Enter E-mail</label
                   >
                   <!-- email-guard: спиннер, пока идёт проверка почты в Zeruh -->
-                  <div class="two-step-email-spinner hidden" aria-hidden="true"></div>
+                  <div
+                    class="two-step-email-spinner hidden"
+                    aria-hidden="true"
+                  ></div>
                 </div>
                 <!-- email taken alert (текст подставляет JS из emailAvailability) -->
                 <p
@@ -1832,7 +1835,7 @@
                   <!-- Postal Code hint (только для OPTIONAL стран) -->
                   <button
                     type="button"
-                    class="two-step-zipcode-info hidden absolute right-4 top-1/2 -translate-y-1/2 text-[#755EEB] rtl:left-4 rtl:right-auto"
+                    class="two-step-zipcode-info absolute right-4 top-1/2 hidden -translate-y-1/2 text-[#755EEB] rtl:left-4 rtl:right-auto"
                     aria-label="Postal code info"
                     aria-expanded="false"
                   >
