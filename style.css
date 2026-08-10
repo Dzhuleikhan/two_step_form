@@ -365,6 +365,14 @@ body {
   fill: #f0f0f0;
 }
 
+.geo-restrict-modal.is-open {
+  display: grid;
+}
+
+.scroll-lock {
+  overflow: hidden;
+}
+
 .two-step-promocode-wrapper.is-valid .two-step-promocode-apply-btn {
   display: none;
 }

@@ -1,5 +1,6 @@
 export const translations = {
   en: {
+    geoRestrictTitle: `{host} is not available in {country}`,
     pageTabTitle: "Sign Up for a Goldbet Casino Account",
     backBtn: "Back",
     // | Step 1
@@ -51,6 +52,7 @@ export const translations = {
     createAccountBtn: "Create Account",
   },
   fr: {
+    geoRestrictTitle: `{host} n’est pas disponible en {country}`,
     pageTabTitle: "Inscrivez-vous pour un compte de casino Goldbet",
     backBtn: "Retour",
     // | Step 1
@@ -102,6 +104,7 @@ export const translations = {
     createAccountBtn: "Créer un compte",
   },
   pl: {
+    geoRestrictTitle: `{host} nie jest dostępny w kraju {country}`,
     pageTabTitle: "Zarejestruj konto w Goldbet Casino",
     backBtn: "Wstecz",
     // | Krok 1
@@ -153,6 +156,7 @@ export const translations = {
     createAccountBtn: "Utwórz konto",
   },
   hu: {
+    geoRestrictTitle: `A(z) {host} nem érhető el itt: {country}`,
     pageTabTitle: "Regisztrálj Goldbet Casino fiókot",
     backBtn: "Vissza",
     // | 1. lépés
@@ -204,6 +208,7 @@ export const translations = {
     createAccountBtn: "Fiók létrehozása",
   },
   ro: {
+    geoRestrictTitle: `{host} nu este disponibil în {country}`,
     pageTabTitle: "Înregistrează un cont Goldbet Casino",
     backBtn: "Înapoi",
     // | Step 1
@@ -255,6 +260,7 @@ export const translations = {
     createAccountBtn: "Creează cont",
   },
   sl: {
+    geoRestrictTitle: `{host} ni na voljo v državi {country}`,
     pageTabTitle: "Registrirajte račun Goldbet Casino",
     backBtn: "Nazaj",
     // | Korak 1
@@ -306,6 +312,7 @@ export const translations = {
     createAccountBtn: "Ustvariti račun",
   },
   cs: {
+    geoRestrictTitle: `{host} není dostupný v zemi {country}`,
     pageTabTitle: "Zaregistrujte si účet v Goldbet Casinu",
     backBtn: "Zpět",
     // | Step 1
@@ -357,6 +364,7 @@ export const translations = {
     createAccountBtn: "Vytvořit účet",
   },
   ru: {
+    geoRestrictTitle: `{host} недоступен в стране {country}`,
     pageTabTitle: "Зарегистрируйтесь в казино Goldbet",
     backBtn: "Назад",
     // | Шаг 1
@@ -408,6 +416,7 @@ export const translations = {
     createAccountBtn: "Создать аккаунт",
   },
   pt: {
+    geoRestrictTitle: `{host} não está disponível em {country}`,
     pageTabTitle: "Registar no Goldbet Casino",
     backBtn: "Voltar",
     // | Etapa 1
@@ -459,6 +468,7 @@ export const translations = {
     createAccountBtn: "Criar Conta",
   },
   de: {
+    geoRestrictTitle: `{host} ist in {country} nicht verfügbar`,
     pageTabTitle: "Registrieren Sie sich bei Goldbet Casino",
     backBtn: "Zurück",
     // | Schritt 1
@@ -510,6 +520,7 @@ export const translations = {
     createAccountBtn: "Konto erstellen",
   },
   el: {
+    geoRestrictTitle: `Το {host} δεν είναι διαθέσιμο στη χώρα {country}`,
     pageTabTitle: "Εγγραφή Λογαριασμού στο Καζίνο Goldbet",
     backBtn: "Πίσω",
     // | Step 1
@@ -561,6 +572,7 @@ export const translations = {
     createAccountBtn: "Δημιουργία Λογαριασμού",
   },
   uk: {
+    geoRestrictTitle: `{host} недоступний у країні {country}`,
     pageTabTitle: "Зареєструвати акаунт у Goldbet Casino",
     backBtn: "Назад",
     // | Step 1
@@ -612,6 +624,7 @@ export const translations = {
     createAccountBtn: "Створити акаунт",
   },
   es: {
+    geoRestrictTitle: `{host} no está disponible en {country}`,
     pageTabTitle: "Regístrate en Goldbet Casino",
     backBtn: "Atrás",
     // | Step 1
@@ -663,6 +676,7 @@ export const translations = {
     createAccountBtn: "Crear Cuenta",
   },
   nb: {
+    geoRestrictTitle: `{host} er ikke tilgjengelig i {country}`,
     pageTabTitle: "Registrer deg for en Goldbet Casino-konto",
     backBtn: "Tilbake",
     // | Step 1
@@ -714,6 +728,7 @@ export const translations = {
     createAccountBtn: "Opprett Konto",
   },
   sv: {
+    geoRestrictTitle: `{host} är inte tillgängligt i {country}`,
     pageTabTitle: "Registrera ett Goldbet Casino-konto",
     backBtn: "Tillbaka",
     // | Step 1
@@ -765,6 +780,7 @@ export const translations = {
     createAccountBtn: "Skapa Konto",
   },
   sk: {
+    geoRestrictTitle: `{host} nie je dostupný v krajine {country}`,
     pageTabTitle: "Zaregistrujte si účet v kasíne Goldbet",
     backBtn: "Späť",
     // | Step 1
@@ -816,6 +832,7 @@ export const translations = {
     createAccountBtn: "Vytvoriť účet",
   },
   it: {
+    geoRestrictTitle: `{host} non è disponibile in {country}`,
     pageTabTitle: "Crea un Account Goldbet Casino",
     backBtn: "Indietro",
     // | Step 1
@@ -867,6 +884,7 @@ export const translations = {
     createAccountBtn: "Crea Account",
   },
   et: {
+    geoRestrictTitle: `{host} ei ole saadaval riigis {country}`,
     pageTabTitle: "Loo Goldbet Casino Konto",
     backBtn: "Tagasi",
     // | Step 1
@@ -918,6 +936,7 @@ export const translations = {
     createAccountBtn: "Loo Konto",
   },
   lv: {
+    geoRestrictTitle: `{host} nav pieejams valstī {country}`,
     pageTabTitle: "Izveidot Goldbet Casino Kontu",
     backBtn: "Atpakaļ",
     // | Step 1
@@ -969,6 +988,7 @@ export const translations = {
     createAccountBtn: "Izveidot Kontu",
   },
   lt: {
+    geoRestrictTitle: `{host} nepasiekiamas šalyje {country}`,
     pageTabTitle: "Sukurti Goldbet Casino Paskyrą",
     backBtn: "Atgal",
     // | Step 1
@@ -1020,6 +1040,7 @@ export const translations = {
     createAccountBtn: "Sukurti Paskyrą",
   },
   hr: {
+    geoRestrictTitle: `{host} nije dostupan u državi {country}`,
     pageTabTitle: "Registrirajte Goldbet Casino Račun",
     backBtn: "Natrag",
     // | Step 1
@@ -1071,6 +1092,7 @@ export const translations = {
     createAccountBtn: "Kreiraj Račun",
   },
   fi: {
+    geoRestrictTitle: `{host} ei ole käytettävissä maassa {country}`,
     pageTabTitle: "Rekisteröidy Goldbet Casinon tilille",
     backBtn: "Takaisin",
     // | Step 1
@@ -1122,6 +1144,7 @@ export const translations = {
     createAccountBtn: "Luo tili",
   },
   da: {
+    geoRestrictTitle: `{host} er ikke tilgængelig i {country}`,
     pageTabTitle: "Opret en Goldbet Casino-konto",
     backBtn: "Tilbage",
     // | Step 1
@@ -1173,6 +1196,7 @@ export const translations = {
     createAccountBtn: "Opret konto",
   },
   bg: {
+    geoRestrictTitle: `{host} не е достъпен в {country}`,
     pageTabTitle: "Регистрирайте се за акаунт в Goldbet Casino",
     backBtn: "Назад",
     // | Step 1
@@ -1224,6 +1248,7 @@ export const translations = {
     createAccountBtn: "Създайте акаунт",
   },
   nl: {
+    geoRestrictTitle: `{host} is niet beschikbaar in {country}`,
     pageTabTitle: "Registreer voor een Goldbet Casino-account",
     backBtn: "Terug",
     // | Step 1
@@ -1275,6 +1300,7 @@ export const translations = {
     createAccountBtn: "Account aanmaken",
   },
   ga: {
+    geoRestrictTitle: `Níl {host} ar fáil i {country}`,
     pageTabTitle: "Cláraigh le haghaidh Cuntas Casino Goldbet",
     backBtn: "Ar Ais",
     // | Step 1
@@ -1326,6 +1352,7 @@ export const translations = {
     createAccountBtn: "Cruthaigh Cuntas",
   },
   lb: {
+    geoRestrictTitle: `{host} ass net verfügbar an {country}`,
     pageTabTitle: "Mellt Iech fir e Goldbet Casino Kont un",
     backBtn: "Zréck",
     // | Step 1
@@ -1377,6 +1404,7 @@ export const translations = {
     createAccountBtn: "Kont erstellen",
   },
   mt: {
+    geoRestrictTitle: `{host} mhuwiex disponibbli fi {country}`,
     pageTabTitle: "Irreġistra għal Kont tal-Casino Goldbet",
     backBtn: "Lura",
     // | Step 1
@@ -1428,6 +1456,7 @@ export const translations = {
     createAccountBtn: "Oħloq Kont",
   },
   ar: {
+    geoRestrictTitle: `{host} غير متاح في {country}`,
     pageTabTitle: "سجّل للحصول على حساب في كازينو Goldbet",
     backBtn: "رجوع",
     // | Step 1
@@ -1479,6 +1508,7 @@ export const translations = {
     createAccountBtn: "إنشاء حساب",
   },
   zh: {
+    geoRestrictTitle: `{host} 在{country}不可用`,
     pageTabTitle: "注册 Goldbet 赌场账户",
     backBtn: "返回",
     // | Step 1
@@ -1530,6 +1560,7 @@ export const translations = {
     createAccountBtn: "创建账户",
   },
   sw: {
+    geoRestrictTitle: `{host} haipatikani nchini {country}`,
     pageTabTitle: "Jisajili kwa Akaunti ya Kasino ya Goldbet",
     backBtn: "Rudi",
     // | Step 1
@@ -1581,6 +1612,7 @@ export const translations = {
     createAccountBtn: "Unda Akaunti",
   },
   rw: {
+    geoRestrictTitle: `{host} ntiboneka muri {country}`,
     pageTabTitle: "Iyandikishe kuri konti ya Kasino ya Goldbet",
     backBtn: "Garuka",
     // | Step 1
@@ -1632,6 +1664,7 @@ export const translations = {
     createAccountBtn: "Kora Konti",
   },
   lm: {
+    geoRestrictTitle: `{host} tekozesebwa mu {country}`,
     pageTabTitle: "Weewandiise ku akawunti ya Goldbet Casino",
     backBtn: "Ddayo",
     // | Step 1
@@ -1683,6 +1716,7 @@ export const translations = {
     createAccountBtn: "Tonda akawunti",
   },
   am: {
+    geoRestrictTitle: `{host} በ{country} አይገኝም`,
     pageTabTitle: "ለGoldbet Casino መለያ ይመዝገቡ",
     backBtn: "ተመለስ",
     // | Step 1
@@ -1734,6 +1768,7 @@ export const translations = {
     createAccountBtn: "መለያ ፍጠር",
   },
   lm: {
+    geoRestrictTitle: `{host} tekozesebwa mu {country}`,
     pageTabTitle: "Weewandiise ku akawunti ya Goldbet Casino",
     backBtn: "Ddayo",
     // | Step 1
@@ -1785,6 +1820,7 @@ export const translations = {
     createAccountBtn: "Tonda akawunti",
   },
   ha: {
+    geoRestrictTitle: `{host} ba ya samuwa a {country}`,
     pageTabTitle: "Yi Rajista don Asusun Goldbet Casino",
     backBtn: "Baya",
     // | Step 1
@@ -1836,6 +1872,7 @@ export const translations = {
     createAccountBtn: "Ƙirƙiri Asusu",
   },
   yo: {
+    geoRestrictTitle: `{host} kò sí ní {country}`,
     pageTabTitle: "Forúkọ sílẹ̀ fún Account Goldbet Casino",
     backBtn: "Padà",
     // | Step 1
@@ -1887,6 +1924,7 @@ export const translations = {
     createAccountBtn: "Ṣẹ̀dá Account",
   },
   ig: {
+    geoRestrictTitle: `{host} adịghị arụ ọrụ na {country}`,
     pageTabTitle: "Debanye aha maka Akaụntụ Goldbet Casino",
     backBtn: "Laghachi",
     // | Step 1
@@ -1938,6 +1976,7 @@ export const translations = {
     createAccountBtn: "Mepụta Akaụntụ",
   },
   tw: {
+    geoRestrictTitle: `{host} nni hɔ wɔ {country}`,
     pageTabTitle: "Kyerɛw Wo Din Ma Goldbet Casino Akontaabu",
     backBtn: "San kɔ",
     // | Step 1
