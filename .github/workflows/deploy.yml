@@ -3,7 +3,7 @@ name: Deploy to VPS Servers
 on:
   push:
     branches:
-      - two_step_form_fs_cash
+      - two_step_form_fs_cash_50
 
 jobs:
   deploy:
@@ -77,4 +77,4 @@ jobs:
           username: ${{ secrets[format('FTP_USER_{0}', matrix.vps)] }}
           password: ${{ secrets[format('FTP_PASSWORD_{0}', matrix.vps)] }}
           local-dir: ./dist/
-          server-dir: /www/${{ matrix.site }}/two-step-form/fs-and-cash/
+          server-dir: /www/${{ matrix.site }}/two-step-form/fs-and-cash/50/
