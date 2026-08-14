@@ -3,7 +3,7 @@ import { defineConfig } from "vite";
 const DEV_PROXY_TARGET = "https://goldbet.fun";
 
 export default defineConfig({
-  base: "https://landing-res.b-cdn.net/two-step-form/",
+  base: "https://landing-res.b-cdn.net/playable/gatesofolympus/",
   esbuild: {
     supported: {
       "top-level-await": true,
