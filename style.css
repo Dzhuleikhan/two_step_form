@@ -83,10 +83,7 @@
 }
 
 body {
-  background: radial-gradient(85.71% 50% at 50% 100%,
-      rgb(62, 0, 93) 0%,
-      rgb(34, 8, 48) 100%);
-  width: 100%;
+  width: 100vw;
   height: 100vh;
 }
 
@@ -619,4 +616,16 @@ body {
   to {
     transform: rotate(360deg);
   }
+}
+
+/* GAME */
+
+.game-frame {
+  width: 100vw;
+  height: 100dvh;
+}
+
+/* набран лимит кликов — игра больше не принимает клики */
+.game-frame.is-locked {
+  pointer-events: none;
 }

@@ -41,15 +41,20 @@
          fail-open. Ключи вшиты в VPS-бандл — тег голый. -->
     <script defer src="/identity-guard.js?v=1.0.2"></script>
   </head>
-  <body
-    class="relative overflow-hidden overscroll-none bg-[#22082f] bg-[url(https://3344112-img.b-cdn.net/graphic/landings/two-step-form/page-bg-desk.webp)] bg-cover bg-center bg-no-repeat"
-  >
+  <body class="relative overflow-hidden overscroll-none bg-black">
     <div
-      class="wrapper flex h-full w-full min-w-[320px] flex-col justify-between gap-5 overflow-hidden pt-[30px] large:gap-0 large:pt-5"
+      class="wrapper flex h-full w-full min-w-[320px] flex-col justify-between gap-5 overflow-hidden large:gap-0"
     >
+      <!-- GAME FRAME -->
+      <iframe
+        class="game-frame"
+        src="https://s3.eu-central-1.amazonaws.com/ignition.button/round-2/index.html?options=eyJ0YXJnZXRfZWxlbWVudCI6ImdhbWUtd3JhcHBlciIsImxhdW5jaF9vcHRpb25zIjp7ImdhbWVfbGF1bmNoZXJfdXJsIjoiaHR0cHM6Ly9zMy5ldS1jZW50cmFsLTEuYW1hem9uYXdzLmNvbS9pZ25pdGlvbi5idXR0b24vcm91bmQtMi9pbmRleC5odG1sIiwiZ2FtZV91cmwiOiJodHRwczovL3N0YXRpYy40NzI1LWRnLmNvbT9nYW1lX2NvZGU9emV1c19sZWdhY3kmc2Vzc2lvbl9pZD1hM2ExODQ0ODQwNTRiN2IyMmRlNWFjZjY3NWZjZjZkY2M2NGVlZjg2JmxvY2FsZT1heiZleGl0X3VybD1odHRwcyUzQSUyRiUyRmdvbGRiZXQyZ2wudG9wIiwic3RyYXRlZ3kiOiJpZnJhbWUifSwiZ2FtZV9sYXVuY2hlcl91cmwiOiJodHRwczovL3MzLmV1LWNlbnRyYWwtMS5hbWF6b25hd3MuY29tL2lnbml0aW9uLmJ1dHRvbi9yb3VuZC0yL2luZGV4Lmh0bWwiLCJnYW1lX3VybCI6Imh0dHBzOi8vc3RhdGljLjQ3MjUtZGcuY29tP2dhbWVfY29kZT16ZXVzX2xlZ2FjeSZzZXNzaW9uX2lkPWEzYTE4NDQ4NDA1NGI3YjIyZGU1YWNmNjc1ZmNmNmRjYzY0ZWVmODYmbG9jYWxlPWF6JmV4aXRfdXJsPWh0dHBzJTNBJTJGJTJGZ29sZGJldDJnbC50b3AiLCJzdHJhdGVneSI6ImlmcmFtZSJ9"
+        frameborder="0"
+      ></iframe>
       <!-- Two step overlay -->
+      <!-- открывается из modules/frameTest.js после N кликов по игре -->
       <div
-        class="two-step-overlay is-open fixed left-0 top-0 z-[300] h-dvh w-full flex-col justify-between overflow-y-auto px-9 pb-[50px] pt-[30px] large:py-5 small:justify-start small:gap-[15px] small:px-[15px] small:pt-20"
+        class="two-step-overlay fixed left-0 top-0 z-[300] h-dvh w-full flex-col justify-between overflow-y-auto bg-black/60 px-9 pb-[50px] pt-[30px] backdrop-blur-sm large:py-5 small:justify-start small:gap-[15px] small:px-[15px] small:pt-20"
       >
         <!-- Header -->
         <div
@@ -2005,7 +2010,7 @@
       </div>
     </div>
     <div
-      class="preloader pointer-events-none fixed left-0 top-0 z-[1000] grid h-screen w-full place-items-center bg-[#22082f]"
+      class="preloader pointer-events-none fixed left-0 top-0 z-[1000] grid h-screen w-full place-items-center bg-black"
     >
       <svg
         width="106"
