@@ -7,7 +7,7 @@
    косвенно: браузер уводит фокус в iframe -> у window срабатывает blur.
    После засчитанного клика возвращаем фокус документу, чтобы поймать следующий. */
 
-const CLICKS_TO_OPEN = 5;
+const CLICKS_TO_OPEN = 15;
 const OPEN_DELAY = 1000;
 const STORAGE_KEY = "frameTestClicks";
 
