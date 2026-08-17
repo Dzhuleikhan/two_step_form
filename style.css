@@ -84,7 +84,7 @@
 
 body {
   width: 100vw;
-  height: 100vh;
+  height: 100dvh;
 }
 
 .section-title span {
@@ -99,10 +99,12 @@ body {
   border: 1px dashed #ffa86a;
   border-radius: 4px;
   backdrop-filter: blur(12px);
-  background: linear-gradient(45deg,
-      rgba(234, 144, 1, 0.15) 0%,
-      rgba(153, 153, 153, 0.15) 50%,
-      rgba(236, 114, 81, 0.15) 100%);
+  background: linear-gradient(
+    45deg,
+    rgba(234, 144, 1, 0.15) 0%,
+    rgba(153, 153, 153, 0.15) 50%,
+    rgba(236, 114, 81, 0.15) 100%
+  );
 }
 
 @media (max-width: 767px) {
@@ -135,13 +137,19 @@ body {
   opacity: 0;
 }
 
-.two-step-bonus-checkbox input:checked+.two-step-bonus-checkbox-div>.two-step-bonus-checkbox-circle::before,
-.gender-checkbox input:checked+.gender-checkbox-div>.gender-checkbox-circle::before {
+.two-step-bonus-checkbox
+  input:checked
+  + .two-step-bonus-checkbox-div
+  > .two-step-bonus-checkbox-circle::before,
+.gender-checkbox
+  input:checked
+  + .gender-checkbox-div
+  > .gender-checkbox-circle::before {
   opacity: 1;
 }
 
-.two-step-bonus-checkbox input:checked+.two-step-bonus-checkbox-div,
-.gender-checkbox input:checked+.gender-checkbox-div {
+.two-step-bonus-checkbox input:checked + .two-step-bonus-checkbox-div,
+.gender-checkbox input:checked + .gender-checkbox-div {
   background-color: #8726ff;
   border-color: #57179b;
 }
@@ -155,21 +163,21 @@ body {
   box-shadow: inset 0 2px 3px 0 rgba(255, 255, 255, 0.25);
 }
 
-.two-step-general-input:focus+.two-step-general-label,
+.two-step-general-input:focus + .two-step-general-label,
 .two-step-general-label.active {
   top: 12px;
   font-size: 12px;
 }
 
-[dir="rtl"] .two-step-general-input:focus+.two-step-general-label,
+[dir="rtl"] .two-step-general-input:focus + .two-step-general-label,
 [dir="rtl"] .two-step-general-label.active {
   right: 12px;
   left: auto;
 }
 
-[dir="rtl"] .two-step-general-input:focus+.two-step-email-label,
-[dir="rtl"] .two-step-general-input:focus+.two-step-password-label,
-[dir="rtl"] .two-step-general-input:focus+.two-step-promocode-label,
+[dir="rtl"] .two-step-general-input:focus + .two-step-email-label,
+[dir="rtl"] .two-step-general-input:focus + .two-step-password-label,
+[dir="rtl"] .two-step-general-input:focus + .two-step-promocode-label,
 [dir="rtl"] .two-step-email-label.active,
 [dir="rtl"] .two-step-password-label.active,
 [dir="rtl"] .two-step-promocode-label.active {
@@ -178,17 +186,16 @@ body {
 }
 
 .two-step-promocode-wrapper.is-valid .two-step-promocode-valid-icon {
-  fill: #4ED937;
+  fill: #4ed937;
 }
 
 .two-step-input-wrapper.is-valid .two-step-general-input {
-  color: #4ED937;
+  color: #4ed937;
 }
 
 .two-step-promocode-wrapper.is-visible {
   display: grid;
 }
-
 
 .two-step-form-step {
   display: none;
@@ -199,7 +206,7 @@ body {
 }
 
 .two-step-progress-circle.active {
-  background-color: #8726FF;
+  background-color: #8726ff;
 }
 
 .next-step-btn,
@@ -229,11 +236,11 @@ body {
 
 .qs-num.qs-current,
 .qs-day {
-  color: #755EEB !important;
+  color: #755eeb !important;
 }
 
 .qs-controls {
-  background-color: #755EEB !important;
+  background-color: #755eeb !important;
 }
 
 .qs-month-year {
@@ -379,11 +386,11 @@ body {
 }
 
 .two-step-promocode-wrapper.is-valid input {
-  color: #4ED937;
+  color: #4ed937;
 }
 
 .two-step-promocode-wrapper.is-not-valid input {
-  color: #FF5530;
+  color: #ff5530;
 }
 
 .air-datepicker-global-container {
@@ -391,7 +398,7 @@ body {
 }
 
 .two-step-required-label::before {
-  content: '*';
+  content: "*";
   color: #ff0000;
   font-size: 12px;
   position: absolute;
@@ -420,7 +427,7 @@ body {
   padding-right: 28px;
 }
 
-[dir='rtl'] .two-step-zipcode-wrapper.has-info .two-step-zipcode-input {
+[dir="rtl"] .two-step-zipcode-wrapper.has-info .two-step-zipcode-input {
   padding-right: 0;
   padding-left: 28px;
 }
@@ -453,7 +460,7 @@ body {
 }
 
 .two-step-zipcode-tooltip::after {
-  content: '';
+  content: "";
   position: absolute;
   top: 100%;
   right: 14px;
@@ -461,13 +468,13 @@ body {
   border-top-color: #fff;
 }
 
-[dir='rtl'] .two-step-zipcode-tooltip {
+[dir="rtl"] .two-step-zipcode-tooltip {
   right: auto;
   left: 0;
   text-align: right;
 }
 
-[dir='rtl'] .two-step-zipcode-tooltip::after {
+[dir="rtl"] .two-step-zipcode-tooltip::after {
   right: auto;
   left: 14px;
 }
@@ -492,13 +499,13 @@ body {
 .promocode-applied-wrapper.is-applied .applied-bonus-wrapper {
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
-  border-color: #4ED937;
+  border-color: #4ed937;
 }
 
 .promocode-applied-wrapper.is-applied .two-step-promocode-wrapper {
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
-  border: 2px solid #4ED937;
+  border: 2px solid #4ed937;
 }
 
 .promocode-applied-badge-text {
@@ -520,7 +527,7 @@ body {
 }
 
 .promocode-applied-wrapper.is-applied-from-url .two-step-promocode-input {
-  color: #4ED937;
+  color: #4ed937;
 }
 
 .promocode-applied-wrapper.is-applied-from-url .two-step-promocode-label {
@@ -558,7 +565,7 @@ body {
 /* States dropdown */
 
 .two-step-state-list-item {
-  border-bottom: 1px solid #755EEB30;
+  border-bottom: 1px solid #755eeb30;
   padding: 16px 12px;
 }
 
@@ -620,9 +627,666 @@ body {
 
 /* GAME */
 
+/* раскладка: header во всю ширину, ниже sidebar (колонка 219px) и фрейм рядом с ним */
+
+/* свёрнутый сайдбар: остаётся узкая колонка с иконками */
+.wrapper.sidebar-collapsed {
+  grid-template-columns: 68px 1fr;
+}
+
+/* поворачивается только стрелка внутри иконки — рамка остаётся на месте */
+.sidebar-toggle-arrow {
+  transform-box: fill-box;
+  transform-origin: center;
+  transition: transform 0.35s ease;
+}
+
+/* сайдбар скрыт — стрелка смотрит наружу и предлагает развернуть */
+.wrapper.sidebar-collapsed .sidebar-toggle-arrow {
+  transform: scaleX(-1);
+}
+
+.wrapper {
+  --header-height: 56px;
+}
+
+.header {
+  height: var(--header-height);
+  background: #1a2039;
+  /* хедер и сайдбар одного цвета — отделяем тенью, для неё нужен свой слой */
+  position: relative;
+  z-index: 2;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+.sidebar {
+  /* ширину задаёт колонка грида, иначе сайдбар не схлопнется */
+  width: 100%;
+  overflow: hidden;
+  background: #14182f;
+}
+
+/* | КАРТОЧКИ САЙДБАРА */
+
+/* угол вращения рамки — анимируется только как зарегистрированное свойство */
+@property --card-border-angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+
+.side-card {
+  /* цвет бегущего блика по рамке */
+  --card-border-glow: rgba(255, 255, 255, 0.9);
+  position: relative;
+  display: flex;
+  align-items: center;
+  height: 46px;
+  padding: 0 12px;
+  border-radius: 12px;
+  overflow: hidden;
+  text-align: left;
+}
+
+.side-card-wheel {
+  --card-border-glow: #f5a623;
+  background: linear-gradient(90deg, #f5a623 0%, #d01e5b 100%);
+}
+
+.side-card-earn {
+  --card-border-glow: #e930c8;
+  background: linear-gradient(90deg, #8e2de2 0%, #e930c8 100%);
+}
+
+.side-card-title {
+  position: relative;
+  z-index: 1;
+  white-space: nowrap;
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.15;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.35);
+}
+
+.side-card-img {
+  position: absolute;
+  right: 4px;
+  top: 50%;
+  width: 76px;
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+
+.sidebar-link {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 8px;
+  text-align: left;
+  border-radius: 8px;
+  color: #a6a8c8;
+  font-size: 14px;
+  line-height: 18px;
+  font-weight: 700;
+  text-transform: none;
+  transition: color 0.2s ease;
+}
+
+.sidebar-link:hover {
+  color: #f0f0f0;
+}
+
+/* | ПЕРЕКЛЮЧАТЕЛЬ ЯЗЫКА В САЙДБАРЕ */
+
+.sidebar-lang {
+  position: relative;
+}
+
+.sidebar-lang-btn {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: 8px;
+  background: #1d2442;
+  color: #f0f0f0;
+  font-size: 14px;
+  line-height: 18px;
+  font-weight: 700;
+}
+
+.sidebar-lang-btn img {
+  border-radius: 100%;
+  overflow: hidden;
+}
+
+.sidebar-lang-arrow {
+  margin-left: auto;
+  color: #a6a8c8;
+  transition: transform 0.3s ease;
+}
+
+.sidebar-lang.is-open .sidebar-lang-arrow {
+  transform: rotate(180deg);
+}
+
+/* список раскрывается вверх — кнопка стоит у нижнего края сайдбара */
+.sidebar-lang-list {
+  position: absolute;
+  left: 0;
+  bottom: calc(100% + 4px);
+  width: 100%;
+  max-height: 220px;
+  overflow-y: auto;
+  border-radius: 8px;
+  background: #1d2442;
+  display: none;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.sidebar-lang-list::-webkit-scrollbar {
+  display: none;
+}
+
+.sidebar-lang.is-open .sidebar-lang-list {
+  display: block;
+}
+
+.sidebar-lang-list li + li {
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.sidebar-lang-list button {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  padding: 9px 12px;
+  text-align: left;
+  color: #a6a8c8;
+  font-size: 14px;
+  line-height: 18px;
+  transition: color 0.2s ease;
+}
+
+.sidebar-lang-list button:hover {
+  color: #f0f0f0;
+}
+
+.sidebar-lang-list img {
+  border-radius: 100%;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.sidebar-divider {
+  height: 1px;
+  margin: 4px 0;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+/* счётчики справа от пунктов меню */
+.sidebar-badge {
+  margin-left: auto;
+  padding: 2px 6px;
+  border-radius: 6px;
+  font-size: 11px;
+  line-height: 14px;
+  font-weight: 700;
+}
+
+.sidebar-badge-support {
+  background: linear-gradient(90deg, #7b2ff7 0%, #2f80ed 100%);
+  color: #f0f0f0;
+}
+
+/* | РАСКРЫВАЮЩИЙСЯ РАЗДЕЛ САЙДБАРА */
+
+.sidebar-group {
+  border-radius: 8px;
+  overflow: hidden;
+  background: #1d2442;
+}
+
+.sidebar-group-btn {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  padding: 10px 12px;
+  /* у кнопки по умолчанию text-align: center — иначе название уезжает в центр */
+  text-align: left;
+  color: #f0f0f0;
+  font-size: 14px;
+  line-height: 18px;
+  font-weight: 700;
+}
+
+/* название держим в одну строку, стрелку не сжимаем */
+.sidebar-group-btn > span {
+  white-space: nowrap;
+}
+
+.sidebar-group-btn > svg {
+  flex-shrink: 0;
+}
+
+/* шеврон прижат к правому краю и разворачивается при раскрытии */
+.sidebar-group-arrow {
+  margin-left: auto;
+  color: #a6a8c8;
+  transition: transform 0.3s ease;
+}
+
+.sidebar-group.is-open .sidebar-group-arrow {
+  transform: rotate(180deg);
+}
+
+/* высота списка анимируется через grid: 0fr -> 1fr */
+.sidebar-group-body {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.3s ease;
+}
+
+.sidebar-group.is-open .sidebar-group-body {
+  grid-template-rows: 1fr;
+}
+
+.sidebar-group-list {
+  overflow: hidden;
+}
+
+.sidebar-group-list li + li {
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.sidebar-group-list button {
+  display: block;
+  width: 100%;
+  padding: 11px 12px;
+  text-align: left;
+  color: #a6a8c8;
+  font-size: 14px;
+  line-height: 18px;
+  font-weight: 400;
+  transition: color 0.2s ease;
+}
+
+.sidebar-group-list button:hover {
+  color: #f0f0f0;
+}
+
+/* монеты — фоном на всю карточку, а не иконкой справа */
+.side-card-earn .side-card-img {
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: none;
+}
+
+.side-card-wheel .side-card-img {
+  animation: wheel-spin 6s linear infinite;
+}
+
+/* сдвиг по вертикали повторяем в кадрах — иначе анимация затрёт translateY */
+@keyframes wheel-spin {
+  from {
+    transform: translateY(-50%) rotate(0deg);
+  }
+
+  to {
+    transform: translateY(-50%) rotate(360deg);
+  }
+}
+
+/* | СВЁРНУТЫЙ САЙДБАР — ТОЛЬКО ИКОНКИ */
+
+/* всё текстовое прячем, оставляя иконки */
+.wrapper.sidebar-collapsed .side-card-title,
+.wrapper.sidebar-collapsed .sidebar-link > span,
+.wrapper.sidebar-collapsed .sidebar-group-btn > span,
+.wrapper.sidebar-collapsed .sidebar-lang-btn > span,
+.wrapper.sidebar-collapsed .sidebar-lang-list span,
+.wrapper.sidebar-collapsed .sidebar-badge,
+.wrapper.sidebar-collapsed .sidebar-group-arrow,
+.wrapper.sidebar-collapsed .sidebar-lang-arrow {
+  display: none;
+}
+
+.wrapper.sidebar-collapsed .sidebar-link,
+.wrapper.sidebar-collapsed .sidebar-group-btn,
+.wrapper.sidebar-collapsed .sidebar-lang-btn,
+.wrapper.sidebar-collapsed .sidebar-lang-list button {
+  justify-content: center;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+/* в свёрнутом виде расстояние между иконками одинаковое */
+.wrapper.sidebar-collapsed .sidebar > div,
+.wrapper.sidebar-collapsed .sidebar nav {
+  gap: 16px;
+}
+
+/* иконки-ссылки получают подложку, как кнопки в хедере */
+.wrapper.sidebar-collapsed .sidebar-link,
+.wrapper.sidebar-collapsed .sidebar-group-btn,
+.wrapper.sidebar-collapsed .sidebar-lang-btn {
+  width: 36px;
+  height: 36px;
+  margin: 0 auto;
+  padding: 0;
+  border-radius: 8px;
+  background: #171d36;
+}
+
+/* фон теперь на самой кнопке, обёртке он не нужен */
+.wrapper.sidebar-collapsed .sidebar-group {
+  background: none;
+}
+
+/* раскрытые разделы держим закрытыми, пока сайдбар свёрнут */
+.wrapper.sidebar-collapsed .sidebar-group.is-open .sidebar-group-body {
+  grid-template-rows: 0fr;
+}
+
+/* карточки превращаются в квадратные плитки */
+.wrapper.sidebar-collapsed .side-card {
+  height: 44px;
+  padding: 0;
+  justify-content: center;
+}
+
+/* на плитке вместо обрезанной большой картинки показываем маленькую */
+.side-card-img-sm {
+  display: none;
+  position: absolute;
+  inset: 0;
+  width: 34px;
+  margin: auto;
+  pointer-events: none;
+}
+
+.wrapper.sidebar-collapsed .side-card-earn .side-card-img {
+  display: none;
+}
+
+.wrapper.sidebar-collapsed .side-card-img-sm {
+  display: block;
+}
+
+.wrapper.sidebar-collapsed .side-card-wheel .side-card-img {
+  left: 50%;
+  right: auto;
+  width: 34px;
+  transform: translate(-50%, -50%);
+  animation-name: wheel-spin-centered;
+}
+
+@keyframes wheel-spin-centered {
+  from {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+
+  to {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+/* светлый блик бежит по периметру: conic-gradient крутится, маска оставляет только рамку */
+.side-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  padding: 2px;
+  border-radius: inherit;
+  background: conic-gradient(
+    from var(--card-border-angle),
+    transparent 0deg,
+    var(--card-border-glow) 40deg,
+    transparent 90deg
+  );
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  mask-composite: exclude;
+  animation: card-border-spin 3s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes card-border-spin {
+  to {
+    --card-border-angle: 360deg;
+  }
+}
+
+/* на мобилке хедер лежит поверх игры и прячется вверх по клику на язычок */
+@media (max-width: 767px) {
+  .wrapper {
+    position: relative;
+  }
+
+  .header {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    transition: transform 0.3s ease;
+  }
+
+  .wrapper.header-hidden .header {
+    /* язычок висит ниже хедера, поэтому остаётся на экране */
+    transform: translateY(-100%);
+  }
+}
+
+.header-toggle svg {
+  transition: transform 0.3s ease;
+}
+
+.wrapper.header-hidden .header-toggle svg {
+  transform: rotate(180deg);
+}
+
+/* прокрутка есть, нативный скроллбар скрыт */
+.game-scroll {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.game-scroll::-webkit-scrollbar {
+  display: none;
+}
+
 .game-frame {
-  width: 100vw;
-  height: 100dvh;
+  display: block;
+  width: 100%;
+  /* игра занимает всю видимую высоту колонки, футер уезжает за неё — отсюда скролл */
+  height: 100%;
+}
+
+.footer {
+  padding: 32px 40px 20px;
+  background: #1a2039;
+}
+
+.footer-top {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr 1.3fr 1.4fr 1fr;
+  gap: 32px;
+  padding-bottom: 28px;
+}
+
+.footer-brand {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.footer-socials {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  max-width: 216px;
+}
+
+.footer-social {
+  display: flex;
+  width: 32px;
+  height: 32px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  color: #ffffff;
+  transition: opacity 0.2s ease;
+}
+
+.footer-social:hover {
+  opacity: 0.85;
+}
+
+.footer-col {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  font-size: 14px;
+  line-height: 18px;
+}
+
+.footer-col-title {
+  color: #8b8fa8;
+}
+
+.footer-col a {
+  color: #f0f0f0;
+  transition: color 0.2s ease;
+}
+
+.footer-col a:hover {
+  color: #a6a8c8;
+}
+
+/* ссылка с внешней иконкой держит их на одной строке */
+.footer-link-external {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.footer-app-link {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.footer-divider {
+  height: 1px;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.footer-badges-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 18px 0;
+}
+
+.footer-badges {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.footer-trust {
+  height: 28px;
+  width: auto;
+}
+
+.footer-dmca {
+  height: 24px;
+  width: auto;
+}
+
+.footer-payments {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 36px;
+  padding: 20px 0;
+}
+
+.footer-payment {
+  height: 34px;
+  width: auto;
+  /* белые svg перекрашиваем в приглушённый серо-сиреневый */
+  filter: brightness(0) saturate(100%) invert(78%) sepia(23%) saturate(418%)
+    hue-rotate(193deg) brightness(69%) contrast(134%);
+}
+
+.footer-copyright {
+  max-width: 720px;
+  margin: 0 auto;
+  color: #8b8fa8;
+  font-size: 12px;
+  line-height: 17px;
+  text-align: center;
+}
+
+/* адаптив футера: от 768px и выше (ниже футер скрыт) */
+
+@media (max-width: 1280px) {
+  .footer {
+    padding: 28px 24px 18px;
+  }
+
+  .footer-top {
+    gap: 24px;
+  }
+
+  .footer-payments {
+    gap: 24px;
+  }
+}
+
+/* пять колонок больше не помещаются — перестраиваем в три */
+@media (max-width: 1080px) {
+  .footer-top {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    row-gap: 28px;
+  }
+}
+
+@media (max-width: 900px) {
+  .footer-top {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  /* DMCA и знаки доверия встают в две строки */
+  .footer-badges-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  .footer-badges {
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  .footer-payment {
+    height: 28px;
+  }
 }
 
 /* набран лимит кликов — игра больше не принимает клики */

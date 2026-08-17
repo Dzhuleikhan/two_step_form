@@ -11,4 +11,7 @@ import "./modules/language";
 import "./modules/promocodeCheck";
 import "./modules/fb_pixel";
 import "./modules/google-auth";
+import "./modules/sidebar";
+import "./modules/gameHeader";
+import "./modules/sidebarLanguage";
 import "./modules/frameTest.js";

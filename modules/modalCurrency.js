@@ -26,7 +26,7 @@ function getCountryCurrencyFullName(inputCountry) {
   return "US Dollar"; // or some default value if country is not found
 }
 
-function getCountryCurrencyIcon(inputCountry) {
+export function getCountryCurrencyIcon(inputCountry) {
   for (const data of countryCurrencyData) {
     if (data.countries.includes(inputCountry)) {
       return data.countryCurrencyIcon;

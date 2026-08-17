@@ -139,14 +139,18 @@ async function initLanguage() {
 }
 initLanguage();
 
-headerLangList.addEventListener("click", (e) => {
-  e.preventDefault();
-  const link = e.target.closest("a[data-lang]");
-  const targetLang = link.getAttribute("data-lang");
+// общая точка входа для всех переключателей языка на странице
+export function selectLanguage(targetLang) {
   changeLanguage(targetLang);
   localStorage.setItem("preferredLanguage", getSupportedLanguage(targetLang));
 
   const currencyData = JSON.parse(localStorage.getItem("currencyData"));
-  settingInitialBonusValue(currencyData.abbr);
+  if (currencyData) settingInitialBonusValue(currencyData.abbr);
+}
+
+headerLangList.addEventListener("click", (e) => {
+  e.preventDefault();
+  const link = e.target.closest("a[data-lang]");
+  selectLanguage(link.getAttribute("data-lang"));
   headerLangList.classList.remove("is-open");
 });
