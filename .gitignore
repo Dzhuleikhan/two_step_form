@@ -12,6 +12,7 @@ dist
 dist-ssr
 *.local
 .env
+landing-c2gaming.md
 
 # Editor directories and files
 .vscode/*

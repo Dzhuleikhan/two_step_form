@@ -85,6 +85,21 @@
 body {
   width: 100vw;
   height: 100dvh;
+  background: #0e0f20;
+}
+
+/* фоновая графика поверх заливки, под контентом */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  /* под всем контентом: у body свой фон-заливка, графика лежит между ними */
+  z-index: -1;
+  pointer-events: none;
+  background-image: url("https://goldbet.ams3.cdn.digitaloceanspaces.com/graphic/main_bg.svg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .section-title span {
@@ -117,10 +132,47 @@ body {
 
 .two-step-overlay {
   display: none;
+  background: rgba(17, 17, 12, 0.5);
+  backdrop-filter: blur(6.95px);
+  -webkit-backdrop-filter: blur(6.95px);
 }
 
 .two-step-overlay.is-open {
   display: flex;
+}
+
+.two-step-close-btn {
+  display: none;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  z-index: 10;
+  width: 40px;
+  height: 40px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  border: 1px solid rgba(199, 199, 199, 0.36);
+  background: rgba(9, 9, 9, 0.32);
+  color: #f0f0f0;
+  transition: color 0.2s;
+}
+
+.two-step-close-btn.is-visible {
+  display: flex;
+}
+
+.two-step-close-btn:hover {
+  color: #ffffff;
+}
+
+@media (max-width: 480px) {
+  .two-step-close-btn {
+    top: 16px;
+    right: auto;
+    left: 50%;
+    transform: translateX(-50%);
+  }
 }
 
 .two-step-bonus-checkbox-circle::before,
@@ -197,6 +249,115 @@ body {
   display: grid;
 }
 
+/* Заголовок над формой — по макету */
+.two-step-heading {
+  /* 676px — ширина самого текста, паддинги идут сверх */
+  box-sizing: content-box;
+  max-width: 676px;
+  margin-bottom: 16px;
+}
+
+.two-step-heading > * + * {
+  margin-top: 16px;
+}
+
+/* две крупные строки стоят плотнее, чем подзаголовок под ними */
+.two-step-heading > .two-step-heading-spins {
+  margin-top: 4px;
+}
+
+/* акцент в заголовке — золотым градиентом по тексту */
+.two-step-heading .gold-text {
+  background: linear-gradient(180deg, #ebc46f 0%, #edae24 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  /* тень наследуется от строки и просвечивает сквозь прозрачную заливку */
+  text-shadow: none;
+}
+
+.two-step-heading-title {
+  font-size: 48px;
+  line-height: normal;
+  letter-spacing: -0.96px;
+  text-shadow: 0 4px 11.7px rgba(0, 0, 0, 0.62);
+}
+
+/* вторая строка — про остаток спинов */
+.two-step-heading-spins {
+  font-size: 36px;
+  line-height: normal;
+  letter-spacing: -0.72px;
+  text-shadow: 0 4px 11.7px rgba(0, 0, 0, 0.62);
+}
+
+/* со второго шага заголовок мельче — одна строка вместо двух */
+.two-step-heading.is-compact .two-step-heading-title {
+  font-size: 36px;
+  letter-spacing: -0.72px;
+}
+
+.two-step-heading-subtitle {
+  text-align: center;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 120%;
+  letter-spacing: -0.4px;
+}
+
+@media (max-width: 480px) {
+  .two-step-heading-title {
+    font-size: 34px;
+    letter-spacing: -0.68px;
+  }
+
+  .two-step-heading.is-compact .two-step-heading-title {
+    font-size: 26px;
+    letter-spacing: -0.52px;
+  }
+
+  .two-step-heading-spins {
+    font-size: 26px;
+    letter-spacing: -0.52px;
+  }
+
+  .two-step-heading-subtitle {
+    font-size: 16px;
+  }
+}
+
+/* Поля формы верстались с разными паддингами (p-4 / py-1 / py-2 / h-[52px]),
+   из-за чего высоты разъезжались. Держим единую высоту в одном месте. */
+.two-step-form .two-step-input-wrapper,
+.two-step-form .two-step-birthday-wrapper,
+.two-step-form .two-step-country-wrapper,
+.two-step-form .two-step-group-phone,
+.two-step-form .form-currency-btn {
+  height: 56px;
+}
+
+/* длинные названия валют («Azerbaijani Manat») не должны ломать строку */
+.two-step-form .main-currency-name {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.two-step-form .form-currency-btn > div {
+  min-width: 0;
+}
+
+/* внутри своя сетка — контент центрируем по вертикали */
+.two-step-form .two-step-country-wrapper {
+  display: grid;
+  align-items: center;
+}
+
+.two-step-form .two-step-group-phone,
+.two-step-form .two-step-birthday-wrapper {
+  align-content: center;
+}
+
 .two-step-form-step {
   display: none;
 }
@@ -206,7 +367,9 @@ body {
 }
 
 .two-step-progress-circle.active {
-  background-color: #8726ff;
+  background-color: #f4fd2b;
+  border-color: #f4fd2b;
+  color: #0f0f0f;
 }
 
 .next-step-btn,
@@ -232,6 +395,94 @@ body {
 .next-step-btn:disabled .disable-overlap,
 .submit-btn:disabled .disable-overlap {
   display: block;
+}
+
+/* таймер над заголовком */
+.two-step-timer {
+  display: flex;
+  width: 104px;
+  height: 43px;
+  padding: 8px 13px;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 16px;
+  border: 1px solid rgba(199, 199, 199, 0.36);
+  border-radius: 16px;
+  background: rgba(9, 9, 9, 0.32);
+  font-family: Montserrat;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 100%;
+  letter-spacing: -0.4px;
+  text-transform: uppercase;
+  color: #f0f0f0;
+}
+
+.two-step-timer svg {
+  flex-shrink: 0;
+}
+
+/* меньше полутора минут — предупреждаем цветом */
+.two-step-timer.is-urgent {
+  color: #ff5530;
+}
+
+/* блок «зарезервированный баланс» над кнопкой */
+.two-step-reserved {
+  padding: 12px 20px;
+  border: 1px solid rgba(199, 199, 199, 0.36);
+  border-radius: 16px;
+  background: rgba(9, 9, 9, 0.32);
+}
+
+.two-step-reserved-icon {
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: #6ee787;
+}
+
+.two-step-reserved-text {
+  font-family: Montserrat;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 100%;
+  letter-spacing: -0.32px;
+  text-transform: uppercase;
+  color: #f0f0f0;
+}
+
+/* сумма — золотым градиентом по тексту */
+.two-step-reserved .gold-text {
+  background: linear-gradient(180deg, #ebc46f 0%, #edae24 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+@media (max-width: 480px) {
+  .two-step-reserved {
+    padding: 10px 14px;
+  }
+}
+
+/* активная кнопка шага — по макету */
+.next-step-btn,
+.submit-btn {
+  border-radius: 16px;
+  border: 3px solid #ffde97;
+  background: linear-gradient(180deg, #ebc46f 0%, #edae24 100%);
+  color: #0f0f0f;
+}
+
+.next-step-btn:disabled,
+.submit-btn:disabled {
+  border: none;
+  background: #565862;
+  color: #898c9b;
 }
 
 .qs-num.qs-current,
@@ -664,6 +915,35 @@ body {
   width: 100%;
   overflow: hidden;
   background: #14182f;
+}
+
+/* раскрытый аккордеон не должен сжимать соседей: скроллится всё, кроме
+   переключателя языка — он остаётся внизу на месте */
+.sidebar-scroll {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  /* полоса прокрутки скрыта, скролл остаётся рабочим */
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.sidebar-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+/* маска не скроллится вместе с контентом — гасим нижнюю кромку колонки */
+.sidebar-scroll.has-more {
+  mask-image: linear-gradient(to bottom, #000 calc(100% - 56px), transparent);
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    #000 calc(100% - 56px),
+    transparent
+  );
+}
+
+.sidebar-scroll > * {
+  flex-shrink: 0;
 }
 
 /* | КАРТОЧКИ САЙДБАРА */
@@ -1116,7 +1396,6 @@ body {
 
 .footer {
   padding: 32px 40px 20px;
-  background: #1a2039;
 }
 
 .footer-top {
@@ -1287,6 +1566,43 @@ body {
   .footer-payment {
     height: 28px;
   }
+}
+
+/* хедер, сайдбар и футер — Raleway */
+.header,
+.sidebar,
+.footer {
+  font-family: Raleway;
+}
+
+/* заглушка вместо игры, когда в ссылке нет cid/gameId */
+.game-empty {
+  display: none;
+  height: 100%;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  padding: 20px;
+  text-align: center;
+}
+
+.game-empty.is-visible {
+  display: flex;
+}
+
+.game-empty img {
+  width: 70%;
+  height: auto;
+}
+
+.game-empty-text {
+  font-family: Montserrat;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 120%;
+  letter-spacing: -0.4px;
+  color: #f0f0f0;
 }
 
 /* набран лимит кликов — игра больше не принимает клики */

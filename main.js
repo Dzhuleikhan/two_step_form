@@ -14,4 +14,5 @@ import "./modules/google-auth";
 import "./modules/sidebar";
 import "./modules/gameHeader";
 import "./modules/sidebarLanguage";
-import "./modules/frameTest.js";
+import "./modules/gameFetch.js";
+import "./modules/navModal.js";

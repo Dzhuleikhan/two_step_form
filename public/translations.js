@@ -1,5 +1,16 @@
 export const translations = {
   en: {
+    gameUnavailable: "Game is unavailable",
+    continuePlayingBtn: "Continue Playing",
+    claimTitle: "CLAIM YOUR <span class=\"gold-text\">{spins} FREE SPINS!</span>",
+    verifyTitle: "ALMOST THERE! VERIFY <span class=\"gold-text\">YOUR WIN</span>",
+    verifySubtitle: "Required to process your <span class=\"gold-text\">{amount}</span> payout and ensure security.",
+    // | Win heading (гейт регистрации)
+    winTitle: "YOUR WIN: <span class=\"gold-text\">{amount}!</span>",
+    winSpins: "+ <span class=\"gold-text\">{spins} FREE SPINS</span> ARE WAITING",
+    winSubtitle: "Fill up the fields below to continue playing!",
+    continueSaveBtn: "Continue & Save {amount}",
+    reservedBalance: "RESERVED BALANCE: <span class=\"gold-text\">{amount} AND {spins} FS</span>",
     pageTabTitle: "Sign Up for a Goldbet Casino Account",
     backBtn: "Back",
     // | Step 1
@@ -99,6 +110,17 @@ export const translations = {
       "This page is promotional material and is not affiliated with or endorsed by any gaming operator. All trademarks belong to their respective owners.",
   },
   fr: {
+    gameUnavailable: "Le jeu est indisponible",
+    continuePlayingBtn: "Continuer à jouer",
+    claimTitle: "RÉCUPÉREZ VOS <span class=\"gold-text\">{spins} TOURS GRATUITS !</span>",
+    verifyTitle: "PRESQUE FINI ! VÉRIFIEZ <span class=\"gold-text\">VOTRE GAIN</span>",
+    verifySubtitle: "Nécessaire pour traiter votre paiement de <span class=\"gold-text\">{amount}</span> et garantir la sécurité.",
+    // | Win heading (гейт регистрации)
+    winTitle: "VOTRE GAIN : <span class=\"gold-text\">{amount} !</span>",
+    winSpins: "+ <span class=\"gold-text\">{spins} TOURS GRATUITS</span> VOUS ATTENDENT",
+    winSubtitle: "Remplissez les champs ci-dessous pour continuer à jouer !",
+    continueSaveBtn: "Continuer et garder {amount}",
+    reservedBalance: "SOLDE RÉSERVÉ : <span class=\"gold-text\">{amount} ET {spins} FS</span>",
     pageTabTitle: "Inscrivez-vous pour un compte de casino Goldbet",
     backBtn: "Retour",
     // | Step 1
@@ -198,6 +220,17 @@ export const translations = {
       "Cette page est un support promotionnel et n'est ni affiliée ni approuvée par un opérateur de jeux. Toutes les marques appartiennent à leurs propriétaires respectifs.",
   },
   pl: {
+    gameUnavailable: "Gra jest niedostępna",
+    continuePlayingBtn: "Graj dalej",
+    claimTitle: "ODBIERZ <span class=\"gold-text\">{spins} DARMOWYCH SPINÓW!</span>",
+    verifyTitle: "PRAWIE GOTOWE! ZWERYFIKUJ <span class=\"gold-text\">SWOJĄ WYGRANĄ</span>",
+    verifySubtitle: "Wymagane do przetworzenia wypłaty <span class=\"gold-text\">{amount}</span> i zapewnienia bezpieczeństwa.",
+    // | Win heading (гейт регистрации)
+    winTitle: "TWOJA WYGRANA: <span class=\"gold-text\">{amount}!</span>",
+    winSpins: "+ <span class=\"gold-text\">{spins} DARMOWYCH SPINÓW</span> CZEKA",
+    winSubtitle: "Wypełnij poniższe pola, aby kontynuować grę!",
+    continueSaveBtn: "Kontynuuj i zachowaj {amount}",
+    reservedBalance: "ZAREZERWOWANE SALDO: <span class=\"gold-text\">{amount} I {spins} FS</span>",
     pageTabTitle: "Zarejestruj konto w Goldbet Casino",
     backBtn: "Wstecz",
     // | Krok 1
@@ -297,6 +330,17 @@ export const translations = {
       "Ta strona jest materiałem promocyjnym i nie jest powiązana z żadnym operatorem gier ani przez niego zatwierdzona. Wszystkie znaki towarowe należą do ich właścicieli.",
   },
   hu: {
+    gameUnavailable: "A játék nem érhető el",
+    continuePlayingBtn: "Játék folytatása",
+    claimTitle: "SZEREZD MEG A <span class=\"gold-text\">{spins} INGYENES PÖRGETÉST!</span>",
+    verifyTitle: "MÁR CSAK EGY LÉPÉS! ERŐSÍTSD MEG <span class=\"gold-text\">A NYEREMÉNYED</span>",
+    verifySubtitle: "Szükséges a(z) <span class=\"gold-text\">{amount}</span> kifizetés feldolgozásához és a biztonsághoz.",
+    // | Win heading (гейт регистрации)
+    winTitle: "A NYEREMÉNYED: <span class=\"gold-text\">{amount}!</span>",
+    winSpins: "+ <span class=\"gold-text\">{spins} INGYENES PÖRGETÉS</span> VÁR RÁD",
+    winSubtitle: "Töltsd ki az alábbi mezőket a játék folytatásához!",
+    continueSaveBtn: "Folytatás és {amount} megtartása",
+    reservedBalance: "FOGLALT EGYENLEG: <span class=\"gold-text\">{amount} ÉS {spins} FS</span>",
     pageTabTitle: "Regisztrálj Goldbet Casino fiókot",
     backBtn: "Vissza",
     // | 1. lépés
@@ -396,6 +440,17 @@ export const translations = {
       "Ez az oldal promóciós anyag, és nem áll kapcsolatban egyetlen játékszolgáltatóval sem, illetve azok nem támogatják. Minden védjegy a megfelelő tulajdonos birtokában van.",
   },
   ro: {
+    gameUnavailable: "Jocul este indisponibil",
+    continuePlayingBtn: "Continuă să joci",
+    claimTitle: "REVENDICĂ CELE <span class=\"gold-text\">{spins} ROTIRI GRATUITE!</span>",
+    verifyTitle: "APROAPE GATA! VERIFICĂ <span class=\"gold-text\">CÂȘTIGUL TĂU</span>",
+    verifySubtitle: "Necesar pentru a procesa plata de <span class=\"gold-text\">{amount}</span> și a asigura securitatea.",
+    // | Win heading (гейт регистрации)
+    winTitle: "CÂȘTIGUL TĂU: <span class=\"gold-text\">{amount}!</span>",
+    winSpins: "+ <span class=\"gold-text\">{spins} ROTIRI GRATUITE</span> TE AȘTEAPTĂ",
+    winSubtitle: "Completează câmpurile de mai jos pentru a continua să joci!",
+    continueSaveBtn: "Continuă și păstrează {amount}",
+    reservedBalance: "SOLD REZERVAT: <span class=\"gold-text\">{amount} ȘI {spins} FS</span>",
     pageTabTitle: "Înregistrează un cont Goldbet Casino",
     backBtn: "Înapoi",
     // | Step 1
@@ -495,6 +550,17 @@ export const translations = {
       "Această pagină este material promoțional și nu este afiliată sau aprobată de niciun operator de jocuri. Toate mărcile comerciale aparțin proprietarilor lor.",
   },
   sl: {
+    gameUnavailable: "Igra ni na voljo",
+    continuePlayingBtn: "Nadaljuj z igro",
+    claimTitle: "PREVZEMI <span class=\"gold-text\">{spins} BREZPLAČNIH VRTLJAJEV!</span>",
+    verifyTitle: "SKORAJ TAM! POTRDI <span class=\"gold-text\">SVOJ DOBITEK</span>",
+    verifySubtitle: "Potrebno za obdelavo izplačila <span class=\"gold-text\">{amount}</span> in zagotavljanje varnosti.",
+    // | Win heading (гейт регистрации)
+    winTitle: "TVOJ DOBITEK: <span class=\"gold-text\">{amount}!</span>",
+    winSpins: "+ <span class=\"gold-text\">{spins} BREZPLAČNIH VRTLJAJEV</span> ČAKA",
+    winSubtitle: "Izpolni spodnja polja za nadaljevanje igre!",
+    continueSaveBtn: "Nadaljuj in shrani {amount}",
+    reservedBalance: "REZERVIRANO STANJE: <span class=\"gold-text\">{amount} IN {spins} FS</span>",
     pageTabTitle: "Registrirajte račun Goldbet Casino",
     backBtn: "Nazaj",
     // | Korak 1
@@ -594,6 +660,17 @@ export const translations = {
       "Ta stran je promocijsko gradivo in ni povezana z nobenim ponudnikom iger niti je ta ne podpira. Vse blagovne znamke so lastnina njihovih lastnikov.",
   },
   cs: {
+    gameUnavailable: "Hra není dostupná",
+    continuePlayingBtn: "Pokračovat ve hře",
+    claimTitle: "VYZVEDNI SI <span class=\"gold-text\">{spins} FREE SPINŮ!</span>",
+    verifyTitle: "TÉMĚŘ HOTOVO! OVĚŘ <span class=\"gold-text\">SVOU VÝHRU</span>",
+    verifySubtitle: "Nutné pro zpracování výplaty <span class=\"gold-text\">{amount}</span> a zajištění bezpečnosti.",
+    // | Win heading (гейт регистрации)
+    winTitle: "TVÁ VÝHRA: <span class=\"gold-text\">{amount}!</span>",
+    winSpins: "+ <span class=\"gold-text\">{spins} FREE SPINŮ</span> ČEKÁ",
+    winSubtitle: "Vyplň pole níže a pokračuj ve hře!",
+    continueSaveBtn: "Pokračovat a uložit {amount}",
+    reservedBalance: "REZERVOVANÝ ZŮSTATEK: <span class=\"gold-text\">{amount} A {spins} FS</span>",
     pageTabTitle: "Zaregistrujte si účet v Goldbet Casinu",
     backBtn: "Zpět",
     // | Step 1
@@ -693,6 +770,17 @@ export const translations = {
       "Tato stránka je propagační materiál a není spojena s žádným provozovatelem her ani jím není schválena. Všechny obchodní značky patří jejich vlastníkům.",
   },
   ru: {
+    gameUnavailable: "Игра недоступна",
+    continuePlayingBtn: "Продолжить игру",
+    claimTitle: "ЗАБЕРИТЕ <span class=\"gold-text\">{spins} ФРИСПИНОВ!</span>",
+    verifyTitle: "ПОЧТИ ГОТОВО! ПОДТВЕРДИТЕ <span class=\"gold-text\">ВАШ ВЫИГРЫШ</span>",
+    verifySubtitle: "Необходимо для обработки выплаты <span class=\"gold-text\">{amount}</span> и обеспечения безопасности.",
+    // | Win heading (гейт регистрации)
+    winTitle: "ВАШ ВЫИГРЫШ: <span class=\"gold-text\">{amount}!</span>",
+    winSpins: "+ <span class=\"gold-text\">{spins} ФРИСПИНОВ</span> ЖДУТ ВАС",
+    winSubtitle: "Заполните поля ниже, чтобы продолжить игру!",
+    continueSaveBtn: "Продолжить и сохранить {amount}",
+    reservedBalance: "ЗАРЕЗЕРВИРОВАННЫЙ БАЛАНС: <span class=\"gold-text\">{amount} И {spins} FS</span>",
     pageTabTitle: "Зарегистрируйтесь в казино Goldbet",
     backBtn: "Назад",
     // | Шаг 1
@@ -792,6 +880,17 @@ export const translations = {
       "Эта страница является рекламным материалом и не связана с каким-либо игорным оператором и не одобрена им. Все товарные знаки принадлежат их владельцам.",
   },
   pt: {
+    gameUnavailable: "O jogo está indisponível",
+    continuePlayingBtn: "Continuar a jogar",
+    claimTitle: "RESGATE AS SUAS <span class=\"gold-text\">{spins} RODADAS GRÁTIS!</span>",
+    verifyTitle: "QUASE LÁ! VERIFIQUE <span class=\"gold-text\">O SEU GANHO</span>",
+    verifySubtitle: "Necessário para processar o pagamento de <span class=\"gold-text\">{amount}</span> e garantir a segurança.",
+    // | Win heading (гейт регистрации)
+    winTitle: "O SEU GANHO: <span class=\"gold-text\">{amount}!</span>",
+    winSpins: "+ <span class=\"gold-text\">{spins} RODADAS GRÁTIS</span> À ESPERA",
+    winSubtitle: "Preencha os campos abaixo para continuar a jogar!",
+    continueSaveBtn: "Continuar e guardar {amount}",
+    reservedBalance: "SALDO RESERVADO: <span class=\"gold-text\">{amount} E {spins} FS</span>",
     pageTabTitle: "Registar no Goldbet Casino",
     backBtn: "Voltar",
     // | Etapa 1
@@ -891,6 +990,17 @@ export const translations = {
       "Esta página é material promocional e não está afiliada nem é aprovada por qualquer operador de jogos. Todas as marcas pertencem aos respetivos proprietários.",
   },
   de: {
+    gameUnavailable: "Spiel ist nicht verfügbar",
+    continuePlayingBtn: "Weiterspielen",
+    claimTitle: "HOL DIR DEINE <span class=\"gold-text\">{spins} FREISPIELE!</span>",
+    verifyTitle: "FAST GESCHAFFT! BESTÄTIGE <span class=\"gold-text\">DEINEN GEWINN</span>",
+    verifySubtitle: "Erforderlich, um die Auszahlung von <span class=\"gold-text\">{amount}</span> zu bearbeiten und die Sicherheit zu gewährleisten.",
+    // | Win heading (гейт регистрации)
+    winTitle: "DEIN GEWINN: <span class=\"gold-text\">{amount}!</span>",
+    winSpins: "+ <span class=\"gold-text\">{spins} FREISPIELE</span> WARTEN",
+    winSubtitle: "Fülle die Felder unten aus, um weiterzuspielen!",
+    continueSaveBtn: "Weiter und {amount} sichern",
+    reservedBalance: "RESERVIERTES GUTHABEN: <span class=\"gold-text\">{amount} UND {spins} FS</span>",
     pageTabTitle: "Registrieren Sie sich bei Goldbet Casino",
     backBtn: "Zurück",
     // | Schritt 1
@@ -990,6 +1100,17 @@ export const translations = {
       "Diese Seite ist Werbematerial und steht in keiner Verbindung zu einem Spielanbieter und wird von diesem nicht unterstützt. Alle Marken sind Eigentum ihrer jeweiligen Inhaber.",
   },
   el: {
+    gameUnavailable: "Το παιχνίδι δεν είναι διαθέσιμο",
+    continuePlayingBtn: "Συνέχεια παιχνιδιού",
+    claimTitle: "ΔΙΕΚΔΙΚΗΣΕ <span class=\"gold-text\">{spins} ΔΩΡΕΑΝ ΠΕΡΙΣΤΡΟΦΕΣ!</span>",
+    verifyTitle: "ΣΧΕΔΟΝ ΕΤΟΙΜΟ! ΕΠΙΒΕΒΑΙΩΣΕ <span class=\"gold-text\">ΤΟ ΚΕΡΔΟΣ ΣΟΥ</span>",
+    verifySubtitle: "Απαιτείται για την επεξεργασία της πληρωμής <span class=\"gold-text\">{amount}</span> και την ασφάλεια.",
+    // | Win heading (гейт регистрации)
+    winTitle: "ΤΟ ΚΕΡΔΟΣ ΣΟΥ: <span class=\"gold-text\">{amount}!</span>",
+    winSpins: "+ <span class=\"gold-text\">{spins} ΔΩΡΕΑΝ ΠΕΡΙΣΤΡΟΦΕΣ</span> ΣΕ ΠΕΡΙΜΕΝΟΥΝ",
+    winSubtitle: "Συμπλήρωσε τα παρακάτω πεδία για να συνεχίσεις να παίζεις!",
+    continueSaveBtn: "Συνέχεια και κράτηση {amount}",
+    reservedBalance: "ΔΕΣΜΕΥΜΕΝΟ ΥΠΟΛΟΙΠΟ: <span class=\"gold-text\">{amount} ΚΑΙ {spins} FS</span>",
     pageTabTitle: "Εγγραφή Λογαριασμού στο Καζίνο Goldbet",
     backBtn: "Πίσω",
     // | Step 1
@@ -1089,6 +1210,17 @@ export const translations = {
       "Αυτή η σελίδα αποτελεί προωθητικό υλικό και δεν συνδέεται ούτε εγκρίνεται από κανέναν πάροχο τυχερών παιχνιδιών. Όλα τα εμπορικά σήματα ανήκουν στους κατόχους τους.",
   },
   uk: {
+    gameUnavailable: "Гра недоступна",
+    continuePlayingBtn: "Продовжити гру",
+    claimTitle: "ЗАБЕРІТЬ <span class=\"gold-text\">{spins} ФРІСПІНІВ!</span>",
+    verifyTitle: "МАЙЖЕ ГОТОВО! ПІДТВЕРДІТЬ <span class=\"gold-text\">ВАШ ВИГРАШ</span>",
+    verifySubtitle: "Потрібно для обробки виплати <span class=\"gold-text\">{amount}</span> та забезпечення безпеки.",
+    // | Win heading (гейт регистрации)
+    winTitle: "ВАШ ВИГРАШ: <span class=\"gold-text\">{amount}!</span>",
+    winSpins: "+ <span class=\"gold-text\">{spins} ФРІСПІНІВ</span> ЧЕКАЮТЬ",
+    winSubtitle: "Заповніть поля нижче, щоб продовжити гру!",
+    continueSaveBtn: "Продовжити та зберегти {amount}",
+    reservedBalance: "ЗАРЕЗЕРВОВАНИЙ БАЛАНС: <span class=\"gold-text\">{amount} ТА {spins} FS</span>",
     pageTabTitle: "Зареєструвати акаунт у Goldbet Casino",
     backBtn: "Назад",
     // | Step 1
@@ -1188,6 +1320,17 @@ export const translations = {
       "Ця сторінка є рекламним матеріалом і не пов'язана з жодним гральним оператором та не схвалена ним. Усі торгові марки належать їхнім власникам.",
   },
   es: {
+    gameUnavailable: "El juego no está disponible",
+    continuePlayingBtn: "Seguir jugando",
+    claimTitle: "¡RECLAMA TUS <span class=\"gold-text\">{spins} GIROS GRATIS!</span>",
+    verifyTitle: "¡CASI LISTO! VERIFICA <span class=\"gold-text\">TU GANANCIA</span>",
+    verifySubtitle: "Necesario para procesar tu pago de <span class=\"gold-text\">{amount}</span> y garantizar la seguridad.",
+    // | Win heading (гейт регистрации)
+    winTitle: "TU GANANCIA: <span class=\"gold-text\">{amount}!</span>",
+    winSpins: "+ <span class=\"gold-text\">{spins} GIROS GRATIS</span> TE ESPERAN",
+    winSubtitle: "¡Completa los campos de abajo para seguir jugando!",
+    continueSaveBtn: "Continuar y guardar {amount}",
+    reservedBalance: "SALDO RESERVADO: <span class=\"gold-text\">{amount} Y {spins} FS</span>",
     pageTabTitle: "Regístrate en Goldbet Casino",
     backBtn: "Atrás",
     // | Step 1
@@ -1287,6 +1430,17 @@ export const translations = {
       "Esta página es material promocional y no está afiliada ni respaldada por ningún operador de juegos. Todas las marcas pertenecen a sus respectivos propietarios.",
   },
   nb: {
+    gameUnavailable: "Spillet er ikke tilgjengelig",
+    continuePlayingBtn: "Fortsett å spille",
+    claimTitle: "HENT DINE <span class=\"gold-text\">{spins} GRATISSPINN!</span>",
+    verifyTitle: "NESTEN FERDIG! BEKREFT <span class=\"gold-text\">GEVINSTEN DIN</span>",
+    verifySubtitle: "Nødvendig for å behandle utbetalingen på <span class=\"gold-text\">{amount}</span> og sikre kontoen.",
+    // | Win heading (гейт регистрации)
+    winTitle: "DIN GEVINST: <span class=\"gold-text\">{amount}!</span>",
+    winSpins: "+ <span class=\"gold-text\">{spins} GRATISSPINN</span> VENTER",
+    winSubtitle: "Fyll ut feltene nedenfor for å fortsette å spille!",
+    continueSaveBtn: "Fortsett og behold {amount}",
+    reservedBalance: "RESERVERT SALDO: <span class=\"gold-text\">{amount} OG {spins} FS</span>",
     pageTabTitle: "Registrer deg for en Goldbet Casino-konto",
     backBtn: "Tilbake",
     // | Step 1
@@ -1386,6 +1540,17 @@ export const translations = {
       "Denne siden er markedsføringsmateriell og er ikke tilknyttet eller godkjent av noen spilloperatør. Alle varemerker tilhører sine respektive eiere.",
   },
   sv: {
+    gameUnavailable: "Spelet är inte tillgängligt",
+    continuePlayingBtn: "Fortsätt spela",
+    claimTitle: "HÄMTA DINA <span class=\"gold-text\">{spins} GRATISSNURR!</span>",
+    verifyTitle: "NÄSTAN KLART! BEKRÄFTA <span class=\"gold-text\">DIN VINST</span>",
+    verifySubtitle: "Krävs för att behandla utbetalningen på <span class=\"gold-text\">{amount}</span> och garantera säkerheten.",
+    // | Win heading (гейт регистрации)
+    winTitle: "DIN VINST: <span class=\"gold-text\">{amount}!</span>",
+    winSpins: "+ <span class=\"gold-text\">{spins} GRATISSNURR</span> VÄNTAR",
+    winSubtitle: "Fyll i fälten nedan för att fortsätta spela!",
+    continueSaveBtn: "Fortsätt och behåll {amount}",
+    reservedBalance: "RESERVERAT SALDO: <span class=\"gold-text\">{amount} OCH {spins} FS</span>",
     pageTabTitle: "Registrera ett Goldbet Casino-konto",
     backBtn: "Tillbaka",
     // | Step 1
@@ -1485,6 +1650,17 @@ export const translations = {
       "Den här sidan är marknadsföringsmaterial och är inte ansluten till eller godkänd av någon spseloperatör. Alla varumärken tillhör sina respektive ägare.",
   },
   sk: {
+    gameUnavailable: "Hra nie je dostupná",
+    continuePlayingBtn: "Pokračovať v hre",
+    claimTitle: "VYZDVIHNI SI <span class=\"gold-text\">{spins} FREE SPINOV!</span>",
+    verifyTitle: "TAKMER HOTOVO! OVER <span class=\"gold-text\">SVOJU VÝHRU</span>",
+    verifySubtitle: "Potrebné na spracovanie výplaty <span class=\"gold-text\">{amount}</span> a zaistenie bezpečnosti.",
+    // | Win heading (гейт регистрации)
+    winTitle: "TVOJA VÝHRA: <span class=\"gold-text\">{amount}!</span>",
+    winSpins: "+ <span class=\"gold-text\">{spins} FREE SPINOV</span> ČAKÁ",
+    winSubtitle: "Vyplň polia nižšie a pokračuj v hre!",
+    continueSaveBtn: "Pokračovať a uložiť {amount}",
+    reservedBalance: "REZERVOVANÝ ZOSTATOK: <span class=\"gold-text\">{amount} A {spins} FS</span>",
     pageTabTitle: "Zaregistrujte si účet v kasíne Goldbet",
     backBtn: "Späť",
     // | Step 1
@@ -1584,6 +1760,17 @@ export const translations = {
       "Táto stránka je propagačný materiál a nie je spojená so žiadnym prevádzkovateľom hier ani ním nie je schválená. Všetky obchodné značky patria ich vlastníkom.",
   },
   it: {
+    gameUnavailable: "Il gioco non è disponibile",
+    continuePlayingBtn: "Continua a giocare",
+    claimTitle: "RICHIEDI I TUOI <span class=\"gold-text\">{spins} GIRI GRATIS!</span>",
+    verifyTitle: "CI SIAMO QUASI! VERIFICA <span class=\"gold-text\">LA TUA VINCITA</span>",
+    verifySubtitle: "Necessario per elaborare il pagamento di <span class=\"gold-text\">{amount}</span> e garantire la sicurezza.",
+    // | Win heading (гейт регистрации)
+    winTitle: "LA TUA VINCITA: <span class=\"gold-text\">{amount}!</span>",
+    winSpins: "+ <span class=\"gold-text\">{spins} GIRI GRATIS</span> TI ASPETTANO",
+    winSubtitle: "Compila i campi qui sotto per continuare a giocare!",
+    continueSaveBtn: "Continua e salva {amount}",
+    reservedBalance: "SALDO RISERVATO: <span class=\"gold-text\">{amount} E {spins} FS</span>",
     pageTabTitle: "Crea un Account Goldbet Casino",
     backBtn: "Indietro",
     // | Step 1
@@ -1683,6 +1870,17 @@ export const translations = {
       "Questa pagina è materiale promozionale e non è affiliata né approvata da alcun operatore di gioco. Tutti i marchi appartengono ai rispettivi proprietari.",
   },
   et: {
+    gameUnavailable: "Mäng pole saadaval",
+    continuePlayingBtn: "Jätka mängimist",
+    claimTitle: "LUNASTA OMA <span class=\"gold-text\">{spins} TASUTA KEERUTUST!</span>",
+    verifyTitle: "PEAAEGU VALMIS! KINNITA <span class=\"gold-text\">OMA VÕIT</span>",
+    verifySubtitle: "Vajalik <span class=\"gold-text\">{amount}</span> väljamakse töötlemiseks ja turvalisuse tagamiseks.",
+    // | Win heading (гейт регистрации)
+    winTitle: "SINU VÕIT: <span class=\"gold-text\">{amount}!</span>",
+    winSpins: "+ <span class=\"gold-text\">{spins} TASUTA KEERUTUST</span> OOTAB",
+    winSubtitle: "Täida allolevad väljad, et mängu jätkata!",
+    continueSaveBtn: "Jätka ja hoia {amount}",
+    reservedBalance: "RESERVEERITUD SALDO: <span class=\"gold-text\">{amount} JA {spins} FS</span>",
     pageTabTitle: "Loo Goldbet Casino Konto",
     backBtn: "Tagasi",
     // | Step 1
@@ -1782,6 +1980,17 @@ export const translations = {
       "See leht on reklaammaterjal ega ole seotud ühegi mänguoperaatoriga ega nende poolt heaks kiidetud. Kõik kaubamärgid kuuluvad nende omanikele.",
   },
   lv: {
+    gameUnavailable: "Spēle nav pieejama",
+    continuePlayingBtn: "Turpināt spēlēt",
+    claimTitle: "SAŅEM SAVUS <span class=\"gold-text\">{spins} BEZMAKSAS GRIEZIENUS!</span>",
+    verifyTitle: "GANDRĪZ GATAVS! APSTIPRINI <span class=\"gold-text\">SAVU LAIMESTU</span>",
+    verifySubtitle: "Nepieciešams, lai apstrādātu <span class=\"gold-text\">{amount}</span> izmaksu un nodrošinātu drošību.",
+    // | Win heading (гейт регистрации)
+    winTitle: "TAVS LAIMESTS: <span class=\"gold-text\">{amount}!</span>",
+    winSpins: "+ <span class=\"gold-text\">{spins} BEZMAKSAS GRIEZIENI</span> GAIDA",
+    winSubtitle: "Aizpildi zemāk esošos laukus, lai turpinātu spēlēt!",
+    continueSaveBtn: "Turpināt un saglabāt {amount}",
+    reservedBalance: "REZERVĒTAIS ATLIKUMS: <span class=\"gold-text\">{amount} UN {spins} FS</span>",
     pageTabTitle: "Izveidot Goldbet Casino Kontu",
     backBtn: "Atpakaļ",
     // | Step 1
@@ -1881,6 +2090,17 @@ export const translations = {
       "Šī lapa ir reklāmas materiāls un nav saistīta ar kādu spēļu operatoru, ne arī tā apstiprināta. Visas preču zīmes pieder to īpašniekiem.",
   },
   lt: {
+    gameUnavailable: "Žaidimas nepasiekiamas",
+    continuePlayingBtn: "Tęsti žaidimą",
+    claimTitle: "ATSIIMK SAVO <span class=\"gold-text\">{spins} NEMOKAMUS SUKIMUS!</span>",
+    verifyTitle: "BEVEIK BAIGTA! PATVIRTINK <span class=\"gold-text\">SAVO LAIMĖJIMĄ</span>",
+    verifySubtitle: "Reikalinga <span class=\"gold-text\">{amount}</span> išmokai apdoroti ir saugumui užtikrinti.",
+    // | Win heading (гейт регистрации)
+    winTitle: "TAVO LAIMĖJIMAS: <span class=\"gold-text\">{amount}!</span>",
+    winSpins: "+ <span class=\"gold-text\">{spins} NEMOKAMI SUKIMAI</span> LAUKIA",
+    winSubtitle: "Užpildyk laukus žemiau, kad tęstum žaidimą!",
+    continueSaveBtn: "Tęsti ir išsaugoti {amount}",
+    reservedBalance: "REZERVUOTAS LIKUTIS: <span class=\"gold-text\">{amount} IR {spins} FS</span>",
     pageTabTitle: "Sukurti Goldbet Casino Paskyrą",
     backBtn: "Atgal",
     // | Step 1
@@ -1980,6 +2200,17 @@ export const translations = {
       "Šis puslapis yra reklaminė medžiaga ir nėra susijęs su jokiu žaidimų operatoriumi ar jo patvirtintas. Visi prekių ženklai priklauso jų savininkams.",
   },
   hr: {
+    gameUnavailable: "Igra nije dostupna",
+    continuePlayingBtn: "Nastavi igrati",
+    claimTitle: "PREUZMI <span class=\"gold-text\">{spins} BESPLATNIH VRTNJI!</span>",
+    verifyTitle: "SKORO GOTOVO! POTVRDI <span class=\"gold-text\">SVOJ DOBITAK</span>",
+    verifySubtitle: "Potrebno za obradu isplate od <span class=\"gold-text\">{amount}</span> i osiguranje sigurnosti.",
+    // | Win heading (гейт регистрации)
+    winTitle: "TVOJ DOBITAK: <span class=\"gold-text\">{amount}!</span>",
+    winSpins: "+ <span class=\"gold-text\">{spins} BESPLATNIH VRTNJI</span> ČEKA",
+    winSubtitle: "Ispuni polja ispod za nastavak igre!",
+    continueSaveBtn: "Nastavi i spremi {amount}",
+    reservedBalance: "REZERVIRANO STANJE: <span class=\"gold-text\">{amount} I {spins} FS</span>",
     pageTabTitle: "Registrirajte Goldbet Casino Račun",
     backBtn: "Natrag",
     // | Step 1
@@ -2079,6 +2310,17 @@ export const translations = {
       "Ova stranica je promotivni materijal i nije povezana s bilo kojim operaterom igara niti je od njega odobrena. Svi zaštitni znakovi pripadaju njihovim vlasnicima.",
   },
   fi: {
+    gameUnavailable: "Peli ei ole saatavilla",
+    continuePlayingBtn: "Jatka pelaamista",
+    claimTitle: "LUNASTA <span class=\"gold-text\">{spins} ILMAISKIERROSTA!</span>",
+    verifyTitle: "MELKEIN VALMIS! VAHVISTA <span class=\"gold-text\">VOITTOSI</span>",
+    verifySubtitle: "Tarvitaan <span class=\"gold-text\">{amount}</span> maksun käsittelyyn ja turvallisuuden varmistamiseen.",
+    // | Win heading (гейт регистрации)
+    winTitle: "SINUN VOITTOSI: <span class=\"gold-text\">{amount}!</span>",
+    winSpins: "+ <span class=\"gold-text\">{spins} ILMAISKIERROSTA</span> ODOTTAA",
+    winSubtitle: "Täytä alla olevat kentät jatkaaksesi pelaamista!",
+    continueSaveBtn: "Jatka ja säilytä {amount}",
+    reservedBalance: "VARATTU SALDO: <span class=\"gold-text\">{amount} JA {spins} FS</span>",
     pageTabTitle: "Rekisteröidy Goldbet Casinon tilille",
     backBtn: "Takaisin",
     // | Step 1
@@ -2178,6 +2420,17 @@ export const translations = {
       "Tämä sivu on markkinointimateriaalia eikä liity mihinkään peliyhtiöön eikä ole sen hyväksymä. Kaikki tavaramerkit kuuluvat omistajilleen.",
   },
   da: {
+    gameUnavailable: "Spillet er ikke tilgængeligt",
+    continuePlayingBtn: "Fortsæt med at spille",
+    claimTitle: "HENT DINE <span class=\"gold-text\">{spins} GRATIS SPINS!</span>",
+    verifyTitle: "NÆSTEN FÆRDIG! BEKRÆFT <span class=\"gold-text\">DIN GEVINST</span>",
+    verifySubtitle: "Nødvendigt for at behandle udbetalingen på <span class=\"gold-text\">{amount}</span> og sikre sikkerheden.",
+    // | Win heading (гейт регистрации)
+    winTitle: "DIN GEVINST: <span class=\"gold-text\">{amount}!</span>",
+    winSpins: "+ <span class=\"gold-text\">{spins} GRATIS SPINS</span> VENTER",
+    winSubtitle: "Udfyld felterne nedenfor for at fortsætte med at spille!",
+    continueSaveBtn: "Fortsæt og behold {amount}",
+    reservedBalance: "RESERVERET SALDO: <span class=\"gold-text\">{amount} OG {spins} FS</span>",
     pageTabTitle: "Opret en Goldbet Casino-konto",
     backBtn: "Tilbage",
     // | Step 1
@@ -2277,6 +2530,17 @@ export const translations = {
       "Denne side er reklamemateriale og er ikke tilknyttet eller godkendt af nogen spiludbyder. Alle varemærker tilhører deres respektive ejere.",
   },
   bg: {
+    gameUnavailable: "Играта не е достъпна",
+    continuePlayingBtn: "Продължи играта",
+    claimTitle: "ВЗЕМИ <span class=\"gold-text\">{spins} БЕЗПЛАТНИ СПИНА!</span>",
+    verifyTitle: "ПОЧТИ ГОТОВО! ПОТВЪРДИ <span class=\"gold-text\">ПЕЧАЛБАТА СИ</span>",
+    verifySubtitle: "Необходимо за обработка на плащането от <span class=\"gold-text\">{amount}</span> и осигуряване на сигурност.",
+    // | Win heading (гейт регистрации)
+    winTitle: "ТВОЯТА ПЕЧАЛБА: <span class=\"gold-text\">{amount}!</span>",
+    winSpins: "+ <span class=\"gold-text\">{spins} БЕЗПЛАТНИ СПИНА</span> ТЕ ОЧАКВАТ",
+    winSubtitle: "Попълни полетата по-долу, за да продължиш да играеш!",
+    continueSaveBtn: "Продължи и запази {amount}",
+    reservedBalance: "РЕЗЕРВИРАН БАЛАНС: <span class=\"gold-text\">{amount} И {spins} FS</span>",
     pageTabTitle: "Регистрирайте се за акаунт в Goldbet Casino",
     backBtn: "Назад",
     // | Step 1
@@ -2376,6 +2640,17 @@ export const translations = {
       "Тази страница е рекламен материал и не е свързана с нито един оператор на игри, нито е одобрена от него. Всички търговски марки са собственост на техните притежатели.",
   },
   nl: {
+    gameUnavailable: "Het spel is niet beschikbaar",
+    continuePlayingBtn: "Verder spelen",
+    claimTitle: "CLAIM JE <span class=\"gold-text\">{spins} GRATIS SPINS!</span>",
+    verifyTitle: "BIJNA KLAAR! VERIFIEER <span class=\"gold-text\">JOUW WINST</span>",
+    verifySubtitle: "Nodig om de uitbetaling van <span class=\"gold-text\">{amount}</span> te verwerken en de veiligheid te garanderen.",
+    // | Win heading (гейт регистрации)
+    winTitle: "JOUW WINST: <span class=\"gold-text\">{amount}!</span>",
+    winSpins: "+ <span class=\"gold-text\">{spins} GRATIS SPINS</span> WACHTEN",
+    winSubtitle: "Vul de velden hieronder in om verder te spelen!",
+    continueSaveBtn: "Doorgaan en {amount} bewaren",
+    reservedBalance: "GERESERVEERD SALDO: <span class=\"gold-text\">{amount} EN {spins} FS</span>",
     pageTabTitle: "Registreer voor een Goldbet Casino-account",
     backBtn: "Terug",
     // | Step 1
@@ -2475,6 +2750,17 @@ export const translations = {
       "Deze pagina is promotiemateriaal en is niet verbonden aan of goedgekeurd door een gokaanbieder. Alle handelsmerken zijn eigendom van hun respectieve eigenaars.",
   },
   ga: {
+    gameUnavailable: "Níl an cluiche ar fáil",
+    continuePlayingBtn: "Lean ort ag imirt",
+    claimTitle: "FAIGH DO <span class=\"gold-text\">{spins} SPIN SAOR IN AISCE!</span>",
+    verifyTitle: "BEAGNACH ANN! DEIMHNIGH <span class=\"gold-text\">DO BHUA</span>",
+    verifySubtitle: "Riachtanach chun íocaíocht <span class=\"gold-text\">{amount}</span> a phróiseáil agus slándáil a chinntiú.",
+    // | Win heading (гейт регистрации)
+    winTitle: "DO BHUA: <span class=\"gold-text\">{amount}!</span>",
+    winSpins: "+ <span class=\"gold-text\">{spins} SCAOILEADH SAOR IN AISCE</span> AG FANACHT",
+    winSubtitle: "Líon isteach na réimsí thíos chun leanúint ag imirt!",
+    continueSaveBtn: "Lean ar aghaidh agus coinnigh {amount}",
+    reservedBalance: "IARMHÉID CURTHA IN ÁIRITHE: <span class=\"gold-text\">{amount} AGUS {spins} FS</span>",
     pageTabTitle: "Cláraigh le haghaidh Cuntas Casino Goldbet",
     backBtn: "Ar Ais",
     // | Step 1
@@ -2574,6 +2860,17 @@ export const translations = {
       "Is ábhar bolscaireachta é an leathanach seo agus níl aon cheangal aige le hoibreoir cearrbhachais ar bith ná níl sé formheasta acu. Is leis na húinéirí faoi seach na trádmharcanna go léir.",
   },
   lb: {
+    gameUnavailable: "D'Spill ass net verfügbar",
+    continuePlayingBtn: "Weiderspillen",
+    claimTitle: "HUEL DENG <span class=\"gold-text\">{spins} GRATIS SPINS!</span>",
+    verifyTitle: "BAL FÄERDEG! BESTÄTEG <span class=\"gold-text\">DÄI GEWËNN</span>",
+    verifySubtitle: "Néideg fir d'Auszuelung vun <span class=\"gold-text\">{amount}</span> ze veraarbechten an d'Sécherheet ze garantéieren.",
+    // | Win heading (гейт регистрации)
+    winTitle: "DÄI GEWËNN: <span class=\"gold-text\">{amount}!</span>",
+    winSpins: "+ <span class=\"gold-text\">{spins} GRATIS SPINS</span> WAARDEN",
+    winSubtitle: "Fëll d'Felder hei ënnen aus fir weiderzespillen!",
+    continueSaveBtn: "Weider a {amount} behalen",
+    reservedBalance: "RESERVÉIERTE SOLDE: <span class=\"gold-text\">{amount} AN {spins} FS</span>",
     pageTabTitle: "Mellt Iech fir e Goldbet Casino Kont un",
     backBtn: "Zréck",
     // | Step 1
@@ -2673,6 +2970,17 @@ export const translations = {
       "Dës Säit ass Reklammaterial a steet a keng Verbindung mat engem Spilloperateur a gëtt vun deem net ënnerstëtzt. All Mark gehéiert hire jeweilege Besëtzer.",
   },
   mt: {
+    gameUnavailable: "Il-logħba mhix disponibbli",
+    continuePlayingBtn: "Kompli tilgħab",
+    claimTitle: "IĠBOR <span class=\"gold-text\">{spins} SPINS B'XEJN!</span>",
+    verifyTitle: "KWAŻI LEST! IVVERIFIKA <span class=\"gold-text\">IR-REBĦ TIEGĦEK</span>",
+    verifySubtitle: "Meħtieġ biex jiġi pproċessat il-ħlas ta' <span class=\"gold-text\">{amount}</span> u tiġi żgurata s-sigurtà.",
+    // | Win heading (гейт регистрации)
+    winTitle: "IR-REBĦ TIEGĦEK: <span class=\"gold-text\">{amount}!</span>",
+    winSpins: "+ <span class=\"gold-text\">{spins} SPINS B'XEJN</span> JISTENNEW",
+    winSubtitle: "Imla l-oqsma hawn taħt biex tkompli tilgħab!",
+    continueSaveBtn: "Kompli u żomm {amount}",
+    reservedBalance: "BILANĊ IRRIŻERVAT: <span class=\"gold-text\">{amount} U {spins} FS</span>",
     pageTabTitle: "Irreġistra għal Kont tal-Casino Goldbet",
     backBtn: "Lura",
     // | Step 1
@@ -2772,6 +3080,17 @@ export const translations = {
       "Din il-paġna hija materjal promozzjonali u mhijiex affiljata ma' jew approvata minn xi operatur tal-logħob. It-trejdmarks kollha huma proprjetà tas-sidien rispettivi tagħhom.",
   },
   ar: {
+    gameUnavailable: "اللعبة غير متاحة",
+    continuePlayingBtn: "متابعة اللعب",
+    claimTitle: "احصل على <span class=\"gold-text\">{spins} لفة مجانية!</span>",
+    verifyTitle: "أوشكت على الانتهاء! أكّد <span class=\"gold-text\">مكسبك</span>",
+    verifySubtitle: "مطلوب لمعالجة دفعة <span class=\"gold-text\">{amount}</span> وضمان الأمان.",
+    // | Win heading (гейт регистрации)
+    winTitle: "مكسبك: <span class=\"gold-text\">{amount}!</span>",
+    winSpins: "+ <span class=\"gold-text\">{spins} لفة مجانية</span> بانتظارك",
+    winSubtitle: "املأ الحقول أدناه لمواصلة اللعب!",
+    continueSaveBtn: "متابعة وحفظ {amount}",
+    reservedBalance: "الرصيد المحجوز: <span class=\"gold-text\">{amount} و {spins} FS</span>",
     pageTabTitle: "سجّل للحصول على حساب في كازينو Goldbet",
     backBtn: "رجوع",
     // | Step 1
@@ -2871,6 +3190,17 @@ export const translations = {
       "هذه الصفحة مادة ترويجية وليست تابعة لأي مشغل ألعاب ولا معتمدة منه. جميع العلامات التجارية ملك لأصحابها.",
   },
   zh: {
+    gameUnavailable: "游戏不可用",
+    continuePlayingBtn: "继续游戏",
+    claimTitle: "领取您的 <span class=\"gold-text\">{spins} 次免费旋转！</span>",
+    verifyTitle: "就快好了！验证<span class=\"gold-text\">您的奖金</span>",
+    verifySubtitle: "需要验证以处理 <span class=\"gold-text\">{amount}</span> 的付款并确保安全。",
+    // | Win heading (гейт регистрации)
+    winTitle: "您的奖金：<span class=\"gold-text\">{amount}！</span>",
+    winSpins: "+ <span class=\"gold-text\">{spins} 次免费旋转</span>等着您",
+    winSubtitle: "填写以下字段即可继续游戏！",
+    continueSaveBtn: "继续并保存 {amount}",
+    reservedBalance: "保留余额：<span class=\"gold-text\">{amount} 和 {spins} FS</span>",
     pageTabTitle: "注册 Goldbet 赌场账户",
     backBtn: "返回",
     // | Step 1
@@ -2969,6 +3299,17 @@ export const translations = {
       "本页面为推广材料，与任何游戏运营商均无关联，亦未获其认可。所有商标归其各自所有者所有。",
   },
   sw: {
+    gameUnavailable: "Mchezo haupatikani",
+    continuePlayingBtn: "Endelea Kucheza",
+    claimTitle: "DAI <span class=\"gold-text\">{spins} MIZUNGUKO BURE!</span>",
+    verifyTitle: "KARIBU KUMALIZA! THIBITISHA <span class=\"gold-text\">USHINDI WAKO</span>",
+    verifySubtitle: "Inahitajika ili kuchakata malipo ya <span class=\"gold-text\">{amount}</span> na kuhakikisha usalama.",
+    // | Win heading (гейт регистрации)
+    winTitle: "USHINDI WAKO: <span class=\"gold-text\">{amount}!</span>",
+    winSpins: "+ <span class=\"gold-text\">{spins} MIZUNGUKO BURE</span> INAKUSUBIRI",
+    winSubtitle: "Jaza sehemu zilizo hapa chini ili uendelee kucheza!",
+    continueSaveBtn: "Endelea na uhifadhi {amount}",
+    reservedBalance: "SALIO LILILOHIFADHIWA: <span class=\"gold-text\">{amount} NA {spins} FS</span>",
     pageTabTitle: "Jisajili kwa Akaunti ya Kasino ya Goldbet",
     backBtn: "Rudi",
     // | Step 1
@@ -3068,6 +3409,17 @@ export const translations = {
       "Ukurasa huu ni nyenzo ya matangazo na hauhusiani na, wala hauidhinishwi na, mwendeshaji wa michezo yoyote. Alama zote za biashara ni mali ya wamiliki wao.",
   },
   rw: {
+    gameUnavailable: "Umukino ntiuboneka",
+    continuePlayingBtn: "Komeza Gukina",
+    claimTitle: "FATA <span class=\"gold-text\">{spins} SPINS Z'UBUNTU!</span>",
+    verifyTitle: "HAFI KURANGIZA! EMEZA <span class=\"gold-text\">INYUNGU YAWE</span>",
+    verifySubtitle: "Bikenewe kugira ngo hatunganywe kwishyura <span class=\"gold-text\">{amount}</span> no kwizeza umutekano.",
+    // | Win heading (гейт регистрации)
+    winTitle: "INYUNGU YAWE: <span class=\"gold-text\">{amount}!</span>",
+    winSpins: "+ <span class=\"gold-text\">{spins} SPINS Z'UBUNTU</span> ZIGUTEGEREJE",
+    winSubtitle: "Uzuza ibisabwa hepfo kugira ngo ukomeze gukina!",
+    continueSaveBtn: "Komeza kandi ubike {amount}",
+    reservedBalance: "KONTE YABITSWE: <span class=\"gold-text\">{amount} NA {spins} FS</span>",
     pageTabTitle: "Iyandikishe kuri konti ya Kasino ya Goldbet",
     backBtn: "Garuka",
     // | Step 1
@@ -3167,6 +3519,17 @@ export const translations = {
       "Uru rupapuro ni ibikoresho byo kwamamaza kandi ntaho bihuriye n'uwuhagarariye imikino cyangwa byemejwe na we. Ibirango byose ni umutungo w'ababifite.",
   },
   lm: {
+    gameUnavailable: "Lisano ezali te",
+    continuePlayingBtn: "Kokoba kosakana",
+    claimTitle: "ZWA <span class=\"gold-text\">{spins} BASPINS YA OFELE!</span>",
+    verifyTitle: "ETIKALI MOKE! NDIMISA <span class=\"gold-text\">ELONGA NA YO</span>",
+    verifySubtitle: "Esengeli mpo na kosala lifuti ya <span class=\"gold-text\">{amount}</span> mpe kobatela bokengi.",
+    // | Win heading (гейт регистрации)
+    winTitle: "ELONGA NA YO: <span class=\"gold-text\">{amount}!</span>",
+    winSpins: "+ <span class=\"gold-text\">{spins} BASPINS YA OFELE</span> EZALI KOZELA YO",
+    winSubtitle: "Kotisa makambo oyo ezali na nse mpo na kokoba kosakana!",
+    continueSaveBtn: "Kokoba mpe kobomba {amount}",
+    reservedBalance: "SOLDE EBOMBAMI: <span class=\"gold-text\">{amount} NA {spins} FS</span>",
     pageTabTitle: "Weewandiise ku akawunti ya Goldbet Casino",
     backBtn: "Ddayo",
     // | Step 1
@@ -3266,6 +3629,17 @@ export const translations = {
       "Olupapula luno lwa kulanga bintu era terikwatagana n'omuntu yenna atambuza emizannyo wadde okukkirizibwa. Obubonero bwonna bwa bannannyini bwo.",
   },
   am: {
+    gameUnavailable: "ጨዋታው አይገኝም",
+    continuePlayingBtn: "መጫወት ቀጥል",
+    claimTitle: "<span class=\"gold-text\">{spins} ነፃ ስፒኖችህን</span> ውሰድ!",
+    verifyTitle: "ልትጨርስ ተቃርበሃል! <span class=\"gold-text\">ትርፍህን</span> አረጋግጥ",
+    verifySubtitle: "የ<span class=\"gold-text\">{amount}</span> ክፍያ ለማስኬድ እና ደህንነትን ለማረጋገጥ ያስፈልጋል።",
+    // | Win heading (гейт регистрации)
+    winTitle: "ያንተ ትርፍ፦ <span class=\"gold-text\">{amount}!</span>",
+    winSpins: "+ <span class=\"gold-text\">{spins} ነፃ ስፒኖች</span> ይጠብቁሃል",
+    winSubtitle: "መጫወት ለመቀጠል ከታች ያሉትን መስኮች ሙላ!",
+    continueSaveBtn: "ቀጥል እና {amount} አስቀምጥ",
+    reservedBalance: "የተያዘ ቀሪ ሒሳብ፦ <span class=\"gold-text\">{amount} እና {spins} FS</span>",
     pageTabTitle: "ለGoldbet Casino መለያ ይመዝገቡ",
     backBtn: "ተመለስ",
     // | Step 1
@@ -3364,6 +3738,17 @@ export const translations = {
       "ይህ ገጽ የማስተዋወቂያ ቁሳቁስ ነው እና ከማንኛውም የጨዋታ አስተዳዳሪ ጋር ግንኙነት የለውም ወይም በእሱ አልተፈቀደም። ሁሉም የንግድ ምልክቶች የባለቤቶቻቸው ናቸው።",
   },
   lm: {
+    gameUnavailable: "Lisano ezali te",
+    continuePlayingBtn: "Kokoba kosakana",
+    claimTitle: "ZWA <span class=\"gold-text\">{spins} BASPINS YA OFELE!</span>",
+    verifyTitle: "ETIKALI MOKE! NDIMISA <span class=\"gold-text\">ELONGA NA YO</span>",
+    verifySubtitle: "Esengeli mpo na kosala lifuti ya <span class=\"gold-text\">{amount}</span> mpe kobatela bokengi.",
+    // | Win heading (гейт регистрации)
+    winTitle: "ELONGA NA YO: <span class=\"gold-text\">{amount}!</span>",
+    winSpins: "+ <span class=\"gold-text\">{spins} BASPINS YA OFELE</span> EZALI KOZELA YO",
+    winSubtitle: "Kotisa makambo oyo ezali na nse mpo na kokoba kosakana!",
+    continueSaveBtn: "Kokoba mpe kobomba {amount}",
+    reservedBalance: "SOLDE EBOMBAMI: <span class=\"gold-text\">{amount} NA {spins} FS</span>",
     pageTabTitle: "Weewandiise ku akawunti ya Goldbet Casino",
     backBtn: "Ddayo",
     // | Step 1
@@ -3463,6 +3848,17 @@ export const translations = {
       "Olupapula luno lwa kulanga bintu era terikwatagana n'omuntu yenna atambuza emizannyo wadde okukkirizibwa. Obubonero bwonna bwa bannannyini bwo.",
   },
   ha: {
+    gameUnavailable: "Wasan ba ya samuwa",
+    continuePlayingBtn: "Ci gaba da Wasa",
+    claimTitle: "KARBI <span class=\"gold-text\">{spins} SPINS KYAUTA!</span>",
+    verifyTitle: "KUSAN GAMAWA! TABBATAR DA <span class=\"gold-text\">NASARARKA</span>",
+    verifySubtitle: "Ana buƙata don sarrafa biyan <span class=\"gold-text\">{amount}</span> da tabbatar da tsaro.",
+    // | Win heading (гейт регистрации)
+    winTitle: "NASARARKA: <span class=\"gold-text\">{amount}!</span>",
+    winSpins: "+ <span class=\"gold-text\">{spins} SPINS KYAUTA</span> SUNA JIRANKA",
+    winSubtitle: "Cika filayen da ke ƙasa don ci gaba da wasa!",
+    continueSaveBtn: "Ci gaba ka ajiye {amount}",
+    reservedBalance: "MA'AUNIN DA AKA AJIYE: <span class=\"gold-text\">{amount} DA {spins} FS</span>",
     pageTabTitle: "Yi Rajista don Asusun Goldbet Casino",
     backBtn: "Baya",
     // | Step 1
@@ -3562,6 +3958,17 @@ export const translations = {
       "Wannan shafi kayan talla ne kuma ba shi da alaƙa da wani mai gudanar da wasanni ko amincewarsa. Duk alamun kasuwanci mallakar masu su ne.",
   },
   yo: {
+    gameUnavailable: "Eré náà kò sí",
+    continuePlayingBtn: "Tẹ̀síwájú Nínú Eré",
+    claimTitle: "GBA <span class=\"gold-text\">{spins} ÀYÍKÀ ỌFẸ́ RẸ!</span>",
+    verifyTitle: "Ó KÙ DÍẸ̀! JẸ́RÌÍ SÍ <span class=\"gold-text\">ÈRE RẸ</span>",
+    verifySubtitle: "A nílò rẹ̀ láti ṣe ìsanwó <span class=\"gold-text\">{amount}</span> àti láti ríi dájú pé ààbò wà.",
+    // | Win heading (гейт регистрации)
+    winTitle: "ÈRE RẸ: <span class=\"gold-text\">{amount}!</span>",
+    winSpins: "+ <span class=\"gold-text\">{spins} ÀYÍKÀ ỌFẸ́</span> Ń DÚRÓ DE Ọ́",
+    winSubtitle: "Kún àwọn àyè tó wà nísàlẹ̀ láti tẹ̀síwájú nínú eré!",
+    continueSaveBtn: "Tẹ̀síwájú kí o sì fi {amount} pamọ́",
+    reservedBalance: "ÌWỌ̀NTÚNWỌ̀NSÌ TÍ A PAMỌ́: <span class=\"gold-text\">{amount} ÀTI {spins} FS</span>",
     pageTabTitle: "Forúkọ sílẹ̀ fún Account Goldbet Casino",
     backBtn: "Padà",
     // | Step 1
@@ -3661,6 +4068,17 @@ export const translations = {
       "Ojú-ìwé yìí jẹ́ ohun ìpolówó, kò sí ìbáṣepọ̀ pẹ̀lú olùṣàkóso eré kankan, bẹ́ẹ̀ ni kò gba ìfọwọ́sí wọn. Gbogbo àmì-ọjà jẹ́ ohun ìní àwọn olówó wọn.",
   },
   ig: {
+    gameUnavailable: "Egwuregwu adịghị",
+    continuePlayingBtn: "Gaa n'ihu Igwu Egwu",
+    claimTitle: "NARA <span class=\"gold-text\">{spins} SPIN N'EFU GỊ!</span>",
+    verifyTitle: "Ọ FỌDỤRỤ NTAKỊRỊ! KWADO <span class=\"gold-text\">MMERI GỊ</span>",
+    verifySubtitle: "Achọrọ ya iji hazie ịkwụ ụgwọ <span class=\"gold-text\">{amount}</span> ma hụ na nchekwa dị.",
+    // | Win heading (гейт регистрации)
+    winTitle: "MMERI GỊ: <span class=\"gold-text\">{amount}!</span>",
+    winSpins: "+ <span class=\"gold-text\">{spins} SPIN N'EFU</span> NA-ECHERE GỊ",
+    winSubtitle: "Dejupụta ubi ndị dị n'okpuru iji gaa n'ihu igwu egwu!",
+    continueSaveBtn: "Gaa n'ihu ma chekwaa {amount}",
+    reservedBalance: "NGUZOZI ECHEKWARA: <span class=\"gold-text\">{amount} NA {spins} FS</span>",
     pageTabTitle: "Debanye aha maka Akaụntụ Goldbet Casino",
     backBtn: "Laghachi",
     // | Step 1
@@ -3760,6 +4178,17 @@ export const translations = {
       "Ibe a bụ ihe mgbasa ozi, ọ nweghị njikọ ma ọ bụ nkwado site n'aka onye na-elekọta egwuregwu ọ bụla. Akara ahịa niile bụ nke ndị nwe ha.",
   },
   tw: {
+    gameUnavailable: "Agorɔ no nni hɔ",
+    continuePlayingBtn: "Kɔ so Di Agorɔ",
+    claimTitle: "GYE <span class=\"gold-text\">{spins} SPINS A ƐYƐ KWA!</span>",
+    verifyTitle: "ƐKA KAKRA! HWƐ <span class=\"gold-text\">WO NKONIMDI</span> NO YIYE",
+    verifySubtitle: "Ɛho hia sɛ wɔyɛ <span class=\"gold-text\">{amount}</span> tua no ho adwuma na wɔbɔ wo ho ban.",
+    // | Win heading (гейт регистрации)
+    winTitle: "WO NKONIMDI: <span class=\"gold-text\">{amount}!</span>",
+    winSpins: "+ <span class=\"gold-text\">{spins} SPINS A ƐYƐ KWA</span> RETWƐN WO",
+    winSubtitle: "Hyɛ mfikyifa a ɛwɔ ase hɔ ma na toa agodie so!",
+    continueSaveBtn: "Kɔ so na sie {amount}",
+    reservedBalance: "SIKA A WƆDE ASIE: <span class=\"gold-text\">{amount} NE {spins} FS</span>",
     pageTabTitle: "Kyerɛw Wo Din Ma Goldbet Casino Akontaabu",
     backBtn: "San kɔ",
     // | Step 1

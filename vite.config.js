@@ -54,6 +54,13 @@ export default defineConfig({
         changeOrigin: true,
         secure: false,
       },
+      // C2Gaming: /session, /register и WS /ws
+      "/api/landing/c2gaming": {
+        target: DEV_PROXY_TARGET,
+        changeOrigin: true,
+        secure: false,
+        ws: true,
+      },
     },
   },
 });

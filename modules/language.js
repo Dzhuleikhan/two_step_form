@@ -121,6 +121,9 @@ function changeLanguage(lang) {
   }
 
   updateTelInputLanguage();
+
+  // заголовок и кнопки формы собираются в JS — перерисовываем их вручную
+  window.dispatchEvent(new CustomEvent("lang:changed"));
 }
 
 function setActiveLanguageBtn(currentLang) {

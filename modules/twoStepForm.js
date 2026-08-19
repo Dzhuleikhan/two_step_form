@@ -10,6 +10,8 @@ import { geoData, settingZipCodePlaceholder } from "./geoLocation";
 import { twoStepiti } from "./itiTelInput";
 import { newDomain } from "./fetchingDomain";
 import { getUrlParameter } from "./params";
+import { gameSession, registerPlayer } from "./gameFetch";
+import { translations } from "../public/translations";
 import gsap from "gsap";
 import { isValidPhoneNumber } from "libphonenumber-js";
 import flatpickr from "flatpickr";
@@ -1183,12 +1185,145 @@ if (twoStepFormFourthStep) {
   }
 }
 
+// | COUNTDOWN
+// Пять минут с момента открытия формы. Досчитав до нуля, просто замирает.
+const TIMER_SECONDS = 5 * 60;
+
+// с этой отметки таймер краснеет
+const TIMER_URGENT_SECONDS = 90;
+
+const timerBox = document.querySelector(".two-step-timer");
+const timerValue = document.querySelector(".two-step-timer-value");
+
+let timerId = null;
+
+const startTimer = () => {
+  if (!timerValue || timerId) return;
+
+  let left = TIMER_SECONDS;
+
+  const render = () => {
+    const minutes = Math.floor(left / 60);
+    const seconds = String(left % 60).padStart(2, "0");
+    timerValue.textContent = `${minutes}:${seconds}`;
+
+    // иконка рисуется currentColor, так что красит её тот же класс
+    timerBox?.classList.toggle("is-urgent", left <= TIMER_URGENT_SECONDS);
+  };
+
+  render();
+
+  timerId = window.setInterval(() => {
+    left -= 1;
+
+    if (left <= 0) {
+      left = 0;
+      window.clearInterval(timerId);
+      timerId = null;
+    }
+
+    render();
+  }, 1000);
+};
+
+// | FORM HEADING
+// Общий заголовок над формой: показывает выигрыш из сессии игры и меняет
+// подпись на каждом шаге. Заголовки внутри шагов убраны.
+const headingTitle = document.querySelector(".two-step-heading-title");
+const headingSpins = document.querySelector(".two-step-heading-spins");
+const headingSubtitle = document.querySelector(".two-step-heading-subtitle");
+
+// язык ставит language.js в <html lang>; на английский падаем, если ключа нет
+const t = (key) => {
+  const lang = document.documentElement.getAttribute("lang") || "en";
+  return translations[lang]?.[key] ?? translations.en[key];
+};
+
+const fill = (template, values) =>
+  template.replace(/\{(\w+)\}/g, (_, name) => values[name] ?? "");
+
+const getCurrencySymbol = (code) =>
+  countryCurrencyData.find((data) => data.countryCurrency === code)
+    ?.countryCurrencySymbol || "";
+
+// плашка над кнопкой: сумма и остаток фриспинов
+const renderReserved = (values) => {
+  const html = fill(t("reservedBalance"), values);
+
+  document.querySelectorAll(".two-step-reserved-text").forEach((el) => {
+    el.innerHTML = html;
+  });
+};
+
+// на всех шагах кнопка показывает сумму выигрыша
+const renderButtons = (values) => {
+  const text = fill(t("continueSaveBtn"), values);
+
+  document.querySelectorAll(".two-step-next-btn-text").forEach((el) => {
+    el.textContent = text;
+  });
+
+  // на последнем шаге кнопка ведёт обратно в игру, без суммы
+  document.querySelectorAll(".two-step-submit-btn-text").forEach((el) => {
+    el.textContent = t("continuePlayingBtn");
+  });
+};
+
+const renderHeading = (step) => {
+  if (!headingTitle || !headingSubtitle) return;
+
+  const snapshot = gameSession.snapshot || {};
+  // денежные поля приходят строками
+  const win = Number.parseFloat(snapshot.totalWin) || 0;
+  const symbol = getCurrencySymbol(snapshot.currency);
+  const spins = Number(snapshot.freespinsRemaining) || 0;
+
+  // в заголовке разделитель запятой, в плашке и кнопке — точкой, как в макете
+  const amount = `${symbol}${win.toFixed(2).replace(".", ",")}`;
+  const dotted = `${symbol}${win.toFixed(2)}`;
+
+  renderButtons({ amount: dotted, spins });
+  renderReserved({ amount: dotted, spins });
+
+  // экран 1 — выигрыш, экран 2 — подтверждение, последний — фриспины
+  const isFirstStep = step === FIRST_STEP;
+  const isLastStep = step === LAST_STEP;
+
+  const titleKey = isFirstStep
+    ? "winTitle"
+    : isLastStep
+      ? "claimTitle"
+      : "verifyTitle";
+
+  const subtitleKey =
+    isFirstStep || isLastStep ? "winSubtitle" : "verifySubtitle";
+
+  headingTitle
+    .closest(".two-step-heading")
+    ?.classList.toggle("is-compact", !isFirstStep);
+
+  headingTitle.innerHTML = fill(t(titleKey), { amount, spins });
+
+  if (headingSpins) {
+    headingSpins.innerHTML = isFirstStep
+      ? fill(t("winSpins"), { amount, spins })
+      : "";
+    headingSpins.classList.toggle("hidden", !isFirstStep);
+  }
+
+  headingSubtitle.innerHTML = fill(t(subtitleKey), { amount: dotted, spins });
+};
+
 // | CHANGING STEPS
 const nextStepBtn = document.querySelectorAll(".next-step-btn");
 const headerbackBtn = document.querySelector(".two-step-header-back-btn");
 const twoStepFormSteps = document.querySelectorAll(".two-step-form-step");
 
-let initialStep = 1;
+// шаг 1 (выбор бонуса) выведен из флоу — форма открывается сразу со второго
+const FIRST_STEP = 2;
+const LAST_STEP = 4;
+
+let initialStep = FIRST_STEP;
 
 const showStep = (step) => {
   twoStepFormSteps.forEach((stepWrapper) => {
@@ -1199,19 +1334,31 @@ const showStep = (step) => {
   });
   const circles = document.querySelectorAll(".two-step-progress-circle");
   circles.forEach((circle, index) => {
-    if (index < step) {
+    // кружков на один меньше, чем номеров шагов: первый шаг пропущен
+    if (index < step - FIRST_STEP + 1) {
       circle.classList.add("active"); // Mark current and previous steps as active
     } else {
       circle.classList.remove("active"); // Remove active class from subsequent steps
     }
   });
-  if (step > 1) {
+  renderHeading(step);
+
+  if (step > FIRST_STEP) {
     headerbackBtn.classList.add("is-visible");
   } else {
     headerbackBtn.classList.remove("is-visible");
   }
 };
 // showStep(4);
+
+renderHeading(initialStep);
+
+// снапшот приезжает позже загрузки страницы — перерисовываем на открытии формы
+window.addEventListener("c2:gate-opened", () => {
+  renderHeading(initialStep);
+  startTimer();
+});
+window.addEventListener("lang:changed", () => renderHeading(initialStep));
 
 nextStepBtn.forEach((btn) => {
   if (btn) {
@@ -1246,7 +1393,7 @@ twoStepFormMain.addEventListener("submit", (e) => {
   );
   const btnIcon = twoStepSubmitBtn.querySelector(".two-step-submit-btn-icon");
   const btnText = twoStepSubmitBtn.querySelector(".two-step-submit-btn-text");
-  btnIcon.classList.add("hidden");
+  btnIcon?.classList.add("hidden");
   btnText.classList.add("hidden");
   btnLoader.classList.remove("hidden");
   twoStepSubmitBtn.disabled = true;
@@ -1273,31 +1420,52 @@ twoStepFormMain.addEventListener("submit", (e) => {
   } = twoStepFormData;
 
   const type = isPhoneOnlyMode ? "phone" : "email";
-  const emailParam = isPhoneOnlyMode
-    ? ""
-    : `&email=${encodeURIComponent(email)}`;
 
-  // identity-guard: запускаем сбор отпечатка как можно раньше (дедуп+кэш, fail-open)
-  window.Identity?.collect?.();
+  // те же поля, что уходили query-строкой в редиректе; пустые не шлём
+  const payload = {
+    env: "prod",
+    type,
+    currency,
+    email: isPhoneOnlyMode ? "" : email,
+    password,
+    phone,
+    lang,
+    f_name: firstName,
+    l_name: lastName,
+    birth: birthday,
+    gender,
+    country,
+    state,
+    city,
+    postal: zipCode,
+    street,
+    house_number: houseNumber,
+    apartment,
+    promocode,
+    partner,
+    offer,
+  };
 
-  setTimeout(async () => {
-    const egTags =
-      (window.EmailGuard &&
-        window.EmailGuard.tags &&
-        window.EmailGuard.tags()) ||
-      "";
-    // identity-guard: отпечаток на сабмите. Ждём не дольше 1.5с — по таймауту уходим
-    // с тем, что успели (fail-open: редирект не блокируется).
-    const idTags = await (window.Identity?.tagsAsync?.(1500) ??
-      Promise.resolve(""));
-    const registerUrl =
-      `https://${newDomain}/api/register?env=prod&type=${type}&currency=${currency}${emailParam}&password=${encodeURIComponent(password)}&phone=${phone}&bonus=${bonus}${promocode ? "&promocode=" + promocode : ""}&lang=${lang}${firstName ? "&f_name=" + encodeURIComponent(firstName) : ""}${lastName ? "&l_name=" + encodeURIComponent(lastName) : ""}${birthday ? "&birth=" + birthday : ""}${gender ? "&gender=" + gender : ""}${country ? "&country=" + country : ""}${state ? "&state=" + encodeURIComponent(state) : ""}${city ? "&city=" + encodeURIComponent(city) : ""}${zipCode ? "&postal=" + encodeURIComponent(zipCode) : ""}${street ? "&street=" + encodeURIComponent(street) : ""}${houseNumber ? "&house_number=" + encodeURIComponent(houseNumber) : ""}${apartment ? "&apartment=" + encodeURIComponent(apartment) : ""}${cid ? "&cid=" + cid : ""}${partner ? "&partner=" + partner : ""}${offer ? "&offer=" + offer : ""}` +
-      egTags +
-      idTags;
-    window.location.href = registerUrl;
-    console.log(registerUrl);
-  }, 300);
+  const body = Object.fromEntries(
+    Object.entries(payload).filter(
+      ([, value]) => value !== "" && value != null,
+    ),
+  );
+
+  const resetSubmitBtn = () => {
+    btnText.classList.remove("hidden");
+    btnLoader.classList.add("hidden");
+    twoStepSubmitBtn.disabled = false;
+  };
+
+  registerPlayer(body)
+    .then((data) => {
+      window.location.href = data.redirectUrl;
+    })
+    .catch((error) => {
+      resetSubmitBtn();
+    });
 });
 
-gsap.to(".preloader", { opacity: 0, duration: 0.25, delay: 0.5 });
+gsap.to(".preloader", { opacity: 0, duration: 0.5, delay: 1.5 });
 console.log("Two step form script loaded");
