@@ -383,16 +383,18 @@ function applySession(session) {
 const urlClickId = getUrlParameter("cid");
 const urlGameId = getUrlParameter("gameId");
 
+// игры нет ни при пустых параметрах, ни при упавшем /session — заглушка одна
+const showGameUnavailable = () => {
+  document.querySelector(".game-frame")?.remove();
+  document.querySelector(".game-empty")?.classList.add("is-visible");
+};
+
 if (urlClickId && urlGameId) {
   startSession({ clickId: urlClickId, gameId: urlGameId })
     .then(applySession)
-    .catch(() => {
-      // сессии нет — на странице останется пустой фрейм
-    });
+    .catch(showGameUnavailable);
 } else {
-  // без параметров сессии нет и игры тоже — показываем заглушку
-  document.querySelector(".game-frame")?.remove();
-  document.querySelector(".game-empty")?.classList.add("is-visible");
+  showGameUnavailable();
 }
 
 // для ручной проверки: await __gameApi.startSession() в консоли
