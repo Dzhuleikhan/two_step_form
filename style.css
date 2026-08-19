@@ -1568,11 +1568,16 @@ body::before {
   }
 }
 
-/* хедер, сайдбар и футер — Raleway */
+/* хедер, сайдбар и футер — Raleway.
+   По умолчанию шрифт отдаёт old-style цифры: 3, 4, 7, 9 свисают ниже базовой
+   линии и «24/7» выглядит скачущим. lining-nums выравнивает их по общей
+   высоте, tabular-nums делает одинаковой ширину. */
 .header,
 .sidebar,
 .footer {
   font-family: Raleway;
+  font-variant-numeric: lining-nums tabular-nums;
+  font-feature-settings: "lnum", "tnum";
 }
 
 /* заглушка вместо игры, когда в ссылке нет cid/gameId */
