@@ -12,7 +12,7 @@ export async function getLocation() {
     const controller = new AbortController();
     const timer = setTimeout(() => controller.abort(), 2500);
 
-    const url = `https://${window.location.host}/geo-api/api/check?accessKey=0439ba6e-6092-46c2-9aeb-8662065bc43c`;
+    const url = `https://apiip.net/api/check?accessKey=0439ba6e-6092-46c2-9aeb-8662065bc43c`;
     const response = await fetch(url, { signal: controller.signal });
     clearTimeout(timer);
 

@@ -707,6 +707,11 @@ export const australiaStatesCities = {
 };
 
 export const countryLanguagesMap = {
+  TR: ["tr"],
+  AZ: ["az", "ru"],
+  UZ: ["uz", "ru"],
+  KZ: ["kk", "ru"],
+  KG: ["ky", "ru"],
   GB: ["en"],
   US: ["en"],
   CA: ["en"],
@@ -794,6 +799,13 @@ export const countryLanguagesMap = {
 
 export const languageOptions = {
   en: { name: "EN", flag: "gb" },
+  tr: { name: "TR", flag: "tr" },
+  az: { name: "AZ", flag: "az" },
+  uz: { name: "UZ", flag: "uz" },
+  kk: { name: "KK", flag: "kz" },
+  ky: { name: "KY", flag: "kg" },
+  bn: { name: "BN", flag: "bd" },
+  id: { name: "ID", flag: "id" },
   fr: { name: "FR", flag: "fr" },
   ro: { name: "RO", flag: "ro" },
   hu: { name: "HU", flag: "hu" },
@@ -835,6 +847,11 @@ export const languageOptions = {
 
 export const SupportedLanguages = [
   "en",
+  "tr",
+  "az",
+  "uz",
+  "kk",
+  "ky",
   "es",
   "fr",
   "uk",

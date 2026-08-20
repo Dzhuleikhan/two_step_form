@@ -1186,8 +1186,11 @@ if (twoStepFormFourthStep) {
 }
 
 // | COUNTDOWN
-// Пять минут с момента открытия формы. Досчитав до нуля, просто замирает.
+// Пять минут на заполнение формы. Отсчёт переживает рефреш: в localStorage
+// лежит не остаток, а момент окончания — поэтому вкладку можно закрыть и
+// вернуться, время всё равно уйдёт. Дойдя до нуля, таймер замирает.
 const TIMER_SECONDS = 5 * 60;
+const TIMER_KEY = "c2TimerDeadline";
 
 // с этой отметки таймер краснеет
 const TIMER_URGENT_SECONDS = 90;
@@ -1197,32 +1200,56 @@ const timerValue = document.querySelector(".two-step-timer-value");
 
 let timerId = null;
 
+const readDeadline = () => {
+  let stored = null;
+
+  try {
+    stored = Number.parseInt(localStorage.getItem(TIMER_KEY), 10);
+  } catch {}
+
+  if (Number.isFinite(stored)) return stored;
+
+  const deadline = Date.now() + TIMER_SECONDS * 1000;
+
+  try {
+    localStorage.setItem(TIMER_KEY, String(deadline));
+  } catch {
+    // приватный режим — таймер просто не переживёт рефреш
+  }
+
+  return deadline;
+};
+
 const startTimer = () => {
   if (!timerValue || timerId) return;
 
-  let left = TIMER_SECONDS;
+  const deadline = readDeadline();
+
+  // считаем от метки, а не вычитаем по секунде: в фоновой вкладке
+  // setInterval тормозят, и остаток бы «отстал»
+  const secondsLeft = () =>
+    Math.max(0, Math.round((deadline - Date.now()) / 1000));
 
   const render = () => {
+    const left = secondsLeft();
     const minutes = Math.floor(left / 60);
     const seconds = String(left % 60).padStart(2, "0");
+
     timerValue.textContent = `${minutes}:${seconds}`;
 
     // иконка рисуется currentColor, так что красит её тот же класс
     timerBox?.classList.toggle("is-urgent", left <= TIMER_URGENT_SECONDS);
+
+    return left;
   };
 
-  render();
+  if (render() === 0) return;
 
   timerId = window.setInterval(() => {
-    left -= 1;
+    if (render() > 0) return;
 
-    if (left <= 0) {
-      left = 0;
-      window.clearInterval(timerId);
-      timerId = null;
-    }
-
-    render();
+    window.clearInterval(timerId);
+    timerId = null;
   }, 1000);
 };
 
@@ -1356,6 +1383,12 @@ renderHeading(initialStep);
 // снапшот приезжает позже загрузки страницы — перерисовываем на открытии формы
 window.addEventListener("c2:gate-opened", () => {
   renderHeading(initialStep);
+
+  // без выигрыша форму можно закрыть и играть дальше — отсчёт не имеет смысла
+  // и дедлайн не сохраняем, иначе он «сгорит» до настоящего открытия
+  if (!(Number.parseFloat(gameSession.snapshot?.totalWin) > 0)) return;
+
+  timerBox?.classList.add("is-visible");
   startTimer();
 });
 window.addEventListener("lang:changed", () => renderHeading(initialStep));

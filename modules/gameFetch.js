@@ -6,6 +6,7 @@
    чтобы не трогать текущую логику лендинга. */
 
 import { getUrlParameter } from "./params";
+import { geoData } from "./geoLocation";
 
 const API_BASE = "https://dev1.goldbet.io/api/landing/c2gaming";
 
@@ -57,7 +58,13 @@ export const startSession = async ({
   gameId = getGameId(),
   freespinsCount = DEFAULT_FREESPINS,
 } = {}) => {
-  const body = { clickId, gameId };
+  const body = {
+    clickId,
+    gameId,
+    // язык и валюта из гео-детекта лендинга
+    lang: localStorage.getItem("preferredLanguage") || "en",
+    currency: geoData?.currency?.code,
+  };
   // сервер валидирует integer 1–100, мусор лучше не слать вовсе
   if (Number.isInteger(freespinsCount)) body.freespinsCount = freespinsCount;
 

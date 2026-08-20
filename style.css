@@ -399,7 +399,8 @@ body::before {
 
 /* таймер над заголовком */
 .two-step-timer {
-  display: flex;
+  /* показываем только когда форму уже не закрыть — с выигрышем на балансе */
+  display: none;
   width: 104px;
   height: 43px;
   padding: 8px 13px;
@@ -417,6 +418,10 @@ body::before {
   letter-spacing: -0.4px;
   text-transform: uppercase;
   color: #f0f0f0;
+}
+
+.two-step-timer.is-visible {
+  display: flex;
 }
 
 .two-step-timer svg {
