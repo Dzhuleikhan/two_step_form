@@ -44,6 +44,17 @@ export const getClickId = () => {
 
 export const getGameId = () => getUrlParameter("gameId") || DEFAULT_GAME_ID;
 
+// сервер принимает integer 1–100; мусор и выход за диапазон заменяем дефолтом
+export const getFreespinsCount = () => {
+  const fromUrl = Number.parseInt(getUrlParameter("freespinsCount"), 10);
+
+  if (!Number.isInteger(fromUrl) || fromUrl < 1 || fromUrl > 100) {
+    return DEFAULT_FREESPINS;
+  }
+
+  return fromUrl;
+};
+
 // | STATE
 // Ответ /session: url для iframe, токен для будущего WS и первый snapshot.
 export let gameSession = {
@@ -56,7 +67,7 @@ export let gameSession = {
 export const startSession = async ({
   clickId = getClickId(),
   gameId = getGameId(),
-  freespinsCount = DEFAULT_FREESPINS,
+  freespinsCount = getFreespinsCount(),
 } = {}) => {
   const body = {
     clickId,
@@ -411,6 +422,7 @@ window.__gameApi = {
   },
   getClickId,
   getGameId,
+  getFreespinsCount,
   startSession,
   applyGameUrl,
   applySnapshotToHeader,
