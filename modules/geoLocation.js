@@ -2,6 +2,7 @@ import {
   countryLanguagesMap,
   SupportedLanguages,
   countryZipCodeTranslates,
+  getPostalCodeFormat,
 } from "../public/data";
 
 export async function getLocation() {
@@ -46,6 +47,10 @@ localStorage.setItem(
 
 export const settingZipCodePlaceholder = (countryCode) => {
   const zipCodeLabel = document.querySelector(".two-step-zipcode-label");
-  const placeholder = countryZipCodeTranslates[countryCode] || "ZIP Code";
-  zipCodeLabel.textContent = placeholder;
+  const base = countryZipCodeTranslates[countryCode] || "ZIP Code";
+  const format = getPostalCodeFormat(countryCode);
+  // Подсказываем юзеру ожидаемый формат прямо в лейбле, напр. "Kod pocztowy (00-001)"
+  zipCodeLabel.textContent = format?.example
+    ? `${base} (${format.example})`
+    : base;
 };
