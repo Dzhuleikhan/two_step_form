@@ -44,6 +44,8 @@ export const translations = {
     cityPlaceholder: "Enter City",
     statePlaceholder: "Choose Province",
     zipCodePlaceholder: "Enter ZIP Code",
+    postalCodeHint:
+      "If you know it, enter it — it speeds up verification, but it's optional.",
     createAccountBtn: "Create Account",
     // | Checken road
     chickenRoadGetBonus: "Get Bonus",
@@ -97,6 +99,8 @@ export const translations = {
     cityPlaceholder: "Entrez votre ville",
     statePlaceholder: "Sélectionnez une région",
     zipCodePlaceholder: "Entrez le code postal",
+    postalCodeHint:
+      "Si vous le connaissez, saisissez-le — cela accélère la vérification, mais ce n'est pas obligatoire.",
     createAccountBtn: "Créer un compte",
     // | Checken road
     chickenRoadGetBonus: "Obtiens le bonus",
@@ -150,6 +154,8 @@ export const translations = {
     cityPlaceholder: "Wpisz miasto",
     statePlaceholder: "Wybierz województwo",
     zipCodePlaceholder: "Wpisz kod pocztowy",
+    postalCodeHint:
+      "Jeśli go znasz, wpisz — przyspieszy to weryfikację, ale nie jest wymagane.",
     createAccountBtn: "Utwórz konto",
     // | Checken road
     chickenRoadGetBonus: "Odbierz bonus",
@@ -203,6 +209,8 @@ export const translations = {
     cityPlaceholder: "Írd be a várost",
     statePlaceholder: "Válassz megyét",
     zipCodePlaceholder: "Írd be az irányítószámot",
+    postalCodeHint:
+      "Ha tudja, adja meg — felgyorsítja az ellenőrzést, de nem kötelező.",
     createAccountBtn: "Fiók létrehozása",
     // | Checken road
     chickenRoadGetBonus: "Szerezd meg a bónuszt",
@@ -256,6 +264,8 @@ export const translations = {
     cityPlaceholder: "Introduceți orașul",
     statePlaceholder: "Alegeți provincia",
     zipCodePlaceholder: "Introduceți codul poștal",
+    postalCodeHint:
+      "Dacă îl știți, introduceți-l — accelerează verificarea, dar nu este obligatoriu.",
     createAccountBtn: "Creează cont",
     // | Checken road
     chickenRoadGetBonus: "Ia bonusul",
@@ -309,6 +319,8 @@ export const translations = {
     cityPlaceholder: "Vnesite mesto",
     statePlaceholder: "Izberite pokrajino",
     zipCodePlaceholder: "Vnesite poštno številko",
+    postalCodeHint:
+      "Če ga poznate, ga vnesite — pospeši preverjanje, vendar ni obvezno.",
     createAccountBtn: "Ustvariti račun",
     // | Checken road
     chickenRoadGetBonus: "Prevzemi bonus",
@@ -362,6 +374,8 @@ export const translations = {
     cityPlaceholder: "Zadejte město",
     statePlaceholder: "Vyberte region",
     zipCodePlaceholder: "Zadejte PSČ",
+    postalCodeHint:
+      "Pokud jej znáte, zadejte jej — urychlí to ověření, ale není to povinné.",
     createAccountBtn: "Vytvořit účet",
     // | Checken road
     chickenRoadGetBonus: "Získej bonus",
@@ -415,6 +429,8 @@ export const translations = {
     cityPlaceholder: "Введите город",
     statePlaceholder: "Выберите регион",
     zipCodePlaceholder: "Введите почтовый индекс",
+    postalCodeHint:
+      "Если знаете — введите. Это ускорит верификацию, но не обязательно.",
     createAccountBtn: "Создать аккаунт",
     // | Checken road
     chickenRoadGetBonus: "Забрать бонус",
@@ -468,6 +484,8 @@ export const translations = {
     cityPlaceholder: "Digite a cidade",
     statePlaceholder: "Selecione estado",
     zipCodePlaceholder: "Código Postal",
+    postalCodeHint:
+      "Se souber, insira — acelera a verificação, mas não é obrigatório.",
     createAccountBtn: "Criar Conta",
     // | Checken road
     chickenRoadGetBonus: "Recebe o bónus",
@@ -521,6 +539,8 @@ export const translations = {
     cityPlaceholder: "Stadt eingeben",
     statePlaceholder: "Bundesland auswählen",
     zipCodePlaceholder: "Postleitzahl eingeben",
+    postalCodeHint:
+      "Wenn Sie ihn kennen, geben Sie ihn ein — das beschleunigt die Verifizierung, ist aber optional.",
     createAccountBtn: "Konto erstellen",
     // | Checken road
     chickenRoadGetBonus: "Bonus holen",
@@ -574,6 +594,8 @@ export const translations = {
     cityPlaceholder: "Εισάγετε Πόλη",
     statePlaceholder: "Επιλέξτε Περιφέρεια",
     zipCodePlaceholder: "Εισάγετε Τ.Κ.",
+    postalCodeHint:
+      "Αν τον γνωρίζετε, καταχωρίστε τον — επιταχύνει την επαλήθευση, αλλά δεν είναι υποχρεωτικό.",
     createAccountBtn: "Δημιουργία Λογαριασμού",
     // | Checken road
     chickenRoadGetBonus: "Πάρε το μπόνους",
@@ -627,6 +649,8 @@ export const translations = {
     cityPlaceholder: "Введіть місто",
     statePlaceholder: "Оберіть область",
     zipCodePlaceholder: "Введіть поштовий індекс",
+    postalCodeHint:
+      "Якщо знаєте — введіть. Це пришвидшить верифікацію, але не обов'язково.",
     createAccountBtn: "Створити акаунт",
     // | Checken road
     chickenRoadGetBonus: "Забрати бонус",
@@ -680,6 +704,8 @@ export const translations = {
     cityPlaceholder: "Introduce la Ciudad",
     statePlaceholder: "Elige la Provincia",
     zipCodePlaceholder: "Introduce el Código Postal",
+    postalCodeHint:
+      "Si lo conoce, ingréselo: acelera la verificación, pero no es obligatorio.",
     createAccountBtn: "Crear Cuenta",
     // | Checken road
     chickenRoadGetBonus: "Consigue el bono",
@@ -733,6 +759,8 @@ export const translations = {
     cityPlaceholder: "Skriv inn by",
     statePlaceholder: "Velg provins",
     zipCodePlaceholder: "Skriv inn postnummer",
+    postalCodeHint:
+      "Hvis du vet det, skriv det inn — det fremskynder verifiseringen, men er valgfritt.",
     createAccountBtn: "Opprett Konto",
     // | Checken road
     chickenRoadGetBonus: "Hent bonus",
@@ -786,6 +814,8 @@ export const translations = {
     cityPlaceholder: "Ange stad",
     statePlaceholder: "Välj provins",
     zipCodePlaceholder: "Ange postnummer",
+    postalCodeHint:
+      "Om du känner till det, ange det — det snabbar upp verifieringen, men är valfritt.",
     createAccountBtn: "Skapa Konto",
     // | Checken road
     chickenRoadGetBonus: "Hämta bonus",
@@ -839,6 +869,8 @@ export const translations = {
     cityPlaceholder: "Zadajte mesto",
     statePlaceholder: "Vyberte kraj",
     zipCodePlaceholder: "Zadajte PSČ",
+    postalCodeHint:
+      "Ak ho poznáte, zadajte ho — urýchli to overenie, ale nie je to povinné.",
     createAccountBtn: "Vytvoriť účet",
     // | Checken road
     chickenRoadGetBonus: "Získaj bonus",
@@ -892,6 +924,8 @@ export const translations = {
     cityPlaceholder: "Inserisci la città",
     statePlaceholder: "Scegli la regione",
     zipCodePlaceholder: "Inserisci il CAP",
+    postalCodeHint:
+      "Se lo conosci, inseriscilo: velocizza la verifica, ma non è obbligatorio.",
     createAccountBtn: "Crea un conto",
     // | Checken road
     chickenRoadGetBonus: "Ottieni il bonus",
@@ -1001,6 +1035,8 @@ export const translations = {
     cityPlaceholder: "Sisesta linn",
     statePlaceholder: "Vali maakond",
     zipCodePlaceholder: "Sisesta postiindeks",
+    postalCodeHint:
+      "Kui tead, sisesta see — see kiirendab kontrolli, kuid pole kohustuslik.",
     createAccountBtn: "Loo konto",
     // | Checken road
     chickenRoadGetBonus: "Võta boonus",
@@ -1110,6 +1146,8 @@ export const translations = {
     cityPlaceholder: "Ievadi pilsētu",
     statePlaceholder: "Izvēlies novadu",
     zipCodePlaceholder: "Ievadi pasta kodu",
+    postalCodeHint:
+      "Ja zināt, ievadiet to — tas paātrina pārbaudi, taču nav obligāti.",
     createAccountBtn: "Izveidot kontu",
     // | Checken road
     chickenRoadGetBonus: "Saņemt bonusu",
@@ -1219,6 +1257,8 @@ export const translations = {
     cityPlaceholder: "Įveskite miestą",
     statePlaceholder: "Pasirinkite regioną",
     zipCodePlaceholder: "Įveskite pašto kodą",
+    postalCodeHint:
+      "Jei žinote, įveskite — tai paspartins patikrą, bet nėra privaloma.",
     createAccountBtn: "Sukurti paskyrą",
     // | Checken road
     chickenRoadGetBonus: "Gauti premiją",
@@ -1328,6 +1368,8 @@ export const translations = {
     cityPlaceholder: "Unesite grad",
     statePlaceholder: "Odaberite pokrajinu",
     zipCodePlaceholder: "Unesite poštanski broj",
+    postalCodeHint:
+      "Ako ga znate, unesite ga — ubrzava provjeru, ali nije obavezno.",
     createAccountBtn: "Kreiraj račun",
     // | Checken road
     chickenRoadGetBonus: "Uzmi bonus",
@@ -1437,6 +1479,8 @@ export const translations = {
     cityPlaceholder: "Indtast By",
     statePlaceholder: "Vælg Region",
     zipCodePlaceholder: "Indtast Postnummer",
+    postalCodeHint:
+      "Hvis du kender den, så indtast den — det fremskynder verificeringen, men er valgfrit.",
     createAccountBtn: "Opret Konto",
     // | Checken road
     chickenRoadGetBonus: "Få Bonus",
@@ -1490,6 +1534,8 @@ export const translations = {
     cityPlaceholder: "Syötä Kaupunki",
     statePlaceholder: "Valitse Lääni",
     zipCodePlaceholder: "Syötä Postinumero",
+    postalCodeHint:
+      "Jos tiedät sen, syötä se — se nopeuttaa vahvistusta, mutta ei ole pakollista.",
     createAccountBtn: "Luo Tili",
     // | Checken road
     chickenRoadGetBonus: "Hanki Bonus",
@@ -1543,6 +1589,8 @@ export const translations = {
     cityPlaceholder: "Въведете град",
     statePlaceholder: "Изберете провинция",
     zipCodePlaceholder: "Въведете пощенски код",
+    postalCodeHint:
+      "Ако го знаете, въведете го — ускорява проверката, но не е задължително.",
     createAccountBtn: "Създайте акаунт",
     // | Checken road
     chickenRoadGetBonus: "Вземи Бонус",
@@ -1596,6 +1644,8 @@ export const translations = {
     cityPlaceholder: "Weka mji",
     statePlaceholder: "Chagua mkoa",
     zipCodePlaceholder: "Weka msimbo wa posta",
+    postalCodeHint:
+      "Ukijua, iweke — inaharakisha uthibitishaji, lakini si lazima.",
     createAccountBtn: "Fungua akaunti",
     // | Checken road
     chickenRoadGetBonus: "Pata bonasi",
@@ -1649,6 +1699,8 @@ export const translations = {
     cityPlaceholder: "Injiza Umujyi",
     statePlaceholder: "Hitamo Intara",
     zipCodePlaceholder: "Injiza ZIP Code",
+    postalCodeHint:
+      "Niba uyizi, andika — byihutisha kugenzura, ariko ntibitegekwa.",
     createAccountBtn: "Fungura Konti",
     // | Checken road
     chickenRoadGetBonus: "Fata Bonus",
@@ -1702,6 +1754,8 @@ export const translations = {
     cityPlaceholder: "أدخل المدينة",
     statePlaceholder: "اختر المحافظة",
     zipCodePlaceholder: "أدخل الرمز البريدي",
+    postalCodeHint:
+      "إذا كنت تعرفه، فأدخله — فهذا يسرّع عملية التحقق، لكنه ليس إلزاميًا.",
     createAccountBtn: "إنشاء الحساب",
     // | Checken road
     chickenRoadGetBonus: "احصل على المكافأة",
@@ -1755,6 +1809,8 @@ export const translations = {
     cityPlaceholder: "Cuir isteach Cathair",
     statePlaceholder: "Roghnaigh Cúige",
     zipCodePlaceholder: "Cuir isteach Cód Poist",
+    postalCodeHint:
+      "Má tá sé ar eolas agat, cuir isteach é — luathaíonn sé an fíorú, ach níl sé éigeantach.",
     createAccountBtn: "Cruthaigh Cuntas",
     // | Checken road
     chickenRoadGetBonus: "Faigh Bónas",
@@ -1808,6 +1864,8 @@ export const translations = {
     cityPlaceholder: "Stad aginn",
     statePlaceholder: "Provënz auswielen",
     zipCodePlaceholder: "Postcode aginn",
+    postalCodeHint:
+      "Wann Dir et kennt, gitt et an — et beschleunegt d'Verifikatioun, ass awer net obligatoresch.",
     createAccountBtn: "Kont erstellen",
     // | Checken road
     chickenRoadGetBonus: "Bonus kréien",
@@ -1861,6 +1919,8 @@ export const translations = {
     cityPlaceholder: "Daħħal Belt",
     statePlaceholder: "Agħżel Provinċja",
     zipCodePlaceholder: "Daħħal Kodiċi Postali",
+    postalCodeHint:
+      "Jekk tafu, daħħlu — iħaffef il-verifika, iżda mhux obbligatorju.",
     createAccountBtn: "Oħloq Kont",
     // | Checken road
     chickenRoadGetBonus: "Ikseb Bonus",
@@ -1914,6 +1974,8 @@ export const translations = {
     cityPlaceholder: "Voer stad in",
     statePlaceholder: "Kies provincie",
     zipCodePlaceholder: "Voer postcode in",
+    postalCodeHint:
+      "Als u het weet, vul het in — het versnelt de verificatie, maar is niet verplicht.",
     createAccountBtn: "Account aanmaken",
     // | Checken road
     chickenRoadGetBonus: "Ontvang bonus",
@@ -1967,6 +2029,7 @@ export const translations = {
     cityPlaceholder: "输入城市",
     statePlaceholder: "选择省份",
     zipCodePlaceholder: "输入邮政编码",
+    postalCodeHint: "如果知道，请填写——这会加快验证速度，但不是必填项。",
     createAccountBtn: "创建账户",
     // | Checken road
     chickenRoadGetBonus: "领取奖金",
@@ -2020,6 +2083,7 @@ export const translations = {
     cityPlaceholder: "ከተማ ያስገቡ",
     statePlaceholder: "ክልል ይምረጡ",
     zipCodePlaceholder: "ዚፕ ኮድ ያስገቡ",
+    postalCodeHint: "የሚያውቁት ከሆነ ያስገቡት — ማረጋገጡን ያፋጥናል፣ ግን አስገዳጅ አይደለም።",
     createAccountBtn: "መለያ ፍጠር",
     // | Checken road
     chickenRoadGetBonus: "ቦነስ ያግኙ",
@@ -2073,6 +2137,8 @@ export const translations = {
     cityPlaceholder: "Yingiza kibuga",
     statePlaceholder: "Londa ssaza",
     zipCodePlaceholder: "Yingiza ZIP code",
+    postalCodeHint:
+      "Bw'oba ogimanyi, giwandiike — kyanguyako okukakasa, naye si kya buwaze.",
     createAccountBtn: "Tonda akawunti",
     // | Checken road
     chickenRoadGetBonus: "Funa Bonus",
@@ -2126,6 +2192,8 @@ export const translations = {
     cityPlaceholder: "Shigar da Birni",
     statePlaceholder: "Zaɓi Jiha/Lardi",
     zipCodePlaceholder: "Shigar da Lambar ZIP",
+    postalCodeHint:
+      "Idan ka sani, shigar da shi — yana hanzarta tabbatarwa, amma ba dole ba ne.",
     createAccountBtn: "Ƙirƙiri Asusu",
     // | Checken road
     chickenRoadGetBonus: "Karɓi Bonus",
@@ -2179,6 +2247,8 @@ export const translations = {
     cityPlaceholder: "Tẹ Ìlú",
     statePlaceholder: "Yan Agbègbè",
     zipCodePlaceholder: "Tẹ Kóòdù ZIP",
+    postalCodeHint:
+      "Tí o bá mọ̀ ọ́n, tẹ̀ ẹ́ sí i — yóò mú ìfọwọ́sí yá, ṣùgbọ́n kì í ṣe dandan.",
     createAccountBtn: "Ṣẹ̀dá Account",
     // | Checken road
     chickenRoadGetBonus: "Gba Bonus",
@@ -2232,6 +2302,8 @@ export const translations = {
     cityPlaceholder: "Tinye Obodo",
     statePlaceholder: "Họrọ Steeti",
     zipCodePlaceholder: "Tinye ZIP Code",
+    postalCodeHint:
+      "Ọ bụrụ na ị maara ya, tinye ya — ọ na-eme ka nkwenye dị ngwa, mana ọ abụghị mmecha.",
     createAccountBtn: "Mepụta Akaụntụ",
     // | Checken road
     chickenRoadGetBonus: "Nata Bonus",
@@ -2285,6 +2357,8 @@ export const translations = {
     cityPlaceholder: "Hyɛ Kurow",
     statePlaceholder: "Paw Mantam",
     zipCodePlaceholder: "Hyɛ ZIP Koodu",
+    postalCodeHint:
+      "Sɛ wunim a, kyerɛw — ɛbɛma adansedi no ayɛ ntɛm, nanso ɛnhia.",
     createAccountBtn: "Bɔ Akaunt",
     // | Checken road
     chickenRoadGetBonus: "Gye Bonus",

@@ -906,3 +906,143 @@ export const countryZipCodeTranslates = {
   CN: "邮政编码",
   IE: "Cód Poist",
 };
+
+// | POSTAL CODE FIELD MODE -----------------------------------------------------
+// Страны, где почтового индекса нет / он не используется — поле скрыто.
+// prettier-ignore
+export const postalCodeHiddenCountries = [
+  "AE", "AF", "AG", "AO", "AW", "BB", "BF", "BI", "BJ", "BO", "BQ", "BS", "BW",
+  "BZ", "CD", "CF", "CG", "CI", "CK", "CM", "CU", "CW", "DJ", "DM", "ER", "FJ",
+  "FM", "GA", "GD", "GM", "GN", "GQ", "GW", "GY", "HK", "JM", "KI", "KM", "KN",
+  "KP", "LC", "LR", "LY", "MH", "ML", "MO", "MR", "MW", "NA", "NE", "NR", "NU",
+  "PA", "PG", "PW", "QA", "RW", "SB", "SC", "SL", "SO", "SR", "SS", "ST", "SX",
+  "SY", "SZ", "TD", "TG", "TK", "TL", "TO", "TT", "TV", "TZ", "UG", "VC", "VU",
+  "WS", "YE", "ZM", "ZW",
+];
+
+// Страны, где индекс существует, но не критичен — поле необязательное (с hint).
+// prettier-ignore
+export const postalCodeOptionalCountries = [
+  "AL", "AM", "AU", "AZ", "BA", "BB", "BD", "BH", "BT", "DO", "EG", "ET", "GB",
+  "GE", "GH", "HT", "IE", "IN", "IQ", "JO", "KE", "KH", "KN", "KW", "LA", "LB",
+  "LC", "LK", "LR", "LS", "MD", "ME", "MG", "MK", "MM", "MN", "MU", "MV", "MZ",
+  "NE", "NG", "NI", "NP", "NZ", "OM", "PG", "PH", "PS", "PY", "RS", "SN", "SV",
+  "SZ", "TN", "TT", "TZ", "VC", "VE", "XK", "ZA", "ZM",
+];
+
+// Определяет режим поля Postal Code для страны.
+// Пересечения HIDDEN/OPTIONAL трактуем как OPTIONAL (приоритет OPTIONAL).
+// Любая страна вне обоих списков (и дефолт) — REQUIRED.
+export const getPostalCodeMode = (countryCode) => {
+  const code = (countryCode || "").toUpperCase();
+  if (postalCodeOptionalCountries.includes(code)) return "optional";
+  if (postalCodeHiddenCountries.includes(code)) return "hidden";
+  return "required";
+};
+
+// | POSTAL CODE FORMAT (маска ввода + валидация + пример) ----------------------
+// mask: "#" — слот для символа, остальные символы — литералы-разделители.
+// regex — финальная валидация. format — кастомный форматтер (приоритет над mask).
+const cleanPostal = (v) => (v || "").replace(/[^a-z0-9]/gi, "").toUpperCase();
+
+const applyMask = (value, mask) => {
+  const chars = cleanPostal(value);
+  let out = "";
+  let ci = 0;
+  for (const m of mask) {
+    if (ci >= chars.length) break;
+    out += m === "#" ? chars[ci++] : m;
+  }
+  return out;
+};
+
+// UK — переменная длина: пробел перед последними 3 символами.
+const formatUK = (value) => {
+  const s = cleanPostal(value).slice(0, 7);
+  return s.length > 3 ? `${s.slice(0, -3)} ${s.slice(-3)}` : s;
+};
+
+const DIGIT4 = /^\d{4}$/;
+const DIGIT5 = /^\d{5}$/;
+const DIGIT6 = /^\d{6}$/;
+const DIGIT3_2 = /^\d{3} ?\d{2}$/; // NNN NN
+
+// prettier-ignore
+export const postalCodeFormats = {
+  // Цифра + разделитель
+  US: { example: "10001", mask: "#####-####", regex: /^\d{5}(-\d{4})?$/ },
+  PL: { example: "00-001", mask: "##-###", regex: /^\d{2}-\d{3}$/ },
+  PT: { example: "4988-565", mask: "####-###", regex: /^\d{4}-\d{3}$/ },
+  BR: { example: "01310-100", mask: "#####-###", regex: /^\d{5}-\d{3}$/ },
+  JP: { example: "100-0001", mask: "###-####", regex: /^\d{3}-\d{4}$/ },
+  SE: { example: "123 45", mask: "### ##", regex: DIGIT3_2 },
+  CZ: { example: "110 00", mask: "### ##", regex: DIGIT3_2 },
+  SK: { example: "010 01", mask: "### ##", regex: DIGIT3_2 },
+  GR: { example: "104 31", mask: "### ##", regex: DIGIT3_2 },
+
+  // Буквенно-цифровые
+  GB: { example: "SW1A 1AA", format: formatUK, regex: /^[A-Z]{1,2}\d[A-Z\d]? ?\d[A-Z]{2}$/i },
+  CA: { example: "M5V 3A8", mask: "### ###", regex: /^[A-Z]\d[A-Z] ?\d[A-Z]\d$/i },
+  NL: { example: "1234 AB", mask: "#### ##", regex: /^\d{4} ?[A-Z]{2}$/i },
+  IE: { example: "D02 X285", mask: "### ####", regex: /^[A-Z]\d[A-Z\d] ?[A-Z\d]{4}$/i },
+
+  // 5 цифр
+  DE: { example: "10115", mask: "#####", regex: DIGIT5 },
+  FR: { example: "75001", mask: "#####", regex: DIGIT5 },
+  ES: { example: "28001", mask: "#####", regex: DIGIT5 },
+  IT: { example: "00100", mask: "#####", regex: DIGIT5 },
+  MX: { example: "01000", mask: "#####", regex: DIGIT5 },
+  TR: { example: "34000", mask: "#####", regex: DIGIT5 },
+  UA: { example: "01001", mask: "#####", regex: DIGIT5 },
+  EE: { example: "10111", mask: "#####", regex: DIGIT5 },
+  LT: { example: "01100", mask: "#####", regex: DIGIT5 },
+  KR: { example: "06236", mask: "#####", regex: DIGIT5 },
+  FI: { example: "00100", mask: "#####", regex: DIGIT5 },
+  HR: { example: "10000", mask: "#####", regex: DIGIT5 },
+  RS: { example: "11000", mask: "#####", regex: DIGIT5 },
+  MY: { example: "50000", mask: "#####", regex: DIGIT5 },
+  TH: { example: "10200", mask: "#####", regex: DIGIT5 },
+  ID: { example: "10110", mask: "#####", regex: DIGIT5 },
+
+  // 6 цифр
+  SG: { example: "123456", mask: "######", regex: DIGIT6 },
+  IN: { example: "110001", mask: "######", regex: DIGIT6 },
+  CN: { example: "100000", mask: "######", regex: DIGIT6 },
+  RU: { example: "101000", mask: "######", regex: DIGIT6 },
+  RO: { example: "010011", mask: "######", regex: DIGIT6 },
+  KZ: { example: "010000", mask: "######", regex: DIGIT6 },
+
+  // 4 цифры
+  HU: { example: "1051", mask: "####", regex: DIGIT4 },
+  BE: { example: "1000", mask: "####", regex: DIGIT4 },
+  AT: { example: "1010", mask: "####", regex: DIGIT4 },
+  DK: { example: "1050", mask: "####", regex: DIGIT4 },
+  CH: { example: "8001", mask: "####", regex: DIGIT4 },
+  NO: { example: "0001", mask: "####", regex: DIGIT4 },
+  AU: { example: "2000", mask: "####", regex: DIGIT4 },
+  SI: { example: "1000", mask: "####", regex: DIGIT4 },
+  BG: { example: "1000", mask: "####", regex: DIGIT4 },
+  NZ: { example: "6011", mask: "####", regex: DIGIT4 },
+  PH: { example: "1000", mask: "####", regex: DIGIT4 },
+  ZA: { example: "0001", mask: "####", regex: DIGIT4 },
+};
+
+export const getPostalCodeFormat = (countryCode) =>
+  postalCodeFormats[(countryCode || "").toUpperCase()] || null;
+
+// Авто-форматирование значения по стране (вставка разделителей, верхний регистр).
+export const formatPostalCode = (countryCode, value) => {
+  const spec = getPostalCodeFormat(countryCode);
+  if (!spec) return value;
+  if (spec.format) return spec.format(value);
+  if (spec.mask) return applyMask(value, spec.mask);
+  return value;
+};
+
+// Валидация формата. Если формат для страны не задан — fallback ≥2 символа.
+export const validatePostalCodeFormat = (countryCode, value) => {
+  const spec = getPostalCodeFormat(countryCode);
+  const trimmed = (value || "").trim();
+  if (spec && spec.regex) return spec.regex.test(trimmed);
+  return trimmed.length >= 2;
+};

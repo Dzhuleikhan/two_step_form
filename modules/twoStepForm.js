@@ -1,4 +1,11 @@
-import { countryCurrencyData, countryFlags } from "../public/data";
+import {
+  countryCurrencyData,
+  countryFlags,
+  getPostalCodeMode,
+  getPostalCodeFormat,
+  formatPostalCode,
+  validatePostalCodeFormat,
+} from "../public/data";
 import { geoData, settingZipCodePlaceholder } from "./geoLocation";
 import { twoStepiti } from "./itiTelInput";
 import { newDomain } from "./fetchingDomain";
@@ -759,6 +766,45 @@ if (twoStepFormThirdStep) {
   });
 }
 
+// | POSTAL CODE — режим поля индекса по стране.
+// Текущий режим поля Postal Code: "hidden" | "optional" | "required".
+export let postalCodeMode = "required";
+
+// Применяет режим поля Postal Code к DOM в зависимости от страны.
+// Через querySelector — чтобы безопасно вызываться до const-объявлений элементов.
+export const applyPostalCodeMode = (countryCode) => {
+  postalCodeMode = getPostalCodeMode(countryCode);
+
+  const wrapper = document.querySelector(".two-step-zipcode-wrapper");
+  const input = document.querySelector(".two-step-zipcode-input");
+  const label = document.querySelector(".two-step-zipcode-label");
+  const info = document.querySelector(".two-step-zipcode-info");
+  const tooltip = document.querySelector(".two-step-zipcode-tooltip");
+  if (!wrapper || !input || !label) return;
+
+  tooltip?.classList.remove("is-visible");
+  info?.setAttribute("aria-expanded", "false");
+
+  if (postalCodeMode === "hidden") {
+    wrapper.classList.add("hidden");
+    wrapper.classList.remove("has-info");
+    info?.classList.add("hidden");
+    label.classList.remove("two-step-required-label");
+    input.value = "";
+    twoStepFormData.zipCode = "";
+  } else if (postalCodeMode === "optional") {
+    wrapper.classList.remove("hidden");
+    wrapper.classList.add("has-info");
+    info?.classList.remove("hidden");
+    label.classList.remove("two-step-required-label");
+  } else {
+    wrapper.classList.remove("hidden");
+    wrapper.classList.remove("has-info");
+    info?.classList.add("hidden");
+    label.classList.add("two-step-required-label");
+  }
+};
+
 // | STEP 4 -- FIRST NAME, LAST NAME, DATE, GENDER
 const twoStepFormFourthStep = document.querySelector(".two-step-form-step-4");
 if (twoStepFormFourthStep) {
@@ -851,6 +897,7 @@ if (twoStepFormFourthStep) {
       twoStepCountryDropdown.classList.add("hidden");
       twoStepFormData.country = countryCode;
       settingZipCodePlaceholder(countryCode);
+      applyPostalCodeMode(countryCode);
 
       if (countryCode === "CA") {
         renderStates(canadaProvincesCities);
@@ -868,6 +915,9 @@ if (twoStepFormFourthStep) {
           .classList.add("hidden");
         twoStepFormData.state = "";
       }
+
+      // Формат индекса зависит от страны — пересчитать валидность/кнопку.
+      validateInputs1("#4ED937", "#8726FF");
     }
   });
 
@@ -875,6 +925,7 @@ if (twoStepFormFourthStep) {
   const applyDetectedCountry = async () => {
     const locationData = geoData;
     settingZipCodePlaceholder(locationData.countryCode);
+    applyPostalCodeMode(locationData.countryCode);
 
     const mathedCountry = countryFlags.find((country) => {
       return (
@@ -965,6 +1016,18 @@ if (twoStepFormFourthStep) {
   const twoStepZipcodeInput = twoStepFormFourthStep.querySelector(
     ".two-step-zipcode-input",
   );
+
+  // Авто-форматирование индекса по стране (разделители, верхний регистр).
+  twoStepZipcodeInput.addEventListener("input", () => {
+    const formatted = formatPostalCode(
+      twoStepFormData.country,
+      twoStepZipcodeInput.value,
+    );
+    if (formatted !== twoStepZipcodeInput.value) {
+      twoStepZipcodeInput.value = formatted;
+      twoStepZipcodeInput.setSelectionRange(formatted.length, formatted.length);
+    }
+  });
 
   const twoStepStateBtn = twoStepFormFourthStep.querySelector(
     ".two-step-state-wrapper",
@@ -1135,6 +1198,13 @@ if (twoStepFormFourthStep) {
     }
   };
 
+  // Индекс считаем дописанным, когда его длина не меньше примера для страны —
+  // до этого не красим ошибку, чтобы не краснеть на каждом введённом символе.
+  const isZipcodeComplete = (value) => {
+    const spec = getPostalCodeFormat(twoStepFormData.country);
+    return value.length >= (spec?.example ? spec.example.length : 2);
+  };
+
   const inputValidations1 = [
     {
       input: twoStepPhoneInput,
@@ -1149,8 +1219,16 @@ if (twoStepFormFourthStep) {
       condition: (value) => value !== "", // Valid date (YYYY-MM-DD)
     },
     {
+      // REQUIRED — индекс обязателен и должен совпадать с форматом страны;
+      // OPTIONAL — можно оставить пустым, но заполненный проверяем по формату;
+      // HIDDEN — поля нет, сабмит не блокируем.
       input: twoStepZipcodeInput,
-      condition: (value) => value.length >= 2, // Valid date (YYYY-MM-DD)
+      condition: (value) =>
+        postalCodeMode === "hidden" ||
+        (postalCodeMode === "optional" && value === "") ||
+        validatePostalCodeFormat(twoStepFormData.country, value),
+      // Ошибку подсвечиваем красным сразу при вводе, а не только по focusout.
+      liveInvalid: (value) => value !== "" && isZipcodeComplete(value),
     },
   ];
 
@@ -1165,8 +1243,9 @@ if (twoStepFormFourthStep) {
     let fullPhoneNumber = `${twoStepCode}${sanitizedPhoneNumber}`;
 
     // Validate each input
-    inputValidations1.forEach(({ input, condition }) => {
-      const isValid = condition(input.value.trim()); // Check validity
+    inputValidations1.forEach(({ input, condition, liveInvalid }) => {
+      const value = input.value.trim();
+      const isValid = condition(value); // Check validity
       // Во время проверки (занятость или IPQS) — нейтральный цвет, не красный.
       if (
         input === twoStepPhoneInput &&
@@ -1174,7 +1253,10 @@ if (twoStepFormFourthStep) {
       ) {
         input.style.color = "#8726FF";
       } else {
-        input.style.color = isValid ? validColor : invalidColor; // Apply text color
+        // liveInvalid — поля, где ошибка красная даже во время ввода.
+        const errorColor =
+          !isValid && liveInvalid?.(value) ? "#ff5530" : invalidColor;
+        input.style.color = isValid ? validColor : errorColor; // Apply text color
       }
       if (isValid) validCount++;
     });
@@ -1203,10 +1285,11 @@ if (twoStepFormFourthStep) {
     );
   });
 
-  inputValidations1.forEach(({ input }) => {
+  inputValidations1.forEach(({ input, liveInvalid }) => {
     input.addEventListener("input", () => {
       validateInputs1("#4ED937", "#8726FF");
-      input.style.color = "#8726FF";
+      // Поля с liveInvalid оставляем с цветом от валидации — не гасим красный.
+      if (!liveInvalid) input.style.color = "#8726FF";
     });
   });
 
@@ -1275,6 +1358,27 @@ if (twoStepFormFourthStep) {
     }
     // занят → остаёмся на шаге: алерт показан, кнопка станет disabled
   });
+
+  // Тултип-hint индекса: тап на мобилке (на десктопе — hover через CSS).
+  const zipcodeInfoBtn = twoStepFormFourthStep.querySelector(
+    ".two-step-zipcode-info",
+  );
+  const zipcodeTooltip = twoStepFormFourthStep.querySelector(
+    ".two-step-zipcode-tooltip",
+  );
+  if (zipcodeInfoBtn && zipcodeTooltip) {
+    zipcodeInfoBtn.addEventListener("click", (e) => {
+      e.stopPropagation();
+      const isOpen = zipcodeTooltip.classList.toggle("is-visible");
+      zipcodeInfoBtn.setAttribute("aria-expanded", String(isOpen));
+    });
+    document.addEventListener("click", (e) => {
+      if (!zipcodeInfoBtn.contains(e.target)) {
+        zipcodeTooltip.classList.remove("is-visible");
+        zipcodeInfoBtn.setAttribute("aria-expanded", "false");
+      }
+    });
+  }
 }
 
 // | CHANGING STEPS
