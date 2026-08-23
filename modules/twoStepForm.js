@@ -2,6 +2,7 @@ import {
   countryCurrencyData,
   countryFlags,
   getPostalCodeMode,
+  getPostalCodeFormat,
   hasStateField,
   formatPostalCode,
   validatePostalCodeFormat,
@@ -1098,6 +1099,13 @@ if (twoStepFormFourthStep) {
 
   submitBtn.disabled = true;
 
+  // Индекс считаем дописанным, когда его длина не меньше примера для страны —
+  // до этого не красим ошибку, чтобы не краснеть на каждом введённом символе.
+  const isZipcodeComplete = (value) => {
+    const spec = getPostalCodeFormat(twoStepFormData.country);
+    return value.length >= (spec?.example ? spec.example.length : 2);
+  };
+
   const inputValidations1 = [
     {
       input: twoStepCityInput,
@@ -1112,11 +1120,16 @@ if (twoStepFormFourthStep) {
       condition: (value) => value !== "",
     },
     {
-      // REQUIRED — должно совпадать с форматом страны; OPTIONAL/HIDDEN — не блокирует сабмит.
+      // REQUIRED — индекс обязателен и должен совпадать с форматом страны;
+      // OPTIONAL — можно оставить пустым, но заполненный проверяем по формату;
+      // HIDDEN — поля нет, сабмит не блокируем.
       input: twoStepZipcodeInput,
       condition: (value) =>
-        postalCodeMode !== "required" ||
+        postalCodeMode === "hidden" ||
+        (postalCodeMode === "optional" && value === "") ||
         validatePostalCodeFormat(twoStepFormData.country, value),
+      // Ошибку подсвечиваем красным сразу при вводе, а не только по focusout.
+      liveInvalid: (value) => value !== "" && isZipcodeComplete(value),
     },
   ];
 
@@ -1125,9 +1138,13 @@ if (twoStepFormFourthStep) {
     const totalInputs = inputValidations1.length;
 
     // Validate each input
-    inputValidations1.forEach(({ input, condition }) => {
-      const isValid = condition(input.value.trim()); // Check validity
-      input.style.color = isValid ? validColor : invalidColor; // Apply text color
+    inputValidations1.forEach(({ input, condition, liveInvalid }) => {
+      const value = input.value.trim();
+      const isValid = condition(value); // Check validity
+      // liveInvalid — поля, где ошибка красная даже во время ввода.
+      const errorColor =
+        !isValid && liveInvalid?.(value) ? "#ff5530" : invalidColor;
+      input.style.color = isValid ? validColor : errorColor; // Apply text color
       if (isValid) validCount++;
     });
 
@@ -1153,10 +1170,11 @@ if (twoStepFormFourthStep) {
     input.addEventListener("focusout", validateInputs1("#4ED937", "#ff5530"));
   });
 
-  inputValidations1.forEach(({ input }) => {
+  inputValidations1.forEach(({ input, liveInvalid }) => {
     input.addEventListener("input", () => {
       validateInputs1("#4ED937", "#8726FF");
-      input.style.color = "#8726FF";
+      // Поля с liveInvalid оставляем с цветом от валидации — не гасим красный.
+      if (!liveInvalid) input.style.color = "#8726FF";
     });
   });
 
