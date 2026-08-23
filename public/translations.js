@@ -43,6 +43,8 @@ export const translations = {
     addressPlaceholder: "Enter Address",
     cityPlaceholder: "Enter City",
     statePlaceholder: "Choose Province",
+    postalCodeHint:
+      "If you know it, enter it — it speeds up verification, but it's optional.",
     zipCodePlaceholder: "Enter ZIP Code",
     createAccountBtn: "Create Account",
     // | Checken road
@@ -96,6 +98,8 @@ export const translations = {
     addressPlaceholder: "Entrez votre adresse",
     cityPlaceholder: "Entrez votre ville",
     statePlaceholder: "Sélectionnez une région",
+    postalCodeHint:
+      "Si vous le connaissez, saisissez-le — cela accélère la vérification, mais ce n'est pas obligatoire.",
     zipCodePlaceholder: "Entrez le code postal",
     createAccountBtn: "Créer un compte",
     // | Checken road
@@ -149,6 +153,8 @@ export const translations = {
     addressPlaceholder: "Wpisz adres",
     cityPlaceholder: "Wpisz miasto",
     statePlaceholder: "Wybierz województwo",
+    postalCodeHint:
+      "Jeśli go znasz, wpisz — przyspieszy to weryfikację, ale nie jest wymagane.",
     zipCodePlaceholder: "Wpisz kod pocztowy",
     createAccountBtn: "Utwórz konto",
     // | Checken road
@@ -202,6 +208,8 @@ export const translations = {
     addressPlaceholder: "Írd be a címet",
     cityPlaceholder: "Írd be a várost",
     statePlaceholder: "Válassz megyét",
+    postalCodeHint:
+      "Ha tudja, adja meg — felgyorsítja az ellenőrzést, de nem kötelező.",
     zipCodePlaceholder: "Írd be az irányítószámot",
     createAccountBtn: "Fiók létrehozása",
     // | Checken road
@@ -255,6 +263,8 @@ export const translations = {
     addressPlaceholder: "Introduceți adresa",
     cityPlaceholder: "Introduceți orașul",
     statePlaceholder: "Alegeți provincia",
+    postalCodeHint:
+      "Dacă îl știți, introduceți-l — accelerează verificarea, dar nu este obligatoriu.",
     zipCodePlaceholder: "Introduceți codul poștal",
     createAccountBtn: "Creează cont",
     // | Checken road
@@ -308,6 +318,8 @@ export const translations = {
     addressPlaceholder: "Vnesite naslov",
     cityPlaceholder: "Vnesite mesto",
     statePlaceholder: "Izberite pokrajino",
+    postalCodeHint:
+      "Če ga poznate, ga vnesite — pospeši preverjanje, vendar ni obvezno.",
     zipCodePlaceholder: "Vnesite poštno številko",
     createAccountBtn: "Ustvariti račun",
     // | Checken road
@@ -361,6 +373,8 @@ export const translations = {
     addressPlaceholder: "Zadejte adresu",
     cityPlaceholder: "Zadejte město",
     statePlaceholder: "Vyberte region",
+    postalCodeHint:
+      "Pokud jej znáte, zadejte jej — urychlí to ověření, ale není to povinné.",
     zipCodePlaceholder: "Zadejte PSČ",
     createAccountBtn: "Vytvořit účet",
     // | Checken road
@@ -414,6 +428,8 @@ export const translations = {
     addressPlaceholder: "Введите адрес",
     cityPlaceholder: "Введите город",
     statePlaceholder: "Выберите регион",
+    postalCodeHint:
+      "Если знаете — введите. Это ускорит верификацию, но не обязательно.",
     zipCodePlaceholder: "Введите почтовый индекс",
     createAccountBtn: "Создать аккаунт",
     // | Checken road
@@ -467,6 +483,8 @@ export const translations = {
     addressPlaceholder: "Digite o endereço",
     cityPlaceholder: "Digite a cidade",
     statePlaceholder: "Selecione estado",
+    postalCodeHint:
+      "Se souber, insira — acelera a verificação, mas não é obrigatório.",
     zipCodePlaceholder: "Código Postal",
     createAccountBtn: "Criar Conta",
     // | Checken road
@@ -520,6 +538,8 @@ export const translations = {
     addressPlaceholder: "Adresse eingeben",
     cityPlaceholder: "Stadt eingeben",
     statePlaceholder: "Bundesland auswählen",
+    postalCodeHint:
+      "Wenn Sie ihn kennen, geben Sie ihn ein — das beschleunigt die Verifizierung, ist aber optional.",
     zipCodePlaceholder: "Postleitzahl eingeben",
     createAccountBtn: "Konto erstellen",
     // | Checken road
@@ -573,6 +593,8 @@ export const translations = {
     addressPlaceholder: "Εισάγετε Διεύθυνση",
     cityPlaceholder: "Εισάγετε Πόλη",
     statePlaceholder: "Επιλέξτε Περιφέρεια",
+    postalCodeHint:
+      "Αν τον γνωρίζετε, καταχωρίστε τον — επιταχύνει την επαλήθευση, αλλά δεν είναι υποχρεωτικό.",
     zipCodePlaceholder: "Εισάγετε Τ.Κ.",
     createAccountBtn: "Δημιουργία Λογαριασμού",
     // | Checken road
@@ -626,6 +648,8 @@ export const translations = {
     addressPlaceholder: "Введіть адресу",
     cityPlaceholder: "Введіть місто",
     statePlaceholder: "Оберіть область",
+    postalCodeHint:
+      "Якщо знаєте — введіть. Це пришвидшить верифікацію, але не обов'язково.",
     zipCodePlaceholder: "Введіть поштовий індекс",
     createAccountBtn: "Створити акаунт",
     // | Checken road
@@ -679,6 +703,8 @@ export const translations = {
     addressPlaceholder: "Introduce la Dirección",
     cityPlaceholder: "Introduce la Ciudad",
     statePlaceholder: "Elige la Provincia",
+    postalCodeHint:
+      "Si lo conoce, ingréselo: acelera la verificación, pero no es obligatorio.",
     zipCodePlaceholder: "Introduce el Código Postal",
     createAccountBtn: "Crear Cuenta",
     // | Checken road
@@ -732,6 +758,8 @@ export const translations = {
     addressPlaceholder: "Skriv inn adresse",
     cityPlaceholder: "Skriv inn by",
     statePlaceholder: "Velg provins",
+    postalCodeHint:
+      "Hvis du vet det, skriv det inn — det fremskynder verifiseringen, men er valgfritt.",
     zipCodePlaceholder: "Skriv inn postnummer",
     createAccountBtn: "Opprett Konto",
     // | Checken road
@@ -785,6 +813,8 @@ export const translations = {
     addressPlaceholder: "Ange adress",
     cityPlaceholder: "Ange stad",
     statePlaceholder: "Välj provins",
+    postalCodeHint:
+      "Om du känner till det, ange det — det snabbar upp verifieringen, men är valfritt.",
     zipCodePlaceholder: "Ange postnummer",
     createAccountBtn: "Skapa Konto",
     // | Checken road
@@ -838,6 +868,8 @@ export const translations = {
     addressPlaceholder: "Zadajte adresu",
     cityPlaceholder: "Zadajte mesto",
     statePlaceholder: "Vyberte kraj",
+    postalCodeHint:
+      "Ak ho poznáte, zadajte ho — urýchli to overenie, ale nie je to povinné.",
     zipCodePlaceholder: "Zadajte PSČ",
     createAccountBtn: "Vytvoriť účet",
     // | Checken road
@@ -891,6 +923,8 @@ export const translations = {
     addressPlaceholder: "Inserisci l'indirizzo",
     cityPlaceholder: "Inserisci la città",
     statePlaceholder: "Seleziona la provincia",
+    postalCodeHint:
+      "Se lo conosci, inseriscilo: velocizza la verifica, ma non è obbligatorio.",
     zipCodePlaceholder: "Inserisci il CAP",
     createAccountBtn: "Crea account",
     // | Checken road
@@ -1000,6 +1034,8 @@ export const translations = {
     addressPlaceholder: "Sisesta aadress",
     cityPlaceholder: "Sisesta linn",
     statePlaceholder: "Vali maakond",
+    postalCodeHint:
+      "Kui tead, sisesta see — see kiirendab kontrolli, kuid pole kohustuslik.",
     zipCodePlaceholder: "Sisesta postiindeks",
     createAccountBtn: "Loo konto",
     // | Checken road
@@ -1109,6 +1145,8 @@ export const translations = {
     addressPlaceholder: "Ievadi adresi",
     cityPlaceholder: "Ievadi pilsētu",
     statePlaceholder: "Izvēlies novadu",
+    postalCodeHint:
+      "Ja zināt, ievadiet to — tas paātrina pārbaudi, taču nav obligāti.",
     zipCodePlaceholder: "Ievadi pasta kodu",
     createAccountBtn: "Izveidot kontu",
     // | Checken road
@@ -1218,6 +1256,8 @@ export const translations = {
     addressPlaceholder: "Įveskite adresą",
     cityPlaceholder: "Įveskite miestą",
     statePlaceholder: "Pasirinkite regioną",
+    postalCodeHint:
+      "Jei žinote, įveskite — tai paspartins patikrą, bet nėra privaloma.",
     zipCodePlaceholder: "Įveskite pašto kodą",
     createAccountBtn: "Sukurti paskyrą",
     // | Checken road
@@ -1327,6 +1367,8 @@ export const translations = {
     addressPlaceholder: "Unesite adresu",
     cityPlaceholder: "Unesite grad",
     statePlaceholder: "Odaberite pokrajinu",
+    postalCodeHint:
+      "Ako ga znate, unesite ga — ubrzava provjeru, ali nije obavezno.",
     zipCodePlaceholder: "Unesite poštanski broj",
     createAccountBtn: "Kreiraj račun",
     // | Checken road
@@ -1436,6 +1478,8 @@ export const translations = {
     addressPlaceholder: "Indtast Adresse",
     cityPlaceholder: "Indtast By",
     statePlaceholder: "Vælg Region",
+    postalCodeHint:
+      "Hvis du kender den, så indtast den — det fremskynder verificeringen, men er valgfrit.",
     zipCodePlaceholder: "Indtast Postnummer",
     createAccountBtn: "Opret Konto",
     // | Checken road
@@ -1489,6 +1533,8 @@ export const translations = {
     addressPlaceholder: "Syötä Osoite",
     cityPlaceholder: "Syötä Kaupunki",
     statePlaceholder: "Valitse Lääni",
+    postalCodeHint:
+      "Jos tiedät sen, syötä se — se nopeuttaa vahvistusta, mutta ei ole pakollista.",
     zipCodePlaceholder: "Syötä Postinumero",
     createAccountBtn: "Luo Tili",
     // | Checken road
@@ -1542,6 +1588,8 @@ export const translations = {
     addressPlaceholder: "Въведете адрес",
     cityPlaceholder: "Въведете град",
     statePlaceholder: "Изберете провинция",
+    postalCodeHint:
+      "Ако го знаете, въведете го — ускорява проверката, но не е задължително.",
     zipCodePlaceholder: "Въведете пощенски код",
     createAccountBtn: "Създайте акаунт",
     // | Checken road
@@ -1595,6 +1643,8 @@ export const translations = {
     addressPlaceholder: "Weka anwani",
     cityPlaceholder: "Weka jiji",
     statePlaceholder: "Chagua mkoa",
+    postalCodeHint:
+      "Ukijua, iweke — inaharakisha uthibitishaji, lakini si lazima.",
     zipCodePlaceholder: "Weka msimbo wa posta",
     createAccountBtn: "Fungua akaunti",
     // | Checken road
@@ -1648,6 +1698,8 @@ export const translations = {
     addressPlaceholder: "Injiza Aderesi",
     cityPlaceholder: "Injiza Umujyi",
     statePlaceholder: "Hitamo Intara",
+    postalCodeHint:
+      "Niba uyizi, andika — byihutisha kugenzura, ariko ntibitegekwa.",
     zipCodePlaceholder: "Injiza ZIP Code",
     createAccountBtn: "Fungura Konti",
     // | Checken road
@@ -1701,6 +1753,8 @@ export const translations = {
     addressPlaceholder: "أدخل العنوان",
     cityPlaceholder: "أدخل المدينة",
     statePlaceholder: "اختر المحافظة",
+    postalCodeHint:
+      "إذا كنت تعرفه، فأدخله — فهذا يسرّع عملية التحقق، لكنه ليس إلزاميًا.",
     zipCodePlaceholder: "أدخل الرمز البريدي",
     createAccountBtn: "إنشاء الحساب",
     // | Checken road
@@ -1754,6 +1808,8 @@ export const translations = {
     addressPlaceholder: "Introduza o enderezo",
     cityPlaceholder: "Introduza a cidade",
     statePlaceholder: "Elixa a provincia",
+    postalCodeHint:
+      "Má tá sé ar eolas agat, cuir isteach é — luathaíonn sé an fíorú, ach níl sé éigeantach.",
     zipCodePlaceholder: "Introduza o código postal",
     createAccountBtn: "Crear conta",
     // | Checken road
@@ -1807,6 +1863,8 @@ export const translations = {
     addressPlaceholder: "Gitt Adress an",
     cityPlaceholder: "Gitt Stad an",
     statePlaceholder: "Wielt Provënz",
+    postalCodeHint:
+      "Wann Dir et kennt, gitt et an — et beschleunegt d'Verifikatioun, ass awer net obligatoresch.",
     zipCodePlaceholder: "Gitt ZIP Code an",
     createAccountBtn: "Kont erstellen",
     // | Checken road
@@ -1860,6 +1918,8 @@ export const translations = {
     addressPlaceholder: "Daħħal l-Indirizz",
     cityPlaceholder: "Daħħal il-Belt",
     statePlaceholder: "Agħżel il-Provinċja",
+    postalCodeHint:
+      "Jekk tafu, daħħlu — iħaffef il-verifika, iżda mhux obbligatorju.",
     zipCodePlaceholder: "Daħħal il-Kodiċi ZIP",
     createAccountBtn: "Oħloq Kont",
     // | Checken road
@@ -1913,6 +1973,7 @@ export const translations = {
     addressPlaceholder: "输入地址",
     cityPlaceholder: "输入城市",
     statePlaceholder: "选择省份",
+    postalCodeHint: "如果知道，请填写——这会加快验证速度，但不是必填项。",
     zipCodePlaceholder: "输入邮政编码",
     createAccountBtn: "创建账户",
     // | Checken road
@@ -1966,6 +2027,7 @@ export const translations = {
     addressPlaceholder: "አድራሻ ያስገቡ",
     cityPlaceholder: "ከተማ ያስገቡ",
     statePlaceholder: "ክልል ይምረጡ",
+    postalCodeHint: "የሚያውቁት ከሆነ ያስገቡት — ማረጋገጡን ያፋጥናል፣ ግን አስገዳጅ አይደለም።",
     zipCodePlaceholder: "ዚፕ ኮድ ያስገቡ",
     createAccountBtn: "መለያ ፍጠር",
     // | Checken road
@@ -2019,6 +2081,8 @@ export const translations = {
     addressPlaceholder: "Yingiza address",
     cityPlaceholder: "Yingiza kibuga",
     statePlaceholder: "Londa ssaza",
+    postalCodeHint:
+      "Bw'oba ogimanyi, giwandiike — kyanguyako okukakasa, naye si kya buwaze.",
     zipCodePlaceholder: "Yingiza ZIP code",
     createAccountBtn: "Tonda akawunti",
     // | Checken road
@@ -2072,6 +2136,8 @@ export const translations = {
     addressPlaceholder: "Shigar da Adireshi",
     cityPlaceholder: "Shigar da Birni",
     statePlaceholder: "Zaɓi Jiha/Lardi",
+    postalCodeHint:
+      "Idan ka sani, shigar da shi — yana hanzarta tabbatarwa, amma ba dole ba ne.",
     zipCodePlaceholder: "Shigar da Lambar ZIP",
     createAccountBtn: "Ƙirƙiri Asusu",
     // | Checken road
@@ -2125,6 +2191,8 @@ export const translations = {
     addressPlaceholder: "Tẹ Adirẹsi",
     cityPlaceholder: "Tẹ Ìlú",
     statePlaceholder: "Yan Agbègbè",
+    postalCodeHint:
+      "Tí o bá mọ̀ ọ́n, tẹ̀ ẹ́ sí i — yóò mú ìfọwọ́sí yá, ṣùgbọ́n kì í ṣe dandan.",
     zipCodePlaceholder: "Tẹ Kóòdù ZIP",
     createAccountBtn: "Ṣẹ̀dá Account",
     // | Checken road
@@ -2178,6 +2246,8 @@ export const translations = {
     addressPlaceholder: "Tinye Adreesị",
     cityPlaceholder: "Tinye Obodo",
     statePlaceholder: "Họrọ Steeti",
+    postalCodeHint:
+      "Ọ bụrụ na ị maara ya, tinye ya — ọ na-eme ka nkwenye dị ngwa, mana ọ abụghị mmecha.",
     zipCodePlaceholder: "Tinye ZIP Code",
     createAccountBtn: "Mepụta Akaụntụ",
     // | Checken road
@@ -2231,6 +2301,8 @@ export const translations = {
     addressPlaceholder: "Hyɛ Address",
     cityPlaceholder: "Hyɛ Kurow",
     statePlaceholder: "Paw Mantam",
+    postalCodeHint:
+      "Sɛ wunim a, kyerɛw — ɛbɛma adansedi no ayɛ ntɛm, nanso ɛnhia.",
     zipCodePlaceholder: "Hyɛ ZIP Koodu",
     createAccountBtn: "Bɔ Akaunt",
     // | Checken road

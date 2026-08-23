@@ -2384,7 +2384,7 @@
                     class="two-step-state-list absolute left-0 top-[110%] z-20 hidden h-[140px] w-full overflow-hidden overflow-y-auto rounded-2xl bg-white font-bold text-[#1c1c1c]"
                   ></ul>
                 </div>
-                <!-- ZIP Code -->
+                <!-- ZIP Code (+ иконка-i с тултипом hint, видна только в OPTIONAL) -->
                 <div
                   class="two-step-input-wrapper two-step-zipcode-wrapper relative rounded-2xl bg-white p-4"
                 >
@@ -2396,6 +2396,43 @@
                     class="two-step-general-label two-step-required-label two-step-zipcode-label pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 font-bold text-[#585858] transition-all rtl:left-auto rtl:right-4"
                     >ZIP Code</label
                   >
+                  <button
+                    type="button"
+                    class="two-step-zipcode-info absolute right-4 top-1/2 hidden -translate-y-1/2 text-[#755EEB] rtl:left-4 rtl:right-auto"
+                    aria-label="Postal code info"
+                    aria-expanded="false"
+                  >
+                    <svg
+                      class="pointer-events-none"
+                      width="20"
+                      height="20"
+                      viewBox="0 0 20 20"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <circle
+                        cx="10"
+                        cy="10"
+                        r="9"
+                        stroke="currentColor"
+                        stroke-width="1.5"
+                      />
+                      <path
+                        d="M10 8.75V14"
+                        stroke="currentColor"
+                        stroke-width="1.5"
+                        stroke-linecap="round"
+                      />
+                      <circle cx="10" cy="6" r="1" fill="currentColor" />
+                    </svg>
+                    <span
+                      class="two-step-zipcode-tooltip"
+                      role="tooltip"
+                      data-translate="postalCodeHint"
+                      >If you know it, enter it — it speeds up verification, but
+                      it's optional.</span
+                    >
+                  </button>
                 </div>
                 <button
                   type="submit"
