@@ -8,7 +8,10 @@
 import { getUrlParameter } from "./params";
 import { geoData } from "./geoLocation";
 
-const API_BASE = "https://dev1.goldbet.io/api/landing/c2gaming";
+// Относительный путь: запросы уходят на тот же домен, что и лендинг, а
+// проксирует их nginx на VPS (fastpanel2-includes/c2gaming.conf) — он же
+// подставляет auth-токен бэка. Прямого обращения к API из браузера нет.
+const API_BASE = "/api/landing/c2gaming";
 
 // identifier игры в каталоге (aggregator ggate). Переопределяется через ?gameId=
 const DEFAULT_GAME_ID = "vs20olympgate_prg";
@@ -102,6 +105,11 @@ export const startSession = async ({
     subscribeToken: data.subscribeToken,
     snapshot: data.snapshot,
   };
+
+  // Таймер формы живёт ровно одну игровую сессию. Без этого дедлайн из
+  // localStorage переживал бы и рестарт, и новый заход — модалка открывалась
+  // с уже истёкшим 0:00.
+  window.dispatchEvent(new CustomEvent("c2:session-started"));
 
   return gameSession;
 };
@@ -200,11 +208,43 @@ let pendingCheck = false;
 let spinsAtLock = null;
 let autoplayDetected = false;
 
+// Ждать первого спина после блокировки — значит подарить автоспину минимум один
+// лишний прокрут, а на макс скорости и все три (пока тикает SPIN_ANIMATION_MS).
+// Поэтому смотрим на темп пушей ещё до порога: три спина подряд быстрее полутора
+// секунд человек накликать не может. Признак не строгий — турбо-режим выглядит
+// так же, — но решает он ровно один вопрос: ждать анимацию или глушить сразу.
+const FAST_SPIN_MS = 1500;
+const FAST_SPIN_STREAK = 3;
+
+let lastSpinAt = null;
+let lastSpinCount = null;
+let fastSpinStreak = 0;
+let likelyAutoplay = false;
+
+const watchSpinPace = (snapshot) => {
+  const spins = Number(snapshot.spinCount) || 0;
+
+  // сервер шлёт пуши и без нового спина (доезжает выигрыш) — такие не считаем
+  if (lastSpinCount !== null && spins <= lastSpinCount) return;
+
+  const now = Date.now();
+
+  fastSpinStreak =
+    lastSpinAt !== null && now - lastSpinAt < FAST_SPIN_MS ? fastSpinStreak + 1 : 0;
+
+  if (fastSpinStreak >= FAST_SPIN_STREAK) likelyAutoplay = true;
+
+  lastSpinAt = now;
+  lastSpinCount = spins;
+};
+
 const watchSpinsAfterLock = (snapshot) => {
   if (spinsAtLock === null || autoplayDetected) return;
 
   if ((Number(snapshot.spinCount) || 0) > spinsAtLock) {
+    // клики уже не проходят — значит спин запустила сама игра
     autoplayDetected = true;
+    revealForm();
   }
 };
 
@@ -221,34 +261,67 @@ const lockFrame = () => {
 // cross-origin iframe командам снаружи не подчиняется. Перезагружаем фрейм тем же
 // url — автоспин сбрасывается, а за формой остаётся картинка игры, а не чернота.
 // Заодно закрываем WS, чтобы суммы в форме остались теми, что игрок видел.
+let gameStopped = false;
+
 const stopGame = () => {
+  if (gameStopped) return;
+  gameStopped = true;
+
   const gameFrame = document.querySelector(".game-frame");
 
   // при ручной игре хватает is-locked: без кликов новый спин не начнётся,
   // и подменять игроку экран незачем
-  if (autoplayDetected && gameFrame && gameSession.url) {
-    gameFrame.src = gameSession.url;
+  if ((autoplayDetected || likelyAutoplay) && gameFrame && gameSession.url) {
+    // Перезагрузка тем же url не останавливает игру сразу: старый документ живёт,
+    // пока грузится новый, и автоспин успевает домотать ещё пару прокрутов — отсюда
+    // разброс «остановился на 31/32». about:blank сносит браузерный контекст игры
+    // мгновенно, а следом возвращаем url, чтобы за формой осталась картинка игры.
+    gameFrame.src = "about:blank";
+    window.setTimeout(() => {
+      gameFrame.src = gameSession.url;
+    }, 0);
   }
 
   gameSocket?.close();
   gameSocket = null;
 };
 
-const openRegisterModal = () => {
+let formShown = false;
+let gateTimeoutId = null;
+
+function revealForm() {
+  if (formShown) return;
+
   const overlay = document.querySelector(".two-step-overlay");
 
-  if (!overlay) {
-    return;
+  if (!overlay) return;
+
+  formShown = true;
+
+  if (gateTimeoutId) {
+    window.clearTimeout(gateTimeoutId);
+    gateTimeoutId = null;
   }
 
   // закрыть её нельзя — крутить дальше уже не дадим
-  window.setTimeout(() => {
-    overlay.classList.add("is-open");
-    // выгружаем под блюром — смена картинки за формой не бросается в глаза
-    stopGame();
-    // форма рисует заголовок по актуальному снапшоту
-    window.dispatchEvent(new CustomEvent("c2:gate-opened"));
-  }, SPIN_ANIMATION_MS);
+  overlay.classList.add("is-open");
+  // выгружаем под блюром — смена картинки за формой не бросается в глаза
+  stopGame();
+  // форма рисует заголовок по актуальному снапшоту
+  window.dispatchEvent(new CustomEvent("c2:gate-opened"));
+}
+
+const openRegisterModal = () => {
+  if (!document.querySelector(".two-step-overlay")) return;
+
+  // Игра крутит сама — ждать нечего: пауза на анимацию обернулась бы лишними
+  // спинами. При ручной игре даём барабанам доиграть, чтобы игрок увидел выигрыш.
+  if (likelyAutoplay) {
+    revealForm();
+    return;
+  }
+
+  gateTimeoutId = window.setTimeout(revealForm, SPIN_ANIMATION_MS);
 };
 
 export const checkRegisterGate = (snapshot) => {
@@ -256,16 +329,14 @@ export const checkRegisterGate = (snapshot) => {
 
   const spins = Number(snapshot.spinCount) || 0;
   const hasWin = parseMoney(snapshot.totalWin) > 0;
+  const gateAt = spinThreshold;
 
   // поля может не прийти — тогда не считаем, что спины кончились
   const rawLeft = Number(snapshot.freespinsRemaining);
   const noSpinsLeft = Number.isFinite(rawLeft) && rawLeft <= 0;
 
   // выигрыш есть: порог набран или крутить больше нечем — тянуть незачем
-  if (
-    hasWin &&
-    (spinThreshold === null || spins >= spinThreshold || noSpinsLeft)
-  ) {
+  if (hasWin && (gateAt === null || spins >= gateAt || noSpinsLeft)) {
     gateOpened = true;
     // всё, что накрутится после этой отметки, — работа автоспина
     spinsAtLock = spins;
@@ -283,7 +354,7 @@ export const checkRegisterGate = (snapshot) => {
     return;
   }
 
-  if (spinThreshold === null || spins < spinThreshold) return;
+  if (gateAt === null || spins < gateAt) return;
 
   // totalWin в пуше отстаёт: сообщение о спине приходит до зачисления выигрыша,
   // результат приезжает следующим. Поэтому порог не двигаем сразу — ждём пуш.
@@ -325,6 +396,10 @@ const restartSession = async () => {
     pendingCheck = false;
     spinsAtLock = null;
     autoplayDetected = false;
+    lastSpinAt = null;
+    lastSpinCount = null;
+    fastSpinStreak = 0;
+    likelyAutoplay = false;
     applySession(session);
   } catch {
     // сюда попадаем в том числе на 429 — rate limit 10 на clickId за 60с
@@ -368,6 +443,7 @@ export const connectStateSocket = (onState, token) => {
     }
 
     gameSession.snapshot = message.payload;
+    watchSpinPace(message.payload);
     watchSpinsAfterLock(message.payload);
 
     onState?.(message.payload);

@@ -1149,10 +1149,9 @@
           <div
             class="mx-auto flex w-full max-w-[800px] items-center justify-between gap-3"
           >
-            <a
-              href="/"
-              class="inline-flex items-center gap-1 tbl:hidden small:hidden"
-            >
+            <!-- логотип в шапке формы — не ссылка: уходить со страницы
+                 на этом шаге игроку некуда -->
+            <div class="inline-flex items-center gap-1 tbl:hidden small:hidden">
               <img
                 class="tbl:max-w-[100px]"
                 width="134"
@@ -1167,7 +1166,7 @@
                 src="https://3344112-img.b-cdn.net/graphic/flags/flag-pl.svg"
                 alt="PL Flag"
               />
-            </a>
+            </div>
             <div class="header-lang-box relative z-30 tbl:ml-auto">
               <button
                 class="header-lang-btn flex cursor-pointer items-center justify-center gap-2 rounded-lg bg-[#ffffff] px-3 py-[9px] font-bold text-black transition-all"
@@ -1263,7 +1262,7 @@
             <p class="two-step-heading-subtitle font-montserrat text-white"></p>
           </div>
           <div
-            class="w-full max-w-[500px] px-[30px] pb-[30px] small:px-0 small:pb-0"
+            class="w-full max-w-[520px] px-[30px] pb-[30px] tbl:max-w-[500px] small:px-0 small:pb-0"
           >
             <form action="#" class="two-step-form">
               <!-- FIRST BONUS STEP -->
@@ -2635,7 +2634,7 @@
                     >Enter Street</label
                   >
                 </div>
-                <div class="grid grid-cols-2 gap-[15px] xs:gap-[10px]">
+                <div class="grid grid-cols-2 gap-[15px] tbl:grid-cols-1 xs:gap-[10px]">
                   <!-- House / Building number -->
                   <div
                     class="two-step-input-wrapper two-step-house-wrapper relative rounded-2xl bg-white p-4"
@@ -2665,7 +2664,7 @@
                     >
                   </div>
                 </div>
-                <div class="grid grid-cols-2 gap-[15px] xs:gap-[10px]">
+                <div class="grid grid-cols-2 gap-[15px] tbl:grid-cols-1 xs:gap-[10px]">
                   <!-- City -->
                   <div
                     class="two-step-input-wrapper two-step-city-wrapper relative rounded-2xl bg-white p-4"

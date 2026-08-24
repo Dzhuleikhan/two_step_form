@@ -1271,6 +1271,28 @@ const startTimer = () => {
   }, 1000);
 };
 
+// Новая игровая сессия — отсчёт начинается заново: убираем старый дедлайн,
+// гасим тикающий интервал и возвращаем табло к исходному времени. Сам таймер
+// запустится позже, когда форма откроется с выигрышем.
+window.addEventListener("c2:session-started", () => {
+  try {
+    localStorage.removeItem(TIMER_KEY);
+  } catch {}
+
+  if (timerId) {
+    window.clearInterval(timerId);
+    timerId = null;
+  }
+
+  timerBox?.classList.remove("is-visible", "is-urgent");
+
+  if (timerValue) {
+    const minutes = Math.floor(TIMER_SECONDS / 60);
+    const seconds = String(TIMER_SECONDS % 60).padStart(2, "0");
+    timerValue.textContent = `${minutes}:${seconds}`;
+  }
+});
+
 // | FORM HEADING
 // Общий заголовок над формой: показывает выигрыш из сессии игры и меняет
 // подпись на каждом шаге. Заголовки внутри шагов убраны.
