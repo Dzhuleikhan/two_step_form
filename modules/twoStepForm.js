@@ -87,10 +87,13 @@ export const applyPostalCodeMode = (countryCode) => {
   const label = document.querySelector(".two-step-zipcode-label");
   const info = document.querySelector(".two-step-zipcode-info");
   const tooltip = document.querySelector(".two-step-zipcode-tooltip");
+  const alert = document.querySelector(".two-step-zipcode-alert");
   if (!wrapper || !input || !label) return;
 
   tooltip?.classList.remove("is-visible");
   info?.setAttribute("aria-expanded", "false");
+  // формат нового поля другой — прошлая ошибка к нему уже не относится
+  alert?.classList.add("hidden");
 
   if (postalCodeMode === "hidden") {
     wrapper.classList.add("hidden");
@@ -1108,6 +1111,34 @@ if (twoStepFormFourthStep) {
     return value.length >= (spec?.example ? spec.example.length : 2);
   };
 
+  // REQUIRED — индекс обязателен и должен совпадать с форматом страны;
+  // OPTIONAL — можно оставить пустым, но заполненный проверяем по формату;
+  // HIDDEN — поля нет, сабмит не блокируем.
+  const isZipcodeValid = (value) =>
+    postalCodeMode === "hidden" ||
+    (postalCodeMode === "optional" && value === "") ||
+    validatePostalCodeFormat(twoStepFormData.country, value);
+
+  // Красный текст в поле появляется уже при вводе, а подпись с ошибкой — когда
+  // игрок уходит с поля: иначе она мигала бы на каждом недобранном символе.
+  const zipcodeAlert = twoStepFormFourthStep.querySelector(
+    ".two-step-zipcode-alert",
+  );
+
+  twoStepZipcodeInput.addEventListener("focusout", () => {
+    const value = twoStepZipcodeInput.value.trim();
+
+    zipcodeAlert?.classList.toggle(
+      "hidden",
+      value === "" || isZipcodeValid(value),
+    );
+  });
+
+  // правка поля = ошибка уже неактуальна, покажем заново на выходе
+  twoStepZipcodeInput.addEventListener("input", () =>
+    zipcodeAlert?.classList.add("hidden"),
+  );
+
   const inputValidations1 = [
     {
       input: twoStepCityInput,
@@ -1122,14 +1153,8 @@ if (twoStepFormFourthStep) {
       condition: (value) => value !== "",
     },
     {
-      // REQUIRED — индекс обязателен и должен совпадать с форматом страны;
-      // OPTIONAL — можно оставить пустым, но заполненный проверяем по формату;
-      // HIDDEN — поля нет, сабмит не блокируем.
       input: twoStepZipcodeInput,
-      condition: (value) =>
-        postalCodeMode === "hidden" ||
-        (postalCodeMode === "optional" && value === "") ||
-        validatePostalCodeFormat(twoStepFormData.country, value),
+      condition: isZipcodeValid,
       // Ошибку подсвечиваем красным сразу при вводе, а не только по focusout.
       liveInvalid: (value) => value !== "" && isZipcodeComplete(value),
     },

@@ -56,6 +56,7 @@ export const translations = {
     cityPlaceholder: "Enter City",
     statePlaceholder: "State / Province",
     zipCodePlaceholder: "Enter ZIP Code",
+    zipCodeInvalid: "Invalid postal code",
     postalCodeHint:
       "If you know it, enter it — it speeds up verification, but it's optional.",
     createAccountBtn: "Create Account",
@@ -166,6 +167,7 @@ export const translations = {
     cityPlaceholder: "Entrez votre ville",
     statePlaceholder: "État / Région",
     zipCodePlaceholder: "Entrez le code postal",
+    zipCodeInvalid: "Code postal invalide",
     postalCodeHint:
       "Si vous le connaissez, saisissez-le — cela accélère la vérification, mais ce n'est pas obligatoire.",
     createAccountBtn: "Créer un compte",
@@ -276,6 +278,7 @@ export const translations = {
     cityPlaceholder: "Wpisz miasto",
     statePlaceholder: "Województwo / Region",
     zipCodePlaceholder: "Wpisz kod pocztowy",
+    zipCodeInvalid: "Nieprawidłowy kod pocztowy",
     postalCodeHint:
       "Jeśli go znasz, wpisz — przyspieszy to weryfikację, ale nie jest wymagane.",
     createAccountBtn: "Utwórz konto",
@@ -386,6 +389,7 @@ export const translations = {
     cityPlaceholder: "Írd be a várost",
     statePlaceholder: "Megye / Régió",
     zipCodePlaceholder: "Írd be az irányítószámot",
+    zipCodeInvalid: "Érvénytelen irányítószám",
     postalCodeHint:
       "Ha tudja, adja meg — felgyorsítja az ellenőrzést, de nem kötelező.",
     createAccountBtn: "Fiók létrehozása",
@@ -496,6 +500,7 @@ export const translations = {
     cityPlaceholder: "Introduceți orașul",
     statePlaceholder: "Județ / Provincie",
     zipCodePlaceholder: "Introduceți codul poștal",
+    zipCodeInvalid: "Cod poștal invalid",
     postalCodeHint:
       "Dacă îl știți, introduceți-l — accelerează verificarea, dar nu este obligatoriu.",
     createAccountBtn: "Creează cont",
@@ -606,6 +611,7 @@ export const translations = {
     cityPlaceholder: "Vnesite mesto",
     statePlaceholder: "Pokrajina / Regija",
     zipCodePlaceholder: "Vnesite poštno številko",
+    zipCodeInvalid: "Neveljavna poštna številka",
     postalCodeHint:
       "Če ga poznate, ga vnesite — pospeši preverjanje, vendar ni obvezno.",
     createAccountBtn: "Ustvariti račun",
@@ -716,6 +722,7 @@ export const translations = {
     cityPlaceholder: "Zadejte město",
     statePlaceholder: "Region / Kraj",
     zipCodePlaceholder: "Zadejte PSČ",
+    zipCodeInvalid: "Neplatné PSČ",
     postalCodeHint:
       "Pokud jej znáte, zadejte jej — urychlí to ověření, ale není to povinné.",
     createAccountBtn: "Vytvořit účet",
@@ -826,6 +833,7 @@ export const translations = {
     cityPlaceholder: "Введите город",
     statePlaceholder: "Регион / Область",
     zipCodePlaceholder: "Введите почтовый индекс",
+    zipCodeInvalid: "Неверный почтовый индекс",
     postalCodeHint:
       "Если знаете — введите. Это ускорит верификацию, но не обязательно.",
     createAccountBtn: "Создать аккаунт",
@@ -936,6 +944,7 @@ export const translations = {
     cityPlaceholder: "Digite a cidade",
     statePlaceholder: "Estado / Província",
     zipCodePlaceholder: "Código Postal",
+    zipCodeInvalid: "Código postal inválido",
     postalCodeHint:
       "Se souber, insira — acelera a verificação, mas não é obrigatório.",
     createAccountBtn: "Criar Conta",
@@ -1046,6 +1055,7 @@ export const translations = {
     cityPlaceholder: "Stadt eingeben",
     statePlaceholder: "Bundesland / Region",
     zipCodePlaceholder: "Postleitzahl eingeben",
+    zipCodeInvalid: "Ungültige Postleitzahl",
     postalCodeHint:
       "Wenn Sie ihn kennen, geben Sie ihn ein — das beschleunigt die Verifizierung, ist aber optional.",
     createAccountBtn: "Konto erstellen",
@@ -1156,6 +1166,7 @@ export const translations = {
     cityPlaceholder: "Εισάγετε Πόλη",
     statePlaceholder: "Περιφέρεια",
     zipCodePlaceholder: "Εισάγετε Τ.Κ.",
+    zipCodeInvalid: "Μη έγκυρος ταχυδρομικός κώδικας",
     postalCodeHint:
       "Αν τον γνωρίζετε, καταχωρίστε τον — επιταχύνει την επαλήθευση, αλλά δεν είναι υποχρεωτικό.",
     createAccountBtn: "Δημιουργία Λογαριασμού",
@@ -1266,6 +1277,7 @@ export const translations = {
     cityPlaceholder: "Введіть місто",
     statePlaceholder: "Область / Регіон",
     zipCodePlaceholder: "Введіть поштовий індекс",
+    zipCodeInvalid: "Невірний поштовий індекс",
     postalCodeHint:
       "Якщо знаєте — введіть. Це пришвидшить верифікацію, але не обов'язково.",
     createAccountBtn: "Створити акаунт",
@@ -1376,6 +1388,7 @@ export const translations = {
     cityPlaceholder: "Introduce la Ciudad",
     statePlaceholder: "Estado / Provincia",
     zipCodePlaceholder: "Introduce el Código Postal",
+    zipCodeInvalid: "Código postal no válido",
     postalCodeHint:
       "Si lo conoce, ingréselo: acelera la verificación, pero no es obligatorio.",
     createAccountBtn: "Crear Cuenta",
@@ -1486,6 +1499,7 @@ export const translations = {
     cityPlaceholder: "Skriv inn by",
     statePlaceholder: "Fylke / Region",
     zipCodePlaceholder: "Skriv inn postnummer",
+    zipCodeInvalid: "Ugyldig postnummer",
     postalCodeHint:
       "Hvis du vet det, skriv det inn — det fremskynder verifiseringen, men er valgfritt.",
     createAccountBtn: "Opprett Konto",
@@ -1596,6 +1610,7 @@ export const translations = {
     cityPlaceholder: "Ange stad",
     statePlaceholder: "Region / Län",
     zipCodePlaceholder: "Ange postnummer",
+    zipCodeInvalid: "Ogiltigt postnummer",
     postalCodeHint:
       "Om du känner till det, ange det — det snabbar upp verifieringen, men är valfritt.",
     createAccountBtn: "Skapa Konto",
@@ -1706,6 +1721,7 @@ export const translations = {
     cityPlaceholder: "Zadajte mesto",
     statePlaceholder: "Kraj / Región",
     zipCodePlaceholder: "Zadajte PSČ",
+    zipCodeInvalid: "Neplatné PSČ",
     postalCodeHint:
       "Ak ho poznáte, zadajte ho — urýchli to overenie, ale nie je to povinné.",
     createAccountBtn: "Vytvoriť účet",
@@ -1816,6 +1832,7 @@ export const translations = {
     cityPlaceholder: "Inserisci Città",
     statePlaceholder: "Provincia / Regione",
     zipCodePlaceholder: "Inserisci CAP",
+    zipCodeInvalid: "Codice postale non valido",
     postalCodeHint:
       "Se lo conosci, inseriscilo: velocizza la verifica, ma non è obbligatorio.",
     createAccountBtn: "Crea Account",
@@ -1926,6 +1943,7 @@ export const translations = {
     cityPlaceholder: "Sisesta Linn",
     statePlaceholder: "Maakond",
     zipCodePlaceholder: "Sisesta Postiindeks",
+    zipCodeInvalid: "Vigane postiindeks",
     postalCodeHint:
       "Kui tead, sisesta see — see kiirendab kontrolli, kuid pole kohustuslik.",
     createAccountBtn: "Loo Konto",
@@ -2036,6 +2054,7 @@ export const translations = {
     cityPlaceholder: "Ievadi Pilsētu",
     statePlaceholder: "Novads / Reģions",
     zipCodePlaceholder: "Ievadi Pasta Kodu",
+    zipCodeInvalid: "Nederīgs pasta indekss",
     postalCodeHint:
       "Ja zināt, ievadiet to — tas paātrina pārbaudi, taču nav obligāti.",
     createAccountBtn: "Izveidot Kontu",
@@ -2146,6 +2165,7 @@ export const translations = {
     cityPlaceholder: "Įveskite Miestą",
     statePlaceholder: "Apskritis / Regionas",
     zipCodePlaceholder: "Įveskite Pašto Kodą",
+    zipCodeInvalid: "Neteisingas pašto kodas",
     postalCodeHint:
       "Jei žinote, įveskite — tai paspartins patikrą, bet nėra privaloma.",
     createAccountBtn: "Sukurti Paskyrą",
@@ -2256,6 +2276,7 @@ export const translations = {
     cityPlaceholder: "Unesite Grad",
     statePlaceholder: "Pokrajina / Regija",
     zipCodePlaceholder: "Unesite Poštanski Broj",
+    zipCodeInvalid: "Neispravan poštanski broj",
     postalCodeHint:
       "Ako ga znate, unesite ga — ubrzava provjeru, ali nije obavezno.",
     createAccountBtn: "Kreiraj Račun",
@@ -2366,6 +2387,7 @@ export const translations = {
     cityPlaceholder: "Syötä kaupunki",
     statePlaceholder: "Maakunta / Alue",
     zipCodePlaceholder: "Syötä postinumero",
+    zipCodeInvalid: "Virheellinen postinumero",
     postalCodeHint:
       "Jos tiedät sen, syötä se — se nopeuttaa vahvistusta, mutta ei ole pakollista.",
     createAccountBtn: "Luo tili",
@@ -2476,6 +2498,7 @@ export const translations = {
     cityPlaceholder: "Indtast by",
     statePlaceholder: "Region",
     zipCodePlaceholder: "Indtast postnummer",
+    zipCodeInvalid: "Ugyldigt postnummer",
     postalCodeHint:
       "Hvis du kender den, så indtast den — det fremskynder verificeringen, men er valgfrit.",
     createAccountBtn: "Opret konto",
@@ -2586,6 +2609,7 @@ export const translations = {
     cityPlaceholder: "Въведете град",
     statePlaceholder: "Област / Регион",
     zipCodePlaceholder: "Въведете пощенски код",
+    zipCodeInvalid: "Невалиден пощенски код",
     postalCodeHint:
       "Ако го знаете, въведете го — ускорява проверката, но не е задължително.",
     createAccountBtn: "Създайте акаунт",
@@ -2696,6 +2720,7 @@ export const translations = {
     cityPlaceholder: "Voer stad in",
     statePlaceholder: "Provincie / Regio",
     zipCodePlaceholder: "Voer postcode in",
+    zipCodeInvalid: "Ongeldige postcode",
     postalCodeHint:
       "Als u het weet, vul het in — het versnelt de verificatie, maar is niet verplicht.",
     createAccountBtn: "Account aanmaken",
@@ -2806,6 +2831,7 @@ export const translations = {
     cityPlaceholder: "Cuir isteach Cathair",
     statePlaceholder: "Cúige / Réigiún",
     zipCodePlaceholder: "Cuir isteach Cód Poist",
+    zipCodeInvalid: "Cód poist neamhbhailí",
     postalCodeHint:
       "Má tá sé ar eolas agat, cuir isteach é — luathaíonn sé an fíorú, ach níl sé éigeantach.",
     createAccountBtn: "Cruthaigh Cuntas",
@@ -2916,6 +2942,7 @@ export const translations = {
     cityPlaceholder: "Stad aginn",
     statePlaceholder: "Provënz / Regioun",
     zipCodePlaceholder: "Postleitzuel aginn",
+    zipCodeInvalid: "Ongülteg Postleitzuel",
     postalCodeHint:
       "Wann Dir et kennt, gitt et an — et beschleunegt d'Verifikatioun, ass awer net obligatoresch.",
     createAccountBtn: "Kont erstellen",
@@ -3026,6 +3053,7 @@ export const translations = {
     cityPlaceholder: "Daħħal il-Belt",
     statePlaceholder: "Provinċja / Reġjun",
     zipCodePlaceholder: "Daħħal il-Kodiċi Postali",
+    zipCodeInvalid: "Kodiċi postali mhux validu",
     postalCodeHint:
       "Jekk tafu, daħħlu — iħaffef il-verifika, iżda mhux obbligatorju.",
     createAccountBtn: "Oħloq Kont",
@@ -3136,6 +3164,7 @@ export const translations = {
     cityPlaceholder: "أدخل المدينة",
     statePlaceholder: "الولاية / المنطقة",
     zipCodePlaceholder: "أدخل الرمز البريدي",
+    zipCodeInvalid: "الرمز البريدي غير صالح",
     postalCodeHint:
       "إذا كنت تعرفه، فأدخله — فهذا يسرّع عملية التحقق، لكنه ليس إلزاميًا.",
     createAccountBtn: "إنشاء حساب",
@@ -3246,6 +3275,7 @@ export const translations = {
     cityPlaceholder: "输入城市",
     statePlaceholder: "州 / 省",
     zipCodePlaceholder: "输入邮政编码",
+    zipCodeInvalid: "邮政编码无效",
     postalCodeHint: "如果知道，请填写——这会加快验证速度，但不是必填项。",
     createAccountBtn: "创建账户",
     // | Game UI
@@ -3355,6 +3385,7 @@ export const translations = {
     cityPlaceholder: "Weka Jiji",
     statePlaceholder: "Jimbo / Mkoa",
     zipCodePlaceholder: "Weka Msimbo wa Posta",
+    zipCodeInvalid: "Msimbo wa posta si sahihi",
     postalCodeHint:
       "Ukijua, iweke — inaharakisha uthibitishaji, lakini si lazima.",
     createAccountBtn: "Unda Akaunti",
@@ -3465,6 +3496,7 @@ export const translations = {
     cityPlaceholder: "Andika Umujyi",
     statePlaceholder: "Intara",
     zipCodePlaceholder: "Andika Kode y’Amaposita",
+    zipCodeInvalid: "Kode y'iposita si yo",
     postalCodeHint:
       "Niba uyizi, andika — byihutisha kugenzura, ariko ntibitegekwa.",
     createAccountBtn: "Kora Konti",
@@ -3575,6 +3607,7 @@ export const translations = {
     cityPlaceholder: "Yingiza ekibuga",
     statePlaceholder: "Ekitundu / Disitulikiti",
     zipCodePlaceholder: "Yingiza ZIP Code",
+    zipCodeInvalid: "Kode ya posta ezali malamu te",
     postalCodeHint:
       "Bw'oba ogimanyi, giwandiike — kyanguyako okukakasa, naye si kya buwaze.",
     createAccountBtn: "Tonda akawunti",
@@ -3685,6 +3718,7 @@ export const translations = {
     cityPlaceholder: "ከተማ ያስገቡ",
     statePlaceholder: "ክልል",
     zipCodePlaceholder: "ዚፕ ኮድ ያስገቡ",
+    zipCodeInvalid: "የፖስታ ኮድ ልክ አይደለም",
     postalCodeHint: "የሚያውቁት ከሆነ ያስገቡት — ማረጋገጡን ያፋጥናል፣ ግን አስገዳጅ አይደለም።",
     createAccountBtn: "መለያ ፍጠር",
     // | Game UI
@@ -3794,6 +3828,7 @@ export const translations = {
     cityPlaceholder: "Yingiza ekibuga",
     statePlaceholder: "Ekitundu / Disitulikiti",
     zipCodePlaceholder: "Yingiza ZIP Code",
+    zipCodeInvalid: "Kode ya posta ezali malamu te",
     postalCodeHint:
       "Bw'oba ogimanyi, giwandiike — kyanguyako okukakasa, naye si kya buwaze.",
     createAccountBtn: "Tonda akawunti",
@@ -3904,6 +3939,7 @@ export const translations = {
     cityPlaceholder: "Shigar da Birni",
     statePlaceholder: "Jiha / Lardi",
     zipCodePlaceholder: "Shigar da Lambar ZIP",
+    zipCodeInvalid: "Lambar gidan waya ba daidai ba ce",
     postalCodeHint:
       "Idan ka sani, shigar da shi — yana hanzarta tabbatarwa, amma ba dole ba ne.",
     createAccountBtn: "Ƙirƙiri Asusu",
@@ -4014,6 +4050,7 @@ export const translations = {
     cityPlaceholder: "Tẹ Ìlú",
     statePlaceholder: "Ìpínlẹ̀ / Agbègbè",
     zipCodePlaceholder: "Tẹ Kóòdù ZIP",
+    zipCodeInvalid: "Kóòdù ìfìwéránṣẹ́ kò tọ̀nà",
     postalCodeHint:
       "Tí o bá mọ̀ ọ́n, tẹ̀ ẹ́ sí i — yóò mú ìfọwọ́sí yá, ṣùgbọ́n kì í ṣe dandan.",
     createAccountBtn: "Ṣẹ̀dá Account",
@@ -4124,6 +4161,7 @@ export const translations = {
     cityPlaceholder: "Tinye Obodo",
     statePlaceholder: "Steeti / Mpaghara",
     zipCodePlaceholder: "Tinye ZIP Code",
+    zipCodeInvalid: "Koodu nzipụ ozi ezighi ezi",
     postalCodeHint:
       "Ọ bụrụ na ị maara ya, tinye ya — ọ na-eme ka nkwenye dị ngwa, mana ọ abụghị mmecha.",
     createAccountBtn: "Mepụta Akaụntụ",
@@ -4234,6 +4272,7 @@ export const translations = {
     cityPlaceholder: "Hyɛ Kurow",
     statePlaceholder: "Ɔman / Mantam",
     zipCodePlaceholder: "Hyɛ ZIP Koodu",
+    zipCodeInvalid: "Post nɔma no nyɛ nokware",
     postalCodeHint:
       "Sɛ wunim a, kyerɛw — ɛbɛma adansedi no ayɛ ntɛm, nanso ɛnhia.",
     createAccountBtn: "Bɔ Akaunt",
@@ -4339,6 +4378,7 @@ export const translations = {
     cityPlaceholder: "Şehir Girin",
     statePlaceholder: "Eyalet / İl",
     zipCodePlaceholder: "Posta Kodu Girin",
+    zipCodeInvalid: "Geçersiz posta kodu",
     postalCodeHint: "Biliyorsanız girin — doğrulamayı hızlandırır, ancak zorunlu değildir.",
     createAccountBtn: "Hesap Oluştur",
     navCasino: "Casino",
@@ -4440,6 +4480,7 @@ export const translations = {
     cityPlaceholder: "Şəhər Daxil Edin",
     statePlaceholder: "Rayon / Vilayət",
     zipCodePlaceholder: "Poçt Kodu Daxil Edin",
+    zipCodeInvalid: "Yanlış poçt indeksi",
     postalCodeHint: "Bilirsinizsə daxil edin — doğrulamanı sürətləndirir, lakin məcburi deyil.",
     createAccountBtn: "Hesab Yarat",
     navCasino: "Kazino",
@@ -4541,6 +4582,7 @@ export const translations = {
     cityPlaceholder: "Shaharni Kiriting",
     statePlaceholder: "Viloyat",
     zipCodePlaceholder: "Pochta Indeksini Kiriting",
+    zipCodeInvalid: "Pochta indeksi noto‘g‘ri",
     postalCodeHint: "Agar bilsangiz kiriting — bu tekshiruvni tezlashtiradi, lekin majburiy emas.",
     createAccountBtn: "Hisob Yaratish",
     navCasino: "Kazino",
@@ -4642,6 +4684,7 @@ export const translations = {
     cityPlaceholder: "শহর লিখুন",
     statePlaceholder: "রাজ্য / প্রদেশ",
     zipCodePlaceholder: "জিপ কোড লিখুন",
+    zipCodeInvalid: "ডাক কোড সঠিক নয়",
     postalCodeHint: "জানা থাকলে লিখুন — এটি যাচাই দ্রুত করে, তবে বাধ্যতামূলক নয়।",
     createAccountBtn: "অ্যাকাউন্ট তৈরি করুন",
     navCasino: "ক্যাসিনো",
@@ -4743,6 +4786,7 @@ export const translations = {
     cityPlaceholder: "Masukkan Kota",
     statePlaceholder: "Provinsi",
     zipCodePlaceholder: "Masukkan Kode Pos",
+    zipCodeInvalid: "Kode pos tidak valid",
     postalCodeHint: "Jika Anda tahu, masukkan — ini mempercepat verifikasi, tetapi opsional.",
     createAccountBtn: "Buat Akun",
     navCasino: "Kasino",
@@ -4844,6 +4888,7 @@ export const translations = {
     cityPlaceholder: "Қаланы Енгізіңіз",
     statePlaceholder: "Облыс",
     zipCodePlaceholder: "Пошта Индексін Енгізіңіз",
+    zipCodeInvalid: "Пошта индексі дұрыс емес",
     postalCodeHint: "Білсеңіз енгізіңіз — бұл тексеруді жылдамдатады, бірақ міндетті емес.",
     createAccountBtn: "Тіркелгі Жасау",
     navCasino: "Казино",
@@ -4945,6 +4990,7 @@ export const translations = {
     cityPlaceholder: "Шаарды Киргизиңиз",
     statePlaceholder: "Облус",
     zipCodePlaceholder: "Почта Индексин Киргизиңиз",
+    zipCodeInvalid: "Почта индекси туура эмес",
     postalCodeHint: "Билсеңиз киргизиңиз — бул текшерүүнү тездетет, бирок милдеттүү эмес.",
     createAccountBtn: "Аккаунт Түзүү",
     navCasino: "Казино",

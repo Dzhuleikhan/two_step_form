@@ -2664,7 +2664,7 @@
                     >
                   </div>
                 </div>
-                <div class="grid grid-cols-2 gap-[15px] tbl:grid-cols-1 xs:gap-[10px]">
+                <div class="grid grid-cols-1 gap-[15px] xs:gap-[10px]">
                   <!-- City -->
                   <div
                     class="two-step-input-wrapper two-step-city-wrapper relative rounded-2xl bg-white p-4"
@@ -2680,6 +2680,7 @@
                     >
                   </div>
                   <!-- ZIP Code -->
+                  <div class="two-step-zipcode-cell">
                   <div
                     class="two-step-input-wrapper two-step-zipcode-wrapper relative rounded-2xl bg-white p-4"
                   >
@@ -2729,6 +2730,14 @@
                         but it's optional.</span
                       >
                     </button>
+                  </div>
+                  <!-- ошибка формата индекса: показывает twoStepForm.js на focusout -->
+                  <p
+                    data-translate="zipCodeInvalid"
+                    class="two-step-zipcode-alert mt-[6px] hidden px-1 text-xs font-bold leading-tight text-[#FF5530]"
+                  >
+                    Invalid postal code
+                  </p>
                   </div>
                 </div>
                 <!-- State / Province -->
