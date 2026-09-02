@@ -19,6 +19,71 @@ const DEFAULT_FREESPINS = 100;
 
 const CLICK_ID_KEY = "c2ClickId";
 
+// | DEBUG LOG
+// Ловим редкий баг «модалка не открылась, игра дала открутить все 100 спинов».
+// Пишем сразу в три места, чтобы причину было видно в любой момент:
+//   1. console — открыл DevTools и смотришь события живьём;
+//   2. window.__gameLog — весь буфер разом, если консоль открыл уже после;
+//   3. localStorage — лог переживает перезагрузку страницы (__gameApi.prevLog()).
+const LOG_LIMIT = 500;
+const LOG_STORAGE_KEY = "c2GameLog";
+
+export const gameLog = [];
+
+// проблемные события красим, чтобы не выискивать их глазами в потоке пушей
+const LOG_COLORS = {
+  "ws:close": "#ff9800",
+  "ws:error": "#f44336",
+  "ws:silent": "#f44336",
+  "ws:give-up": "#f44336",
+  "ws:reconnect": "#ff9800",
+  "ws:open": "#4caf50",
+  "gate:open": "#4caf50",
+  "gate:reveal": "#4caf50",
+  "gate:threshold-moved": "#ff9800",
+  "session:failed": "#f44336",
+  "restart:failed": "#f44336",
+  "game:unavailable": "#f44336",
+};
+
+const saveLog = () => {
+  try {
+    localStorage.setItem(LOG_STORAGE_KEY, JSON.stringify(gameLog));
+  } catch {
+    // приватный режим или переполнение — лог просто не переживёт рефреш
+  }
+};
+
+const logEvent = (type, data) => {
+  const entry = {
+    at: new Date().toTimeString().slice(0, 8),
+    type,
+    ...data,
+  };
+
+  gameLog.push(entry);
+  if (gameLog.length > LOG_LIMIT) gameLog.shift();
+
+  saveLog();
+
+  console.log(
+    `%c[c2] ${entry.at} ${type}`,
+    `color:${LOG_COLORS[type] || "#9e9e9e"};font-weight:bold`,
+    data || "",
+  );
+};
+
+// Лог прошлой загрузки страницы забираем до того, как затрём его своим:
+// после рефреша именно он объясняет, что случилось перед перезагрузкой.
+let prevGameLog = [];
+
+try {
+  prevGameLog = JSON.parse(localStorage.getItem(LOG_STORAGE_KEY)) || [];
+  localStorage.removeItem(LOG_STORAGE_KEY);
+} catch {
+  prevGameLog = [];
+}
+
 // | CLICK ID
 // clickId должен пережить рефреш: /register потом потребует тот же id,
 // что ушёл в /session.
@@ -94,11 +159,20 @@ export const startSession = async ({
   if (!response.ok) {
     // 400 — нет clickId/gameId или кривой freespinsCount, 404 — игры нет
     // в каталоге, 429 — rate limit
+    logEvent("session:failed", { status: response.status });
+
     throw Object.assign(new Error("session failed"), {
       status: response.status,
       data,
     });
   }
+
+  logEvent("session:ok", {
+    spins: data.snapshot?.spinCount,
+    left: data.snapshot?.freespinsRemaining,
+    win: data.snapshot?.totalWin,
+    hasSocketToken: Boolean(data.subscribeToken),
+  });
 
   gameSession = {
     url: data.url,
@@ -198,8 +272,17 @@ let spinThreshold = SPIN_THRESHOLDS[0];
 // сразу, а форму показываем, когда анимация доиграет.
 const SPIN_ANIMATION_MS = 4000;
 
+// в турбо-режиме барабаны останавливаются заметно быстрее
+const FAST_SPIN_ANIMATION_MS = 1200;
+
 // порог взят, но результат спина ещё не пришёл
 let pendingCheck = false;
+
+// spinCount, на котором взвели pendingCheck. Сервер шлёт несколько пушей на один
+// спин (доезд баланса, betType), и раньше порог сгорал на таком служебном пуше:
+// выигрыш приезжал третьим сообщением, а гейт уже ждал следующей сотни. Порог
+// признаём пустым, только когда пошёл следующий спин.
+let pendingSpins = null;
 
 // | AUTOPLAY DETECTION
 // По темпу спинов автоспин от турбо-режима не отличить. Но после lockFrame()
@@ -212,7 +295,11 @@ let autoplayDetected = false;
 // лишний прокрут, а на макс скорости и все три (пока тикает SPIN_ANIMATION_MS).
 // Поэтому смотрим на темп пушей ещё до порога: три спина подряд быстрее полутора
 // секунд человек накликать не может. Признак не строгий — турбо-режим выглядит
-// так же, — но решает он ровно один вопрос: ждать анимацию или глушить сразу.
+// так же, — но решает он ровно один вопрос: насколько сокращать паузу на анимацию.
+//
+// Флаг держим только пока темп реально быстрый: раньше он выставлялся навсегда,
+// и одна быстрая серия в начале сессии приводила к тому, что на пороге форма
+// выскакивала мгновенно — поверх ещё крутящихся барабанов.
 const FAST_SPIN_MS = 1500;
 const FAST_SPIN_STREAK = 3;
 
@@ -230,9 +317,11 @@ const watchSpinPace = (snapshot) => {
   const now = Date.now();
 
   fastSpinStreak =
-    lastSpinAt !== null && now - lastSpinAt < FAST_SPIN_MS ? fastSpinStreak + 1 : 0;
+    lastSpinAt !== null && now - lastSpinAt < FAST_SPIN_MS
+      ? fastSpinStreak + 1
+      : 0;
 
-  if (fastSpinStreak >= FAST_SPIN_STREAK) likelyAutoplay = true;
+  likelyAutoplay = fastSpinStreak >= FAST_SPIN_STREAK;
 
   lastSpinAt = now;
   lastSpinCount = spins;
@@ -282,8 +371,7 @@ const stopGame = () => {
     }, 0);
   }
 
-  gameSocket?.close();
-  gameSocket = null;
+  closeSocket();
 };
 
 let formShown = false;
@@ -303,6 +391,8 @@ function revealForm() {
     gateTimeoutId = null;
   }
 
+  logEvent("gate:reveal", { autoplayDetected, likelyAutoplay });
+
   // закрыть её нельзя — крутить дальше уже не дадим
   overlay.classList.add("is-open");
   // выгружаем под блюром — смена картинки за формой не бросается в глаза
@@ -314,14 +404,13 @@ function revealForm() {
 const openRegisterModal = () => {
   if (!document.querySelector(".two-step-overlay")) return;
 
-  // Игра крутит сама — ждать нечего: пауза на анимацию обернулась бы лишними
-  // спинами. При ручной игре даём барабанам доиграть, чтобы игрок увидел выигрыш.
-  if (likelyAutoplay) {
-    revealForm();
-    return;
-  }
+  // Барабанам даём доиграть в любом случае — иначе форма накрывает спин, за
+  // который игрок только что заплатил кликом. При быстром темпе пауза короче:
+  // настоящий автоспин всё равно перехватит watchSpinsAfterLock — он ловит
+  // любой новый спин после блокировки и показывает форму немедленно.
+  const delay = likelyAutoplay ? FAST_SPIN_ANIMATION_MS : SPIN_ANIMATION_MS;
 
-  gateTimeoutId = window.setTimeout(revealForm, SPIN_ANIMATION_MS);
+  gateTimeoutId = window.setTimeout(revealForm, delay);
 };
 
 export const checkRegisterGate = (snapshot) => {
@@ -340,6 +429,13 @@ export const checkRegisterGate = (snapshot) => {
     gateOpened = true;
     // всё, что накрутится после этой отметки, — работа автоспина
     spinsAtLock = spins;
+
+    logEvent("gate:open", {
+      spins,
+      gateAt,
+      win: snapshot.totalWin,
+      likelyAutoplay,
+    });
 
     // блокируем сразу, чтобы не начал новый спин, но анимации это не мешает
     lockFrame();
@@ -360,12 +456,21 @@ export const checkRegisterGate = (snapshot) => {
   // результат приезжает следующим. Поэтому порог не двигаем сразу — ждём пуш.
   if (!pendingCheck) {
     pendingCheck = true;
+    pendingSpins = spins;
+    logEvent("gate:pending", { spins, gateAt });
     return;
   }
 
-  // выигрыша нет и на следующем пуше — порог правда пустой
+  // это всё ещё тот же спин: выигрыш по нему может приехать следующим пушем,
+  // порог трогать рано
+  if (spins <= pendingSpins) return;
+
+  // пошёл следующий спин, а выигрыша так и нет — порог правда пустой
   pendingCheck = false;
+  pendingSpins = null;
   spinThreshold = nextThreshold(spins);
+
+  logEvent("gate:threshold-moved", { spins, from: gateAt, to: spinThreshold });
 };
 
 // | RESTART
@@ -380,20 +485,24 @@ const restartSession = async () => {
   if (isRestarting) return;
 
   if (restartCount >= MAX_RESTARTS) {
+    logEvent("restart:limit", { restartCount });
     return;
   }
 
   isRestarting = true;
   restartCount += 1;
 
+  logEvent("restart", { attempt: restartCount });
+
   try {
-    gameSocket?.close();
+    closeSocket();
 
     const session = await startSession();
 
     // spinCount в новой сессии считается с нуля
     spinThreshold = SPIN_THRESHOLDS[0];
     pendingCheck = false;
+    pendingSpins = null;
     spinsAtLock = null;
     autoplayDetected = false;
     lastSpinAt = null;
@@ -401,8 +510,10 @@ const restartSession = async () => {
     fastSpinStreak = 0;
     likelyAutoplay = false;
     applySession(session);
-  } catch {
-    // сюда попадаем в том числе на 429 — rate limit 10 на clickId за 60с
+  } catch (error) {
+    // сюда попадаем в том числе на 429 — rate limit 10 на clickId за 60с.
+    // Новой сессии нет и пушей больше не будет — гейт до перезагрузки мёртв.
+    logEvent("restart:failed", { status: error?.status ?? null });
   } finally {
     isRestarting = false;
   }
@@ -418,18 +529,145 @@ const toWsUrl = (base) =>
     ? base.replace(/^http/, "ws")
     : `${location.protocol === "https:" ? "wss" : "ws"}://${location.host}${base}`;
 
+// | RECONNECT
+// Гейт регистрации живёт только на этих пушах: пропал сокет — игрок докрутит
+// все спины, и модалка не откроется. Поэтому разрыв не игнорируем, а
+// переподключаемся с нарастающей паузой.
+const WS_RECONNECT_MIN_MS = 1000;
+const WS_RECONNECT_MAX_MS = 15000;
+const WS_MAX_ATTEMPTS = 12;
+
+// сокет молчит, хотя числится открытым (half-open после смены сети или сна
+// телефона) — поднимаем заново
+const WS_SILENCE_MS = 60000;
+const WS_WATCHDOG_MS = 15000;
+
+// параметры последнего подключения: нужны, чтобы поднять сокет заново
+let wsHandler = null;
+let wsLastToken = null;
+
+let wsAttempts = 0;
+let wsReconnectId = null;
+let wsWatchdogId = null;
+let wsLastMessageAt = 0;
+
+// закрыли сами (гейт открылся, рестарт сессии) — переподключаться не нужно
+let wsIntentionalClose = false;
+
+// закрытие сокета своей волей: снимаем и запланированный реконнект
+export const closeSocket = () => {
+  wsIntentionalClose = true;
+
+  if (wsReconnectId) {
+    window.clearTimeout(wsReconnectId);
+    wsReconnectId = null;
+  }
+
+  gameSocket?.close();
+  gameSocket = null;
+};
+
+const scheduleReconnect = () => {
+  if (wsIntentionalClose || gateOpened || !wsLastToken || wsReconnectId) return;
+
+  // сокет уже живёт или как раз поднимается — второй только задвоил бы пуши
+  const state = gameSocket?.readyState;
+  if (state === WebSocket.CONNECTING || state === WebSocket.OPEN) return;
+
+  if (wsAttempts >= WS_MAX_ATTEMPTS) {
+    logEvent("ws:give-up", { attempts: wsAttempts });
+    return;
+  }
+
+  const delay = Math.min(
+    WS_RECONNECT_MIN_MS * 2 ** wsAttempts,
+    WS_RECONNECT_MAX_MS,
+  );
+
+  wsAttempts += 1;
+  logEvent("ws:reconnect", { attempt: wsAttempts, delay });
+
+  wsReconnectId = window.setTimeout(() => {
+    wsReconnectId = null;
+    connectStateSocket(wsHandler, wsLastToken);
+  }, delay);
+};
+
+// Сокет может «умереть молча»: TCP оборвался, а readyState всё ещё OPEN.
+// Раз в WS_WATCHDOG_MS проверяем, что пуши идут и сокет жив.
+const startWatchdog = () => {
+  if (wsWatchdogId) return;
+
+  wsWatchdogId = window.setInterval(() => {
+    // гейт уже открыт — следить больше не за чем
+    if (wsIntentionalClose || gateOpened) {
+      window.clearInterval(wsWatchdogId);
+      wsWatchdogId = null;
+      return;
+    }
+
+    // сокета нет, а реконнект почему-то не встал — поднимаем
+    if (!gameSocket) {
+      scheduleReconnect();
+      return;
+    }
+
+    // CONNECTING / CLOSING — состояние переходное, ждём следующего тика
+    if (gameSocket.readyState !== WebSocket.OPEN) return;
+
+    const silentFor = Date.now() - wsLastMessageAt;
+
+    if (silentFor > WS_SILENCE_MS) {
+      logEvent("ws:silent", { silentFor });
+      // close-обработчик сам поставит переподключение
+      gameSocket.close();
+    }
+  }, WS_WATCHDOG_MS);
+};
+
+// Возврат на вкладку — самый частый момент, когда сокет оказывается мёртвым:
+// в фоне его рвут прокси и энергосбережение мобильных.
+document.addEventListener("visibilitychange", () => {
+  if (document.hidden || wsIntentionalClose || gateOpened || !wsLastToken)
+    return;
+
+  if (gameSocket?.readyState === WebSocket.OPEN) return;
+
+  logEvent("ws:wake", { readyState: gameSocket?.readyState ?? null });
+  // ручной возврат в игру — ждать нарастающую паузу незачем
+  wsAttempts = 0;
+  scheduleReconnect();
+});
+
 export const connectStateSocket = (onState, token) => {
   const wsToken = token || gameSession.subscribeToken;
 
   if (!wsToken) {
+    logEvent("ws:no-token");
     return null;
   }
+
+  // запоминаем, чем подключались: реконнект поднимет сокет теми же параметрами
+  wsHandler = onState;
+  wsLastToken = wsToken;
+  wsIntentionalClose = false;
+  wsLastMessageAt = Date.now();
 
   const wsUrl = `${toWsUrl(API_BASE)}/ws?token=${encodeURIComponent(wsToken)}`;
 
   const socket = new WebSocket(wsUrl);
 
+  socket.addEventListener("open", () => {
+    // соединение поднялось — отсчёт попыток начинаем заново
+    wsAttempts = 0;
+    wsLastMessageAt = Date.now();
+    logEvent("ws:open");
+    startWatchdog();
+  });
+
   socket.addEventListener("message", (event) => {
+    wsLastMessageAt = Date.now();
+
     let message = null;
 
     try {
@@ -439,18 +677,41 @@ export const connectStateSocket = (onState, token) => {
     }
 
     if (message.type !== "state") {
+      logEvent("ws:unknown-type", { type: message.type });
       return;
     }
 
     gameSession.snapshot = message.payload;
+
+    logEvent("state", {
+      spins: message.payload.spinCount,
+      win: message.payload.totalWin,
+      left: message.payload.freespinsRemaining,
+      reason: message.payload.reason,
+      threshold: spinThreshold,
+      pending: pendingCheck,
+    });
+
     watchSpinPace(message.payload);
     watchSpinsAfterLock(message.payload);
 
     onState?.(message.payload);
   });
 
+  socket.addEventListener("error", () => {
+    logEvent("ws:error", { readyState: socket.readyState });
+  });
+
   socket.addEventListener("close", (event) => {
+    logEvent("ws:close", { code: event.code, intentional: wsIntentionalClose });
+
+    // закрылся не тот сокет, что сейчас в работе — реконнект уже не про него
+    if (gameSocket === socket) gameSocket = null;
+
     // 4401 — нет token, 4404 — сессия не найдена: переподключаться бессмысленно
+    if (event.code === 4401 || event.code === 4404) return;
+
+    scheduleReconnect();
   });
 
   gameSocket = socket;
@@ -478,7 +739,9 @@ const urlClickId = getUrlParameter("cid");
 const urlGameId = getUrlParameter("gameId");
 
 // игры нет ни при пустых параметрах, ни при упавшем /session — заглушка одна
-const showGameUnavailable = () => {
+const showGameUnavailable = (error) => {
+  logEvent("game:unavailable", { status: error?.status ?? null });
+
   document.querySelector(".game-frame")?.remove();
   document.querySelector(".game-empty")?.classList.add("is-visible");
 };
@@ -508,5 +771,23 @@ window.__gameApi = {
   get socket() {
     return gameSocket;
   },
+  get log() {
+    return gameLog;
+  },
+  // лог до последней перезагрузки страницы
+  prevLog: () => {
+    console.table(prevGameLog);
+    return prevGameLog;
+  },
+  // копия лога одной строкой — удобно приложить к баг-репорту
+  dumpLog: () => JSON.stringify(gameLog, null, 2),
   reset: () => localStorage.removeItem(CLICK_ID_KEY),
 };
+
+// живая ссылка на буфер: в консоли достаточно набрать __gameLog
+window.__gameLog = gameLog;
+
+console.log(
+  "%c[c2] лог игры включён: __gameLog — текущий, __gameApi.prevLog() — до рефреша",
+  "color:#755eeb;font-weight:bold",
+);
