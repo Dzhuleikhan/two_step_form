@@ -40,10 +40,16 @@ export const getSupportedLanguage = (countryCode) => {
   return "en";
 };
 
-localStorage.setItem(
-  "preferredLanguage",
-  getSupportedLanguage(geoData.countryCode),
-);
+// Ленд открывается на языке браузера; не поддерживаем его — показываем en.
+// Считаем здесь, а не в language.js: значение уходит в /session и /register,
+// а gameFetch читает localStorage раньше language.js.
+export const getInitialLanguage = () => {
+  const browserLang = navigator.language.split("-")[0];
+
+  return SupportedLanguages.includes(browserLang) ? browserLang : "en";
+};
+
+localStorage.setItem("preferredLanguage", getInitialLanguage());
 export const language = localStorage.getItem("preferredLanguage");
 
 export const settingZipCodePlaceholder = (countryCode) => {

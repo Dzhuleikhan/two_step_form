@@ -1,7 +1,7 @@
 import { translations } from "/public/translations";
-import { geoData, language } from "./geoLocation";
+import { language } from "./geoLocation";
 import { settingInitialBonusValue } from "./twoStepForm";
-import { languageOptions, SupportedLanguages } from "../public/data";
+import { languageOptions } from "../public/data";
 import { updateTelInputLanguage } from "./itiTelInput";
 
 const CDN = "https://3344112-img.b-cdn.net";
@@ -66,44 +66,6 @@ function updateContent(lang) {
   });
 }
 
-function getInitialLanguage(country, fallbackLang) {
-  const browserLang = navigator.language.split("-")[0];
-  const supportedLang = SupportedLanguages.includes(browserLang)
-    ? browserLang
-    : fallbackLang;
-
-  if (country === "BE") {
-    if (supportedLang && browserLang !== "nl") {
-      return browserLang;
-    }
-    return "en";
-  }
-  if (country === "CH") {
-    return supportedLang ?? "de";
-  }
-  if (country === "CA") {
-    return supportedLang ?? "en";
-  }
-  if (country === "CA") {
-    return supportedLang ?? "en";
-  }
-  if (country === "CY") {
-    return supportedLang ?? "el";
-  }
-  if (country === "LU") {
-    return supportedLang ?? "lb";
-  }
-  if (country === "EE") {
-    return supportedLang ?? "et";
-  }
-  if (country === "NG") {
-    const nigeriaLangs = ["ha", "yo", "ig"];
-    return nigeriaLangs.includes(browserLang) ? browserLang : "ha";
-  }
-
-  return fallbackLang;
-}
-
 const RTL_LANGUAGES = ["ar"];
 
 function changeLanguage(lang) {
@@ -136,8 +98,8 @@ function setActiveLanguageBtn(currentLang) {
 }
 
 async function initLanguage() {
-  const initialLang = getInitialLanguage(geoData.countryCode, language);
-  changeLanguage(initialLang);
+  // язык уже выбран в geoLocation.js: браузер в приоритете, гео — фолбэк
+  changeLanguage(language);
 }
 initLanguage();
 
