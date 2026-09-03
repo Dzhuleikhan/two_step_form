@@ -1478,6 +1478,13 @@ if (headerbackBtn) {
 const twoStepFormMain = document.querySelector(".two-step-form");
 
 twoStepFormData.lang = localStorage.getItem("preferredLanguage");
+
+// язык мог смениться уже после загрузки — держим поле в актуальном состоянии
+window.addEventListener("lang:changed", () => {
+  twoStepFormData.lang =
+    document.documentElement.getAttribute("lang") ||
+    twoStepFormData.lang;
+});
 let cid = getUrlParameter("cid");
 let partner = getUrlParameter("partner");
 let offer = getUrlParameter("offer");

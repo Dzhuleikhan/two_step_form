@@ -1,6 +1,5 @@
 import { translations } from "/public/translations";
 import { geoData, language } from "./geoLocation";
-import { getSupportedLanguage } from "./geoLocation";
 import { settingInitialBonusValue } from "./twoStepForm";
 import { languageOptions, SupportedLanguages } from "../public/data";
 import { updateTelInputLanguage } from "./itiTelInput";
@@ -145,7 +144,9 @@ initLanguage();
 // общая точка входа для всех переключателей языка на странице
 export function selectLanguage(targetLang) {
   changeLanguage(targetLang);
-  localStorage.setItem("preferredLanguage", getSupportedLanguage(targetLang));
+  // targetLang — уже код языка, а не страны: getSupportedLanguage() ждёт
+  // countryCode и на "de"/"pl" всегда возвращал "en", затирая выбор игрока.
+  localStorage.setItem("preferredLanguage", targetLang);
 
   const currencyData = JSON.parse(localStorage.getItem("currencyData"));
   if (currencyData) settingInitialBonusValue(currencyData.abbr);
