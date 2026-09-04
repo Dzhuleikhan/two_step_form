@@ -2,6 +2,29 @@ import { defineConfig } from "vite";
 
 const DEV_PROXY_TARGET = "https://goldbet.fun";
 
+const proxyTo = (options = {}) => ({
+  target: DEV_PROXY_TARGET,
+  changeOrigin: true,
+  secure: false,
+  ...options,
+});
+
+// один набор правил на dev-сервер и на preview: без него превью прод-сборки
+// остаётся без API и падает в гео-фолбэк
+const proxy = {
+  "/email-guard.js": proxyTo(),
+  "/identity-guard.js": proxyTo(),
+  "/phone-guard.js": proxyTo(),
+  "/geo-api": proxyTo(),
+  "/api/phone/verify": proxyTo(),
+  "/api/email/verify": proxyTo(),
+  "/api/phone/check-available": proxyTo(),
+  "/api/email/check-available": proxyTo(),
+  "/api/domain/available": proxyTo(),
+  // C2Gaming: /session, /register и WS /ws
+  "/api/landing/c2gaming": proxyTo({ ws: true }),
+};
+
 export default defineConfig({
   base: "https://landing-res.b-cdn.net/playable/gatesofolympus/",
   esbuild: {
@@ -10,57 +33,18 @@ export default defineConfig({
     },
     target: "esnext",
   },
+  build: {
+    // без этого сборка держит дефолтный target и транспилирует классы
+    // под браузеры, которых у аудитории ленда нет
+    target: "esnext",
+  },
   server: {
     host: true,
     open: true,
-    proxy: {
-      "/email-guard.js": {
-        target: DEV_PROXY_TARGET,
-        changeOrigin: true,
-        secure: false,
-      },
-      "/identity-guard.js": {
-        target: DEV_PROXY_TARGET,
-        changeOrigin: true,
-        secure: false,
-      },
-      "/phone-guard.js": {
-        target: DEV_PROXY_TARGET,
-        changeOrigin: true,
-        secure: false,
-      },
-      "/api/phone/verify": {
-        target: DEV_PROXY_TARGET,
-        changeOrigin: true,
-        secure: false,
-      },
-      "/api/email/verify": {
-        target: DEV_PROXY_TARGET,
-        changeOrigin: true,
-        secure: false,
-      },
-      "/api/phone/check-available": {
-        target: DEV_PROXY_TARGET,
-        changeOrigin: true,
-        secure: false,
-      },
-      "/api/email/check-available": {
-        target: DEV_PROXY_TARGET,
-        changeOrigin: true,
-        secure: false,
-      },
-      "/api/domain/available": {
-        target: DEV_PROXY_TARGET,
-        changeOrigin: true,
-        secure: false,
-      },
-      // C2Gaming: /session, /register и WS /ws
-      "/api/landing/c2gaming": {
-        target: DEV_PROXY_TARGET,
-        changeOrigin: true,
-        secure: false,
-        ws: true,
-      },
-    },
+    proxy,
+  },
+  preview: {
+    open: true,
+    proxy,
   },
 });

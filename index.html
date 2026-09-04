@@ -22,16 +22,24 @@
         a.appendChild(r);
       })(window, document, "https://static.hotjar.com/c/hotjar-", ".js?sv=");
     </script>
+    <!-- бандл, стили и картинки: соединение поднимаем до того, как их запросит парсер -->
+    <link rel="preconnect" href="https://landing-res.b-cdn.net" crossorigin />
+    <link rel="preconnect" href="https://3344112-img.b-cdn.net" crossorigin />
+    <!-- Raleway хостим сами: хедер, сайдбар и футер рисуются 400 и 700,
+         поэтому эти два начертания забираем preload'ом, не дожидаясь разбора CSS -->
     <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css"
+      rel="preload"
+      as="font"
+      type="font/woff2"
+      href="/fonts/Raleway-Regular.woff2"
+      crossorigin
     />
-    <!-- Raleway для хедера, сайдбара и футера: локально был только Bold -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;600;700&display=swap"
+      rel="preload"
+      as="font"
+      type="font/woff2"
+      href="/fonts/Raleway-Bold.woff2"
+      crossorigin
     />
     <!-- email-guard: проверка email (typo-correction + Zeruh), fail-open -->
     <script defer src="/email-guard.js?v=1.0.8" data-eg-debug="false"></script>
@@ -85,11 +93,13 @@
             src="https://3344112-img.b-cdn.net/graphic/landings/global-assets/logo-main.svg"
             alt="Goldbet"
           />
-          <!-- на мобилке вместо полного лого — компактный знак -->
+          <!-- на мобилке вместо полного лого — компактный знак.
+               он же LCP-элемент мобильной выдачи, поэтому забираем высокий приоритет -->
           <img
             class="hidden h-[34px] w-[34px] shrink-0 tbl:block"
             width="34"
             height="34"
+            fetchpriority="high"
             src="https://3344112-img.b-cdn.net/graphic/goldbet_logo_main.svg"
             alt="Goldbet"
           />
@@ -661,6 +671,8 @@
         <!-- нет cid/gameId в ссылке — вместо игры заглушка, показывает gameFetch -->
         <div class="game-empty">
           <img
+            loading="lazy"
+            decoding="async"
             src="https://goldbet.ams3.cdn.digitaloceanspaces.com/graphic/assets/backgrounds/no-data.webp"
             width="240"
             height="240"
@@ -676,6 +688,8 @@
             <div class="footer-brand">
               <div class="flex items-center gap-2">
                 <img
+                  loading="lazy"
+                  decoding="async"
                   class="h-7 w-auto"
                   width="134"
                   height="46"
@@ -684,6 +698,8 @@
                 />
                 <!-- флаг страны детекта ставит modules/gameHeader.js -->
                 <img
+                  loading="lazy"
+                  decoding="async"
                   class="footer-flag h-6 w-6 shrink-0 overflow-hidden rounded-full"
                   width="24"
                   height="24"
@@ -1001,6 +1017,8 @@
           <div class="footer-divider"></div>
           <div class="footer-badges-row">
             <img
+              loading="lazy"
+              decoding="async"
               class="footer-dmca"
               width="140"
               height="24"
@@ -1009,24 +1027,32 @@
             />
             <div class="footer-badges">
               <img
+                loading="lazy"
+                decoding="async"
                 class="footer-trust"
                 height="28"
                 src="https://3344112-img.b-cdn.net/graphic/assets/trust/trust2_2.webp"
                 alt="Trustpilot"
               />
               <img
+                loading="lazy"
+                decoding="async"
                 class="footer-trust"
                 height="28"
                 src="https://3344112-img.b-cdn.net/graphic/assets/trust/trust3_3.webp"
                 alt="18+"
               />
               <img
+                loading="lazy"
+                decoding="async"
                 class="footer-trust"
                 height="28"
                 src="https://3344112-img.b-cdn.net/graphic/assets/trust/trust4_4.webp"
                 alt="SSL"
               />
               <img
+                loading="lazy"
+                decoding="async"
                 class="footer-trust"
                 height="28"
                 src="https://3344112-img.b-cdn.net/graphic/assets/trust/trust5_5.webp"
@@ -1037,6 +1063,8 @@
           <ul class="footer-payments">
             <li>
               <img
+                loading="lazy"
+                decoding="async"
                 class="footer-payment"
                 height="34"
                 src="https://3344112-img.b-cdn.net/methods/countries/az/white/logo_visa_11.svg"
@@ -1045,6 +1073,8 @@
             </li>
             <li>
               <img
+                loading="lazy"
+                decoding="async"
                 class="footer-payment"
                 height="34"
                 src="https://3344112-img.b-cdn.net/methods/countries/az/white/logo_mastercard_11.svg"
@@ -1053,6 +1083,8 @@
             </li>
             <li>
               <img
+                loading="lazy"
+                decoding="async"
                 class="footer-payment"
                 height="34"
                 src="https://3344112-img.b-cdn.net/methods/countries/az/white/logo_apple_pay_11.svg"
@@ -1061,6 +1093,8 @@
             </li>
             <li>
               <img
+                loading="lazy"
+                decoding="async"
                 class="footer-payment"
                 height="34"
                 src="https://3344112-img.b-cdn.net/methods/countries/az/white/logo_google_pay_11.svg"
@@ -1069,6 +1103,8 @@
             </li>
             <li>
               <img
+                loading="lazy"
+                decoding="async"
                 class="footer-payment"
                 height="34"
                 src="https://3344112-img.b-cdn.net/methods/countries/az/white/logo_btc_11.svg"
@@ -1077,6 +1113,8 @@
             </li>
             <li>
               <img
+                loading="lazy"
+                decoding="async"
                 class="footer-payment"
                 height="34"
                 src="https://3344112-img.b-cdn.net/methods/countries/az/white/logo_usdt_11.svg"
@@ -1152,6 +1190,8 @@
                  на этом шаге игроку некуда -->
             <div class="inline-flex items-center gap-1 tbl:hidden small:hidden">
               <img
+                loading="lazy"
+                decoding="async"
                 class="tbl:max-w-[100px]"
                 width="134"
                 height="46"
@@ -1159,6 +1199,8 @@
                 alt="Goldbet"
               />
               <img
+                loading="lazy"
+                decoding="async"
                 class="header-logo-flag hidden h-[27px] w-[27px] overflow-hidden rounded-full tbl:h-5 tbl:w-5"
                 width="27"
                 height="27"
@@ -1171,6 +1213,8 @@
                 class="header-lang-btn flex cursor-pointer items-center justify-center gap-2 rounded-lg bg-[#ffffff] px-3 py-[9px] font-bold text-black transition-all"
               >
                 <img
+                  loading="lazy"
+                  decoding="async"
                   class="overflow-hidden rounded-full"
                   width="20"
                   height="20"
@@ -1296,6 +1340,8 @@
                           class="h-[52px] w-[52px] shrink-0 overflow-hidden rounded-xl xs:h-10 xs:w-10"
                         >
                           <img
+                            loading="lazy"
+                            decoding="async"
                             width="52"
                             height="52"
                             src="https://3344112-img.b-cdn.net/graphic/landings/twoStepFormImages/welcome-bonus-icon.webp"
@@ -1342,6 +1388,8 @@
                           class="h-[52px] w-[52px] shrink-0 overflow-hidden rounded-xl xs:h-10 xs:w-10"
                         >
                           <img
+                            loading="lazy"
+                            decoding="async"
                             width="52"
                             height="52"
                             src="https://3344112-img.b-cdn.net/graphic/landings/twoStepFormImages/crypto-bonus-icon.webp"
@@ -1384,6 +1432,8 @@
                           class="h-[52px] w-[52px] shrink-0 overflow-hidden rounded-xl xs:h-10 xs:w-10"
                         >
                           <img
+                            loading="lazy"
+                            decoding="async"
                             width="52"
                             height="52"
                             src="https://3344112-img.b-cdn.net/graphic/landings/twoStepFormImages/highroller-bonus-icon.webp"
@@ -1427,6 +1477,8 @@
                           class="h-[52px] w-[52px] shrink-0 overflow-hidden rounded-xl xs:h-10 xs:w-10"
                         >
                           <img
+                            loading="lazy"
+                            decoding="async"
                             width="52"
                             height="52"
                             src="https://3344112-img.b-cdn.net/graphic/landings/twoStepFormImages/without-bonus-icon.webp"
@@ -1658,6 +1710,8 @@
                   >
                   <div class="two-step-password-show-btn cursor-pointer">
                     <img
+                      loading="lazy"
+                      decoding="async"
                       class="pointer-events-none rtl:rotate-180"
                       src="https://3344112-img.b-cdn.net/graphic/landings/twoStepFormImages/password-show-icon.svg"
                       alt="Icon"
@@ -1933,6 +1987,8 @@
                         class="pointer-events-none mt-[5px] flex items-center gap-[5px]"
                       >
                         <img
+                          loading="lazy"
+                          decoding="async"
                           class="two-step-country-image overflow-hidden rounded-full"
                           src="https://3344112-img.b-cdn.net/graphic/landings/twoStepFormImages/country-flag-placeholder.svg"
                           alt="Flag"
@@ -2018,6 +2074,8 @@
                       </p>
                       <div class="mt-[6px] flex items-center gap-2">
                         <img
+                          loading="lazy"
+                          decoding="async"
                           class="main-currency-icon"
                           width="24"
                           height="24"
@@ -2056,6 +2114,8 @@
                         class="grid cursor-pointer grid-cols-[auto_1fr_auto] gap-2 border-b border-[#755EEB]/20 bg-white px-4 py-[10px] text-base font-bold text-[#1c1c1c] transition-all [&.active]:bg-[#b4aae7]"
                       >
                         <img
+                          loading="lazy"
+                          decoding="async"
                           class="currency-item-icon"
                           width="24"
                           height="24"
@@ -2073,6 +2133,8 @@
                         class="grid cursor-pointer grid-cols-[auto_1fr_auto] gap-2 border-b border-[#755EEB]/20 bg-white px-4 py-[10px] text-base font-bold text-[#1c1c1c] transition-all [&.active]:bg-[#b4aae7]"
                       >
                         <img
+                          loading="lazy"
+                          decoding="async"
                           class="currency-item-icon"
                           width="24"
                           height="24"
@@ -2090,6 +2152,8 @@
                         class="grid cursor-pointer grid-cols-[auto_1fr_auto] gap-2 border-b border-[#755EEB]/20 bg-white px-4 py-[10px] text-base font-bold text-[#1c1c1c] transition-all [&.active]:bg-[#b4aae7]"
                       >
                         <img
+                          loading="lazy"
+                          decoding="async"
                           class="currency-item-icon"
                           width="24"
                           height="24"
@@ -2109,6 +2173,8 @@
                         class="grid cursor-pointer grid-cols-[auto_1fr_auto] gap-2 border-b border-[#755EEB]/20 bg-white px-4 py-[10px] text-base font-bold text-[#1c1c1c] transition-all [&.active]:bg-[#b4aae7]"
                       >
                         <img
+                          loading="lazy"
+                          decoding="async"
                           class="currency-item-icon"
                           width="24"
                           height="24"
@@ -2126,6 +2192,8 @@
                         class="grid cursor-pointer grid-cols-[auto_1fr_auto] gap-2 border-b border-[#755EEB]/20 bg-white px-4 py-[10px] text-base font-bold text-[#1c1c1c] transition-all [&.active]:bg-[#b4aae7]"
                       >
                         <img
+                          loading="lazy"
+                          decoding="async"
                           class="currency-item-icon"
                           width="24"
                           height="24"
@@ -2145,6 +2213,8 @@
                         class="grid cursor-pointer grid-cols-[auto_1fr_auto] gap-2 border-b border-[#755EEB]/20 bg-white px-4 py-[10px] text-base font-bold text-[#1c1c1c] transition-all [&.active]:bg-[#b4aae7]"
                       >
                         <img
+                          loading="lazy"
+                          decoding="async"
                           class="currency-item-icon"
                           width="24"
                           height="24"
@@ -2162,6 +2232,8 @@
                         class="grid cursor-pointer grid-cols-[auto_1fr_auto] gap-2 border-b border-[#755EEB]/20 bg-white px-4 py-[10px] text-base font-bold text-[#1c1c1c] transition-all [&.active]:bg-[#b4aae7]"
                       >
                         <img
+                          loading="lazy"
+                          decoding="async"
                           class="currency-item-icon"
                           width="24"
                           height="24"
@@ -2181,6 +2253,8 @@
                         class="grid cursor-pointer grid-cols-[auto_1fr_auto] gap-2 border-b border-[#755EEB]/20 bg-white px-4 py-[10px] text-base font-bold text-[#1c1c1c] transition-all [&.active]:bg-[#b4aae7]"
                       >
                         <img
+                          loading="lazy"
+                          decoding="async"
                           class="currency-item-icon"
                           width="24"
                           height="24"
@@ -2198,6 +2272,8 @@
                         class="grid cursor-pointer grid-cols-[auto_1fr_auto] gap-2 border-b border-[#755EEB]/20 bg-white px-4 py-[10px] text-base font-bold text-[#1c1c1c] transition-all [&.active]:bg-[#b4aae7]"
                       >
                         <img
+                          loading="lazy"
+                          decoding="async"
                           class="currency-item-icon"
                           width="24"
                           height="24"
@@ -2215,6 +2291,8 @@
                         class="grid cursor-pointer grid-cols-[auto_1fr_auto] gap-2 border-b border-[#755EEB]/20 bg-white px-4 py-[10px] text-base font-bold text-[#1c1c1c] transition-all [&.active]:bg-[#b4aae7]"
                       >
                         <img
+                          loading="lazy"
+                          decoding="async"
                           class="currency-item-icon"
                           width="24"
                           height="24"
@@ -2232,6 +2310,8 @@
                         class="grid cursor-pointer grid-cols-[auto_1fr_auto] gap-2 border-b border-[#755EEB]/20 bg-white px-4 py-[10px] text-base font-bold text-[#1c1c1c] transition-all [&.active]:bg-[#b4aae7]"
                       >
                         <img
+                          loading="lazy"
+                          decoding="async"
                           class="currency-item-icon"
                           width="24"
                           height="24"
@@ -2251,6 +2331,8 @@
                         class="grid cursor-pointer grid-cols-[auto_1fr_auto] gap-2 border-b border-[#755EEB]/20 bg-white px-4 py-[10px] text-base font-bold text-[#1c1c1c] transition-all [&.active]:bg-[#b4aae7]"
                       >
                         <img
+                          loading="lazy"
+                          decoding="async"
                           class="currency-item-icon"
                           width="24"
                           height="24"
@@ -2268,6 +2350,8 @@
                         class="grid cursor-pointer grid-cols-[auto_1fr_auto] gap-2 border-b border-[#755EEB]/20 bg-white px-4 py-[10px] text-base font-bold text-[#1c1c1c] transition-all [&.active]:bg-[#b4aae7]"
                       >
                         <img
+                          loading="lazy"
+                          decoding="async"
                           class="currency-item-icon"
                           width="24"
                           height="24"
@@ -2285,6 +2369,8 @@
                         class="grid cursor-pointer grid-cols-[auto_1fr_auto] gap-2 border-b border-[#755EEB]/20 bg-white px-4 py-[10px] text-base font-bold text-[#1c1c1c] transition-all [&.active]:bg-[#b4aae7]"
                       >
                         <img
+                          loading="lazy"
+                          decoding="async"
                           class="currency-item-icon"
                           width="24"
                           height="24"
@@ -2302,6 +2388,8 @@
                         class="grid cursor-pointer grid-cols-[auto_1fr_auto] gap-2 border-b border-[#755EEB]/20 bg-white px-4 py-[10px] text-base font-bold text-[#1c1c1c] transition-all [&.active]:bg-[#b4aae7]"
                       >
                         <img
+                          loading="lazy"
+                          decoding="async"
                           class="currency-item-icon"
                           width="24"
                           height="24"
@@ -2321,6 +2409,8 @@
                         class="grid cursor-pointer grid-cols-[auto_1fr_auto] gap-2 border-b border-[#755EEB]/20 bg-white px-4 py-[10px] text-base font-bold text-[#1c1c1c] transition-all [&.active]:bg-[#b4aae7]"
                       >
                         <img
+                          loading="lazy"
+                          decoding="async"
                           class="currency-item-icon"
                           width="24"
                           height="24"
@@ -2338,6 +2428,8 @@
                         class="grid cursor-pointer grid-cols-[auto_1fr_auto] gap-2 border-b border-[#755EEB]/20 bg-white px-4 py-[10px] text-base font-bold text-[#1c1c1c] transition-all [&.active]:bg-[#b4aae7]"
                       >
                         <img
+                          loading="lazy"
+                          decoding="async"
                           class="currency-item-icon"
                           width="24"
                           height="24"
@@ -2355,6 +2447,8 @@
                         class="grid cursor-pointer grid-cols-[auto_1fr_auto] gap-2 border-b border-[#755EEB]/20 bg-white px-4 py-[10px] text-base font-bold text-[#1c1c1c] transition-all [&.active]:bg-[#b4aae7]"
                       >
                         <img
+                          loading="lazy"
+                          decoding="async"
                           class="currency-item-icon"
                           width="24"
                           height="24"
@@ -2372,6 +2466,8 @@
                         class="grid cursor-pointer grid-cols-[auto_1fr_auto] gap-2 border-b border-[#755EEB]/20 bg-white px-4 py-[10px] text-base font-bold text-[#1c1c1c] transition-all [&.active]:bg-[#b4aae7]"
                       >
                         <img
+                          loading="lazy"
+                          decoding="async"
                           class="currency-item-icon"
                           width="24"
                           height="24"
@@ -2389,6 +2485,8 @@
                         class="grid cursor-pointer grid-cols-[auto_1fr_auto] gap-2 border-b border-[#755EEB]/20 bg-white px-4 py-[10px] text-base font-bold text-[#1c1c1c] transition-all [&.active]:bg-[#b4aae7]"
                       >
                         <img
+                          loading="lazy"
+                          decoding="async"
                           class="currency-item-icon"
                           width="24"
                           height="24"
@@ -2406,6 +2504,8 @@
                         class="grid cursor-pointer grid-cols-[auto_1fr_auto] gap-2 border-b border-[#755EEB]/20 bg-white px-4 py-[10px] text-base font-bold text-[#1c1c1c] transition-all [&.active]:bg-[#b4aae7]"
                       >
                         <img
+                          loading="lazy"
+                          decoding="async"
                           class="currency-item-icon"
                           width="24"
                           height="24"
@@ -2423,6 +2523,8 @@
                         class="grid cursor-pointer grid-cols-[auto_1fr_auto] gap-2 border-b border-[#755EEB]/20 bg-white px-4 py-[10px] text-base font-bold text-[#1c1c1c] transition-all [&.active]:bg-[#b4aae7]"
                       >
                         <img
+                          loading="lazy"
+                          decoding="async"
                           class="currency-item-icon"
                           width="24"
                           height="24"
@@ -2440,6 +2542,8 @@
                         class="grid cursor-pointer grid-cols-[auto_1fr_auto] gap-2 border-b border-[#755EEB]/20 bg-white px-4 py-[10px] text-base font-bold text-[#1c1c1c] transition-all [&.active]:bg-[#b4aae7]"
                       >
                         <img
+                          loading="lazy"
+                          decoding="async"
                           class="currency-item-icon"
                           width="24"
                           height="24"
@@ -2459,6 +2563,8 @@
                         class="grid cursor-pointer grid-cols-[auto_1fr_auto] gap-2 border-b border-[#755EEB]/20 bg-white px-4 py-[10px] text-base font-bold text-[#1c1c1c] transition-all [&.active]:bg-[#b4aae7]"
                       >
                         <img
+                          loading="lazy"
+                          decoding="async"
                           class="currency-item-icon"
                           width="24"
                           height="24"
@@ -2476,6 +2582,8 @@
                         class="grid cursor-pointer grid-cols-[auto_1fr_auto] gap-2 border-b border-[#755EEB]/20 bg-white px-4 py-[10px] text-base font-bold text-[#1c1c1c] transition-all [&.active]:bg-[#b4aae7]"
                       >
                         <img
+                          loading="lazy"
+                          decoding="async"
                           class="currency-item-icon"
                           width="24"
                           height="24"
@@ -2493,6 +2601,8 @@
                         class="grid cursor-pointer grid-cols-[auto_1fr_auto] gap-2 border-b border-[#755EEB]/20 bg-white px-4 py-[10px] text-base font-bold text-[#1c1c1c] transition-all [&.active]:bg-[#b4aae7]"
                       >
                         <img
+                          loading="lazy"
+                          decoding="async"
                           class="currency-item-icon"
                           width="24"
                           height="24"
@@ -2510,6 +2620,8 @@
                         class="grid cursor-pointer grid-cols-[auto_1fr_auto] gap-2 border-b border-[#755EEB]/20 bg-white px-4 py-[10px] text-base font-bold text-[#1c1c1c] transition-all [&.active]:bg-[#b4aae7]"
                       >
                         <img
+                          loading="lazy"
+                          decoding="async"
                           class="currency-item-icon"
                           width="24"
                           height="24"
@@ -2527,6 +2639,8 @@
                         class="grid cursor-pointer grid-cols-[auto_1fr_auto] gap-2 border-b border-[#755EEB]/20 bg-white px-4 py-[10px] text-base font-bold text-[#1c1c1c] transition-all [&.active]:bg-[#b4aae7]"
                       >
                         <img
+                          loading="lazy"
+                          decoding="async"
                           class="currency-item-icon"
                           width="24"
                           height="24"
@@ -2546,6 +2660,8 @@
                         class="grid cursor-pointer grid-cols-[auto_1fr_auto] gap-2 border-b border-[#755EEB]/20 bg-white px-4 py-[10px] text-base font-bold text-[#1c1c1c] transition-all [&.active]:bg-[#b4aae7]"
                       >
                         <img
+                          loading="lazy"
+                          decoding="async"
                           class="currency-item-icon"
                           width="24"
                           height="24"
@@ -2563,6 +2679,8 @@
                         class="grid cursor-pointer grid-cols-[auto_1fr_auto] gap-2 border-b border-[#755EEB]/20 bg-white px-4 py-[10px] text-base font-bold text-[#1c1c1c] transition-all [&.active]:bg-[#b4aae7]"
                       >
                         <img
+            loading="lazy"
+            decoding="async"
                           class="currency-item-icon"
                           width="24"
                           height="24"
@@ -2582,6 +2700,8 @@
                         class="grid cursor-pointer grid-cols-[auto_1fr_auto] gap-2 border-b border-[#755EEB]/20 bg-white px-4 py-[10px] text-base font-bold text-[#1c1c1c] transition-all [&.active]:bg-[#b4aae7]"
                       >
                         <img
+                          loading="lazy"
+                          decoding="async"
                           class="currency-item-icon"
                           width="24"
                           height="24"
@@ -2601,6 +2721,8 @@
                         class="grid cursor-pointer grid-cols-[auto_1fr_auto] gap-2 border-b border-[#755EEB]/20 bg-white px-4 py-[10px] text-base font-bold text-[#1c1c1c] transition-all [&.active]:bg-[#b4aae7]"
                       >
                         <img
+                          loading="lazy"
+                          decoding="async"
                           class="currency-item-icon"
                           width="24"
                           height="24"
@@ -2633,7 +2755,9 @@
                     >Enter Street</label
                   >
                 </div>
-                <div class="grid grid-cols-2 gap-[15px] tbl:grid-cols-1 xs:gap-[10px]">
+                <div
+                  class="grid grid-cols-2 gap-[15px] tbl:grid-cols-1 xs:gap-[10px]"
+                >
                   <!-- House / Building number -->
                   <div
                     class="two-step-input-wrapper two-step-house-wrapper relative rounded-2xl bg-white p-4"
@@ -2680,63 +2804,63 @@
                   </div>
                   <!-- ZIP Code -->
                   <div class="two-step-zipcode-cell">
-                  <div
-                    class="two-step-input-wrapper two-step-zipcode-wrapper relative rounded-2xl bg-white p-4"
-                  >
-                    <input
-                      class="two-step-general-input two-step-zipcode-input relative -bottom-1 w-full bg-transparent text-base font-bold text-[#755EEB] outline-none"
-                      type="text"
-                    />
-                    <label
-                      class="two-step-general-label two-step-required-label two-step-zipcode-label pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 font-bold text-[#585858] transition-all rtl:left-auto rtl:right-4"
-                      >ZIP Code</label
+                    <div
+                      class="two-step-input-wrapper two-step-zipcode-wrapper relative rounded-2xl bg-white p-4"
                     >
-                    <!-- Postal Code hint (только для OPTIONAL стран) -->
-                    <button
-                      type="button"
-                      class="two-step-zipcode-info absolute right-4 top-1/2 hidden -translate-y-1/2 text-[#755EEB] rtl:left-4 rtl:right-auto"
-                      aria-label="Postal code info"
-                      aria-expanded="false"
+                      <input
+                        class="two-step-general-input two-step-zipcode-input relative -bottom-1 w-full bg-transparent text-base font-bold text-[#755EEB] outline-none"
+                        type="text"
+                      />
+                      <label
+                        class="two-step-general-label two-step-required-label two-step-zipcode-label pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 font-bold text-[#585858] transition-all rtl:left-auto rtl:right-4"
+                        >ZIP Code</label
+                      >
+                      <!-- Postal Code hint (только для OPTIONAL стран) -->
+                      <button
+                        type="button"
+                        class="two-step-zipcode-info absolute right-4 top-1/2 hidden -translate-y-1/2 text-[#755EEB] rtl:left-4 rtl:right-auto"
+                        aria-label="Postal code info"
+                        aria-expanded="false"
+                      >
+                        <svg
+                          class="pointer-events-none"
+                          width="20"
+                          height="20"
+                          viewBox="0 0 20 20"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <circle
+                            cx="10"
+                            cy="10"
+                            r="9"
+                            stroke="currentColor"
+                            stroke-width="1.5"
+                          />
+                          <path
+                            d="M10 8.75V14"
+                            stroke="currentColor"
+                            stroke-width="1.5"
+                            stroke-linecap="round"
+                          />
+                          <circle cx="10" cy="6" r="1" fill="currentColor" />
+                        </svg>
+                        <span
+                          class="two-step-zipcode-tooltip"
+                          role="tooltip"
+                          data-translate="postalCodeHint"
+                          >If you know it, enter it — it speeds up verification,
+                          but it's optional.</span
+                        >
+                      </button>
+                    </div>
+                    <!-- ошибка формата индекса: показывает twoStepForm.js на focusout -->
+                    <p
+                      data-translate="zipCodeInvalid"
+                      class="two-step-zipcode-alert mt-[6px] hidden px-1 text-xs font-bold leading-tight text-[#FF5530]"
                     >
-                      <svg
-                        class="pointer-events-none"
-                        width="20"
-                        height="20"
-                        viewBox="0 0 20 20"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <circle
-                          cx="10"
-                          cy="10"
-                          r="9"
-                          stroke="currentColor"
-                          stroke-width="1.5"
-                        />
-                        <path
-                          d="M10 8.75V14"
-                          stroke="currentColor"
-                          stroke-width="1.5"
-                          stroke-linecap="round"
-                        />
-                        <circle cx="10" cy="6" r="1" fill="currentColor" />
-                      </svg>
-                      <span
-                        class="two-step-zipcode-tooltip"
-                        role="tooltip"
-                        data-translate="postalCodeHint"
-                        >If you know it, enter it — it speeds up verification,
-                        but it's optional.</span
-                      >
-                    </button>
-                  </div>
-                  <!-- ошибка формата индекса: показывает twoStepForm.js на focusout -->
-                  <p
-                    data-translate="zipCodeInvalid"
-                    class="two-step-zipcode-alert mt-[6px] hidden px-1 text-xs font-bold leading-tight text-[#FF5530]"
-                  >
-                    Invalid postal code
-                  </p>
+                      Invalid postal code
+                    </p>
                   </div>
                 </div>
                 <!-- State / Province -->

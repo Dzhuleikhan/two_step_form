@@ -16,18 +16,27 @@ if (langBox) {
 
   const flagUrl = (flag) => `${CDN}/graphic/flags/flag-${flag}.svg`;
 
-  langList.innerHTML = Object.entries(languageOptions)
-    .map(
-      ([langCode, { name, flag }]) => `
+  // список лежит под display:none, но флаги всё равно тянутся при построении разметки —
+  // рендерим его только при первом открытии
+  let isListRendered = false;
+
+  const renderList = () => {
+    if (isListRendered) return;
+    isListRendered = true;
+
+    langList.innerHTML = Object.entries(languageOptions)
+      .map(
+        ([langCode, { name, flag }]) => `
         <li>
           <button type="button" data-lang="${langCode}">
-            <img width="20" height="20" src="${flagUrl(flag)}" alt="" />
+            <img width="20" height="20" loading="lazy" decoding="async" src="${flagUrl(flag)}" alt="" />
             <span>${name}</span>
           </button>
         </li>
       `,
-    )
-    .join("");
+      )
+      .join("");
+  };
 
   const syncCurrent = (lang) => {
     const { name, flag } = languageOptions[lang] || languageOptions.en;
@@ -42,6 +51,8 @@ if (langBox) {
   };
 
   langBtn.addEventListener("click", () => {
+    renderList();
+
     const isOpen = langBox.classList.toggle("is-open");
 
     langBtn.setAttribute("aria-expanded", String(isOpen));

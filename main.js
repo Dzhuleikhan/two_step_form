@@ -1,5 +1,6 @@
 import "./style.css";
 import "intl-tel-input/build/css/intlTelInput.css";
+import "flatpickr/dist/flatpickr.min.css";
 
 import "./modules/geoLocation";
 import "./modules/modalCurrency";

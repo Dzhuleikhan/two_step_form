@@ -1,4 +1,4 @@
-import { translations } from "/public/translations";
+import { loadDictionary, translate } from "./i18n";
 import { language } from "./geoLocation";
 import { settingInitialBonusValue } from "./twoStepForm";
 import { languageOptions } from "../public/data";
@@ -10,8 +10,13 @@ const headerLangBtn = document.querySelector(".header-lang-btn");
 const headerLangList = document.querySelector(".header-lang-list");
 const html = document.querySelector("html");
 
-if (headerLangList) {
-  headerLangList.innerHTML = "";
+// список скрыт через opacity, а не display:none, поэтому loading="lazy" его не спасёт —
+// рендерим языки только при первом открытии, иначе 45 флагов летят в старт загрузки
+let isHeaderLangListRendered = false;
+
+function renderHeaderLangList() {
+  if (isHeaderLangListRendered || !headerLangList) return;
+  isHeaderLangListRendered = true;
 
   headerLangList.innerHTML = Object.entries(languageOptions)
     .map(([langCode, { name, flag }]) => {
@@ -26,6 +31,8 @@ if (headerLangList) {
               class="pointer-events-none shrink-0 overflow-hidden rounded-full"
               width="20"
               height="20"
+              loading="lazy"
+              decoding="async"
               src="https://3344112-img.b-cdn.net/graphic/flags/flag-${flag}.svg"
               alt="${name} flag"
             />
@@ -35,10 +42,14 @@ if (headerLangList) {
       `;
     })
     .join("");
+
+  // активный пункт проставляем уже после рендера: на старте списка ещё нет
+  setActiveLanguageBtn(html.getAttribute("lang") || "en");
 }
 
 if (headerLangBtn) {
   headerLangBtn.addEventListener("click", () => {
+    renderHeaderLangList();
     headerLangList.classList.toggle("is-open");
   });
 }
@@ -62,13 +73,15 @@ function updateContent(lang) {
   const elements = document.querySelectorAll("[data-translate]");
   elements.forEach((element) => {
     const key = element.getAttribute("data-translate");
-    element.innerHTML = translations[lang][key];
+    element.innerHTML = translate(lang, key);
   });
 }
 
 const RTL_LANGUAGES = ["ar"];
 
-function changeLanguage(lang) {
+async function changeLanguage(lang) {
+  await loadDictionary(lang);
+
   updateContent(lang);
   updateButtonText(lang);
   setActiveLanguageBtn(lang);
@@ -99,13 +112,13 @@ function setActiveLanguageBtn(currentLang) {
 
 async function initLanguage() {
   // язык уже выбран в geoLocation.js: браузер в приоритете, гео — фолбэк
-  changeLanguage(language);
+  await changeLanguage(language);
 }
 initLanguage();
 
 // общая точка входа для всех переключателей языка на странице
-export function selectLanguage(targetLang) {
-  changeLanguage(targetLang);
+export async function selectLanguage(targetLang) {
+  await changeLanguage(targetLang);
   // targetLang — уже код языка, а не страны: getSupportedLanguage() ждёт
   // countryCode и на "de"/"pl" всегда возвращал "en", затирая выбор игрока.
   localStorage.setItem("preferredLanguage", targetLang);

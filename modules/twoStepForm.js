@@ -12,7 +12,7 @@ import { twoStepiti } from "./itiTelInput";
 import { newDomain } from "./fetchingDomain";
 import { getUrlParameter } from "./params";
 import { gameSession, registerPlayer } from "./gameFetch";
-import { translations } from "../public/translations";
+import { translate } from "./i18n";
 import gsap from "gsap";
 import { isValidPhoneNumber } from "libphonenumber-js";
 import flatpickr from "flatpickr";
@@ -1032,6 +1032,9 @@ if (twoStepFormFourthStep) {
         "pointer-events-none h-6 w-6 rounded-full overflow-hidden object-contain";
       img.width = 24;
       img.height = 24;
+      // список стран скрыт до открытия дропдауна — не тянем ~200 флагов на старте
+      img.loading = "lazy";
+      img.decoding = "async";
       img.src = CDN + `/graphic/flags/flag-${country.slug}.svg`;
       img.alt = country.name;
 
@@ -1328,7 +1331,7 @@ const headingSubtitle = document.querySelector(".two-step-heading-subtitle");
 // язык ставит language.js в <html lang>; на английский падаем, если ключа нет
 const t = (key) => {
   const lang = document.documentElement.getAttribute("lang") || "en";
-  return translations[lang]?.[key] ?? translations.en[key];
+  return translate(lang, key);
 };
 
 const fill = (template, values) =>
@@ -1572,5 +1575,29 @@ twoStepFormMain.addEventListener("submit", (e) => {
     });
 });
 
-gsap.to(".preloader", { opacity: 0, duration: 0.5, delay: 1.5 });
+// Прелоадер снимаем по готовности контента, а не по таймеру: ждём lang:changed —
+// к этому моменту гео получено, форма построена и тексты переведены.
+// Фиксированный таймаут держим страховкой, чтобы упавшее гео или переводы
+// не оставили человека перед вечным чёрным экраном.
+const preloader = document.querySelector(".preloader");
+
+if (preloader) {
+  let isPreloaderHidden = false;
+
+  const hidePreloader = () => {
+    if (isPreloaderHidden) return;
+    isPreloaderHidden = true;
+    clearTimeout(preloaderFallbackTimer);
+
+    gsap.to(preloader, {
+      opacity: 0,
+      duration: 0.4,
+      onComplete: () => preloader.remove(),
+    });
+  };
+
+  const preloaderFallbackTimer = setTimeout(hidePreloader, 2500);
+
+  window.addEventListener("lang:changed", hidePreloader, { once: true });
+}
 console.log("Two step form script loaded");
