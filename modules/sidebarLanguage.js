@@ -74,6 +74,11 @@ if (langBox) {
     if (!langBox.contains(event.target)) closeList();
   });
 
-  // язык уже выставлен в language.js — забираем его из html[lang]
-  syncCurrent(document.documentElement.lang || "en");
+  const syncFromHtml = () => syncCurrent(document.documentElement.lang || "en");
+
+  // language.js ставит html[lang] только после загрузки словаря, а этот модуль
+  // выполняется раньше — на старте в атрибуте ещё en из разметки. Поэтому
+  // рисуем что есть и переспрашиваем на каждой смене языка.
+  syncFromHtml();
+  window.addEventListener("lang:changed", syncFromHtml);
 }
