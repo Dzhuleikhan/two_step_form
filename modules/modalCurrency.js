@@ -1,4 +1,4 @@
-import { geoData } from "./geoLocation";
+import { geoData, geoReady } from "./geoLocation";
 import { countryCurrencyData } from "../public/data";
 import {
   checkTir1CurrencyMatch,
@@ -110,7 +110,7 @@ async function settingModalCurrency() {
   }
 }
 
-settingModalCurrency();
+geoReady.then(settingModalCurrency);
 
 /**
  *  Currency dropdownxw

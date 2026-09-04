@@ -1,4 +1,4 @@
-import { geoData } from "./geoLocation";
+import { geoReady } from "./geoLocation";
 
 export const fetchDomain = async (countryCode) => {
   const fallback = "g01d63t1.win";
@@ -24,9 +24,11 @@ export const fetchDomain = async (countryCode) => {
 };
 
 export let newDomain = "g01d63t1.win"; // fallback сразу
-fetchDomain(geoData.countryCode).then((domain) => {
-  newDomain = domain;
-});
+geoReady
+  .then((geo) => fetchDomain(geo.countryCode))
+  .then((domain) => {
+    newDomain = domain;
+  });
 
 function updatingBonusValueNumbers() {
   const dropd = document.querySelectorAll(".form-bonus-dropdown");

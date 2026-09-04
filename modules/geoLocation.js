@@ -5,18 +5,26 @@ import {
   getPostalCodeFormat,
 } from "../public/data";
 
+const requestLocation = () => {
+  const controller = new AbortController();
+  const timer = setTimeout(() => controller.abort(), 2500);
+
+  const url = `https://${window.location.host}/geo-api/api/check?accessKey=0439ba6e-6092-46c2-9aeb-8662065bc43c`;
+
+  return fetch(url, { signal: controller.signal })
+    .finally(() => clearTimeout(timer))
+    .catch(() => null);
+};
+
 export async function getLocation() {
   const fallback = { countryCode: "PL", currency: { code: "PLN" } };
 
   try {
-    const controller = new AbortController();
-    const timer = setTimeout(() => controller.abort(), 2500);
+    // запрос уже стартовал инлайном в <head> — забираем его результат,
+    // а свой шлём только если тот тег почему-то не отработал
+    const response = await (window.__geoRequest ?? requestLocation());
 
-    const url = `https://${window.location.host}/geo-api/api/check?accessKey=0439ba6e-6092-46c2-9aeb-8662065bc43c`;
-    const response = await fetch(url, { signal: controller.signal });
-    clearTimeout(timer);
-
-    if (!response.ok) throw new Error("Bad API response");
+    if (!response || !response.ok) throw new Error("Bad API response");
 
     const data = await response.json();
     return data;
@@ -26,7 +34,22 @@ export async function getLocation() {
   }
 }
 
-export let geoData = await getLocation();
+// Гео не имеет права блокировать ленд. Раньше здесь стоял top-level await:
+// любой затуп /api/check замораживал выполнение всех модулей разом, вплоть до
+// вечного прелоадера. Теперь отдаём дефолт сразу, а ответ доливаем в тот же
+// объект — импортёры держат ссылку и видят обновление.
+export const geoData = { countryCode: "PL", currency: { code: "PLN" } };
+
+// getLocation() не реджектится никогда (внутри try/catch + abort по таймауту),
+// поэтому geoReady гарантированно резолвится и ничего не подвешивает
+export const geoReady = getLocation().then((data) => {
+  Object.assign(geoData, data);
+  // это событие уже слушает itiTelInput — пересоздаёт телефонный инпут
+  // с определившейся страной
+  window.dispatchEvent(new CustomEvent("geoReady", { detail: geoData }));
+
+  return geoData;
+});
 
 export const getSupportedLanguage = (countryCode) => {
   if (countryCode in countryLanguagesMap) {

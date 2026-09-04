@@ -6,7 +6,7 @@
    чтобы не трогать текущую логику лендинга. */
 
 import { getUrlParameter } from "./params";
-import { geoData } from "./geoLocation";
+import { geoData, geoReady } from "./geoLocation";
 
 // Относительный путь: запросы уходят на тот же домен, что и лендинг, а
 // проксирует их nginx на VPS (fastpanel2-includes/c2gaming.conf) — он же
@@ -137,6 +137,10 @@ export const startSession = async ({
   gameId = getGameId(),
   freespinsCount = getFreespinsCount(),
 } = {}) => {
+  // валюта нужна в теле запроса, поэтому ждём гео здесь — но ждёт только сессия,
+  // а не инициализация всего ленда
+  await geoReady;
+
   const body = {
     clickId,
     gameId,

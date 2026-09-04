@@ -2,7 +2,7 @@ import intlTelInput from "intl-tel-input";
 import { Metadata } from "libphonenumber-js/core";
 import minMetadata from "libphonenumber-js/metadata.min.json";
 import { isValidPhoneNumber } from "libphonenumber-js";
-import { geoData } from "./geoLocation";
+import { geoData, geoReady } from "./geoLocation";
 
 const getPossibleLengths = (countryCode) => {
   try {

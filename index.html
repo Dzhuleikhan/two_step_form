@@ -22,9 +22,31 @@
         a.appendChild(r);
       })(window, document, "https://static.hotjar.com/c/hotjar-", ".js?sv=");
     </script>
-    <!-- бандл, стили и картинки: соединение поднимаем до того, как их запросит парсер -->
-    <link rel="preconnect" href="https://landing-res.b-cdn.net" crossorigin />
-    <link rel="preconnect" href="https://3344112-img.b-cdn.net" crossorigin />
+    <!-- Гео стартуем до бандла. В модулях этот запрос висит на top-level await и
+         держит инициализацию всего ленда, а начинался он только после загрузки и
+         разбора JS. Здесь он идёт параллельно с CSS и бандлом. -->
+    <script>
+      (function () {
+        var controller = new AbortController();
+        setTimeout(function () {
+          controller.abort();
+        }, 2500);
+
+        window.__geoRequest = fetch(
+          "/geo-api/api/check?accessKey=0439ba6e-6092-46c2-9aeb-8662065bc43c",
+          { signal: controller.signal },
+        ).catch(function () {
+          return null;
+        });
+      })();
+    </script>
+    <!-- Соединения к чужим доменам поднимаем заранее. landing-res здесь нет намеренно:
+         следующие теги и так запрашивают с него шрифты, соединение откроется само.
+         crossorigin ставим только там, где запрос реально идёт в CORS-режиме. -->
+    <link rel="preconnect" href="https://3344112-img.b-cdn.net" />
+    <!-- FingerprintJS из identity-guard.js: загрузчик и его API -->
+    <link rel="preconnect" href="https://fpnpmcdn.net" />
+    <link rel="preconnect" href="https://eu.api.fpjs.io" crossorigin />
     <!-- Raleway хостим сами: хедер, сайдбар и футер рисуются 400 и 700,
          поэтому эти два начертания забираем preload'ом, не дожидаясь разбора CSS -->
     <link

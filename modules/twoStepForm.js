@@ -7,7 +7,7 @@ import {
   formatPostalCode,
   validatePostalCodeFormat,
 } from "../public/data";
-import { geoData, settingZipCodePlaceholder } from "./geoLocation";
+import { geoData, geoReady, settingZipCodePlaceholder } from "./geoLocation";
 import { twoStepiti } from "./itiTelInput";
 import { newDomain } from "./fetchingDomain";
 import { getUrlParameter } from "./params";
@@ -36,10 +36,18 @@ document.querySelectorAll("input").forEach((input) => {
 
 const PHONE_ONLY_COUNTRIES = [];
 const hideEmail = false; // ВЕТКА email-guard: показываем email для теста проверки почты
-const isPhoneOnlyMode =
+
+// Режим читают обработчики по всему модулю, поэтому это переменная модуля,
+// а не локальная: на старте считаем по дефолтной стране, по приходу гео уточняем.
+let isPhoneOnlyMode =
   PHONE_ONLY_COUNTRIES.includes(geoData.countryCode) || hideEmail;
 
-if (isPhoneOnlyMode) {
+const applyPhoneOnlyMode = () => {
+  isPhoneOnlyMode =
+    PHONE_ONLY_COUNTRIES.includes(geoData.countryCode) || hideEmail;
+
+  if (!isPhoneOnlyMode) return;
+
   document.querySelector(".two-step-email-wrapper")?.classList.add("hidden");
   document
     .querySelector(".two-step-step2-title-default")
@@ -47,7 +55,10 @@ if (isPhoneOnlyMode) {
   document
     .querySelector(".two-step-step2-title-phone")
     ?.classList.remove("hidden");
-}
+};
+
+applyPhoneOnlyMode();
+geoReady.then(applyPhoneOnlyMode);
 
 // ? SOCIALS TWO STEP FORM
 
@@ -61,7 +72,7 @@ export let twoStepFormData = {
   birthday: "",
   gender: "",
   country: "",
-  currency: geoData.currency.code === "RUB" ? "USD" : geoData.currency.code,
+  currency: geoData.currency?.code === "RUB" ? "USD" : geoData.currency?.code,
   phone: "",
   state: "",
   city: "",
@@ -1009,7 +1020,8 @@ if (twoStepFormFourthStep) {
     }
   };
 
-  applyDetectedCountry();
+  // страна и валюта проставляются, когда доедет гео — форма к этому моменту скрыта
+  geoReady.then(applyDetectedCountry);
   // Adding countries to dropdown
 
   const renderCountries = (filter = "") => {
@@ -1575,29 +1587,4 @@ twoStepFormMain.addEventListener("submit", (e) => {
     });
 });
 
-// Прелоадер снимаем по готовности контента, а не по таймеру: ждём lang:changed —
-// к этому моменту гео получено, форма построена и тексты переведены.
-// Фиксированный таймаут держим страховкой, чтобы упавшее гео или переводы
-// не оставили человека перед вечным чёрным экраном.
-const preloader = document.querySelector(".preloader");
-
-if (preloader) {
-  let isPreloaderHidden = false;
-
-  const hidePreloader = () => {
-    if (isPreloaderHidden) return;
-    isPreloaderHidden = true;
-    clearTimeout(preloaderFallbackTimer);
-
-    gsap.to(preloader, {
-      opacity: 0,
-      duration: 0.4,
-      onComplete: () => preloader.remove(),
-    });
-  };
-
-  const preloaderFallbackTimer = setTimeout(hidePreloader, 2500);
-
-  window.addEventListener("lang:changed", hidePreloader, { once: true });
-}
 console.log("Two step form script loaded");

@@ -2,6 +2,9 @@ import "./style.css";
 import "intl-tel-input/build/css/intlTelInput.css";
 import "flatpickr/dist/flatpickr.min.css";
 
+// первым: снимает прелоадер независимо от того, что случится дальше
+import "./modules/preloader";
+
 import "./modules/geoLocation";
 import "./modules/modalCurrency";
 import "./modules/itiTelInput";
