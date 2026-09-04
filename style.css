@@ -138,12 +138,10 @@ body::before {
   border: 1px dashed #ffa86a;
   border-radius: 4px;
   backdrop-filter: blur(12px);
-  background: linear-gradient(
-    45deg,
-    rgba(234, 144, 1, 0.15) 0%,
-    rgba(153, 153, 153, 0.15) 50%,
-    rgba(236, 114, 81, 0.15) 100%
-  );
+  background: linear-gradient(45deg,
+      rgba(234, 144, 1, 0.15) 0%,
+      rgba(153, 153, 153, 0.15) 50%,
+      rgba(236, 114, 81, 0.15) 100%);
 }
 
 @media (max-width: 767px) {
@@ -213,19 +211,13 @@ body::before {
   opacity: 0;
 }
 
-.two-step-bonus-checkbox
-  input:checked
-  + .two-step-bonus-checkbox-div
-  > .two-step-bonus-checkbox-circle::before,
-.gender-checkbox
-  input:checked
-  + .gender-checkbox-div
-  > .gender-checkbox-circle::before {
+.two-step-bonus-checkbox input:checked+.two-step-bonus-checkbox-div>.two-step-bonus-checkbox-circle::before,
+.gender-checkbox input:checked+.gender-checkbox-div>.gender-checkbox-circle::before {
   opacity: 1;
 }
 
-.two-step-bonus-checkbox input:checked + .two-step-bonus-checkbox-div,
-.gender-checkbox input:checked + .gender-checkbox-div {
+.two-step-bonus-checkbox input:checked+.two-step-bonus-checkbox-div,
+.gender-checkbox input:checked+.gender-checkbox-div {
   background-color: #8726ff;
   border-color: #57179b;
 }
@@ -239,21 +231,21 @@ body::before {
   box-shadow: inset 0 2px 3px 0 rgba(255, 255, 255, 0.25);
 }
 
-.two-step-general-input:focus + .two-step-general-label,
+.two-step-general-input:focus+.two-step-general-label,
 .two-step-general-label.active {
   top: 12px;
   font-size: 12px;
 }
 
-[dir="rtl"] .two-step-general-input:focus + .two-step-general-label,
+[dir="rtl"] .two-step-general-input:focus+.two-step-general-label,
 [dir="rtl"] .two-step-general-label.active {
   right: 12px;
   left: auto;
 }
 
-[dir="rtl"] .two-step-general-input:focus + .two-step-email-label,
-[dir="rtl"] .two-step-general-input:focus + .two-step-password-label,
-[dir="rtl"] .two-step-general-input:focus + .two-step-promocode-label,
+[dir="rtl"] .two-step-general-input:focus+.two-step-email-label,
+[dir="rtl"] .two-step-general-input:focus+.two-step-password-label,
+[dir="rtl"] .two-step-general-input:focus+.two-step-promocode-label,
 [dir="rtl"] .two-step-email-label.active,
 [dir="rtl"] .two-step-password-label.active,
 [dir="rtl"] .two-step-promocode-label.active {
@@ -281,12 +273,12 @@ body::before {
   margin-bottom: 16px;
 }
 
-.two-step-heading > * + * {
+.two-step-heading>*+* {
   margin-top: 16px;
 }
 
 /* две крупные строки стоят плотнее, чем подзаголовок под ними */
-.two-step-heading > .two-step-heading-spins {
+.two-step-heading>.two-step-heading-spins {
   margin-top: 4px;
 }
 
@@ -367,7 +359,7 @@ body::before {
   text-overflow: ellipsis;
 }
 
-.two-step-form .form-currency-btn > div {
+.two-step-form .form-currency-btn>div {
   min-width: 0;
 }
 
@@ -940,7 +932,8 @@ body::before {
   transform: scaleX(-1);
 }
 
-.wrapper {
+:root {
+  /* высота хедера нужна и прелоадеру, который лежит вне .wrapper */
   --header-height: 56px;
 }
 
@@ -978,14 +971,12 @@ body::before {
 /* маска не скроллится вместе с контентом — гасим нижнюю кромку колонки */
 .sidebar-scroll.has-more {
   mask-image: linear-gradient(to bottom, #000 calc(100% - 56px), transparent);
-  -webkit-mask-image: linear-gradient(
-    to bottom,
-    #000 calc(100% - 56px),
-    transparent
-  );
+  -webkit-mask-image: linear-gradient(to bottom,
+      #000 calc(100% - 56px),
+      transparent);
 }
 
-.sidebar-scroll > * {
+.sidebar-scroll>* {
   flex-shrink: 0;
 }
 
@@ -1117,7 +1108,7 @@ body::before {
   display: block;
 }
 
-.sidebar-lang-list li + li {
+.sidebar-lang-list li+li {
   border-top: 1px solid rgba(255, 255, 255, 0.06);
 }
 
@@ -1188,11 +1179,11 @@ body::before {
 }
 
 /* название держим в одну строку, стрелку не сжимаем */
-.sidebar-group-btn > span {
+.sidebar-group-btn>span {
   white-space: nowrap;
 }
 
-.sidebar-group-btn > svg {
+.sidebar-group-btn>svg {
   flex-shrink: 0;
 }
 
@@ -1222,7 +1213,7 @@ body::before {
   overflow: hidden;
 }
 
-.sidebar-group-list li + li {
+.sidebar-group-list li+li {
   border-top: 1px solid rgba(255, 255, 255, 0.06);
 }
 
@@ -1270,9 +1261,9 @@ body::before {
 
 /* всё текстовое прячем, оставляя иконки */
 .wrapper.sidebar-collapsed .side-card-title,
-.wrapper.sidebar-collapsed .sidebar-link > span,
-.wrapper.sidebar-collapsed .sidebar-group-btn > span,
-.wrapper.sidebar-collapsed .sidebar-lang-btn > span,
+.wrapper.sidebar-collapsed .sidebar-link>span,
+.wrapper.sidebar-collapsed .sidebar-group-btn>span,
+.wrapper.sidebar-collapsed .sidebar-lang-btn>span,
 .wrapper.sidebar-collapsed .sidebar-lang-list span,
 .wrapper.sidebar-collapsed .sidebar-badge,
 .wrapper.sidebar-collapsed .sidebar-group-arrow,
@@ -1290,7 +1281,7 @@ body::before {
 }
 
 /* в свёрнутом виде расстояние между иконками одинаковое */
-.wrapper.sidebar-collapsed .sidebar > div,
+.wrapper.sidebar-collapsed .sidebar>div,
 .wrapper.sidebar-collapsed .sidebar nav {
   gap: 16px;
 }
@@ -1368,12 +1359,10 @@ body::before {
   z-index: 1;
   padding: 2px;
   border-radius: inherit;
-  background: conic-gradient(
-    from var(--card-border-angle),
-    transparent 0deg,
-    var(--card-border-glow) 40deg,
-    transparent 90deg
-  );
+  background: conic-gradient(from var(--card-border-angle),
+      transparent 0deg,
+      var(--card-border-glow) 40deg,
+      transparent 90deg);
   -webkit-mask:
     linear-gradient(#000 0 0) content-box,
     linear-gradient(#000 0 0);
@@ -1403,7 +1392,7 @@ body::before {
     left: 0;
     top: 0;
     width: 100%;
-    transition: transform 0.3s ease;
+    transition: transform 0.3s ease, filter 0.4s ease;
   }
 
   .wrapper.header-hidden .header {
@@ -1435,6 +1424,76 @@ body::before {
   width: 100%;
   /* игра занимает всю видимую высоту колонки, футер уезжает за неё — отсюда скролл */
   height: 100%;
+  /* до ответа /session тут about:blank — без фона на его месте светлая дыра */
+  background: #000;
+}
+
+/* Прелоадер больше не гасит весь экран, а накрывает только колонку с игрой.
+   Внутрь грида его класть нельзя: как элемент строки 1fr он схлопывал её по
+   высоте своей крутилки и резал всю раскладку. Поэтому он остаётся fixed и
+   просто отступает на хедер и сайдбар. Цифры повторяют grid-шаблон .wrapper. */
+.preloader {
+  top: var(--header-height, 56px);
+  right: 0;
+  bottom: 0;
+  left: 219px;
+}
+
+/* сайдбар схлопнут — прелоадер догоняет узкую колонку */
+body:has(.wrapper.sidebar-collapsed) .preloader {
+  left: 68px;
+}
+
+@media (max-width: 767px) {
+  /* сайдбара нет, хедер лежит поверх игры — крутилка закрывает весь экран */
+  .preloader,
+  body:has(.wrapper.sidebar-collapsed) .preloader {
+    inset: 0;
+  }
+}
+
+/* Хедер, сайдбар и футер отрисованы сразу, но пока не пришли переводы —
+   размыты и не кликаются: так не видно подмены английских строк на локаль. */
+.wrapper.is-loading .header,
+.wrapper.is-loading .sidebar,
+.wrapper.is-loading .footer {
+  filter: blur(6px);
+  pointer-events: none;
+  user-select: none;
+}
+
+.header,
+.sidebar,
+.footer {
+  transition: filter 0.4s ease;
+}
+
+/* Скелетоны для значений, которые дозаполняются с бэка: флаг и валюта по гео,
+   баланс из snapshot сессии. Пока данных нет — на их месте пульсирующая
+   плашка, а не пустое место и не битая иконка. Класс снимает тот же модуль,
+   что подставляет данные; аварийно — таймаут в modules/preloader.js. */
+@keyframes skeleton-pulse {
+  0%,
+  100% {
+    opacity: 0.35;
+  }
+
+  50% {
+    opacity: 0.7;
+  }
+}
+
+.skeleton {
+  background: rgba(255, 255, 255, 0.16);
+  animation: skeleton-pulse 1.2s ease-in-out infinite;
+}
+
+/* у текста прячем само значение, чтобы не мигало нулями до ответа */
+.skeleton-text {
+  color: transparent;
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.16);
+  animation: skeleton-pulse 1.2s ease-in-out infinite;
 }
 
 .footer {
@@ -1552,8 +1611,7 @@ body::before {
   height: 34px;
   width: auto;
   /* белые svg перекрашиваем в приглушённый серо-сиреневый */
-  filter: brightness(0) saturate(100%) invert(78%) sepia(23%) saturate(418%)
-    hue-rotate(193deg) brightness(69%) contrast(134%);
+  filter: brightness(0) saturate(100%) invert(78%) sepia(23%) saturate(418%) hue-rotate(193deg) brightness(69%) contrast(134%);
 }
 
 .footer-copyright {

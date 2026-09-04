@@ -226,6 +226,7 @@ export const applySnapshotToHeader = (snapshot) => {
   // в хедере показываем накопленный выигрыш, не баланс
   if (balanceEl) {
     balanceEl.textContent = parseMoney(snapshot.totalWin).toFixed(2);
+    balanceEl.classList.remove("skeleton-text");
   }
 
   // иконку по гео ставит gameHeader.js — перебиваем валютой из сессии
@@ -233,7 +234,7 @@ export const applySnapshotToHeader = (snapshot) => {
     const code = snapshot.currency.toUpperCase();
     currencyImg.src = `${CURRENCY_CDN}/${code}.svg`;
     currencyImg.alt = code;
-    currencyImg.classList.remove("hidden");
+    currencyImg.classList.remove("hidden", "skeleton");
   }
 };
 
@@ -748,6 +749,9 @@ const showGameUnavailable = (error) => {
 
   document.querySelector(".game-frame")?.remove();
   document.querySelector(".game-empty")?.classList.add("is-visible");
+
+  // прелоадер ждёт load фрейма, которого уже не будет — снимаем его руками
+  window.dispatchEvent(new Event("game:settled"));
 };
 
 if (urlClickId && urlGameId) {

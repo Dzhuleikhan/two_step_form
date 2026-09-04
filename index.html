@@ -79,7 +79,7 @@
   </head>
   <body class="relative overflow-hidden overscroll-none">
     <div
-      class="wrapper grid h-full w-full min-w-[320px] grid-cols-[219px_1fr] grid-rows-[auto_1fr] overflow-hidden tbl:grid-cols-[1fr] tbl:grid-rows-[1fr]"
+      class="wrapper is-loading grid h-full w-full min-w-[320px] grid-cols-[219px_1fr] grid-rows-[auto_1fr] overflow-hidden tbl:grid-cols-[1fr] tbl:grid-rows-[1fr]"
     >
       <div class="header col-span-full flex items-center gap-3 px-5">
         <button
@@ -127,7 +127,7 @@
           />
           <!-- флаг страны детекта подставляет modules/gameHeader.js -->
           <img
-            class="game-header-flag h-5 w-5 shrink-0 overflow-hidden rounded-full"
+            class="game-header-flag skeleton h-5 w-5 shrink-0 overflow-hidden rounded-full"
             width="20"
             height="20"
             alt=""
@@ -137,13 +137,13 @@
         <div class="absolute left-1/2 flex -translate-x-1/2 items-center gap-2">
           <div class="flex h-9 items-center gap-2 rounded-lg bg-[#1D2442] px-3">
             <img
-              class="game-header-currency h-5 w-5 shrink-0"
+              class="game-header-currency skeleton h-5 w-5 shrink-0 rounded-full"
               width="20"
               height="20"
               alt=""
             />
             <!-- баланс из snapshot подставляет modules/gameFetch.js -->
-            <span class="game-header-balance text-sm font-bold leading-none"
+            <span class="game-header-balance skeleton-text text-sm font-bold leading-none"
               >0.00</span
             >
           </div>
@@ -722,7 +722,7 @@
                 <img
                   loading="lazy"
                   decoding="async"
-                  class="footer-flag h-6 w-6 shrink-0 overflow-hidden rounded-full"
+                  class="footer-flag skeleton h-6 w-6 shrink-0 overflow-hidden rounded-full"
                   width="24"
                   height="24"
                   alt=""
@@ -3026,7 +3026,7 @@
       </div>
     </div>
     <div
-      class="preloader pointer-events-none fixed left-0 top-0 z-[1000] grid h-screen w-full place-items-center bg-black"
+      class="preloader pointer-events-none fixed z-[1000] grid place-items-center bg-black"
     >
       <svg
         width="106"
