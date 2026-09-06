@@ -67,6 +67,19 @@ const refineGeo = async () => {
   }
 };
 
+// Два разных обещания на два разных случая:
+//   geoReady    — «есть хоть что-то», резолвится сразу, в том числе дефолтом;
+//   geoConfirmed — «страна известна точно», ждёт реального ответа или конца
+//                  доливки. Валюту считаем по нему: показать дефолтный PLN
+//                  игроку из Шри-Ланки хуже, чем подержать скелетон.
+// Флаг для тех, кому важно отличить дефолт от ответа сервера.
+export let isGeoFallback = false;
+
+let confirmGeo;
+export const geoConfirmed = new Promise((resolve) => {
+  confirmGeo = resolve;
+});
+
 // Гео не имеет права блокировать ленд. Раньше здесь стоял top-level await:
 // любой затуп /api/check замораживал выполнение всех модулей разом, вплоть до
 // вечного прелоадера. Теперь отдаём дефолт сразу, а ответ доливаем в тот же
@@ -77,11 +90,21 @@ export const geoData = { countryCode: "PL", currency: { code: "PLN" } };
 // поэтому geoReady гарантированно резолвится и ничего не подвешивает
 export const geoReady = getLocation().then(({ isFallback, ...data }) => {
   Object.assign(geoData, data);
+  isGeoFallback = Boolean(isFallback);
   // это событие уже слушает itiTelInput — пересоздаёт телефонный инпут
   // с определившейся страной
   window.dispatchEvent(new CustomEvent("geoReady", { detail: geoData }));
 
-  if (isFallback) refineGeo();
+  if (isFallback) {
+    // доливка либо принесёт настоящую страну, либо подтвердит, что дефолт —
+    // это всё, что у нас есть: в обоих случаях гео считается решённым
+    refineGeo().finally(() => {
+      isGeoFallback = geoData.countryCode === FALLBACK_GEO.countryCode;
+      confirmGeo(geoData);
+    });
+  } else {
+    confirmGeo(geoData);
+  }
 
   return geoData;
 });

@@ -6,8 +6,9 @@
    чтобы не трогать текущую логику лендинга. */
 
 import { getUrlParameter } from "./params";
-import { geoData, geoReady } from "./geoLocation";
+import { geoData, geoReady, isGeoFallback } from "./geoLocation";
 import { showFreespinsToast } from "./toast";
+import { getCurrencyForCountry } from "./currency";
 
 // Относительный путь: запросы уходят на тот же домен, что и лендинг, а
 // проксирует их nginx на VPS (fastpanel2-includes/c2gaming.conf) — он же
@@ -145,10 +146,20 @@ export const startSession = async ({
   const body = {
     clickId,
     gameId,
-    // язык и валюта из гео-детекта лендинга
     lang: localStorage.getItem("preferredLanguage") || "en",
-    currency: geoData?.currency?.code,
   };
+
+  // Валюта уходит в сессию навсегда и потом приезжает обратно в каждом
+  // snapshot, перебивая иконку в хедере. Поэтому:
+  //   — считаем её по своей таблице, а не берём сырой currency.code из гео-API
+  //     (тот вернёт LKR для Шри-Ланки и RUB для РФ, которых у нас нет);
+  //   — на неподтверждённом гео не шлём вовсе: навязать дефолтный PLN игроку
+  //     из другой страны хуже, чем дать бэку определить её самому — он видит
+  //     cf-ipcountry запроса.
+  if (!isGeoFallback) {
+    body.currency = getCurrencyForCountry(geoData?.countryCode);
+  }
+
   // сервер валидирует integer 1–100, мусор лучше не слать вовсе
   if (Number.isInteger(freespinsCount)) body.freespinsCount = freespinsCount;
 

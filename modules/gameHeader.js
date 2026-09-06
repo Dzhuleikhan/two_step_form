@@ -1,6 +1,6 @@
 // Хедер игры: флаг страны и иконка валюты по гео-детекту.
 
-import { geoReady } from "./geoLocation";
+import { geoConfirmed, isGeoFallback } from "./geoLocation";
 import { getCountryCurrencyIcon, getCurrencyCountry } from "./modalCurrency";
 
 const CDN = "https://3344112-img.b-cdn.net";
@@ -16,6 +16,25 @@ export const clearSkeleton = (el) => el?.classList.remove("skeleton", "skeleton-
 // хедер рисуется сразу, флаг и валюта появляются, когда доедет гео
 const applyGeo = (geo) => {
   const countryCode = geo?.countryCode || "PL";
+
+  // Гео так и не определилось: страна в geoData дефолтная, польская. Флаг с
+  // такой страной врёт, поэтому его не показываем, а валюту берём нейтральную.
+  if (isGeoFallback) {
+    flagImgs.forEach((flagImg) => {
+      flagImg.classList.add("hidden");
+      clearSkeleton(flagImg);
+    });
+
+    if (currencyImg) {
+      currencyImg.addEventListener("load", () => clearSkeleton(currencyImg), {
+        once: true,
+      });
+      currencyImg.src = getCountryCurrencyIcon("US");
+      currencyImg.alt = "Currency";
+    }
+
+    return;
+  }
 
   flagImgs.forEach((flagImg) => {
     // на CDN нет флагов части стран — прячем картинку вместо битой иконки
@@ -43,10 +62,10 @@ const applyGeo = (geo) => {
   }
 };
 
-geoReady.then(applyGeo);
-
-// первый запрос гео отвалился по таймауту, ответ пришёл позже — перерисовываем
-window.addEventListener("geo:refined", (event) => applyGeo(event.detail));
+// Ждём именно geoConfirmed, а не geoReady: по geoReady страна может оказаться
+// дефолтной польской, и игрок из Шри-Ланки увидел бы в хедере злотый. Пока
+// страна не подтверждена, на месте флага и валюты держится скелетон.
+geoConfirmed.then(applyGeo);
 
 // игры не будет — snapshot с балансом уже не придёт, снимаем его заглушку
 window.addEventListener(

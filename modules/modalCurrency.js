@@ -1,65 +1,24 @@
-import { geoData, geoReady } from "./geoLocation";
+import { geoData, geoConfirmed, isGeoFallback } from "./geoLocation";
 import { countryCurrencyData } from "../public/data";
+import {
+  getCountryCurrencyABBR,
+  getCountryCurrencyFullName,
+  getCountryCurrencyIcon,
+  getCountryCurrencySymbol,
+  getCurrencyCountry,
+} from "./currency";
 import {
   checkTir1CurrencyMatch,
   twoStepFormData,
   settingInitialBonusValue,
 } from "./twoStepForm";
 
-const CDN = "https://3344112-img.b-cdn.net";
-
-// Страны, чью валюту не предлагаем автоматически: подставляем нейтральную.
-// RU здесь потому, что рубль на ленде не автоопределяется вообще.
-const CURRENCY_COUNTRY_OVERRIDES = {
-  RU: "US",
-  MX: "US",
-  CL: "US",
-  CO: "US",
-  TH: "US",
-  ID: "US",
-  GB: "FR",
-};
-
-// Одна точка подмены на весь ленд: и модалка, и хедер игры считают валюту
-// от одной и той же страны, иначе в хедере всплывал бы рублёвый значок.
-export const getCurrencyCountry = (countryCode) =>
-  CURRENCY_COUNTRY_OVERRIDES[countryCode] || countryCode;
-
-export function getCountryCurrencyABBR(inputCountry) {
-  for (const data of countryCurrencyData) {
-    if (data.countries.includes(inputCountry)) {
-      return data.countryCurrency;
-    }
-  }
-  return "USD"; // or some default value if country is not found
-}
-
-function getCountryCurrencyFullName(inputCountry) {
-  for (const data of countryCurrencyData) {
-    if (data.countries.includes(inputCountry)) {
-      return data.countryCurrencyFullName;
-    }
-  }
-  return "US Dollar"; // or some default value if country is not found
-}
-
-export function getCountryCurrencyIcon(inputCountry) {
-  for (const data of countryCurrencyData) {
-    if (data.countries.includes(inputCountry)) {
-      return data.countryCurrencyIcon;
-    }
-  }
-  return CDN + "/currency_icons/USD.svg"; // or some default value if country is not found
-}
-
-function getCountryCurrencySymbol(inputCountry) {
-  for (const data of countryCurrencyData) {
-    if (data.countries.includes(inputCountry)) {
-      return data.countryCurrencySymbol;
-    }
-  }
-  return "$"; // or some default value if country is not found
-}
+// маппинг живёт в currency.js — реэкспорт, чтобы не править импорты по модулям
+export {
+  getCountryCurrencyABBR,
+  getCountryCurrencyIcon,
+  getCurrencyCountry,
+} from "./currency";
 
 function setCurrency(abbr, name, icon) {
   const formCurrency = document.querySelectorAll(".form-currency");
@@ -87,8 +46,10 @@ function setCurrency(abbr, name, icon) {
 
 async function settingModalCurrency() {
   try {
-    let locationData = geoData;
-    const countryInput = getCurrencyCountry(locationData.countryCode);
+    // гео не определилось — дефолт в geoData польский, но навязывать игроку
+    // злотый нельзя: берём нейтральный доллар
+    const detectedCountry = isGeoFallback ? "US" : geoData.countryCode;
+    const countryInput = getCurrencyCountry(detectedCountry);
 
     const currencyAbbr = getCountryCurrencyABBR(countryInput);
     const currencyFullName = getCountryCurrencyFullName(countryInput);
@@ -117,14 +78,12 @@ async function settingModalCurrency() {
   }
 }
 
-geoReady.then(settingModalCurrency);
-
 // Валюту игрок мог выбрать сам — тогда поздний ответ гео её не трогает.
 let isCurrencyPickedByUser = false;
 
-// Гео приехало с опозданием (первый запрос отвалился по таймауту): валюта была
-// подставлена по дефолту PL/PLN — переставляем её на реальную страну.
-window.addEventListener("geo:refined", () => {
+// По geoConfirmed, а не по geoReady: пока страна не подтверждена, в форме
+// лучше пусто, чем дефолтный злотый. Форма всё равно открывается позже.
+geoConfirmed.then(() => {
   if (isCurrencyPickedByUser) return;
   settingModalCurrency();
 });
