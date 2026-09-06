@@ -1,5 +1,7 @@
 export default {
   gameUnavailable: "Oyun əlçatan deyil",
+  toastSpinsTitle: "{spins} pulsuz fırlanma verildi",
+  toastSpinsText: "Oyunun yüklənməsini gözləyin",
   continuePlayingBtn: "Oynamağa Davam Et",
   claimTitle: "<span class=\"gold-text\">{spins} PULSUZ FIRLANMANI</span> AL!",
   verifyTitle: "AZ QALDI! <span class=\"gold-text\">UDUŞUNU</span> TƏSDİQLƏ",
@@ -43,6 +45,7 @@ export default {
   countryPlaceholder: "Ölkə Seçin",
   currencyPlaceholder: "Valyuta Seçin",
   phoneNumberPlaceholder: "Telefon Nömrəsi",
+  countryNotFound: "Ölkə tapılmadı",
   addressPlaceholder: "Ünvan Daxil Edin",
   streetPlaceholder: "Küçə Daxil Edin",
   houseNumberPlaceholder: "Ev / Bina No.",

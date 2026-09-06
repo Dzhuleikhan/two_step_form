@@ -1,5 +1,7 @@
 export default {
   gameUnavailable: "El juego no está disponible",
+  toastSpinsTitle: "{spins} giros gratis acreditados",
+  toastSpinsText: "Espera a que se cargue el juego",
   continuePlayingBtn: "Seguir jugando",
   claimTitle: "¡RECLAMA TUS <span class=\"gold-text\">{spins} GIROS GRATIS!</span>",
   verifyTitle: "¡CASI LISTO! VERIFICA <span class=\"gold-text\">TU GANANCIA</span>",
@@ -48,6 +50,7 @@ export default {
   countryPlaceholder: "Selecciona el País",
   currencyPlaceholder: "Elige la Moneda",
   phoneNumberPlaceholder: "Número de Teléfono",
+  countryNotFound: "País no encontrado",
   addressPlaceholder: "Introduce la Dirección",
   streetPlaceholder: "Calle",
   houseNumberPlaceholder: "Número / Edificio",

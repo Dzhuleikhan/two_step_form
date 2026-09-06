@@ -1,5 +1,7 @@
 export default {
   gameUnavailable: "ጨዋታው አይገኝም",
+  toastSpinsTitle: "{spins} ነጻ ዙሮች ተሰጥተዋል",
+  toastSpinsText: "ጨዋታው እስኪጫን ይጠብቁ",
   continuePlayingBtn: "መጫወት ቀጥል",
   claimTitle: "<span class=\"gold-text\">{spins} ነፃ ስፒኖችህን</span> ውሰድ!",
   verifyTitle: "ልትጨርስ ተቃርበሃል! <span class=\"gold-text\">ትርፍህን</span> አረጋግጥ",
@@ -48,6 +50,7 @@ export default {
   countryPlaceholder: "አገር ይምረጡ",
   currencyPlaceholder: "ገንዘብ ይምረጡ",
   phoneNumberPlaceholder: "ስልክ ቁጥር",
+  countryNotFound: "አገር አልተገኘም",
   addressPlaceholder: "አድራሻ ያስገቡ",
   streetPlaceholder: "መንገድ",
   houseNumberPlaceholder: "የቤት / የህንፃ ቁጥር",

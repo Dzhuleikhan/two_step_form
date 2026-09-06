@@ -1,5 +1,7 @@
 export default {
   gameUnavailable: "Mäng pole saadaval",
+  toastSpinsTitle: "Antud {spins} tasuta keerutust",
+  toastSpinsText: "Oodake, kuni mäng laadib",
   continuePlayingBtn: "Jätka mängimist",
   claimTitle: "LUNASTA OMA <span class=\"gold-text\">{spins} TASUTA KEERUTUST!</span>",
   verifyTitle: "PEAAEGU VALMIS! KINNITA <span class=\"gold-text\">OMA VÕIT</span>",
@@ -48,6 +50,7 @@ export default {
   countryPlaceholder: "Vali Riik",
   currencyPlaceholder: "Vali Valuuta",
   phoneNumberPlaceholder: "Telefoninumber",
+  countryNotFound: "Riiki ei leitud",
   addressPlaceholder: "Sisesta Aadress",
   streetPlaceholder: "Tänav",
   houseNumberPlaceholder: "Maja nr / hoone",

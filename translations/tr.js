@@ -1,5 +1,7 @@
 export default {
   gameUnavailable: "Oyun kullanılamıyor",
+  toastSpinsTitle: "{spins} bedava dönüş tanımlandı",
+  toastSpinsText: "Oyunun yüklenmesini bekleyin",
   continuePlayingBtn: "Oynamaya Devam Et",
   claimTitle: "<span class=\"gold-text\">{spins} ÜCRETSİZ DÖNÜŞÜ</span> AL!",
   verifyTitle: "NEREDEYSE BİTTİ! <span class=\"gold-text\">KAZANCINI</span> DOĞRULA",
@@ -43,6 +45,7 @@ export default {
   countryPlaceholder: "Ülke Seçin",
   currencyPlaceholder: "Para Birimi Seçin",
   phoneNumberPlaceholder: "Telefon Numarası",
+  countryNotFound: "Ülke bulunamadı",
   addressPlaceholder: "Adres Girin",
   streetPlaceholder: "Sokak Girin",
   houseNumberPlaceholder: "Bina / Kapı No.",

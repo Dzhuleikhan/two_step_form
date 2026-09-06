@@ -1,5 +1,7 @@
 export default {
   gameUnavailable: "Il-logħba mhix disponibbli",
+  toastSpinsTitle: "Ingħataw {spins} spins b'xejn",
+  toastSpinsText: "Stenna sakemm jitgħabba l-logħba",
   continuePlayingBtn: "Kompli tilgħab",
   claimTitle: "IĠBOR <span class=\"gold-text\">{spins} SPINS B'XEJN!</span>",
   verifyTitle: "KWAŻI LEST! IVVERIFIKA <span class=\"gold-text\">IR-REBĦ TIEGĦEK</span>",
@@ -48,6 +50,7 @@ export default {
   countryPlaceholder: "Agħżel il-Pajjiż",
   currencyPlaceholder: "Agħżel il-Munita",
   phoneNumberPlaceholder: "Numru tat-Telefon",
+  countryNotFound: "Il-pajjiż ma nstabx",
   addressPlaceholder: "Daħħal l-Indirizz",
   streetPlaceholder: "Triq",
   houseNumberPlaceholder: "Nru tad-dar / bini",

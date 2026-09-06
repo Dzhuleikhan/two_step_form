@@ -7,6 +7,7 @@
 
 import { getUrlParameter } from "./params";
 import { geoData, geoReady } from "./geoLocation";
+import { showFreespinsToast } from "./toast";
 
 // Относительный путь: запросы уходят на тот же домен, что и лендинг, а
 // проксирует их nginx на VPS (fastpanel2-includes/c2gaming.conf) — он же
@@ -754,7 +755,13 @@ const showGameUnavailable = (error) => {
   window.dispatchEvent(new Event("game:settled"));
 };
 
+// Слот на медленном интернете грузится долго, и всё это время игрок смотрит в
+// пустоту. Тост сразу говорит, что фриспины уже выданы и надо просто подождать.
+const TOAST_DELAY_MS = 500;
+
 if (urlClickId && urlGameId) {
+  setTimeout(() => showFreespinsToast(getFreespinsCount()), TOAST_DELAY_MS);
+
   startSession({ clickId: urlClickId, gameId: urlGameId })
     .then(applySession)
     .catch(showGameUnavailable);

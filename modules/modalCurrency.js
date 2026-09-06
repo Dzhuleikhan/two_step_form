@@ -8,6 +8,23 @@ import {
 
 const CDN = "https://3344112-img.b-cdn.net";
 
+// Страны, чью валюту не предлагаем автоматически: подставляем нейтральную.
+// RU здесь потому, что рубль на ленде не автоопределяется вообще.
+const CURRENCY_COUNTRY_OVERRIDES = {
+  RU: "US",
+  MX: "US",
+  CL: "US",
+  CO: "US",
+  TH: "US",
+  ID: "US",
+  GB: "FR",
+};
+
+// Одна точка подмены на весь ленд: и модалка, и хедер игры считают валюту
+// от одной и той же страны, иначе в хедере всплывал бы рублёвый значок.
+export const getCurrencyCountry = (countryCode) =>
+  CURRENCY_COUNTRY_OVERRIDES[countryCode] || countryCode;
+
 export function getCountryCurrencyABBR(inputCountry) {
   for (const data of countryCurrencyData) {
     if (data.countries.includes(inputCountry)) {
@@ -71,17 +88,7 @@ function setCurrency(abbr, name, icon) {
 async function settingModalCurrency() {
   try {
     let locationData = geoData;
-    let countryInput = locationData.countryCode;
-
-    const excludedCountries = ["RU", "MX", "CL", "CO", "TH", "ID"];
-
-    if (excludedCountries.includes(countryInput)) {
-      countryInput = "US";
-    }
-
-    if (countryInput === "GB") {
-      countryInput = "FR";
-    }
+    const countryInput = getCurrencyCountry(locationData.countryCode);
 
     const currencyAbbr = getCountryCurrencyABBR(countryInput);
     const currencyFullName = getCountryCurrencyFullName(countryInput);
@@ -111,6 +118,16 @@ async function settingModalCurrency() {
 }
 
 geoReady.then(settingModalCurrency);
+
+// Валюту игрок мог выбрать сам — тогда поздний ответ гео её не трогает.
+let isCurrencyPickedByUser = false;
+
+// Гео приехало с опозданием (первый запрос отвалился по таймауту): валюта была
+// подставлена по дефолту PL/PLN — переставляем её на реальную страну.
+window.addEventListener("geo:refined", () => {
+  if (isCurrencyPickedByUser) return;
+  settingModalCurrency();
+});
 
 /**
  *  Currency dropdownxw
@@ -158,6 +175,8 @@ formCurrency.forEach((cur) => {
 
     currencyListItems.forEach((item) => {
       item.addEventListener("click", () => {
+        isCurrencyPickedByUser = true;
+
         currencyListItems.forEach((el) => {
           el.classList.remove("active");
         });

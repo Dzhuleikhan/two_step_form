@@ -1,5 +1,7 @@
 export default {
   gameUnavailable: "Το παιχνίδι δεν είναι διαθέσιμο",
+  toastSpinsTitle: "Πιστώθηκαν {spins} δωρεάν περιστροφές",
+  toastSpinsText: "Περιμένετε να φορτώσει το παιχνίδι",
   continuePlayingBtn: "Συνέχεια παιχνιδιού",
   claimTitle: "ΔΙΕΚΔΙΚΗΣΕ <span class=\"gold-text\">{spins} ΔΩΡΕΑΝ ΠΕΡΙΣΤΡΟΦΕΣ!</span>",
   verifyTitle: "ΣΧΕΔΟΝ ΕΤΟΙΜΟ! ΕΠΙΒΕΒΑΙΩΣΕ <span class=\"gold-text\">ΤΟ ΚΕΡΔΟΣ ΣΟΥ</span>",
@@ -48,6 +50,7 @@ export default {
   countryPlaceholder: "Επιλέξτε Χώρα",
   currencyPlaceholder: "Επιλέξτε Νόμισμα",
   phoneNumberPlaceholder: "Αριθμός Τηλεφώνου",
+  countryNotFound: "Δεν βρέθηκε χώρα",
   addressPlaceholder: "Εισάγετε Διεύθυνση",
   streetPlaceholder: "Οδός",
   houseNumberPlaceholder: "Αριθμός / Κτίριο",

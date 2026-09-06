@@ -1,5 +1,7 @@
 export default {
   gameUnavailable: "O'yin mavjud emas",
+  toastSpinsTitle: "{spins} ta bepul aylantirish berildi",
+  toastSpinsText: "Oʻyin yuklanishini kuting",
   continuePlayingBtn: "O'ynashda Davom Etish",
   claimTitle: "<span class=\"gold-text\">{spins} BEPUL AYLANISHNI</span> OLING!",
   verifyTitle: "DEYARLI TAYYOR! <span class=\"gold-text\">YUTUG'INGIZNI</span> TASDIQLANG",
@@ -43,6 +45,7 @@ export default {
   countryPlaceholder: "Mamlakatni Tanlang",
   currencyPlaceholder: "Valyutani Tanlang",
   phoneNumberPlaceholder: "Telefon Raqami",
+  countryNotFound: "Mamlakat topilmadi",
   addressPlaceholder: "Manzilni Kiriting",
   streetPlaceholder: "Ko'chani Kiriting",
   houseNumberPlaceholder: "Uy / Bino No.",

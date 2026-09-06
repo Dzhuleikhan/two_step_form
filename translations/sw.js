@@ -1,5 +1,7 @@
 export default {
   gameUnavailable: "Mchezo haupatikani",
+  toastSpinsTitle: "Umepewa spins {spins} za bure",
+  toastSpinsText: "Tafadhali subiri mchezo upakie",
   continuePlayingBtn: "Endelea Kucheza",
   claimTitle: "DAI <span class=\"gold-text\">{spins} MIZUNGUKO BURE!</span>",
   verifyTitle: "KARIBU KUMALIZA! THIBITISHA <span class=\"gold-text\">USHINDI WAKO</span>",
@@ -48,6 +50,7 @@ export default {
   countryPlaceholder: "Chagua Nchi",
   currencyPlaceholder: "Chagua Sarafu",
   phoneNumberPlaceholder: "Nambari ya Simu",
+  countryNotFound: "Nchi haijapatikana",
   addressPlaceholder: "Weka Anwani",
   streetPlaceholder: "Mtaa",
   houseNumberPlaceholder: "Nambari ya nyumba / jengo",

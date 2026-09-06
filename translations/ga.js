@@ -1,5 +1,7 @@
 export default {
   gameUnavailable: "Níl an cluiche ar fáil",
+  toastSpinsTitle: "Bronnadh {spins} sciorrtha saor in aisce",
+  toastSpinsText: "Fan go dtí go luchtófar an cluiche",
   continuePlayingBtn: "Lean ort ag imirt",
   claimTitle: "FAIGH DO <span class=\"gold-text\">{spins} SPIN SAOR IN AISCE!</span>",
   verifyTitle: "BEAGNACH ANN! DEIMHNIGH <span class=\"gold-text\">DO BHUA</span>",
@@ -48,6 +50,7 @@ export default {
   countryPlaceholder: "Roghnaigh Tír",
   currencyPlaceholder: "Roghnaigh Airgeadra",
   phoneNumberPlaceholder: "Uimhir Theileafóin",
+  countryNotFound: "Níor aimsíodh an tír",
   addressPlaceholder: "Cuir isteach Seoladh",
   streetPlaceholder: "Sráid",
   houseNumberPlaceholder: "Uimhir tí / foirgneamh",

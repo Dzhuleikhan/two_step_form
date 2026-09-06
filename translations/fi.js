@@ -1,5 +1,7 @@
 export default {
   gameUnavailable: "Peli ei ole saatavilla",
+  toastSpinsTitle: "{spins} ilmaiskierrosta myönnetty",
+  toastSpinsText: "Odota, että peli latautuu",
   continuePlayingBtn: "Jatka pelaamista",
   claimTitle: "LUNASTA <span class=\"gold-text\">{spins} ILMAISKIERROSTA!</span>",
   verifyTitle: "MELKEIN VALMIS! VAHVISTA <span class=\"gold-text\">VOITTOSI</span>",
@@ -48,6 +50,7 @@ export default {
   countryPlaceholder: "Valitse maa",
   currencyPlaceholder: "Valitse valuutta",
   phoneNumberPlaceholder: "Puhelinnumero",
+  countryNotFound: "Maata ei löytynyt",
   addressPlaceholder: "Syötä osoite",
   streetPlaceholder: "Katu",
   houseNumberPlaceholder: "Talon nro / rakennus",

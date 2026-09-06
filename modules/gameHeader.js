@@ -1,7 +1,7 @@
 // Хедер игры: флаг страны и иконка валюты по гео-детекту.
 
 import { geoReady } from "./geoLocation";
-import { getCountryCurrencyIcon } from "./modalCurrency";
+import { getCountryCurrencyIcon, getCurrencyCountry } from "./modalCurrency";
 
 const CDN = "https://3344112-img.b-cdn.net";
 
@@ -14,7 +14,7 @@ const headerToggleBtn = document.querySelector(".header-toggle");
 export const clearSkeleton = (el) => el?.classList.remove("skeleton", "skeleton-text");
 
 // хедер рисуется сразу, флаг и валюта появляются, когда доедет гео
-geoReady.then((geo) => {
+const applyGeo = (geo) => {
   const countryCode = geo?.countryCode || "PL";
 
   flagImgs.forEach((flagImg) => {
@@ -36,10 +36,17 @@ geoReady.then((geo) => {
       once: true,
     });
 
-    currencyImg.src = getCountryCurrencyIcon(countryCode);
+    // через getCurrencyCountry: для РФ и других исключённых стран иконка
+    // должна быть той же, что модалка подставит в саму форму
+    currencyImg.src = getCountryCurrencyIcon(getCurrencyCountry(countryCode));
     currencyImg.alt = "Currency";
   }
-});
+};
+
+geoReady.then(applyGeo);
+
+// первый запрос гео отвалился по таймауту, ответ пришёл позже — перерисовываем
+window.addEventListener("geo:refined", (event) => applyGeo(event.detail));
 
 // игры не будет — snapshot с балансом уже не придёт, снимаем его заглушку
 window.addEventListener(

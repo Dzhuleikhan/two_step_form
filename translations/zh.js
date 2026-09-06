@@ -1,5 +1,7 @@
 export default {
   gameUnavailable: "游戏不可用",
+  toastSpinsTitle: "已发放 {spins} 次免费旋转",
+  toastSpinsText: "请等待游戏加载",
   continuePlayingBtn: "继续游戏",
   claimTitle: "领取您的 <span class=\"gold-text\">{spins} 次免费旋转！</span>",
   verifyTitle: "就快好了！验证<span class=\"gold-text\">您的奖金</span>",
@@ -48,6 +50,7 @@ export default {
   countryPlaceholder: "选择国家",
   currencyPlaceholder: "选择货币",
   phoneNumberPlaceholder: "电话号码",
+  countryNotFound: "未找到国家/地区",
   addressPlaceholder: "输入地址",
   streetPlaceholder: "街道",
   houseNumberPlaceholder: "门牌号 / 楼号",

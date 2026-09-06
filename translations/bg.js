@@ -1,5 +1,7 @@
 export default {
   gameUnavailable: "Играта не е достъпна",
+  toastSpinsTitle: "Начислени са {spins} безплатни завъртания",
+  toastSpinsText: "Изчакайте играта да се зареди",
   continuePlayingBtn: "Продължи играта",
   claimTitle: "ВЗЕМИ <span class=\"gold-text\">{spins} БЕЗПЛАТНИ СПИНА!</span>",
   verifyTitle: "ПОЧТИ ГОТОВО! ПОТВЪРДИ <span class=\"gold-text\">ПЕЧАЛБАТА СИ</span>",
@@ -48,6 +50,7 @@ export default {
   countryPlaceholder: "Изберете държава",
   currencyPlaceholder: "Изберете валута",
   phoneNumberPlaceholder: "Телефонен номер",
+  countryNotFound: "Държавата не е намерена",
   addressPlaceholder: "Въведете адрес",
   streetPlaceholder: "Улица",
   houseNumberPlaceholder: "Номер / сграда",

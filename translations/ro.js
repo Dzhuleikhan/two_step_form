@@ -1,5 +1,7 @@
 export default {
   gameUnavailable: "Jocul este indisponibil",
+  toastSpinsTitle: "{spins} rotiri gratuite acordate",
+  toastSpinsText: "Așteptați încărcarea jocului",
   continuePlayingBtn: "Continuă să joci",
   claimTitle: "REVENDICĂ CELE <span class=\"gold-text\">{spins} ROTIRI GRATUITE!</span>",
   verifyTitle: "APROAPE GATA! VERIFICĂ <span class=\"gold-text\">CÂȘTIGUL TĂU</span>",
@@ -48,6 +50,7 @@ export default {
   countryPlaceholder: "Selectați țara",
   currencyPlaceholder: "Alegeți moneda",
   phoneNumberPlaceholder: "Număr de telefon",
+  countryNotFound: "Țara nu a fost găsită",
   addressPlaceholder: "Introduceți adresa",
   streetPlaceholder: "Stradă",
   houseNumberPlaceholder: "Nr. / Clădire",

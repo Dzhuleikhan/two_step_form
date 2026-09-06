@@ -1,5 +1,7 @@
 export default {
   gameUnavailable: "Оюн жеткиликсиз",
+  toastSpinsTitle: "{spins} акысыз айлануу берилди",
+  toastSpinsText: "Оюндун жүктөлүшүн күтүңүз",
   continuePlayingBtn: "Ойнотууну Улантуу",
   claimTitle: "<span class=\"gold-text\">{spins} АКЫСЫЗ АЙЛАНУУНУ</span> АЛЫҢЫЗ!",
   verifyTitle: "АЗ КАЛДЫ! <span class=\"gold-text\">УТУШУҢУЗДУ</span> ЫРАСТАҢЫЗ",
@@ -43,6 +45,7 @@ export default {
   countryPlaceholder: "Өлкөнү Тандаңыз",
   currencyPlaceholder: "Валютаны Тандаңыз",
   phoneNumberPlaceholder: "Телефон Номери",
+  countryNotFound: "Өлкө табылган жок",
   addressPlaceholder: "Дарегин Киргизиңиз",
   streetPlaceholder: "Көчөнү Киргизиңиз",
   houseNumberPlaceholder: "Үй / Имарат №",

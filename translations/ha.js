@@ -1,5 +1,7 @@
 export default {
   gameUnavailable: "Wasan ba ya samuwa",
+  toastSpinsTitle: "An baiwa {spins} juyi kyauta",
+  toastSpinsText: "Da fatan za a jira wasan ya loda",
   continuePlayingBtn: "Ci gaba da Wasa",
   claimTitle: "KARBI <span class=\"gold-text\">{spins} SPINS KYAUTA!</span>",
   verifyTitle: "KUSAN GAMAWA! TABBATAR DA <span class=\"gold-text\">NASARARKA</span>",
@@ -48,6 +50,7 @@ export default {
   countryPlaceholder: "Zaɓi Ƙasa",
   currencyPlaceholder: "Zaɓi Kudi",
   phoneNumberPlaceholder: "Lambar Waya",
+  countryNotFound: "Ba a sami ƙasar ba",
   addressPlaceholder: "Shigar da Adireshi",
   streetPlaceholder: "Titi",
   houseNumberPlaceholder: "Lambar gida / gini",

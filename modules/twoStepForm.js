@@ -977,9 +977,13 @@ if (twoStepFormFourthStep) {
   });
 
   // Choosing country from dropdown
+  // страну игрок мог выбрать сам — поздний ответ гео её тогда не трогает
+  let isCountryPickedByUser = false;
+
   twoStepCountryList.addEventListener("click", (event) => {
     const item = event.target.closest(".two-step-country-list-item"); // Replace with your item class or selector
     if (item) {
+      isCountryPickedByUser = true;
       const countryCode = item.getAttribute("countryCode");
       const name = item.querySelector("span")?.textContent || "No name found";
       const imageUrl = item.querySelector("img")?.src || "No image found";
@@ -1022,6 +1026,13 @@ if (twoStepFormFourthStep) {
 
   // страна и валюта проставляются, когда доедет гео — форма к этому моменту скрыта
   geoReady.then(applyDetectedCountry);
+
+  // первый запрос гео отвалился по таймауту и ленд встал на дефолт PL — ответ
+  // приехал позже, переставляем страну, пока игрок не выбрал её сам
+  window.addEventListener("geo:refined", () => {
+    if (isCountryPickedByUser) return;
+    applyDetectedCountry();
+  });
   // Adding countries to dropdown
 
   const renderCountries = (filter = "") => {
@@ -1460,9 +1471,27 @@ const showStep = (step) => {
 
 renderHeading(initialStep);
 
+// Курсор ставим в первое поле открытого шага, иначе игрок сначала целится в
+// инпут и только потом печатает. Поиск стран у intl-tel-input исключаем: он
+// стоит раньше телефона в DOM, но это не поле формы.
+const focusFirstField = (step) => {
+  const stepEl = document.querySelector(`.two-step-form-step-${step}`);
+
+  const field = [
+    ...(stepEl?.querySelectorAll(
+      "input:not([type='hidden']):not([disabled]):not([readonly]):not(.iti__search-input)",
+    ) || []),
+  ].find((el) => el.offsetParent !== null);
+
+  field?.focus({ preventScroll: true });
+};
+
 // снапшот приезжает позже загрузки страницы — перерисовываем на открытии формы
 window.addEventListener("c2:gate-opened", () => {
   renderHeading(initialStep);
+
+  // ждём кадр: overlay только что получил is-open, до отрисовки фокус не встаёт
+  requestAnimationFrame(() => focusFirstField(initialStep));
 
   // без выигрыша форму можно закрыть и играть дальше — отсчёт не имеет смысла
   // и дедлайн не сохраняем, иначе он «сгорит» до настоящего открытия

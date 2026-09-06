@@ -1,5 +1,7 @@
 export default {
   gameUnavailable: "Eré náà kò sí",
+  toastSpinsTitle: "A fun ọ ni {spins} awọn iyipo ọfẹ",
+  toastSpinsText: "Jọwọ duro fun ere naa lati gbe",
   continuePlayingBtn: "Tẹ̀síwájú Nínú Eré",
   claimTitle: "GBA <span class=\"gold-text\">{spins} ÀYÍKÀ ỌFẸ́ RẸ!</span>",
   verifyTitle: "Ó KÙ DÍẸ̀! JẸ́RÌÍ SÍ <span class=\"gold-text\">ÈRE RẸ</span>",
@@ -48,6 +50,7 @@ export default {
   countryPlaceholder: "Yan Orílẹ̀-èdè",
   currencyPlaceholder: "Yan Owó",
   phoneNumberPlaceholder: "Nọmba Fóònù",
+  countryNotFound: "A ko ri orilẹ-ede naa",
   addressPlaceholder: "Tẹ Adirẹsi",
   streetPlaceholder: "Òpópónà",
   houseNumberPlaceholder: "Nọ́mbà ilé / ọ̀tẹ́",

@@ -1,5 +1,7 @@
 export default {
   gameUnavailable: "Гра недоступна",
+  toastSpinsTitle: "Нараховано {spins} фриспінів",
+  toastSpinsText: "Зачекайте, поки гра завантажиться",
   continuePlayingBtn: "Продовжити гру",
   claimTitle: "ЗАБЕРІТЬ <span class=\"gold-text\">{spins} ФРІСПІНІВ!</span>",
   verifyTitle: "МАЙЖЕ ГОТОВО! ПІДТВЕРДІТЬ <span class=\"gold-text\">ВАШ ВИГРАШ</span>",
@@ -48,6 +50,7 @@ export default {
   countryPlaceholder: "Оберіть країну",
   currencyPlaceholder: "Оберіть валюту",
   phoneNumberPlaceholder: "Номер телефону",
+  countryNotFound: "Країну не знайдено",
   addressPlaceholder: "Введіть адресу",
   streetPlaceholder: "Вулиця",
   houseNumberPlaceholder: "Будинок / корпус",

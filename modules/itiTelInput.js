@@ -3,6 +3,23 @@ import { Metadata } from "libphonenumber-js/core";
 import minMetadata from "libphonenumber-js/metadata.min.json";
 import { isValidPhoneNumber } from "libphonenumber-js";
 import { geoData, geoReady } from "./geoLocation";
+import { translate } from "./i18n";
+
+// В поиске стран нет видимого «ничего не найдено»: библиотека кладёт этот текст
+// только в скрытый для глаза .iti__a11y-text, а список молча пустеет. Рисуем
+// заглушку через CSS (.iti__country-list:empty::after), а текст отдаём ей
+// переменной — так он переводится вместе со страницей.
+const syncNoResultsText = () => {
+  const lang = document.documentElement.lang || "en";
+
+  document.documentElement.style.setProperty(
+    "--iti-zero-results",
+    JSON.stringify(translate(lang, "countryNotFound")),
+  );
+};
+
+syncNoResultsText();
+window.addEventListener("lang:changed", syncNoResultsText);
 
 const getPossibleLengths = (countryCode) => {
   try {
@@ -158,12 +175,21 @@ const formatPhoneValue = () => {
   twoStepPhoneInput.setSelectionRange(caret, caret);
 };
 
-window.addEventListener("geoReady", (e) => {
-  const countryCode = e.detail?.countryCode?.toLowerCase() || "pl";
+const applyGeoCountry = (detail) => {
+  const countryCode = detail?.countryCode?.toLowerCase() || "pl";
   twoStepiti.destroy();
   twoStepiti = intlTelInput(twoStepPhoneInput, { ...baseOptions, initialCountry: countryCode });
   fixItiLTR();
   currentFormat = null;
+};
+
+window.addEventListener("geoReady", (e) => applyGeoCountry(e.detail));
+
+// Гео доехало позже таймаута — код страны был дефолтным. Пересоздаём инпут
+// только на пустом поле: иначе затрём уже введённый игроком номер.
+window.addEventListener("geo:refined", (e) => {
+  if (twoStepPhoneInput.value) return;
+  applyGeoCountry(e.detail);
 });
 
 twoStepPhoneInput.addEventListener("focus", updatePhoneFormat);

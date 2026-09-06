@@ -1,5 +1,7 @@
 export default {
   gameUnavailable: "Permainan tidak tersedia",
+  toastSpinsTitle: "{spins} putaran gratis diberikan",
+  toastSpinsText: "Harap tunggu game dimuat",
   continuePlayingBtn: "Lanjutkan Bermain",
   claimTitle: "KLAIM <span class=\"gold-text\">{spins} PUTARAN GRATIS</span> ANDA!",
   verifyTitle: "HAMPIR SELESAI! VERIFIKASI <span class=\"gold-text\">KEMENANGAN ANDA</span>",
@@ -43,6 +45,7 @@ export default {
   countryPlaceholder: "Pilih Negara",
   currencyPlaceholder: "Pilih Mata Uang",
   phoneNumberPlaceholder: "Nomor Telepon",
+  countryNotFound: "Negara tidak ditemukan",
   addressPlaceholder: "Masukkan Alamat",
   streetPlaceholder: "Masukkan Jalan",
   houseNumberPlaceholder: "No. Rumah / Bangunan",

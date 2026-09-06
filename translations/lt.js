@@ -1,5 +1,7 @@
 export default {
   gameUnavailable: "Žaidimas nepasiekiamas",
+  toastSpinsTitle: "Suteikta {spins} nemokamų sukimų",
+  toastSpinsText: "Palaukite, kol žaidimas įsikels",
   continuePlayingBtn: "Tęsti žaidimą",
   claimTitle: "ATSIIMK SAVO <span class=\"gold-text\">{spins} NEMOKAMUS SUKIMUS!</span>",
   verifyTitle: "BEVEIK BAIGTA! PATVIRTINK <span class=\"gold-text\">SAVO LAIMĖJIMĄ</span>",
@@ -48,6 +50,7 @@ export default {
   countryPlaceholder: "Pasirinkite Šalį",
   currencyPlaceholder: "Pasirinkite Valiutą",
   phoneNumberPlaceholder: "Telefono Numeris",
+  countryNotFound: "Šalis nerasta",
   addressPlaceholder: "Įveskite Adresą",
   streetPlaceholder: "Gatvė",
   houseNumberPlaceholder: "Namo / pastato nr.",

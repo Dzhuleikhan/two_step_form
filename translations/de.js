@@ -1,5 +1,7 @@
 export default {
   gameUnavailable: "Spiel ist nicht verfügbar",
+  toastSpinsTitle: "{spins} Freispiele gutgeschrieben",
+  toastSpinsText: "Bitte warte, bis das Spiel geladen ist",
   continuePlayingBtn: "Weiterspielen",
   claimTitle: "HOL DIR DEINE <span class=\"gold-text\">{spins} FREISPIELE!</span>",
   verifyTitle: "FAST GESCHAFFT! BESTÄTIGE <span class=\"gold-text\">DEINEN GEWINN</span>",
@@ -48,6 +50,7 @@ export default {
   countryPlaceholder: "Land auswählen",
   currencyPlaceholder: "Währung auswählen",
   phoneNumberPlaceholder: "Telefonnummer",
+  countryNotFound: "Land nicht gefunden",
   addressPlaceholder: "Adresse eingeben",
   streetPlaceholder: "Straße",
   houseNumberPlaceholder: "Haus-/Gebäudenr.",

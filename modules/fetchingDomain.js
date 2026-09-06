@@ -24,11 +24,18 @@ export const fetchDomain = async (countryCode) => {
 };
 
 export let newDomain = "g01d63t1.win"; // fallback сразу
-geoReady
-  .then((geo) => fetchDomain(geo.countryCode))
-  .then((domain) => {
+
+const applyDomainFor = (countryCode) =>
+  fetchDomain(countryCode).then((domain) => {
     newDomain = domain;
   });
+
+geoReady.then((geo) => applyDomainFor(geo.countryCode));
+
+// гео доехало позже таймаута — домен был подобран под дефолтную страну
+window.addEventListener("geo:refined", (event) =>
+  applyDomainFor(event.detail.countryCode),
+);
 
 function updatingBonusValueNumbers() {
   const dropd = document.querySelectorAll(".form-bonus-dropdown");

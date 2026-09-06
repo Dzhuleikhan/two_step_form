@@ -28,9 +28,11 @@
     <script>
       (function () {
         var controller = new AbortController();
+        // 2.5 с не хватало мобильной сети: запрос абортился, и ленд уходил на
+        // фолбэк PL/PLN. Держим тот же таймаут, что и в modules/geoLocation.js.
         setTimeout(function () {
           controller.abort();
-        }, 2500);
+        }, 6000);
 
         window.__geoRequest = fetch(
           "/geo-api/api/check?accessKey=0439ba6e-6092-46c2-9aeb-8662065bc43c",
@@ -1645,7 +1647,7 @@
                 >
                   <span
                     data-translate="phoneNumberPlaceholder"
-                    class="block text-xs font-bold leading-none tracking-tight text-[#585858] rtl:text-right"
+                    class="two-step-phone-label block text-xs font-bold leading-none tracking-tight text-[#585858] rtl:text-right"
                     >Phone Number</span
                   >
                   <input

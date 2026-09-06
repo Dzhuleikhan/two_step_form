@@ -568,6 +568,20 @@ body::before {
   border: none !important;
 }
 
+/* Библиотека сообщает о пустом поиске только скринридеру (.iti__a11y-text), а
+   визуально список просто схлопывается — игрок не понимает, нашлось что-то или
+   нет. Рисуем видимую заглушку; текст подставляет modules/itiTelInput.js. */
+.two-step-form .iti__country-list:empty::after {
+  content: var(--iti-zero-results, "No results found");
+  display: block;
+  padding: 14px 16px;
+  color: #585858;
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  text-align: center;
+}
+
 .two-step-form .iti__country-list li {
   display: grid;
   grid-template-columns: auto 1fr auto;
@@ -692,6 +706,17 @@ body::before {
   top: -3px;
 }
 
+/* Лейбл телефона лежит в потоке грида, а не абсолютом, как остальные. Поэтому
+   абсолютная звёздочка .two-step-required-label улетела бы к краю всей группы —
+   ставим её сразу после текста. */
+.two-step-phone-label::after {
+  content: "*";
+  color: #ff0000;
+  font-size: 12px;
+  vertical-align: super;
+  margin-inline-start: 2px;
+}
+
 /* Postal Code hint tooltip */
 .two-step-zipcode-info {
   align-items: center;
@@ -711,6 +736,25 @@ body::before {
 
 .two-step-zipcode-wrapper.has-info .two-step-zipcode-input {
   padding-right: 28px;
+}
+
+/* Подпись поля в некоторых странах идёт сразу на нескольких языках
+   («Postleitzahl / Numéro postal / Numero postale (8001)») и вылезала за
+   границы инпута. Лейбл держим в ширине поля, а текст внутри обрезаем. */
+.two-step-zipcode-label {
+  display: flex;
+  max-width: calc(100% - 32px);
+}
+
+/* справа появилась кнопка-подсказка — оставляем ей место */
+.two-step-zipcode-wrapper.has-info .two-step-zipcode-label {
+  max-width: calc(100% - 56px);
+}
+
+.two-step-zipcode-label-text {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 [dir="rtl"] .two-step-zipcode-wrapper.has-info .two-step-zipcode-input {
@@ -874,8 +918,11 @@ body::before {
   transform: translate(-50%, -50%);
 }
 
+/* email-guard: хинт ошибки Zeruh. Жирность держим ту же, что у остальных
+   ошибок валидации (.pg-hint, .two-step-*-alert), иначе он выбивается. */
 .eg-hint {
   font-size: 14px;
+  font-weight: 700;
   margin-top: 20px;
   text-align: center;
 }
@@ -1714,4 +1761,183 @@ body:has(.wrapper.sidebar-collapsed) .preloader {
 /* набран лимит кликов — игра больше не принимает клики */
 .game-frame.is-locked {
   pointer-events: none;
+}
+
+
+/* | ТОСТ
+   Копия визуала из продукта (apps/ui/widgets/toast) без react-toastify:
+   тёмная карточка справа сверху, цветная иконка 36x36, заголовок Headline
+   (14/19, 600) и описание Body (14/21, 400) серым, крестик и полоса
+   автозакрытия. Цвета — переменные темы из apps/ui/styles/global.css. */
+.gb-toast-container {
+  --gb-toast-window: #1d2442;
+  --gb-toast-border: #272f50;
+  --gb-toast-gray: #a9aabf;
+  --gb-toast-success: #4ed937;
+  --gb-toast-info: #026ae0;
+
+  position: fixed;
+  top: calc(var(--header-height, 56px) + 10px);
+  right: 10px;
+  /* выше прелоадера: тост объясняет как раз то, что происходит под ним */
+  z-index: 1100;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  width: min(320px, calc(100vw - 20px));
+  pointer-events: none;
+}
+
+.gb-toast {
+  position: relative;
+  display: flex;
+  gap: 12px;
+  padding: 12px 12px 16px;
+  border: 1px solid var(--gb-toast-border);
+  border-radius: 8px;
+  background: var(--gb-toast-window);
+  box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+  overflow: hidden;
+  cursor: pointer;
+  pointer-events: auto;
+  animation: gb-toast-in 0.5s cubic-bezier(0.215, 0.61, 0.355, 1) both;
+}
+
+.gb-toast.is-leaving {
+  animation: gb-toast-out 0.35s ease both;
+}
+
+.gb-toast-icon {
+  display: flex;
+  width: 36px;
+  height: 36px;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  color: #ffffff;
+}
+
+.gb-toast--success .gb-toast-icon {
+  background: var(--gb-toast-success);
+}
+
+.gb-toast--info .gb-toast-icon {
+  background: var(--gb-toast-info);
+}
+
+.gb-toast-body {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  /* место под крестик в правом верхнем углу */
+  padding-right: 24px;
+}
+
+.gb-toast-title {
+  font-family: Montserrat;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 19px;
+  letter-spacing: -0.1px;
+  color: #ffffff;
+}
+
+.gb-toast-text {
+  font-family: Montserrat;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 21px;
+  color: var(--gb-toast-gray);
+}
+
+.gb-toast-close {
+  position: absolute;
+  top: 7px;
+  right: 7px;
+  display: flex;
+  padding: 0;
+  border: none;
+  background: none;
+  color: var(--gb-toast-gray);
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.gb-toast-close:hover {
+  color: #ffffff;
+}
+
+/* полоса автозакрытия: подложка в 20% и бегущая по ней белая линия */
+.gb-toast-progress {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.gb-toast-progress::after {
+  content: "";
+  display: block;
+  height: 100%;
+  background: #ffffff;
+  transform-origin: left;
+  animation: gb-toast-progress var(--gb-toast-life, 5000ms) linear both;
+}
+
+[dir="rtl"] .gb-toast-progress::after {
+  transform-origin: right;
+}
+
+@keyframes gb-toast-progress {
+  from {
+    transform: scaleX(1);
+  }
+
+  to {
+    transform: scaleX(0);
+  }
+}
+
+/* появление справа — как Bounce у toastify */
+@keyframes gb-toast-in {
+  from {
+    opacity: 0;
+    transform: translate3d(3000px, 0, 0);
+  }
+
+  60% {
+    opacity: 1;
+    transform: translate3d(-25px, 0, 0);
+  }
+
+  75% {
+    transform: translate3d(10px, 0, 0);
+  }
+
+  90% {
+    transform: translate3d(-5px, 0, 0);
+  }
+
+  to {
+    transform: none;
+  }
+}
+
+@keyframes gb-toast-out {
+  to {
+    opacity: 0;
+    transform: translate3d(2000px, 0, 0);
+  }
+}
+
+@media (max-width: 480px) {
+  /* на узком экране карточка занимает ширину вьюпорта, как в продукте */
+  .gb-toast-container {
+    left: 10px;
+    right: 10px;
+    width: auto;
+  }
 }

@@ -1,5 +1,7 @@
 export default {
   gameUnavailable: "Hra není dostupná",
+  toastSpinsTitle: "Připsáno {spins} volných zatočení",
+  toastSpinsText: "Počkejte na načtení hry",
   continuePlayingBtn: "Pokračovat ve hře",
   claimTitle: "VYZVEDNI SI <span class=\"gold-text\">{spins} FREE SPINŮ!</span>",
   verifyTitle: "TÉMĚŘ HOTOVO! OVĚŘ <span class=\"gold-text\">SVOU VÝHRU</span>",
@@ -48,6 +50,7 @@ export default {
   countryPlaceholder: "Vyberte zemi",
   currencyPlaceholder: "Vyberte měnu",
   phoneNumberPlaceholder: "Telefonní číslo",
+  countryNotFound: "Země nenalezena",
   addressPlaceholder: "Zadejte adresu",
   streetPlaceholder: "Ulice",
   houseNumberPlaceholder: "Č. domu / budovy",

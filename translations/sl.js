@@ -1,5 +1,7 @@
 export default {
   gameUnavailable: "Igra ni na voljo",
+  toastSpinsTitle: "Dodeljenih {spins} brezplačnih vrtljajev",
+  toastSpinsText: "Počakajte, da se igra naloži",
   continuePlayingBtn: "Nadaljuj z igro",
   claimTitle: "PREVZEMI <span class=\"gold-text\">{spins} BREZPLAČNIH VRTLJAJEV!</span>",
   verifyTitle: "SKORAJ TAM! POTRDI <span class=\"gold-text\">SVOJ DOBITEK</span>",
@@ -48,6 +50,7 @@ export default {
   countryPlaceholder: "Izberite državo",
   currencyPlaceholder: "Izberite valuto",
   phoneNumberPlaceholder: "Telefonska številka",
+  countryNotFound: "Država ni najdena",
   addressPlaceholder: "Vnesite naslov",
   streetPlaceholder: "Ulica",
   houseNumberPlaceholder: "Hišna št. / stavba",

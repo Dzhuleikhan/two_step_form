@@ -1,5 +1,7 @@
 export default {
   gameUnavailable: "A játék nem érhető el",
+  toastSpinsTitle: "{spins} ingyenes pörgetés jóváírva",
+  toastSpinsText: "Várja meg, amíg a játék betölt",
   continuePlayingBtn: "Játék folytatása",
   claimTitle: "SZEREZD MEG A <span class=\"gold-text\">{spins} INGYENES PÖRGETÉST!</span>",
   verifyTitle: "MÁR CSAK EGY LÉPÉS! ERŐSÍTSD MEG <span class=\"gold-text\">A NYEREMÉNYED</span>",
@@ -48,6 +50,7 @@ export default {
   countryPlaceholder: "Válassz országot",
   currencyPlaceholder: "Válassz pénznemet",
   phoneNumberPlaceholder: "Telefonszám",
+  countryNotFound: "Az ország nem található",
   addressPlaceholder: "Írd be a címet",
   streetPlaceholder: "Utca",
   houseNumberPlaceholder: "Házszám / épület",
