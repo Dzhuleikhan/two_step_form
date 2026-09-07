@@ -1,7 +1,7 @@
 export default {
   gameUnavailable: "Spēle nav pieejama",
   toastSpinsTitle: "Piešķirti {spins} bezmaksas griezieni",
-  toastSpinsText: "Lūdzu, uzgaidiet, līdz spēle ielādējas",
+  toastSpinsText: "Lūdzu, uzgaidiet, līdz spēle ielādējas.",
   continuePlayingBtn: "Turpināt spēlēt",
   claimTitle: "SAŅEM SAVUS <span class=\"gold-text\">{spins} BEZMAKSAS GRIEZIENUS!</span>",
   verifyTitle: "GANDRĪZ GATAVS! APSTIPRINI <span class=\"gold-text\">SAVU LAIMESTU</span>",

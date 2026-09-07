@@ -1,7 +1,7 @@
 export default {
   gameUnavailable: "Jocul este indisponibil",
   toastSpinsTitle: "{spins} rotiri gratuite acordate",
-  toastSpinsText: "Așteptați încărcarea jocului",
+  toastSpinsText: "Așteptați încărcarea jocului.",
   continuePlayingBtn: "Continuă să joci",
   claimTitle: "REVENDICĂ CELE <span class=\"gold-text\">{spins} ROTIRI GRATUITE!</span>",
   verifyTitle: "APROAPE GATA! VERIFICĂ <span class=\"gold-text\">CÂȘTIGUL TĂU</span>",

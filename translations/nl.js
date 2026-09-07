@@ -1,7 +1,7 @@
 export default {
   gameUnavailable: "Het spel is niet beschikbaar",
   toastSpinsTitle: "{spins} gratis spins toegekend",
-  toastSpinsText: "Wacht tot het spel is geladen",
+  toastSpinsText: "Wacht tot het spel is geladen.",
   continuePlayingBtn: "Verder spelen",
   claimTitle: "CLAIM JE <span class=\"gold-text\">{spins} GRATIS SPINS!</span>",
   verifyTitle: "BIJNA KLAAR! VERIFIEER <span class=\"gold-text\">JOUW WINST</span>",

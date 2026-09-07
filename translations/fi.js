@@ -1,7 +1,7 @@
 export default {
   gameUnavailable: "Peli ei ole saatavilla",
   toastSpinsTitle: "{spins} ilmaiskierrosta myönnetty",
-  toastSpinsText: "Odota, että peli latautuu",
+  toastSpinsText: "Odota, että peli latautuu.",
   continuePlayingBtn: "Jatka pelaamista",
   claimTitle: "LUNASTA <span class=\"gold-text\">{spins} ILMAISKIERROSTA!</span>",
   verifyTitle: "MELKEIN VALMIS! VAHVISTA <span class=\"gold-text\">VOITTOSI</span>",

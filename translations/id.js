@@ -1,7 +1,7 @@
 export default {
   gameUnavailable: "Permainan tidak tersedia",
   toastSpinsTitle: "{spins} putaran gratis diberikan",
-  toastSpinsText: "Harap tunggu game dimuat",
+  toastSpinsText: "Harap tunggu game dimuat.",
   continuePlayingBtn: "Lanjutkan Bermain",
   claimTitle: "KLAIM <span class=\"gold-text\">{spins} PUTARAN GRATIS</span> ANDA!",
   verifyTitle: "HAMPIR SELESAI! VERIFIKASI <span class=\"gold-text\">KEMENANGAN ANDA</span>",

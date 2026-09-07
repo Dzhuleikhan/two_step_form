@@ -1,7 +1,7 @@
 export default {
   gameUnavailable: "Spillet er ikke tilgjengelig",
   toastSpinsTitle: "{spins} gratisspinn tildelt",
-  toastSpinsText: "Vent mens spillet lastes",
+  toastSpinsText: "Vent mens spillet lastes.",
   continuePlayingBtn: "Fortsett å spille",
   claimTitle: "HENT DINE <span class=\"gold-text\">{spins} GRATISSPINN!</span>",
   verifyTitle: "NESTEN FERDIG! BEKREFT <span class=\"gold-text\">GEVINSTEN DIN</span>",

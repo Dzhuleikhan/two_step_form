@@ -1,7 +1,7 @@
 export default {
   gameUnavailable: "Agorɔ no nni hɔ",
   toastSpinsTitle: "Wɔama wo free spins {spins}",
-  toastSpinsText: "Yɛsrɛ wo twɛn ma agodie no nsɔre",
+  toastSpinsText: "Yɛsrɛ wo twɛn ma agodie no nsɔre.",
   continuePlayingBtn: "Kɔ so Di Agorɔ",
   claimTitle: "GYE <span class=\"gold-text\">{spins} SPINS A ƐYƐ KWA!</span>",
   verifyTitle: "ƐKA KAKRA! HWƐ <span class=\"gold-text\">WO NKONIMDI</span> NO YIYE",

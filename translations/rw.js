@@ -1,7 +1,7 @@
 export default {
   gameUnavailable: "Umukino ntiuboneka",
   toastSpinsTitle: "Wahawe {spins} bya free spins",
-  toastSpinsText: "Tegereza umukino urangize gutangira",
+  toastSpinsText: "Tegereza umukino urangize gutangira.",
   continuePlayingBtn: "Komeza Gukina",
   claimTitle: "FATA <span class=\"gold-text\">{spins} SPINS Z'UBUNTU!</span>",
   verifyTitle: "HAFI KURANGIZA! EMEZA <span class=\"gold-text\">INYUNGU YAWE</span>",

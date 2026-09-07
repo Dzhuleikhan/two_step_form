@@ -568,6 +568,17 @@ body::before {
   border: none !important;
 }
 
+/* та же заглушка, что у телефонного дропдауна, — для селекта страны на
+   последнем шаге; текст рисует renderCountries в modules/twoStepForm.js */
+.two-step-country-empty {
+  padding: 14px 16px;
+  color: #585858;
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  text-align: center;
+}
+
 /* Библиотека сообщает о пустом поиске только скринридеру (.iti__a11y-text), а
    визуально список просто схлопывается — игрок не понимает, нашлось что-то или
    нет. Рисуем видимую заглушку; текст подставляет modules/itiTelInput.js. */
@@ -1889,6 +1900,11 @@ body:has(.wrapper.sidebar-collapsed) .preloader {
 
 [dir="rtl"] .gb-toast-progress::after {
   transform-origin: right;
+}
+
+/* курсор на тосте — отсчёт замирает вместе с таймером закрытия */
+.gb-toast:hover .gb-toast-progress::after {
+  animation-play-state: paused;
 }
 
 @keyframes gb-toast-progress {

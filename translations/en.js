@@ -1,7 +1,7 @@
 export default {
   gameUnavailable: "Game is unavailable",
   toastSpinsTitle: "{spins} free spins granted",
-  toastSpinsText: "Please wait for the game to load",
+  toastSpinsText: "Please wait for the game to load.",
   continuePlayingBtn: "Continue Playing",
   claimTitle: "CLAIM YOUR <span class=\"gold-text\">{spins} FREE SPINS!</span>",
   verifyTitle: "ALMOST THERE! VERIFY <span class=\"gold-text\">YOUR WIN</span>",

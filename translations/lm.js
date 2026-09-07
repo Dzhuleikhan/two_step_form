@@ -1,7 +1,7 @@
 export default {
   gameUnavailable: "Lisano ezali te",
   toastSpinsTitle: "Opesameli {spins} ya bituluki ya ofele",
-  toastSpinsText: "Zela lisano ekotisama",
+  toastSpinsText: "Zela lisano ekotisama.",
   continuePlayingBtn: "Kokoba kosakana",
   claimTitle: "ZWA <span class=\"gold-text\">{spins} BASPINS YA OFELE!</span>",
   verifyTitle: "ETIKALI MOKE! NDIMISA <span class=\"gold-text\">ELONGA NA YO</span>",

@@ -1,7 +1,7 @@
 export default {
   gameUnavailable: "Hra nie je dostupná",
   toastSpinsTitle: "Pripísaných {spins} voľných točení",
-  toastSpinsText: "Počkajte na načítanie hry",
+  toastSpinsText: "Počkajte na načítanie hry.",
   continuePlayingBtn: "Pokračovať v hre",
   claimTitle: "VYZDVIHNI SI <span class=\"gold-text\">{spins} FREE SPINOV!</span>",
   verifyTitle: "TAKMER HOTOVO! OVER <span class=\"gold-text\">SVOJU VÝHRU</span>",

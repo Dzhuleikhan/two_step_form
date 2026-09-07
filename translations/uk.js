@@ -1,7 +1,7 @@
 export default {
   gameUnavailable: "Гра недоступна",
   toastSpinsTitle: "Нараховано {spins} фриспінів",
-  toastSpinsText: "Зачекайте, поки гра завантажиться",
+  toastSpinsText: "Зачекайте, поки гра завантажиться.",
   continuePlayingBtn: "Продовжити гру",
   claimTitle: "ЗАБЕРІТЬ <span class=\"gold-text\">{spins} ФРІСПІНІВ!</span>",
   verifyTitle: "МАЙЖЕ ГОТОВО! ПІДТВЕРДІТЬ <span class=\"gold-text\">ВАШ ВИГРАШ</span>",

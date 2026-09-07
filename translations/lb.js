@@ -1,7 +1,7 @@
 export default {
   gameUnavailable: "D'Spill ass net verfügbar",
   toastSpinsTitle: "{spins} Gratis-Spins zougedeelt",
-  toastSpinsText: "Waart w.e.g. bis d'Spill gelueden ass",
+  toastSpinsText: "Waart w.e.g. bis d'Spill gelueden ass.",
   continuePlayingBtn: "Weiderspillen",
   claimTitle: "HUEL DENG <span class=\"gold-text\">{spins} GRATIS SPINS!</span>",
   verifyTitle: "BAL FÄERDEG! BESTÄTEG <span class=\"gold-text\">DÄI GEWËNN</span>",

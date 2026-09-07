@@ -1,7 +1,7 @@
 export default {
   gameUnavailable: "Žaidimas nepasiekiamas",
   toastSpinsTitle: "Suteikta {spins} nemokamų sukimų",
-  toastSpinsText: "Palaukite, kol žaidimas įsikels",
+  toastSpinsText: "Palaukite, kol žaidimas įsikels.",
   continuePlayingBtn: "Tęsti žaidimą",
   claimTitle: "ATSIIMK SAVO <span class=\"gold-text\">{spins} NEMOKAMUS SUKIMUS!</span>",
   verifyTitle: "BEVEIK BAIGTA! PATVIRTINK <span class=\"gold-text\">SAVO LAIMĖJIMĄ</span>",

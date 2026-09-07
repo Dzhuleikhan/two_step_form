@@ -91,7 +91,27 @@ export const showToast = ({ title, text, type = "success", retranslate }) => {
   toast.style.setProperty("--gb-toast-life", `${AUTO_CLOSE_MS}ms`);
 
   getContainer().append(toast);
-  closeTimer = setTimeout(close, AUTO_CLOSE_MS);
+
+  // pauseOnHover, как в продукте: пока курсор на тосте, отсчёт стоит. Полосу
+  // тормозит CSS (animation-play-state), а таймер закрытия — вручную, поэтому
+  // держим остаток времени сами.
+  let remaining = AUTO_CLOSE_MS;
+  let startedAt = Date.now();
+
+  const startTimer = () => {
+    startedAt = Date.now();
+    closeTimer = setTimeout(close, remaining);
+  };
+
+  const pauseTimer = () => {
+    clearTimeout(closeTimer);
+    remaining = Math.max(0, remaining - (Date.now() - startedAt));
+  };
+
+  toast.addEventListener("mouseenter", pauseTimer);
+  toast.addEventListener("mouseleave", startTimer);
+
+  startTimer();
 
   return close;
 };

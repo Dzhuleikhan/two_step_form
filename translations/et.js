@@ -1,7 +1,7 @@
 export default {
   gameUnavailable: "Mäng pole saadaval",
   toastSpinsTitle: "Antud {spins} tasuta keerutust",
-  toastSpinsText: "Oodake, kuni mäng laadib",
+  toastSpinsText: "Oodake, kuni mäng laadib.",
   continuePlayingBtn: "Jätka mängimist",
   claimTitle: "LUNASTA OMA <span class=\"gold-text\">{spins} TASUTA KEERUTUST!</span>",
   verifyTitle: "PEAAEGU VALMIS! KINNITA <span class=\"gold-text\">OMA VÕIT</span>",

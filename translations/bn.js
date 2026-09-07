@@ -1,7 +1,7 @@
 export default {
   gameUnavailable: "গেমটি উপলব্ধ নয়",
   toastSpinsTitle: "{spins} টি ফ্রি স্পিন দেওয়া হয়েছে",
-  toastSpinsText: "গেমটি লোড হওয়ার জন্য অপেক্ষা করুন",
+  toastSpinsText: "গেমটি লোড হওয়ার জন্য অপেক্ষা করুন।",
   continuePlayingBtn: "খেলা চালিয়ে যান",
   claimTitle: "আপনার <span class=\"gold-text\">{spins} ফ্রি স্পিন</span> দাবি করুন!",
   verifyTitle: "প্রায় শেষ! <span class=\"gold-text\">আপনার জয়</span> যাচাই করুন",

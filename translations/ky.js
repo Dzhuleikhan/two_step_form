@@ -1,7 +1,7 @@
 export default {
   gameUnavailable: "Оюн жеткиликсиз",
   toastSpinsTitle: "{spins} акысыз айлануу берилди",
-  toastSpinsText: "Оюндун жүктөлүшүн күтүңүз",
+  toastSpinsText: "Оюндун жүктөлүшүн күтүңүз.",
   continuePlayingBtn: "Ойнотууну Улантуу",
   claimTitle: "<span class=\"gold-text\">{spins} АКЫСЫЗ АЙЛАНУУНУ</span> АЛЫҢЫЗ!",
   verifyTitle: "АЗ КАЛДЫ! <span class=\"gold-text\">УТУШУҢУЗДУ</span> ЫРАСТАҢЫЗ",

@@ -1,7 +1,7 @@
 export default {
   gameUnavailable: "Spelet är inte tillgängligt",
   toastSpinsTitle: "{spins} free spins tilldelade",
-  toastSpinsText: "Vänta tills spelet laddas",
+  toastSpinsText: "Vänta tills spelet laddas.",
   continuePlayingBtn: "Fortsätt spela",
   claimTitle: "HÄMTA DINA <span class=\"gold-text\">{spins} GRATISSNURR!</span>",
   verifyTitle: "NÄSTAN KLART! BEKRÄFTA <span class=\"gold-text\">DIN VINST</span>",

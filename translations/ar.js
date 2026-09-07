@@ -1,7 +1,7 @@
 export default {
   gameUnavailable: "اللعبة غير متاحة",
   toastSpinsTitle: "تم منح {spins} لفة مجانية",
-  toastSpinsText: "يرجى انتظار تحميل اللعبة",
+  toastSpinsText: "يرجى انتظار تحميل اللعبة.",
   continuePlayingBtn: "متابعة اللعب",
   claimTitle: "احصل على <span class=\"gold-text\">{spins} لفة مجانية!</span>",
   verifyTitle: "أوشكت على الانتهاء! أكّد <span class=\"gold-text\">مكسبك</span>",

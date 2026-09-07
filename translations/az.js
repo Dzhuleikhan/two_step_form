@@ -1,7 +1,7 @@
 export default {
   gameUnavailable: "Oyun əlçatan deyil",
   toastSpinsTitle: "{spins} pulsuz fırlanma verildi",
-  toastSpinsText: "Oyunun yüklənməsini gözləyin",
+  toastSpinsText: "Oyunun yüklənməsini gözləyin.",
   continuePlayingBtn: "Oynamağa Davam Et",
   claimTitle: "<span class=\"gold-text\">{spins} PULSUZ FIRLANMANI</span> AL!",
   verifyTitle: "AZ QALDI! <span class=\"gold-text\">UDUŞUNU</span> TƏSDİQLƏ",

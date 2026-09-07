@@ -1,7 +1,7 @@
 export default {
   gameUnavailable: "O jogo está indisponível",
   toastSpinsTitle: "{spins} rodadas grátis creditadas",
-  toastSpinsText: "Aguarde o carregamento do jogo",
+  toastSpinsText: "Aguarde o carregamento do jogo.",
   continuePlayingBtn: "Continuar a jogar",
   claimTitle: "RESGATE AS SUAS <span class=\"gold-text\">{spins} RODADAS GRÁTIS!</span>",
   verifyTitle: "QUASE LÁ! VERIFIQUE <span class=\"gold-text\">O SEU GANHO</span>",

@@ -1,7 +1,7 @@
 export default {
   gameUnavailable: "ጨዋታው አይገኝም",
   toastSpinsTitle: "{spins} ነጻ ዙሮች ተሰጥተዋል",
-  toastSpinsText: "ጨዋታው እስኪጫን ይጠብቁ",
+  toastSpinsText: "ጨዋታው እስኪጫን ይጠብቁ።",
   continuePlayingBtn: "መጫወት ቀጥል",
   claimTitle: "<span class=\"gold-text\">{spins} ነፃ ስፒኖችህን</span> ውሰድ!",
   verifyTitle: "ልትጨርስ ተቃርበሃል! <span class=\"gold-text\">ትርፍህን</span> አረጋግጥ",

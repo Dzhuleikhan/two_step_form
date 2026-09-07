@@ -410,7 +410,12 @@ function revealForm() {
 
   logEvent("gate:reveal", { autoplayDetected, likelyAutoplay });
 
-  // закрыть её нельзя — крутить дальше уже не дадим
+  // Закрыть её нельзя — крутить дальше уже не дадим. Крестик мог остаться
+  // видимым с прошлого открытия: navModal показывает его, когда игрок сам
+  // открыл форму по ссылке в меню и выигрыша ещё не было. Гейт снимает его
+  // всегда, иначе игрок уходит с деньгами на балансе.
+  document.querySelector(".two-step-close-btn")?.classList.remove("is-visible");
+
   overlay.classList.add("is-open");
   // выгружаем под блюром — смена картинки за формой не бросается в глаза
   stopGame();

@@ -1,7 +1,7 @@
 export default {
   gameUnavailable: "Igra ni na voljo",
   toastSpinsTitle: "Dodeljenih {spins} brezplačnih vrtljajev",
-  toastSpinsText: "Počakajte, da se igra naloži",
+  toastSpinsText: "Počakajte, da se igra naloži.",
   continuePlayingBtn: "Nadaljuj z igro",
   claimTitle: "PREVZEMI <span class=\"gold-text\">{spins} BREZPLAČNIH VRTLJAJEV!</span>",
   verifyTitle: "SKORAJ TAM! POTRDI <span class=\"gold-text\">SVOJ DOBITEK</span>",

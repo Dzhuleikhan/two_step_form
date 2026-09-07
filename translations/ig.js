@@ -1,7 +1,7 @@
 export default {
   gameUnavailable: "Egwuregwu adịghị",
   toastSpinsTitle: "Enyere {spins} ntụgharị n'efu",
-  toastSpinsText: "Biko chere ka egwuregwu ahụ bulite",
+  toastSpinsText: "Biko chere ka egwuregwu ahụ bulite.",
   continuePlayingBtn: "Gaa n'ihu Igwu Egwu",
   claimTitle: "NARA <span class=\"gold-text\">{spins} SPIN N'EFU GỊ!</span>",
   verifyTitle: "Ọ FỌDỤRỤ NTAKỊRỊ! KWADO <span class=\"gold-text\">MMERI GỊ</span>",

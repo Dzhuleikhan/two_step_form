@@ -1035,7 +1035,12 @@ if (twoStepFormFourthStep) {
   });
   // Adding countries to dropdown
 
+  // последний поисковый запрос: нужен, чтобы перерисовать список после смены
+  // языка — заглушка «страна не найдена» переводится вместе со страницей
+  let countryFilter = "";
+
   const renderCountries = (filter = "") => {
+    countryFilter = filter;
     twoStepCountryList.innerHTML = ""; // Clear existing list
 
     // Filter countries based on the search input
@@ -1074,11 +1079,16 @@ if (twoStepFormFourthStep) {
     // If no countries match the search, show a message
     if (filteredCountries.length === 0) {
       const noResult = document.createElement("li");
-      noResult.className = "text-gray-500 py-2";
-      noResult.textContent = "No countries found.";
+      noResult.className = "two-step-country-empty";
+      // t() объявлена ниже по файлу и на первом рендере ещё недоступна,
+      // поэтому берём словарь напрямую
+      const lang = document.documentElement.getAttribute("lang") || "en";
+      noResult.textContent = translate(lang, "countryNotFound");
       twoStepCountryList.appendChild(noResult);
     }
   };
+
+  window.addEventListener("lang:changed", () => renderCountries(countryFilter));
 
   // Event listener for the search input
   twoStepCountrySearchInput.addEventListener("input", (e) => {
@@ -1474,6 +1484,8 @@ renderHeading(initialStep);
 // Курсор ставим в первое поле открытого шага, иначе игрок сначала целится в
 // инпут и только потом печатает. Поиск стран у intl-tel-input исключаем: он
 // стоит раньше телефона в DOM, но это не поле формы.
+// На iOS Safari это не сработает: там focus() поднимает клавиатуру только
+// внутри пользовательского жеста, а форму открывает гейт — жеста нет.
 const focusFirstField = (step) => {
   const stepEl = document.querySelector(`.two-step-form-step-${step}`);
 

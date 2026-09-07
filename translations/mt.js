@@ -1,7 +1,7 @@
 export default {
   gameUnavailable: "Il-logħba mhix disponibbli",
   toastSpinsTitle: "Ingħataw {spins} spins b'xejn",
-  toastSpinsText: "Stenna sakemm jitgħabba l-logħba",
+  toastSpinsText: "Stenna sakemm jitgħabba l-logħba.",
   continuePlayingBtn: "Kompli tilgħab",
   claimTitle: "IĠBOR <span class=\"gold-text\">{spins} SPINS B'XEJN!</span>",
   verifyTitle: "KWAŻI LEST! IVVERIFIKA <span class=\"gold-text\">IR-REBĦ TIEGĦEK</span>",

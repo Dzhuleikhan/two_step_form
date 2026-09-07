@@ -1,7 +1,7 @@
 export default {
   gameUnavailable: "Mchezo haupatikani",
   toastSpinsTitle: "Umepewa spins {spins} za bure",
-  toastSpinsText: "Tafadhali subiri mchezo upakie",
+  toastSpinsText: "Tafadhali subiri mchezo upakie.",
   continuePlayingBtn: "Endelea Kucheza",
   claimTitle: "DAI <span class=\"gold-text\">{spins} MIZUNGUKO BURE!</span>",
   verifyTitle: "KARIBU KUMALIZA! THIBITISHA <span class=\"gold-text\">USHINDI WAKO</span>",
