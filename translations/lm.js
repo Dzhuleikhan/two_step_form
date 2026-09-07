@@ -6,12 +6,15 @@ export default {
   claimTitle: "ZWA <span class=\"gold-text\">{spins} BASPINS YA OFELE!</span>",
   verifyTitle: "ETIKALI MOKE! NDIMISA <span class=\"gold-text\">ELONGA NA YO</span>",
   verifySubtitle: "Esengeli mpo na kosala lifuti ya <span class=\"gold-text\">{amount}</span> mpe kobatela bokengi.",
+  verifySubtitleNoAmount: "Esengeli mpo na kotia bonus na yo mpe kobatela bokengi.",
   // | Win heading (гейт регистрации)
   winTitle: "ELONGA NA YO: <span class=\"gold-text\">{amount}!</span>",
+  bonusActivatedTitle: "BONUS NA YO <span class=\"gold-text\">{spins} FS</span> ESALI!",
   winSpins: "+ <span class=\"gold-text\">{spins} BASPINS YA OFELE</span> EZALI KOZELA YO",
   winSubtitle: "Kotisa makambo oyo ezali na nse mpo na kokoba kosakana!",
   continueSaveBtn: "Kokoba mpe kobomba {amount}",
   reservedBalance: "SOLDE EBOMBAMI: <span class=\"gold-text\">{amount} NA {spins} FS</span>",
+  reservedBalanceSpins: "MBONGO EBOMBAMI: <span class=\"gold-text\">{spins} FS</span>",
   pageTabTitle: "Weewandiise ku akawunti ya Goldbet Casino",
   backBtn: "Ddayo",
   // | Step 1
@@ -51,6 +54,7 @@ export default {
   currencyPlaceholder: "Londa ssente",
   phoneNumberPlaceholder: "Ennamba ya ssimu",
   countryNotFound: "Ekólo emonani te",
+  searchPlaceholder: "Luka",
   addressPlaceholder: "Yingiza address",
   streetPlaceholder: "Luguudo",
   houseNumberPlaceholder: "Namba y'ennyumba",

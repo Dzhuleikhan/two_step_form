@@ -6,12 +6,15 @@ export default {
   claimTitle: "NARA <span class=\"gold-text\">{spins} SPIN N'EFU GỊ!</span>",
   verifyTitle: "Ọ FỌDỤRỤ NTAKỊRỊ! KWADO <span class=\"gold-text\">MMERI GỊ</span>",
   verifySubtitle: "Achọrọ ya iji hazie ịkwụ ụgwọ <span class=\"gold-text\">{amount}</span> ma hụ na nchekwa dị.",
+  verifySubtitleNoAmount: "Achọrọ ya iji mee ka bonus gị rụọ ọrụ ma hụ na nchekwa.",
   // | Win heading (гейт регистрации)
   winTitle: "MMERI GỊ: <span class=\"gold-text\">{amount}!</span>",
+  bonusActivatedTitle: "EMEELA BONUS GỊ NKE <span class=\"gold-text\">{spins} FS</span>!",
   winSpins: "+ <span class=\"gold-text\">{spins} SPIN N'EFU</span> NA-ECHERE GỊ",
   winSubtitle: "Dejupụta ubi ndị dị n'okpuru iji gaa n'ihu igwu egwu!",
   continueSaveBtn: "Gaa n'ihu ma chekwaa {amount}",
   reservedBalance: "NGUZOZI ECHEKWARA: <span class=\"gold-text\">{amount} NA {spins} FS</span>",
+  reservedBalanceSpins: "NGUZOSIKE ECHEKWARA: <span class=\"gold-text\">{spins} FS</span>",
   pageTabTitle: "Debanye aha maka Akaụntụ Goldbet Casino",
   backBtn: "Laghachi",
   // | Step 1
@@ -51,6 +54,7 @@ export default {
   currencyPlaceholder: "Họrọ Ego",
   phoneNumberPlaceholder: "Nọmba Fọn",
   countryNotFound: "Ahụghị obodo ahụ",
+  searchPlaceholder: "Chọọ",
   addressPlaceholder: "Tinye Adreesị",
   streetPlaceholder: "Okporo ụzọ",
   houseNumberPlaceholder: "Nọmba ụlọ",

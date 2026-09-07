@@ -6,12 +6,15 @@ export default {
   claimTitle: "GYE <span class=\"gold-text\">{spins} SPINS A ƐYƐ KWA!</span>",
   verifyTitle: "ƐKA KAKRA! HWƐ <span class=\"gold-text\">WO NKONIMDI</span> NO YIYE",
   verifySubtitle: "Ɛho hia sɛ wɔyɛ <span class=\"gold-text\">{amount}</span> tua no ho adwuma na wɔbɔ wo ho ban.",
+  verifySubtitleNoAmount: "Ɛho hia sɛ wode bɛsɔre wo bonus na wɔama ahobammɔ.",
   // | Win heading (гейт регистрации)
   winTitle: "WO NKONIMDI: <span class=\"gold-text\">{amount}!</span>",
+  bonusActivatedTitle: "WO BONUS <span class=\"gold-text\">{spins} FS</span> ASƆRE!",
   winSpins: "+ <span class=\"gold-text\">{spins} SPINS A ƐYƐ KWA</span> RETWƐN WO",
   winSubtitle: "Hyɛ mfikyifa a ɛwɔ ase hɔ ma na toa agodie so!",
   continueSaveBtn: "Kɔ so na sie {amount}",
   reservedBalance: "SIKA A WƆDE ASIE: <span class=\"gold-text\">{amount} NE {spins} FS</span>",
+  reservedBalanceSpins: "SIKA A WƆDE ASIE: <span class=\"gold-text\">{spins} FS</span>",
   pageTabTitle: "Kyerɛw Wo Din Ma Goldbet Casino Akontaabu",
   backBtn: "San kɔ",
   // | Step 1
@@ -51,6 +54,7 @@ export default {
   currencyPlaceholder: "Paw Sika",
   phoneNumberPlaceholder: "Telefon Nɔma",
   countryNotFound: "Wɔanhu ɔman no",
+  searchPlaceholder: "Hwehwɛ",
   addressPlaceholder: "Hyɛ Address",
   streetPlaceholder: "Abɔntene",
   houseNumberPlaceholder: "Efie nɔma",

@@ -6,12 +6,15 @@ export default {
   claimTitle: "IĠBOR <span class=\"gold-text\">{spins} SPINS B'XEJN!</span>",
   verifyTitle: "KWAŻI LEST! IVVERIFIKA <span class=\"gold-text\">IR-REBĦ TIEGĦEK</span>",
   verifySubtitle: "Meħtieġ biex jiġi pproċessat il-ħlas ta' <span class=\"gold-text\">{amount}</span> u tiġi żgurata s-sigurtà.",
+  verifySubtitleNoAmount: "Meħtieġ biex tattiva l-bonus tiegħek u tiżgura s-sigurtà.",
   // | Win heading (гейт регистрации)
   winTitle: "IR-REBĦ TIEGĦEK: <span class=\"gold-text\">{amount}!</span>",
+  bonusActivatedTitle: "IL-BONUS TIEGĦEK <span class=\"gold-text\">{spins} FS</span> HUWA ATTIVAT!",
   winSpins: "+ <span class=\"gold-text\">{spins} SPINS B'XEJN</span> JISTENNEW",
   winSubtitle: "Imla l-oqsma hawn taħt biex tkompli tilgħab!",
   continueSaveBtn: "Kompli u żomm {amount}",
   reservedBalance: "BILANĊ IRRIŻERVAT: <span class=\"gold-text\">{amount} U {spins} FS</span>",
+  reservedBalanceSpins: "BILANĊ RIŻERVAT: <span class=\"gold-text\">{spins} FS</span>",
   pageTabTitle: "Irreġistra għal Kont tal-Casino Goldbet",
   backBtn: "Lura",
   // | Step 1
@@ -51,6 +54,7 @@ export default {
   currencyPlaceholder: "Agħżel il-Munita",
   phoneNumberPlaceholder: "Numru tat-Telefon",
   countryNotFound: "Il-pajjiż ma nstabx",
+  searchPlaceholder: "Fittex",
   addressPlaceholder: "Daħħal l-Indirizz",
   streetPlaceholder: "Triq",
   houseNumberPlaceholder: "Nru tad-dar / bini",

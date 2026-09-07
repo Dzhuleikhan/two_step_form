@@ -394,7 +394,9 @@ const stopGame = () => {
 let formShown = false;
 let gateTimeoutId = null;
 
-function revealForm() {
+// expired — форма открыта не гейтом, а после экрана истёкшей сессии: заголовок
+// там свой, потому что снапшота с выигрышем в этом сценарии нет вовсе
+function revealForm({ expired = false } = {}) {
   if (formShown) return;
 
   const overlay = document.querySelector(".two-step-overlay");
@@ -420,7 +422,7 @@ function revealForm() {
   // выгружаем под блюром — смена картинки за формой не бросается в глаза
   stopGame();
   // форма рисует заголовок по актуальному снапшоту
-  window.dispatchEvent(new CustomEvent("c2:gate-opened"));
+  window.dispatchEvent(new CustomEvent("c2:gate-opened", { detail: { expired } }));
 }
 
 const openRegisterModal = () => {
@@ -760,12 +762,76 @@ function applySession(session) {
 const urlClickId = getUrlParameter("cid");
 const urlGameId = getUrlParameter("gameId");
 
-// игры нет ни при пустых параметрах, ни при упавшем /session — заглушка одна
+// Экран загрузки держим минимум один проход полосы, дальше вместо живого фрейма
+// идёт запись игры. Файл выбираем по ширине: у мобильного своя раскладка.
+const EXPIRED_SCREEN_MS = 2400;
+
+// на медленной сети запись может не успеть: столько ждём её сверх полосы,
+// дальше показываем как есть — иначе экран загрузки завис бы навсегда
+const VIDEO_READY_TIMEOUT_MS = 12000;
+
+// сколько запись играет до формы: игрок должен успеть увидеть игру
+const VIDEO_GATE_MS = 3500;
+
+const wait = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+
+const playGameVideo = async () => {
+  const video = document.querySelector(".game-video");
+  const expired = document.querySelector(".game-expired");
+
+  if (!video) return;
+
+  // preload="none" в разметке: файл весит мегабайты и не нужен никому, кроме
+  // этого сценария. Здесь он уже нужен — разрешаем грузить.
+  video.preload = "auto";
+  video.src = window.matchMedia("(max-width: 767px)").matches
+    ? "/videos/screen-mobile.mp4"
+    : "/videos/screen-desktop.mp4";
+
+  const ready = new Promise((resolve) => {
+    // HAVE_FUTURE_DATA и выше — можно играть без немедленной паузы на буфер
+    if (video.readyState >= 3) return resolve();
+
+    video.addEventListener("canplaythrough", resolve, { once: true });
+    // битый файл или обрыв: не держим игрока на экране загрузки
+    video.addEventListener("error", resolve, { once: true });
+  });
+
+  // Полоса и загрузка идут параллельно: уходим с экрана, когда закончилось
+  // и то и другое. Раньше таймер был фиксированным, и на медленной сети
+  // полоса добегала до конца, а вместо записи была чернота.
+  await Promise.all([
+    wait(EXPIRED_SCREEN_MS),
+    Promise.race([ready, wait(VIDEO_READY_TIMEOUT_MS)]),
+  ]);
+
+  expired?.classList.remove("is-visible");
+  video.classList.add("is-visible");
+  // autoplay разрешён только для muted — атрибут стоит в разметке
+  video.play().catch(() => {});
+
+  // Форма поверх записи — та же, что открывает гейт: без крестика, закрыть
+  // её нельзя. revealForm сам снимает крестик и рисует заголовок.
+  setTimeout(() => revealForm({ expired: true }), VIDEO_GATE_MS);
+};
+
+// Игры нет ни при пустых параметрах, ни при упавшем /session. Отдельный случай —
+// 403: бэк отвечает { reason } на истёкшую или уже переданную в Goldbet сессию.
+// Раньше на этом месте игрок видел «403 Access Denied» самого зеркала внутри
+// фрейма — теперь до подстановки url дело не доходит, показываем свой экран.
 const showGameUnavailable = (error) => {
-  logEvent("game:unavailable", { status: error?.status ?? null });
+  const status = error?.status ?? null;
+  const isExpired = status === 403;
+
+  logEvent("game:unavailable", { status, reason: error?.data?.reason ?? null });
 
   document.querySelector(".game-frame")?.remove();
-  document.querySelector(".game-empty")?.classList.add("is-visible");
+
+  // истёкшая сессия — свой экран, остальные случаи — обычная заглушка
+  const screen = isExpired ? ".game-expired" : ".game-empty";
+  document.querySelector(screen)?.classList.add("is-visible");
+
+  if (isExpired) playGameVideo();
 
   // прелоадер ждёт load фрейма, которого уже не будет — снимаем его руками
   window.dispatchEvent(new Event("game:settled"));

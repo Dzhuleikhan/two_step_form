@@ -6,12 +6,15 @@ export default {
   claimTitle: "KARBI <span class=\"gold-text\">{spins} SPINS KYAUTA!</span>",
   verifyTitle: "KUSAN GAMAWA! TABBATAR DA <span class=\"gold-text\">NASARARKA</span>",
   verifySubtitle: "Ana buƙata don sarrafa biyan <span class=\"gold-text\">{amount}</span> da tabbatar da tsaro.",
+  verifySubtitleNoAmount: "Ana buƙata don kunna bonus ɗinka da tabbatar da tsaro.",
   // | Win heading (гейт регистрации)
   winTitle: "NASARARKA: <span class=\"gold-text\">{amount}!</span>",
+  bonusActivatedTitle: "AN KUNNA BONUS ɗINKA NA <span class=\"gold-text\">{spins} FS</span>!",
   winSpins: "+ <span class=\"gold-text\">{spins} SPINS KYAUTA</span> SUNA JIRANKA",
   winSubtitle: "Cika filayen da ke ƙasa don ci gaba da wasa!",
   continueSaveBtn: "Ci gaba ka ajiye {amount}",
   reservedBalance: "MA'AUNIN DA AKA AJIYE: <span class=\"gold-text\">{amount} DA {spins} FS</span>",
+  reservedBalanceSpins: "MA'AJIYAR DA AKA AJIYE: <span class=\"gold-text\">{spins} FS</span>",
   pageTabTitle: "Yi Rajista don Asusun Goldbet Casino",
   backBtn: "Baya",
   // | Step 1
@@ -51,6 +54,7 @@ export default {
   currencyPlaceholder: "Zaɓi Kudi",
   phoneNumberPlaceholder: "Lambar Waya",
   countryNotFound: "Ba a sami ƙasar ba",
+  searchPlaceholder: "Nema",
   addressPlaceholder: "Shigar da Adireshi",
   streetPlaceholder: "Titi",
   houseNumberPlaceholder: "Lambar gida / gini",

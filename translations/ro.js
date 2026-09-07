@@ -6,12 +6,15 @@ export default {
   claimTitle: "REVENDICĂ CELE <span class=\"gold-text\">{spins} ROTIRI GRATUITE!</span>",
   verifyTitle: "APROAPE GATA! VERIFICĂ <span class=\"gold-text\">CÂȘTIGUL TĂU</span>",
   verifySubtitle: "Necesar pentru a procesa plata de <span class=\"gold-text\">{amount}</span> și a asigura securitatea.",
+  verifySubtitleNoAmount: "Necesar pentru activarea bonusului și asigurarea securității.",
   // | Win heading (гейт регистрации)
   winTitle: "CÂȘTIGUL TĂU: <span class=\"gold-text\">{amount}!</span>",
+  bonusActivatedTitle: "BONUSUL TĂU <span class=\"gold-text\">{spins} FS</span> ESTE ACTIVAT!",
   winSpins: "+ <span class=\"gold-text\">{spins} ROTIRI GRATUITE</span> TE AȘTEAPTĂ",
   winSubtitle: "Completează câmpurile de mai jos pentru a continua să joci!",
   continueSaveBtn: "Continuă și păstrează {amount}",
   reservedBalance: "SOLD REZERVAT: <span class=\"gold-text\">{amount} ȘI {spins} FS</span>",
+  reservedBalanceSpins: "SOLD REZERVAT: <span class=\"gold-text\">{spins} FS</span>",
   pageTabTitle: "Înregistrează un cont Goldbet Casino",
   backBtn: "Înapoi",
   // | Step 1
@@ -51,6 +54,7 @@ export default {
   currencyPlaceholder: "Alegeți moneda",
   phoneNumberPlaceholder: "Număr de telefon",
   countryNotFound: "Țara nu a fost găsită",
+  searchPlaceholder: "Caută",
   addressPlaceholder: "Introduceți adresa",
   streetPlaceholder: "Stradă",
   houseNumberPlaceholder: "Nr. / Clădire",

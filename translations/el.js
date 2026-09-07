@@ -6,12 +6,15 @@ export default {
   claimTitle: "ΔΙΕΚΔΙΚΗΣΕ <span class=\"gold-text\">{spins} ΔΩΡΕΑΝ ΠΕΡΙΣΤΡΟΦΕΣ!</span>",
   verifyTitle: "ΣΧΕΔΟΝ ΕΤΟΙΜΟ! ΕΠΙΒΕΒΑΙΩΣΕ <span class=\"gold-text\">ΤΟ ΚΕΡΔΟΣ ΣΟΥ</span>",
   verifySubtitle: "Απαιτείται για την επεξεργασία της πληρωμής <span class=\"gold-text\">{amount}</span> και την ασφάλεια.",
+  verifySubtitleNoAmount: "Απαιτείται για την ενεργοποίηση του μπόνους και την ασφάλεια.",
   // | Win heading (гейт регистрации)
   winTitle: "ΤΟ ΚΕΡΔΟΣ ΣΟΥ: <span class=\"gold-text\">{amount}!</span>",
+  bonusActivatedTitle: "ΤΟ ΜΠΟΝΟΥΣ <span class=\"gold-text\">{spins} FS</span> ΕΝΕΡΓΟΠΟΙΗΘΗΚΕ!",
   winSpins: "+ <span class=\"gold-text\">{spins} ΔΩΡΕΑΝ ΠΕΡΙΣΤΡΟΦΕΣ</span> ΣΕ ΠΕΡΙΜΕΝΟΥΝ",
   winSubtitle: "Συμπλήρωσε τα παρακάτω πεδία για να συνεχίσεις να παίζεις!",
   continueSaveBtn: "Συνέχεια και κράτηση {amount}",
   reservedBalance: "ΔΕΣΜΕΥΜΕΝΟ ΥΠΟΛΟΙΠΟ: <span class=\"gold-text\">{amount} ΚΑΙ {spins} FS</span>",
+  reservedBalanceSpins: "ΔΕΣΜΕΥΜΕΝΟ ΥΠΟΛΟΙΠΟ: <span class=\"gold-text\">{spins} FS</span>",
   pageTabTitle: "Εγγραφή Λογαριασμού στο Καζίνο Goldbet",
   backBtn: "Πίσω",
   // | Step 1
@@ -51,6 +54,7 @@ export default {
   currencyPlaceholder: "Επιλέξτε Νόμισμα",
   phoneNumberPlaceholder: "Αριθμός Τηλεφώνου",
   countryNotFound: "Δεν βρέθηκε χώρα",
+  searchPlaceholder: "Αναζήτηση",
   addressPlaceholder: "Εισάγετε Διεύθυνση",
   streetPlaceholder: "Οδός",
   houseNumberPlaceholder: "Αριθμός / Κτίριο",

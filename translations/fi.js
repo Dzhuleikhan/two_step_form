@@ -6,12 +6,15 @@ export default {
   claimTitle: "LUNASTA <span class=\"gold-text\">{spins} ILMAISKIERROSTA!</span>",
   verifyTitle: "MELKEIN VALMIS! VAHVISTA <span class=\"gold-text\">VOITTOSI</span>",
   verifySubtitle: "Tarvitaan <span class=\"gold-text\">{amount}</span> maksun käsittelyyn ja turvallisuuden varmistamiseen.",
+  verifySubtitleNoAmount: "Vaaditaan bonuksen aktivoimiseksi ja turvallisuuden takaamiseksi.",
   // | Win heading (гейт регистрации)
   winTitle: "SINUN VOITTOSI: <span class=\"gold-text\">{amount}!</span>",
+  bonusActivatedTitle: "BONUKSESI <span class=\"gold-text\">{spins} FS</span> ON AKTIVOITU!",
   winSpins: "+ <span class=\"gold-text\">{spins} ILMAISKIERROSTA</span> ODOTTAA",
   winSubtitle: "Täytä alla olevat kentät jatkaaksesi pelaamista!",
   continueSaveBtn: "Jatka ja säilytä {amount}",
   reservedBalance: "VARATTU SALDO: <span class=\"gold-text\">{amount} JA {spins} FS</span>",
+  reservedBalanceSpins: "VARATTU SALDO: <span class=\"gold-text\">{spins} FS</span>",
   pageTabTitle: "Rekisteröidy Goldbet Casinon tilille",
   backBtn: "Takaisin",
   // | Step 1
@@ -51,6 +54,7 @@ export default {
   currencyPlaceholder: "Valitse valuutta",
   phoneNumberPlaceholder: "Puhelinnumero",
   countryNotFound: "Maata ei löytynyt",
+  searchPlaceholder: "Haku",
   addressPlaceholder: "Syötä osoite",
   streetPlaceholder: "Katu",
   houseNumberPlaceholder: "Talon nro / rakennus",

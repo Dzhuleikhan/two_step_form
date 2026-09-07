@@ -6,12 +6,15 @@ export default {
   claimTitle: "FAIGH DO <span class=\"gold-text\">{spins} SPIN SAOR IN AISCE!</span>",
   verifyTitle: "BEAGNACH ANN! DEIMHNIGH <span class=\"gold-text\">DO BHUA</span>",
   verifySubtitle: "Riachtanach chun íocaíocht <span class=\"gold-text\">{amount}</span> a phróiseáil agus slándáil a chinntiú.",
+  verifySubtitleNoAmount: "Riachtanach chun do bhónas a ghníomhachtú agus slándáil a chinntiú.",
   // | Win heading (гейт регистрации)
   winTitle: "DO BHUA: <span class=\"gold-text\">{amount}!</span>",
+  bonusActivatedTitle: "TÁ DO BHÓNAS <span class=\"gold-text\">{spins} FS</span> GNÍOMHACHTAITHE!",
   winSpins: "+ <span class=\"gold-text\">{spins} SCAOILEADH SAOR IN AISCE</span> AG FANACHT",
   winSubtitle: "Líon isteach na réimsí thíos chun leanúint ag imirt!",
   continueSaveBtn: "Lean ar aghaidh agus coinnigh {amount}",
   reservedBalance: "IARMHÉID CURTHA IN ÁIRITHE: <span class=\"gold-text\">{amount} AGUS {spins} FS</span>",
+  reservedBalanceSpins: "IARMHÉID FORCHOIMEÁDTA: <span class=\"gold-text\">{spins} FS</span>",
   pageTabTitle: "Cláraigh le haghaidh Cuntas Casino Goldbet",
   backBtn: "Ar Ais",
   // | Step 1
@@ -51,6 +54,7 @@ export default {
   currencyPlaceholder: "Roghnaigh Airgeadra",
   phoneNumberPlaceholder: "Uimhir Theileafóin",
   countryNotFound: "Níor aimsíodh an tír",
+  searchPlaceholder: "Cuardaigh",
   addressPlaceholder: "Cuir isteach Seoladh",
   streetPlaceholder: "Sráid",
   houseNumberPlaceholder: "Uimhir tí / foirgneamh",

@@ -6,12 +6,15 @@ export default {
   claimTitle: "SAŅEM SAVUS <span class=\"gold-text\">{spins} BEZMAKSAS GRIEZIENUS!</span>",
   verifyTitle: "GANDRĪZ GATAVS! APSTIPRINI <span class=\"gold-text\">SAVU LAIMESTU</span>",
   verifySubtitle: "Nepieciešams, lai apstrādātu <span class=\"gold-text\">{amount}</span> izmaksu un nodrošinātu drošību.",
+  verifySubtitleNoAmount: "Nepieciešams, lai aktivizētu bonusu un nodrošinātu drošību.",
   // | Win heading (гейт регистрации)
   winTitle: "TAVS LAIMESTS: <span class=\"gold-text\">{amount}!</span>",
+  bonusActivatedTitle: "JŪSU BONUSS <span class=\"gold-text\">{spins} FS</span> IR AKTIVIZĒTS!",
   winSpins: "+ <span class=\"gold-text\">{spins} BEZMAKSAS GRIEZIENI</span> GAIDA",
   winSubtitle: "Aizpildi zemāk esošos laukus, lai turpinātu spēlēt!",
   continueSaveBtn: "Turpināt un saglabāt {amount}",
   reservedBalance: "REZERVĒTAIS ATLIKUMS: <span class=\"gold-text\">{amount} UN {spins} FS</span>",
+  reservedBalanceSpins: "REZERVĒTAIS ATLIKUMS: <span class=\"gold-text\">{spins} FS</span>",
   pageTabTitle: "Izveidot Goldbet Casino Kontu",
   backBtn: "Atpakaļ",
   // | Step 1
@@ -51,6 +54,7 @@ export default {
   currencyPlaceholder: "Izvēlies Valūtu",
   phoneNumberPlaceholder: "Telefona Numurs",
   countryNotFound: "Valsts nav atrasta",
+  searchPlaceholder: "Meklēt",
   addressPlaceholder: "Ievadi Adresi",
   streetPlaceholder: "Iela",
   houseNumberPlaceholder: "Mājas / ēkas nr.",

@@ -65,6 +65,18 @@ const geoIpLookup = (success, failure) => {
   }
 };
 
+// Собственные строки библиотеки английские. Свой словарь тут не подставить
+// один раз навсегда: язык меняется на лету, а опции читаются при создании
+// инпута — поэтому i18n считаем на каждое пересоздание.
+const buildI18n = () => {
+  const lang = document.documentElement.lang || "en";
+
+  return {
+    searchPlaceholder: translate(lang, "searchPlaceholder"),
+    zeroSearchResults: translate(lang, "countryNotFound"),
+  };
+};
+
 const baseOptions = {
   initialCountry: "auto",
   separateDialCode: true,
@@ -77,6 +89,13 @@ const baseOptions = {
   },
 };
 
+// опции для нового инстанса: база плюс актуальные переводы
+const withI18n = (extra = {}) => ({
+  ...baseOptions,
+  ...extra,
+  i18n: buildI18n(),
+});
+
 const fixItiLTR = () => {
   const container = twoStepPhoneInput
     .closest(".iti")
@@ -87,7 +106,7 @@ const fixItiLTR = () => {
   }
 };
 
-export let twoStepiti = intlTelInput(twoStepPhoneInput, baseOptions);
+export let twoStepiti = intlTelInput(twoStepPhoneInput, withI18n());
 fixItiLTR();
 
 let currentFormat = null;
@@ -178,7 +197,7 @@ const formatPhoneValue = () => {
 const applyGeoCountry = (detail) => {
   const countryCode = detail?.countryCode?.toLowerCase() || "pl";
   twoStepiti.destroy();
-  twoStepiti = intlTelInput(twoStepPhoneInput, { ...baseOptions, initialCountry: countryCode });
+  twoStepiti = intlTelInput(twoStepPhoneInput, withI18n({ initialCountry: countryCode }));
   fixItiLTR();
   currentFormat = null;
 };
@@ -204,7 +223,7 @@ export function updateTelInputLanguage() {
   const currentCountry = twoStepiti.getSelectedCountryData().iso2;
   twoStepiti.destroy();
 
-  const options = { ...baseOptions, initialCountry: currentCountry || "auto" };
+  const options = withI18n({ initialCountry: currentCountry || "auto" });
 
   twoStepiti = intlTelInput(twoStepPhoneInput, options);
   fixItiLTR();

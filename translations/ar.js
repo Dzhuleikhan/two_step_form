@@ -6,12 +6,15 @@ export default {
   claimTitle: "احصل على <span class=\"gold-text\">{spins} لفة مجانية!</span>",
   verifyTitle: "أوشكت على الانتهاء! أكّد <span class=\"gold-text\">مكسبك</span>",
   verifySubtitle: "مطلوب لمعالجة دفعة <span class=\"gold-text\">{amount}</span> وضمان الأمان.",
+  verifySubtitleNoAmount: "مطلوب لتفعيل مكافأتك وضمان الأمان.",
   // | Win heading (гейт регистрации)
   winTitle: "مكسبك: <span class=\"gold-text\">{amount}!</span>",
+  bonusActivatedTitle: "تم تفعيل مكافأتك <span class=\"gold-text\">{spins} FS</span>!",
   winSpins: "+ <span class=\"gold-text\">{spins} لفة مجانية</span> بانتظارك",
   winSubtitle: "املأ الحقول أدناه لمواصلة اللعب!",
   continueSaveBtn: "متابعة وحفظ {amount}",
   reservedBalance: "الرصيد المحجوز: <span class=\"gold-text\">{amount} و {spins} FS</span>",
+  reservedBalanceSpins: "الرصيد المحجوز: <span class=\"gold-text\">{spins} FS</span>",
   pageTabTitle: "سجّل للحصول على حساب في كازينو Goldbet",
   backBtn: "رجوع",
   // | Step 1
@@ -51,6 +54,7 @@ export default {
   currencyPlaceholder: "اختر العملة",
   phoneNumberPlaceholder: "رقم الهاتف",
   countryNotFound: "لم يتم العثور على الدولة",
+  searchPlaceholder: "بحث",
   addressPlaceholder: "أدخل العنوان",
   streetPlaceholder: "الشارع",
   houseNumberPlaceholder: "رقم المنزل / المبنى",

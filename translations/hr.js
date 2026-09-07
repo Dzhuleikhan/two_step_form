@@ -6,12 +6,15 @@ export default {
   claimTitle: "PREUZMI <span class=\"gold-text\">{spins} BESPLATNIH VRTNJI!</span>",
   verifyTitle: "SKORO GOTOVO! POTVRDI <span class=\"gold-text\">SVOJ DOBITAK</span>",
   verifySubtitle: "Potrebno za obradu isplate od <span class=\"gold-text\">{amount}</span> i osiguranje sigurnosti.",
+  verifySubtitleNoAmount: "Potrebno za aktivaciju bonusa i osiguranje sigurnosti.",
   // | Win heading (гейт регистрации)
   winTitle: "TVOJ DOBITAK: <span class=\"gold-text\">{amount}!</span>",
+  bonusActivatedTitle: "VAŠ BONUS <span class=\"gold-text\">{spins} FS</span> JE AKTIVIRAN!",
   winSpins: "+ <span class=\"gold-text\">{spins} BESPLATNIH VRTNJI</span> ČEKA",
   winSubtitle: "Ispuni polja ispod za nastavak igre!",
   continueSaveBtn: "Nastavi i spremi {amount}",
   reservedBalance: "REZERVIRANO STANJE: <span class=\"gold-text\">{amount} I {spins} FS</span>",
+  reservedBalanceSpins: "REZERVIRANI SALDO: <span class=\"gold-text\">{spins} FS</span>",
   pageTabTitle: "Registrirajte Goldbet Casino Račun",
   backBtn: "Natrag",
   // | Step 1
@@ -51,6 +54,7 @@ export default {
   currencyPlaceholder: "Odaberite Valutu",
   phoneNumberPlaceholder: "Broj Telefona",
   countryNotFound: "Država nije pronađena",
+  searchPlaceholder: "Pretraži",
   addressPlaceholder: "Unesite Adresu",
   streetPlaceholder: "Ulica",
   houseNumberPlaceholder: "Kućni br. / zgrada",

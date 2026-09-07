@@ -6,12 +6,15 @@ export default {
   claimTitle: "VYZVEDNI SI <span class=\"gold-text\">{spins} FREE SPINŮ!</span>",
   verifyTitle: "TÉMĚŘ HOTOVO! OVĚŘ <span class=\"gold-text\">SVOU VÝHRU</span>",
   verifySubtitle: "Nutné pro zpracování výplaty <span class=\"gold-text\">{amount}</span> a zajištění bezpečnosti.",
+  verifySubtitleNoAmount: "Nutné k aktivaci bonusu a zajištění bezpečnosti.",
   // | Win heading (гейт регистрации)
   winTitle: "TVÁ VÝHRA: <span class=\"gold-text\">{amount}!</span>",
+  bonusActivatedTitle: "VÁŠ BONUS <span class=\"gold-text\">{spins} FS</span> JE AKTIVOVÁN!",
   winSpins: "+ <span class=\"gold-text\">{spins} FREE SPINŮ</span> ČEKÁ",
   winSubtitle: "Vyplň pole níže a pokračuj ve hře!",
   continueSaveBtn: "Pokračovat a uložit {amount}",
   reservedBalance: "REZERVOVANÝ ZŮSTATEK: <span class=\"gold-text\">{amount} A {spins} FS</span>",
+  reservedBalanceSpins: "REZERVOVANÝ ZŮSTATEK: <span class=\"gold-text\">{spins} FS</span>",
   pageTabTitle: "Zaregistrujte si účet v Goldbet Casinu",
   backBtn: "Zpět",
   // | Step 1
@@ -51,6 +54,7 @@ export default {
   currencyPlaceholder: "Vyberte měnu",
   phoneNumberPlaceholder: "Telefonní číslo",
   countryNotFound: "Země nenalezena",
+  searchPlaceholder: "Hledat",
   addressPlaceholder: "Zadejte adresu",
   streetPlaceholder: "Ulice",
   houseNumberPlaceholder: "Č. domu / budovy",

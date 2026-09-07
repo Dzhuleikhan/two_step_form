@@ -6,12 +6,15 @@ export default {
   claimTitle: "FATA <span class=\"gold-text\">{spins} SPINS Z'UBUNTU!</span>",
   verifyTitle: "HAFI KURANGIZA! EMEZA <span class=\"gold-text\">INYUNGU YAWE</span>",
   verifySubtitle: "Bikenewe kugira ngo hatunganywe kwishyura <span class=\"gold-text\">{amount}</span> no kwizeza umutekano.",
+  verifySubtitleNoAmount: "Birakenewe kugira ngo bonus yawe ikore kandi umutekano wemezwe.",
   // | Win heading (гейт регистрации)
   winTitle: "INYUNGU YAWE: <span class=\"gold-text\">{amount}!</span>",
+  bonusActivatedTitle: "BONUS YAWE YA <span class=\"gold-text\">{spins} FS</span> YARAKORESHEJWE!",
   winSpins: "+ <span class=\"gold-text\">{spins} SPINS Z'UBUNTU</span> ZIGUTEGEREJE",
   winSubtitle: "Uzuza ibisabwa hepfo kugira ngo ukomeze gukina!",
   continueSaveBtn: "Komeza kandi ubike {amount}",
   reservedBalance: "KONTE YABITSWE: <span class=\"gold-text\">{amount} NA {spins} FS</span>",
+  reservedBalanceSpins: "AMAFARANGA YABITSWE: <span class=\"gold-text\">{spins} FS</span>",
   pageTabTitle: "Iyandikishe kuri konti ya Kasino ya Goldbet",
   backBtn: "Garuka",
   // | Step 1
@@ -51,6 +54,7 @@ export default {
   currencyPlaceholder: "Hitamo Ifaranga",
   phoneNumberPlaceholder: "Nimero ya Telefoni",
   countryNotFound: "Igihugu ntikibonetse",
+  searchPlaceholder: "Shakisha",
   addressPlaceholder: "Andika Aderesi",
   streetPlaceholder: "Umuhanda",
   houseNumberPlaceholder: "Nimero y'inzu / inyubako",

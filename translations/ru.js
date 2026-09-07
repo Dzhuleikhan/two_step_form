@@ -6,12 +6,15 @@ export default {
   claimTitle: "ЗАБЕРИТЕ <span class=\"gold-text\">{spins} ФРИСПИНОВ!</span>",
   verifyTitle: "ПОЧТИ ГОТОВО! ПОДТВЕРДИТЕ <span class=\"gold-text\">ВАШ ВЫИГРЫШ</span>",
   verifySubtitle: "Необходимо для обработки выплаты <span class=\"gold-text\">{amount}</span> и обеспечения безопасности.",
+  verifySubtitleNoAmount: "Необходимо для активации бонуса и обеспечения безопасности.",
   // | Win heading (гейт регистрации)
   winTitle: "ВАШ ВЫИГРЫШ: <span class=\"gold-text\">{amount}!</span>",
+  bonusActivatedTitle: "ВАШ БОНУС <span class=\"gold-text\">{spins} ФС</span> АКТИВИРОВАН!",
   winSpins: "+ <span class=\"gold-text\">{spins} ФРИСПИНОВ</span> ЖДУТ ВАС",
   winSubtitle: "Заполните поля ниже, чтобы продолжить игру!",
   continueSaveBtn: "Продолжить и сохранить {amount}",
   reservedBalance: "ЗАРЕЗЕРВИРОВАННЫЙ БАЛАНС: <span class=\"gold-text\">{amount} И {spins} FS</span>",
+  reservedBalanceSpins: "ЗАРЕЗЕРВИРОВАННЫЙ БАЛАНС: <span class=\"gold-text\">{spins} ФС</span>",
   pageTabTitle: "Зарегистрируйтесь в казино Goldbet",
   backBtn: "Назад",
   // | Шаг 1
@@ -51,6 +54,7 @@ export default {
   currencyPlaceholder: "Выберите валюту",
   phoneNumberPlaceholder: "Номер телефона",
   countryNotFound: "Страна не найдена",
+  searchPlaceholder: "Поиск",
   addressPlaceholder: "Введите адрес",
   streetPlaceholder: "Улица",
   houseNumberPlaceholder: "Дом / строение",

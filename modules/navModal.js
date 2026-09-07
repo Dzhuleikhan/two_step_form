@@ -2,9 +2,13 @@
    регистрации.
 
    Закрыть её можно только пока выигрыша нет: при totalWin > 0 крестик не
-   показываем — уходить с деньгами на балансе игрок не должен. Если игра не
-   поднялась (в ссылке нет cid/gameId и висит «Game is unavailable»),
-   кнопки не делают ничего. */
+   показываем — уходить с деньгами на балансе игрок не должен.
+
+   Работают кнопки только после успешного /session. Пока ответа нет, открывать
+   форму рано: снапшота ещё не существует, и заголовок собрался бы из нулей.
+   Если сессия не поднялась — игры нет вовсе или она истекла (403) — кнопки не
+   делают ничего: в первом случае открывать нечего, во втором форма приезжает
+   сама, поверх записи игры. */
 
 import { gameSession } from "./gameFetch";
 
@@ -25,7 +29,18 @@ const SERVICE_CONTROLS = [
 const isServiceControl = (target) =>
   SERVICE_CONTROLS.some((selector) => target.closest(selector));
 
-const isGameAvailable = () => !document.querySelector(".game-empty.is-visible");
+// | СОСТОЯНИЕ СЕССИИ
+// Ровно два исхода: c2:session-started — /session ответил успешно;
+// game:settled — не ответил или игры нет, форму по кнопкам не открываем.
+let canOpenForm = false;
+
+window.addEventListener("c2:session-started", () => {
+  canOpenForm = true;
+});
+
+window.addEventListener("game:settled", () => {
+  canOpenForm = false;
+});
 
 const hasWin = () => Number.parseFloat(gameSession.snapshot?.totalWin) > 0;
 
@@ -50,8 +65,8 @@ NAV_CONTAINERS.forEach((selector) => {
 
     event.preventDefault();
 
-    // игры нет — открывать нечего
-    if (!isGameAvailable()) return;
+    // сессии ещё нет, она не поднялась или истекла — открывать нечего
+    if (!canOpenForm) return;
 
     openForm();
   });

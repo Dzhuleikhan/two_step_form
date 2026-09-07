@@ -6,12 +6,15 @@ export default {
   claimTitle: "领取您的 <span class=\"gold-text\">{spins} 次免费旋转！</span>",
   verifyTitle: "就快好了！验证<span class=\"gold-text\">您的奖金</span>",
   verifySubtitle: "需要验证以处理 <span class=\"gold-text\">{amount}</span> 的付款并确保安全。",
+  verifySubtitleNoAmount: "需要此信息以激活奖励并确保安全。",
   // | Win heading (гейт регистрации)
   winTitle: "您的奖金：<span class=\"gold-text\">{amount}！</span>",
+  bonusActivatedTitle: "您的 <span class=\"gold-text\">{spins} FS</span> 奖励已激活！",
   winSpins: "+ <span class=\"gold-text\">{spins} 次免费旋转</span>等着您",
   winSubtitle: "填写以下字段即可继续游戏！",
   continueSaveBtn: "继续并保存 {amount}",
   reservedBalance: "保留余额：<span class=\"gold-text\">{amount} 和 {spins} FS</span>",
+  reservedBalanceSpins: "预留余额：<span class=\"gold-text\">{spins} FS</span>",
   pageTabTitle: "注册 Goldbet 赌场账户",
   backBtn: "返回",
   // | Step 1
@@ -51,6 +54,7 @@ export default {
   currencyPlaceholder: "选择货币",
   phoneNumberPlaceholder: "电话号码",
   countryNotFound: "未找到国家/地区",
+  searchPlaceholder: "搜索",
   addressPlaceholder: "输入地址",
   streetPlaceholder: "街道",
   houseNumberPlaceholder: "门牌号 / 楼号",

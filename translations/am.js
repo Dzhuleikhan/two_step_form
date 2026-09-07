@@ -6,12 +6,15 @@ export default {
   claimTitle: "<span class=\"gold-text\">{spins} ነፃ ስፒኖችህን</span> ውሰድ!",
   verifyTitle: "ልትጨርስ ተቃርበሃል! <span class=\"gold-text\">ትርፍህን</span> አረጋግጥ",
   verifySubtitle: "የ<span class=\"gold-text\">{amount}</span> ክፍያ ለማስኬድ እና ደህንነትን ለማረጋገጥ ያስፈልጋል።",
+  verifySubtitleNoAmount: "ጉርሻዎን ለማንቃት እና ደህንነትን ለማረጋገጥ ያስፈልጋል።",
   // | Win heading (гейт регистрации)
   winTitle: "ያንተ ትርፍ፦ <span class=\"gold-text\">{amount}!</span>",
+  bonusActivatedTitle: "የእርስዎ <span class=\"gold-text\">{spins} FS</span> ጉርሻ ነቅቷል!",
   winSpins: "+ <span class=\"gold-text\">{spins} ነፃ ስፒኖች</span> ይጠብቁሃል",
   winSubtitle: "መጫወት ለመቀጠል ከታች ያሉትን መስኮች ሙላ!",
   continueSaveBtn: "ቀጥል እና {amount} አስቀምጥ",
   reservedBalance: "የተያዘ ቀሪ ሒሳብ፦ <span class=\"gold-text\">{amount} እና {spins} FS</span>",
+  reservedBalanceSpins: "የተያዘ ቀሪ ሂሳብ፦ <span class=\"gold-text\">{spins} FS</span>",
   pageTabTitle: "ለGoldbet Casino መለያ ይመዝገቡ",
   backBtn: "ተመለስ",
   // | Step 1
@@ -51,6 +54,7 @@ export default {
   currencyPlaceholder: "ገንዘብ ይምረጡ",
   phoneNumberPlaceholder: "ስልክ ቁጥር",
   countryNotFound: "አገር አልተገኘም",
+  searchPlaceholder: "ፈልግ",
   addressPlaceholder: "አድራሻ ያስገቡ",
   streetPlaceholder: "መንገድ",
   houseNumberPlaceholder: "የቤት / የህንፃ ቁጥር",

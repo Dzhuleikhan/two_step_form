@@ -6,12 +6,15 @@ export default {
   claimTitle: "HÄMTA DINA <span class=\"gold-text\">{spins} GRATISSNURR!</span>",
   verifyTitle: "NÄSTAN KLART! BEKRÄFTA <span class=\"gold-text\">DIN VINST</span>",
   verifySubtitle: "Krävs för att behandla utbetalningen på <span class=\"gold-text\">{amount}</span> och garantera säkerheten.",
+  verifySubtitleNoAmount: "Krävs för att aktivera din bonus och garantera säkerheten.",
   // | Win heading (гейт регистрации)
   winTitle: "DIN VINST: <span class=\"gold-text\">{amount}!</span>",
+  bonusActivatedTitle: "DIN BONUS <span class=\"gold-text\">{spins} FS</span> ÄR AKTIVERAD!",
   winSpins: "+ <span class=\"gold-text\">{spins} GRATISSNURR</span> VÄNTAR",
   winSubtitle: "Fyll i fälten nedan för att fortsätta spela!",
   continueSaveBtn: "Fortsätt och behåll {amount}",
   reservedBalance: "RESERVERAT SALDO: <span class=\"gold-text\">{amount} OCH {spins} FS</span>",
+  reservedBalanceSpins: "RESERVERAT SALDO: <span class=\"gold-text\">{spins} FS</span>",
   pageTabTitle: "Registrera ett Goldbet Casino-konto",
   backBtn: "Tillbaka",
   // | Step 1
@@ -51,6 +54,7 @@ export default {
   currencyPlaceholder: "Välj valuta",
   phoneNumberPlaceholder: "Telefonnummer",
   countryNotFound: "Landet hittades inte",
+  searchPlaceholder: "Sök",
   addressPlaceholder: "Ange adress",
   streetPlaceholder: "Gata",
   houseNumberPlaceholder: "Husnr. / byggnad",

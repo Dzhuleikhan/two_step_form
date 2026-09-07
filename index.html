@@ -706,6 +706,27 @@
             Game is unavailable
           </p>
         </div>
+        <!-- /session ответил 403: сессия истекла или уже передана в Goldbet.
+             Вместо заглушки показываем чёрный экран с лого провайдера -->
+        <div class="game-expired">
+          <img
+            class="game-expired-logo"
+            src="/img/pragmatic-play.svg"
+            width="421"
+            height="194"
+            alt=""
+          />
+          <span class="game-expired-loader"></span>
+        </div>
+        <!-- следом за экраном загрузки: запись игры вместо живого фрейма.
+             src подставляет modules/gameFetch.js — десктопный или мобильный -->
+        <video
+          class="game-video"
+          muted
+          loop
+          playsinline
+          preload="none"
+        ></video>
         <!-- на мобилке игра занимает весь экран, скроллить нечего -->
         <div class="footer tbl:hidden">
           <div class="footer-top">

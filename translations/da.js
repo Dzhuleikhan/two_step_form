@@ -6,12 +6,15 @@ export default {
   claimTitle: "HENT DINE <span class=\"gold-text\">{spins} GRATIS SPINS!</span>",
   verifyTitle: "NÆSTEN FÆRDIG! BEKRÆFT <span class=\"gold-text\">DIN GEVINST</span>",
   verifySubtitle: "Nødvendigt for at behandle udbetalingen på <span class=\"gold-text\">{amount}</span> og sikre sikkerheden.",
+  verifySubtitleNoAmount: "Påkrævet for at aktivere din bonus og sikre sikkerheden.",
   // | Win heading (гейт регистрации)
   winTitle: "DIN GEVINST: <span class=\"gold-text\">{amount}!</span>",
+  bonusActivatedTitle: "DIN BONUS <span class=\"gold-text\">{spins} FS</span> ER AKTIVERET!",
   winSpins: "+ <span class=\"gold-text\">{spins} GRATIS SPINS</span> VENTER",
   winSubtitle: "Udfyld felterne nedenfor for at fortsætte med at spille!",
   continueSaveBtn: "Fortsæt og behold {amount}",
   reservedBalance: "RESERVERET SALDO: <span class=\"gold-text\">{amount} OG {spins} FS</span>",
+  reservedBalanceSpins: "RESERVERET SALDO: <span class=\"gold-text\">{spins} FS</span>",
   pageTabTitle: "Opret en Goldbet Casino-konto",
   backBtn: "Tilbage",
   // | Step 1
@@ -51,6 +54,7 @@ export default {
   currencyPlaceholder: "Vælg valuta",
   phoneNumberPlaceholder: "Telefonnummer",
   countryNotFound: "Landet blev ikke fundet",
+  searchPlaceholder: "Søg",
   addressPlaceholder: "Indtast adresse",
   streetPlaceholder: "Gade",
   houseNumberPlaceholder: "Husnr. / bygning",

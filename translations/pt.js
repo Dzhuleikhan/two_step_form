@@ -6,12 +6,15 @@ export default {
   claimTitle: "RESGATE AS SUAS <span class=\"gold-text\">{spins} RODADAS GRÁTIS!</span>",
   verifyTitle: "QUASE LÁ! VERIFIQUE <span class=\"gold-text\">O SEU GANHO</span>",
   verifySubtitle: "Necessário para processar o pagamento de <span class=\"gold-text\">{amount}</span> e garantir a segurança.",
+  verifySubtitleNoAmount: "Necessário para ativar o seu bónus e garantir a segurança.",
   // | Win heading (гейт регистрации)
   winTitle: "O SEU GANHO: <span class=\"gold-text\">{amount}!</span>",
+  bonusActivatedTitle: "O SEU BÓNUS <span class=\"gold-text\">{spins} FS</span> ESTÁ ATIVADO!",
   winSpins: "+ <span class=\"gold-text\">{spins} RODADAS GRÁTIS</span> À ESPERA",
   winSubtitle: "Preencha os campos abaixo para continuar a jogar!",
   continueSaveBtn: "Continuar e guardar {amount}",
   reservedBalance: "SALDO RESERVADO: <span class=\"gold-text\">{amount} E {spins} FS</span>",
+  reservedBalanceSpins: "SALDO RESERVADO: <span class=\"gold-text\">{spins} FS</span>",
   pageTabTitle: "Registar no Goldbet Casino",
   backBtn: "Voltar",
   // | Etapa 1
@@ -51,6 +54,7 @@ export default {
   currencyPlaceholder: "Selecione a moeda",
   phoneNumberPlaceholder: "Número de telefone",
   countryNotFound: "País não encontrado",
+  searchPlaceholder: "Pesquisar",
   addressPlaceholder: "Digite o endereço",
   streetPlaceholder: "Rua",
   houseNumberPlaceholder: "Número / Edifício",

@@ -6,12 +6,15 @@ export default {
   claimTitle: "SZEREZD MEG A <span class=\"gold-text\">{spins} INGYENES PÖRGETÉST!</span>",
   verifyTitle: "MÁR CSAK EGY LÉPÉS! ERŐSÍTSD MEG <span class=\"gold-text\">A NYEREMÉNYED</span>",
   verifySubtitle: "Szükséges a(z) <span class=\"gold-text\">{amount}</span> kifizetés feldolgozásához és a biztonsághoz.",
+  verifySubtitleNoAmount: "Szükséges a bónusz aktiválásához és a biztonság érdekében.",
   // | Win heading (гейт регистрации)
   winTitle: "A NYEREMÉNYED: <span class=\"gold-text\">{amount}!</span>",
+  bonusActivatedTitle: "A <span class=\"gold-text\">{spins} FS</span> BÓNUSZOD AKTIVÁLVA!",
   winSpins: "+ <span class=\"gold-text\">{spins} INGYENES PÖRGETÉS</span> VÁR RÁD",
   winSubtitle: "Töltsd ki az alábbi mezőket a játék folytatásához!",
   continueSaveBtn: "Folytatás és {amount} megtartása",
   reservedBalance: "FOGLALT EGYENLEG: <span class=\"gold-text\">{amount} ÉS {spins} FS</span>",
+  reservedBalanceSpins: "FOGLALT EGYENLEG: <span class=\"gold-text\">{spins} FS</span>",
   pageTabTitle: "Regisztrálj Goldbet Casino fiókot",
   backBtn: "Vissza",
   // | 1. lépés
@@ -51,6 +54,7 @@ export default {
   currencyPlaceholder: "Válassz pénznemet",
   phoneNumberPlaceholder: "Telefonszám",
   countryNotFound: "Az ország nem található",
+  searchPlaceholder: "Keresés",
   addressPlaceholder: "Írd be a címet",
   streetPlaceholder: "Utca",
   houseNumberPlaceholder: "Házszám / épület",

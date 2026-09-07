@@ -6,12 +6,15 @@ export default {
   claimTitle: "DAI <span class=\"gold-text\">{spins} MIZUNGUKO BURE!</span>",
   verifyTitle: "KARIBU KUMALIZA! THIBITISHA <span class=\"gold-text\">USHINDI WAKO</span>",
   verifySubtitle: "Inahitajika ili kuchakata malipo ya <span class=\"gold-text\">{amount}</span> na kuhakikisha usalama.",
+  verifySubtitleNoAmount: "Inahitajika ili kuwasha bonasi yako na kuhakikisha usalama.",
   // | Win heading (гейт регистрации)
   winTitle: "USHINDI WAKO: <span class=\"gold-text\">{amount}!</span>",
+  bonusActivatedTitle: "BONASI YAKO YA <span class=\"gold-text\">{spins} FS</span> IMEWASHWA!",
   winSpins: "+ <span class=\"gold-text\">{spins} MIZUNGUKO BURE</span> INAKUSUBIRI",
   winSubtitle: "Jaza sehemu zilizo hapa chini ili uendelee kucheza!",
   continueSaveBtn: "Endelea na uhifadhi {amount}",
   reservedBalance: "SALIO LILILOHIFADHIWA: <span class=\"gold-text\">{amount} NA {spins} FS</span>",
+  reservedBalanceSpins: "SALIO LILILOHIFADHIWA: <span class=\"gold-text\">{spins} FS</span>",
   pageTabTitle: "Jisajili kwa Akaunti ya Kasino ya Goldbet",
   backBtn: "Rudi",
   // | Step 1
@@ -51,6 +54,7 @@ export default {
   currencyPlaceholder: "Chagua Sarafu",
   phoneNumberPlaceholder: "Nambari ya Simu",
   countryNotFound: "Nchi haijapatikana",
+  searchPlaceholder: "Tafuta",
   addressPlaceholder: "Weka Anwani",
   streetPlaceholder: "Mtaa",
   houseNumberPlaceholder: "Nambari ya nyumba / jengo",

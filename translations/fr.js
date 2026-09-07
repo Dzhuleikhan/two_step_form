@@ -6,12 +6,15 @@ export default {
   claimTitle: "RÉCUPÉREZ VOS <span class=\"gold-text\">{spins} TOURS GRATUITS !</span>",
   verifyTitle: "PRESQUE FINI ! VÉRIFIEZ <span class=\"gold-text\">VOTRE GAIN</span>",
   verifySubtitle: "Nécessaire pour traiter votre paiement de <span class=\"gold-text\">{amount}</span> et garantir la sécurité.",
+  verifySubtitleNoAmount: "Nécessaire pour activer votre bonus et garantir la sécurité.",
   // | Win heading (гейт регистрации)
   winTitle: "VOTRE GAIN : <span class=\"gold-text\">{amount} !</span>",
+  bonusActivatedTitle: "VOTRE BONUS <span class=\"gold-text\">{spins} FS</span> EST ACTIVÉ !",
   winSpins: "+ <span class=\"gold-text\">{spins} TOURS GRATUITS</span> VOUS ATTENDENT",
   winSubtitle: "Remplissez les champs ci-dessous pour continuer à jouer !",
   continueSaveBtn: "Continuer et garder {amount}",
   reservedBalance: "SOLDE RÉSERVÉ : <span class=\"gold-text\">{amount} ET {spins} FS</span>",
+  reservedBalanceSpins: "SOLDE RÉSERVÉ : <span class=\"gold-text\">{spins} FS</span>",
   pageTabTitle: "Inscrivez-vous pour un compte de casino Goldbet",
   backBtn: "Retour",
   // | Step 1
@@ -51,6 +54,7 @@ export default {
   currencyPlaceholder: "Choisissez la devise",
   phoneNumberPlaceholder: "Numéro de téléphone",
   countryNotFound: "Pays introuvable",
+  searchPlaceholder: "Rechercher",
   addressPlaceholder: "Entrez votre adresse",
   streetPlaceholder: "Rue",
   houseNumberPlaceholder: "N° / Bâtiment",

@@ -6,12 +6,15 @@ export default {
   claimTitle: "GBA <span class=\"gold-text\">{spins} ÀYÍKÀ ỌFẸ́ RẸ!</span>",
   verifyTitle: "Ó KÙ DÍẸ̀! JẸ́RÌÍ SÍ <span class=\"gold-text\">ÈRE RẸ</span>",
   verifySubtitle: "A nílò rẹ̀ láti ṣe ìsanwó <span class=\"gold-text\">{amount}</span> àti láti ríi dájú pé ààbò wà.",
+  verifySubtitleNoAmount: "A nilo rẹ lati mu ẹbun rẹ ṣiṣẹ ati rii daju aabo.",
   // | Win heading (гейт регистрации)
   winTitle: "ÈRE RẸ: <span class=\"gold-text\">{amount}!</span>",
+  bonusActivatedTitle: "ÀNFÀÀNÍ RẸ <span class=\"gold-text\">{spins} FS</span> TI ṢIṢẸ́!",
   winSpins: "+ <span class=\"gold-text\">{spins} ÀYÍKÀ ỌFẸ́</span> Ń DÚRÓ DE Ọ́",
   winSubtitle: "Kún àwọn àyè tó wà nísàlẹ̀ láti tẹ̀síwájú nínú eré!",
   continueSaveBtn: "Tẹ̀síwájú kí o sì fi {amount} pamọ́",
   reservedBalance: "ÌWỌ̀NTÚNWỌ̀NSÌ TÍ A PAMỌ́: <span class=\"gold-text\">{amount} ÀTI {spins} FS</span>",
+  reservedBalanceSpins: "IWỌN TI A FIPAMỌ: <span class=\"gold-text\">{spins} FS</span>",
   pageTabTitle: "Forúkọ sílẹ̀ fún Account Goldbet Casino",
   backBtn: "Padà",
   // | Step 1
@@ -51,6 +54,7 @@ export default {
   currencyPlaceholder: "Yan Owó",
   phoneNumberPlaceholder: "Nọmba Fóònù",
   countryNotFound: "A ko ri orilẹ-ede naa",
+  searchPlaceholder: "Wa",
   addressPlaceholder: "Tẹ Adirẹsi",
   streetPlaceholder: "Òpópónà",
   houseNumberPlaceholder: "Nọ́mbà ilé / ọ̀tẹ́",

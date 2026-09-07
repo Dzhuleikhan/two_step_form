@@ -11,7 +11,7 @@ import { geoData, geoReady, settingZipCodePlaceholder } from "./geoLocation";
 import { twoStepiti } from "./itiTelInput";
 import { newDomain } from "./fetchingDomain";
 import { getUrlParameter } from "./params";
-import { gameSession, registerPlayer } from "./gameFetch";
+import { gameSession, registerPlayer, getFreespinsCount } from "./gameFetch";
 import { translate } from "./i18n";
 import gsap from "gsap";
 import { isValidPhoneNumber } from "libphonenumber-js";
@@ -1374,18 +1374,23 @@ const getCurrencySymbol = (code) =>
   countryCurrencyData.find((data) => data.countryCurrency === code)
     ?.countryCurrencySymbol || "";
 
-// плашка над кнопкой: сумма и остаток фриспинов
+// плашка над кнопкой: сумма и остаток фриспинов. В сценарии истёкшей сессии
+// выигрыша нет — показываем только фриспины, без нулевой суммы.
 const renderReserved = (values) => {
-  const html = fill(t("reservedBalance"), values);
+  const key = isExpiredFlow ? "reservedBalanceSpins" : "reservedBalance";
+  const html = fill(t(key), values);
 
   document.querySelectorAll(".two-step-reserved-text").forEach((el) => {
     el.innerHTML = html;
   });
 };
 
-// на всех шагах кнопка показывает сумму выигрыша
+// на всех шагах кнопка показывает сумму выигрыша; в сценарии истёкшей сессии
+// суммы нет вовсе — там просто «Continue»
 const renderButtons = (values) => {
-  const text = fill(t("continueSaveBtn"), values);
+  const text = isExpiredFlow
+    ? t("continueBtn")
+    : fill(t("continueSaveBtn"), values);
 
   document.querySelectorAll(".two-step-next-btn-text").forEach((el) => {
     el.textContent = text;
@@ -1397,6 +1402,10 @@ const renderButtons = (values) => {
   });
 };
 
+// Форму открыл не гейт, а сценарий истёкшей сессии: снапшота нет, поэтому и
+// выигрыша нет — вместо «YOUR WIN: $0.00» показываем, что бонус активирован.
+let isExpiredFlow = false;
+
 const renderHeading = (step) => {
   if (!headingTitle || !headingSubtitle) return;
 
@@ -1404,7 +1413,10 @@ const renderHeading = (step) => {
   // денежные поля приходят строками
   const win = Number.parseFloat(snapshot.totalWin) || 0;
   const symbol = getCurrencySymbol(snapshot.currency);
-  const spins = Number(snapshot.freespinsRemaining) || 0;
+  // в сценарии истёкшей сессии считать нечего — берём число из ссылки
+  const spins = isExpiredFlow
+    ? getFreespinsCount()
+    : Number(snapshot.freespinsRemaining) || 0;
 
   // в заголовке разделитель запятой, в плашке и кнопке — точкой, как в макете
   const amount = `${symbol}${win.toFixed(2).replace(".", ",")}`;
@@ -1417,14 +1429,21 @@ const renderHeading = (step) => {
   const isFirstStep = step === FIRST_STEP;
   const isLastStep = step === LAST_STEP;
 
-  const titleKey = isFirstStep
-    ? "winTitle"
-    : isLastStep
-      ? "claimTitle"
-      : "verifyTitle";
+  const titleKey =
+    isFirstStep && isExpiredFlow
+      ? "bonusActivatedTitle"
+      : isFirstStep
+        ? "winTitle"
+        : isLastStep
+          ? "claimTitle"
+          : "verifyTitle";
 
   const subtitleKey =
-    isFirstStep || isLastStep ? "winSubtitle" : "verifySubtitle";
+    isFirstStep || isLastStep
+      ? "winSubtitle"
+      : isExpiredFlow
+        ? "verifySubtitleNoAmount"
+        : "verifySubtitle";
 
   headingTitle
     .closest(".two-step-heading")
@@ -1432,11 +1451,14 @@ const renderHeading = (step) => {
 
   headingTitle.innerHTML = fill(t(titleKey), { amount, spins });
 
+  // «+ N FREE SPINS ARE WAITING» дублировало бы заголовок про активированный бонус
+  const showSpinsLine = isFirstStep && !isExpiredFlow;
+
   if (headingSpins) {
-    headingSpins.innerHTML = isFirstStep
+    headingSpins.innerHTML = showSpinsLine
       ? fill(t("winSpins"), { amount, spins })
       : "";
-    headingSpins.classList.toggle("hidden", !isFirstStep);
+    headingSpins.classList.toggle("hidden", !showSpinsLine);
   }
 
   headingSubtitle.innerHTML = fill(t(subtitleKey), { amount: dotted, spins });
@@ -1499,15 +1521,29 @@ const focusFirstField = (step) => {
 };
 
 // снапшот приезжает позже загрузки страницы — перерисовываем на открытии формы
-window.addEventListener("c2:gate-opened", () => {
+window.addEventListener("c2:gate-opened", (event) => {
+  isExpiredFlow = Boolean(event.detail?.expired);
+
   renderHeading(initialStep);
 
   // ждём кадр: overlay только что получил is-open, до отрисовки фокус не встаёт
   requestAnimationFrame(() => focusFirstField(initialStep));
 
   // без выигрыша форму можно закрыть и играть дальше — отсчёт не имеет смысла
-  // и дедлайн не сохраняем, иначе он «сгорит» до настоящего открытия
-  if (!(Number.parseFloat(gameSession.snapshot?.totalWin) > 0)) return;
+  // и дедлайн не сохраняем, иначе он «сгорит» до настоящего открытия.
+  // Исключение — истёкшая сессия: там форма неснимаемая, отсчёт нужен.
+  const hasWin = Number.parseFloat(gameSession.snapshot?.totalWin) > 0;
+
+  if (!isExpiredFlow && !hasWin) return;
+
+  // В этом сценарии сессии нет, а значит не было и c2:session-started, который
+  // обычно сбрасывает дедлайн. Без сброса подтянулся бы протухший из прошлого
+  // визита, и таймер открылся бы сразу на 0:00.
+  if (isExpiredFlow) {
+    try {
+      localStorage.removeItem(TIMER_KEY);
+    } catch {}
+  }
 
   timerBox?.classList.add("is-visible");
   startTimer();

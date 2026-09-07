@@ -6,12 +6,15 @@ export default {
   claimTitle: "ATSIIMK SAVO <span class=\"gold-text\">{spins} NEMOKAMUS SUKIMUS!</span>",
   verifyTitle: "BEVEIK BAIGTA! PATVIRTINK <span class=\"gold-text\">SAVO LAIMĖJIMĄ</span>",
   verifySubtitle: "Reikalinga <span class=\"gold-text\">{amount}</span> išmokai apdoroti ir saugumui užtikrinti.",
+  verifySubtitleNoAmount: "Būtina norint aktyvuoti premiją ir užtikrinti saugumą.",
   // | Win heading (гейт регистрации)
   winTitle: "TAVO LAIMĖJIMAS: <span class=\"gold-text\">{amount}!</span>",
+  bonusActivatedTitle: "JŪSŲ BONUSAS <span class=\"gold-text\">{spins} FS</span> AKTYVUOTAS!",
   winSpins: "+ <span class=\"gold-text\">{spins} NEMOKAMI SUKIMAI</span> LAUKIA",
   winSubtitle: "Užpildyk laukus žemiau, kad tęstum žaidimą!",
   continueSaveBtn: "Tęsti ir išsaugoti {amount}",
   reservedBalance: "REZERVUOTAS LIKUTIS: <span class=\"gold-text\">{amount} IR {spins} FS</span>",
+  reservedBalanceSpins: "REZERVUOTAS LIKUTIS: <span class=\"gold-text\">{spins} FS</span>",
   pageTabTitle: "Sukurti Goldbet Casino Paskyrą",
   backBtn: "Atgal",
   // | Step 1
@@ -51,6 +54,7 @@ export default {
   currencyPlaceholder: "Pasirinkite Valiutą",
   phoneNumberPlaceholder: "Telefono Numeris",
   countryNotFound: "Šalis nerasta",
+  searchPlaceholder: "Ieškoti",
   addressPlaceholder: "Įveskite Adresą",
   streetPlaceholder: "Gatvė",
   houseNumberPlaceholder: "Namo / pastato nr.",

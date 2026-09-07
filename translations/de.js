@@ -6,12 +6,15 @@ export default {
   claimTitle: "HOL DIR DEINE <span class=\"gold-text\">{spins} FREISPIELE!</span>",
   verifyTitle: "FAST GESCHAFFT! BESTÄTIGE <span class=\"gold-text\">DEINEN GEWINN</span>",
   verifySubtitle: "Erforderlich, um die Auszahlung von <span class=\"gold-text\">{amount}</span> zu bearbeiten und die Sicherheit zu gewährleisten.",
+  verifySubtitleNoAmount: "Erforderlich, um deinen Bonus zu aktivieren und die Sicherheit zu gewährleisten.",
   // | Win heading (гейт регистрации)
   winTitle: "DEIN GEWINN: <span class=\"gold-text\">{amount}!</span>",
+  bonusActivatedTitle: "DEIN BONUS <span class=\"gold-text\">{spins} FS</span> IST AKTIVIERT!",
   winSpins: "+ <span class=\"gold-text\">{spins} FREISPIELE</span> WARTEN",
   winSubtitle: "Fülle die Felder unten aus, um weiterzuspielen!",
   continueSaveBtn: "Weiter und {amount} sichern",
   reservedBalance: "RESERVIERTES GUTHABEN: <span class=\"gold-text\">{amount} UND {spins} FS</span>",
+  reservedBalanceSpins: "RESERVIERTES GUTHABEN: <span class=\"gold-text\">{spins} FS</span>",
   pageTabTitle: "Registrieren Sie sich bei Goldbet Casino",
   backBtn: "Zurück",
   // | Schritt 1
@@ -51,6 +54,7 @@ export default {
   currencyPlaceholder: "Währung auswählen",
   phoneNumberPlaceholder: "Telefonnummer",
   countryNotFound: "Land nicht gefunden",
+  searchPlaceholder: "Suche",
   addressPlaceholder: "Adresse eingeben",
   streetPlaceholder: "Straße",
   houseNumberPlaceholder: "Haus-/Gebäudenr.",

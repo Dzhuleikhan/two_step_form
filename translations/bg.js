@@ -6,12 +6,15 @@ export default {
   claimTitle: "ВЗЕМИ <span class=\"gold-text\">{spins} БЕЗПЛАТНИ СПИНА!</span>",
   verifyTitle: "ПОЧТИ ГОТОВО! ПОТВЪРДИ <span class=\"gold-text\">ПЕЧАЛБАТА СИ</span>",
   verifySubtitle: "Необходимо за обработка на плащането от <span class=\"gold-text\">{amount}</span> и осигуряване на сигурност.",
+  verifySubtitleNoAmount: "Необходимо за активиране на бонуса и осигуряване на сигурност.",
   // | Win heading (гейт регистрации)
   winTitle: "ТВОЯТА ПЕЧАЛБА: <span class=\"gold-text\">{amount}!</span>",
+  bonusActivatedTitle: "ВАШИЯТ БОНУС <span class=\"gold-text\">{spins} FS</span> Е АКТИВИРАН!",
   winSpins: "+ <span class=\"gold-text\">{spins} БЕЗПЛАТНИ СПИНА</span> ТЕ ОЧАКВАТ",
   winSubtitle: "Попълни полетата по-долу, за да продължиш да играеш!",
   continueSaveBtn: "Продължи и запази {amount}",
   reservedBalance: "РЕЗЕРВИРАН БАЛАНС: <span class=\"gold-text\">{amount} И {spins} FS</span>",
+  reservedBalanceSpins: "РЕЗЕРВИРАН БАЛАНС: <span class=\"gold-text\">{spins} FS</span>",
   pageTabTitle: "Регистрирайте се за акаунт в Goldbet Casino",
   backBtn: "Назад",
   // | Step 1
@@ -51,6 +54,7 @@ export default {
   currencyPlaceholder: "Изберете валута",
   phoneNumberPlaceholder: "Телефонен номер",
   countryNotFound: "Държавата не е намерена",
+  searchPlaceholder: "Търсене",
   addressPlaceholder: "Въведете адрес",
   streetPlaceholder: "Улица",
   houseNumberPlaceholder: "Номер / сграда",

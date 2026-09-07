@@ -6,12 +6,15 @@ export default {
   claimTitle: "LUNASTA OMA <span class=\"gold-text\">{spins} TASUTA KEERUTUST!</span>",
   verifyTitle: "PEAAEGU VALMIS! KINNITA <span class=\"gold-text\">OMA VÕIT</span>",
   verifySubtitle: "Vajalik <span class=\"gold-text\">{amount}</span> väljamakse töötlemiseks ja turvalisuse tagamiseks.",
+  verifySubtitleNoAmount: "Vajalik boonuse aktiveerimiseks ja turvalisuse tagamiseks.",
   // | Win heading (гейт регистрации)
   winTitle: "SINU VÕIT: <span class=\"gold-text\">{amount}!</span>",
+  bonusActivatedTitle: "SINU BOONUS <span class=\"gold-text\">{spins} FS</span> ON AKTIVEERITUD!",
   winSpins: "+ <span class=\"gold-text\">{spins} TASUTA KEERUTUST</span> OOTAB",
   winSubtitle: "Täida allolevad väljad, et mängu jätkata!",
   continueSaveBtn: "Jätka ja hoia {amount}",
   reservedBalance: "RESERVEERITUD SALDO: <span class=\"gold-text\">{amount} JA {spins} FS</span>",
+  reservedBalanceSpins: "RESERVEERITUD SALDO: <span class=\"gold-text\">{spins} FS</span>",
   pageTabTitle: "Loo Goldbet Casino Konto",
   backBtn: "Tagasi",
   // | Step 1
@@ -51,6 +54,7 @@ export default {
   currencyPlaceholder: "Vali Valuuta",
   phoneNumberPlaceholder: "Telefoninumber",
   countryNotFound: "Riiki ei leitud",
+  searchPlaceholder: "Otsi",
   addressPlaceholder: "Sisesta Aadress",
   streetPlaceholder: "Tänav",
   houseNumberPlaceholder: "Maja nr / hoone",

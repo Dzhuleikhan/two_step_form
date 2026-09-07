@@ -6,12 +6,15 @@ export default {
   claimTitle: "HUEL DENG <span class=\"gold-text\">{spins} GRATIS SPINS!</span>",
   verifyTitle: "BAL FÄERDEG! BESTÄTEG <span class=\"gold-text\">DÄI GEWËNN</span>",
   verifySubtitle: "Néideg fir d'Auszuelung vun <span class=\"gold-text\">{amount}</span> ze veraarbechten an d'Sécherheet ze garantéieren.",
+  verifySubtitleNoAmount: "Néideg fir däi Bonus z'aktivéieren an d'Sécherheet ze garantéieren.",
   // | Win heading (гейт регистрации)
   winTitle: "DÄI GEWËNN: <span class=\"gold-text\">{amount}!</span>",
+  bonusActivatedTitle: "DÄI BONUS <span class=\"gold-text\">{spins} FS</span> ASS AKTIVÉIERT!",
   winSpins: "+ <span class=\"gold-text\">{spins} GRATIS SPINS</span> WAARDEN",
   winSubtitle: "Fëll d'Felder hei ënnen aus fir weiderzespillen!",
   continueSaveBtn: "Weider a {amount} behalen",
   reservedBalance: "RESERVÉIERTE SOLDE: <span class=\"gold-text\">{amount} AN {spins} FS</span>",
+  reservedBalanceSpins: "RESERVÉIERTE SOLDE: <span class=\"gold-text\">{spins} FS</span>",
   pageTabTitle: "Mellt Iech fir e Goldbet Casino Kont un",
   backBtn: "Zréck",
   // | Step 1
@@ -51,6 +54,7 @@ export default {
   currencyPlaceholder: "Währung auswielen",
   phoneNumberPlaceholder: "Telefonsnummer",
   countryNotFound: "Land net fonnt",
+  searchPlaceholder: "Sichen",
   addressPlaceholder: "Adress aginn",
   streetPlaceholder: "Strooss",
   houseNumberPlaceholder: "Haus-/Gebaaisnummer",
