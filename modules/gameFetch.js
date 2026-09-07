@@ -784,9 +784,15 @@ const playGameVideo = async () => {
   // preload="none" в разметке: файл весит мегабайты и не нужен никому, кроме
   // этого сценария. Здесь он уже нужен — разрешаем грузить.
   video.preload = "auto";
-  video.src = window.matchMedia("(max-width: 767px)").matches
-    ? "/videos/screen-mobile.mp4"
-    : "/videos/screen-desktop.mp4";
+
+  // BASE_URL, а не путь от корня: статика собирается на CDN (см. base в
+  // vite.config.js), и «/videos/...» уходил бы на домен лендинга, где файлов
+  // нет — отсюда 404. В dev BASE_URL просто «/».
+  const file = window.matchMedia("(max-width: 767px)").matches
+    ? "screen-mobile.mp4"
+    : "screen-desktop.mp4";
+
+  video.src = `${import.meta.env.BASE_URL}videos/${file}`;
 
   const ready = new Promise((resolve) => {
     // HAVE_FUTURE_DATA и выше — можно играть без немедленной паузы на буфер
