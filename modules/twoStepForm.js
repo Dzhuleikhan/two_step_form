@@ -66,11 +66,16 @@ geoReady.then(applyPhoneOnlyMode);
 // это значит, что следующий игрок докручивает до модалки и видит чужие данные.
 // Атрибуты autocomplete в разметке закрывают подстановку, а здесь снимаем то,
 // что браузер успел восстановить сам.
+// readonly помечено поле страны: его заполняет не игрок, а гео или выбор из
+// списка. Оно попадало под чистку, и если гео отвечало быстрее события load,
+// имя страны стирало вторым проходом — флаг оставался на месте (это <img>),
+// а строка рядом пустела. Браузеру там восстанавливать нечего, значение
+// всегда ставит скрипт.
 const RESTORABLE_FIELDS = [
-  ".two-step-form input[type='text']",
-  ".two-step-form input[type='email']",
-  ".two-step-form input[type='password']",
-  ".two-step-form input[type='tel']",
+  ".two-step-form input[type='text']:not([readonly])",
+  ".two-step-form input[type='email']:not([readonly])",
+  ".two-step-form input[type='password']:not([readonly])",
+  ".two-step-form input[type='tel']:not([readonly])",
 ].join(", ");
 
 const clearFormFields = (keepPromocode = false) => {
@@ -1643,6 +1648,10 @@ window.addEventListener("lang:changed", () => {
 let cid = getUrlParameter("cid");
 let partner = getUrlParameter("partner");
 let offer = getUrlParameter("offer");
+// Бонус регистрации выбирается на стороне трафика и приезжает ссылкой. Своего
+// значения по умолчанию не подставляем: без параметра бонус назначает бэк, а
+// выдуманный id он отобьёт ошибкой «Registration bonus is unavailable».
+let bonusId = getUrlParameter("bonusId");
 
 twoStepFormMain.addEventListener("submit", (e) => {
   e.preventDefault();
@@ -1704,6 +1713,7 @@ twoStepFormMain.addEventListener("submit", (e) => {
     promocode,
     partner,
     offer,
+    bonusId,
   };
 
   const body = Object.fromEntries(

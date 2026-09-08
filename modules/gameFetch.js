@@ -10,10 +10,35 @@ import { geoData, geoReady, isGeoFallback } from "./geoLocation";
 import { showFreespinsToast } from "./toast";
 import { getCurrencyForCountry } from "./currency";
 
-// Относительный путь: запросы уходят на тот же домен, что и лендинг, а
-// проксирует их nginx на VPS (fastpanel2-includes/c2gaming.conf) — он же
-// подставляет auth-токен бэка. Прямого обращения к API из браузера нет.
-const API_BASE = "/api/landing/c2gaming";
+// | ПЕРЕКЛЮЧАТЕЛЬ БЭКА
+// Меняем "prod" ↔ "dev" здесь и пушим — деплой собирает `npm run build`
+// (.github/workflows/deploy.yml), поэтому переключатель обязан жить в коде:
+// ни .env, ни отдельный build-скрипт до CI не доедут.
+//
+// Меняется только путь, домен всегда свой. Разводит запросы nginx на VPS
+// (fastpanel2-includes/c2gaming.conf): .../c2gaming → боевой api.goldbet.gg,
+// .../c2gaming-dev → стенд dev1.goldbet.io. Он же подставляет заголовок
+// x-api-auth-token, у каждого апстрима свой — в браузер токен не попадает.
+//
+// Почему не абсолютный origin стенда: запрос стал бы кросс-доменным, а
+// /session и /register идут с credentials — для них CORS требует точный
+// origin, тогда как dev1 отвечает "*", и браузер такую пару отвергает.
+// Через путь запрос остаётся same-origin и CORS не участвует вовсе.
+//
+// Флаг один на все три вызова — они висят на общем базовом пути, а WS
+// собирает свой адрес из него же в toWsUrl.
+const DEFAULT_API_ENV = "prod"; // "prod" | "dev"
+
+// Разово проверить стенд можно и без пересборки — ?api_type=dev в ссылке.
+// Параметр перебивает константу в обе стороны, мусор игнорируем и падаем
+// на дефолт: опечатка в ссылке не должна молча увести запросы не туда.
+const urlApiEnv = getUrlParameter("api_type");
+const API_ENV = ["prod", "dev"].includes(urlApiEnv)
+  ? urlApiEnv
+  : DEFAULT_API_ENV;
+
+const API_BASE =
+  API_ENV === "dev" ? "/api/landing/c2gaming-dev" : "/api/landing/c2gaming";
 
 // identifier игры в каталоге (aggregator ggate). Переопределяется через ?gameId=
 const DEFAULT_GAME_ID = "vs20olympgate_prg";
@@ -422,7 +447,9 @@ function revealForm({ expired = false } = {}) {
   // выгружаем под блюром — смена картинки за формой не бросается в глаза
   stopGame();
   // форма рисует заголовок по актуальному снапшоту
-  window.dispatchEvent(new CustomEvent("c2:gate-opened", { detail: { expired } }));
+  window.dispatchEvent(
+    new CustomEvent("c2:gate-opened", { detail: { expired } }),
+  );
 }
 
 const openRegisterModal = () => {
@@ -894,3 +921,9 @@ console.log(
   "%c[c2] лог игры включён: __gameLog — текущий, __gameApi.prevLog() — до рефреша",
   "color:#755eeb;font-weight:bold",
 );
+
+// Режим бэка виден сразу: иначе на дев-стенде легко полчаса гадать, почему
+// баланс и редирект после регистрации не такие, как ждёшь.
+if (API_ENV === "dev") {
+  console.warn(`[c2] БЭК: dev-стенд (${API_BASE})`);
+}
