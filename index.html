@@ -1352,7 +1352,7 @@
           <div
             class="w-full max-w-[520px] px-[30px] pb-[30px] tbl:max-w-[500px] small:px-0 small:pb-0"
           >
-            <form action="#" class="two-step-form">
+            <form action="#" class="two-step-form" autocomplete="off">
               <!-- FIRST BONUS STEP -->
               <!-- шаг с выбором бонуса выведен из флоу: форма стартует со 2-го.
                    Разметку держим в DOM — на ней завязана логика бонуса и промокода. -->
@@ -1581,6 +1581,7 @@
                         id="promocode"
                         class="two-step-promocode-input two-step-general-input relative -bottom-1 w-full bg-transparent text-base font-bold uppercase tracking-[-0.02em] text-[#755eeb] outline-none rtl:text-right"
                         type="text"
+                        autocomplete="off"
                       />
                       <label
                         data-translate="promoCodePlaceHolder"
@@ -1677,6 +1678,7 @@
                     class="two-step-phone-input w-full bg-transparent text-lg font-bold tracking-tight text-[#755EEB] outline-none"
                     type="tel"
                     name="phone"
+                    autocomplete="off"
                   />
                   <span
                     class="two-step-phone-spinner absolute right-4 top-1/2 hidden -translate-y-1/2 rtl:left-4 rtl:right-auto"
@@ -1711,6 +1713,7 @@
                     data-eg="email"
                     class="two-step-general-input two-step-email-input relative -bottom-1 w-full bg-transparent text-base font-bold text-[#755EEB] outline-none rtl:text-right"
                     type="email"
+                    autocomplete="off"
                   />
                   <label
                     data-translate="emailPlaceholder"
@@ -1747,6 +1750,7 @@
                     dir="ltr"
                     class="two-step-general-input two-step-password-input relative -bottom-1 w-full bg-transparent text-base font-bold text-[#755EEB] outline-none rtl:text-right"
                     type="password"
+                    autocomplete="new-password"
                   />
                   <label
                     data-translate="passwordPlaceholder"
@@ -1801,6 +1805,7 @@
                   <input
                     class="two-step-general-input two-step-first-name-input relative -bottom-1 w-full bg-transparent text-base font-bold text-[#755EEB] outline-none"
                     type="text"
+                    autocomplete="off"
                   />
                   <label
                     data-translate="namePlaceholder"
@@ -1815,6 +1820,7 @@
                   <input
                     class="two-step-general-input two-step-last-name-input relative -bottom-1 w-full bg-transparent text-base font-bold text-[#755EEB] outline-none"
                     type="text"
+                    autocomplete="off"
                   />
                   <label
                     data-translate="lastNamePlaceholder"
@@ -2793,6 +2799,7 @@
                   <input
                     class="two-step-general-input two-step-street-input relative -bottom-1 w-full bg-transparent text-base font-bold text-[#755EEB] outline-none"
                     type="text"
+                    autocomplete="off"
                   />
                   <label
                     data-translate="streetPlaceholder"
@@ -2840,6 +2847,7 @@
                     <input
                       class="two-step-general-input two-step-city-input relative -bottom-1 w-full bg-transparent text-base font-bold text-[#755EEB] outline-none"
                       type="text"
+                      autocomplete="off"
                     />
                     <label
                       data-translate="cityPlaceholder"
@@ -2855,6 +2863,7 @@
                       <input
                         class="two-step-general-input two-step-zipcode-input relative -bottom-1 w-full bg-transparent text-base font-bold text-[#755EEB] outline-none"
                         type="text"
+                        autocomplete="off"
                       />
                       <label
                         class="two-step-general-label two-step-required-label two-step-zipcode-label pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 font-bold text-[#585858] transition-all rtl:left-auto rtl:right-4"

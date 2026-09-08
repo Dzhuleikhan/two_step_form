@@ -60,6 +60,36 @@ const applyPhoneOnlyMode = () => {
 applyPhoneOnlyMode();
 geoReady.then(applyPhoneOnlyMode);
 
+// | ЧИСТКА ПОЛЕЙ
+// Браузер восстанавливает введённые значения при перезагрузке, а менеджер
+// паролей сам подставляет сохранённую пару почта+пароль. В компьютерном клубе
+// это значит, что следующий игрок докручивает до модалки и видит чужие данные.
+// Атрибуты autocomplete в разметке закрывают подстановку, а здесь снимаем то,
+// что браузер успел восстановить сам.
+const RESTORABLE_FIELDS = [
+  ".two-step-form input[type='text']",
+  ".two-step-form input[type='email']",
+  ".two-step-form input[type='password']",
+  ".two-step-form input[type='tel']",
+].join(", ");
+
+const clearFormFields = (keepPromocode = false) => {
+  document.querySelectorAll(RESTORABLE_FIELDS).forEach((input) => {
+    if (keepPromocode && input.classList.contains("two-step-promocode-input")) {
+      return;
+    }
+
+    input.value = "";
+  });
+};
+
+clearFormFields();
+
+// Восстановление может случиться и после разбора модулей, поэтому повторяем на
+// load. Промокод к этому моменту уже подставлен из ссылки (promocodeCheck),
+// его не трогаем — иначе стёрли бы собственное значение.
+window.addEventListener("load", () => clearFormFields(true), { once: true });
+
 // ? SOCIALS TWO STEP FORM
 
 export let twoStepFormData = {
@@ -1498,22 +1528,30 @@ const showStep = (step) => {
   } else {
     headerbackBtn.classList.remove("is-visible");
   }
+
+  // без rAF намеренно: showStep зовётся из обработчика клика, и на iOS Safari
+  // клавиатура поднимается только внутри пользовательского жеста
+  focusFirstField(step);
 };
 // showStep(4);
 
 renderHeading(initialStep);
 
 // Курсор ставим в первое поле открытого шага, иначе игрок сначала целится в
-// инпут и только потом печатает. Поиск стран у intl-tel-input исключаем: он
-// стоит раньше телефона в DOM, но это не поле формы.
-// На iOS Safari это не сработает: там focus() поднимает клавиатуру только
-// внутри пользовательского жеста, а форму открывает гейт — жеста нет.
+// инпут и только потом печатает.
+// Что пропускаем:
+//   readonly — так помечены поля-селекты (страна), у них своё выпадающее меню;
+//   radio/checkbox — выбор бонуса и пола, печатать там нечего;
+//   .iti__search-input — поиск стран у телефона, в DOM он идёт раньше самого
+//   телефона, но полем формы не является;
+//   невидимые (offsetParent === null) — скрытые промокод, штат, свёрнутые
+//   выпадающие списки.
 const focusFirstField = (step) => {
   const stepEl = document.querySelector(`.two-step-form-step-${step}`);
 
   const field = [
     ...(stepEl?.querySelectorAll(
-      "input:not([type='hidden']):not([disabled]):not([readonly]):not(.iti__search-input)",
+      "input:not([type='hidden']):not([type='radio']):not([type='checkbox']):not([disabled]):not([readonly]):not(.iti__search-input)",
     ) || []),
   ].find((el) => el.offsetParent !== null);
 
@@ -1526,7 +1564,9 @@ window.addEventListener("c2:gate-opened", (event) => {
 
   renderHeading(initialStep);
 
-  // ждём кадр: overlay только что получил is-open, до отрисовки фокус не встаёт
+  // Здесь rAF нужен: форму открывает гейт, overlay только что получил is-open,
+  // и до отрисовки фокус не встаёт. Клавиатуру на iOS это всё равно не поднимет
+  // — жеста нет, но на десктопе и в Android курсор встанет в поле.
   requestAnimationFrame(() => focusFirstField(initialStep));
 
   // без выигрыша форму можно закрыть и играть дальше — отсчёт не имеет смысла
