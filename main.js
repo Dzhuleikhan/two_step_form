@@ -1,6 +1,9 @@
+// flatpickr выше style.css намеренно: наши правила стрелки календаря
+// (.flatpickr-calendar.arrowRight:before) той же специфичности, что и вендорные,
+// и при прежнем порядке в бандле выигрывал flatpickr со своим right: 22px.
+import "flatpickr/dist/flatpickr.min.css";
 import "./style.css";
 import "intl-tel-input/build/css/intlTelInput.css";
-import "flatpickr/dist/flatpickr.min.css";
 
 // первым: снимает прелоадер независимо от того, что случится дальше
 import "./modules/preloader";
