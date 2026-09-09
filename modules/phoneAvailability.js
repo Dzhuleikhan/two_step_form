@@ -113,6 +113,14 @@ const TAKEN_MESSAGES = {
   yo: "A kò lè lo nọ́mbà yìí, jọ̀wọ́ tẹ òmíràn sí i",
   ig: "Enweghị ike iji nọmba a, biko tinye nke ọzọ",
   tw: "Wontumi mfa saa nɔma yi nni dwuma, fa foforɔ",
+  az: "Bu nömrədən istifadə etmək olmaz, başqasını daxil edin",
+  tr: "Bu numara kullanılamaz, lütfen başka bir numara girin",
+  kk: "Бұл нөмірді пайдалану мүмкін емес, басқасын енгізіңіз",
+  ky: "Бул номерди колдонууга болбойт, башкасын киргизиңиз",
+  uz: "Bu raqamdan foydalanib bo'lmaydi, boshqasini kiriting",
+  id: "Nomor ini tidak dapat digunakan, masukkan nomor lain",
+  bn: "এই নম্বরটি ব্যবহার করা যাবে না, অন্য একটি লিখুন",
+  lm: "Nimero oyo ekoki kosalelama te, kotisa mosusu",
 };
 
 export function phoneTakenMessage(lang) {

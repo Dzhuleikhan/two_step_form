@@ -119,6 +119,14 @@ const TAKEN_MESSAGES = {
   yo: "A kò lè lo imeèlì yìí, jọ̀wọ́ tẹ òmíràn sí i",
   ig: "Enweghị ike iji email a, biko tinye nke ọzọ",
   tw: "Wontumi mfa saa email yi nni dwuma, fa foforɔ",
+  az: "Bu e-poçtdan istifadə etmək olmaz, başqasını daxil edin",
+  tr: "Bu e-posta kullanılamaz, lütfen başka bir e-posta girin",
+  kk: "Бұл e-mail пайдалану мүмкін емес, басқасын енгізіңіз",
+  ky: "Бул e-mail колдонууга болбойт, башкасын киргизиңиз",
+  uz: "Bu e-pochtadan foydalanib bo'lmaydi, boshqasini kiriting",
+  id: "Email ini tidak dapat digunakan, masukkan email lain",
+  bn: "এই ইমেইলটি ব্যবহার করা যাবে না, অন্য একটি লিখুন",
+  lm: "Email oyo ekoki kosalelama te, kotisa mosusu",
 };
 
 export function emailTakenMessage(lang) {
