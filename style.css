@@ -222,6 +222,12 @@ body::before {
   border-color: #57179b;
 }
 
+/* Выбранный бонус: обводка белая. Фиолетовая на фиолетовой заливке карточки
+   не читалась — выбор был виден только по кружку справа. */
+.two-step-bonus-checkbox input:checked+.two-step-bonus-checkbox-div {
+  border-color: #ffffff;
+}
+
 .two-step-header-back-btn.is-visible {
   opacity: 1;
   visibility: visible;

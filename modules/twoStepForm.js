@@ -30,8 +30,16 @@ import {
 
 const CDN = "https://3344112-img.b-cdn.net";
 
+// Страховка к атрибутам в разметке: добиваем поля, которым autocomplete не
+// проставлен (в том числе созданные скриптом — поиск стран у телефона).
+// Уже заданное значение не трогаем: у пароля стоит new-password, и только этот
+// токен отучает Chrome подставлять сохранённую пару логин+пароль — "off" он на
+// паролях игнорирует, а безусловный цикл затирал new-password сразу после
+// разбора бандла.
 document.querySelectorAll("input").forEach((input) => {
-  input.setAttribute("autocomplete", "off");
+  if (!input.hasAttribute("autocomplete")) {
+    input.setAttribute("autocomplete", "off");
+  }
 });
 
 const PHONE_ONLY_COUNTRIES = [];
