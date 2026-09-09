@@ -1024,6 +1024,17 @@ if (twoStepFormFourthStep) {
 
   const headerlogoFlag = document.querySelector(".header-logo-flag");
 
+  // Имя страны пишем и свойством, и атрибутом. Атрибут value — это значение
+  // поля ПО УМОЛЧАНИЮ, и именно к нему браузер откатывает контрол, состояние
+  // которого не запоминал (autocomplete="off" мы поставили сами). При
+  // возврате «Назад» откат прилетал поверх записанного скриптом: флаг
+  // оставался на месте (это <img>), а имя рядом пропадало. С атрибутом
+  // откатывать теперь некуда — по умолчанию там та же страна.
+  const setCountryInputValue = (name) => {
+    twoStepAppliedCountryInput.setAttribute("value", name);
+    twoStepAppliedCountryInput.value = name;
+  };
+
   // Dropdown visibility toggle
   twoStepCountryButton.addEventListener("click", () => {
     twoStepCountryDropdown.classList.toggle("hidden");
@@ -1046,7 +1057,7 @@ if (twoStepFormFourthStep) {
       const countryCode = item.getAttribute("countryCode");
       const name = item.querySelector("span")?.textContent || "No name found";
       const imageUrl = item.querySelector("img")?.src || "No image found";
-      twoStepAppliedCountryInput.value = name;
+      setCountryInputValue(name);
       twoStepAppliedCountryImage.src = imageUrl;
       twoStepAppliedCountryImage.alt = name;
       twoStepCountryDropdown.classList.add("hidden");
@@ -1071,7 +1082,7 @@ if (twoStepFormFourthStep) {
       );
     });
     if (mathedCountry) {
-      twoStepAppliedCountryInput.value = mathedCountry.name;
+      setCountryInputValue(mathedCountry.name);
       twoStepAppliedCountryImage.src =
         CDN + `/graphic/flags/flag-${mathedCountry.slug}.svg`;
       twoStepAppliedCountryImage.alt = mathedCountry.name;
