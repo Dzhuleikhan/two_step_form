@@ -257,14 +257,11 @@ const parseMoney = (value) => {
 export const applySnapshotToHeader = (snapshot) => {
   if (!snapshot) return;
 
-  const balanceEl = document.querySelector(".game-header-balance");
   const currencyImg = document.querySelector(".game-header-currency");
 
-  // в хедере показываем накопленный выигрыш, не баланс
-  if (balanceEl) {
-    balanceEl.textContent = parseMoney(snapshot.totalWin).toFixed(2);
-    balanceEl.classList.remove("skeleton-text");
-  }
+  // Баланс сюда больше не пишем: раньше в него шёл snapshot.totalWin, и хедер
+  // на каждом пуше показывал накопленный выигрыш как деньги на счету. Значение
+  // статичное (0.00) и стоит прямо в разметке.
 
   // иконку по гео ставит gameHeader.js — перебиваем валютой из сессии
   if (currencyImg && snapshot.currency) {

@@ -144,8 +144,10 @@
               height="20"
               alt=""
             />
-            <!-- баланс из snapshot подставляет modules/gameFetch.js -->
-            <span class="game-header-balance skeleton-text text-sm font-bold leading-none"
+            <!-- баланс в хедере статичный: игра демо-режимная, показывать по
+                 ней «деньги на счету» некорректно. Ждать нечего — ни скелетона,
+                 ни записи из snapshot (см. applySnapshotToHeader). -->
+            <span class="game-header-balance text-sm font-bold leading-none"
               >0.00</span
             >
           </div>

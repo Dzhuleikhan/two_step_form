@@ -67,13 +67,6 @@ const applyGeo = (geo) => {
 // страна не подтверждена, на месте флага и валюты держится скелетон.
 geoConfirmed.then(applyGeo);
 
-// игры не будет — snapshot с балансом уже не придёт, снимаем его заглушку
-window.addEventListener(
-  "game:settled",
-  () => clearSkeleton(document.querySelector(".game-header-balance")),
-  { once: true },
-);
-
 if (wrapper && headerToggleBtn) {
   headerToggleBtn.addEventListener("click", () => {
     const isHidden = wrapper.classList.toggle("header-hidden");
