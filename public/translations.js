@@ -50,6 +50,12 @@ export const translations = {
     zipCodePlaceholder: "Enter ZIP Code",
     postalCodeHint: "If you know it, enter it — it speeds up verification, but it's optional.",
     createAccountBtn: "Create Account",
+    // | Названия полей, которые в части стран называются иначе
+    apartmentUnitPlaceholder: "Unit",
+    suburbPlaceholder: "Suburb",
+    stateTerritoryPlaceholder: "State / Territory",
+    provincePlaceholder: "Province",
+    countyPlaceholder: "County",
   },
   fr: {
     geoRestrictTitle: `{host} n’est pas disponible en {country}`,
@@ -102,6 +108,12 @@ export const translations = {
     zipCodePlaceholder: "Entrez le code postal",
     postalCodeHint: "Si vous le connaissez, saisissez-le — cela accélère la vérification, mais ce n'est pas obligatoire.",
     createAccountBtn: "Créer un compte",
+    // | Названия полей, которые в части стран называются иначе
+    apartmentUnitPlaceholder: "Unité",
+    suburbPlaceholder: "Quartier",
+    stateTerritoryPlaceholder: "État / Territoire",
+    provincePlaceholder: "Province",
+    countyPlaceholder: "Comté",
   },
   pl: {
     geoRestrictTitle: `{host} nie jest dostępny w kraju {country}`,
@@ -154,6 +166,12 @@ export const translations = {
     zipCodePlaceholder: "Wpisz kod pocztowy",
     postalCodeHint: "Jeśli go znasz, wpisz — przyspieszy to weryfikację, ale nie jest wymagane.",
     createAccountBtn: "Utwórz konto",
+    // | Названия полей, которые в части стран называются иначе
+    apartmentUnitPlaceholder: "Lokal",
+    suburbPlaceholder: "Dzielnica",
+    stateTerritoryPlaceholder: "Stan / terytorium",
+    provincePlaceholder: "Prowincja",
+    countyPlaceholder: "Hrabstwo",
   },
   hu: {
     geoRestrictTitle: `A(z) {host} nem érhető el itt: {country}`,
@@ -206,6 +224,12 @@ export const translations = {
     zipCodePlaceholder: "Írd be az irányítószámot",
     postalCodeHint: "Ha tudja, adja meg — felgyorsítja az ellenőrzést, de nem kötelező.",
     createAccountBtn: "Fiók létrehozása",
+    // | Названия полей, которые в части стран называются иначе
+    apartmentUnitPlaceholder: "Lakóegység",
+    suburbPlaceholder: "Városrész",
+    stateTerritoryPlaceholder: "Állam / terület",
+    provincePlaceholder: "Tartomány",
+    countyPlaceholder: "Megye",
   },
   ro: {
     geoRestrictTitle: `{host} nu este disponibil în {country}`,
@@ -258,6 +282,12 @@ export const translations = {
     zipCodePlaceholder: "Introduceți codul poștal",
     postalCodeHint: "Dacă îl știți, introduceți-l — accelerează verificarea, dar nu este obligatoriu.",
     createAccountBtn: "Creează cont",
+    // | Названия полей, которые в части стран называются иначе
+    apartmentUnitPlaceholder: "Unitate",
+    suburbPlaceholder: "Cartier",
+    stateTerritoryPlaceholder: "Stat / Teritoriu",
+    provincePlaceholder: "Provincie",
+    countyPlaceholder: "Comitat",
   },
   sl: {
     geoRestrictTitle: `{host} ni na voljo v državi {country}`,
@@ -310,6 +340,12 @@ export const translations = {
     zipCodePlaceholder: "Vnesite poštno številko",
     postalCodeHint: "Če ga poznate, ga vnesite — pospeši preverjanje, vendar ni obvezno.",
     createAccountBtn: "Ustvariti račun",
+    // | Названия полей, которые в части стран называются иначе
+    apartmentUnitPlaceholder: "Enota",
+    suburbPlaceholder: "Predmestje",
+    stateTerritoryPlaceholder: "Zvezna država / ozemlje",
+    provincePlaceholder: "Provinca",
+    countyPlaceholder: "Grofija",
   },
   cs: {
     geoRestrictTitle: `{host} není dostupný v zemi {country}`,
@@ -362,6 +398,12 @@ export const translations = {
     zipCodePlaceholder: "Zadejte PSČ",
     postalCodeHint: "Pokud jej znáte, zadejte jej — urychlí to ověření, ale není to povinné.",
     createAccountBtn: "Vytvořit účet",
+    // | Названия полей, которые в части стран называются иначе
+    apartmentUnitPlaceholder: "Jednotka",
+    suburbPlaceholder: "Čtvrť",
+    stateTerritoryPlaceholder: "Stát / teritorium",
+    provincePlaceholder: "Provincie",
+    countyPlaceholder: "Hrabství",
   },
   ru: {
     geoRestrictTitle: `{host} недоступен в стране {country}`,
@@ -414,6 +456,12 @@ export const translations = {
     zipCodePlaceholder: "Введите почтовый индекс",
     postalCodeHint: "Если знаете — введите. Это ускорит верификацию, но не обязательно.",
     createAccountBtn: "Создать аккаунт",
+    // | Названия полей, которые в части стран называются иначе
+    apartmentUnitPlaceholder: "Квартира",
+    suburbPlaceholder: "Пригород",
+    stateTerritoryPlaceholder: "Штат / территория",
+    provincePlaceholder: "Провинция",
+    countyPlaceholder: "Графство",
   },
   pt: {
     geoRestrictTitle: `{host} não está disponível em {country}`,
@@ -466,6 +514,12 @@ export const translations = {
     zipCodePlaceholder: "Código Postal",
     postalCodeHint: "Se souber, insira — acelera a verificação, mas não é obrigatório.",
     createAccountBtn: "Criar Conta",
+    // | Названия полей, которые в части стран называются иначе
+    apartmentUnitPlaceholder: "Unidade",
+    suburbPlaceholder: "Bairro",
+    stateTerritoryPlaceholder: "Estado / Território",
+    provincePlaceholder: "Província",
+    countyPlaceholder: "Condado",
   },
   de: {
     geoRestrictTitle: `{host} ist in {country} nicht verfügbar`,
@@ -518,6 +572,12 @@ export const translations = {
     zipCodePlaceholder: "Postleitzahl eingeben",
     postalCodeHint: "Wenn Sie ihn kennen, geben Sie ihn ein — das beschleunigt die Verifizierung, ist aber optional.",
     createAccountBtn: "Konto erstellen",
+    // | Названия полей, которые в части стран называются иначе
+    apartmentUnitPlaceholder: "Einheit",
+    suburbPlaceholder: "Stadtteil",
+    stateTerritoryPlaceholder: "Bundesstaat / Territorium",
+    provincePlaceholder: "Provinz",
+    countyPlaceholder: "Grafschaft",
   },
   el: {
     geoRestrictTitle: `Το {host} δεν είναι διαθέσιμο στη χώρα {country}`,
@@ -570,6 +630,12 @@ export const translations = {
     zipCodePlaceholder: "Εισάγετε Τ.Κ.",
     postalCodeHint: "Αν τον γνωρίζετε, καταχωρίστε τον — επιταχύνει την επαλήθευση, αλλά δεν είναι υποχρεωτικό.",
     createAccountBtn: "Δημιουργία Λογαριασμού",
+    // | Названия полей, которые в части стран называются иначе
+    apartmentUnitPlaceholder: "Μονάδα",
+    suburbPlaceholder: "Προάστιο",
+    stateTerritoryPlaceholder: "Πολιτεία / Επικράτεια",
+    provincePlaceholder: "Επαρχία",
+    countyPlaceholder: "Κομητεία",
   },
   uk: {
     geoRestrictTitle: `{host} недоступний у країні {country}`,
@@ -622,6 +688,12 @@ export const translations = {
     zipCodePlaceholder: "Введіть поштовий індекс",
     postalCodeHint: "Якщо знаєте — введіть. Це пришвидшить верифікацію, але не обов'язково.",
     createAccountBtn: "Створити акаунт",
+    // | Названия полей, которые в части стран называются иначе
+    apartmentUnitPlaceholder: "Квартира",
+    suburbPlaceholder: "Передмістя",
+    stateTerritoryPlaceholder: "Штат / територія",
+    provincePlaceholder: "Провінція",
+    countyPlaceholder: "Графство",
   },
   es: {
     geoRestrictTitle: `{host} no está disponible en {country}`,
@@ -674,6 +746,12 @@ export const translations = {
     zipCodePlaceholder: "Introduce el Código Postal",
     postalCodeHint: "Si lo conoce, ingréselo: acelera la verificación, pero no es obligatorio.",
     createAccountBtn: "Crear Cuenta",
+    // | Названия полей, которые в части стран называются иначе
+    apartmentUnitPlaceholder: "Unidad",
+    suburbPlaceholder: "Localidad",
+    stateTerritoryPlaceholder: "Estado / Territorio",
+    provincePlaceholder: "Provincia",
+    countyPlaceholder: "Condado",
   },
   nb: {
     geoRestrictTitle: `{host} er ikke tilgjengelig i {country}`,
@@ -726,6 +804,12 @@ export const translations = {
     zipCodePlaceholder: "Skriv inn postnummer",
     postalCodeHint: "Hvis du vet det, skriv det inn — det fremskynder verifiseringen, men er valgfritt.",
     createAccountBtn: "Opprett Konto",
+    // | Названия полей, которые в части стран называются иначе
+    apartmentUnitPlaceholder: "Enhet",
+    suburbPlaceholder: "Forstad",
+    stateTerritoryPlaceholder: "Delstat / territorium",
+    provincePlaceholder: "Provins",
+    countyPlaceholder: "Grevskap",
   },
   sv: {
     geoRestrictTitle: `{host} är inte tillgängligt i {country}`,
@@ -778,6 +862,12 @@ export const translations = {
     zipCodePlaceholder: "Ange postnummer",
     postalCodeHint: "Om du känner till det, ange det — det snabbar upp verifieringen, men är valfritt.",
     createAccountBtn: "Skapa Konto",
+    // | Названия полей, которые в части стран называются иначе
+    apartmentUnitPlaceholder: "Enhet",
+    suburbPlaceholder: "Förort",
+    stateTerritoryPlaceholder: "Delstat / territorium",
+    provincePlaceholder: "Provins",
+    countyPlaceholder: "Grevskap",
   },
   sk: {
     geoRestrictTitle: `{host} nie je dostupný v krajine {country}`,
@@ -830,6 +920,12 @@ export const translations = {
     zipCodePlaceholder: "Zadajte PSČ",
     postalCodeHint: "Ak ho poznáte, zadajte ho — urýchli to overenie, ale nie je to povinné.",
     createAccountBtn: "Vytvoriť účet",
+    // | Названия полей, которые в части стран называются иначе
+    apartmentUnitPlaceholder: "Jednotka",
+    suburbPlaceholder: "Mestská časť",
+    stateTerritoryPlaceholder: "Štát / teritórium",
+    provincePlaceholder: "Provincia",
+    countyPlaceholder: "Grófstvo",
   },
   it: {
     geoRestrictTitle: `{host} non è disponibile in {country}`,
@@ -882,6 +978,12 @@ export const translations = {
     zipCodePlaceholder: "Inserisci CAP",
     postalCodeHint: "Se lo conosci, inseriscilo: velocizza la verifica, ma non è obbligatorio.",
     createAccountBtn: "Crea Account",
+    // | Названия полей, которые в части стран называются иначе
+    apartmentUnitPlaceholder: "Unità",
+    suburbPlaceholder: "Quartiere",
+    stateTerritoryPlaceholder: "Stato / Territorio",
+    provincePlaceholder: "Provincia",
+    countyPlaceholder: "Contea",
   },
   et: {
     geoRestrictTitle: `{host} ei ole saadaval riigis {country}`,
@@ -934,6 +1036,12 @@ export const translations = {
     zipCodePlaceholder: "Sisesta Postiindeks",
     postalCodeHint: "Kui tead, sisesta see — see kiirendab kontrolli, kuid pole kohustuslik.",
     createAccountBtn: "Loo Konto",
+    // | Названия полей, которые в части стран называются иначе
+    apartmentUnitPlaceholder: "Üksus",
+    suburbPlaceholder: "Linnaosa",
+    stateTerritoryPlaceholder: "Osariik / territoorium",
+    provincePlaceholder: "Provints",
+    countyPlaceholder: "Krahvkond",
   },
   lv: {
     geoRestrictTitle: `{host} nav pieejams valstī {country}`,
@@ -986,6 +1094,12 @@ export const translations = {
     zipCodePlaceholder: "Ievadi Pasta Kodu",
     postalCodeHint: "Ja zināt, ievadiet to — tas paātrina pārbaudi, taču nav obligāti.",
     createAccountBtn: "Izveidot Kontu",
+    // | Названия полей, которые в части стран называются иначе
+    apartmentUnitPlaceholder: "Vienība",
+    suburbPlaceholder: "Priekšpilsēta",
+    stateTerritoryPlaceholder: "Štats / teritorija",
+    provincePlaceholder: "Province",
+    countyPlaceholder: "Grāfiste",
   },
   lt: {
     geoRestrictTitle: `{host} nepasiekiamas šalyje {country}`,
@@ -1038,6 +1152,12 @@ export const translations = {
     zipCodePlaceholder: "Įveskite Pašto Kodą",
     postalCodeHint: "Jei žinote, įveskite — tai paspartins patikrą, bet nėra privaloma.",
     createAccountBtn: "Sukurti Paskyrą",
+    // | Названия полей, которые в части стран называются иначе
+    apartmentUnitPlaceholder: "Vienetas",
+    suburbPlaceholder: "Priemiestis",
+    stateTerritoryPlaceholder: "Valstija / teritorija",
+    provincePlaceholder: "Provincija",
+    countyPlaceholder: "Grafystė",
   },
   hr: {
     geoRestrictTitle: `{host} nije dostupan u državi {country}`,
@@ -1090,6 +1210,12 @@ export const translations = {
     zipCodePlaceholder: "Unesite Poštanski Broj",
     postalCodeHint: "Ako ga znate, unesite ga — ubrzava provjeru, ali nije obavezno.",
     createAccountBtn: "Kreiraj Račun",
+    // | Названия полей, которые в части стран называются иначе
+    apartmentUnitPlaceholder: "Jedinica",
+    suburbPlaceholder: "Četvrt",
+    stateTerritoryPlaceholder: "Savezna država / teritorij",
+    provincePlaceholder: "Pokrajina",
+    countyPlaceholder: "Grofovija",
   },
   fi: {
     geoRestrictTitle: `{host} ei ole käytettävissä maassa {country}`,
@@ -1142,6 +1268,12 @@ export const translations = {
     zipCodePlaceholder: "Syötä postinumero",
     postalCodeHint: "Jos tiedät sen, syötä se — se nopeuttaa vahvistusta, mutta ei ole pakollista.",
     createAccountBtn: "Luo tili",
+    // | Названия полей, которые в части стран называются иначе
+    apartmentUnitPlaceholder: "Huoneisto",
+    suburbPlaceholder: "Kaupunginosa",
+    stateTerritoryPlaceholder: "Osavaltio / territorio",
+    provincePlaceholder: "Provinssi",
+    countyPlaceholder: "Kreivikunta",
   },
   da: {
     geoRestrictTitle: `{host} er ikke tilgængelig i {country}`,
@@ -1194,6 +1326,12 @@ export const translations = {
     zipCodePlaceholder: "Indtast postnummer",
     postalCodeHint: "Hvis du kender den, så indtast den — det fremskynder verificeringen, men er valgfrit.",
     createAccountBtn: "Opret konto",
+    // | Названия полей, которые в части стран называются иначе
+    apartmentUnitPlaceholder: "Enhed",
+    suburbPlaceholder: "Forstad",
+    stateTerritoryPlaceholder: "Delstat / territorium",
+    provincePlaceholder: "Provins",
+    countyPlaceholder: "Grevskab",
   },
   bg: {
     geoRestrictTitle: `{host} не е достъпен в {country}`,
@@ -1246,6 +1384,12 @@ export const translations = {
     zipCodePlaceholder: "Въведете пощенски код",
     postalCodeHint: "Ако го знаете, въведете го — ускорява проверката, но не е задължително.",
     createAccountBtn: "Създайте акаунт",
+    // | Названия полей, которые в части стран называются иначе
+    apartmentUnitPlaceholder: "Единица",
+    suburbPlaceholder: "Квартал",
+    stateTerritoryPlaceholder: "Щат / територия",
+    provincePlaceholder: "Провинция",
+    countyPlaceholder: "Графство",
   },
   nl: {
     geoRestrictTitle: `{host} is niet beschikbaar in {country}`,
@@ -1298,6 +1442,12 @@ export const translations = {
     zipCodePlaceholder: "Voer postcode in",
     postalCodeHint: "Als u het weet, vul het in — het versnelt de verificatie, maar is niet verplicht.",
     createAccountBtn: "Account aanmaken",
+    // | Названия полей, которые в части стран называются иначе
+    apartmentUnitPlaceholder: "Unit",
+    suburbPlaceholder: "Wijk",
+    stateTerritoryPlaceholder: "Staat / territorium",
+    provincePlaceholder: "Provincie",
+    countyPlaceholder: "Graafschap",
   },
   ga: {
     geoRestrictTitle: `Níl {host} ar fáil i {country}`,
@@ -1350,6 +1500,12 @@ export const translations = {
     zipCodePlaceholder: "Cuir isteach Cód Poist",
     postalCodeHint: "Má tá sé ar eolas agat, cuir isteach é — luathaíonn sé an fíorú, ach níl sé éigeantach.",
     createAccountBtn: "Cruthaigh Cuntas",
+    // | Названия полей, которые в части стран называются иначе
+    apartmentUnitPlaceholder: "Aonad",
+    suburbPlaceholder: "Bruachbhaile",
+    stateTerritoryPlaceholder: "Stát / Críoch",
+    provincePlaceholder: "Cúige",
+    countyPlaceholder: "Contae",
   },
   lb: {
     geoRestrictTitle: `{host} ass net verfügbar an {country}`,
@@ -1402,6 +1558,12 @@ export const translations = {
     zipCodePlaceholder: "Postleitzuel aginn",
     postalCodeHint: "Wann Dir et kennt, gitt et an — et beschleunegt d'Verifikatioun, ass awer net obligatoresch.",
     createAccountBtn: "Kont erstellen",
+    // | Названия полей, которые в части стран называются иначе
+    apartmentUnitPlaceholder: "Eenheet",
+    suburbPlaceholder: "Virstad",
+    stateTerritoryPlaceholder: "Bundesstaat / Territoire",
+    provincePlaceholder: "Provënz",
+    countyPlaceholder: "Grofschaft",
   },
   mt: {
     geoRestrictTitle: `{host} mhuwiex disponibbli fi {country}`,
@@ -1454,6 +1616,12 @@ export const translations = {
     zipCodePlaceholder: "Daħħal il-Kodiċi Postali",
     postalCodeHint: "Jekk tafu, daħħlu — iħaffef il-verifika, iżda mhux obbligatorju.",
     createAccountBtn: "Oħloq Kont",
+    // | Названия полей, которые в части стран называются иначе
+    apartmentUnitPlaceholder: "Unità",
+    suburbPlaceholder: "Subborg",
+    stateTerritoryPlaceholder: "Stat / Territorju",
+    provincePlaceholder: "Provinċja",
+    countyPlaceholder: "Kontea",
   },
   ar: {
     geoRestrictTitle: `{host} غير متاح في {country}`,
@@ -1506,6 +1674,12 @@ export const translations = {
     zipCodePlaceholder: "أدخل الرمز البريدي",
     postalCodeHint: "إذا كنت تعرفه، فأدخله — فهذا يسرّع عملية التحقق، لكنه ليس إلزاميًا.",
     createAccountBtn: "إنشاء حساب",
+    // | Названия полей, которые в части стран называются иначе
+    apartmentUnitPlaceholder: "وحدة",
+    suburbPlaceholder: "الضاحية",
+    stateTerritoryPlaceholder: "الولاية / الإقليم",
+    provincePlaceholder: "المحافظة",
+    countyPlaceholder: "المقاطعة",
   },
   zh: {
     geoRestrictTitle: `{host} 在{country}不可用`,
@@ -1558,6 +1732,12 @@ export const translations = {
     zipCodePlaceholder: "输入邮政编码",
     postalCodeHint: "如果知道，请填写——这会加快验证速度，但不是必填项。",
     createAccountBtn: "创建账户",
+    // | Названия полей, которые в части стран называются иначе
+    apartmentUnitPlaceholder: "单元",
+    suburbPlaceholder: "城区",
+    stateTerritoryPlaceholder: "州 / 领地",
+    provincePlaceholder: "省",
+    countyPlaceholder: "郡",
   },
   sw: {
     geoRestrictTitle: `{host} haipatikani nchini {country}`,
@@ -1610,6 +1790,12 @@ export const translations = {
     zipCodePlaceholder: "Weka Msimbo wa Posta",
     postalCodeHint: "Ukijua, iweke — inaharakisha uthibitishaji, lakini si lazima.",
     createAccountBtn: "Unda Akaunti",
+    // | Названия полей, которые в части стран называются иначе
+    apartmentUnitPlaceholder: "Kitengo",
+    suburbPlaceholder: "Kitongoji",
+    stateTerritoryPlaceholder: "Jimbo / eneo",
+    provincePlaceholder: "Mkoa",
+    countyPlaceholder: "Kaunti",
   },
   rw: {
     geoRestrictTitle: `{host} ntiboneka muri {country}`,
@@ -1662,6 +1848,12 @@ export const translations = {
     zipCodePlaceholder: "Andika Kode y’Amaposita",
     postalCodeHint: "Niba uyizi, andika — byihutisha kugenzura, ariko ntibitegekwa.",
     createAccountBtn: "Kora Konti",
+    // | Названия полей, которые в части стран называются иначе
+    apartmentUnitPlaceholder: "Igice cy'inzu",
+    suburbPlaceholder: "Agace k'umujyi",
+    stateTerritoryPlaceholder: "Leta / Ifasi",
+    provincePlaceholder: "Intara",
+    countyPlaceholder: "Akarere",
   },
   lm: {
     geoRestrictTitle: `{host} tekozesebwa mu {country}`,
@@ -1714,6 +1906,12 @@ export const translations = {
     zipCodePlaceholder: "Yingiza ZIP Code",
     postalCodeHint: "Bw'oba ogimanyi, giwandiike — kyanguyako okukakasa, naye si kya buwaze.",
     createAccountBtn: "Tonda akawunti",
+    // | Названия полей, которые в части стран называются иначе
+    apartmentUnitPlaceholder: "Ekitundu ky'ennyumba",
+    suburbPlaceholder: "Ekyalo ky'ekibuga",
+    stateTerritoryPlaceholder: "Sitaati / Ekitundu",
+    provincePlaceholder: "Purovinsi",
+    countyPlaceholder: "Essaza",
   },
   am: {
     geoRestrictTitle: `{host} በ{country} አይገኝም`,
@@ -1766,6 +1964,12 @@ export const translations = {
     zipCodePlaceholder: "ዚፕ ኮድ ያስገቡ",
     postalCodeHint: "የሚያውቁት ከሆነ ያስገቡት — ማረጋገጡን ያፋጥናል፣ ግን አስገዳጅ አይደለም።",
     createAccountBtn: "መለያ ፍጠር",
+    // | Названия полей, которые в части стран называются иначе
+    apartmentUnitPlaceholder: "ክፍል",
+    suburbPlaceholder: "የከተማ ዳርቻ",
+    stateTerritoryPlaceholder: "ግዛት / መስተዳድር",
+    provincePlaceholder: "አውራጃ",
+    countyPlaceholder: "ካውንቲ",
   },
   lm: {
     geoRestrictTitle: `{host} tekozesebwa mu {country}`,
@@ -1818,6 +2022,12 @@ export const translations = {
     zipCodePlaceholder: "Yingiza ZIP Code",
     postalCodeHint: "Bw'oba ogimanyi, giwandiike — kyanguyako okukakasa, naye si kya buwaze.",
     createAccountBtn: "Tonda akawunti",
+    // | Названия полей, которые в части стран называются иначе
+    apartmentUnitPlaceholder: "Ekitundu ky'ennyumba",
+    suburbPlaceholder: "Ekyalo ky'ekibuga",
+    stateTerritoryPlaceholder: "Sitaati / Ekitundu",
+    provincePlaceholder: "Purovinsi",
+    countyPlaceholder: "Essaza",
   },
   ha: {
     geoRestrictTitle: `{host} ba ya samuwa a {country}`,
@@ -1870,6 +2080,12 @@ export const translations = {
     zipCodePlaceholder: "Shigar da Lambar ZIP",
     postalCodeHint: "Idan ka sani, shigar da shi — yana hanzarta tabbatarwa, amma ba dole ba ne.",
     createAccountBtn: "Ƙirƙiri Asusu",
+    // | Названия полей, которые в части стран называются иначе
+    apartmentUnitPlaceholder: "Sashen gida",
+    suburbPlaceholder: "Unguwa",
+    stateTerritoryPlaceholder: "Jiha / Yanki",
+    provincePlaceholder: "Lardi",
+    countyPlaceholder: "Gunduma",
   },
   yo: {
     geoRestrictTitle: `{host} kò sí ní {country}`,
@@ -1922,6 +2138,12 @@ export const translations = {
     zipCodePlaceholder: "Tẹ Kóòdù ZIP",
     postalCodeHint: "Tí o bá mọ̀ ọ́n, tẹ̀ ẹ́ sí i — yóò mú ìfọwọ́sí yá, ṣùgbọ́n kì í ṣe dandan.",
     createAccountBtn: "Ṣẹ̀dá Account",
+    // | Названия полей, которые в части стран называются иначе
+    apartmentUnitPlaceholder: "Ẹ̀ka ilé",
+    suburbPlaceholder: "Agbègbè ìlú",
+    stateTerritoryPlaceholder: "Ìpínlẹ̀ / Ìjọba agbègbè",
+    provincePlaceholder: "Ẹkùn",
+    countyPlaceholder: "Kóńtì",
   },
   ig: {
     geoRestrictTitle: `{host} adịghị arụ ọrụ na {country}`,
@@ -1974,6 +2196,12 @@ export const translations = {
     zipCodePlaceholder: "Tinye ZIP Code",
     postalCodeHint: "Ọ bụrụ na ị maara ya, tinye ya — ọ na-eme ka nkwenye dị ngwa, mana ọ abụghị mmecha.",
     createAccountBtn: "Mepụta Akaụntụ",
+    // | Названия полей, которые в части стран называются иначе
+    apartmentUnitPlaceholder: "Akụkụ ụlọ",
+    suburbPlaceholder: "Akụkụ obodo",
+    stateTerritoryPlaceholder: "Steeti / Ala ọchịchị",
+    provincePlaceholder: "Mpaghara",
+    countyPlaceholder: "Kaụnti",
   },
   tw: {
     geoRestrictTitle: `{host} nni hɔ wɔ {country}`,
@@ -2026,5 +2254,11 @@ export const translations = {
     zipCodePlaceholder: "Hyɛ ZIP Koodu",
     postalCodeHint: "Sɛ wunim a, kyerɛw — ɛbɛma adansedi no ayɛ ntɛm, nanso ɛnhia.",
     createAccountBtn: "Bɔ Akaunt",
+    // | Названия полей, которые в части стран называются иначе
+    apartmentUnitPlaceholder: "Ɔdan sin",
+    suburbPlaceholder: "Kurow mu fa",
+    stateTerritoryPlaceholder: "Ɔman / Asase",
+    provincePlaceholder: "Mantam",
+    countyPlaceholder: "Kaunti",
   },
 };
