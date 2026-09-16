@@ -560,6 +560,22 @@
   padding: 16px 12px;
 }
 
+/* Самописные селекты с клавиатуры (modules/keyboardSelect.js).
+   Рамка фокуса — только при навигации с клавиатуры, мышью её не видно. */
+.form-currency-btn:focus-visible,
+.two-step-country-wrapper:has(.two-step-country-input:focus-visible),
+.two-step-region-wrapper:has(.two-step-region-input:focus-visible) {
+  outline: none;
+  box-shadow: 0 0 0 2px #8726FF;
+}
+
+/* Пункт, на котором стоит выбор стрелками */
+.two-step-country-list-item.is-highlighted,
+.two-step-state-list-item.is-highlighted,
+.form-currency-dropdown li.is-highlighted {
+  background-color: #755EEB26;
+}
+
 /* RTL Support */
 
 [dir="rtl"] .header-lang-list {
