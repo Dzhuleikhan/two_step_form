@@ -3,15 +3,24 @@ import {
   countryFlags,
   getPostalCodeMode,
   getPostalCodeFormat,
-  hasStateField,
+  getAddressFieldOrder,
+  getRegionMode,
+  getRegionOptions,
+  getRegionByPostalCode,
+  getFieldLabelKey,
+  getLocalFieldLabel,
+  isHouseNumberRequired,
+  hasApartmentField,
   formatPostalCode,
   validatePostalCodeFormat,
 } from "../public/data";
 import { geoData, settingZipCodePlaceholder } from "./geoLocation";
+import { translations } from "/public/translations";
 import { twoStepiti } from "./itiTelInput";
 import { newDomain } from "./fetchingDomain";
 import { getUrlParameter } from "./params";
 import gsap from "gsap";
+import { enableKeyboardSelect } from "./keyboardSelect";
 import { isValidPhoneNumber } from "libphonenumber-js";
 import flatpickr from "flatpickr";
 import {
@@ -27,6 +36,9 @@ import {
 } from "./emailAvailability";
 
 const CDN = "https://3344112-img.b-cdn.net";
+
+const translate = (lang, key) =>
+  translations[lang]?.[key] ?? translations.en[key];
 
 document.querySelectorAll("input").forEach((input) => {
   input.setAttribute("autocomplete", "off");
@@ -110,23 +122,168 @@ export const applyPostalCodeMode = (countryCode) => {
   }
 };
 
-// | STATE / PROVINCE FIELD
-// Показывает поле State/Province только для стран, где штат/провинция входят
-// в адрес (KYC). Поле необязательное — сабмит не блокирует.
-export const applyStateField = (countryCode) => {
-  const wrapper = document.querySelector(".two-step-state-wrapper");
-  const input = document.querySelector(".two-step-state-input");
-  const label = document.querySelector(".two-step-state-label");
+// | РЕГИОН — вид поля зависит от страны (см. getRegionMode в data.js):
+// список (AU, IT, IE), скрытое вычисление по индексу (ES), свободный ввод
+// (US, CA и прочие вне ТЗ) или полное отсутствие поля.
+export let regionMode = "none";
+
+// Игрок выбрал регион руками — подстановка по индексу больше его не перебивает.
+let regionChosenManually = false;
+
+const renderRegionOptions = (countryCode) => {
+  const list = document.querySelector(".two-step-region-list");
+  if (!list) return;
+
+  list.innerHTML = "";
+  getRegionOptions(countryCode).forEach((name) => {
+    const item = document.createElement("li");
+    item.className =
+      "two-step-state-list-item cursor-pointer text-base font-bold tracking-[-0.02em] text-[#1c1c1c]";
+    item.textContent = name;
+    list.appendChild(item);
+  });
+};
+
+export const applyRegionField = (countryCode) => {
+  regionMode = getRegionMode(countryCode);
+  regionChosenManually = false;
+
+  const textWrapper = document.querySelector(".two-step-state-wrapper");
+  const textInput = document.querySelector(".two-step-state-input");
+  const textLabel = document.querySelector(".two-step-state-label");
+  const selectWrapper = document.querySelector(".two-step-region-wrapper");
+  const selectInput = document.querySelector(".two-step-region-input");
+  const dropdown = document.querySelector(".two-step-region-drowpdown");
+
+  // Прежнее значение всегда сбрасываем: у новой страны свой список регионов, а
+  // свободный ввод относился к предыдущей стране.
+  twoStepFormData.state = "";
+  if (textInput) textInput.value = "";
+  if (selectInput) selectInput.value = "";
+  textLabel?.classList.remove("active");
+  dropdown?.classList.add("hidden");
+
+  textWrapper?.classList.toggle("hidden", regionMode !== "text");
+  selectWrapper?.classList.toggle("hidden", regionMode !== "select");
+
+  if (regionMode === "select") renderRegionOptions(countryCode);
+};
+
+// Подстановка региона по индексу: AU — штат по диапазону, ES — провинция по
+// первым двум цифрам (поля нет, значение только уходит на бэк), IT — провинция
+// по справочнику CAP, IE — графство по routing key Eircode.
+const applyRegionFromPostalCode = (postal) => {
+  if (regionMode !== "select" && regionMode !== "auto") return;
+  if (regionChosenManually) return;
+
+  // Если новый индекс провинцию не даёт, подставленное по прежнему индексу
+  // значение уже неверно — сбрасываем, а не оставляем чужой регион.
+  const region = getRegionByPostalCode(twoStepFormData.country, postal) || "";
+
+  twoStepFormData.state = region;
+  if (regionMode === "select") {
+    const input = document.querySelector(".two-step-region-input");
+    if (input) input.value = region;
+  }
+};
+
+// | НОМЕР ДОМА — в IE и IS дома бывают без номера, там поле необязательное.
+export let houseNumberRequired = true;
+
+export const applyHouseNumberMode = (countryCode) => {
+  houseNumberRequired = isHouseNumberRequired(countryCode);
+  document
+    .querySelector(".two-step-house-label")
+    ?.classList.toggle("two-step-required-label", houseNumberRequired);
+};
+
+// | КВАРТИРА — поле необязательное везде, а в DE его просто нет.
+export const applyApartmentField = (countryCode) => {
+  const wrapper = document.querySelector(".two-step-apartment-wrapper");
+  const input = document.querySelector(".two-step-apartment-input");
+  const label = document.querySelector(".two-step-apartment-label");
   if (!wrapper || !input) return;
 
-  if (hasStateField(countryCode)) {
-    wrapper.classList.remove("hidden");
-  } else {
-    wrapper.classList.add("hidden");
+  const isVisible = hasApartmentField(countryCode);
+  wrapper.classList.toggle("hidden", !isVisible);
+
+  if (!isVisible) {
     input.value = "";
     label?.classList.remove("active");
-    twoStepFormData.state = "";
+    twoStepFormData.apartment = "";
   }
+};
+
+// | ПОДПИСИ ПОЛЕЙ — в части стран поле называется иначе: в AU квартира это
+// Unit, город — Suburb, регион — State / Territory. Подменяем и текст, и ключ
+// data-translate, чтобы смена языка сайта подставила уже страновой вариант.
+// Местный термин (DK «Etage / side») не переводится: data-translate снимаем,
+// иначе смена языка затрёт подпись.
+const FIELD_LABEL_SELECTORS = {
+  apartment: [".two-step-apartment-label"],
+  city: [".two-step-city-label"],
+  state: [".two-step-state-label", ".two-step-region-label"],
+};
+
+export const applyFieldLabels = (countryCode) => {
+  const lang =
+    document.documentElement.getAttribute("lang") ||
+    localStorage.getItem("preferredLanguage") ||
+    "en";
+
+  Object.entries(FIELD_LABEL_SELECTORS).forEach(([field, selectors]) => {
+    const localLabel = getLocalFieldLabel(countryCode, field);
+    const key = getFieldLabelKey(countryCode, field);
+    selectors.forEach((selector) => {
+      const label = document.querySelector(selector);
+      if (!label) return;
+      if (localLabel) {
+        label.removeAttribute("data-translate");
+        label.textContent = localLabel;
+        return;
+      }
+      label.setAttribute("data-translate", key);
+      label.innerHTML = translate(lang, key);
+    });
+  });
+};
+
+// Единая точка: всё, что зависит от страны, пересобирается одним вызовом.
+export const applyCountryAddressRules = (countryCode) => {
+  settingZipCodePlaceholder(countryCode);
+  applyPostalCodeMode(countryCode);
+  applyRegionField(countryCode);
+  applyHouseNumberMode(countryCode);
+  applyApartmentField(countryCode);
+  applyFieldLabels(countryCode);
+  applyAddressFieldOrder(countryCode);
+};
+
+// | ПОРЯДОК АДРЕСНЫХ ПОЛЕЙ — страна решает, в каком порядке игрок вводит адрес.
+// Переставляем сами узлы внутри .two-step-address-fields, а не CSS order: Tab
+// ходит по порядку DOM, и с order фокус прыгал между полями не так, как они
+// стоят на экране. Порядок для страны даёт data.js.
+// state — сразу два блока: свободный ввод и выпадающий список региона.
+const ADDRESS_FIELD_SELECTORS = {
+  street: ".two-step-street-wrapper",
+  house: ".two-step-house-wrapper",
+  apartment: ".two-step-apartment-wrapper",
+  city: ".two-step-city-wrapper",
+  state: ".two-step-state-wrapper, .two-step-region-wrapper",
+  zip: ".two-step-zipcode-wrapper",
+};
+
+export const applyAddressFieldOrder = (countryCode) => {
+  const container = document.querySelector(".two-step-address-fields");
+  if (!container) return;
+
+  // appendChild переносит узел в конец вместе с обработчиками: проходим поля по
+  // порядку страны, и каждое встаёт за предыдущим.
+  getAddressFieldOrder(countryCode).forEach((field) => {
+    container
+      .querySelectorAll(ADDRESS_FIELD_SELECTORS[field])
+      .forEach((wrapper) => container.appendChild(wrapper));
+  });
 };
 
 export const exceptCurrencies = [
@@ -960,6 +1117,24 @@ if (twoStepFormFourthStep) {
     }
   });
 
+  // Клавиатура: список открывается, и фокус сразу уходит в поиск — можно
+  // печатать название страны, стрелками выбрать, Enter применить.
+  const countryKeyboard = enableKeyboardSelect({
+    root: twoStepCountryWrapper,
+    trigger: twoStepAppliedCountryInput,
+    getItems: () => [
+      ...twoStepCountryList.querySelectorAll(".two-step-country-list-item"),
+    ],
+    getSelected: (items) =>
+      items.find(
+        (item) => item.getAttribute("countryCode") === twoStepFormData.country,
+      ),
+    isOpen: () => !twoStepCountryDropdown.classList.contains("hidden"),
+    open: () => twoStepCountryDropdown.classList.remove("hidden"),
+    close: () => twoStepCountryDropdown.classList.add("hidden"),
+    onOpen: () => twoStepCountrySearchInput.focus({ preventScroll: true }),
+  });
+
   // Choosing country from dropdown
   twoStepCountryList.addEventListener("click", (event) => {
     const item = event.target.closest(".two-step-country-list-item"); // Replace with your item class or selector
@@ -972,9 +1147,7 @@ if (twoStepFormFourthStep) {
       twoStepAppliedCountryImage.alt = name;
       twoStepCountryDropdown.classList.add("hidden");
       twoStepFormData.country = countryCode;
-      settingZipCodePlaceholder(countryCode);
-      applyPostalCodeMode(countryCode);
-      applyStateField(countryCode);
+      applyCountryAddressRules(countryCode);
       validateInputs1("#4ED937", "#8726FF");
     }
   });
@@ -982,9 +1155,7 @@ if (twoStepFormFourthStep) {
   // Apply detected country
   const applyDetectedCountry = async () => {
     const locationData = geoData;
-    settingZipCodePlaceholder(locationData.countryCode);
-    applyPostalCodeMode(locationData.countryCode);
-    applyStateField(locationData.countryCode);
+    applyCountryAddressRules(locationData.countryCode);
 
     const mathedCountry = countryFlags.find((country) => {
       return (
@@ -1052,10 +1223,121 @@ if (twoStepFormFourthStep) {
   // Event listener for the search input
   twoStepCountrySearchInput.addEventListener("input", (e) => {
     renderCountries(e.target.value);
+    // Список перерисован: подсветка встаёт на первую найденную страну, и Enter
+    // сразу её выбирает.
+    countryKeyboard.highlightFirst();
   });
 
   // Initial render
   renderCountries();
+
+  // ? REGION DROPDOWN — список регионов для AU, IT и IE. Поиска нет: списки
+  // короткие, а самый длинный (107 итальянских провинций) листается.
+  const twoStepRegionWrapper = twoStepFormFourthStep.querySelector(
+    ".two-step-region-wrapper",
+  );
+  const twoStepRegionButton = twoStepFormFourthStep.querySelector(
+    ".two-step-region-button",
+  );
+  const twoStepRegionDropdown = twoStepFormFourthStep.querySelector(
+    ".two-step-region-drowpdown",
+  );
+  const twoStepRegionList = twoStepFormFourthStep.querySelector(
+    ".two-step-region-list",
+  );
+
+  if (twoStepRegionButton && twoStepRegionDropdown && twoStepRegionList) {
+    // Регион часто стоит внизу формы (AU, IE). Открытый вниз список вылезал за
+    // видимую часть оверлея: появлялся лишний скролл, а низ списка обрезался.
+    // Поэтому при открытии меряем место под полем и над ним и выбираем сторону,
+    // а высоту списка ужимаем под доступное место.
+    const REGION_LIST_MAX_HEIGHT = 236;
+    const REGION_LIST_MIN_HEIGHT = 150;
+    const REGION_DROPDOWN_EDGE_GAP = 12;
+    // top-[120%] у выпадающего блока: отступ от поля — 20% его высоты.
+    const REGION_DROPDOWN_OFFSET = 0.2;
+
+    const positionRegionDropdown = () => {
+      const overlay = twoStepRegionWrapper.closest(".two-step-overlay");
+      const bounds = overlay?.getBoundingClientRect();
+      const visibleTop = Math.max(bounds?.top ?? 0, 0);
+      const visibleBottom = Math.min(
+        bounds?.bottom ?? window.innerHeight,
+        window.innerHeight,
+      );
+
+      const field = twoStepRegionWrapper.getBoundingClientRect();
+      const offset = field.height * REGION_DROPDOWN_OFFSET;
+      const spaceBelow =
+        visibleBottom - field.bottom - offset - REGION_DROPDOWN_EDGE_GAP;
+      const spaceAbove =
+        field.top - visibleTop - offset - REGION_DROPDOWN_EDGE_GAP;
+
+      twoStepRegionList.style.maxHeight = "";
+      const padding =
+        twoStepRegionDropdown.offsetHeight - twoStepRegionList.offsetHeight;
+      const needed =
+        Math.min(twoStepRegionList.scrollHeight, REGION_LIST_MAX_HEIGHT) +
+        padding;
+
+      const openUp = spaceBelow < needed && spaceAbove > spaceBelow;
+      const space = openUp ? spaceAbove : spaceBelow;
+
+      twoStepRegionDropdown.style.top = openUp ? "auto" : "";
+      twoStepRegionDropdown.style.bottom = openUp ? "120%" : "";
+      twoStepRegionList.style.maxHeight = `${Math.max(
+        Math.min(REGION_LIST_MAX_HEIGHT, space - padding),
+        REGION_LIST_MIN_HEIGHT,
+      )}px`;
+    };
+
+    const isRegionDropdownOpen = () =>
+      !twoStepRegionDropdown.classList.contains("hidden");
+
+    twoStepRegionButton.addEventListener("click", () => {
+      twoStepRegionDropdown.classList.toggle("hidden");
+      if (isRegionDropdownOpen()) positionRegionDropdown();
+    });
+
+    window.addEventListener("resize", () => {
+      if (isRegionDropdownOpen()) positionRegionDropdown();
+    });
+
+    document.addEventListener("click", (event) => {
+      if (!twoStepRegionWrapper.contains(event.target)) {
+        twoStepRegionDropdown.classList.add("hidden");
+      }
+    });
+
+    twoStepRegionList.addEventListener("click", (event) => {
+      const item = event.target.closest(".two-step-state-list-item");
+      if (!item) return;
+
+      const name = item.textContent;
+      twoStepRegionInput.value = name;
+      twoStepFormData.state = name;
+      // Дальше подстановка по индексу не трогает выбор игрока.
+      regionChosenManually = true;
+      twoStepRegionDropdown.classList.add("hidden");
+      validateInputs1("#4ED937", "#8726FF");
+    });
+
+    enableKeyboardSelect({
+      root: twoStepRegionWrapper,
+      trigger: twoStepRegionWrapper.querySelector(".two-step-region-input"),
+      getItems: () => [
+        ...twoStepRegionList.querySelectorAll(".two-step-state-list-item"),
+      ],
+      getSelected: (items) =>
+        items.find((item) => item.textContent === twoStepFormData.state),
+      isOpen: isRegionDropdownOpen,
+      open: () => {
+        twoStepRegionDropdown.classList.remove("hidden");
+        positionRegionDropdown();
+      },
+      close: () => twoStepRegionDropdown.classList.add("hidden"),
+    });
+  }
 
   // ? VALIDATION
   const submitBtn = twoStepFormFourthStep.querySelector(".submit-btn");
@@ -1086,10 +1368,15 @@ if (twoStepFormFourthStep) {
       twoStepZipcodeInput.value = formatted;
       twoStepZipcodeInput.setSelectionRange(formatted.length, formatted.length);
     }
+
+    applyRegionFromPostalCode(twoStepZipcodeInput.value);
   });
 
   const twoStepStateInput = twoStepFormFourthStep.querySelector(
     ".two-step-state-input",
+  );
+  const twoStepRegionInput = twoStepFormFourthStep.querySelector(
+    ".two-step-region-input",
   );
 
   // State/Province — обычный текстовый инпут (необязательный): пишем в payload.
@@ -1116,8 +1403,16 @@ if (twoStepFormFourthStep) {
       condition: (value) => value !== "",
     },
     {
+      // В IE и IS номер дома необязателен — там дома бывают без номера.
       input: twoStepHouseInput,
-      condition: (value) => value !== "",
+      condition: (value) => !houseNumberRequired || value !== "",
+    },
+    {
+      // Регион из списка (AU, IT, IE) обязателен: без него адрес неполный и
+      // его не примут PSP и KYC. В остальных режимах поля либо нет, либо оно
+      // необязательное — сабмит не блокируем.
+      input: twoStepRegionInput,
+      condition: (value) => regionMode !== "select" || value !== "",
     },
     {
       // REQUIRED — индекс обязателен и должен совпадать с форматом страны;
@@ -1167,7 +1462,9 @@ if (twoStepFormFourthStep) {
   };
 
   inputValidations1.forEach(({ input }) => {
-    input.addEventListener("focusout", validateInputs1("#4ED937", "#ff5530"));
+    input.addEventListener("focusout", () =>
+      validateInputs1("#4ED937", "#ff5530"),
+    );
   });
 
   inputValidations1.forEach(({ input, liveInvalid }) => {
