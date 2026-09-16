@@ -61,6 +61,12 @@ export default {
   apartmentPlaceholder: "Apartamento",
   cityPlaceholder: "Introduce la Ciudad",
   statePlaceholder: "Estado / Provincia",
+  // | Названия полей, которые в части стран называются иначе
+  apartmentUnitPlaceholder: "Unidad",
+  suburbPlaceholder: "Localidad",
+  stateTerritoryPlaceholder: "Estado / Territorio",
+  provincePlaceholder: "Provincia",
+  countyPlaceholder: "Condado",
   zipCodePlaceholder: "Introduce el Código Postal",
   zipCodeInvalid: "Código postal no válido",
   postalCodeHint:

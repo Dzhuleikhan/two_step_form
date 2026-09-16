@@ -61,6 +61,12 @@ export default {
   apartmentPlaceholder: "Dzīvoklis",
   cityPlaceholder: "Ievadi Pilsētu",
   statePlaceholder: "Novads / Reģions",
+  // | Названия полей, которые в части стран называются иначе
+  apartmentUnitPlaceholder: "Vienība",
+  suburbPlaceholder: "Priekšpilsēta",
+  stateTerritoryPlaceholder: "Štats / teritorija",
+  provincePlaceholder: "Province",
+  countyPlaceholder: "Grāfiste",
   zipCodePlaceholder: "Ievadi Pasta Kodu",
   zipCodeInvalid: "Nederīgs pasta indekss",
   postalCodeHint:

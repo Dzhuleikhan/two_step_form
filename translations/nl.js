@@ -61,6 +61,12 @@ export default {
   apartmentPlaceholder: "Appartement",
   cityPlaceholder: "Voer stad in",
   statePlaceholder: "Provincie / Regio",
+  // | Названия полей, которые в части стран называются иначе
+  apartmentUnitPlaceholder: "Unit",
+  suburbPlaceholder: "Wijk",
+  stateTerritoryPlaceholder: "Staat / territorium",
+  provincePlaceholder: "Provincie",
+  countyPlaceholder: "Graafschap",
   zipCodePlaceholder: "Voer postcode in",
   zipCodeInvalid: "Ongeldige postcode",
   postalCodeHint:

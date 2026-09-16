@@ -56,6 +56,12 @@ export default {
   apartmentPlaceholder: "অ্যাপার্টমেন্ট",
   cityPlaceholder: "শহর লিখুন",
   statePlaceholder: "রাজ্য / প্রদেশ",
+  // | Названия полей, которые в части стран называются иначе
+  apartmentUnitPlaceholder: "ইউনিট",
+  suburbPlaceholder: "শহরতলি",
+  stateTerritoryPlaceholder: "রাজ্য / অঞ্চল",
+  provincePlaceholder: "প্রদেশ",
+  countyPlaceholder: "কাউন্টি",
   zipCodePlaceholder: "জিপ কোড লিখুন",
   zipCodeInvalid: "ডাক কোড সঠিক নয়",
   postalCodeHint: "জানা থাকলে লিখুন — এটি যাচাই দ্রুত করে, তবে বাধ্যতামূলক নয়।",

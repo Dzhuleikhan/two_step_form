@@ -61,6 +61,12 @@ export default {
   apartmentPlaceholder: "Árasán",
   cityPlaceholder: "Cuir isteach Cathair",
   statePlaceholder: "Cúige / Réigiún",
+  // | Названия полей, которые в части стран называются иначе
+  apartmentUnitPlaceholder: "Aonad",
+  suburbPlaceholder: "Bruachbhaile",
+  stateTerritoryPlaceholder: "Stát / Críoch",
+  provincePlaceholder: "Cúige",
+  countyPlaceholder: "Contae",
   zipCodePlaceholder: "Cuir isteach Cód Poist",
   zipCodeInvalid: "Cód poist neamhbhailí",
   postalCodeHint:

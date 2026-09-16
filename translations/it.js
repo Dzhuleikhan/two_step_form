@@ -61,6 +61,12 @@ export default {
   apartmentPlaceholder: "Appartamento / Interno",
   cityPlaceholder: "Inserisci Città",
   statePlaceholder: "Provincia / Regione",
+  // | Названия полей, которые в части стран называются иначе
+  apartmentUnitPlaceholder: "Unità",
+  suburbPlaceholder: "Quartiere",
+  stateTerritoryPlaceholder: "Stato / Territorio",
+  provincePlaceholder: "Provincia",
+  countyPlaceholder: "Contea",
   zipCodePlaceholder: "Inserisci CAP",
   zipCodeInvalid: "Codice postale non valido",
   postalCodeHint:

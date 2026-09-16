@@ -61,6 +61,12 @@ export default {
   apartmentPlaceholder: "Lejlighed",
   cityPlaceholder: "Indtast by",
   statePlaceholder: "Region",
+  // | Названия полей, которые в части стран называются иначе
+  apartmentUnitPlaceholder: "Enhed",
+  suburbPlaceholder: "Forstad",
+  stateTerritoryPlaceholder: "Delstat / territorium",
+  provincePlaceholder: "Provins",
+  countyPlaceholder: "Grevskab",
   zipCodePlaceholder: "Indtast postnummer",
   zipCodeInvalid: "Ugyldigt postnummer",
   postalCodeHint:

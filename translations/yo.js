@@ -61,6 +61,12 @@ export default {
   apartmentPlaceholder: "Iyàrá / fíláàtì",
   cityPlaceholder: "Tẹ Ìlú",
   statePlaceholder: "Ìpínlẹ̀ / Agbègbè",
+  // | Названия полей, которые в части стран называются иначе
+  apartmentUnitPlaceholder: "Ẹ̀ka ilé",
+  suburbPlaceholder: "Agbègbè ìlú",
+  stateTerritoryPlaceholder: "Ìpínlẹ̀ / Ìjọba agbègbè",
+  provincePlaceholder: "Ẹkùn",
+  countyPlaceholder: "Kóńtì",
   zipCodePlaceholder: "Tẹ Kóòdù ZIP",
   zipCodeInvalid: "Kóòdù ìfìwéránṣẹ́ kò tọ̀nà",
   postalCodeHint:

@@ -61,6 +61,12 @@ export default {
   apartmentPlaceholder: "Lakás / ajtó",
   cityPlaceholder: "Írd be a várost",
   statePlaceholder: "Megye / Régió",
+  // | Названия полей, которые в части стран называются иначе
+  apartmentUnitPlaceholder: "Lakóegység",
+  suburbPlaceholder: "Városrész",
+  stateTerritoryPlaceholder: "Állam / terület",
+  provincePlaceholder: "Tartomány",
+  countyPlaceholder: "Megye",
   zipCodePlaceholder: "Írd be az irányítószámot",
   zipCodeInvalid: "Érvénytelen irányítószám",
   postalCodeHint:

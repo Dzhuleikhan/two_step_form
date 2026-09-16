@@ -61,6 +61,12 @@ export default {
   apartmentPlaceholder: "Διαμέρισμα",
   cityPlaceholder: "Εισάγετε Πόλη",
   statePlaceholder: "Περιφέρεια",
+  // | Названия полей, которые в части стран называются иначе
+  apartmentUnitPlaceholder: "Μονάδα",
+  suburbPlaceholder: "Προάστιο",
+  stateTerritoryPlaceholder: "Πολιτεία / Επικράτεια",
+  provincePlaceholder: "Επαρχία",
+  countyPlaceholder: "Κομητεία",
   zipCodePlaceholder: "Εισάγετε Τ.Κ.",
   zipCodeInvalid: "Μη έγκυρος ταχυδρομικός κώδικας",
   postalCodeHint:

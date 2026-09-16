@@ -61,6 +61,12 @@ export default {
   apartmentPlaceholder: "Korter",
   cityPlaceholder: "Sisesta Linn",
   statePlaceholder: "Maakond",
+  // | Названия полей, которые в части стран называются иначе
+  apartmentUnitPlaceholder: "Üksus",
+  suburbPlaceholder: "Linnaosa",
+  stateTerritoryPlaceholder: "Osariik / territoorium",
+  provincePlaceholder: "Provints",
+  countyPlaceholder: "Krahvkond",
   zipCodePlaceholder: "Sisesta Postiindeks",
   zipCodeInvalid: "Vigane postiindeks",
   postalCodeHint:

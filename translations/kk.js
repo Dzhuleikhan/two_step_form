@@ -56,6 +56,12 @@ export default {
   apartmentPlaceholder: "Пәтер",
   cityPlaceholder: "Қаланы Енгізіңіз",
   statePlaceholder: "Облыс",
+  // | Названия полей, которые в части стран называются иначе
+  apartmentUnitPlaceholder: "Пәтер / блок",
+  suburbPlaceholder: "Елді мекен",
+  stateTerritoryPlaceholder: "Штат / аумақ",
+  provincePlaceholder: "Провинция",
+  countyPlaceholder: "Графтық",
   zipCodePlaceholder: "Пошта Индексін Енгізіңіз",
   zipCodeInvalid: "Пошта индексі дұрыс емес",
   postalCodeHint: "Білсеңіз енгізіңіз — бұл тексеруді жылдамдатады, бірақ міндетті емес.",

@@ -61,6 +61,12 @@ export default {
   apartmentPlaceholder: "አፓርትመንት",
   cityPlaceholder: "ከተማ ያስገቡ",
   statePlaceholder: "ክልል",
+  // | Названия полей, которые в части стран называются иначе
+  apartmentUnitPlaceholder: "ክፍል",
+  suburbPlaceholder: "የከተማ ዳርቻ",
+  stateTerritoryPlaceholder: "ግዛት / መስተዳድር",
+  provincePlaceholder: "አውራጃ",
+  countyPlaceholder: "ካውንቲ",
   zipCodePlaceholder: "ዚፕ ኮድ ያስገቡ",
   zipCodeInvalid: "የፖስታ ኮድ ልክ አይደለም",
   postalCodeHint: "የሚያውቁት ከሆነ ያስገቡት — ማረጋገጡን ያፋጥናል፣ ግን አስገዳጅ አይደለም።",

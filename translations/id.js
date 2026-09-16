@@ -56,6 +56,12 @@ export default {
   apartmentPlaceholder: "Apartemen",
   cityPlaceholder: "Masukkan Kota",
   statePlaceholder: "Provinsi",
+  // | Названия полей, которые в части стран называются иначе
+  apartmentUnitPlaceholder: "Unit",
+  suburbPlaceholder: "Kawasan",
+  stateTerritoryPlaceholder: "Negara Bagian / Teritori",
+  provincePlaceholder: "Provinsi",
+  countyPlaceholder: "County",
   zipCodePlaceholder: "Masukkan Kode Pos",
   zipCodeInvalid: "Kode pos tidak valid",
   postalCodeHint: "Jika Anda tahu, masukkan — ini mempercepat verifikasi, tetapi opsional.",

@@ -61,6 +61,12 @@ export default {
   apartmentPlaceholder: "Stan",
   cityPlaceholder: "Unesite Grad",
   statePlaceholder: "Pokrajina / Regija",
+  // | Названия полей, которые в части стран называются иначе
+  apartmentUnitPlaceholder: "Jedinica",
+  suburbPlaceholder: "Četvrt",
+  stateTerritoryPlaceholder: "Savezna država / teritorij",
+  provincePlaceholder: "Pokrajina",
+  countyPlaceholder: "Grofovija",
   zipCodePlaceholder: "Unesite Poštanski Broj",
   zipCodeInvalid: "Neispravan poštanski broj",
   postalCodeHint:

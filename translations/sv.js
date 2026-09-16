@@ -61,6 +61,12 @@ export default {
   apartmentPlaceholder: "Lägenhet",
   cityPlaceholder: "Ange stad",
   statePlaceholder: "Region / Län",
+  // | Названия полей, которые в части стран называются иначе
+  apartmentUnitPlaceholder: "Enhet",
+  suburbPlaceholder: "Förort",
+  stateTerritoryPlaceholder: "Delstat / territorium",
+  provincePlaceholder: "Provins",
+  countyPlaceholder: "Grevskap",
   zipCodePlaceholder: "Ange postnummer",
   zipCodeInvalid: "Ogiltigt postnummer",
   postalCodeHint:

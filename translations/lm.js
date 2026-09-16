@@ -61,6 +61,12 @@ export default {
   apartmentPlaceholder: "Apaatimenti",
   cityPlaceholder: "Yingiza ekibuga",
   statePlaceholder: "Ekitundu / Disitulikiti",
+  // | Названия полей, которые в части стран называются иначе
+  apartmentUnitPlaceholder: "Ekitundu ky'ennyumba",
+  suburbPlaceholder: "Ekyalo ky'ekibuga",
+  stateTerritoryPlaceholder: "Sitaati / Ekitundu",
+  provincePlaceholder: "Purovinsi",
+  countyPlaceholder: "Essaza",
   zipCodePlaceholder: "Yingiza ZIP Code",
   zipCodeInvalid: "Kode ya posta ezali malamu te",
   postalCodeHint:

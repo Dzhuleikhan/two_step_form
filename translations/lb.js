@@ -61,6 +61,12 @@ export default {
   apartmentPlaceholder: "Wunneng",
   cityPlaceholder: "Stad aginn",
   statePlaceholder: "Provënz / Regioun",
+  // | Названия полей, которые в части стран называются иначе
+  apartmentUnitPlaceholder: "Eenheet",
+  suburbPlaceholder: "Virstad",
+  stateTerritoryPlaceholder: "Bundesstaat / Territoire",
+  provincePlaceholder: "Provënz",
+  countyPlaceholder: "Grofschaft",
   zipCodePlaceholder: "Postleitzuel aginn",
   zipCodeInvalid: "Ongülteg Postleitzuel",
   postalCodeHint:

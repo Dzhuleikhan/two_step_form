@@ -56,6 +56,12 @@ export default {
   apartmentPlaceholder: "Daire",
   cityPlaceholder: "Şehir Girin",
   statePlaceholder: "Eyalet / İl",
+  // | Названия полей, которые в части стран называются иначе
+  apartmentUnitPlaceholder: "Daire / Birim",
+  suburbPlaceholder: "Semt",
+  stateTerritoryPlaceholder: "Eyalet / Bölge",
+  provincePlaceholder: "İl",
+  countyPlaceholder: "Kontluk",
   zipCodePlaceholder: "Posta Kodu Girin",
   zipCodeInvalid: "Geçersiz posta kodu",
   postalCodeHint: "Biliyorsanız girin — doğrulamayı hızlandırır, ancak zorunlu değildir.",

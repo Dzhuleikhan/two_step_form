@@ -61,6 +61,12 @@ export default {
   apartmentPlaceholder: "Ụlọ obibi / akụkụ",
   cityPlaceholder: "Tinye Obodo",
   statePlaceholder: "Steeti / Mpaghara",
+  // | Названия полей, которые в части стран называются иначе
+  apartmentUnitPlaceholder: "Akụkụ ụlọ",
+  suburbPlaceholder: "Akụkụ obodo",
+  stateTerritoryPlaceholder: "Steeti / Ala ọchịchị",
+  provincePlaceholder: "Mpaghara",
+  countyPlaceholder: "Kaụnti",
   zipCodePlaceholder: "Tinye ZIP Code",
   zipCodeInvalid: "Koodu nzipụ ozi ezighi ezi",
   postalCodeHint:

@@ -61,6 +61,12 @@ export default {
   apartmentPlaceholder: "Butas",
   cityPlaceholder: "Įveskite Miestą",
   statePlaceholder: "Apskritis / Regionas",
+  // | Названия полей, которые в части стран называются иначе
+  apartmentUnitPlaceholder: "Vienetas",
+  suburbPlaceholder: "Priemiestis",
+  stateTerritoryPlaceholder: "Valstija / teritorija",
+  provincePlaceholder: "Provincija",
+  countyPlaceholder: "Grafystė",
   zipCodePlaceholder: "Įveskite Pašto Kodą",
   zipCodeInvalid: "Neteisingas pašto kodas",
   postalCodeHint:

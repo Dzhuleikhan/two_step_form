@@ -1,4 +1,5 @@
 import { geoData, geoConfirmed, isGeoFallback } from "./geoLocation";
+import { enableKeyboardSelect } from "./keyboardSelect";
 import { countryCurrencyData } from "../public/data";
 import {
   getCountryCurrencyABBR,
@@ -202,6 +203,21 @@ formCurrency.forEach((cur) => {
       if (!cur.contains(event.target)) {
         hideDropdown();
       }
+    });
+
+    // Кнопка валюты — div с tabindex="0": без него Tab её пропускал.
+    enableKeyboardSelect({
+      root: cur,
+      trigger: currencyDropdownBtn,
+      getItems: () => [...currencyListItems],
+      getSelected: (items) =>
+        items.find((item) => item.classList.contains("active")),
+      isOpen: () => currencyDropdownList.classList.contains("active"),
+      open: () => {
+        currencyDropdownBtn.classList.add("active");
+        currencyDropdownList.classList.add("active");
+      },
+      close: hideDropdown,
     });
   }
 });

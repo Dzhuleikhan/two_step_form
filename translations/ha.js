@@ -61,6 +61,12 @@ export default {
   apartmentPlaceholder: "Gida / ɗaki",
   cityPlaceholder: "Shigar da Birni",
   statePlaceholder: "Jiha / Lardi",
+  // | Названия полей, которые в части стран называются иначе
+  apartmentUnitPlaceholder: "Sashen gida",
+  suburbPlaceholder: "Unguwa",
+  stateTerritoryPlaceholder: "Jiha / Yanki",
+  provincePlaceholder: "Lardi",
+  countyPlaceholder: "Gunduma",
   zipCodePlaceholder: "Shigar da Lambar ZIP",
   zipCodeInvalid: "Lambar gidan waya ba daidai ba ce",
   postalCodeHint:

@@ -61,6 +61,12 @@ export default {
   apartmentPlaceholder: "Apartema",
   cityPlaceholder: "Andika Umujyi",
   statePlaceholder: "Intara",
+  // | Названия полей, которые в части стран называются иначе
+  apartmentUnitPlaceholder: "Igice cy'inzu",
+  suburbPlaceholder: "Agace k'umujyi",
+  stateTerritoryPlaceholder: "Leta / Ifasi",
+  provincePlaceholder: "Intara",
+  countyPlaceholder: "Akarere",
   zipCodePlaceholder: "Andika Kode y’Amaposita",
   zipCodeInvalid: "Kode y'iposita si yo",
   postalCodeHint:

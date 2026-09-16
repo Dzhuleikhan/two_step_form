@@ -61,6 +61,12 @@ export default {
   apartmentPlaceholder: "Asunto",
   cityPlaceholder: "Syötä kaupunki",
   statePlaceholder: "Maakunta / Alue",
+  // | Названия полей, которые в части стран называются иначе
+  apartmentUnitPlaceholder: "Huoneisto",
+  suburbPlaceholder: "Kaupunginosa",
+  stateTerritoryPlaceholder: "Osavaltio / territorio",
+  provincePlaceholder: "Provinssi",
+  countyPlaceholder: "Kreivikunta",
   zipCodePlaceholder: "Syötä postinumero",
   zipCodeInvalid: "Virheellinen postinumero",
   postalCodeHint:

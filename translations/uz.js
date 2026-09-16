@@ -56,6 +56,12 @@ export default {
   apartmentPlaceholder: "Xonadon",
   cityPlaceholder: "Shaharni Kiriting",
   statePlaceholder: "Viloyat",
+  // | Названия полей, которые в части стран называются иначе
+  apartmentUnitPlaceholder: "Xonadon / blok",
+  suburbPlaceholder: "Aholi punkti",
+  stateTerritoryPlaceholder: "Shtat / hudud",
+  provincePlaceholder: "Provinsiya",
+  countyPlaceholder: "Grafflik",
   zipCodePlaceholder: "Pochta Indeksini Kiriting",
   zipCodeInvalid: "Pochta indeksi noto‘g‘ri",
   postalCodeHint: "Agar bilsangiz kiriting — bu tekshiruvni tezlashtiradi, lekin majburiy emas.",

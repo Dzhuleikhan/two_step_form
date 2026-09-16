@@ -61,6 +61,12 @@ export default {
   apartmentPlaceholder: "Appartament",
   cityPlaceholder: "Daħħal il-Belt",
   statePlaceholder: "Provinċja / Reġjun",
+  // | Названия полей, которые в части стран называются иначе
+  apartmentUnitPlaceholder: "Unità",
+  suburbPlaceholder: "Subborg",
+  stateTerritoryPlaceholder: "Stat / Territorju",
+  provincePlaceholder: "Provinċja",
+  countyPlaceholder: "Kontea",
   zipCodePlaceholder: "Daħħal il-Kodiċi Postali",
   zipCodeInvalid: "Kodiċi postali mhux validu",
   postalCodeHint:

@@ -61,6 +61,12 @@ export default {
   apartmentPlaceholder: "Wohnung / Suite",
   cityPlaceholder: "Stadt eingeben",
   statePlaceholder: "Bundesland / Region",
+  // | Названия полей, которые в части стран называются иначе
+  apartmentUnitPlaceholder: "Einheit",
+  suburbPlaceholder: "Stadtteil",
+  stateTerritoryPlaceholder: "Bundesstaat / Territorium",
+  provincePlaceholder: "Provinz",
+  countyPlaceholder: "Grafschaft",
   zipCodePlaceholder: "Postleitzahl eingeben",
   zipCodeInvalid: "Ungültige Postleitzahl",
   postalCodeHint:

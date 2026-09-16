@@ -61,6 +61,12 @@ export default {
   apartmentPlaceholder: "Dan mu",
   cityPlaceholder: "Hyɛ Kurow",
   statePlaceholder: "Ɔman / Mantam",
+  // | Названия полей, которые в части стран называются иначе
+  apartmentUnitPlaceholder: "Ɔdan sin",
+  suburbPlaceholder: "Kurow mu fa",
+  stateTerritoryPlaceholder: "Ɔman / Asase",
+  provincePlaceholder: "Mantam",
+  countyPlaceholder: "Kaunti",
   zipCodePlaceholder: "Hyɛ ZIP Koodu",
   zipCodeInvalid: "Post nɔma no nyɛ nokware",
   postalCodeHint:

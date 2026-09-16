@@ -61,6 +61,12 @@ export default {
   apartmentPlaceholder: "Ghorofa / chumba",
   cityPlaceholder: "Weka Jiji",
   statePlaceholder: "Jimbo / Mkoa",
+  // | Названия полей, которые в части стран называются иначе
+  apartmentUnitPlaceholder: "Kitengo",
+  suburbPlaceholder: "Kitongoji",
+  stateTerritoryPlaceholder: "Jimbo / eneo",
+  provincePlaceholder: "Mkoa",
+  countyPlaceholder: "Kaunti",
   zipCodePlaceholder: "Weka Msimbo wa Posta",
   zipCodeInvalid: "Msimbo wa posta si sahihi",
   postalCodeHint:

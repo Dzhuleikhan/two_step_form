@@ -56,6 +56,12 @@ export default {
   apartmentPlaceholder: "Батир",
   cityPlaceholder: "Шаарды Киргизиңиз",
   statePlaceholder: "Облус",
+  // | Названия полей, которые в части стран называются иначе
+  apartmentUnitPlaceholder: "Батир / блок",
+  suburbPlaceholder: "Калктуу конуш",
+  stateTerritoryPlaceholder: "Штат / аймак",
+  provincePlaceholder: "Провинция",
+  countyPlaceholder: "Графтык",
   zipCodePlaceholder: "Почта Индексин Киргизиңиз",
   zipCodeInvalid: "Почта индекси туура эмес",
   postalCodeHint: "Билсеңиз киргизиңиз — бул текшерүүнү тездетет, бирок милдеттүү эмес.",

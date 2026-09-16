@@ -61,6 +61,12 @@ export default {
   apartmentPlaceholder: "公寓 / 单元",
   cityPlaceholder: "输入城市",
   statePlaceholder: "州 / 省",
+  // | Названия полей, которые в части стран называются иначе
+  apartmentUnitPlaceholder: "单元",
+  suburbPlaceholder: "城区",
+  stateTerritoryPlaceholder: "州 / 领地",
+  provincePlaceholder: "省",
+  countyPlaceholder: "郡",
   zipCodePlaceholder: "输入邮政编码",
   zipCodeInvalid: "邮政编码无效",
   postalCodeHint: "如果知道，请填写——这会加快验证速度，但不是必填项。",

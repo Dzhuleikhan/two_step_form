@@ -61,6 +61,12 @@ export default {
   apartmentPlaceholder: "Leilighet",
   cityPlaceholder: "Skriv inn by",
   statePlaceholder: "Fylke / Region",
+  // | Названия полей, которые в части стран называются иначе
+  apartmentUnitPlaceholder: "Enhet",
+  suburbPlaceholder: "Forstad",
+  stateTerritoryPlaceholder: "Delstat / territorium",
+  provincePlaceholder: "Provins",
+  countyPlaceholder: "Grevskap",
   zipCodePlaceholder: "Skriv inn postnummer",
   zipCodeInvalid: "Ugyldig postnummer",
   postalCodeHint:

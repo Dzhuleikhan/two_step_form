@@ -61,6 +61,12 @@ export default {
   apartmentPlaceholder: "Apartament",
   cityPlaceholder: "Introduceți orașul",
   statePlaceholder: "Județ / Provincie",
+  // | Названия полей, которые в части стран называются иначе
+  apartmentUnitPlaceholder: "Unitate",
+  suburbPlaceholder: "Cartier",
+  stateTerritoryPlaceholder: "Stat / Teritoriu",
+  provincePlaceholder: "Provincie",
+  countyPlaceholder: "Comitat",
   zipCodePlaceholder: "Introduceți codul poștal",
   zipCodeInvalid: "Cod poștal invalid",
   postalCodeHint:

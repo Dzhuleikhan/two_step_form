@@ -56,6 +56,12 @@ export default {
   apartmentPlaceholder: "Mənzil",
   cityPlaceholder: "Şəhər Daxil Edin",
   statePlaceholder: "Rayon / Vilayət",
+  // | Названия полей, которые в части стран называются иначе
+  apartmentUnitPlaceholder: "Mənzil / Blok",
+  suburbPlaceholder: "Yaşayış məntəqəsi",
+  stateTerritoryPlaceholder: "Ştat / Ərazi",
+  provincePlaceholder: "Əyalət",
+  countyPlaceholder: "Qraflıq",
   zipCodePlaceholder: "Poçt Kodu Daxil Edin",
   zipCodeInvalid: "Yanlış poçt indeksi",
   postalCodeHint: "Bilirsinizsə daxil edin — doğrulamanı sürətləndirir, lakin məcburi deyil.",

@@ -61,6 +61,12 @@ export default {
   apartmentPlaceholder: "Byt",
   cityPlaceholder: "Zadajte mesto",
   statePlaceholder: "Kraj / Región",
+  // | Названия полей, которые в части стран называются иначе
+  apartmentUnitPlaceholder: "Jednotka",
+  suburbPlaceholder: "Mestská časť",
+  stateTerritoryPlaceholder: "Štát / teritórium",
+  provincePlaceholder: "Provincia",
+  countyPlaceholder: "Grófstvo",
   zipCodePlaceholder: "Zadajte PSČ",
   zipCodeInvalid: "Neplatné PSČ",
   postalCodeHint:

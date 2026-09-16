@@ -61,6 +61,12 @@ export default {
   apartmentPlaceholder: "شقة / جناح",
   cityPlaceholder: "أدخل المدينة",
   statePlaceholder: "الولاية / المنطقة",
+  // | Названия полей, которые в части стран называются иначе
+  apartmentUnitPlaceholder: "وحدة",
+  suburbPlaceholder: "الضاحية",
+  stateTerritoryPlaceholder: "الولاية / الإقليم",
+  provincePlaceholder: "المحافظة",
+  countyPlaceholder: "المقاطعة",
   zipCodePlaceholder: "أدخل الرمز البريدي",
   zipCodeInvalid: "الرمز البريدي غير صالح",
   postalCodeHint:

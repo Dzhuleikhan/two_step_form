@@ -61,6 +61,12 @@ export default {
   apartmentPlaceholder: "Stanovanje",
   cityPlaceholder: "Vnesite mesto",
   statePlaceholder: "Pokrajina / Regija",
+  // | Названия полей, которые в части стран называются иначе
+  apartmentUnitPlaceholder: "Enota",
+  suburbPlaceholder: "Predmestje",
+  stateTerritoryPlaceholder: "Zvezna država / ozemlje",
+  provincePlaceholder: "Provinca",
+  countyPlaceholder: "Grofija",
   zipCodePlaceholder: "Vnesite poštno številko",
   zipCodeInvalid: "Neveljavna poštna številka",
   postalCodeHint:
