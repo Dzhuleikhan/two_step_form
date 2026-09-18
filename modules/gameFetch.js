@@ -139,11 +139,13 @@ export const getClickId = () => {
 
 export const getGameId = () => getUrlParameter("gameId") || DEFAULT_GAME_ID;
 
-// сервер принимает integer 1–100; мусор и выход за диапазон заменяем дефолтом
+// сервер принимает integer 1–300; мусор и выход за диапазон заменяем дефолтом
+const MAX_FREESPINS = 300;
+
 export const getFreespinsCount = () => {
   const fromUrl = Number.parseInt(getUrlParameter("freespinsCount"), 10);
 
-  if (!Number.isInteger(fromUrl) || fromUrl < 1 || fromUrl > 100) {
+  if (!Number.isInteger(fromUrl) || fromUrl < 1 || fromUrl > MAX_FREESPINS) {
     return DEFAULT_FREESPINS;
   }
 
@@ -300,11 +302,14 @@ export const registerPlayer = async (payload) => {
 // Ловим момент, когда игрок накрутил лимит спинов И у него есть выигрыш:
 // блокируем фрейм и показываем форму. Если на пороге выигрыша нет, показывать
 // нечего — выдаём ещё пачку спинов и ждём следующего порога.
-// Пороги проверки: первый на 20, дальше ровным шагом по 10 до 100.
-const SPIN_THRESHOLDS = [20, 30, 40, 50, 60, 70, 80, 90, 100];
+// Пороги проверки: первый на 20, дальше ровным шагом по 10. Верхней границы нет
+// намеренно — сколько спинов выдано (50, 100, 300), заранее неизвестно, а
+// фиксированный список кончался, и после него форма вылезала на первом же
+// выигрыше. Конец пачки ловим отдельно, по freespinsRemaining.
+const FIRST_SPIN_THRESHOLD = 20;
+const SPIN_THRESHOLD_STEP = 10;
 
-// null = пороги исчерпаны, ждём конца спинов и рестарта
-let spinThreshold = SPIN_THRESHOLDS[0];
+let spinThreshold = FIRST_SPIN_THRESHOLD;
 
 // Сервер шлёт один пуш на спин (reason: GAME_PLAY_FINAL) сразу, как посчитал
 // раунд — клиент в это время ещё крутит барабаны. Ждать нечего: фрейм блокируем
@@ -376,9 +381,14 @@ const watchSpinsAfterLock = (snapshot) => {
   }
 };
 
-// берём первый порог выше текущего spinCount: сервер может прислать скачок
+// Ближайшая отметка выше текущего spinCount: 24 → 30, 100 → 110, 297 → 300.
+// Считаем от самого spinCount, а не от прошлого порога: сервер может прислать
+// скачок через несколько спинов, и порог не должен остаться позади.
 const nextThreshold = (spins) =>
-  SPIN_THRESHOLDS.find((threshold) => threshold > spins) ?? null;
+  spins < FIRST_SPIN_THRESHOLD
+    ? FIRST_SPIN_THRESHOLD
+    : (Math.floor(spins / SPIN_THRESHOLD_STEP) + 1) * SPIN_THRESHOLD_STEP;
+
 let gateOpened = false;
 
 const lockFrame = () => {
@@ -473,7 +483,7 @@ export const checkRegisterGate = (snapshot) => {
   const noSpinsLeft = Number.isFinite(rawLeft) && rawLeft <= 0;
 
   // выигрыш есть: порог набран или крутить больше нечем — тянуть незачем
-  if (hasWin && (gateAt === null || spins >= gateAt || noSpinsLeft)) {
+  if (hasWin && (spins >= gateAt || noSpinsLeft)) {
     gateOpened = true;
     // всё, что накрутится после этой отметки, — работа автоспина
     spinsAtLock = spins;
@@ -498,7 +508,7 @@ export const checkRegisterGate = (snapshot) => {
     return;
   }
 
-  if (gateAt === null || spins < gateAt) return;
+  if (spins < gateAt) return;
 
   // totalWin в пуше отстаёт: сообщение о спине приходит до зачисления выигрыша,
   // результат приезжает следующим. Поэтому порог не двигаем сразу — ждём пуш.
@@ -548,7 +558,7 @@ const restartSession = async () => {
     const session = await startSession();
 
     // spinCount в новой сессии считается с нуля
-    spinThreshold = SPIN_THRESHOLDS[0];
+    spinThreshold = FIRST_SPIN_THRESHOLD;
     pendingCheck = false;
     pendingSpins = null;
     spinsAtLock = null;
@@ -868,14 +878,25 @@ const showGameUnavailable = (error) => {
 };
 
 // Слот на медленном интернете грузится долго, и всё это время игрок смотрит в
-// пустоту. Тост сразу говорит, что фриспины уже выданы и надо просто подождать.
-const TOAST_DELAY_MS = 500;
+// пустоту. Тост говорит, что фриспины уже выданы и надо просто подождать.
+//
+// Ждём /session: число спинов берём из снапшота, а не из ссылки — сервер может
+// выдать не то, что в ней написано. Ожидание тост не ломает: долго грузится сам
+// слот, а /session отвечает раньше, и висит тост как раз поверх загрузки.
+const toastSpins = (snapshot) => {
+  const fromSession = Number(snapshot?.freespinsCount);
+
+  return Number.isFinite(fromSession) && fromSession > 0
+    ? fromSession
+    : getFreespinsCount();
+};
 
 if (urlClickId && urlGameId) {
-  setTimeout(() => showFreespinsToast(getFreespinsCount()), TOAST_DELAY_MS);
-
   startSession({ clickId: urlClickId, gameId: urlGameId })
-    .then(applySession)
+    .then((session) => {
+      showFreespinsToast(toastSpins(session.snapshot));
+      applySession(session);
+    })
     .catch(showGameUnavailable);
 } else {
   showGameUnavailable();
