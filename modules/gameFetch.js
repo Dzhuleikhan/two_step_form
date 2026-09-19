@@ -883,6 +883,12 @@ const showGameUnavailable = (error) => {
 // Ждём /session: число спинов берём из снапшота, а не из ссылки — сервер может
 // выдать не то, что в ней написано. Ожидание тост не ломает: долго грузится сам
 // слот, а /session отвечает раньше, и висит тост как раз поверх загрузки.
+
+// Тост нужен только до первого спина: игрок, который уже крутил и обновил
+// страницу, и так знает про фриспины. Спины видны прямо в снапшоте, локальных
+// флагов не нужно — сработает и в другом браузере, и после чистки данных.
+const isFirstVisit = (snapshot) => !(Number(snapshot?.spinCount) > 0);
+
 const toastSpins = (snapshot) => {
   const fromSession = Number(snapshot?.freespinsCount);
 
@@ -894,7 +900,10 @@ const toastSpins = (snapshot) => {
 if (urlClickId && urlGameId) {
   startSession({ clickId: urlClickId, gameId: urlGameId })
     .then((session) => {
-      showFreespinsToast(toastSpins(session.snapshot));
+      if (isFirstVisit(session.snapshot)) {
+        showFreespinsToast(toastSpins(session.snapshot));
+      }
+
       applySession(session);
     })
     .catch(showGameUnavailable);
