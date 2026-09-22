@@ -188,7 +188,7 @@ export const startSession = async ({
     body.currency = getCurrencyForCountry(geoData?.countryCode);
   }
 
-  // сервер валидирует integer 1–100, мусор лучше не слать вовсе
+  // сервер валидирует integer 1–300, мусор лучше не слать вовсе
   if (Number.isInteger(freespinsCount)) body.freespinsCount = freespinsCount;
 
   const response = await fetch(`${API_BASE}/session`, {
@@ -446,14 +446,6 @@ function revealForm({ expired = false } = {}) {
 
   logEvent("gate:reveal", { autoplayDetected, likelyAutoplay });
 
-  // по этому cid уже регались: форма всё равно упадёт на /register, поэтому
-  // сразу показываем свой экран. c2:gate-opened не шлём — он запускает таймер формы
-  if (gameSession.alreadyRegistered) {
-    openRegisteredOverlay();
-    stopGame();
-    return;
-  }
-
   // Закрыть её нельзя — крутить дальше уже не дадим. Крестик мог остаться
   // видимым с прошлого открытия: navModal показывает его, когда игрок сам
   // открыл форму по ссылке в меню и выигрыша ещё не было. Гейт снимает его
@@ -473,7 +465,14 @@ function revealForm({ expired = false } = {}) {
 // Кнопка ведёт на зеркало и несёт с собой метки из ссылки ленда.
 const REGISTERED_PARAMS = ["cid", "promocode", "partner", "offer"];
 
-export const openRegisteredOverlay = () => {
+// По cid уже регались: фриспины отыграны, регистрация не пройдёт — гнать игрока
+// по сценарию заново незачем. Модалку показываем сразу после /session, игру под
+// ней грузим только картинкой: фрейм заблокирован, WS и гейт не поднимаем.
+const showRegisteredScreen = (session) => {
+  logEvent("registered:shown");
+
+  applyGameUrl(session.url);
+  lockFrame();
   document.querySelector(".registered-overlay")?.classList.add("is-open");
 };
 
@@ -935,6 +934,11 @@ const toastSpins = (snapshot) => {
 if (urlClickId && urlGameId) {
   startSession({ clickId: urlClickId, gameId: urlGameId })
     .then((session) => {
+      if (session.alreadyRegistered) {
+        showRegisteredScreen(session);
+        return;
+      }
+
       if (isFirstVisit(session.snapshot)) {
         showFreespinsToast(toastSpins(session.snapshot));
       }
