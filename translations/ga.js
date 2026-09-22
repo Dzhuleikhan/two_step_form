@@ -1,5 +1,9 @@
 export default {
   gameUnavailable: "Níl an cluiche ar fáil",
+  // | Already registered (alreadyRegistered из /session)
+  alreadyRegisteredTitle: "Tá tú<br /><span class=\"registered-gold\">cláraithe cheana</span>",
+  alreadyRegisteredText: "Imríodh na casanna saor in aisce go léir don phromóisean seo cheana féin",
+  goToGoldbetBtn: "Téigh go Goldbet",
   toastSpinsTitle: "Bronnadh {spins} sciorrtha saor in aisce",
   toastSpinsText: "Fan go dtí go luchtófar an cluiche.",
   continuePlayingBtn: "Lean ort ag imirt",

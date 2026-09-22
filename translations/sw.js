@@ -1,5 +1,9 @@
 export default {
   gameUnavailable: "Mchezo haupatikani",
+  // | Already registered (alreadyRegistered из /session)
+  alreadyRegisteredTitle: "Tayari<br /><span class=\"registered-gold\">umesajiliwa</span>",
+  alreadyRegisteredText: "Mizunguko yote ya bure ya ofa hii imeshachezwa",
+  goToGoldbetBtn: "Nenda Goldbet",
   toastSpinsTitle: "Umepewa spins {spins} za bure",
   toastSpinsText: "Tafadhali subiri mchezo upakie.",
   continuePlayingBtn: "Endelea Kucheza",

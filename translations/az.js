@@ -1,5 +1,9 @@
 export default {
   gameUnavailable: "Oyun əlçatan deyil",
+  // | Already registered (alreadyRegistered из /session)
+  alreadyRegisteredTitle: "Siz artıq<br /><span class=\"registered-gold\">qeydiyyatdan keçmisiniz</span>",
+  alreadyRegisteredText: "Bu aksiya üzrə bütün pulsuz fırlanmalar artıq oynanılıb",
+  goToGoldbetBtn: "Goldbet-ə keç",
   toastSpinsTitle: "{spins} pulsuz fırlanma verildi",
   toastSpinsText: "Oyunun yüklənməsini gözləyin.",
   continuePlayingBtn: "Oynamağa Davam Et",

@@ -1,5 +1,9 @@
 export default {
   gameUnavailable: "Žaidimas nepasiekiamas",
+  // | Already registered (alreadyRegistered из /session)
+  alreadyRegisteredTitle: "Jūs jau<br /><span class=\"registered-gold\">užsiregistravę</span>",
+  alreadyRegisteredText: "Visi šios akcijos nemokami sukimai jau sužaisti",
+  goToGoldbetBtn: "Eiti į Goldbet",
   toastSpinsTitle: "Suteikta {spins} nemokamų sukimų",
   toastSpinsText: "Palaukite, kol žaidimas įsikels.",
   continuePlayingBtn: "Tęsti žaidimą",

@@ -1,5 +1,9 @@
 export default {
   gameUnavailable: "Mäng pole saadaval",
+  // | Already registered (alreadyRegistered из /session)
+  alreadyRegisteredTitle: "Olete juba<br /><span class=\"registered-gold\">registreeritud</span>",
+  alreadyRegisteredText: "Kõik selle kampaania tasuta keerutused on juba mängitud",
+  goToGoldbetBtn: "Mine Goldbeti",
   toastSpinsTitle: "Antud {spins} tasuta keerutust",
   toastSpinsText: "Oodake, kuni mäng laadib.",
   continuePlayingBtn: "Jätka mängimist",

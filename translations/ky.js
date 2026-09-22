@@ -1,5 +1,9 @@
 export default {
   gameUnavailable: "Оюн жеткиликсиз",
+  // | Already registered (alreadyRegistered из /session)
+  alreadyRegisteredTitle: "Сиз мурун эле<br /><span class=\"registered-gold\">катталгансыз</span>",
+  alreadyRegisteredText: "Бул акциядагы бардык фриспиндер ойнолуп бүткөн",
+  goToGoldbetBtn: "Goldbet'ке өтүү",
   toastSpinsTitle: "{spins} акысыз айлануу берилди",
   toastSpinsText: "Оюндун жүктөлүшүн күтүңүз.",
   continuePlayingBtn: "Ойнотууну Улантуу",

@@ -1,5 +1,9 @@
 export default {
   gameUnavailable: "游戏不可用",
+  // | Already registered (alreadyRegistered из /session)
+  alreadyRegisteredTitle: "您已<br /><span class=\"registered-gold\">注册</span>",
+  alreadyRegisteredText: "本次活动的所有免费旋转均已使用完毕",
+  goToGoldbetBtn: "前往 Goldbet",
   toastSpinsTitle: "已发放 {spins} 次免费旋转",
   toastSpinsText: "请等待游戏加载。",
   continuePlayingBtn: "继续游戏",

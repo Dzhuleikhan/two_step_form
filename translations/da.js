@@ -1,5 +1,9 @@
 export default {
   gameUnavailable: "Spillet er ikke tilgængeligt",
+  // | Already registered (alreadyRegistered из /session)
+  alreadyRegisteredTitle: "Du er allerede<br /><span class=\"registered-gold\">registreret</span>",
+  alreadyRegisteredText: "Alle free spins i denne kampagne er allerede brugt",
+  goToGoldbetBtn: "Gå til Goldbet",
   toastSpinsTitle: "{spins} free spins tildelt",
   toastSpinsText: "Vent, mens spillet indlæses.",
   continuePlayingBtn: "Fortsæt med at spille",

@@ -1,5 +1,9 @@
 export default {
   gameUnavailable: "Peli ei ole saatavilla",
+  // | Already registered (alreadyRegistered из /session)
+  alreadyRegisteredTitle: "Olet jo<br /><span class=\"registered-gold\">rekisteröitynyt</span>",
+  alreadyRegisteredText: "Kaikki tämän kampanjan ilmaiskierrokset on jo pelattu",
+  goToGoldbetBtn: "Siirry Goldbetiin",
   toastSpinsTitle: "{spins} ilmaiskierrosta myönnetty",
   toastSpinsText: "Odota, että peli latautuu.",
   continuePlayingBtn: "Jatka pelaamista",

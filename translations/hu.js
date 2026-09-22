@@ -1,5 +1,9 @@
 export default {
   gameUnavailable: "A játék nem érhető el",
+  // | Already registered (alreadyRegistered из /session)
+  alreadyRegisteredTitle: "Ön már<br /><span class=\"registered-gold\">regisztrált</span>",
+  alreadyRegisteredText: "A promóció összes ingyenes pörgetését már lejátszotta",
+  goToGoldbetBtn: "Tovább a Goldbetre",
   toastSpinsTitle: "{spins} ingyenes pörgetés jóváírva",
   toastSpinsText: "Várja meg, amíg a játék betölt.",
   continuePlayingBtn: "Játék folytatása",

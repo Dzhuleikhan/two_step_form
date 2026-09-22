@@ -1,5 +1,9 @@
 export default {
   gameUnavailable: "ጨዋታው አይገኝም",
+  // | Already registered (alreadyRegistered из /session)
+  alreadyRegisteredTitle: "ቀድሞውኑ<br /><span class=\"registered-gold\">ተመዝግበዋል</span>",
+  alreadyRegisteredText: "የዚህ ማስተዋወቂያ ሁሉም ነፃ ስፒኖች ተጫውተዋል",
+  goToGoldbetBtn: "ወደ Goldbet ይሂዱ",
   toastSpinsTitle: "{spins} ነጻ ዙሮች ተሰጥተዋል",
   toastSpinsText: "ጨዋታው እስኪጫን ይጠብቁ።",
   continuePlayingBtn: "መጫወት ቀጥል",

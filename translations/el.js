@@ -1,5 +1,9 @@
 export default {
   gameUnavailable: "Το παιχνίδι δεν είναι διαθέσιμο",
+  // | Already registered (alreadyRegistered из /session)
+  alreadyRegisteredTitle: "Είστε ήδη<br /><span class=\"registered-gold\">εγγεγραμμένοι</span>",
+  alreadyRegisteredText: "Όλες οι δωρεάν περιστροφές αυτής της προσφοράς έχουν ήδη παιχτεί",
+  goToGoldbetBtn: "Μετάβαση στο Goldbet",
   toastSpinsTitle: "Πιστώθηκαν {spins} δωρεάν περιστροφές",
   toastSpinsText: "Περιμένετε να φορτώσει το παιχνίδι.",
   continuePlayingBtn: "Συνέχεια παιχνιδιού",

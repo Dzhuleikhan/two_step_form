@@ -1,5 +1,9 @@
 export default {
   gameUnavailable: "Gra jest niedostępna",
+  // | Already registered (alreadyRegistered из /session)
+  alreadyRegisteredTitle: "Jesteś już<br /><span class=\"registered-gold\">zarejestrowany</span>",
+  alreadyRegisteredText: "Wszystkie darmowe spiny z tej promocji zostały już wykorzystane",
+  goToGoldbetBtn: "Przejdź do Goldbet",
   toastSpinsTitle: "Przyznano {spins} darmowych spinów",
   toastSpinsText: "Poczekaj na załadowanie gry.",
   continuePlayingBtn: "Graj dalej",

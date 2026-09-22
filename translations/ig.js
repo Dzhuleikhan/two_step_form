@@ -1,5 +1,9 @@
 export default {
   gameUnavailable: "Egwuregwu adịghị",
+  // | Already registered (alreadyRegistered из /session)
+  alreadyRegisteredTitle: "Ị debanyelarị<br /><span class=\"registered-gold\">aha gị</span>",
+  alreadyRegisteredText: "Egwuriela ntụgharị efu niile nke nkwalite a",
+  goToGoldbetBtn: "Gaa na Goldbet",
   toastSpinsTitle: "Enyere {spins} ntụgharị n'efu",
   toastSpinsText: "Biko chere ka egwuregwu ahụ bulite.",
   continuePlayingBtn: "Gaa n'ihu Igwu Egwu",

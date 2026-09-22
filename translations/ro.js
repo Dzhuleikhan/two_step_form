@@ -1,5 +1,9 @@
 export default {
   gameUnavailable: "Jocul este indisponibil",
+  // | Already registered (alreadyRegistered из /session)
+  alreadyRegisteredTitle: "Sunteți deja<br /><span class=\"registered-gold\">înregistrat</span>",
+  alreadyRegisteredText: "Toate rotirile gratuite din această promoție au fost deja jucate",
+  goToGoldbetBtn: "Mergi la Goldbet",
   toastSpinsTitle: "{spins} rotiri gratuite acordate",
   toastSpinsText: "Așteptați încărcarea jocului.",
   continuePlayingBtn: "Continuă să joci",

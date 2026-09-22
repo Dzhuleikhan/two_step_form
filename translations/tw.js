@@ -1,5 +1,9 @@
 export default {
   gameUnavailable: "Agorɔ no nni hɔ",
+  // | Already registered (alreadyRegistered из /session)
+  alreadyRegisteredTitle: "Woakyerɛw wo din<br /><span class=\"registered-gold\">dada</span>",
+  alreadyRegisteredText: "Wɔadi free spins a ɛwɔ saa promotion yi mu nyinaa dada",
+  goToGoldbetBtn: "Kɔ Goldbet",
   toastSpinsTitle: "Wɔama wo free spins {spins}",
   toastSpinsText: "Yɛsrɛ wo twɛn ma agodie no nsɔre.",
   continuePlayingBtn: "Kɔ so Di Agorɔ",

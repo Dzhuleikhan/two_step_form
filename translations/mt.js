@@ -1,5 +1,9 @@
 export default {
   gameUnavailable: "Il-logħba mhix disponibbli",
+  // | Already registered (alreadyRegistered из /session)
+  alreadyRegisteredTitle: "Diġà<br /><span class=\"registered-gold\">irreġistrat</span>",
+  alreadyRegisteredText: "Il-free spins kollha ta' din il-promozzjoni diġà ntlagħbu",
+  goToGoldbetBtn: "Mur Goldbet",
   toastSpinsTitle: "Ingħataw {spins} spins b'xejn",
   toastSpinsText: "Stenna sakemm jitgħabba l-logħba.",
   continuePlayingBtn: "Kompli tilgħab",

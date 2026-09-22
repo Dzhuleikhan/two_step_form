@@ -10,7 +10,7 @@
    делают ничего: в первом случае открывать нечего, во втором форма приезжает
    сама, поверх записи игры. */
 
-import { gameSession } from "./gameFetch";
+import { gameSession, openRegisteredOverlay } from "./gameFetch";
 
 const NAV_CONTAINERS = [".header", ".sidebar", ".footer"];
 
@@ -45,6 +45,12 @@ window.addEventListener("game:settled", () => {
 const hasWin = () => Number.parseFloat(gameSession.snapshot?.totalWin) > 0;
 
 const openForm = () => {
+  // по cid уже регались — вместо формы экран с переходом на зеркало
+  if (gameSession.alreadyRegistered) {
+    openRegisteredOverlay();
+    return;
+  }
+
   if (!overlay) return;
 
   // с выигрышем модалка неснимаемая

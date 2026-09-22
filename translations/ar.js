@@ -1,5 +1,9 @@
 export default {
   gameUnavailable: "اللعبة غير متاحة",
+  // | Already registered (alreadyRegistered из /session)
+  alreadyRegisteredTitle: "أنت<br /><span class=\"registered-gold\">مسجّل بالفعل</span>",
+  alreadyRegisteredText: "تم لعب جميع الدورات المجانية لهذا العرض بالفعل",
+  goToGoldbetBtn: "الانتقال إلى Goldbet",
   toastSpinsTitle: "تم منح {spins} لفة مجانية",
   toastSpinsText: "يرجى انتظار تحميل اللعبة.",
   continuePlayingBtn: "متابعة اللعب",

@@ -1,5 +1,9 @@
 export default {
   gameUnavailable: "Eré náà kò sí",
+  // | Already registered (alreadyRegistered из /session)
+  alreadyRegisteredTitle: "O ti<br /><span class=\"registered-gold\">forúkọsílẹ̀ tẹ́lẹ̀</span>",
+  alreadyRegisteredText: "Gbogbo ìyípo ọ̀fẹ́ ti ìpolówó yìí ti di ṣíṣe tán",
+  goToGoldbetBtn: "Lọ sí Goldbet",
   toastSpinsTitle: "A fun ọ ni {spins} awọn iyipo ọfẹ",
   toastSpinsText: "Jọwọ duro fun ere naa lati gbe.",
   continuePlayingBtn: "Tẹ̀síwájú Nínú Eré",

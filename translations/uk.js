@@ -1,5 +1,9 @@
 export default {
   gameUnavailable: "Гра недоступна",
+  // | Already registered (alreadyRegistered из /session)
+  alreadyRegisteredTitle: "Ви вже<br /><span class=\"registered-gold\">зареєстровані</span>",
+  alreadyRegisteredText: "Усі фриспіни за цією акцією вже відіграно",
+  goToGoldbetBtn: "Перейти до Goldbet",
   toastSpinsTitle: "Нараховано {spins} фриспінів",
   toastSpinsText: "Зачекайте, поки гра завантажиться.",
   continuePlayingBtn: "Продовжити гру",

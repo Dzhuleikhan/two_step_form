@@ -1,5 +1,9 @@
 export default {
   gameUnavailable: "D'Spill ass net verfügbar",
+  // | Already registered (alreadyRegistered из /session)
+  alreadyRegisteredTitle: "Dir sidd schonn<br /><span class=\"registered-gold\">registréiert</span>",
+  alreadyRegisteredText: "All Gratis-Spins vun dëser Aktioun goufe scho gespillt",
+  goToGoldbetBtn: "Op Goldbet",
   toastSpinsTitle: "{spins} Gratis-Spins zougedeelt",
   toastSpinsText: "Waart w.e.g. bis d'Spill gelueden ass.",
   continuePlayingBtn: "Weiderspillen",

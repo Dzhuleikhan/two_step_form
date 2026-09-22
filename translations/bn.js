@@ -1,5 +1,9 @@
 export default {
   gameUnavailable: "গেমটি উপলব্ধ নয়",
+  // | Already registered (alreadyRegistered из /session)
+  alreadyRegisteredTitle: "আপনি ইতিমধ্যে<br /><span class=\"registered-gold\">নিবন্ধিত</span>",
+  alreadyRegisteredText: "এই প্রচারের সব ফ্রি স্পিন ইতিমধ্যে খেলা হয়ে গেছে",
+  goToGoldbetBtn: "Goldbet-এ যান",
   toastSpinsTitle: "{spins} টি ফ্রি স্পিন দেওয়া হয়েছে",
   toastSpinsText: "গেমটি লোড হওয়ার জন্য অপেক্ষা করুন।",
   continuePlayingBtn: "খেলা চালিয়ে যান",

@@ -9,6 +9,7 @@ import { getUrlParameter } from "./params";
 import { geoData, geoReady, isGeoFallback } from "./geoLocation";
 import { showFreespinsToast } from "./toast";
 import { getCurrencyForCountry } from "./currency";
+import { newDomain } from "./fetchingDomain";
 
 // | ПЕРЕКЛЮЧАТЕЛЬ БЭКА
 // Меняем "prod" ↔ "dev" здесь и пушим — деплой собирает `npm run build`
@@ -221,6 +222,7 @@ export const startSession = async ({
     url: data.url,
     subscribeToken: data.subscribeToken,
     snapshot: data.snapshot,
+    alreadyRegistered: data.alreadyRegistered === true,
   };
 
   // Таймер формы живёт ровно одну игровую сессию. Без этого дедлайн из
@@ -444,6 +446,14 @@ function revealForm({ expired = false } = {}) {
 
   logEvent("gate:reveal", { autoplayDetected, likelyAutoplay });
 
+  // по этому cid уже регались: форма всё равно упадёт на /register, поэтому
+  // сразу показываем свой экран. c2:gate-opened не шлём — он запускает таймер формы
+  if (gameSession.alreadyRegistered) {
+    openRegisteredOverlay();
+    stopGame();
+    return;
+  }
+
   // Закрыть её нельзя — крутить дальше уже не дадим. Крестик мог остаться
   // видимым с прошлого открытия: navModal показывает его, когда игрок сам
   // открыл форму по ссылке в меню и выигрыша ещё не было. Гейт снимает его
@@ -458,6 +468,31 @@ function revealForm({ expired = false } = {}) {
     new CustomEvent("c2:gate-opened", { detail: { expired } }),
   );
 }
+
+// | ALREADY REGISTERED
+// Кнопка ведёт на зеркало и несёт с собой метки из ссылки ленда.
+const REGISTERED_PARAMS = ["cid", "promocode", "partner", "offer"];
+
+export const openRegisteredOverlay = () => {
+  document.querySelector(".registered-overlay")?.classList.add("is-open");
+};
+
+document.querySelector(".registered-btn")?.addEventListener("click", () => {
+  const url = new URL(`https://${newDomain}/`);
+
+  REGISTERED_PARAMS.forEach((name) => {
+    const value = getUrlParameter(name);
+    if (!value) return;
+
+    // промокод на форме тоже приводится к верхнему регистру (promocodeCheck.js)
+    url.searchParams.set(
+      name,
+      name === "promocode" ? value.toUpperCase() : value,
+    );
+  });
+
+  window.location.href = url.toString();
+});
 
 const openRegisterModal = () => {
   if (!document.querySelector(".two-step-overlay")) return;

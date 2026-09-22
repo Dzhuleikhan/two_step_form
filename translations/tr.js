@@ -1,5 +1,9 @@
 export default {
   gameUnavailable: "Oyun kullanılamıyor",
+  // | Already registered (alreadyRegistered из /session)
+  alreadyRegisteredTitle: "Zaten<br /><span class=\"registered-gold\">kayıtlısınız</span>",
+  alreadyRegisteredText: "Bu promosyondaki tüm ücretsiz dönüşler zaten oynandı",
+  goToGoldbetBtn: "Goldbet'e git",
   toastSpinsTitle: "{spins} bedava dönüş tanımlandı",
   toastSpinsText: "Oyunun yüklenmesini bekleyin.",
   continuePlayingBtn: "Oynamaya Devam Et",

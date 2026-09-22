@@ -163,6 +163,70 @@ body::before {
   display: flex;
 }
 
+/* по cid уже регались — вместо формы текст и кнопка на зеркало */
+.registered-overlay {
+  display: none;
+  background: rgba(17, 17, 12, 0.5);
+  backdrop-filter: blur(6.95px);
+  -webkit-backdrop-filter: blur(6.95px);
+}
+
+.registered-overlay.is-open {
+  display: flex;
+}
+
+.registered-icon {
+  width: 105px;
+  height: 99px;
+  margin-bottom: 8px;
+}
+
+/* тень и мобильный размер — как у компактного заголовка формы */
+.registered-title {
+  font-size: 36px;
+  line-height: 1.2;
+  letter-spacing: -0.72px;
+  text-shadow: 0 4px 11.7px rgba(0, 0, 0, 0.62);
+}
+
+.registered-gold {
+  background: linear-gradient(180deg, #ebc46f 0%, #edae24 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: none;
+}
+
+.registered-subtitle {
+  margin-top: 16px;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 120%;
+  letter-spacing: -0.4px;
+}
+
+.registered-btn {
+  margin-top: 40px;
+  border-radius: 16px;
+  background: #f5ff5d;
+  color: #0f0f0f;
+}
+
+@media (max-width: 480px) {
+  .registered-title {
+    font-size: 26px;
+    letter-spacing: -0.52px;
+  }
+
+  .registered-subtitle {
+    font-size: 16px;
+  }
+
+  .registered-btn {
+    margin-top: 28px;
+  }
+}
+
 .two-step-close-btn {
   display: none;
   position: absolute;

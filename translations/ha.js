@@ -1,5 +1,9 @@
 export default {
   gameUnavailable: "Wasan ba ya samuwa",
+  // | Already registered (alreadyRegistered из /session)
+  alreadyRegisteredTitle: "Kun riga kun<br /><span class=\"registered-gold\">yi rajista</span>",
+  alreadyRegisteredText: "An riga an buga duk juye-juye kyauta na wannan tallan",
+  goToGoldbetBtn: "Je zuwa Goldbet",
   toastSpinsTitle: "An baiwa {spins} juyi kyauta",
   toastSpinsText: "Da fatan za a jira wasan ya loda.",
   continuePlayingBtn: "Ci gaba da Wasa",

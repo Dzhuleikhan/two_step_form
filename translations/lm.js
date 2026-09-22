@@ -1,5 +1,9 @@
 export default {
   gameUnavailable: "Lisano ezali te",
+  // | Already registered (alreadyRegistered из /session)
+  alreadyRegisteredTitle: "Osili<br /><span class=\"registered-gold\">komikomisa</span>",
+  alreadyRegisteredText: "Ba free spins nyonso ya promotion oyo esili kobetama",
+  goToGoldbetBtn: "Kende na Goldbet",
   toastSpinsTitle: "Opesameli {spins} ya bituluki ya ofele",
   toastSpinsText: "Zela lisano ekotisama.",
   continuePlayingBtn: "Kokoba kosakana",

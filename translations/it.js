@@ -1,5 +1,9 @@
 export default {
   gameUnavailable: "Il gioco non è disponibile",
+  // | Already registered (alreadyRegistered из /session)
+  alreadyRegisteredTitle: "Sei già<br /><span class=\"registered-gold\">registrato</span>",
+  alreadyRegisteredText: "Tutti i giri gratuiti di questa promozione sono già stati giocati",
+  goToGoldbetBtn: "Vai su Goldbet",
   toastSpinsTitle: "{spins} giri gratuiti accreditati",
   toastSpinsText: "Attendi il caricamento del gioco.",
   continuePlayingBtn: "Continua a giocare",

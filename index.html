@@ -1176,6 +1176,42 @@
           </p>
         </div>
       </div>
+      <!-- вместо формы, если по cid уже регались (alreadyRegistered из /session):
+           открывает и ведёт на зеркало modules/gameFetch.js -->
+      <div
+        class="registered-overlay fixed left-0 top-0 z-[300] h-dvh w-full flex-col items-center justify-center overflow-y-auto px-9 py-5 text-center small:px-[15px]"
+      >
+        <div class="flex w-full max-w-[480px] flex-col items-center">
+          <img
+            class="registered-icon"
+            src="https://3344112-img.b-cdn.net/graphic/landings/playable/check-logo.webp"
+            width="105"
+            height="99"
+            alt=""
+          />
+          <!-- свои классы, не two-step-heading-*: форма ищет заголовок через
+               querySelector, а этот блок стоит в DOM раньше неё -->
+          <p
+            data-translate="alreadyRegisteredTitle"
+            class="registered-title font-montserrat font-bold uppercase text-white"
+          >
+            You’re already<br /><span class="registered-gold">registered</span>
+          </p>
+          <p
+            data-translate="alreadyRegisteredText"
+            class="registered-subtitle font-montserrat text-white"
+          >
+            All free spins for this promotion have already been played
+          </p>
+          <button
+            type="button"
+            data-translate="goToGoldbetBtn"
+            class="registered-btn flex min-h-[68px] w-full items-center justify-center px-[14px] py-5 text-lg font-bold small:text-base xs:py-4"
+          >
+            Go to Goldbet
+          </button>
+        </div>
+      </div>
       <!-- Two step overlay -->
       <!-- открывается из modules/frameTest.js после N кликов по игре -->
       <div

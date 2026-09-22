@@ -1,5 +1,9 @@
 export default {
   gameUnavailable: "Igra nije dostupna",
+  // | Already registered (alreadyRegistered из /session)
+  alreadyRegisteredTitle: "Već ste<br /><span class=\"registered-gold\">registrirani</span>",
+  alreadyRegisteredText: "Svi besplatni okreti iz ove promocije već su odigrani",
+  goToGoldbetBtn: "Idi na Goldbet",
   toastSpinsTitle: "Dodijeljeno {spins} besplatnih vrtnji",
   toastSpinsText: "Pričekajte da se igra učita.",
   continuePlayingBtn: "Nastavi igrati",

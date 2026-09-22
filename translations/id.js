@@ -1,5 +1,9 @@
 export default {
   gameUnavailable: "Permainan tidak tersedia",
+  // | Already registered (alreadyRegistered из /session)
+  alreadyRegisteredTitle: "Anda sudah<br /><span class=\"registered-gold\">terdaftar</span>",
+  alreadyRegisteredText: "Semua putaran gratis dari promosi ini sudah dimainkan",
+  goToGoldbetBtn: "Ke Goldbet",
   toastSpinsTitle: "{spins} putaran gratis diberikan",
   toastSpinsText: "Harap tunggu game dimuat.",
   continuePlayingBtn: "Lanjutkan Bermain",

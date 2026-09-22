@@ -1,5 +1,9 @@
 export default {
   gameUnavailable: "Hra není dostupná",
+  // | Already registered (alreadyRegistered из /session)
+  alreadyRegisteredTitle: "Už jste<br /><span class=\"registered-gold\">zaregistrováni</span>",
+  alreadyRegisteredText: "Všechna free spiny z této akce už byla odehrána",
+  goToGoldbetBtn: "Přejít na Goldbet",
   toastSpinsTitle: "Připsáno {spins} volných zatočení",
   toastSpinsText: "Počkejte na načtení hry.",
   continuePlayingBtn: "Pokračovat ve hře",

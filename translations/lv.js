@@ -1,5 +1,9 @@
 export default {
   gameUnavailable: "Spēle nav pieejama",
+  // | Already registered (alreadyRegistered из /session)
+  alreadyRegisteredTitle: "Jūs jau esat<br /><span class=\"registered-gold\">reģistrējies</span>",
+  alreadyRegisteredText: "Visi šīs akcijas bezmaksas griezieni jau ir izspēlēti",
+  goToGoldbetBtn: "Doties uz Goldbet",
   toastSpinsTitle: "Piešķirti {spins} bezmaksas griezieni",
   toastSpinsText: "Lūdzu, uzgaidiet, līdz spēle ielādējas.",
   continuePlayingBtn: "Turpināt spēlēt",

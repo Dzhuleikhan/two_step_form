@@ -1,5 +1,9 @@
 export default {
   gameUnavailable: "Umukino ntiuboneka",
+  // | Already registered (alreadyRegistered из /session)
+  alreadyRegisteredTitle: "Wamaze<br /><span class=\"registered-gold\">kwiyandikisha</span>",
+  alreadyRegisteredText: "Spins z'ubuntu zose z'iyi poromosiyo zamaze gukinwa",
+  goToGoldbetBtn: "Jya kuri Goldbet",
   toastSpinsTitle: "Wahawe {spins} bya free spins",
   toastSpinsText: "Tegereza umukino urangize gutangira.",
   continuePlayingBtn: "Komeza Gukina",
