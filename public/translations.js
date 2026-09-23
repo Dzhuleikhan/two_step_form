@@ -12,23 +12,23 @@ export const translations = {
     highRollerBonusText: `200% on Deposits Over <span class="bonus-highroller-amount"></span> <span class="two-step-welcome-symbol"></span>`,
     withoutBonus: "Without Bonus",
     withoutBonusText: "You will not get any bonus",
-    iHavePromoCode: "I Have a Promo-Code",
+    iHavePromoCode: "I have a promo code",
     promoCodePlaceHolder: "Promo Code",
     promoCodeApplyBtn: "Apply",
-    youWillGetFreeSpins: "You will get freespins",
-    youWillGetNodepBonus: "You will get without deposit bonus",
+    youWillGetFreeSpins: "You will get free spins",
+    youWillGetNodepBonus: "You will get a no-deposit bonus",
     continueBtn: "Continue",
     // | Step 2
     step2Title: "Enter Your Email",
     step2TitlePhone: "Enter Your Phone",
-    emailPlaceholder: "Enter E-mail",
+    emailPlaceholder: "Enter Email",
     passwordPlaceholder: "Enter Password",
     // | Step 3
     step3Title: "What’s Your Name?",
     namePlaceholder: "First Name",
     lastNamePlaceholder: "Last Name",
-    birthdayPlaceholder: "Select Birthday Date",
-    age18Alert: "Age must be 18+",
+    birthdayPlaceholder: "Select Your Date of Birth",
+    age18Alert: "You must be 18 or older.",
     invalidDate: "Invalid date",
     male: "Male",
     female: "Female",
@@ -41,7 +41,7 @@ export const translations = {
     countryNotFound: "Country not found",
     searchPlaceholder: "Search",
     addressPlaceholder: "Enter Address",
-    streetPlaceholder: "Enter Street",
+    streetPlaceholder: "Enter Your Street",
     houseNumberPlaceholder: "House / Building No.",
     apartmentPlaceholder: "Apartment / Suite",
     cityPlaceholder: "Enter City",
@@ -53,7 +53,7 @@ export const translations = {
     provincePlaceholder: "Province",
     countyPlaceholder: "County",
     zipCodePlaceholder: "Enter ZIP Code",
-    postalCodeHint: "If you know it, enter it — it speeds up verification, but it's optional.",
+    postalCodeHint: "If you know your postal code, enter it – this will speed up verification. The information is optional.",
     createAccountBtn: "Create Account",
   },
   fr: {
@@ -520,12 +520,12 @@ export const translations = {
     welcomeBonus: "Willkommensbonus",
     welcomeBonusText: "auf Ihre erste Einzahlung",
     cryptoBonus: "Satoshi-Bonus",
-    cryptoBonusText: "150% auf Krypto-Einzahlungen",
+    cryptoBonusText: "150 % auf Krypto-Einzahlungen",
     highRollerBonus: "High Roller Bonus",
     highRollerBonusText: `200% auf Einzahlungen über <span class="bonus-highroller-amount"></span> <span class="two-step-welcome-symbol"></span>`,
     withoutBonus: "Ohne Bonus",
     withoutBonusText: "Sie erhalten keinen Bonus",
-    iHavePromoCode: "Ich habe einen Promocode",
+    iHavePromoCode: "Ich habe einen Promo-Code",
     promoCodePlaceHolder: "Promo-Code",
     promoCodeApplyBtn: "Anwenden",
     youWillGetFreeSpins: "Sie erhalten Freispiele",
@@ -545,7 +545,7 @@ export const translations = {
     invalidDate: "Ungültiges Datum",
     male: "Männlich",
     female: "Weiblich",
-    finalStepBtn: "Letzter Schritt",
+    finalStepBtn: "Zum letzten Schritt",
     // | Schritt 4
     step4Title: "Währung auswählen",
     countryPlaceholder: "Land auswählen",
@@ -554,11 +554,11 @@ export const translations = {
     countryNotFound: "Land nicht gefunden",
     searchPlaceholder: "Suche",
     addressPlaceholder: "Adresse eingeben",
-    streetPlaceholder: "Straße",
-    houseNumberPlaceholder: "Haus-/Gebäudenr.",
+    streetPlaceholder: "Straße eingeben",
+    houseNumberPlaceholder: "Haus-/Gebäudenummer",
     apartmentPlaceholder: "Wohnung / Suite",
     cityPlaceholder: "Stadt eingeben",
-    statePlaceholder: "Bundesland / Region",
+    statePlaceholder: "Region",
     // | Названия полей, которые в части стран называются иначе
     apartmentUnitPlaceholder: "Einheit",
     suburbPlaceholder: "Stadtteil",
@@ -566,7 +566,7 @@ export const translations = {
     provincePlaceholder: "Provinz",
     countyPlaceholder: "Grafschaft",
     zipCodePlaceholder: "Postleitzahl eingeben",
-    postalCodeHint: "Wenn Sie ihn kennen, geben Sie ihn ein — das beschleunigt die Verifizierung, ist aber optional.",
+    postalCodeHint: "Wenn Sie Ihre Postleitzahl kennen, geben Sie sie ein – so beschleunigen Sie die Verifizierung. Die Angabe ist optional.",
     createAccountBtn: "Konto erstellen",
   },
   el: {
@@ -591,7 +591,7 @@ export const translations = {
     // | Step 2
     step2Title: "Εισάγετε το Email σας",
     step2TitlePhone: "Εισαγάγετε τον αριθμό τηλεφώνου σας",
-    emailPlaceholder: "Εισάγετε E-mail",
+    emailPlaceholder: "Εισάγετε Email",
     passwordPlaceholder: "Εισάγετε Κωδικό",
     // | Step 3
     step3Title: "Ποιο είναι το Όνομά σας;",
@@ -933,7 +933,7 @@ export const translations = {
     // | Step 2
     step2Title: "Inserisci la Tua Email",
     step2TitlePhone: "Inserisci il tuo numero di telefono",
-    emailPlaceholder: "Inserisci E-mail",
+    emailPlaceholder: "Inserisci Email",
     passwordPlaceholder: "Inserisci Password",
     // | Step 3
     step3Title: "Come Ti Chiami?",
@@ -1161,7 +1161,7 @@ export const translations = {
     // | Step 2
     step2Title: "Unesite Svoj Email",
     step2TitlePhone: "Unesite svoj broj telefona",
-    emailPlaceholder: "Unesite E-mail",
+    emailPlaceholder: "Unesite Email",
     passwordPlaceholder: "Unesite Lozinku",
     // | Step 3
     step3Title: "Kako Se Zovete?",
@@ -2014,7 +2014,7 @@ export const translations = {
     // | Step 2
     step2Title: "Shigar da Imel ɗinka",
     step2TitlePhone: "Shigar da Lambar Waya",
-    emailPlaceholder: "Shigar da E-mail",
+    emailPlaceholder: "Shigar da Email",
     passwordPlaceholder: "Shigar da Kalmar Sirri",
     // | Step 3
     step3Title: "Menene Sunanka?",
@@ -2071,7 +2071,7 @@ export const translations = {
     // | Step 2
     step2Title: "Tẹ Email Rẹ",
     step2TitlePhone: "Tẹ Nọmba Fóònù Rẹ",
-    emailPlaceholder: "Tẹ E-mail",
+    emailPlaceholder: "Tẹ Email",
     passwordPlaceholder: "Tẹ Ọrọigbaniwọle",
     // | Step 3
     step3Title: "Kí ni Orúkọ Rẹ?",
@@ -2128,7 +2128,7 @@ export const translations = {
     // | Step 2
     step2Title: "Tinye Email Gị",
     step2TitlePhone: "Tinye Nọmba Fọn Gị",
-    emailPlaceholder: "Tinye E-mail",
+    emailPlaceholder: "Tinye Email",
     passwordPlaceholder: "Tinye Okwu Nzuzo",
     // | Step 3
     step3Title: "Gịnị bụ Aha Gị?",
@@ -2185,7 +2185,7 @@ export const translations = {
     // | Step 2
     step2Title: "Hyɛ Wo Email",
     step2TitlePhone: "Hyɛ Wo Telefon Nɔma",
-    emailPlaceholder: "Hyɛ E-mail",
+    emailPlaceholder: "Hyɛ Email",
     passwordPlaceholder: "Hyɛ Kɔsɛn a Wɔde Kata Ho",
     // | Step 3
     step3Title: "Wo Din Ne Dɛn?",
