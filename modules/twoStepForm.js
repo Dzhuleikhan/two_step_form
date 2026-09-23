@@ -40,9 +40,54 @@ const CDN = "https://3344112-img.b-cdn.net";
 const translate = (lang, key) =>
   translations[lang]?.[key] ?? translations.en[key];
 
+// Страховка к атрибутам в разметке: добиваем поля, которым autocomplete не
+// проставлен (в том числе созданные скриптом — поиск стран у телефона).
+// Уже заданное значение не трогаем: у пароля стоит new-password, и только этот
+// токен отучает Chrome подставлять сохранённую пару логин+пароль — "off" он на
+// паролях игнорирует.
 document.querySelectorAll("input").forEach((input) => {
-  input.setAttribute("autocomplete", "off");
+  if (!input.hasAttribute("autocomplete")) {
+    input.setAttribute("autocomplete", "off");
+  }
 });
+
+// | ЧИСТКА ПОЛЕЙ
+// Браузер восстанавливает введённые значения при перезагрузке, а менеджер
+// паролей сам подставляет сохранённую пару почта+пароль. В компьютерном клубе
+// это значит, что следующий игрок докручивает до модалки и видит чужие данные.
+// Атрибуты autocomplete в разметке закрывают подстановку, а здесь снимаем то,
+// что браузер успел восстановить сам.
+// :not([readonly]) выводит из-под чистки поля, которые заполняет не игрок:
+// страну (её ставит гео или выбор из списка) и промокод из ссылки — ему
+// readOnly проставляет promocodeCheck. Без этого, если гео отвечало быстрее
+// события load, имя страны стирало вторым проходом: флаг оставался на месте
+// (это <img>), а строка рядом пустела. Браузеру там восстанавливать нечего,
+// значение всегда ставит скрипт.
+const RESTORABLE_FIELDS = [
+  ".two-step-form input[type='text']:not([readonly])",
+  ".two-step-form input[type='email']:not([readonly])",
+  ".two-step-form input[type='password']:not([readonly])",
+  ".two-step-form input[type='tel']:not([readonly])",
+].join(", ");
+
+// Без промокода в ссылке поле остаётся редактируемым, под чистку попадает
+// и оно. На load код из ссылки уже подставлен (promocodeCheck отработал на
+// импорте), поэтому второй проход его пропускает — иначе стёрли бы своё же.
+const clearFormFields = (keepPromocode = false) => {
+  document.querySelectorAll(RESTORABLE_FIELDS).forEach((input) => {
+    if (keepPromocode && input.classList.contains("two-step-promocode-input")) {
+      return;
+    }
+
+    input.value = "";
+  });
+};
+
+clearFormFields();
+
+// Восстановление может случиться и после разбора модулей, поэтому повторяем на
+// load.
+window.addEventListener("load", () => clearFormFields(true), { once: true });
 
 const bonusSumAndWager = [
   { currency: "EUR", amount: 10 },
@@ -435,6 +480,22 @@ if (twoStepFormSecondStep) {
   const isPasswordFieldValid = () =>
     twoStepFormPasswordInput.value.trim().length >= 6;
 
+  // Поля, из которых игрок уже уходил (blur). Пересчёт на вводе идёт с
+  // нейтральным цветом и раньше красил им ВСЕ невалидные поля шага: печатаешь в
+  // почте — уже покрасневший короткий пароль снова фиолетовый (и наоборот).
+  // Теперь нейтральный цвет — только у поля, в котором сейчас печатают, и у
+  // ещё не тронутых; тронутое невалидное поле остаётся красным.
+  const touchedFields = new WeakSet();
+  [twoStepFormEmailInput, twoStepFormPasswordInput].forEach((input) =>
+    input?.addEventListener("focusout", () => touchedFields.add(input)),
+  );
+  const errorColorFor = (input, invalidColor) =>
+    invalidColor === "#8726FF" &&
+    touchedFields.has(input) &&
+    input !== document.activeElement
+      ? "#ff5530"
+      : invalidColor;
+
   const validateInputs = (validColor, invalidColor) => {
     const fields = [
       { input: twoStepFormEmailInput, isValid: isEmailFieldValid() },
@@ -446,8 +507,10 @@ if (twoStepFormSecondStep) {
       // Во время проверки занятости — нейтральный цвет, не красный.
       if (input === twoStepFormEmailInput && isEmailAvailPending()) {
         input.style.color = "#8726FF";
+      } else if (isValid) {
+        input.style.color = validColor;
       } else {
-        input.style.color = isValid ? validColor : invalidColor;
+        input.style.color = errorColorFor(input, invalidColor);
       }
       if (isValid) validCount++;
     });
@@ -498,9 +561,12 @@ if (twoStepFormSecondStep) {
   );
   const hideSpinner = () => emailSpinner?.classList.add("hidden");
 
-  // вердикт Zeruh прилетел асинхронно → пересчитать кнопку и убрать спиннер
+  // вердикт Zeruh прилетел асинхронно → убрать спиннер. Пересчёт делает
+  // обработчик того же события выше, и делает его красным цветом ошибки.
+  // Второго пересчёта тут быть не должно: он шёл нейтральным #8726FF и, как
+  // более поздний слушатель, перекрашивал обратно уже покрасневшее поле —
+  // некорректная почта после blur оставалась фиолетовой.
   twoStepFormEmailInput.addEventListener("emailguard:result", () => {
-    validateInputs("#4ED937", "#8726FF");
     if (!window.EmailGuard?.isPending?.(twoStepFormEmailInput)) hideSpinner();
   });
   // почта ушла в Zeruh (синтаксис ок, вердикта ещё нет) → показать спиннер
@@ -609,7 +675,20 @@ if (twoStepFormThirdStep) {
     maxDate: "today",
     minDate: minBirthDate,
     disableMobile: true,
+    // flatpickr цеплялся к самому инпуту (средняя колонка грида) — всплывашка
+    // со стрелкой уезжала от иконки. Якорим на всю строку поля.
+    positionElement: twoStepBirthdayInput.closest(".two-step-birthday-wrapper"),
   });
+
+  // В RTL иконка переезжает в левый край поля — вместе с ней и точка привязки.
+  const syncCalendarPosition = () => {
+    calendar.set(
+      "position",
+      document.documentElement.dir === "rtl" ? "auto left" : "auto right",
+    );
+  };
+  syncCalendarPosition();
+  window.addEventListener("lang:changed", syncCalendarPosition);
 
   document
     .querySelector(".two-step-birthday-btn")
@@ -867,11 +946,20 @@ export const applyRegionField = (countryCode) => {
 // по справочнику CAP, IE — графство по routing key Eircode.
 const applyRegionFromPostalCode = (postal) => {
   if (regionMode !== "select" && regionMode !== "auto") return;
-  if (regionChosenManually) return;
+  const region = getRegionByPostalCode(twoStepFormData.country, postal) || "";
+
+  // Ручной выбор в селекте раньше блокировал подстановку насовсем: игрок
+  // выбрал Clare, потом ввёл дублинский Eircode — County так и оставался Clare.
+  // Теперь побеждает последнее действие: индекс, который даёт регион, его и
+  // ставит (и снимает флаг ручного выбора). Индекс, который региона не даёт
+  // (недописан / чужой формат), ручной выбор не трогает.
+  if (regionChosenManually) {
+    if (!region) return;
+    regionChosenManually = false;
+  }
 
   // Если новый индекс провинцию не даёт, подставленное по прежнему индексу
   // значение уже неверно — сбрасываем, а не оставляем чужой регион.
-  const region = getRegionByPostalCode(twoStepFormData.country, postal) || "";
 
   twoStepFormData.state = region;
   if (regionMode === "select") {
@@ -1085,7 +1173,12 @@ if (twoStepFormFourthStep) {
   applyDetectedCountry();
   // Adding countries to dropdown
 
+  // последний поисковый запрос: нужен, чтобы перерисовать список после смены
+  // языка — заглушка «страна не найдена» переводится вместе со страницей
+  let countryFilter = "";
+
   const renderCountries = (filter = "") => {
+    countryFilter = filter;
     twoStepCountryList.innerHTML = ""; // Clear existing list
 
     // Filter countries based on the search input
@@ -1122,11 +1215,15 @@ if (twoStepFormFourthStep) {
     // If no countries match the search, show a message
     if (filteredCountries.length === 0) {
       const noResult = document.createElement("li");
-      noResult.className = "text-gray-500 py-2";
-      noResult.textContent = "No countries found.";
+      noResult.className = "two-step-country-empty";
+      const lang = document.documentElement.getAttribute("lang") || "en";
+      noResult.textContent = translate(lang, "countryNotFound");
       twoStepCountryList.appendChild(noResult);
     }
   };
+  // список рисуется из JS, updateContent() его не трогает — перерисовываем сами
+  window.addEventListener("lang:changed", () => renderCountries(countryFilter));
+
 
   // Event listener for the search input
   twoStepCountrySearchInput.addEventListener("input", (e) => {
@@ -1293,6 +1390,15 @@ if (twoStepFormFourthStep) {
     twoStepFormData.state = validateStringInput(twoStepStateInput.value);
   });
 
+  // Apartment / Suite — тоже необязательный и в inputValidations1 не входит, а
+  // в twoStepFormData он попадал только из validateInputs1, которую дёргают
+  // события ОБЯЗАТЕЛЬНЫХ полей. Стёр квартиру последним действием перед
+  // сабмитом — пересчёта не было, и в /register уходило старое значение.
+  // Пишем на каждый ввод, как у State.
+  twoStepApartmentInput.addEventListener("input", () => {
+    twoStepFormData.apartment = validateStringInput(twoStepApartmentInput.value);
+  });
+
   submitBtn.disabled = true;
 
   const currentPhoneE164 = () => {
@@ -1416,6 +1522,10 @@ if (twoStepFormFourthStep) {
       // необязательное — сабмит не блокируем.
       input: twoStepRegionInput,
       condition: (value) => regionMode !== "select" || value !== "",
+      // Это селект, а не текстовое поле: выбранное значение держит свой цвет
+      // из разметки (#755EEB — как у выбранных страны и валюты), зелёным/
+      // красным от валидации его не красим. Валидность по-прежнему считаем.
+      keepColor: true,
     },
     {
       // REQUIRED — индекс обязателен и должен совпадать с форматом страны;
@@ -1431,6 +1541,13 @@ if (twoStepFormFourthStep) {
     },
   ];
 
+  // Как на шаге 2: тронутое (blur) невалидное поле не гаснет в фиолетовый,
+  // пока игрок печатает в соседнем.
+  const touchedAddressFields = new WeakSet();
+  inputValidations1.forEach(({ input }) =>
+    input.addEventListener("focusout", () => touchedAddressFields.add(input)),
+  );
+
   const validateInputs1 = (validColor, invalidColor) => {
     let validCount = 0;
     const totalInputs = inputValidations1.length;
@@ -1442,9 +1559,14 @@ if (twoStepFormFourthStep) {
     let fullPhoneNumber = `${twoStepCode}${sanitizedPhoneNumber}`;
 
     // Validate each input
-    inputValidations1.forEach(({ input, condition, liveInvalid }) => {
+    inputValidations1.forEach(({ input, condition, liveInvalid, keepColor }) => {
       const value = input.value.trim();
       const isValid = condition(value); // Check validity
+      if (keepColor) {
+        input.style.color = ""; // цвет из класса разметки
+        if (isValid) validCount++;
+        return;
+      }
       // Во время проверки (занятость или IPQS) — нейтральный цвет, не красный.
       if (
         input === twoStepPhoneInput &&
@@ -1453,8 +1575,14 @@ if (twoStepFormFourthStep) {
         input.style.color = "#8726FF";
       } else {
         // liveInvalid — поля, где ошибка красная даже во время ввода.
+        const keepError =
+          invalidColor === "#8726FF" &&
+          touchedAddressFields.has(input) &&
+          input !== document.activeElement;
         const errorColor =
-          !isValid && liveInvalid?.(value) ? "#ff5530" : invalidColor;
+          !isValid && (liveInvalid?.(value) || keepError)
+            ? "#ff5530"
+            : invalidColor;
         input.style.color = isValid ? validColor : errorColor; // Apply text color
       }
       if (isValid) validCount++;
@@ -1488,11 +1616,11 @@ if (twoStepFormFourthStep) {
     );
   });
 
-  inputValidations1.forEach(({ input, liveInvalid }) => {
+  inputValidations1.forEach(({ input, liveInvalid, keepColor }) => {
     input.addEventListener("input", () => {
       validateInputs1("#4ED937", "#8726FF");
       // Поля с liveInvalid оставляем с цветом от валидации — не гасим красный.
-      if (!liveInvalid) input.style.color = "#8726FF";
+      if (!liveInvalid && !keepColor) input.style.color = "#8726FF";
     });
   });
 
@@ -1591,7 +1719,46 @@ const twoStepFormSteps = document.querySelectorAll(".two-step-form-step");
 
 let initialStep = 1;
 
-const showStep = (step) => {
+// Курсор ставим в первое НЕзаполненное поле открытого шага, иначе игрок
+// сначала целится в инпут и только потом печатает.
+// Что пропускаем:
+//   readonly — так помечены поля-селекты (страна), у них своё выпадающее меню,
+//   фокус уходит на следующее текстовое;
+//   radio/checkbox — выбор бонуса и пола, печатать там нечего;
+//   .iti__search-input — поиск стран у телефона, в DOM он идёт раньше самого
+//   телефона, но полем формы не является;
+//   .two-step-promocode-input — промокод на первом шаге пустой чаще всего
+//   (его вводят вручную), и одной проверки на пустоту мало: фокус вставал бы
+//   в него, хотя шаг про выбор бонуса;
+//   невидимые (offsetParent === null) — скрытый промокод, «State» для стран
+//   без штатов, свёрнутые выпадающие списки;
+//   заполненные — по «Назад» и повторным переходам фокус вставал в уже
+//   введённые данные и без нужды поднимал клавиатуру. Телефон читается как
+//   пустой корректно: при separateDialCode код страны живёт вне value.
+// Все поля шага заполнены — не фокусируем ничего.
+const focusFirstFieldIn = (stepEl) => {
+  const field = [
+    ...(stepEl?.querySelectorAll(
+      "input:not([type='hidden']):not([type='radio']):not([type='checkbox']):not([disabled]):not([readonly]):not(.iti__search-input):not(.two-step-promocode-input)",
+    ) || []),
+  ].find((el) => el.offsetParent !== null && el.value.trim() === "");
+
+  // без rAF намеренно: showStep зовётся из обработчика клика, а на iOS Safari
+  // клавиатура поднимается только внутри пользовательского жеста
+  field?.focus({ preventScroll: true });
+};
+
+const focusFirstField = (step) =>
+  focusFirstFieldIn(document.querySelector(`.two-step-form-step-${step}`));
+
+// Для открытия модалки: шаг не обязательно первый — игрок мог закрыть форму
+// на третьем и вернуться, is-active к этому моменту уже проставлен.
+export const focusActiveStep = () =>
+  focusFirstFieldIn(document.querySelector(".two-step-form-step.is-active"));
+
+// focus: false — для «Назад»: игрок возвращается на уже пройденный шаг, поля
+// там заполнены, и автофокус на мобилке зря поднимал клавиатуру
+const showStep = (step, { focus = true } = {}) => {
   twoStepFormSteps.forEach((stepWrapper) => {
     stepWrapper.classList.remove("is-active");
     document
@@ -1611,6 +1778,8 @@ const showStep = (step) => {
   } else {
     headerbackBtn.classList.remove("is-visible");
   }
+
+  if (focus) focusFirstField(step);
 };
 // showStep(2);
 
@@ -1626,7 +1795,7 @@ nextStepBtn.forEach((btn) => {
 if (headerbackBtn) {
   headerbackBtn.addEventListener("click", () => {
     initialStep--;
-    showStep(initialStep);
+    showStep(initialStep, { focus: false });
   });
 }
 
