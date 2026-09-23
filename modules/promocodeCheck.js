@@ -45,6 +45,15 @@ document.querySelectorAll('input[name="bonus"]').forEach((input) => {
 
 applyPromocodeFromBonus();
 
+// Возврат «Назад» с прода: браузер восстанавливает выбранный бонус без события
+// change, и промокод оставался от прежнего выбора. pageshow срабатывает и на
+// обычной загрузке, и на подъёме из bfcache; второй проход на следующем кадре —
+// мобильный Safari восстанавливает форму асинхронно. Вызов идемпотентный.
+window.addEventListener("pageshow", () => {
+  applyPromocodeFromBonus();
+  requestAnimationFrame(applyPromocodeFromBonus);
+});
+
 // Блок ручного ввода промокода присутствует в разметке не всегда
 const promocodeAppliedWrapper = document.querySelector(
   ".promocode-applied-wrapper",
