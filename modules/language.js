@@ -1,6 +1,5 @@
 import { translations } from "/public/translations";
-import { geoData } from "./geoLocation";
-import { getSupportedLanguage } from "./geoLocation";
+import { language } from "./geoLocation";
 import {
   initBonus,
   settingInitialBonusValue,
@@ -115,6 +114,10 @@ function changeLanguage(lang) {
   }
 
   updateTelInputLanguage();
+
+  // Заглушки, которые рисуются из JS, а не через data-translate:
+  // «страна не найдена» у телефона и у селекта страны, позиция календаря в RTL.
+  window.dispatchEvent(new CustomEvent("lang:changed", { detail: lang }));
 }
 
 function setActiveLanguageBtn(currentLang) {
@@ -143,121 +146,10 @@ function updateButtonText(lang) {
   document.querySelector("html").setAttribute("lang", lang);
 }
 
-async function determineLanguage() {
-  const location = geoData;
-
-  const countryLangMap = {
-    GB: "en",
-    US: "en",
-    CA: "en",
-    AU: "en",
-    NZ: "en",
-    IE: "en",
-    ZA: "en",
-    IN: "en",
-    UA: "uk",
-    FR: "fr",
-    BE: "fr",
-    CH: "fr",
-    LU: "fr",
-    DE: "de",
-    AT: "de",
-    LI: "de",
-    ES: "es",
-    MX: "es",
-    AR: "es",
-    CO: "es",
-    PE: "es",
-    VE: "es",
-    CL: "es",
-    EC: "es",
-    GT: "es",
-    CU: "es",
-    BO: "es",
-    DO: "es",
-    HN: "es",
-    PY: "es",
-    NI: "es",
-    SV: "es",
-    CR: "es",
-    PA: "es",
-    UY: "es",
-    RU: "ru",
-    KZ: "ru",
-    BY: "ru",
-    KG: "ru",
-    TJ: "ru",
-    TM: "ru",
-    "GE-AB": "ru",
-    "GE-SO": "ru",
-    PT: "pt",
-    BR: "pt",
-    AO: "pt",
-    MZ: "pt",
-    GW: "pt",
-    TL: "pt",
-    MO: "pt",
-    EH: "pt",
-    AZ: "ru",
-    UZ: "ru",
-    TR: "ru",
-    BD: "en",
-    ID: "en",
-    CN: "en",
-    DK: "dk",
-    NO: "nb",
-    RO: "ro",
-    MD: "ro",
-    HU: "hu",
-    PL: "pl",
-    CZ: "cs",
-    SI: "sl",
-    GR: "el",
-    SE: "sv",
-    SK: "sk",
-    IT: "it",
-    EE: "et",
-    LV: "lv",
-    LT: "lt",
-    HR: "hr",
-    FI: "fi",
-    BG: "bg",
-    KE: "sw",
-    TZ: "sw",
-    ET: "am",
-    UG: "lm",
-    RW: "rw",
-    SA: "ar",
-    EG: "ar",
-    AE: "ar",
-    IQ: "ar",
-    MA: "ar",
-    DZ: "ar",
-    JO: "ar",
-    LB: "ar",
-    KW: "ar",
-    QA: "ar",
-    BH: "ar",
-    OM: "ar",
-    LY: "ar",
-    TN: "ar",
-    GH: "tw",
-  };
-
-  if (location.countryCode === "NG") {
-    const browserLang = navigator.language?.split("-")[0]?.toLowerCase();
-    const ngLangs = ["ha", "yo", "ig"];
-    lang = ngLangs.includes(browserLang) ? browserLang : "ha";
-  } else {
-    lang = countryLangMap[location.countryCode] || "en";
-  }
-
-  return lang;
-}
-
 async function mainFunction() {
   try {
-    lang = await determineLanguage();
+    // язык уже выбран в geoLocation.js по браузеру (раньше — по гео)
+    lang = language;
     changeLanguage(lang);
     setTimeout(() => {
       const currencyData = JSON.parse(localStorage.getItem("currencyData"));
@@ -266,10 +158,6 @@ async function mainFunction() {
       initBonus(currencyData.abbr);
       syncAppliedBonus();
     }, 200);
-    localStorage.setItem(
-      "preferredLanguage",
-      getSupportedLanguage(lang.toUpperCase()),
-    );
   } catch (error) {
     console.error("Error determining language:", error);
   }
@@ -288,10 +176,9 @@ if (headerLangList) {
     settingInitialBonusValue(currencyData.abbr);
     initBonus(currencyData.abbr);
     syncAppliedBonus();
-    localStorage.setItem(
-      "preferredLanguage",
-      getSupportedLanguage(targetLang.toUpperCase()),
-    );
+    // targetLang — уже код языка, а не страны: getSupportedLanguage() ждёт
+    // countryCode ("SV" — Сальвадор → es), затирая выбор игрока
+    localStorage.setItem("preferredLanguage", targetLang);
     twoStepFormData.lang = localStorage.getItem("preferredLanguage");
     setSpinAmount();
   });
