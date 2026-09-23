@@ -3,6 +3,26 @@ import { Metadata } from "libphonenumber-js/core";
 import minMetadata from "libphonenumber-js/metadata.min.json";
 import { isValidPhoneNumber } from "libphonenumber-js";
 import { geoData } from "./geoLocation";
+import { translations } from "/public/translations";
+
+const translate = (lang, key) =>
+  translations[lang]?.[key] ?? translations.en[key];
+
+// В поиске стран нет видимого «ничего не найдено»: библиотека кладёт этот текст
+// только в скрытый для глаза .iti__a11y-text, а список молча пустеет. Рисуем
+// заглушку через CSS (.iti__country-list:empty::after), а текст отдаём ей
+// переменной — так он переводится вместе со страницей.
+const syncNoResultsText = () => {
+  const lang = document.documentElement.lang || "en";
+
+  document.documentElement.style.setProperty(
+    "--iti-zero-results",
+    JSON.stringify(translate(lang, "countryNotFound")),
+  );
+};
+
+syncNoResultsText();
+window.addEventListener("lang:changed", syncNoResultsText);
 
 const getPossibleLengths = (countryCode) => {
   try {
@@ -60,6 +80,25 @@ const baseOptions = {
   },
 };
 
+// Собственные строки библиотеки английские. Свой словарь тут не подставить
+// один раз навсегда: язык меняется на лету, а опции читаются при создании
+// инпута — поэтому i18n считаем на каждое пересоздание.
+const buildI18n = () => {
+  const lang = document.documentElement.lang || "en";
+
+  return {
+    searchPlaceholder: translate(lang, "searchPlaceholder"),
+    zeroSearchResults: translate(lang, "countryNotFound"),
+  };
+};
+
+// опции для нового инстанса: база плюс актуальные переводы
+const withI18n = (extra = {}) => ({
+  ...baseOptions,
+  ...extra,
+  i18n: buildI18n(),
+});
+
 const fixItiLTR = () => {
   const container = twoStepPhoneInput
     .closest(".iti")
@@ -70,7 +109,7 @@ const fixItiLTR = () => {
   }
 };
 
-export let twoStepiti = intlTelInput(twoStepPhoneInput, baseOptions);
+export let twoStepiti = intlTelInput(twoStepPhoneInput, withI18n());
 fixItiLTR();
 
 let currentFormat = null;
@@ -162,7 +201,7 @@ const formatPhoneValue = () => {
 window.addEventListener("geoReady", (e) => {
   const countryCode = e.detail?.countryCode?.toLowerCase() || "pl";
   twoStepiti.destroy();
-  twoStepiti = intlTelInput(twoStepPhoneInput, { ...baseOptions, initialCountry: countryCode });
+  twoStepiti = intlTelInput(twoStepPhoneInput, withI18n({ initialCountry: countryCode }));
   fixItiLTR();
   currentFormat = null;
 });
@@ -179,7 +218,7 @@ export function updateTelInputLanguage() {
   const currentCountry = twoStepiti.getSelectedCountryData().iso2;
   twoStepiti.destroy();
 
-  const options = { ...baseOptions, initialCountry: currentCountry || "auto" };
+  const options = withI18n({ initialCountry: currentCountry || "auto" });
 
   twoStepiti = intlTelInput(twoStepPhoneInput, options);
   fixItiLTR();

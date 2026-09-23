@@ -1,4 +1,4 @@
-import { geoData, getSupportedLanguage } from "./geoLocation";
+import { geoData } from "./geoLocation";
 import { countryFlags } from "../public/data";
 import { translations } from "../public/translations";
 
@@ -36,7 +36,8 @@ if (geoRestrictModal && isGeoRestricted) {
   const titleEl = geoRestrictModal.querySelector(".geo-restrict-title");
   const flagEl = geoRestrictModal.querySelector(".geo-restrict-flag");
 
-  const lang = getSupportedLanguage(geoData.countryCode);
+  // язык ленда выбран в geoLocation.js по браузеру (п.3), а не по гео
+  const lang = localStorage.getItem("preferredLanguage") || "en";
   const countryName = getCountryName(geoData.countryCode);
 
   if (titleEl)
