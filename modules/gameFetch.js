@@ -468,12 +468,15 @@ const REGISTERED_PARAMS = ["cid", "promocode", "partner", "offer"];
 // По cid уже регались: фриспины отыграны, регистрация не пройдёт — гнать игрока
 // по сценарию заново незачем. Модалку показываем сразу после /session, игру под
 // ней грузим только картинкой: фрейм заблокирован, WS и гейт не поднимаем.
-const showRegisteredScreen = (session) => {
+const openRegisteredOverlay = () => {
   logEvent("registered:shown");
+  document.querySelector(".registered-overlay")?.classList.add("is-open");
+};
 
+const showRegisteredScreen = (session) => {
   applyGameUrl(session.url);
   lockFrame();
-  document.querySelector(".registered-overlay")?.classList.add("is-open");
+  openRegisteredOverlay();
 };
 
 document.querySelector(".registered-btn")?.addEventListener("click", () => {
@@ -897,7 +900,16 @@ const showGameUnavailable = (error) => {
   const status = error?.status ?? null;
   const isExpired = status === 403;
 
-  logEvent("game:unavailable", { status, reason: error?.data?.reason ?? null });
+  // 403 тоже несёт alreadyRegistered: сессия истекла, а по cid уже регались —
+  // форма такому игроку не нужна, показываем ту же модалку, что и на живой
+  // сессии. Запись игры в этом случае не крутим: она нужна была как фон формы.
+  const registered = error?.data?.alreadyRegistered === true;
+
+  logEvent("game:unavailable", {
+    status,
+    reason: error?.data?.reason ?? null,
+    registered,
+  });
 
   document.querySelector(".game-frame")?.remove();
 
@@ -905,7 +917,11 @@ const showGameUnavailable = (error) => {
   const screen = isExpired ? ".game-expired" : ".game-empty";
   document.querySelector(screen)?.classList.add("is-visible");
 
-  if (isExpired) playGameVideo();
+  if (registered) {
+    openRegisteredOverlay();
+  } else if (isExpired) {
+    playGameVideo();
+  }
 
   // прелоадер ждёт load фрейма, которого уже не будет — снимаем его руками
   window.dispatchEvent(new Event("game:settled"));
