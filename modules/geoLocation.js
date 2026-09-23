@@ -124,10 +124,21 @@ export const getSupportedLanguage = (countryCode) => {
 // Ленд открывается на языке браузера; не поддерживаем его — показываем en.
 // Считаем здесь, а не в language.js: значение уходит в /session и /register,
 // а gameFetch читает localStorage раньше language.js.
-export const getInitialLanguage = () => {
-  const browserLang = navigator.language.split("-")[0];
+// Коды браузера, расходящиеся с кодами словарей ленда. Датский здесь лежит
+// под своим ISO-кодом da (translations/da.js) — алиас ему не нужен.
+const BROWSER_LANG_ALIASES = {
+  no: "nb", // норвежский: браузер шлёт макро-код
+  nn: "nb", // нюнорск отдаём на букмоле
+  lg: "lm", // луганда: ISO-код lg, словарь лежит под lm
+  ak: "tw", // акан: словарь лежит под tw (чви)
+};
 
-  return SupportedLanguages.includes(browserLang) ? browserLang : "en";
+export const getInitialLanguage = () => {
+  // navigator.language даёт локали вида pt-BR / az-Latn-AZ — берём первый сегмент
+  const browserLang = navigator.language.split("-")[0];
+  const lang = BROWSER_LANG_ALIASES[browserLang] ?? browserLang;
+
+  return SupportedLanguages.includes(lang) ? lang : "en";
 };
 
 localStorage.setItem("preferredLanguage", getInitialLanguage());

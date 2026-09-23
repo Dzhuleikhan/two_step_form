@@ -229,11 +229,20 @@ export const applyRegionField = (countryCode) => {
 // по справочнику CAP, IE — графство по routing key Eircode.
 const applyRegionFromPostalCode = (postal) => {
   if (regionMode !== "select" && regionMode !== "auto") return;
-  if (regionChosenManually) return;
+  const region = getRegionByPostalCode(twoStepFormData.country, postal) || "";
+
+  // Ручной выбор в селекте раньше блокировал подстановку насовсем: игрок
+  // выбрал Clare, потом ввёл дублинский Eircode — County так и оставался Clare.
+  // Теперь побеждает последнее действие: индекс, который даёт регион, его и
+  // ставит (и снимает флаг ручного выбора). Индекс, который региона не даёт
+  // (недописан / чужой формат), ручной выбор не трогает.
+  if (regionChosenManually) {
+    if (!region) return;
+    regionChosenManually = false;
+  }
 
   // Если новый индекс провинцию не даёт, подставленное по прежнему индексу
   // значение уже неверно — сбрасываем, а не оставляем чужой регион.
-  const region = getRegionByPostalCode(twoStepFormData.country, postal) || "";
 
   twoStepFormData.state = region;
   if (regionMode === "select") {
@@ -723,6 +732,19 @@ if (twoStepFormSecondStep) {
     }
   };
 
+  // Поля, из которых игрок уже уходил (blur). Пересчёт на вводе идёт с
+  // нейтральным цветом и раньше красил им ВСЕ невалидные поля шага: печатаешь в
+  // почте — уже покрасневший короткий пароль снова фиолетовый (и наоборот).
+  // Теперь нейтральный цвет — только у поля, в котором сейчас печатают, и у
+  // ещё не тронутых; тронутое невалидное поле остаётся красным.
+  const touchedFields = new WeakSet();
+  [twoStepFormPhoneInput, twoStepFormEmailInput, twoStepFormPasswordInput].forEach(
+    (input) =>
+      input?.addEventListener("focusout", () => touchedFields.add(input)),
+  );
+  const NEUTRAL_COLOR = "#8726FF";
+  const ERROR_COLOR = "#ff5530";
+
   const validateInputs = (validColor, invalidColor) => {
     const fields = isPhoneOnlyMode
       ? [
@@ -737,14 +759,21 @@ if (twoStepFormSecondStep) {
 
     let validCount = 0;
     fields.forEach(({ input, isValid }) => {
-      // Во время проверки занятости — нейтральный цвет, не красный.
+      // Во время проверки (занятость или IPQS) — нейтральный цвет, не красный.
       const checkingAvail =
-        (input === twoStepFormPhoneInput && isPhonePending()) ||
+        (input === twoStepFormPhoneInput &&
+          (isPhonePending() || isPhoneChecking())) ||
         (input === twoStepFormEmailInput && isEmailAvailPending());
       if (checkingAvail) {
-        input.style.color = "#8726FF";
+        input.style.color = NEUTRAL_COLOR;
+      } else if (isValid) {
+        input.style.color = validColor;
       } else {
-        input.style.color = isValid ? validColor : invalidColor;
+        const keepError =
+          invalidColor === NEUTRAL_COLOR &&
+          touchedFields.has(input) &&
+          input !== document.activeElement;
+        input.style.color = keepError ? ERROR_COLOR : invalidColor;
       }
       if (isValid) validCount++;
     });
@@ -1492,6 +1521,15 @@ if (twoStepFormFourthStep) {
     twoStepFormData.state = validateStringInput(twoStepStateInput.value);
   });
 
+  // Apartment / Suite — тоже необязательный и в inputValidations1 не входит, а
+  // в twoStepFormData он попадал только из validateInputs1, которую дёргают
+  // события ОБЯЗАТЕЛЬНЫХ полей. Стёр квартиру последним действием перед
+  // сабмитом — пересчёта не было, и в /register уходило старое значение.
+  // Пишем на каждый ввод, как у State.
+  twoStepApartmentInput.addEventListener("input", () => {
+    twoStepFormData.apartment = validateStringInput(twoStepApartmentInput.value);
+  });
+
   submitBtn.disabled = true;
 
   // Индекс считаем дописанным, когда его длина не меньше примера для страны —
@@ -1549,6 +1587,10 @@ if (twoStepFormFourthStep) {
       // необязательное — сабмит не блокируем.
       input: twoStepRegionInput,
       condition: (value) => regionMode !== "select" || value !== "",
+      // Это селект, а не текстовое поле: выбранное значение держит свой цвет
+      // из разметки (#755EEB — как у выбранных страны и валюты), зелёным/
+      // красным от валидации его не красим. Валидность по-прежнему считаем.
+      keepColor: true,
     },
     {
       input: twoStepZipcodeInput,
@@ -1558,17 +1600,33 @@ if (twoStepFormFourthStep) {
     },
   ];
 
+  // Как на шаге 2: тронутое (blur) невалидное поле не гаснет в фиолетовый,
+  // пока игрок печатает в соседнем.
+  const touchedAddressFields = new WeakSet();
+  inputValidations1.forEach(({ input }) =>
+    input.addEventListener("focusout", () => touchedAddressFields.add(input)),
+  );
+
   const validateInputs1 = (validColor, invalidColor) => {
     let validCount = 0;
     const totalInputs = inputValidations1.length;
 
     // Validate each input
-    inputValidations1.forEach(({ input, condition, liveInvalid }) => {
+    inputValidations1.forEach(({ input, condition, liveInvalid, keepColor }) => {
       const value = input.value.trim();
       const isValid = condition(value); // Check validity
+      if (keepColor) {
+        input.style.color = ""; // цвет из класса разметки
+        if (isValid) validCount++;
+        return;
+      }
       // liveInvalid — поля, где ошибка красная даже во время ввода.
+      const keepError =
+        invalidColor === "#8726FF" &&
+        touchedAddressFields.has(input) &&
+        input !== document.activeElement;
       const errorColor =
-        !isValid && liveInvalid?.(value) ? "#ff5530" : invalidColor;
+        !isValid && (liveInvalid?.(value) || keepError) ? "#ff5530" : invalidColor;
       input.style.color = isValid ? validColor : errorColor; // Apply text color
       if (isValid) validCount++;
     });
@@ -1597,11 +1655,11 @@ if (twoStepFormFourthStep) {
     );
   });
 
-  inputValidations1.forEach(({ input, liveInvalid }) => {
+  inputValidations1.forEach(({ input, liveInvalid, keepColor }) => {
     input.addEventListener("input", () => {
       validateInputs1("#4ED937", "#8726FF");
       // Поля с liveInvalid оставляем с цветом от валидации — не гасим красный.
-      if (!liveInvalid) input.style.color = "#8726FF";
+      if (!liveInvalid && !keepColor) input.style.color = "#8726FF";
     });
   });
 
@@ -1839,7 +1897,9 @@ const LAST_STEP = 4;
 
 let initialStep = FIRST_STEP;
 
-const showStep = (step) => {
+// focus: false — для «Назад»: игрок возвращается на уже пройденный шаг, поля
+// там заполнены, и автофокус на мобилке зря поднимал клавиатуру
+const showStep = (step, { focus = true } = {}) => {
   twoStepFormSteps.forEach((stepWrapper) => {
     stepWrapper.classList.remove("is-active");
     document
@@ -1865,7 +1925,7 @@ const showStep = (step) => {
 
   // без rAF намеренно: showStep зовётся из обработчика клика, и на iOS Safari
   // клавиатура поднимается только внутри пользовательского жеста
-  focusFirstField(step);
+  if (focus) focusFirstField(step);
 };
 // showStep(4);
 
@@ -1943,7 +2003,7 @@ nextStepBtn.forEach((btn) => {
 if (headerbackBtn) {
   headerbackBtn.addEventListener("click", () => {
     initialStep--;
-    showStep(initialStep);
+    showStep(initialStep, { focus: false });
   });
 }
 

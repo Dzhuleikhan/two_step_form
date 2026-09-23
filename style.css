@@ -280,6 +280,55 @@ body::before {
   opacity: 1;
 }
 
+/* Кнопки пола: на длинных переводах («Mężczyzna», «Masculino», «Männlich»)
+   текст вплотную упирался в кружок справа — между ними не было зазора
+   (justify-between без gap), а на мобилке текст оставался 16px: xs:text-sm в
+   разметке мёртвый, брейкпоинта xs в @theme нет. Даём гарантированный зазор,
+   запрещаем кружку и иконке сжиматься, а на узких экранах ужимаем шрифт,
+   иконку и кружок, чтобы длинное слово влезало. */
+.gender-checkbox-div {
+  gap: 8px;
+}
+
+.gender-checkbox-div > p {
+  min-width: 0;
+}
+
+.gender-checkbox-div > p > svg {
+  flex-shrink: 0;
+}
+
+.gender-checkbox-div > p > span {
+  min-width: 0;
+  hyphens: auto; /* крайний случай — перенос по слогам, а не наезд на кружок */
+}
+
+@media (max-width: 576px) {
+  .gender-checkbox-div {
+    padding-inline: 10px;
+  }
+
+  .gender-checkbox-div > p {
+    gap: 4px;
+    font-size: 14px;
+  }
+
+  .gender-checkbox-div > p > svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  .gender-checkbox-circle {
+    width: 24px;
+    height: 24px;
+  }
+
+  .gender-checkbox-circle::before {
+    width: 14px;
+    height: 14px;
+  }
+}
+
 .two-step-bonus-checkbox input:checked+.two-step-bonus-checkbox-div,
 .gender-checkbox input:checked+.gender-checkbox-div {
   background-color: #8726ff;
@@ -305,6 +354,42 @@ body::before {
 .two-step-general-label.active {
   top: 12px;
   font-size: 12px;
+}
+
+/* Длинные лейблы полей (напр. швейцарский индекс сразу в три языка:
+   «Postleitzahl / Numéro postal / Numero postale (8001)») вылезали за правый
+   край поля: лейбл — absolute left-4 без ограничения справа, и коробка
+   тянулась до самой рамки. Ограничиваем ширину отступом слева + справа.
+   В RTL left/right меняются местами, max-width от этого не зависит. */
+.two-step-general-label {
+  max-width: calc(100% - 32px); /* left 16px + right 16px */
+}
+
+/* у почты, пароля и промокода слева иконка — лейбл начинается с 45px */
+.two-step-email-label,
+.two-step-promocode-label {
+  max-width: calc(100% - 61px); /* 45px + 16px */
+}
+
+/* у пароля ещё и «глаз» справа */
+.two-step-password-label {
+  max-width: calc(100% - 95px); /* 45px + иконка 24px + gap 6px + 16px + запас */
+}
+
+/* у индекса справа может быть иконка-подсказка (i) */
+.two-step-zipcode-wrapper.has-info .two-step-zipcode-label {
+  max-width: calc(100% - 60px); /* 16px + иконка 20px + 8px + 16px */
+}
+
+/* Поднятый лейбл (фокус / есть значение) стоит над текстом: вторая строка
+   налезла бы на ввод — держим в одну строку и обрезаем многоточием.
+   padding-top — чтобы overflow не срезал приподнятую звёздочку. */
+.two-step-general-input:focus+.two-step-general-label,
+.two-step-general-label.active {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding-top: 3px;
 }
 
 [dir="rtl"] .two-step-general-input:focus+.two-step-general-label,
@@ -1038,10 +1123,23 @@ body::before {
 /* email-guard: хинт ошибки Zeruh. Жирность держим ту же, что у остальных
    ошибок валидации (.pg-hint, .two-step-*-alert), иначе он выбивается. */
 .eg-hint {
-  font-size: 14px;
+  margin-top: 6px;
+  font-size: 12px;
   font-weight: 700;
-  margin-top: 20px;
+  line-height: 1.2;
   text-align: center;
+  color: #ff5530;
+}
+
+/* Подсказка «вы имели в виду ...?» — не ошибка, поэтому белым. */
+.eg-hint[data-eg-state="suggest"] {
+  color: #ffffff;
+}
+
+.eg-suggest-link {
+  color: #8726ff;
+  font-weight: 700;
+  cursor: pointer;
 }
 
 /* phone-guard: хинт ошибки IPQS (valid:false/active:false) — чисто под телефоном, по центру */
