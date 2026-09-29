@@ -6,6 +6,7 @@ import {
   twoStepFormData,
   settingInitialBonusValue,
   syncAppliedBonus,
+  initBonus,
 } from "./twoStepForm";
 
 const CDN = "https://3344112-img.b-cdn.net";
@@ -228,6 +229,7 @@ formCurrency.forEach((cur) => {
         settingBonusOnCurrencyChange(countryCurrencyData, currencyData);
         twoStepFormData.currency = currencyData.abbr;
         settingInitialBonusValue(twoStepFormData.currency);
+        initBonus(twoStepFormData.currency);
 
         twoStepFormData.bonus = checkTir1CurrencyMatch(
           twoStepFormData.currency,
