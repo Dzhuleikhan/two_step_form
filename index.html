@@ -709,16 +709,15 @@
           </p>
         </div>
         <!-- /session ответил 403: сессия истекла или уже передана в Goldbet.
-             Вместо заглушки показываем чёрный экран с лого провайдера -->
+             Вместо заглушки показываем чёрный экран с лого провайдера.
+             src лого подставляет modules/gameFetch.js — из папки игры по gameId -->
         <div class="game-expired">
-          <img
-            class="game-expired-logo"
-            src="/img/pragmatic-play.svg"
-            width="421"
-            height="194"
-            alt=""
-          />
+          <img class="game-expired-logo" alt="" />
           <span class="game-expired-loader"></span>
+          <!-- крутилка с подписью — у провайдеров, что грузятся без полосы
+               (тема в data-theme, ставит modules/gameFetch.js). Текст не
+               переводим: копируем экран провайдера, а он только на английском -->
+          <span class="game-expired-spinner">Loading...</span>
         </div>
         <!-- следом за экраном загрузки: запись игры вместо живого фрейма.
              src подставляет modules/gameFetch.js — десктопный или мобильный -->

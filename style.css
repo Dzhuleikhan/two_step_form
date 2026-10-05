@@ -897,6 +897,23 @@ body::before {
   left: 32px;
 }
 
+/* Месяц/год в шапке календаря. flatpickr опускает их вендорным padding-top
+   7.48px под базовую линию, а iOS Safari рисует select (appearance: menulist)
+   выше обычного — и месяц с годом съезжали ниже стрелок пагинации. Центруем
+   флексом по высоте шапки (34px), как центрованы сами стрелки. */
+.flatpickr-current-month {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+}
+
+.flatpickr-current-month .flatpickr-monthDropdown-months,
+.flatpickr-current-month input.cur-year {
+  margin: 0;
+  line-height: 1;
+}
+
 /* Лейбл телефона лежит в потоке грида, а не абсолютом, как остальные. Поэтому
    абсолютная звёздочка .two-step-required-label улетела бы к краю всей группы —
    ставим её сразу после текста. */
@@ -2014,6 +2031,58 @@ body:has(.wrapper.sidebar-collapsed) .preloader {
   to {
     transform: scaleX(1);
   }
+}
+
+.game-expired-spinner {
+  display: none;
+  align-items: center;
+  gap: 8px;
+  font-size: 11px;
+  line-height: 1;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.game-expired-spinner::before {
+  content: "";
+  width: 14px;
+  height: 14px;
+  border: 1.5px solid #fff;
+  border-top-color: transparent;
+  border-radius: 50%;
+  animation: game-expired-spin 0.9s linear infinite;
+}
+
+@keyframes game-expired-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* InOut (Chicken Road): тёмно-синий фон, мягкое свечение за лого и крутилка
+   с подписью вместо полосы — как экран загрузки самого провайдера */
+.game-expired[data-theme="inout"] {
+  --expired-width: min(490px, 60%);
+
+  gap: 44px;
+  background: #0c121e;
+}
+
+@media (max-width: 767px) {
+  .game-expired[data-theme="inout"] {
+    --expired-width: min(215px, 60%);
+  }
+}
+
+.game-expired[data-theme="inout"] .game-expired-logo {
+  filter: drop-shadow(0 0 48px rgba(255, 255, 255, 0.3));
+}
+
+.game-expired[data-theme="inout"] .game-expired-loader {
+  display: none;
+}
+
+.game-expired[data-theme="inout"] .game-expired-spinner {
+  display: inline-flex;
 }
 
 /* запись игры на месте фрейма — показывается после экрана загрузки */

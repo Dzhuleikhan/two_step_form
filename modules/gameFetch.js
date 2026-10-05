@@ -846,6 +846,14 @@ const VIDEO_GATE_MS = 3500;
 
 const wait = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
+// Лого провайдера и запись игры лежат в public/games/<gameId>/: logo.svg,
+// screen-mobile.mp4, screen-desktop.mp4. Новая игра — новая папка, код не трогаем.
+// BASE_URL, а не путь от корня: статика собирается на CDN (см. base в
+// vite.config.js), и «/games/...» уходил бы на домен лендинга, где файлов
+// нет — отсюда 404. В dev BASE_URL просто «/».
+const gameAssetUrl = (file) =>
+  `${import.meta.env.BASE_URL}games/${encodeURIComponent(urlGameId)}/${file}`;
+
 const playGameVideo = async () => {
   const video = document.querySelector(".game-video");
   const expired = document.querySelector(".game-expired");
@@ -856,31 +864,40 @@ const playGameVideo = async () => {
   // этого сценария. Здесь он уже нужен — разрешаем грузить.
   video.preload = "auto";
 
-  // BASE_URL, а не путь от корня: статика собирается на CDN (см. base в
-  // vite.config.js), и «/videos/...» уходил бы на домен лендинга, где файлов
-  // нет — отсюда 404. В dev BASE_URL просто «/».
   const file = window.matchMedia("(max-width: 767px)").matches
     ? "screen-mobile.mp4"
     : "screen-desktop.mp4";
 
-  video.src = `${import.meta.env.BASE_URL}videos/${file}`;
+  video.src = gameAssetUrl(file);
 
+  // true — запись можно играть, false — файла нет (папки под gameId не
+  // завели) или он битый
   const ready = new Promise((resolve) => {
     // HAVE_FUTURE_DATA и выше — можно играть без немедленной паузы на буфер
-    if (video.readyState >= 3) return resolve();
+    if (video.readyState >= 3) return resolve(true);
 
-    video.addEventListener("canplaythrough", resolve, { once: true });
+    video.addEventListener("canplaythrough", () => resolve(true), {
+      once: true,
+    });
     // битый файл или обрыв: не держим игрока на экране загрузки
-    video.addEventListener("error", resolve, { once: true });
+    video.addEventListener("error", () => resolve(false), { once: true });
   });
 
   // Полоса и загрузка идут параллельно: уходим с экрана, когда закончилось
   // и то и другое. Раньше таймер был фиксированным, и на медленной сети
-  // полоса добегала до конца, а вместо записи была чернота.
-  await Promise.all([
+  // полоса добегала до конца, а вместо записи была чернота. По таймауту
+  // запись всё же показываем — она догрузится уже на экране.
+  const [, playable] = await Promise.all([
     wait(EXPIRED_SCREEN_MS),
-    Promise.race([ready, wait(VIDEO_READY_TIMEOUT_MS)]),
+    Promise.race([ready, wait(VIDEO_READY_TIMEOUT_MS).then(() => true)]),
   ]);
+
+  // Записи нет — чёрный экран вместо игры смотреть незачем: оставляем экран
+  // загрузки под блюром и сразу открываем форму.
+  if (!playable) {
+    revealForm({ expired: true });
+    return;
+  }
 
   expired?.classList.remove("is-visible");
   video.classList.add("is-visible");
@@ -890,6 +907,45 @@ const playGameVideo = async () => {
   // Форма поверх записи — та же, что открывает гейт: без крестика, закрыть
   // её нельзя. revealForm сам снимает крестик и рисует заголовок.
   setTimeout(() => revealForm({ expired: true }), VIDEO_GATE_MS);
+};
+
+// Экран загрузки повторяет экран провайдера игры. Без записи в карте — вид
+// Pragmatic (чёрный фон и полоса), остальные темы описаны в style.css через
+// .game-expired[data-theme].
+const EXPIRED_THEMES = {
+  chickenroad_io: "inout",
+};
+
+const applyExpiredTheme = () => {
+  const theme = EXPIRED_THEMES[urlGameId];
+
+  if (theme)
+    document.querySelector(".game-expired")?.setAttribute("data-theme", theme);
+};
+
+// Лого кладут в том формате, какой есть: перебираем по очереди, пока какой-то
+// не загрузится. Не нашёлся ни один — прячем, остаётся одна полоса загрузки.
+const LOGO_FILES = ["logo.svg", "logo.webp", "logo.png"];
+
+const applyExpiredLogo = () => {
+  const logo = document.querySelector(".game-expired-logo");
+
+  if (!logo) return;
+
+  let index = 0;
+
+  const tryNext = () => {
+    if (index >= LOGO_FILES.length) {
+      logo.removeEventListener("error", tryNext);
+      logo.remove();
+      return;
+    }
+
+    logo.src = gameAssetUrl(LOGO_FILES[index++]);
+  };
+
+  logo.addEventListener("error", tryNext);
+  tryNext();
 };
 
 // Игры нет ни при пустых параметрах, ни при упавшем /session. Отдельный случай —
@@ -914,6 +970,10 @@ const showGameUnavailable = (error) => {
   document.querySelector(".game-frame")?.remove();
 
   // истёкшая сессия — свой экран, остальные случаи — обычная заглушка
+  if (isExpired) {
+    applyExpiredTheme();
+    applyExpiredLogo();
+  }
   const screen = isExpired ? ".game-expired" : ".game-empty";
   document.querySelector(screen)?.classList.add("is-visible");
 
