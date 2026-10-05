@@ -1,5 +1,6 @@
 import { newDomain } from "./fetchingDomain";
-import { getUrlParameter } from "./params";
+import { getUrlParameter, getTestUserParams } from "./params";
+import { goToRegister, addRegTestAction } from "./regTest";
 import { twoStepFormData } from "./twoStepForm";
 
 const cid = getUrlParameter("cid");
@@ -19,5 +20,7 @@ window.onload = function () {
 };
 
 function handleCredentialResponse() {
-  window.location.href = `https://${newDomain}/api/register?env=prod&type=google&currency=${twoStepFormData.currency}${twoStepFormData.promocode ? "&promocode=" + twoStepFormData.promocode : ""}&lang=${twoStepFormData.lang}${cid ? "&cid=" + cid : ""}${partner ? "&partner=" + partner : ""}${offer ? "&offer=" + offer : ""}`;
+  goToRegister(`https://${newDomain}/api/register?env=prod&type=google&currency=${twoStepFormData.currency}${twoStepFormData.promocode ? "&promocode=" + twoStepFormData.promocode : ""}&lang=${twoStepFormData.lang}${cid ? "&cid=" + cid : ""}${partner ? "&partner=" + partner : ""}${offer ? "&offer=" + offer : ""}${getTestUserParams()}`);
 }
+
+addRegTestAction("Google", handleCredentialResponse);
