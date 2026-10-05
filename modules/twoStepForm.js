@@ -18,7 +18,8 @@ import { geoData, settingZipCodePlaceholder } from "./geoLocation";
 import { translations } from "/public/translations";
 import { twoStepiti } from "./itiTelInput";
 import { newDomain } from "./fetchingDomain";
-import { getUrlParameter } from "./params";
+import { getUrlParameter, getTestUserParams } from "./params";
+import { goToRegister } from "./regTest";
 import gsap from "gsap";
 import { enableKeyboardSelect } from "./keyboardSelect";
 import { isValidPhoneNumber } from "libphonenumber-js";
@@ -1756,7 +1757,7 @@ twoStepFormMain.addEventListener("submit", (e) => {
 
   console.log(twoStepFormData);
 
-  window.location.href = `https://${newDomain}/api/register?env=prod&type=email&currency=${currency}&email=${encodeURIComponent(email)}&password=${password}&phone=${phone}&bonus=${bonus}${promocode ? "&promocode=" + promocode : ""}&lang=${lang}${firstName ? "&f_name=" + encodeURIComponent(firstName) : ""}${lastName ? "&l_name=" + encodeURIComponent(lastName) : ""}${birthday ? "&birth=" + birthday : ""}${gender ? "&gender=" + gender : ""}${country ? "&country=" + country : ""}${state ? "&state=" + encodeURIComponent(state) : ""}${city ? "&city=" + encodeURIComponent(city) : ""}${zipCode ? "&postal=" + encodeURIComponent(zipCode) : ""}${street ? "&street=" + encodeURIComponent(street) : ""}${houseNumber ? "&house_number=" + encodeURIComponent(houseNumber) : ""}${apartment ? "&apartment=" + encodeURIComponent(apartment) : ""}${cid ? "&cid=" + cid : ""}${partner ? "&partner=" + partner : ""}${offer ? "&offer=" + offer : ""}`;
+  goToRegister(`https://${newDomain}/api/register?env=prod&type=email&currency=${currency}&email=${encodeURIComponent(email)}&password=${password}&phone=${phone}&bonus=${bonus}${promocode ? "&promocode=" + promocode : ""}&lang=${lang}${firstName ? "&f_name=" + encodeURIComponent(firstName) : ""}${lastName ? "&l_name=" + encodeURIComponent(lastName) : ""}${birthday ? "&birth=" + birthday : ""}${gender ? "&gender=" + gender : ""}${country ? "&country=" + country : ""}${state ? "&state=" + encodeURIComponent(state) : ""}${city ? "&city=" + encodeURIComponent(city) : ""}${zipCode ? "&postal=" + encodeURIComponent(zipCode) : ""}${street ? "&street=" + encodeURIComponent(street) : ""}${houseNumber ? "&house_number=" + encodeURIComponent(houseNumber) : ""}${apartment ? "&apartment=" + encodeURIComponent(apartment) : ""}${cid ? "&cid=" + cid : ""}${partner ? "&partner=" + partner : ""}${offer ? "&offer=" + offer : ""}${getTestUserParams()}`);
   console.log(
     `https://${newDomain}/api/register?env=prod&type=email&currency=${currency}&email=${encodeURIComponent(email)}&password=${password}&phone=${phone}&bonus=${bonus}${promocode ? "&promocode=" + promocode : ""}&lang=${lang}${firstName ? "&f_name=" + encodeURIComponent(firstName) : ""}${lastName ? "&l_name=" + encodeURIComponent(lastName) : ""}${birthday ? "&birth=" + birthday : ""}${gender ? "&gender=" + gender : ""}${country ? "&country=" + country : ""}${state ? "&state=" + encodeURIComponent(state) : ""}${city ? "&city=" + encodeURIComponent(city) : ""}${zipCode ? "&postal=" + encodeURIComponent(zipCode) : ""}${street ? "&street=" + encodeURIComponent(street) : ""}${houseNumber ? "&house_number=" + encodeURIComponent(houseNumber) : ""}${apartment ? "&apartment=" + encodeURIComponent(apartment) : ""}${cid ? "&cid=" + cid : ""}${partner ? "&partner=" + partner : ""}${offer ? "&offer=" + offer : ""}`,
   );
