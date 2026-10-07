@@ -2086,7 +2086,7 @@ twoStepFormMain.addEventListener("submit", (e) => {
     promocode,
     partner,
     offer,
-    bonusId,
+    bonus_id: bonusId,
   };
 
   const body = Object.fromEntries(
