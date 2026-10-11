@@ -51,6 +51,7 @@ export const languageOptions = {
   lb: { name: "LB", flag: "lu" },
   mt: { name: "MT", flag: "mt" },
   zh: { name: "ZH", flag: "cn" },
+  is: { name: "IS", flag: "is" },
 };
 
 const headerLangBtn = document.querySelector(".header-lang-btn");
