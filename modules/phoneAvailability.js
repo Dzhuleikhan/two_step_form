@@ -113,6 +113,7 @@ const TAKEN_MESSAGES = {
   yo: "A kò lè lo nọ́mbà yìí, jọ̀wọ́ tẹ òmíràn sí i",
   ig: "Enweghị ike iji nọmba a, biko tinye nke ọzọ",
   tw: "Wontumi mfa saa nɔma yi nni dwuma, fa foforɔ",
+  is: "Ekki er hægt að nota þetta númer, sláðu inn annað",
 };
 
 export function phoneTakenMessage(lang) {
