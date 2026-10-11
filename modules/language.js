@@ -44,6 +44,7 @@ export const languageOptions = {
   yo: { name: "YO", flag: "ng" },
   ig: { name: "IG", flag: "ng" },
   tw: { name: "TW", flag: "gh" },
+  is: { name: "IS", flag: "is" },
 };
 
 const headerLangBtn = document.querySelector(".header-lang-btn");

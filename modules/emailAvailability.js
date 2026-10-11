@@ -119,6 +119,7 @@ const TAKEN_MESSAGES = {
   yo: "A kò lè lo imeèlì yìí, jọ̀wọ́ tẹ òmíràn sí i",
   ig: "Enweghị ike iji email a, biko tinye nke ọzọ",
   tw: "Wontumi mfa saa email yi nni dwuma, fa foforɔ",
+  is: "Ekki er hægt að nota þetta netfang, sláðu inn annað",
 };
 
 export function emailTakenMessage(lang) {
