@@ -127,6 +127,7 @@ const TAKEN_MESSAGES = {
   id: "Email ini tidak dapat digunakan, masukkan email lain",
   bn: "এই ইমেইলটি ব্যবহার করা যাবে না, অন্য একটি লিখুন",
   lm: "Email oyo ekoki kosalelama te, kotisa mosusu",
+  is: "Ekki er hægt að nota þetta netfang, sláðu inn annað",
 };
 
 export function emailTakenMessage(lang) {

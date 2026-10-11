@@ -121,6 +121,7 @@ const TAKEN_MESSAGES = {
   id: "Nomor ini tidak dapat digunakan, masukkan nomor lain",
   bn: "এই নম্বরটি ব্যবহার করা যাবে না, অন্য একটি লিখুন",
   lm: "Nimero oyo ekoki kosalelama te, kotisa mosusu",
+  is: "Ekki er hægt að nota þetta númer, sláðu inn annað",
 };
 
 export function phoneTakenMessage(lang) {
