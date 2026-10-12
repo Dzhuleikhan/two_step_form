@@ -2103,11 +2103,38 @@ twoStepFormMain.addEventListener("submit", (e) => {
 
   registerPlayer(body)
     .then((data) => {
+      markRegistered();
       window.location.href = data.redirectUrl;
     })
     .catch((error) => {
       resetSubmitBtn();
     });
+});
+
+// После регистрации уходим в Goldbet. Кнопка «Назад» (браузерная или в шапке
+// мобилки) достаёт ленд из bfcache как был — с последним шагом формы и тикающим
+// таймером. Помечаем регистрацию в sessionStorage вкладки и при таком возврате
+// перезагружаемся: /session по этому cid ответит alreadyRegistered, и игрок
+// увидит экран «Вы уже зарегистрированы».
+const REGISTERED_KEY = "playable:registered";
+
+function markRegistered() {
+  try {
+    sessionStorage.setItem(REGISTERED_KEY, "1");
+  } catch {
+    // приватный режим без storage — останется прежнее поведение
+  }
+}
+
+window.addEventListener("pageshow", (event) => {
+  if (!event.persisted) return;
+  let registered = false;
+  try {
+    registered = sessionStorage.getItem(REGISTERED_KEY) === "1";
+  } catch {
+    registered = false;
+  }
+  if (registered) window.location.reload();
 });
 
 console.log("Two step form script loaded");
