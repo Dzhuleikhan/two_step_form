@@ -4,9 +4,32 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="./img/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- CSS/JS сборки (Vite ставит crossorigin) и картинки/флаги -->
+    <link rel="preconnect" href="https://landing-res.b-cdn.net" crossorigin />
+    <link rel="preconnect" href="https://3344112-img.b-cdn.net" />
     <title data-translate="pageTabTitle">
       Sign Up for a Goldbet Casino Account
     </title>
+    <!-- Гео-запрос стартует сразу, параллельно с загрузкой бандла; geoLocation.js забирает этот промис -->
+    <script>
+      window.__geoPromise = (function () {
+        var controller = new AbortController();
+        var timer = setTimeout(function () {
+          controller.abort();
+        }, 2500);
+        return fetch(
+          "https://" +
+            location.host +
+            "/geo-api/api/check?accessKey=0439ba6e-6092-46c2-9aeb-8662065bc43c",
+          { signal: controller.signal },
+        ).then(function (response) {
+          clearTimeout(timer);
+          if (!response.ok) throw new Error("Bad API response");
+          return response.json();
+        });
+      })();
+      window.__geoPromise.catch(function () {});
+    </script>
     <script>
       (function (h, o, t, j, a, r) {
         h.hj =
@@ -22,11 +45,6 @@
         a.appendChild(r);
       })(window, document, "https://static.hotjar.com/c/hotjar-", ".js?sv=");
     </script>
-    <script src="https://accounts.google.com/gsi/client" async defer></script>
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css"
-    />
     <!-- email-guard: проверка email (typo-correction + Zeruh), fail-open -->
     <script defer src="/email-guard.js?v=1.0.9" data-eg-debug="false"></script>
     <!-- phone-guard: проверка телефона (IPQS valid/active), fail-open -->

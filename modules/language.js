@@ -26,7 +26,7 @@ if (headerLangList) {
               class="pointer-events-none shrink-0 overflow-hidden rounded-full"
               width="20"
               height="20"
-              src="https://3344112-img.b-cdn.net/graphic/flags/flag-${flag}.svg"
+              data-src="https://3344112-img.b-cdn.net/graphic/flags/flag-${flag}.svg"
               alt="${name} flag"
             />
             <span class="pointer-events-none">${name}</span>
@@ -38,7 +38,19 @@ if (headerLangList) {
 }
 
 if (headerLangBtn) {
+  // Флаги языков грузим только при первом открытии списка (~40 SVG, до 3 МБ)
+  let langFlagsLoaded = false;
+  const loadLangFlags = () => {
+    if (langFlagsLoaded) return;
+    langFlagsLoaded = true;
+    headerLangList.querySelectorAll("img[data-src]").forEach((img) => {
+      img.src = img.dataset.src;
+      img.removeAttribute("data-src");
+    });
+  };
+
   headerLangBtn.addEventListener("click", () => {
+    loadLangFlags();
     headerLangList.classList.toggle("is-open");
   });
 }

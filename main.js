@@ -1,3 +1,5 @@
+// Раньше грузился с jsdelivr и блокировал отрисовку; до style.css, чтобы наши переопределения оставались в силе
+import "flatpickr/dist/flatpickr.min.css";
 import "./style.css";
 import "intl-tel-input/build/css/intlTelInput.css";
 
