@@ -31,6 +31,9 @@
       window.__geoPromise.catch(function () {});
     </script>
     <script>
+      // Hotjar запускаем после load страницы (+1,5 с): его ~250 КБ скриптов
+      // давали больше половины блокировки основного потока на первом экране.
+      // Очередь hj() создаётся сразу, так что ранние вызовы не потеряются.
       (function (h, o, t, j, a, r) {
         h.hj =
           h.hj ||
@@ -38,11 +41,18 @@
             (h.hj.q = h.hj.q || []).push(arguments);
           };
         h._hjSettings = { hjid: 5281757, hjsv: 6 };
-        a = o.getElementsByTagName("head")[0];
-        r = o.createElement("script");
-        r.async = 1;
-        r.src = t + h._hjSettings.hjid + j + h._hjSettings.hjsv;
-        a.appendChild(r);
+        function load() {
+          a = o.getElementsByTagName("head")[0];
+          r = o.createElement("script");
+          r.async = 1;
+          r.src = t + h._hjSettings.hjid + j + h._hjSettings.hjsv;
+          a.appendChild(r);
+        }
+        function schedule() {
+          setTimeout(load, 1500);
+        }
+        if (o.readyState === "complete") schedule();
+        else h.addEventListener("load", schedule, { once: true });
       })(window, document, "https://static.hotjar.com/c/hotjar-", ".js?sv=");
     </script>
     <!-- email-guard: проверка email (typo-correction + Zeruh), fail-open -->
