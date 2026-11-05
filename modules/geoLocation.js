@@ -10,6 +10,9 @@ export async function getLocation() {
   const fallback = { countryCode: "PL", currency: { code: "PLN" } };
 
   try {
+    // Запрос уже запущен инлайн-скриптом в <head>
+    if (window.__geoPromise) return await window.__geoPromise;
+
     const controller = new AbortController();
     const timer = setTimeout(() => controller.abort(), 2500);
 

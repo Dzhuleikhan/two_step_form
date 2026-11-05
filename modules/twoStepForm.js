@@ -1291,6 +1291,8 @@ if (twoStepFormFourthStep) {
         "pointer-events-none h-6 w-6 rounded-full overflow-hidden object-contain";
       img.width = 24;
       img.height = 24;
+      img.loading = "lazy";
+      img.decoding = "async";
       img.src = CDN + `/graphic/flags/flag-${country.slug}.svg`;
       img.alt = country.name;
 
@@ -1780,5 +1782,9 @@ twoStepFormMain.addEventListener("submit", (e) => {
   }, 300);
 });
 
-gsap.to(".preloader", { opacity: 0, duration: 0.25, delay: 0.5 });
+gsap.to(".preloader", {
+  opacity: 0,
+  duration: 0.2,
+  onComplete: () => document.querySelector(".preloader")?.remove(),
+});
 console.log("Two step form script loaded");
