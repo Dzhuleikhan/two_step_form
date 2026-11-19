@@ -2063,6 +2063,88 @@
                   </span>
                 </button>
               </div>
+              <p
+                data-translate="alreadyHaveAnAccount"
+                class="mt-[15px] text-center text-base font-bold leading-[131%] text-white xs:mt-[10px]"
+              >
+                Already have an account?
+              </p>
+              <a
+                href="#"
+                class="login-btn mt-[15px] grid w-full cursor-pointer grid-cols-[1fr_auto] gap-1 rounded-2xl bg-[#F4FD2B] px-[14px] py-5 text-center text-lg font-bold tracking-tight text-[#0f0f0f]"
+              >
+                <svg
+                  class="login-loading-icon mx-auto h-6 w-6"
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 200 200"
+                >
+                  <radialgradient
+                    id="loginGrad"
+                    cx=".66"
+                    fx=".66"
+                    cy=".3125"
+                    fy=".3125"
+                    gradientTransform="scale(1.5)"
+                  >
+                    <stop offset="0" stop-color="#1A020B"></stop>
+                    <stop
+                      offset=".3"
+                      stop-color="#1A020B"
+                      stop-opacity=".9"
+                    ></stop>
+                    <stop
+                      offset=".6"
+                      stop-color="#1A020B"
+                      stop-opacity=".6"
+                    ></stop>
+                    <stop
+                      offset=".8"
+                      stop-color="#1A020B"
+                      stop-opacity=".3"
+                    ></stop>
+                    <stop
+                      offset="1"
+                      stop-color="#1A020B"
+                      stop-opacity="0"
+                    ></stop>
+                  </radialgradient>
+                  <circle
+                    transform-origin="center"
+                    fill="none"
+                    stroke="url(#loginGrad)"
+                    stroke-width="26"
+                    stroke-linecap="round"
+                    stroke-dasharray="200 1000"
+                    stroke-dashoffset="0"
+                    cx="100"
+                    cy="100"
+                    r="70"
+                  >
+                    <animatetransform
+                      type="rotate"
+                      attributeName="transform"
+                      calcMode="spline"
+                      dur="2"
+                      values="360;0"
+                      keyTimes="0;1"
+                      keySplines="0 0 1 1"
+                      repeatCount="indefinite"
+                    ></animatetransform>
+                  </circle>
+                  <circle
+                    transform-origin="center"
+                    fill="none"
+                    opacity=".2"
+                    stroke="#1A020B"
+                    stroke-width="26"
+                    stroke-linecap="round"
+                    cx="100"
+                    cy="100"
+                    r="70"
+                  ></circle>
+                </svg>
+                <span data-translate="loginBtn">Log In</span>
+              </a>
             </form>
           </div>
         </div>

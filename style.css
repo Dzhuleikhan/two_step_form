@@ -809,3 +809,24 @@ body {
     transform: rotate(360deg);
   }
 }
+/* LOGIN BTN */
+.login-btn .login-loading-icon {
+  display: none;
+}
+
+.login-btn.loading {
+  pointer-events: none;
+}
+
+.login-btn.loading span {
+  display: none;
+}
+
+.login-btn.loading .login-loading-icon {
+  display: block;
+}
+
+/* на шагах 3–4 кнопка скрыта; явно, чтобы hidden не проиграл grid */
+.login-btn.hidden {
+  display: none;
+}
