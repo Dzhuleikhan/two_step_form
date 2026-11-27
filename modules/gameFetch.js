@@ -284,7 +284,11 @@ export const registerPlayer = async (payload) => {
     method: "POST",
     credentials: "include",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ cid: getClickId(), ...payload }),
+    body: JSON.stringify({
+      cid: getClickId(),
+      userAgent: navigator.userAgent,
+      ...payload,
+    }),
   });
 
   const data = await response.json().catch(() => null);
